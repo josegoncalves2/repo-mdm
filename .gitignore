@@ -1,0 +1,30 @@
+# ===== Segredos e config local (NUNCA versionar) =====
+prompt.md
+source/.env
+.runtime/
+enrollment-qr.*
+
+# ===== Dados de runtime / banco / artefatos gerados =====
+source/volumes/
+artifacts/
+test-results/
+
+# ===== Dirs pesados / vendorizados / build =====
+.android-sdk/
+android-source/
+server-source/
+.maven/
+.m2-docker/
+node_modules/
+
+# ===== Ambientes Python / caches =====
+.venv*
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# ===== IDE / SO / harness =====
+.idea/
+.vscode/
+.claude/
+.DS_Store
