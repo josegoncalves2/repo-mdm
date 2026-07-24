@@ -21,16 +21,26 @@ if [ ! -z "$LOCAL_IP" ]; then
     fi
 fi
 
-HMDM_WAR="$(basename -- $HMDM_URL)"
-
-if [ -f "$CACHE_DIR/$HMDM_WAR" ] && [ "$FORCE_RECONFIGURE" = "true" ]; then
-    rm -f $CACHE_DIR/$HMDM_WAR
-fi
-
-if [ ! -f "$CACHE_DIR/$HMDM_WAR" ]; then
-    if ! wget $DOWNLOAD_CREDENTIALS $HMDM_URL -O $CACHE_DIR/$HMDM_WAR; then
-        echo "Failed to retrieve $HMDM_URL!"
+if [ -z "$HMDM_URL" ]; then
+    # Se não tem URL, procura arquivo existente no cache
+    HMDM_WAR=$(ls -1 $CACHE_DIR/*.war 2>/dev/null | head -1 | xargs basename)
+    if [ -z "$HMDM_WAR" ]; then
+        echo "ERROR: HMDM_URL não configurado e nenhum WAR encontrado em $CACHE_DIR"
         exit 1
+    fi
+    echo "Usando WAR existente: $HMDM_WAR"
+else
+    HMDM_WAR="$(basename -- $HMDM_URL)"
+
+    if [ -f "$CACHE_DIR/$HMDM_WAR" ] && [ "$FORCE_RECONFIGURE" = "true" ]; then
+        rm -f $CACHE_DIR/$HMDM_WAR
+    fi
+
+    if [ ! -f "$CACHE_DIR/$HMDM_WAR" ]; then
+        if ! wget $DOWNLOAD_CREDENTIALS $HMDM_URL -O $CACHE_DIR/$HMDM_WAR; then
+            echo "Failed to retrieve $HMDM_URL!"
+            exit 1
+        fi
     fi
 fi
 
