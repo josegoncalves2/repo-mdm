@@ -18,6 +18,7 @@ services:
       - 31000:31000
     volumes:
       - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
+      - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
       - ./tomcat_conf/server.xml:/usr/local/tomcat/conf/server.xml:ro
       - ./volumes/work:/usr/local/tomcat/work
       - ./volumes/hmdm-config:/usr/local/tomcat/conf/Catalina/localhost
@@ -38,3 +39,5 @@ services:
       HMDM_URL: ${HMDM_URL}
       CLIENT_VERSION: ${CLIENT_VERSION}
       FORCE_RECONFIGURE: ${FORCE_RECONFIGURE}
+      APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
+      AUTO_UPDATE_WEBAPP: "false"
