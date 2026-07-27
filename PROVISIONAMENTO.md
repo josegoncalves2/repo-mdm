@@ -127,6 +127,22 @@ quebra, mas tambem nao filtra. Quem comanda a leitura do `X-Forwarded-For` e' o
 `PROXY_ADDRESSES` do `.env`, e esse e' parametrizado. Se quiser o filtro extra no destino,
 edite a constante e reconstrua o WAR.
 
+**`mainappid` e `configurationapplications` sao dois lados da mesma relacao.** Mudar o
+`configurations.mainappid` por SQL sem mudar junto o `applicationversionid` da linha
+correspondente em `configurationapplications` deixa o perfil inconsistente: o editor nao
+consegue resolver o app principal, e no proximo save grava `mainappid = NULL`. O efeito
+visivel e' o **botao de QR code sumir da lista de perfis**, porque `qrCodeAvailable()` exige
+`mainAppId > 0`. Foi o que aconteceu em 26/07/2026 com o perfil "Kiosk Total". Ao trocar a
+versao do app principal, atualize sempre os dois:
+
+```sql
+UPDATE configurationapplications SET applicationversionid=<versao>
+ WHERE configurationid=<perfil> AND applicationid=<app>;
+UPDATE configurations SET mainappid=<versao> WHERE id=<perfil>;
+```
+
+`tests/playwright/hwmdm-qrcode.spec.js` cobre essa regressao.
+
 **O painel esteve fora do controle de versao.** `server-source/` ficou no `.gitignore` ate
 26/07/2026, e nesse periodo o layout novo foi sobrescrito por uma copia antiga e so foi
 recuperado do diretorio de build do maven. Agora esta versionado — mantenha assim.
