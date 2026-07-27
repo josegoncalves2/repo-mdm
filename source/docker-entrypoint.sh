@@ -8,6 +8,9 @@ PASSWORD=123456
 PUBLIC_PROTOCOL="${PUBLIC_PROTOCOL:-$PROTOCOL}"
 CUSTOM_WEBAPP_DIR=/opt/custom-webapp
 APPLY_CUSTOM_WEBAPP_ON_BOOT="${APPLY_CUSTOM_WEBAPP_ON_BOOT:-false}"
+# IPs dos saltos confiaveis (proxy reverso / tunel). Sem isto o Tomcat nao le
+# o X-Forwarded-For e o painel exibe o IP do proxy no lugar do IP de origem.
+PROXY_ADDRESSES="${PROXY_ADDRESSES:-}"
 AUTO_UPDATE_WEBAPP="${AUTO_UPDATE_WEBAPP:-false}"
 
 for DIR in cache files plugins logs; do
@@ -78,7 +81,18 @@ if [ "$APPLY_CUSTOM_WEBAPP_ON_BOOT" = "true" ] && [ -d "$CUSTOM_WEBAPP_DIR" ]; t
         if [ -d ./app/components/plugins ]; then
             cp -a ./app/components/plugins "$PLUGINS_KEEP/plugins" || exit 1
         fi
-        rm -rf ./app
+        # Wiping only ./app was not enough: anything deleted from the sources OUTSIDE app/
+        # (css/, js/, localization/, images/, stray html) survived from the original WAR and
+        # kept being served -- the same "deleted files come back" bug, one level up.
+        # So every top-level entry the sources own is dropped before the copy.
+        # WEB-INF is the exception: the sources carry only web.xml there, while the WAR
+        # carries WEB-INF/classes and 100+ jars. Wiping it would gut the application, so it
+        # is left to be overwritten file by file by the copy below.
+        for ENTRY in "$CUSTOM_WEBAPP_DIR"/*; do
+            NAME=$(basename "$ENTRY")
+            [ "$NAME" = "WEB-INF" ] && continue
+            rm -rf "./$NAME"
+        done
         cp -a "$CUSTOM_WEBAPP_DIR/." . || exit 1
         if [ -d "$PLUGINS_KEEP/plugins" ]; then
             mkdir -p ./app/components || exit 1
@@ -108,7 +122,7 @@ if [ ! -d $TOMCAT_DIR/conf/Catalina/localhost ]; then
 fi
 
 if [ ! -f "$TOMCAT_DIR/conf/Catalina/localhost/ROOT.xml" ] || [ "$FORCE_RECONFIGURE" = "true" ]; then
-    cat $TEMPLATE_DIR/conf/context_template.xml | sed "s|_SQL_HOST_|$SQL_HOST|g; s|_SQL_PORT_|$SQL_PORT|g; s|_SQL_BASE_|$SQL_BASE|g; s|_SQL_USER_|$SQL_USER|g; s|_SQL_PASS_|$SQL_PASS|g; s|_PROTOCOL_|$PUBLIC_PROTOCOL|g; s|_BASE_DOMAIN_|$BASE_DOMAIN|g; s|_SHARED_SECRET_|$SHARED_SECRET|g;" > $TOMCAT_DIR/conf/Catalina/localhost/ROOT.xml 
+    cat $TEMPLATE_DIR/conf/context_template.xml | sed "s|_SQL_HOST_|$SQL_HOST|g; s|_SQL_PORT_|$SQL_PORT|g; s|_SQL_BASE_|$SQL_BASE|g; s|_SQL_USER_|$SQL_USER|g; s|_SQL_PASS_|$SQL_PASS|g; s|_PROTOCOL_|$PUBLIC_PROTOCOL|g; s|_BASE_DOMAIN_|$BASE_DOMAIN|g; s|_SHARED_SECRET_|$SHARED_SECRET|g; s|_PROXY_ADDRESSES_|$PROXY_ADDRESSES|g;" > $TOMCAT_DIR/conf/Catalina/localhost/ROOT.xml 
 fi
 
 for DIR in cache files plugins logs; do

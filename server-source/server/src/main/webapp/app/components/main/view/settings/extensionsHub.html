@@ -1,0 +1,59 @@
+<div class="hwmdm-list-page ext-hub" ng-controller="PluginsTabController">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3>Extensions</h3>
+            <p>Optional modules that add extra per-device actions and settings on top of the core MDM features.</p>
+        </div>
+    </div>
+
+    <div class="ext-hub-empty" ng-if="functionsPlugins.length === 0 && settingsPlugins.length === 0 && !hasPermission('plugins_customer_access_management')">
+        No extensions are available for your role right now.
+    </div>
+
+    <div class="ext-hub-section" ng-if="functionsPlugins.length > 0">
+        <h4 class="ext-hub-section-title">Consultar por dispositivo</h4>
+        <div class="ext-hub-grid">
+            <button type="button" class="ext-hub-card" ng-repeat="plugin in functionsPlugins"
+                    ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
+                    ng-click="openTab('plugin-' + plugin.identifier)">
+                <span class="glyphicon glyphicon-flash ext-hub-card-icon"></span>
+                <span class="ext-hub-card-label">{{localization.localize(plugin.nameLocalizationKey)}}</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="ext-hub-section" ng-if="settingsPlugins.length > 0">
+        <h4 class="ext-hub-section-title">Configurações da extensão</h4>
+        <div class="ext-hub-grid">
+            <button type="button" class="ext-hub-card" ng-repeat="plugin in settingsPlugins"
+                    ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
+                    ng-click="openTab('plugin-settings-' + plugin.identifier)">
+                <span class="glyphicon glyphicon-wrench ext-hub-card-icon"></span>
+                <span class="ext-hub-card-label">{{localization.localize(plugin.nameLocalizationKey)}}</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="ext-hub-section" ng-if="hasPermission('plugins_customer_access_management')">
+        <h4 class="ext-hub-section-title">Manage extensions</h4>
+        <p class="ext-hub-section-hint">
+            Turn extensions on or off for your organization. Disabling an extension removes it from this
+            page and from every user's sidebar until it is re-enabled here.
+        </p>
+
+        <div class='form-group' ng-if='errorMessage'><div class='error'><span>{{errorMessage}}</span></div></div>
+        <div class='form-group' ng-if='successMessage'><div class='success'><span>{{successMessage}}</span></div></div>
+
+        <div class="dtv-toggle-grid" ng-if="plugins && pluginSelection">
+            <label class="dtv-toggle" ng-repeat="plugin in plugins">
+                <input type="checkbox" ng-model="pluginSelection[plugin.id]" ng-disabled="loading"/>
+                <span class="dtv-toggle-track"><span class="dtv-toggle-thumb"></span></span>
+                <span class="dtv-toggle-label">{{plugin.localizedName}}</span>
+            </label>
+        </div>
+
+        <div class="dtv-save-bar">
+            <button type="button" class="btn btn-primary" ng-disabled="loading" ng-click="save()" localized>button.save</button>
+        </div>
+    </div>
+</div>

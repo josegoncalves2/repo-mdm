@@ -1,21 +1,40 @@
 # ===== Segredos e config local (NUNCA versionar) =====
-prompt.md
+# .env carrega a senha do banco e o SHARED_SECRET deste ambiente.
+# O modelo versionado e' source/.env.example -- veja PROVISIONAMENTO.md.
 source/.env
+prompt.md
 .runtime/
 enrollment-qr.*
 
-# ===== Dados de runtime / banco / artefatos gerados =====
+# ===== Dados de runtime =====
+# volumes/ tem o banco vivo, os logs e o webapp explodido pelo Tomcat.
+# O que precisa viajar entre maquinas e' o dump em source/sql/ e o APK em dist/.
 source/volumes/
 artifacts/
 test-results/
+tests/playwright/test-results/
 
-# ===== Dirs pesados / vendorizados / build =====
-.android-sdk/
-android-source/
-server-source/
+# ===== Saidas de build (regeraveis; nao versionar) =====
+server-source/server/target/
+server-source/common/target/
+server-source/plugins/**/target/
+server-source/swagger/target/
+server-source/jwt/target/
+server-source/notification/target/
+server-source/install/target/
+server-source/server/webtarget/
+server-source/**/node_modules/
+android-source/app/build/
+android-source/build/
+android-source/.gradle/
+android-source/local.properties
 .maven/
 .m2-docker/
 node_modules/
+
+# ===== SDK Android (baixado, pesado demais para git) =====
+# Reinstalado pelo scripts/provision.sh
+.android-sdk/
 
 # ===== Ambientes Python / caches =====
 .venv*
