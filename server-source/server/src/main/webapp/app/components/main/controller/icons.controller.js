@@ -29,7 +29,7 @@ angular.module('headwind-kiosk')
 
         $scope.editIcon = function (icon) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/addIcon.html?v=h2cd3aa07f7',
+                templateUrl: 'app/components/main/view/modal/addIcon.html?v=hae9ce12ae2',
                 controller: 'IconModalController',
                 resolve: {
                     icon: function () {

@@ -42,7 +42,7 @@ angular.module('headwind-kiosk')
 
         $scope.editUser = function (user) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/user.html?v=hf7cb3223df',
+                templateUrl: 'app/components/main/view/modal/user.html?v=hc170fe9a53',
                 controller: 'UserModalController',
                 resolve: {
                     user: function () {

@@ -92,7 +92,7 @@ angular.module('headwind-kiosk')
                 file.externalUrl = file.url;
             }
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
+                templateUrl: 'app/components/main/view/modal/file.html?v=h3971118c30',
                 controller: 'FileModalController',
                 resolve: {
                     file: function () {
@@ -129,7 +129,7 @@ angular.module('headwind-kiosk')
 
         $scope.editConfiguration = function(file) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/fileConfigurations.html?v=h3f333963c6',
+                templateUrl: 'app/components/main/view/modal/fileConfigurations.html?v=hf5c5436001',
                 controller: 'FileConfigurationsModalController',
                 resolve: {
                     file: function () {
@@ -147,7 +147,7 @@ angular.module('headwind-kiosk')
             fileService.getApps({value: encodeURIComponent(file.url)}, function (response) {
                 if (response.status === 'OK') {
                     var modalInstance = $modal.open({
-                        templateUrl: 'app/components/main/view/modal/fileApps.html?v=h58738df6b8',
+                        templateUrl: 'app/components/main/view/modal/fileApps.html?v=h2ff305fe77',
                         controller: 'FileAppsModalController',
                         resolve: {
                             apps: function () {

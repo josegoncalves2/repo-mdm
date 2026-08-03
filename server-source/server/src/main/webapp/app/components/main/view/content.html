@@ -178,25 +178,25 @@
 
         <main class="hwmdm-main">
             <div class="hwmdm-main-surface">
-                <ng-include src="'app/components/main/view/summary.html?v=he050b7ab65'" ng-if="activeTab === 'SUMMARY'"></ng-include>
-                <ng-include src="'app/components/main/view/devices.html?v=h95c36dc66c'" ng-if="activeTab === 'DEVICES'"></ng-include>
-                <ng-include src="'app/components/main/view/kiosk.html?v=hfbd3562a5c'" ng-if="activeTab === 'KIOSK'"></ng-include>
-                <ng-include src="'app/components/main/view/remote.html?v=h01cfc04921'" ng-if="activeTab === 'REMOTE'"></ng-include>
-                <ng-include src="'app/components/main/view/gpsmap.html?v=h12f2b8f0e7'" ng-if="activeTab === 'GPSMAP'"></ng-include>
-                <ng-include src="'app/components/main/view/chat.html?v=h3b70b3e8b6'" ng-if="activeTab === 'CHAT'"></ng-include>
-                <ng-include src="'app/components/main/view/reports.html?v=h8e0bb6c78c'" ng-if="activeTab === 'REPORTS'"></ng-include>
-                <ng-include src="'app/components/main/view/governance.html?v=h79e1e0fb55'" ng-if="activeTab === 'GOVERNANCE'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/design.html?v=h69982d3bc0'" ng-if="activeTab === 'DESIGN'"></ng-include>
-                <ng-include src="'app/components/main/view/applications.html?v=hbae396280b'" ng-if="activeTab === 'APPS'"></ng-include>
-                <ng-include src="'app/components/main/view/configurations.html?v=h8f8e11837e'" ng-if="activeTab === 'CONFS'"></ng-include>
-                <ng-include src="'app/components/main/view/files.html?v=h16d82dfe8d'" ng-if="activeTab === 'FILES'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/common.html?v=hf1a7a8467e'" ng-if="activeTab === 'COMMON'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/users.html?v=ha4b8bb9258'" ng-if="activeTab === 'USERS'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/roles.html?v=h303e455b38'" ng-if="activeTab === 'ROLES'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/groups.html?v=hf4b1781e0c'" ng-if="activeTab === 'GROUPS'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/icons.html?v=h3e4d0f46af'" ng-if="activeTab === 'ICONS'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/general.html?v=hd84d7fb7c2'" ng-if="activeTab === 'GENERAL'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/extensionsHub.html?v=haecd25163a'" ng-if="activeTab === 'EXTENSIONS'"></ng-include>
+                <ng-include src="'app/components/main/view/summary.html?v=hb13ba787b5'" ng-if="activeTab === 'SUMMARY'"></ng-include>
+                <ng-include src="'app/components/main/view/devices.html?v=hcd265a04b7'" ng-if="activeTab === 'DEVICES'"></ng-include>
+                <ng-include src="'app/components/main/view/kiosk.html?v=ha0a3a55c06'" ng-if="activeTab === 'KIOSK'"></ng-include>
+                <ng-include src="'app/components/main/view/remote.html?v=he415b8a1b1'" ng-if="activeTab === 'REMOTE'"></ng-include>
+                <ng-include src="'app/components/main/view/gpsmap.html?v=h9d95034773'" ng-if="activeTab === 'GPSMAP'"></ng-include>
+                <ng-include src="'app/components/main/view/chat.html?v=h2157e2e796'" ng-if="activeTab === 'CHAT'"></ng-include>
+                <ng-include src="'app/components/main/view/reports.html?v=hf5a62c01e4'" ng-if="activeTab === 'REPORTS'"></ng-include>
+                <ng-include src="'app/components/main/view/governance.html?v=h19f5447723'" ng-if="activeTab === 'GOVERNANCE'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/design.html?v=h0d26290ae8'" ng-if="activeTab === 'DESIGN'"></ng-include>
+                <ng-include src="'app/components/main/view/applications.html?v=h04db82a97a'" ng-if="activeTab === 'APPS'"></ng-include>
+                <ng-include src="'app/components/main/view/configurations.html?v=h95c879fd14'" ng-if="activeTab === 'CONFS'"></ng-include>
+                <ng-include src="'app/components/main/view/files.html?v=hf37fa309b9'" ng-if="activeTab === 'FILES'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/common.html?v=h2313422148'" ng-if="activeTab === 'COMMON'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/users.html?v=h8901068d41'" ng-if="activeTab === 'USERS'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/roles.html?v=hd3b170ee40'" ng-if="activeTab === 'ROLES'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/groups.html?v=hb926df3d31'" ng-if="activeTab === 'GROUPS'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/icons.html?v=h0748b29a53'" ng-if="activeTab === 'ICONS'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/general.html?v=h97fb80f73e'" ng-if="activeTab === 'GENERAL'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/extensionsHub.html?v=h29c2d56379'" ng-if="activeTab === 'EXTENSIONS'"></ng-include>
 
                 <div ng-repeat="plugin in settingsPlugins">
                     <div ng-if="activeTab === ('plugin-settings-' + plugin.identifier)">

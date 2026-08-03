@@ -124,7 +124,7 @@ angular.module('headwind-kiosk')
         $scope.editCustomer = function (customer) {
 
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/customer.html?v=h219f2d692c',
+                templateUrl: 'app/components/main/view/modal/customer.html?v=had6568a45e',
                 controller: 'CustomerModalController',
                 resolve: {
                     customer: function () {
@@ -151,7 +151,7 @@ angular.module('headwind-kiosk')
 
         $scope.changePassword = function (customer) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/control-panel/view/modal/password.html?v=h5ecd235210',
+                templateUrl: 'app/components/control-panel/view/modal/password.html?v=h8acc706a78',
                 controller: 'CustomerPasswordModalController',
                 resolve: {
                     customer: function () {
@@ -461,7 +461,7 @@ angular.module('headwind-kiosk')
 
         $scope.editApplication = function (application) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
+                templateUrl: 'app/components/main/view/modal/application.html?v=h00e1f45dd2',
                 controller: 'ApplicationModalController',
                 resolve: {
                     application: function () {

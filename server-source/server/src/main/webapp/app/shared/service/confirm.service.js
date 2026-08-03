@@ -4,7 +4,7 @@ angular.module('headwind-kiosk')
         return {
             getUserConfirmation: function (message, callback, okButtonTextKey) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/shared/view/confirm.html?v=h0d675e804a',
+                    templateUrl: 'app/shared/view/confirm.html?v=h065cbc7716',
                     controller: 'ConfirmController',
                     resolve: {
                         message: function () {

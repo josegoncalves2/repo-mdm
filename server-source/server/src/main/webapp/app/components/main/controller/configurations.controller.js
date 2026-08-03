@@ -83,13 +83,13 @@ angular.module('headwind-kiosk')
         $scope.editConfiguration = function (configuration) {
 
             // $state.goNewTab('configEditor', {"id": configuration.id, "typical": $scope.isTypical});
-            $state.transitionTo('configEditor', {"id": configuration.id, "typical": $scope.isTypical});
+            $state.transitionTo('configEditor', {"id": configuration.id, "typical": $scope.isTypical, "from": 'configurations'});
 
         };
 
         $scope.copyConfiguration = function (configuration) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h29b640c39a',
+                templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h3b1585c6a9',
                 controller: 'CopyConfigurationModalController',
                 resolve: {
                     configuration: function () {
@@ -302,7 +302,7 @@ angular.module('headwind-kiosk')
 
         $scope.newApp = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
+                templateUrl: 'app/components/main/view/modal/application.html?v=h00e1f45dd2',
                 controller: 'ApplicationModalController',
                 resolve: {
                     application: function () {
@@ -407,7 +407,7 @@ angular.module('headwind-kiosk')
 
             $scope.uploadBackground = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
+                    templateUrl: 'app/components/main/view/modal/file.html?v=h3971118c30',
                     // Defined in files.controller.js
                     controller: 'FileModalController'
                 });
@@ -614,7 +614,7 @@ angular.module('headwind-kiosk')
 
             $scope.addApp = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hc4068664a0',
+                    templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hdbf84a3eb2',
                     controller: 'AddConfigurationAppModalController',
                     resolve: {
                         applications: function () {
@@ -1032,7 +1032,15 @@ angular.module('headwind-kiosk')
                         if (response.status === 'OK') {
                             $scope.saved = true;
                             if (doClose) {
-                                $rootScope["configurationsMessage"] = localization.localize('success.configuration.saved');
+                                // configurationsMessage is only rendered by the Device
+                                // profiles screen. When the editor was opened from Devices
+                                // we return there instead, so the confirmation has to be
+                                // shown as an alert or it would be dropped silently.
+                                if (($stateParams.from || 'configurations') === 'configurations') {
+                                    $rootScope["configurationsMessage"] = localization.localize('success.configuration.saved');
+                                } else {
+                                    alertService.showAlertMessage(localization.localize('success.configuration.saved'));
+                                }
                                 $scope.close();
                             } else {
                                 $scope.successMessage = localization.localize('success.configuration.saved');
@@ -1067,13 +1075,15 @@ angular.module('headwind-kiosk')
             };
 
             $scope.close = function () {
-                $state.transitionTo('configurations');
+                // Back to the screen this editor was opened from. Falls back to Device
+                // profiles when the state param is absent (deep link or page reload).
+                $state.transitionTo($stateParams.from || 'configurations');
                 // $window.close();
             };
 
             $scope.editFile = function (configFile) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationFile.html?v=hc0af3ddb4d',
+                    templateUrl: 'app/components/main/view/modal/configurationFile.html?v=h0782ca84b0',
                     controller: 'FileEditorController',
                     resolve: {
                         configFile: function() {
@@ -1109,7 +1119,7 @@ angular.module('headwind-kiosk')
 
             $scope.addApplicationSetting = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
+                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
                         applicationSetting: function () {
@@ -1144,7 +1154,7 @@ angular.module('headwind-kiosk')
 
             $scope.selectVersion = function (application) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=hc48e44eed2',
+                    templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=h00f64bedc1',
                     controller: 'ConfigurationAppVersionSelectController',
                     resolve: {
                         application: function () {
@@ -1289,7 +1299,7 @@ angular.module('headwind-kiosk')
 
             $scope.editDetails = function (application) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h4e66e49969',
+                    templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h00c816b732',
                     controller: 'ConfigurationAppDetailsController',
                     resolve: {
                         application: function () {
@@ -1341,7 +1351,7 @@ angular.module('headwind-kiosk')
 
             $scope.editApplicationSetting = function (setting) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
+                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
                         applicationSetting: function () {
@@ -1390,7 +1400,7 @@ angular.module('headwind-kiosk')
 
             $scope.removeFile = function (file) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h9ab42ea0f4',
+                    templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h87a696ba2e',
                     controller: 'RemoveConfigurationFileModalController',
                     resolve: {
                         file: function () {

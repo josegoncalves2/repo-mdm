@@ -314,7 +314,7 @@ angular.module('headwind-kiosk')
 
         $scope.uploadBackground = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
+                templateUrl: 'app/components/main/view/modal/file.html?v=h3971118c30',
                 // Defined in files.controller.js
                 controller: 'FileModalController',
                 resolve: {
@@ -350,7 +350,7 @@ angular.module('headwind-kiosk')
 
         $scope.uploadLogo = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
+                templateUrl: 'app/components/main/view/modal/file.html?v=h3971118c30',
                 // Defined in files.controller.js
                 controller: 'FileModalController',
                 resolve: {

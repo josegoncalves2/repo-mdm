@@ -980,7 +980,7 @@ angular.module('headwind-kiosk')
 
         $scope.openBulkUpdateModal = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.update.html?v=hedfaabbcba',
+                templateUrl: 'app/components/main/view/modal/device.update.html?v=h72a09113f5',
                 controller: 'DeviceUpdateModalController',
                 resolve: {
                     devices: function () {
@@ -996,7 +996,7 @@ angular.module('headwind-kiosk')
 
         $scope.openBulkGroupModal = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.group.html?v=hd48597816e',
+                templateUrl: 'app/components/main/view/modal/device.group.html?v=hcc4d01556b',
                 controller: 'DeviceGroupModalController',
                 resolve: {
                     devices: function () {
@@ -1029,7 +1029,7 @@ angular.module('headwind-kiosk')
 
         $scope.editDevice = function (device) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.html?v=h91de02c67b',
+                templateUrl: 'app/components/main/view/modal/device.html?v=h9c8263af9b',
                 controller: 'DeviceModalController',
                 resolve: {
                     device: function () {
@@ -1118,12 +1118,12 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editConfiguration = function (configuration) {
-            $state.transitionTo('configEditor', {"id": configuration.id});
+            $state.transitionTo('configEditor', {"id": configuration.id, "from": 'main'});
         };
 
         $scope.manageApplicationSettings = function (device) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.applicationSettings.html?v=h944f50f39c',
+                templateUrl: 'app/components/main/view/modal/device.applicationSettings.html?v=h140e1dfeb7',
                 controller: 'DeviceApplicationSettingsModalController',
                 size: 'lg',
                 resolve: {
@@ -1402,7 +1402,7 @@ angular.module('headwind-kiosk')
 
         $scope.addApplicationSetting = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
+                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
                     applicationSetting: function () {
@@ -1425,7 +1425,7 @@ angular.module('headwind-kiosk')
 
         $scope.editApplicationSetting = function (setting) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
+                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
                     applicationSetting: function () {

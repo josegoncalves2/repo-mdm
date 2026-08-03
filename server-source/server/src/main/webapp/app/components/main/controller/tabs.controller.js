@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('TabController', function ($scope, $rootScope, $timeout, userService, authService, openTab,
+    .controller('TabController', function ($scope, $rootScope, $timeout, $state, userService, authService, openTab,
                                            pluginService, localization, hintService) {
 
         $scope.localization = localization;
@@ -8,6 +8,8 @@ angular.module('headwind-kiosk')
         // Only tabs that content.html can actually render. LANG/HINTS/PLUGINS used to be
         // listed here without a matching template, so openTab() accepted them and left the
         // content area empty.
+        // Every entry is now a real ui-router state, which is what gives each screen its
+        // own URL and therefore its own browser-history entry.
         var routes = {
             SUMMARY: 'summary',
             DEVICES: 'main',
@@ -15,8 +17,8 @@ angular.module('headwind-kiosk')
             REMOTE: 'remote',
             GPSMAP: 'gpsMap',
             CHAT: 'chat',
-            REPORTS: 'REPORTS',
-            GOVERNANCE: 'GOVERNANCE',
+            REPORTS: 'reports',
+            GOVERNANCE: 'governance',
             APPS: 'applications',
             CONFS: 'configurations',
             FILES: 'files',
@@ -26,8 +28,8 @@ angular.module('headwind-kiosk')
             ROLES: 'roles',
             GROUPS: 'groups',
             ICONS: 'icons',
-            GENERAL: 'GENERAL',
-            EXTENSIONS: 'EXTENSIONS'
+            GENERAL: 'generalSettings',
+            EXTENSIONS: 'extensions'
         };
 
         // Same wording as the sidebar. Shown in the narrow-viewport bar next to the menu
@@ -122,24 +124,31 @@ angular.module('headwind-kiosk')
             if (tabName === $scope.activeTab) {
                 return;
             }
-            // Tab switches are always client-side (setActiveTab), never a ui-router
-            // transition. Reason: several tabs (Reports, General,
-            // Extensions...) don't have a dedicated state, so they never change
-            // $state.current. If a later click tried to $state.transitionTo() a
-            // *different* tab that happens to map to the state we technically never
-            // left (e.g. 'main'), ui-router treats it as a no-op transition and the
-            // screen silently never updates. Keeping ALL tab navigation client-side
-            // avoids that trap and also stops the sidebar+content template from being
-            // torn down and rebuilt on every click (it lives inside content.html,
-            // which is the ui-router templateUrl for every real state).
-            if (routes[tabName]) {
-                // Tab switches never trigger a ui-router transition, so nothing else would
-                // tear down a running guided tour. Without this, the tour started on the
-                // Devices tab keeps its full-page overlay on top of every other tab.
-                hintService.stop();
-                setActiveTab(tabName);
-                $scope.navOpen = false;
+            if (!routes[tabName]) {
+                return;
             }
+            // Without this, the guided tour started on one tab keeps its full-page
+            // overlay on top of the next one.
+            hintService.stop();
+            $scope.navOpen = false;
+
+            var target = routes[tabName];
+
+            // Every sidebar entry maps to a state of its own, so navigating through
+            // ui-router is what puts the screen in the address bar and in the browser's
+            // history. Previously every tab switch was client-side only: the URL never
+            // moved off the landing route, so Back always walked out to Devices no
+            // matter which screen you were on.
+            if ($state.get(target) && $state.current.name !== target) {
+                $state.go(target);
+                return;
+            }
+
+            // Reached from a plugin screen, which renders inside its parent's state
+            // (no state of its own). The target state is the one we are already in, so
+            // a transition would be a no-op and the screen would silently not update -
+            // switch the view directly instead.
+            setActiveTab(tabName);
         };
 
         // Off-canvas sidebar state, only meaningful below the drawer breakpoint.

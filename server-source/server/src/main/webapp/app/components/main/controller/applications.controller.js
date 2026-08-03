@@ -101,7 +101,7 @@ angular.module('headwind-kiosk')
 
         $scope.editApplication = function (application) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
+                templateUrl: 'app/components/main/view/modal/application.html?v=h00e1f45dd2',
                 controller: 'ApplicationModalController',
                 resolve: {
                     application: function () {
@@ -125,7 +125,7 @@ angular.module('headwind-kiosk')
 
         $scope.editConfiguration = function (application) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hbae568bb80',
+                templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hb531808755',
                 controller: 'ApplicationConfigurationsModalController',
                 resolve: {
                     application: function () {
@@ -567,7 +567,7 @@ angular.module('headwind-kiosk')
 
         $scope.addNewIcon = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/addIcon.html?v=h2cd3aa07f7',
+                templateUrl: 'app/components/main/view/modal/addIcon.html?v=hae9ce12ae2',
                 controller: 'AddIconController'
             });
 
@@ -581,7 +581,7 @@ angular.module('headwind-kiosk')
 
         var startDuplicatePkgResolutionDialog = function (request, existingAppsForPkg) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/duplicatePkgResolution.html?v=h45d48c121c',
+                templateUrl: 'app/components/main/view/modal/duplicatePkgResolution.html?v=h0362b28f26',
                 controller: 'DuplicatePkgResolutionController',
                 resolve: {
                     application: function () {
@@ -617,7 +617,7 @@ angular.module('headwind-kiosk')
 
         $scope.manageConfigurations = function (closeOnExit) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hbae568bb80',
+                templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hb531808755',
                 controller: 'ApplicationConfigurationsModalController',
                 resolve: {
                     application: function () {
@@ -639,7 +639,7 @@ angular.module('headwind-kiosk')
 
         $scope.manageAppVersionConfigurations = function (applicationVersion, closeOnExit) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
+                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=h51f25e0302',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
                     applicationVersion: function () {
@@ -837,7 +837,7 @@ angular.module('headwind-kiosk')
 
         $scope.addApplicationVersion = function (applicationVersion) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationVersionAdd.html?v=hf4312134bb',
+                templateUrl: 'app/components/main/view/modal/applicationVersionAdd.html?v=h4bb348ce4c',
                 controller: 'ApplicationVersionModalController',
                 resolve: {
                     applicationVersion: function () {
@@ -854,7 +854,7 @@ angular.module('headwind-kiosk')
 
         $scope.editApplicationVersion = function (applicationVersion) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationVersionEdit.html?v=h70c21cb6ba',
+                templateUrl: 'app/components/main/view/modal/applicationVersionEdit.html?v=hb8640ff239',
                 controller: 'ApplicationVersionModalController',
                 resolve: {
                     applicationVersion: function () {
@@ -871,7 +871,7 @@ angular.module('headwind-kiosk')
 
         $scope.manageConfigurations = function (applicationVersion) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
+                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=h51f25e0302',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
                     applicationVersion: function () {
@@ -1041,7 +1041,7 @@ angular.module('headwind-kiosk')
 
         $scope.manageConfigurations = function (closeOnExit) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
+                templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=h51f25e0302',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
                     applicationVersion: function () {
