@@ -3445,12 +3445,45 @@ body {
     font-weight: 600;
 }
 
+/* A fixed 34x34 box only fits a square or portrait logo. A landscape logo was letterboxed
+   into that square and shrank to a sliver, so the height is what is fixed now and the width
+   follows the image's own aspect ratio, up to a cap that keeps the top bar intact. */
 .hwmdm-brand-logo {
-    width: 34px;
+    width: auto;
+    max-width: 180px;
     height: 34px;
     border-radius: 8px;
     object-fit: contain;
     background: rgba(255, 255, 255, 0.16);
+}
+
+@media (max-width: 768px) {
+    .hwmdm-brand-logo {
+        max-width: 110px;
+    }
+}
+
+.hwmdm-logo-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--hwmdm-border);
+    border-radius: 8px;
+    background: var(--hwmdm-accent);
+    padding: 8px 12px;
+}
+
+.hwmdm-logo-preview-name {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hwmdm-form-section-note {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 .hwmdm-theme-toggle {
@@ -4795,6 +4828,15 @@ body {
     gap: 14px;
 }
 
+/* Export sits below the report, after the data it exports. */
+.reports-footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--hwmdm-border);
+}
+
 .reports-bars {
     display: flex;
     flex-direction: column;
@@ -4991,6 +5033,20 @@ body {
     outline: 0;
 }
 
+/* The bar now switches between steps instead of scrolling to them, so it has to say
+   which step is on screen. */
+.cfg-step-link-active,
+.cfg-step-link-active:hover,
+.cfg-step-link-active:focus {
+    background: var(--hwmdm-accent-soft-bg);
+    color: var(--hwmdm-accent);
+    font-weight: 700;
+}
+
+.cfg-step-link-active .cfg-step-num {
+    box-shadow: 0 0 0 2px var(--hwmdm-surface), 0 0 0 4px var(--hwmdm-accent);
+}
+
 .cfg-step-num {
     display: inline-flex;
     align-items: center;
@@ -5071,14 +5127,51 @@ body {
     gap: 12px 16px;
 }
 
+/* Bootstrap gives .form-horizontal .form-group a -15px gutter on both sides, which is
+   meant for a row of columns. Inside this grid each .form-group is a cell, so the gutter
+   made every cell bleed 15px past its track - over the panel padding on the left and into
+   the next column's gap on the right. */
 .cfg-policy-grid .form-group {
-    margin-bottom: 0;
+    margin: 0 0 0 0;
+    min-width: 0;
 }
 
-.cfg-policy-grid label {
+.cfg-policy-grid > .form-group > label {
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
+}
+
+/* The three-state radios are a horizontal row of choices, so they must keep the inline
+   layout the rest of the profile form uses; the block rule above would stack them, and
+   Bootstrap's .form-control would blow each radio up to a full-width 34px control. */
+.cfg-policy-grid div.three-state {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 18px;
+}
+
+/* Specificity has to beat "div.form-group div.three-state label", which fixes the label
+   to a centred 120px block - the shape the old column layout needed. */
+.cfg-policy-grid div.form-group div.three-state label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+.cfg-policy-grid div.three-state input[type='radio'].form-control {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 .cfg-policy-head p {

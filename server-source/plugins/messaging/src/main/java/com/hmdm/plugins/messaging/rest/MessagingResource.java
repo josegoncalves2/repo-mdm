@@ -21,6 +21,8 @@
 
 package com.hmdm.plugins.messaging.rest;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.hmdm.notification.PushService;
 import com.hmdm.notification.persistence.domain.PushMessage;
 import com.hmdm.persistence.DeviceDAO;
@@ -225,7 +227,12 @@ public class MessagingResource {
 
              PushMessage pushMessage = new PushMessage();
              pushMessage.setDeviceId(message.getDeviceId());
-             pushMessage.setPayload("{id:" + message.getId() + ",text:\"" + message.getMessage().trim().replace("\"", "\\\"") + "\"}");
+             // Hand-rolled JSON with unquoted keys only parsed because org.json happens to be
+             // lenient. Built properly so the payload survives any strict JSON reader.
+             ObjectNode payload = JsonNodeFactory.instance.objectNode();
+             payload.put("id", message.getId());
+             payload.put("text", message.getMessage().trim());
+             pushMessage.setPayload(payload.toString());
              pushMessage.setMessageType("textMessage");
 
              this.pushService.send(pushMessage);

@@ -376,7 +376,11 @@ test('editor de perfil expoe controle grafico de GPS e salva politica coerente',
   await page.waitForSelector('[data-testid="location-policy-panel"]', { timeout: 20000 });
   await page.waitForTimeout(1800);
 
+  // O editor mostra uma secao por vez, entao cada controle e alcancado pelo passo dono dele:
+  // a politica de localizacao esta no passo 1 e o APK do agente no passo 3.
+  await page.locator('[data-testid="cfg-step-basics"]').click();
   await page.locator('[data-testid="enable-managed-gps"]').click();
+  await page.locator('[data-testid="cfg-step-agent"]').click();
   await page.locator('[data-testid="use-latest-mdm-agent"]').click();
   await expect.poll(async () => page.evaluate(() => {
     const s = angular.element(document.querySelector('[data-testid="location-policy-panel"]')).scope();
@@ -434,9 +438,11 @@ test('editor de perfil expoe kiosk completo, APK MDM e allowlist pela GUI', asyn
 
   const configId = parseInt(psql("select id from configurations where name = 'Kiosk Total (6.37.3)'").trim(), 10);
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000 });
+  await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000, state: 'attached' });
   await page.waitForTimeout(1800);
 
+  // O centro de controle do kiosk vive no passo 3 do editor, que so aparece ao seleciona-lo.
+  await page.locator('[data-testid="cfg-step-agent"]').click();
   await page.locator('[data-testid="kiosk-lockdown-preset"]').click();
   const model = await page.evaluate(() => {
     const s = angular.element(document.querySelector('[data-testid="kiosk-control-center"]')).scope();

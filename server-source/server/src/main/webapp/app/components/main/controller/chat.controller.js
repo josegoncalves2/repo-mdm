@@ -1,12 +1,17 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('ChatTabController', function ($scope, $window, $timeout, $interval, localization, chatService,
-                                                authService) {
-        $scope.canSendChat = authService.hasPermission('plugin_messaging_send') ||
+                                                deviceService, authService) {
+        // The server rejects the send unless the caller holds plugin_messaging_send, so
+        // offering the button to anyone with edit_devices only produced a denied request.
+        $scope.canSendChat = authService.hasPermission('plugin_messaging_send');
+        $scope.canViewChat = $scope.canSendChat ||
+            authService.hasPermission('plugin_messaging_delete') ||
             authService.hasPermission('device.remote_access.control') ||
             authService.hasPermission('edit_devices');
-        $scope.canViewChat = $scope.canSendChat || authService.hasPermission('plugin_messaging_delete');
         $scope.loading = false;
+        $scope.loadingDevices = false;
+        $scope.devices = [];
         $scope.sending = false;
         $scope.errorMessage = undefined;
         $scope.successMessage = undefined;
@@ -26,29 +31,8 @@ angular.module('headwind-kiosk')
             sortValue: 'createTime'
         };
 
-        var lookupDeviceInfo = function (device) {
-            if (!device || !device.info) {
-                return undefined;
-            }
-            try {
-                return JSON.parse(device.info);
-            } catch (e) {
-                return undefined;
-            }
-        };
-
-        var resolveDeviceField = function (serverData, deviceInfoData) {
-            serverData = serverData || '';
-            deviceInfoData = deviceInfoData || '';
-            if (serverData === deviceInfoData) {
-                return serverData;
-            }
-            if (!serverData && deviceInfoData) {
-                return deviceInfoData;
-            }
-            return serverData || deviceInfoData;
-        };
-
+        // The history filter is a free-text field and an operator may still paste a
+        // "number / imei" label into it, so the number is taken from before the slash.
         $scope.deviceLookupFormatter = function (value) {
             if (value) {
                 var pos = value.indexOf('/');
@@ -59,18 +43,32 @@ angular.module('headwind-kiosk')
             return value;
         };
 
-        $scope.getDevices = function (value) {
-            return chatService.lookupDevices(value).$promise.then(function (response) {
-                if (response.status !== 'OK') {
-                    return [];
+        $scope.deviceLabel = function (device) {
+            if (!device) {
+                return '';
+            }
+            var extra = device.imei || (device.info && device.info.imei) || device.serial || '';
+            return device.number + (extra ? ' / ' + extra : '');
+        };
+
+        var loadDevices = function () {
+            $scope.loadingDevices = true;
+            deviceService.getAllDevices({
+                value: '',
+                pageNum: 1,
+                pageSize: 1000,
+                sortBy: null,
+                sortDir: 'ASC'
+            }, function (response) {
+                $scope.loadingDevices = false;
+                if (response.status === 'OK' && response.data && response.data.devices) {
+                    $scope.devices = response.data.devices.items || [];
+                } else {
+                    $scope.devices = [];
                 }
-                return (response.data || []).map(function (device) {
-                    var deviceInfo = lookupDeviceInfo(device);
-                    var serverIMEI = device.imei || '';
-                    var deviceInfoIMEI = deviceInfo ? (deviceInfo.imei || '') : '';
-                    var resolvedIMEI = resolveDeviceField(serverIMEI, deviceInfoIMEI);
-                    return device.name + (resolvedIMEI.length > 0 ? ' / ' + resolvedIMEI : '');
-                });
+            }, function () {
+                $scope.loadingDevices = false;
+                $scope.devices = [];
             });
         };
 
@@ -175,6 +173,7 @@ angular.module('headwind-kiosk')
             $scope.loadMessages();
         });
 
+        loadDevices();
         $scope.loadMessages();
 
         var refreshInterval = $interval($scope.loadMessages, 15000);

@@ -331,6 +331,16 @@ angular.module('headwind-kiosk')
 
             $scope.successMessage = null;
 
+            // One step is shown at a time; the pinned step bar switches between them.
+            // The hidden steps stay in the DOM (ng-show) so the single save still sees
+            // their models and their required fields still block an invalid save.
+            $scope.activeStep = 'basics';
+
+            $scope.selectStep = function (step) {
+                $scope.activeStep = step;
+                $window.scrollTo(0, 0);
+            };
+
             // Catalogo das opcoes validas de restricoes / atividades / admin extras.
             // Alimenta os seletores que substituiram os textarea de texto livre.
             $scope.catalogo = mdmCatalog;

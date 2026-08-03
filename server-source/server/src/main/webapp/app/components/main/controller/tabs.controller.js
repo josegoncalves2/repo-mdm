@@ -34,26 +34,28 @@ angular.module('headwind-kiosk')
 
         // Same wording as the sidebar. Shown in the narrow-viewport bar next to the menu
         // button so the drawer being closed never leaves you without a "where am I".
-        var tabTitles = {
-            SUMMARY: 'Dashboard',
-            DEVICES: 'Devices',
-            KIOSK: 'Kiosk',
-            GPSMAP: 'Location map',
-            REMOTE: 'Remote access',
-            CHAT: 'Messages',
-            REPORTS: 'Reports',
-            CONFS: 'Device profiles',
-            APPS: 'Applications',
-            FILES: 'Files',
-            ICONS: 'Launcher icons',
-            USERS: 'Panel users',
-            ROLES: 'Permissions',
-            GROUPS: 'Device groups',
-            COMMON: 'Device list columns',
-            DESIGN: 'Appearance & branding',
-            GENERAL: 'Server defaults',
-            EXTENSIONS: 'Plugins',
-            GOVERNANCE: 'Backup & restore'
+        // Resource keys, not literals, so this bar follows the configured language along
+        // with the sidebar instead of staying in English.
+        var tabTitleKeys = {
+            SUMMARY: 'nav.dashboard',
+            DEVICES: 'nav.devices',
+            KIOSK: 'nav.kiosk',
+            GPSMAP: 'nav.gpsmap',
+            REMOTE: 'nav.remote',
+            CHAT: 'nav.chat',
+            REPORTS: 'nav.reports',
+            CONFS: 'nav.configurations',
+            APPS: 'nav.applications',
+            FILES: 'nav.files',
+            ICONS: 'nav.icons',
+            USERS: 'nav.users',
+            ROLES: 'nav.roles',
+            GROUPS: 'nav.groups',
+            COMMON: 'nav.common',
+            DESIGN: 'nav.design',
+            GENERAL: 'nav.general',
+            EXTENSIONS: 'nav.extensions',
+            GOVERNANCE: 'nav.governance'
         };
 
         var loadData = function () {
@@ -98,14 +100,15 @@ angular.module('headwind-kiosk')
         $scope.activeTab = openTab;
 
         $scope.tabTitle = function () {
-            if (tabTitles[$scope.activeTab]) {
-                return tabTitles[$scope.activeTab];
+            if (tabTitleKeys[$scope.activeTab]) {
+                return localization.localize(tabTitleKeys[$scope.activeTab]);
             }
             var plugin = $scope.functionsPlugins.concat($scope.settingsPlugins).filter(function (p) {
                 return $scope.activeTab === 'plugin-' + p.identifier
                     || $scope.activeTab === 'plugin-settings-' + p.identifier;
             })[0];
-            return plugin ? localization.localize(plugin.nameLocalizationKey) : 'Plugins';
+            return plugin ? localization.localize(plugin.nameLocalizationKey)
+                          : localization.localize('nav.extensions');
         };
 
         $scope.act = {};

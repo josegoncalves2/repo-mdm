@@ -1,8 +1,8 @@
 <div class="width-1000 hwmdm-settings-page" ng-controller="SettingsTabController">
     <div class="hwmdm-page-toolbar">
         <div>
-            <h3>Server defaults</h3>
-            <p>Language, custom device fields, security policy and default behavior for new enrollments.</p>
+            <h3 localized-change-tracking>settings.general.title</h3>
+            <p localized-change-tracking>settings.general.subtitle</p>
         </div>
     </div>
 
@@ -20,10 +20,18 @@
                     <input id="c1" ng-model='settings.useDefaultLanguage' type='checkbox' class='form-control'/>
                 </div>
             </div>
-            <div class='form-group' ng-if="!settings.useDefaultLanguage">
-                <label class='col-sm-6 control-label' localized-change-tracking>form.settings.lang.use</label>
+            <!--
+                The picker used to be hidden behind ng-if until "use default language" was
+                unticked, so the only thing this screen showed was a checkbox and there was no
+                sign the panel had a language setting at all. It is always rendered now, and
+                only disabled while the browser language is in charge.
+            -->
+            <div class='form-group'>
+                <label class='col-sm-6 control-label' for="c3_lang" localized-change-tracking>form.settings.lang.use</label>
                 <div class="col-sm-6">
-                    <select name="c3_lang" ng-model="settings.language" class="form-control">
+                    <select id="c3_lang" name="c3_lang" ng-model="settings.language" class="form-control"
+                            data-testid="settings-language-select"
+                            ng-disabled="settings.useDefaultLanguage">
                         <option ng-value="'ar_AE'" ng-selected="settings.language === 'ar_AE'" localized-change-tracking>form.settings.lang.ar</option>
                         <option ng-value="'de_DE'" ng-selected="settings.language === 'de_DE'" localized-change-tracking>form.settings.lang.de</option>
                         <option ng-value="'en_US'" ng-selected="settings.language === 'en_US'" localized-change-tracking>form.settings.lang.en</option>
@@ -38,6 +46,8 @@
                         <option ng-value="'zh_TW'" ng-selected="settings.language === 'zh_TW'" localized-change-tracking>form.settings.lang.tw</option>
                         <option ng-value="'vi_VN'" ng-selected="settings.language === 'vi_VN'" localized-change-tracking>form.settings.lang.vi</option>
                     </select>
+                    <div class="field-hint" ng-if="settings.useDefaultLanguage"
+                         localized-change-tracking>form.settings.lang.use.default.hint</div>
                 </div>
             </div>
         </form>
@@ -161,7 +171,7 @@
     </div>
 
     <div class="dtv-group" ng-if="settings.singleCustomer">
-        <div class="dtv-group-header"><h4>New device defaults</h4></div>
+        <div class="dtv-group-header"><h4 localized-change-tracking>settings.general.new.device.defaults</h4></div>
         <form class="form-horizontal">
             <div class='form-group'>
                 <label class='col-sm-6 control-label' for="c2_createNewDevices" localized-change-tracking>form.settings.misc.create.new.devices</label>

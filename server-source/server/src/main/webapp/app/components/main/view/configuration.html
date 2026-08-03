@@ -18,7 +18,7 @@
                 </div>
             </div>
             <!--
-                One page, six steps, in the order an operator actually works through them.
+                Six steps, in the order an operator actually works through them.
 
                 This used to be a <tabset> of six tabs. Everything about managing the agent's
                 APKs was split across three of them - the app list in "Applications", which app
@@ -26,44 +26,59 @@
                 with no indication that they were the same job, and each tab carried its own
                 copy of Save / Save and close / Cancel, so it was never clear what a save covered.
 
-                Now the three app steps are adjacent, every step is reachable from the jump bar,
-                and there is exactly one save bar, pinned, that saves the whole profile.
+                They then became one long scroll with a jump bar, which put unrelated steps in
+                the same view. Now each step is its own view, the bar that switches between them
+                is pinned to the top of the page, and there is still exactly one save bar,
+                pinned, that saves the whole profile - hidden steps stay in the DOM (ng-show,
+                not ng-if) so their required fields keep validating.
             -->
-            <nav class="cfg-stepnav" aria-label="Profile sections">
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-basics').scrollIntoView({behavior:'smooth', block:'start'});">
+            <nav class="cfg-stepnav" role="tablist" aria-label="Profile sections">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-basics"
+                            ng-class="{'cfg-step-link-active': activeStep === 'basics'}"
+                            ng-click="selectStep('basics')">
                         <span class="cfg-step-num">1</span>
-                        <span>Profile basics</span>
+                        <span localized>cfg.step.basics</span>
                     </button>
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-apps').scrollIntoView({behavior:'smooth', block:'start'});">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-apps"
+                            ng-class="{'cfg-step-link-active': activeStep === 'apps'}"
+                            ng-click="selectStep('apps')">
                         <span class="cfg-step-num">2</span>
-                        <span>Apps delivered to the device</span>
+                        <span localized>cfg.step.apps</span>
                     </button>
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-agent').scrollIntoView({behavior:'smooth', block:'start'});">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-agent"
+                            ng-class="{'cfg-step-link-active': activeStep === 'agent'}"
+                            ng-click="selectStep('agent')">
                         <span class="cfg-step-num">3</span>
-                        <span>Agent &amp; kiosk behaviour</span>
+                        <span localized>cfg.step.agent</span>
                     </button>
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-appsettings').scrollIntoView({behavior:'smooth', block:'start'});">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-appsettings"
+                            ng-class="{'cfg-step-link-active': activeStep === 'appsettings'}"
+                            ng-click="selectStep('appsettings')">
                         <span class="cfg-step-num">4</span>
-                        <span>Per-app settings</span>
+                        <span localized>cfg.step.appsettings</span>
                     </button>
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-files').scrollIntoView({behavior:'smooth', block:'start'});">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-files"
+                            ng-class="{'cfg-step-link-active': activeStep === 'files'}"
+                            ng-click="selectStep('files')">
                         <span class="cfg-step-num">5</span>
-                        <span>Files pushed to the device</span>
+                        <span localized>cfg.step.files</span>
                     </button>
-                    <button type="button" class="cfg-step-link"
-                            onclick="document.getElementById('cfg-design').scrollIntoView({behavior:'smooth', block:'start'});">
+                    <button type="button" class="cfg-step-link" role="tab"
+                            data-testid="cfg-step-design"
+                            ng-class="{'cfg-step-link-active': activeStep === 'design'}"
+                            ng-click="selectStep('design')">
                         <span class="cfg-step-num">6</span>
-                        <span>Home screen appearance</span>
+                        <span localized>cfg.step.design</span>
                     </button>
             </nav>
 
             <div class="cfg-flow">
-                <section class="cfg-step" id="cfg-basics">
+                <section class="cfg-step" id="cfg-basics" ng-show="activeStep === 'basics'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">1</span>
                         <div>
@@ -466,7 +481,7 @@
                     </div>
                 </section>
 
-                <section class="cfg-step" id="cfg-apps">
+                <section class="cfg-step" id="cfg-apps" ng-show="activeStep === 'apps'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">2</span>
                         <div>
@@ -632,7 +647,7 @@
                     </div>
                 </section>
 
-                <section class="cfg-step" id="cfg-agent">
+                <section class="cfg-step" id="cfg-agent" ng-show="activeStep === 'agent'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">3</span>
                         <div>
@@ -919,7 +934,7 @@
                     </div>
                 </section>
 
-                <section class="cfg-step" id="cfg-appsettings">
+                <section class="cfg-step" id="cfg-appsettings" ng-show="activeStep === 'appsettings'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">4</span>
                         <div>
@@ -1031,7 +1046,7 @@
                     </div>
                 </section>
 
-                <section class="cfg-step" id="cfg-files">
+                <section class="cfg-step" id="cfg-files" ng-show="activeStep === 'files'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">5</span>
                         <div>
@@ -1133,7 +1148,7 @@
                     </div>
                 </section>
 
-                <section class="cfg-step" id="cfg-design">
+                <section class="cfg-step" id="cfg-design" ng-show="activeStep === 'design'">
                     <header class="cfg-step-head">
                         <span class="cfg-step-num">6</span>
                         <div>
@@ -1264,7 +1279,7 @@
 
             <div class="cfg-savebar">
                 <div class="cfg-savebar-inner">
-                    <span class="cfg-savebar-note">Saving applies every step above to this profile.</span>
+                    <span class="cfg-savebar-note" localized>cfg.savebar.note</span>
                     <div class="cfg-savebar-actions">
                         <button type='submit' class='btn btn-primary {{saveButtonClass()}}' ng-click='save(false)' localized>button.save</button>
                         <button type='submit' class='btn btn-default' ng-click='save(true)' localized>button.save.and.close</button>

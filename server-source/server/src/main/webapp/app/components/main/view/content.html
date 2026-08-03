@@ -7,7 +7,7 @@
             <button type="button" class="hwmdm-nav-toggle" ng-click="toggleNav()"
                     aria-controls="hwmdm-sidebar" aria-label="Menu">
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
-                <span>Menu</span>
+                <span localized-change-tracking>nav.menu</span>
             </button>
             <span class="hwmdm-navbar-current">{{tabTitle()}}</span>
         </div>
@@ -16,7 +16,7 @@
 
         <aside class="hwmdm-sidebar" id="hwmdm-sidebar">
             <div class="hwmdm-sidebar-brand">
-                <span>Control panel</span>
+                <span localized-change-tracking>nav.brand.control.panel</span>
                 <strong>Headwind MDM</strong>
                 <button type="button" class="hwmdm-nav-close" ng-click="closeNav()" aria-label="Close menu">
                     <span class="glyphicon glyphicon-remove"></span>
@@ -33,18 +33,18 @@
                       SERVER    - who may use this panel and how the server itself behaves
                 -->
                 <div class="hwmdm-nav-section">
-                    <div class="hwmdm-nav-heading">Fleet</div>
+                    <div class="hwmdm-nav-heading" localized-change-tracking>nav.group.fleet</div>
                     <button type="button" class="hwmdm-nav-link"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'SUMMARY'}"
                             ng-click="openTab('SUMMARY')">
                         <span class="glyphicon glyphicon-th-large"></span>
-                        <span>Dashboard</span>
+                        <span localized-change-tracking>nav.dashboard</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'DEVICES'}"
                             ng-click="openTab('DEVICES')">
                         <span class="glyphicon glyphicon-phone"></span>
-                        <span>Devices</span>
+                        <span localized-change-tracking>nav.devices</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('configurations') || hasPermission('edit_devices') || hasPermission('device.remote_access.control')"
@@ -52,125 +52,125 @@
                             ng-click="openTab('KIOSK')"
                             data-testid="nav-kiosk">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <span>Kiosk</span>
+                        <span localized-change-tracking>nav.kiosk</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'GPSMAP'}"
                             ng-click="openTab('GPSMAP')">
                         <span class="glyphicon glyphicon-map-marker"></span>
-                        <span>Location map</span>
+                        <span localized-change-tracking>nav.gpsmap</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.view') || hasPermission('device.remote_access.control')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'REMOTE'}"
                             ng-click="openTab('REMOTE')">
                         <span class="glyphicon glyphicon-facetime-video"></span>
-                        <span>Remote access</span>
+                        <span localized-change-tracking>nav.remote</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('edit_devices') || hasPermission('plugin_messaging_send') || hasPermission('plugin_messaging_delete') || hasPermission('device.remote_access.control')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'CHAT'}"
                             ng-click="openTab('CHAT')">
                         <span class="glyphicon glyphicon-comment"></span>
-                        <span>Messages</span>
+                        <span localized-change-tracking>nav.chat</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'REPORTS'}"
                             ng-click="openTab('REPORTS')">
                         <span class="glyphicon glyphicon-stats"></span>
-                        <span>Reports</span>
+                        <span localized-change-tracking>nav.reports</span>
                     </button>
                 </div>
 
                 <div class="hwmdm-nav-section">
-                    <div class="hwmdm-nav-heading">Delivery to devices</div>
+                    <div class="hwmdm-nav-heading" localized-change-tracking>nav.group.delivery</div>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('configurations')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'CONFS'}"
                             ng-click="openTab('CONFS')">
                         <span class="glyphicon glyphicon-tasks"></span>
-                        <span>Device profiles</span>
+                        <span localized-change-tracking>nav.configurations</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('applications')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'APPS'}"
                             ng-click="openTab('APPS')">
                         <span class="glyphicon glyphicon-th"></span>
-                        <span>Applications</span>
+                        <span localized-change-tracking>nav.applications</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('files')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'FILES'}"
                             ng-click="openTab('FILES')">
                         <span class="glyphicon glyphicon-folder-open"></span>
-                        <span>Files</span>
+                        <span localized-change-tracking>nav.files</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'ICONS'}"
                             ng-click="openTab('ICONS')">
                         <span class="glyphicon glyphicon-picture"></span>
-                        <span>Launcher icons</span>
+                        <span localized-change-tracking>nav.icons</span>
                     </button>
                 </div>
 
                 <div class="hwmdm-nav-section">
-                    <div class="hwmdm-nav-heading">Server</div>
+                    <div class="hwmdm-nav-heading" localized-change-tracking>nav.group.server</div>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'USERS'}"
                             ng-click="openTab('USERS')">
                         <span class="glyphicon glyphicon-user"></span>
-                        <span>Panel users</span>
+                        <span localized-change-tracking>nav.users</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings') && canManageRoles()"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'ROLES'}"
                             ng-click="openTab('ROLES')">
                         <span class="glyphicon glyphicon-lock"></span>
-                        <span>Permissions</span>
+                        <span localized-change-tracking>nav.roles</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'GROUPS'}"
                             ng-click="openTab('GROUPS')">
                         <span class="glyphicon glyphicon-list-alt"></span>
-                        <span>Device groups</span>
+                        <span localized-change-tracking>nav.groups</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'COMMON'}"
                             ng-click="openTab('COMMON')">
                         <span class="glyphicon glyphicon-list"></span>
-                        <span>Device list columns</span>
+                        <span localized-change-tracking>nav.common</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="canUseThemeLayout() || hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'DESIGN'}"
                             ng-click="openTab('DESIGN')">
                         <span class="glyphicon glyphicon-tint"></span>
-                        <span>Appearance &amp; branding</span>
+                        <span localized-change-tracking>nav.design</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('settings')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'GENERAL'}"
                             ng-click="openTab('GENERAL')">
                         <span class="glyphicon glyphicon-cog"></span>
-                        <span>Server defaults</span>
+                        <span localized-change-tracking>nav.general</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-if="settingsPlugins.length > 0 || functionsPlugins.length > 0 || hasPermission('plugins_customer_access_management')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'EXTENSIONS'}"
                             ng-click="openTab('EXTENSIONS')">
                         <span class="glyphicon glyphicon-flash"></span>
-                        <span>Plugins</span>
+                        <span localized-change-tracking>nav.extensions</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'GOVERNANCE'}"
                             ng-click="openTab('GOVERNANCE')">
                         <span class="glyphicon glyphicon-hdd"></span>
-                        <span>Backup &amp; restore</span>
+                        <span localized-change-tracking>nav.governance</span>
                     </button>
                 </div>
             </nav>
@@ -180,13 +180,13 @@
             <div class="hwmdm-main-surface">
                 <ng-include src="'app/components/main/view/summary.html?v=hb13ba787b5'" ng-if="activeTab === 'SUMMARY'"></ng-include>
                 <ng-include src="'app/components/main/view/devices.html?v=hcd265a04b7'" ng-if="activeTab === 'DEVICES'"></ng-include>
-                <ng-include src="'app/components/main/view/kiosk.html?v=ha0a3a55c06'" ng-if="activeTab === 'KIOSK'"></ng-include>
+                <ng-include src="'app/components/main/view/kiosk.html?v=h6c68af7466'" ng-if="activeTab === 'KIOSK'"></ng-include>
                 <ng-include src="'app/components/main/view/remote.html?v=he415b8a1b1'" ng-if="activeTab === 'REMOTE'"></ng-include>
                 <ng-include src="'app/components/main/view/gpsmap.html?v=h9d95034773'" ng-if="activeTab === 'GPSMAP'"></ng-include>
-                <ng-include src="'app/components/main/view/chat.html?v=h2157e2e796'" ng-if="activeTab === 'CHAT'"></ng-include>
-                <ng-include src="'app/components/main/view/reports.html?v=hf5a62c01e4'" ng-if="activeTab === 'REPORTS'"></ng-include>
+                <ng-include src="'app/components/main/view/chat.html?v=h907047fa8d'" ng-if="activeTab === 'CHAT'"></ng-include>
+                <ng-include src="'app/components/main/view/reports.html?v=h2fe67aca91'" ng-if="activeTab === 'REPORTS'"></ng-include>
                 <ng-include src="'app/components/main/view/governance.html?v=h19f5447723'" ng-if="activeTab === 'GOVERNANCE'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/design.html?v=h0d26290ae8'" ng-if="activeTab === 'DESIGN'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/design.html?v=h7ef436475f'" ng-if="activeTab === 'DESIGN'"></ng-include>
                 <ng-include src="'app/components/main/view/applications.html?v=h04db82a97a'" ng-if="activeTab === 'APPS'"></ng-include>
                 <ng-include src="'app/components/main/view/configurations.html?v=h95c879fd14'" ng-if="activeTab === 'CONFS'"></ng-include>
                 <ng-include src="'app/components/main/view/files.html?v=hf37fa309b9'" ng-if="activeTab === 'FILES'"></ng-include>
@@ -195,7 +195,7 @@
                 <ng-include src="'app/components/main/view/settings/roles.html?v=hd3b170ee40'" ng-if="activeTab === 'ROLES'"></ng-include>
                 <ng-include src="'app/components/main/view/settings/groups.html?v=hb926df3d31'" ng-if="activeTab === 'GROUPS'"></ng-include>
                 <ng-include src="'app/components/main/view/settings/icons.html?v=h0748b29a53'" ng-if="activeTab === 'ICONS'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/general.html?v=h97fb80f73e'" ng-if="activeTab === 'GENERAL'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/general.html?v=hff511fcf7d'" ng-if="activeTab === 'GENERAL'"></ng-include>
                 <ng-include src="'app/components/main/view/settings/extensionsHub.html?v=h29c2d56379'" ng-if="activeTab === 'EXTENSIONS'"></ng-include>
 
                 <div ng-repeat="plugin in settingsPlugins">

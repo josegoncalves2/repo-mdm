@@ -41,8 +41,15 @@ public class Const {
     public static final String ACTION_ADMIN = "ADMIN";
     public static final String ACTION_INSTALL_COMPLETE = "INSTALL_COMPLETE";
     public static final String ACTION_DISABLE_BLOCK_WINDOW = "DISABLE_BLOCK_WINDOW";
+    public static final String ACTION_SHOW_MESSAGE = "SHOW_MESSAGE";
 
     public static final String EXTRA_ENABLED = "ENABLED";
+    public static final String EXTRA_MESSAGE_ID = "MESSAGE_ID";
+    public static final String EXTRA_MESSAGE_TEXT = "MESSAGE_TEXT";
+
+    // Mirror of com.hmdm.plugins.messaging.persistence.domain.Message on the server.
+    public static final int MESSAGE_STATUS_DELIVERED = 1;
+    public static final int MESSAGE_STATUS_READ = 2;
 
     public static long CONNECTION_TIMEOUT = 10000;
     public static long LONG_POLLING_READ_TIMEOUT = 300000;

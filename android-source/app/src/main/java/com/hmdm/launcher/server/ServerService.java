@@ -117,4 +117,13 @@ public interface ServerService {
     @Headers("Content-Type: application/json")
     Call<ResponseBody> confirmPasswordReset(@Path("project") String project, @Path("number") String number, @Body DeviceInfo deviceInfo);
 
+    // Acknowledges a text message pushed by the messaging plugin. Without this the message
+    // stays "Sent" in the panel forever, with no way to tell it ever reached the device.
+    // Status values match com.hmdm.plugins.messaging.persistence.domain.Message:
+    // 0 = sent, 1 = delivered, 2 = read.
+    @GET("{project}/rest/plugins/messaging/public/status/{id}/{status}")
+    Call<ResponseBody> confirmMessageStatus(@Path("project") String project,
+                                            @Path("id") int id,
+                                            @Path("status") int status);
+
 }

@@ -120,6 +120,7 @@ import com.hmdm.launcher.util.PreferenceLogger;
 import com.hmdm.launcher.util.RemoteLogger;
 import com.hmdm.launcher.util.SystemUtils;
 import com.hmdm.launcher.util.Utils;
+import com.hmdm.launcher.worker.PushNotificationProcessor;
 import com.hmdm.launcher.worker.SendDeviceInfoWorker;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.NetworkPolicy;
@@ -318,6 +319,17 @@ public class MainActivity
                 case Const.ACTION_ADMIN_PANEL:
                     openAdminPanel();
                     break;
+
+                case Const.ACTION_SHOW_MESSAGE:
+                    // A dialog cannot be shown over another app, so a message that arrives
+                    // while the launcher is in the background is held until it resumes
+                    // instead of being dropped.
+                    pendingMessageId = intent.getIntExtra(Const.EXTRA_MESSAGE_ID, 0);
+                    pendingMessageText = intent.getStringExtra(Const.EXTRA_MESSAGE_TEXT);
+                    if (!isBackground) {
+                        showPendingAdminMessage();
+                    }
+                    break;
             }
 
         }
@@ -366,6 +378,11 @@ public class MainActivity
     private View rightToolbarView;
 
     private boolean firstStartAfterProvisioning = false;
+
+    // Text message waiting to be shown; set when a message arrives while the launcher is
+    // in the background and consumed on the next onResume.
+    private int pendingMessageId = 0;
+    private String pendingMessageText = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -565,6 +582,7 @@ public class MainActivity
         intentFilter.addAction(Const.ACTION_EXIT_KIOSK);
         intentFilter.addAction(Const.ACTION_LOCK_KIOSK);
         intentFilter.addAction(Const.ACTION_ADMIN_PANEL);
+        intentFilter.addAction(Const.ACTION_SHOW_MESSAGE);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, intentFilter);
     }
 
@@ -609,6 +627,8 @@ public class MainActivity
             bottomAppListAdapter.updateShortcuts(this);
             bottomAppListAdapter.notifyDataSetChanged();
         }
+
+        showPendingAdminMessage();
     }
 
     private void lockOrientation() {
@@ -2945,6 +2965,43 @@ public class MainActivity
             Log.w(Const.LOG_TAG, "GPS required but disabled - showing blocking dialog");
             showGpsBlockingDialog();
         }
+    }
+
+    /**
+     * Shows the text message last sent from the panel's Messages screen, if any is waiting.
+     *
+     * The dialog is TYPE_APPLICATION so it works while the device is in kiosk (lock task)
+     * mode, where a notification shade the user cannot pull down would hide the message.
+     * Dismissing it is what marks the message as read on the server - the delivery receipt
+     * was already sent by PushNotificationProcessor when the push arrived.
+     */
+    private void showPendingAdminMessage() {
+        final int messageId = pendingMessageId;
+        final String text = pendingMessageText;
+        if (text == null || text.trim().isEmpty()) {
+            return;
+        }
+        pendingMessageId = 0;
+        pendingMessageText = null;
+        RemoteLogger.log(this, Const.LOG_INFO, "Showing text message " + messageId);
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.dialog_message_title)
+                .setMessage(text)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setCancelable(false)
+                .setPositiveButton(R.string.dialog_message_ok, (d, which) -> {
+                    if (messageId > 0) {
+                        PushNotificationProcessor.confirmMessageStatus(
+                                MainActivity.this, messageId, Const.MESSAGE_STATUS_READ);
+                    }
+                })
+                .create();
+        dialog.setCanceledOnTouchOutside(false);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION);
+        }
+        dialog.show();
     }
 
     private void showGpsBlockingDialog() {

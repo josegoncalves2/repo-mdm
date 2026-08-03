@@ -41,6 +41,8 @@ import com.hmdm.launcher.json.Application;
 import com.hmdm.launcher.json.Download;
 import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.ServerConfig;
+import com.hmdm.launcher.server.ServerService;
+import com.hmdm.launcher.server.ServerServiceKeeper;
 import com.hmdm.launcher.util.InstallUtils;
 import com.hmdm.launcher.util.LegacyUtils;
 import com.hmdm.launcher.util.RemoteLogger;
@@ -58,6 +60,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 
 public class PushNotificationProcessor {
     static ThreadPoolExecutor executor = new ThreadPoolExecutor(
@@ -144,6 +149,12 @@ public class PushNotificationProcessor {
             // Factory reset the device
             executor.execute(() -> wipe(context, message.getPayloadJSON()));
             return;
+        } else if (message.getMessageType().equals(PushMessage.TYPE_TEXT_MESSAGE)) {
+            // Text message from the panel's Messages screen. The server queues it and marks it
+            // "Sent"; until this branch existed nothing on the device read it, so it was never
+            // shown to the user and never acknowledged - the panel showed "Sent" forever.
+            showTextMessage(context, message.getPayloadJSON());
+            return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_SCREENSHOT)) {
             // Not supported on unprivileged (non-system, non-rooted) builds.
             // Reported explicitly so the server gets a negative acknowledgement instead of silence.
@@ -161,6 +172,68 @@ public class PushNotificationProcessor {
             intent.putExtra(Const.INTENT_PUSH_NOTIFICATION_EXTRA, jsonObject.toString());
         }
         context.sendBroadcast(intent);
+    }
+
+    /**
+     * Shows a text message pushed by the messaging plugin and tells the server it arrived.
+     *
+     * The delivery receipt is sent from here rather than from the UI because the message has
+     * reached the device whether or not the launcher happens to be in the foreground; the
+     * "read" receipt is the UI's job and is sent when the user dismisses the dialog.
+     */
+    private static void showTextMessage(Context context, JSONObject payload) {
+        if (payload == null) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Text message ignored: empty payload");
+            return;
+        }
+        final int messageId = payload.optInt("id", 0);
+        final String text = payload.optString("text", "");
+        if (text.trim().isEmpty()) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Text message " + messageId + " ignored: empty text");
+            return;
+        }
+
+        Intent intent = new Intent(Const.ACTION_SHOW_MESSAGE);
+        intent.putExtra(Const.EXTRA_MESSAGE_ID, messageId);
+        intent.putExtra(Const.EXTRA_MESSAGE_TEXT, text);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+
+        if (messageId > 0) {
+            confirmMessageStatus(context, messageId, Const.MESSAGE_STATUS_DELIVERED);
+        }
+    }
+
+    /**
+     * Reports a message status (delivered / read) back to the messaging plugin.
+     * Runs off the main thread; a failure is logged and not retried, because the panel
+     * treats a missing receipt as "not confirmed" rather than as an error.
+     */
+    public static void confirmMessageStatus(Context context, int messageId, int status) {
+        executor.execute(() -> {
+            try {
+                SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+                ServerService serverService = ServerServiceKeeper.getServerServiceInstance(context);
+                Response<ResponseBody> response = null;
+                try {
+                    response = serverService.confirmMessageStatus(
+                            settingsHelper.getServerProject(), messageId, status).execute();
+                } catch (Exception e) {
+                    // Falls through to the secondary server below.
+                }
+                if (response == null) {
+                    ServerService secondary = ServerServiceKeeper.getSecondaryServerServiceInstance(context);
+                    response = secondary.confirmMessageStatus(
+                            settingsHelper.getServerProject(), messageId, status).execute();
+                }
+                if (!response.isSuccessful()) {
+                    RemoteLogger.log(context, Const.LOG_WARN, "Message " + messageId +
+                            " status " + status + " rejected by the server: HTTP " + response.code());
+                }
+            } catch (Exception e) {
+                RemoteLogger.log(context, Const.LOG_WARN, "Failed to confirm message " + messageId +
+                        " status " + status + ": " + e.getMessage());
+            }
+        });
     }
 
     private static void runApplication(Context context, JSONObject payload) {
