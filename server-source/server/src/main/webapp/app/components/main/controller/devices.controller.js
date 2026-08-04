@@ -1113,6 +1113,29 @@ angular.module('headwind-kiosk')
             }
         };
 
+        /*
+         * "Ver ultima captura de tela" era um <a href> direto para files/screenshots/<numero>.png.
+         * Esse caminho nao e' servido por nenhum recurso do servidor, entao o link sempre abria a
+         * pagina de erro 404 crua do Tomcat numa aba nova. A imagem passa a ser testada antes: a
+         * aba so' abre se a captura existir, e quando nao existe o motivo aparece na propria tela.
+         */
+        $scope.viewLastScreenshot = function (device) {
+            if (!device || !device.number) {
+                return;
+            }
+            var url = 'files/screenshots/' + encodeURIComponent(device.number) + '.png?ts=' + Date.now();
+            var probe = new $window.Image();
+            probe.onload = function () {
+                $window.open(url, '_blank');
+            };
+            probe.onerror = function () {
+                $scope.$applyAsync(function () {
+                    alertService.showAlertMessage(localization.localize('devices.screenshot.unavailable'));
+                });
+            };
+            probe.src = url;
+        };
+
         $scope.notifyPluginOnDevice = function (plugin, device) {
             $rootScope.$emit('plugin-' + plugin.identifier + '-device-selected', device);
         };

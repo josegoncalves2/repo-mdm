@@ -5,8 +5,8 @@
             <p localized>remote.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
-            <input type="text" class="form-control" ng-model="searchValue" placeholder="Search device"/>
-            <button type="button" class="btn btn-primary" ng-click="loadDevices(true)" ng-disabled="loading">Refresh</button>
+            <input type="text" class="form-control" ng-model="searchValue" localized-placeholder="remote.search.device"/>
+            <button type="button" class="btn btn-primary" ng-click="loadDevices(true)" ng-disabled="loading" localized>remote.refresh</button>
         </div>
     </div>
 
@@ -16,11 +16,11 @@
     <div class="remote-layout hwmdm-split-layout">
         <section class="remote-device-panel hwmdm-section-card">
             <div class="hwmdm-section-head">
-                <h4>Devices</h4>
+                <h4 localized>remote.devices</h4>
             </div>
 
             <div ng-if="!devices || devices.length === 0" class="alert alert-info">
-                <span>No devices are available for remote access.</span>
+                <span localized>remote.no.devices</span>
             </div>
 
             <div ng-repeat="device in devices | filter:searchValue"
@@ -42,14 +42,14 @@
                 </div>
 
                 <div class="remote-device-item-foot">
-                    <span>Serial</span>: {{device.serial || '-'}}
+                    <span localized>remote.label.serial</span>: {{device.serial || '-'}}
                 </div>
             </div>
         </section>
 
         <section class="remote-screen-panel hwmdm-section-card">
             <div ng-if="!selectedDevice || !selectedDevice.id" class="alert alert-warning">
-                <span>Select a device first.</span>
+                <span localized>remote.select.device</span>
             </div>
 
             <div ng-if="selectedDevice && selectedDevice.id" class="remote-screen-shell">
@@ -62,24 +62,25 @@
                     </h4>
                     <div class="remote-device-header-grid">
                         <div>
-                            <strong>Model</strong>: {{selectedDevice.model || '-'}}
+                            <strong localized>remote.label.model</strong>: {{selectedDevice.model || '-'}}
                         </div>
                         <div>
-                            <strong>Android</strong>: {{selectedDevice.androidVersion || '-'}}
+                            <strong localized>remote.label.android</strong>: {{selectedDevice.androidVersion || '-'}}
                         </div>
                         <div>
-                            <strong>Last check-in</strong>:
+                            <strong localized>remote.label.last.checkin</strong>:
                             <span ng-if="selectedDevice.lastUpdateAgeSec !== null && selectedDevice.lastUpdateAgeSec !== undefined">
-                                {{selectedDevice.lastUpdateAgeSec}}s ago
-                                <span class="remote-ip-note">(offline after {{selectedDevice.onlineThresholdSec}}s)</span>
+                                {{selectedDevice.lastUpdateAgeSec}}{{'remote.label.seconds.ago' | localize}}
+                                <span class="remote-ip-note">({{'remote.label.offline.after' | localize}} {{selectedDevice.onlineThresholdSec}}s)</span>
                             </span>
-                            <span ng-if="selectedDevice.lastUpdateAgeSec === null || selectedDevice.lastUpdateAgeSec === undefined">never</span>
+                            <span ng-if="selectedDevice.lastUpdateAgeSec === null || selectedDevice.lastUpdateAgeSec === undefined"
+                                  localized>remote.label.never</span>
                         </div>
                     </div>
 
                     <div class="remote-ip-grid">
                         <div class="remote-ip-cell">
-                            <span class="remote-ip-label">Device IP (reported by the agent)</span>
+                            <span class="remote-ip-label" localized>remote.label.device.ip</span>
                             <strong>{{getRemoteDeviceIp(selectedDevice)}}</strong>
                             <span class="remote-ip-note" ng-if="selectedDevice.info.networkName || selectedDevice.info.networkType">
                                 {{selectedDevice.info.networkType}}<span ng-if="selectedDevice.info.networkName && selectedDevice.info.networkType"> · </span>{{selectedDevice.info.networkName}}
@@ -101,35 +102,35 @@
                     <div class="device-preview-screen remote-preview-screen">
                         <div ng-if="supportSession.refreshing" class="remote-preview-state">
                             <img src="images/loading.gif" alt="Loading..." class="remote-preview-spinner">
-                            <div>Waiting for the device to upload a screenshot...</div>
+                            <div localized>remote.screen.waiting</div>
                         </div>
 
                         <div ng-if="screenshotFailed && !supportSession.refreshing" class="remote-preview-state remote-preview-state-error">
                             <div class="remote-preview-icon">!</div>
-                            <strong>No screenshot came back</strong>
+                            <strong localized>remote.screen.failed.title</strong>
                             <p class="remote-preview-copy">
-                                <span>The command was queued, but the device has not uploaded an image.
-                                    It may be offline, or its agent may not support screen capture.</span>
+                                <span localized>remote.screen.failed.body</span>
                             </p>
                             <button class="btn btn-sm btn-warning" ng-click="refreshRemoteScreen()"
-                                    ng-disabled="supportSession.refreshing || !selectedDevice.online">Try again</button>
+                                    ng-disabled="supportSession.refreshing || !selectedDevice.online"
+                                    localized>remote.screen.try.again</button>
                         </div>
 
                         <img ng-if="supportSession.imgSrc && !supportSession.refreshing && !screenshotFailed"
                              ng-src="{{supportSession.imgSrc}}"
                              class="remote-preview-image"
-                             alt="Device screenshot" />
+                             alt="{{'remote.screen.alt' | localize}}" />
 
                         <div ng-if="!supportSession.imgSrc && !supportSession.refreshing && !screenshotFailed"
                              class="remote-preview-state">
-                            <strong>Screenshot session is idle</strong>
+                            <strong localized>remote.screen.idle.title</strong>
                             <p class="remote-preview-copy">
-                                <span ng-if="selectedDevice.online">Use Request screenshot to ask the agent for a fresh frame.
-                                    Commands below are still available without a screenshot.</span>
-                                <span ng-if="!selectedDevice.online">The device is offline, so it cannot capture a screen.</span>
+                                <span ng-if="selectedDevice.online" localized>remote.screen.idle.body</span>
+                                <span ng-if="!selectedDevice.online" localized>remote.screen.idle.offline</span>
                             </p>
                             <button class="btn btn-primary" ng-click="startSupportSession()"
-                                    ng-disabled="supportSession.refreshing || !selectedDevice.online">Request screenshot</button>
+                                    ng-disabled="supportSession.refreshing || !selectedDevice.online"
+                                    localized>remote.screen.request</button>
                         </div>
                     </div>
                 </div>
@@ -137,32 +138,27 @@
                 <div class="remote-live-bar">
                     <button type="button" class="btn btn-primary btn-sm"
                             ng-click="startSupportSession()"
-                            ng-disabled="!selectedDevice.online || supportSession.refreshing">
-                        Refresh screenshot
-                    </button>
+                            ng-disabled="!selectedDevice.online || supportSession.refreshing"
+                            localized>remote.screen.refresh</button>
                     <button type="button" class="btn btn-default btn-sm"
                             ng-click="stopSupportSession()"
-                            ng-disabled="!supportSession.active">
-                        Stop auto-refresh
-                    </button>
+                            ng-disabled="!supportSession.active"
+                            localized>remote.screen.stop</button>
                     <span class="remote-ip-note" ng-if="supportSession.lastRefresh">
-                        Last refresh: {{supportSession.lastRefresh | date:'mediumTime'}}
+                        {{'remote.screen.last.refresh' | localize}}: {{supportSession.lastRefresh | date:'mediumTime'}}
                     </span>
                 </div>
 
                 <div class="remote-actions-shell">
                     <div class="hwmdm-section-head">
-                        <h4>Actions</h4>
-                        <p class="ext-hub-section-hint">
-                            These are the actions this server can deliver, read from the server itself.
-                            Actions you lack permission for, and actions this build does not support, are not shown.
-                        </p>
+                        <h4 localized>remote.actions.title</h4>
+                        <p class="ext-hub-section-hint" localized>remote.actions.hint</p>
                     </div>
 
-                    <div ng-if="!commandCatalogLoaded" class="ext-hub-empty">Loading the action list from the server...</div>
+                    <div ng-if="!commandCatalogLoaded" class="ext-hub-empty" localized>remote.actions.loading</div>
                     <div ng-if="commandCatalogError" class="alert alert-warning"><span>{{commandCatalogError}}</span></div>
                     <div ng-if="commandCatalogLoaded && !commandCatalogError && commandGroups.length === 0"
-                         class="ext-hub-empty">This server reports no remote actions.</div>
+                         class="ext-hub-empty" localized>remote.actions.none</div>
 
                     <div class="remote-command-group" ng-repeat="group in commandGroups">
                         <div class="remote-command-group-title">{{group.title}}</div>
@@ -184,11 +180,11 @@
                     <div class="remote-command-form" ng-if="pendingCommand">
                         <div class="remote-command-form-head">
                             <strong>{{pendingCommand.label}}</strong>
-                            <span>on {{selectedDevice.number}}</span>
+                            <span>{{'remote.form.on.device' | localize}} {{selectedDevice.number}}</span>
                         </div>
                         <div class="form-group" ng-repeat="field in pendingCommand.fields">
                             <label class="control-label" for="remote-field-{{field.name}}">{{field.label}}
-                                <span class="remote-ip-note" ng-if="!field.required">(optional)</span>
+                                <span class="remote-ip-note" ng-if="!field.required" localized>remote.form.optional</span>
                             </label>
                             <input ng-if="field.type === 'checkbox'" type="checkbox"
                                    id="remote-field-{{field.name}}"
@@ -202,24 +198,25 @@
                         </div>
                         <div class="error" ng-if="pendingError"><span>{{pendingError}}</span></div>
                         <div class="gov-actions-row">
-                            <button type="button" class="btn btn-default" ng-click="cancelCommand()">Cancel</button>
+                            <button type="button" class="btn btn-default" ng-click="cancelCommand()"
+                                    localized>remote.form.cancel</button>
                             <button type="button" class="btn"
                                     ng-class="pendingCommand.danger ? 'btn-danger' : 'btn-primary'"
-                                    ng-click="submitCommand()">Send action</button>
+                                    ng-click="submitCommand()" localized>remote.form.send</button>
                         </div>
                     </div>
 
                     <div class="remote-message-shell">
                         <div class="hwmdm-section-head">
-                            <h4>Quick message</h4>
+                            <h4 localized>remote.quick.message</h4>
                         </div>
                         <div class="remote-message-row">
                             <input type="text" class="form-control" ng-model="supportMessage"
-                                   placeholder="Text to show on the device screen"
+                                   localized-placeholder="remote.quick.message.placeholder"
                                    ng-disabled="!selectedDevice.online" />
                             <button class="btn btn-primary" ng-click="sendRemoteMessage(selectedDevice, supportMessage)"
                                     ng-disabled="!canControlRemote() || !selectedDevice.online || !supportMessage"
-                                    >Send</button>
+                                    localized>remote.quick.message.send</button>
                         </div>
                     </div>
                 </div>

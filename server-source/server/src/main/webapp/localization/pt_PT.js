@@ -216,6 +216,7 @@ document.localization ['pt_PT'] = {
     'button.change.password': 'Alterar Senha',
     'button.set.configuration': 'Aplicar configuração',
     'button.set.group': 'Definir um grupo',
+    'button.group.action': 'Ação de grupo',
     'button.delete': 'Remover',
     'button.login': 'Login',
     'button.renew.code': 'Renovar',
@@ -726,7 +727,7 @@ document.localization ['pt_PT'] = {
     'form.group.name': 'Nome',
     'form.group.name.placeholder': 'Insira o nome do grupo',
 
-    'form.role.nome': 'Nome',
+    'form.role.name': 'Nome',
     'form.role.name.placeholder': 'Introduza o nome da função',
     'form.role.permissions': 'Permissões',
 
@@ -1002,6 +1003,7 @@ document.localization ['pt_PT'] = {
     'devices.ip.reported.agent': 'Reportado pelo agente',
     'devices.ip.infra.hidden': 'Salto de gerenciamento Proxy/VPN ocultado',
     'devices.ip.not.reported.hint': 'Aguardando o agente reportar o proprio endereco',
+    'devices.screenshot.unavailable': 'Nenhuma captura de tela armazenada para este dispositivo. A captura silenciosa exige um agente assinado pelo sistema, entao o launcher nao tira screenshots.',
     'table.heading.device.actions': 'Ações',
 
     'table.heading.group.name': 'Nome',

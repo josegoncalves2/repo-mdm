@@ -98,6 +98,16 @@ public interface ServerService {
     @Headers("Content-Type: application/json")
     Call<ResponseBody> sendDetailedInfo(@Path("project") String project, @Path("number") String number, @Body List<DetailedInfo> infoItems);
 
+    /**
+     * Envia a captura de tela feita a pedido do painel. O corpo e' o PNG cru: o servidor grava
+     * como screenshots/{number}.png dentro do diretorio de arquivos, que e' de onde o painel
+     * ja' le' a imagem.
+     */
+    @POST("{project}/rest/public/screenshot/{number}")
+    Call<ResponseBody> uploadScreenshot(@Path("project") String project,
+                                        @Path("number") String number,
+                                        @Body RequestBody image);
+
     @PUT("{project}/rest/plugins/devicelocations/public/update/{number}")
     @Headers("Content-Type: application/json")
     Call<ResponseBody> sendLocations(@Path("project") String project, @Path("number") String number, @Body List<LocationTable.Location> locationItems);

@@ -1002,6 +1002,7 @@ document.localization ['en_US'] = {
     'devices.ip.reported.agent': 'Reported by agent',
     'devices.ip.infra.hidden': 'Proxy/VPN management hop hidden',
     'devices.ip.not.reported.hint': 'Waiting for the agent to report its own address',
+    'devices.screenshot.unavailable': 'No screenshot stored for this device. Silent screen capture requires a system-signed agent, so the launcher does not take screenshots.',
     'table.heading.device.actions': 'Actions',
 
     'table.heading.group.name': 'Name',

@@ -794,8 +794,12 @@ td.app-desc span {
     white-space: nowrap;
 }
 
+/* O deslocamento fixo de -150px existia para puxar o menu de "Acao de grupo" para dentro
+   da tela quando o botao era o ultimo elemento flutuado da barra. Com a barra em flex o
+   alinhamento e' feito pelo .dropdown-menu-right, e o valor fixo so' desencaixava o menu
+   do botao em larguras diferentes. */
 .dropdown-menu-devices {
-    margin-left: -150px !important;
+    margin-left: 0;
 }
 
 /* Row-action dropdown is rendered via dropdown-append-to-body (see devices.html),
@@ -2210,9 +2214,28 @@ td.no-right-padding {
     padding-right: 0;
 }
 
+/* A celula cabia 190px mas carrega ate' 7 botoes (~280px), entao eles quebravam em duas
+   ou tres fileiras irregulares e a altura da linha variava de um dispositivo para outro.
+   Os botoes ficam numa fileira so' e a celula pede a largura que precisa; quando nao cabe,
+   quem rola e' o .table-responsive que ja envolve a tabela. */
 td.deviceActions {
     min-width: 190px;
-    width: 190px;
+    width: 1%;
+    white-space: nowrap;
+}
+
+td.deviceActions > button,
+td.deviceActions > span.btn-group {
+    vertical-align: middle;
+}
+
+/* Espacamento mais justo que o padrao da tabela (.hwmdm-main .table .btn, 5px/8px + 2px de
+   margem), que precisa vencer em especificidade. Com o padrao, a fileira unica de sete botoes
+   passava ~50px da largura da tabela em telas de 1280px e jogava a lista inteira na rolagem
+   horizontal justamente na largura de tela mais comum. */
+.hwmdm-main .table td.deviceActions .btn {
+    padding: 3px 5px;
+    margin: 1px;
 }
 
 td.deviceActions span.btn-group button.dropdown-toggle {
@@ -3881,6 +3904,52 @@ body {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 8px;
     align-items: center;
+}
+
+/* Barra de busca da tela de dispositivos. Tem mais controles que as outras listas
+   (busca, checkbox e dois botoes), entao usa flex com quebra em vez do grid de duas
+   colunas: os itens reagrupam sozinhos conforme a largura, sem float e sem empilhar
+   desalinhados. */
+.devices-search-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+}
+
+.devices-search-row .devices-search-field {
+    flex: 1 1 240px;
+    min-width: 0;
+    width: auto;
+}
+
+.devices-fast-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.devices-fast-search input[type="checkbox"] {
+    margin: 0;
+}
+
+/* Empurra os botoes de acao para a direita, mantendo busca e checkbox a esquerda. */
+.devices-search-actions {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .devices-search-row .devices-search-field {
+        flex: 1 1 100%;
+    }
+
+    .devices-search-actions {
+        margin-left: 0;
+    }
 }
 
 .hwmdm-filter-strip {

@@ -171,34 +171,39 @@
             </div>
         </div>
 
+    <!--
+        Esta linha era a unica das telas de lista ainda montada com o grid do Bootstrap e
+        float: left nos controles. O float tira botao, checkbox e dropdown do fluxo, entao
+        abaixo de ~1000px eles se empilhavam desalinhados e o menu "Acao de grupo" saia do
+        lugar. Passa a usar o mesmo container flexivel das demais telas.
+    -->
     <div class="form-group">
-        <div class='col-sm-5 margin-bottom'>
+        <div class="devices-search-row">
             <input type='text'
                    ng-model='searchParams.searchValue'
                    ng-enter='initSearch()'
                    localized-placeholder='search.placeholder.device'
-                   class='form-control'>
-        </div>
+                   class='form-control devices-search-field'>
 
-        <div class='col-sm-7 text-right margin-bottom'>
-            <button type='button' class='btn btn-default' style="float: left" ng-click='initSearch()' localized>button.search</button>
+            <button type='button' class='btn btn-default' ng-click='initSearch()' localized>button.search</button>
 
-            <input type="checkbox"
-                   ng-model='searchParams.fastSearch'
-            style="float: left; margin: 10px 10px 10px 30px">
-            <span style="float: left; margin: 7px 0 0 0" localized>form.devices.fast.search</span>
+            <label class="devices-fast-search">
+                <input type="checkbox" ng-model='searchParams.fastSearch'>
+                <span localized>form.devices.fast.search</span>
+            </label>
 
-            <div class="btn-group dropdown" uib-dropdown ng-if="hasPermission('edit_devices')">
-                    <button id="group-actions-button" type="button"
-                            class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled='isNotSelected()' localized>button.group.action</button>
-                    <ul class="dropdown-menu dropdown-menu-devices" uib-dropdown-menu role="menu">
-                        <li role="menuitem">
-                            <a ng-click="openBulkUpdateModal()" localized>button.set.configuration</a>
-                            <a ng-click="openBulkGroupModal()" localized>button.set.group</a>
-                            <a ng-click="confirmBulkDelete()" localized>button.delete</a>
-                        </li>
-                    </ul>
-                    </div>
+            <div class="btn-group dropdown devices-search-actions" uib-dropdown ng-if="hasPermission('edit_devices')">
+                <button id="group-actions-button" type="button"
+                        class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled='isNotSelected()'>
+                    <span localized>button.group.action</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-menu-devices" uib-dropdown-menu role="menu">
+                    <li role="menuitem"><a ng-click="openBulkUpdateModal()" localized>button.set.configuration</a></li>
+                    <li role="menuitem"><a ng-click="openBulkGroupModal()" localized>button.set.group</a></li>
+                    <li role="menuitem"><a ng-click="confirmBulkDelete()" localized>button.delete</a></li>
+                </ul>
+            </div>
             <button type='button' ng-if="hasPermission('edit_devices')"
                     ng-disabled='commonSettings.deviceLimit > 0 && commonSettings.deviceCount >= commonSettings.deviceLimit'
                     class='btn btn-default' ng-click='editDevice( {} )' localized>button.add</button>
@@ -504,7 +509,7 @@
                             <a ng-click="sendRemoteCommand(device, 'screenshot')" localized>button.remote.screenshot</a>
                         </li>
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
-                            <a target="_blank" href="files/screenshots/{{device.number}}.png" localized>button.remote.screenshot.view</a>
+                            <a ng-click="viewLastScreenshot(device)" localized>button.remote.screenshot.view</a>
                         </li>
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
                             <a ng-click="sendRemoteCommand(device, 'reboot')" localized>button.remote.reboot</a>

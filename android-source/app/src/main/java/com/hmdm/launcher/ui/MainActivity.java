@@ -1911,7 +1911,7 @@ public class MainActivity
                             picasso.load(config.getBackgroundImageUrl())
                                     .networkPolicy(NetworkPolicy.OFFLINE)
                                     .fit()
-                                    .centerCrop()
+                                    .centerInside()
                                     .into(binding.activityMainBackground);
                         }
                     });
@@ -1919,9 +1919,16 @@ public class MainActivity
                 }
 
                 picasso.load(config.getBackgroundImageUrl())
-                    // fit and centerCrop is a workaround against a crash on too large images on some devices
+                    // fit continua sendo a protecao contra o crash com imagens grandes demais em
+                    // alguns aparelhos: ela reduz a imagem para o tamanho da view antes de decodificar.
+                    //
+                    // centerInside no lugar de centerCrop: centerCrop preenche a view inteira e corta
+                    // o que sobra do lado maior. Com o aparelho em pe' a proporcao da imagem batia
+                    // com a da tela e o corte nao aparecia; deitado, a mesma imagem era ampliada
+                    // ate' cobrir a largura e o logo era cortado em cima e embaixo. centerInside
+                    // cabe a imagem inteira dentro da view nas duas orientacoes, sem cortar.
                     .fit()
-                    .centerCrop()
+                    .centerInside()
                     .into(binding.activityMainBackground);
 
             } else {

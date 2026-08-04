@@ -27,6 +27,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.UserManager;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -65,6 +66,10 @@ import okhttp3.ResponseBody;
 import retrofit2.Response;
 
 public class PushNotificationProcessor {
+    // Folga para a MainActivity chegar ao onCreate/onResume e registrar o receiver antes de
+    // receber o broadcast, no caso de ela ter sido destruida.
+    private static final long LAUNCHER_RESUME_DELAY_MS = 700;
+
     static ThreadPoolExecutor executor = new ThreadPoolExecutor(
             1, 4,
             0L, TimeUnit.MILLISECONDS,
@@ -105,8 +110,7 @@ public class PushNotificationProcessor {
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_PERMISSIVE_MODE)) {
             // Turn on permissive mode
-            LocalBroadcastManager.getInstance(context).
-                    sendBroadcast(new Intent(Const.ACTION_PERMISSIVE_MODE));
+            executor.execute(() -> enablePermissiveMode(context));
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_RUN_COMMAND)) {
             // Run a command-line script
@@ -118,12 +122,10 @@ public class PushNotificationProcessor {
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_EXIT_KIOSK)) {
             // Temporarily exit kiosk mode
-            LocalBroadcastManager.getInstance(context).
-                sendBroadcast(new Intent(Const.ACTION_EXIT_KIOSK));
+            exitKiosk(context);
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_ADMIN_PANEL)) {
-            LocalBroadcastManager.getInstance(context).
-                    sendBroadcast(new Intent(Const.ACTION_ADMIN_PANEL));
+            deliverToLauncher(context, Const.ACTION_ADMIN_PANEL);
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_CLEAR_DOWNLOADS)) {
             // Clear download history
@@ -175,6 +177,41 @@ public class PushNotificationProcessor {
     }
 
     /**
+     * Liga o modo permissivo, o mesmo que o botao "Modo permissivo" do painel de administracao
+     * do proprio aparelho (AdminActivity.clearRestrictions).
+     *
+     * Antes daqui so' saia um LocalBroadcast de ACTION_PERMISSIVE_MODE, que nenhum componente
+     * do app escuta - nao ha' receiver registrado para essa acao em lugar nenhum. Ou seja, o
+     * comando remoto nao levantava restricao alguma: quem faz o trabalho de verdade e'
+     * unlockUserRestrictions + disableScreenshots + parar o servico de controle de status, que
+     * e' o que o botao local sempre fez e o caminho remoto nunca fez.
+     */
+    private static void enablePermissiveMode(Context context) {
+        try {
+            SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+            String restrictions =
+                    UserManager.DISALLOW_SAFE_BOOT + "," +
+                    UserManager.DISALLOW_USB_FILE_TRANSFER + "," +
+                    UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA + "," +
+                    UserManager.DISALLOW_CONFIG_BRIGHTNESS + "," +
+                    UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT + "," +
+                    UserManager.DISALLOW_ADJUST_VOLUME;
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null && config.getRestrictions() != null) {
+                restrictions = "," + config.getRestrictions();
+            }
+            Utils.unlockUserRestrictions(context, restrictions);
+            Utils.disableScreenshots(false, context);
+            LocalBroadcastManager.getInstance(context)
+                    .sendBroadcast(new Intent(Const.ACTION_STOP_CONTROL));
+            RemoteLogger.log(context, Const.LOG_INFO, "Permissive mode enabled by admin command");
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Failed to enable permissive mode: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Shows a text message pushed by the messaging plugin and tells the server it arrived.
      *
      * The delivery receipt is sent from here rather than from the UI because the message has
@@ -196,7 +233,9 @@ public class PushNotificationProcessor {
         Intent intent = new Intent(Const.ACTION_SHOW_MESSAGE);
         intent.putExtra(Const.EXTRA_MESSAGE_ID, messageId);
         intent.putExtra(Const.EXTRA_MESSAGE_TEXT, text);
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        // Precisa da MainActivity viva para exibir o dialogo: com o launcher fora da frente o
+        // broadcast se perdia e a mensagem nunca aparecia, embora o painel a marcasse enviada.
+        deliverToLauncher(context, intent);
 
         if (messageId > 0) {
             confirmMessageStatus(context, messageId, Const.MESSAGE_STATUS_DELIVERED);
@@ -458,6 +497,63 @@ public class PushNotificationProcessor {
      * Force the device back into lock task mode. The actual startLockTask() call must happen on the
      * foreground Activity, so we hand off to MainActivity via a local broadcast.
      */
+    /**
+     * Traz o launcher para a frente e entrega uma acao a ele.
+     *
+     * Os comandos que dependem da MainActivity chegavam so' como LocalBroadcast. O
+     * LocalBroadcastManager entrega apenas a receivers registrados naquele instante, e o
+     * receiver da MainActivity vive de onCreate ate' onDestroy - ou seja, com o aparelho em
+     * uso normal (outro app na frente, ou a activity ja' destruida) a mensagem era descartada
+     * em silencio e o comando "nao surtia efeito". Era exatamente por isso que "Bloquear
+     * (kiosk)" funcionava e o resto nao: so' o lockKiosk subia a activity antes de avisar.
+     *
+     * A activity e' iniciada primeiro e o broadcast sai depois de um instante, para dar tempo
+     * de o receiver estar registrado quando a activity precisou ser recriada.
+     */
+    private static void deliverToLauncher(Context context, String action) {
+        deliverToLauncher(context, new Intent(action));
+    }
+
+    private static void deliverToLauncher(Context context, Intent intent) {
+        try {
+            Intent launcherIntent = new Intent(context, com.hmdm.launcher.ui.MainActivity.class);
+            launcherIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            context.startActivity(launcherIntent);
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Failed to bring the launcher to front for "
+                    + intent.getAction() + ": " + e.getMessage());
+        }
+        executor.execute(() -> {
+            try {
+                Thread.sleep(LAUNCHER_RESUME_DELAY_MS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        });
+    }
+
+    /**
+     * Sai do modo kiosk temporariamente.
+     *
+     * Espelha o lockKiosk: alem de avisar a MainActivity, grava kioskMode=false na
+     * configuracao. Sem gravar, o efeito dependia unicamente de um broadcast que podia se
+     * perder, e mesmo quando chegava a MainActivity so' alterava o objeto em memoria - a
+     * proxima leitura da configuracao trazia o kiosk de volta.
+     */
+    private static void exitKiosk(Context context) {
+        RemoteLogger.log(context, Const.LOG_INFO, "Exiting kiosk by a Push message");
+        SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+        ServerConfig config = settingsHelper.getConfig();
+        if (config == null) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Exit kiosk failed: no configuration available yet");
+            return;
+        }
+        config.setKioskMode(false);
+        settingsHelper.updateConfig(config);
+        deliverToLauncher(context, Const.ACTION_EXIT_KIOSK);
+    }
+
     private static void lockKiosk(Context context) {
         RemoteLogger.log(context, Const.LOG_INFO, "Locking kiosk by a Push message");
         ServerConfig config = SettingsHelper.getInstance(context.getApplicationContext()).getConfig();
