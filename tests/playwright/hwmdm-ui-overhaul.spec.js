@@ -21,11 +21,60 @@ function psql(sql) {
     { input: sql, encoding: 'utf8' });
 }
 
-// Os dois testes do editor de perfil trabalham sobre um perfil semeado a mao.
-// Sem ele, parseInt('') virava NaN, o editor abria em /configuration/NaN como se
-// fosse um perfil novo, e a falha aparecia la na frente como "mainApp.url e
-// undefined" - o que parece defeito do painel e nao e. Falhar aqui diz o que
-// realmente falta.
+// Os dois testes do editor de perfil apontavam para um perfil semeado a mao,
+// "Kiosk Total (6.37.3)", nomeado por uma versao de APK que o catalogo ja passou.
+// Onde ele nao existe, parseInt('') virava NaN, o editor abria /configuration/NaN
+// como se fosse um perfil novo, e a falha aparecia la na frente como "mainApp.url
+// e undefined" - o que parece defeito do painel e nao e.
+//
+// Nenhuma das assercoes depende do conteudo do perfil: tudo o que elas checam vem
+// dos cliques que o proprio teste da (GPS gerenciado, ultimo APK do agente, preset
+// de bloqueio). O perfil so precisa existir. Entao o teste cria o seu, do mesmo
+// jeito que ja cria o usuario admin, e apaga no fim.
+const perfilTeste = `Perfil de teste UI ${Date.now()}`;
+
+function criaPerfilDeTeste() {
+  // Copia da primeira configuracao existente, sem enumerar coluna por coluna:
+  // a tabela tem ~70 colunas e a lista mudaria a cada migracao do schema.
+  // name e qrcodekey ficam de fora da copia - o nome e o do teste e qrcodekey tem
+  // constraint unica, entao precisa do proprio default em vez do valor copiado.
+  psql(`
+    DO $$
+    DECLARE cols text; origem integer; novo integer;
+    BEGIN
+      SELECT min(id) INTO origem FROM configurations;
+      SELECT string_agg(quote_ident(column_name), ', ') INTO cols
+        FROM information_schema.columns
+       WHERE table_name = 'configurations'
+         AND column_name NOT IN ('id', 'name', 'qrcodekey');
+      EXECUTE format(
+        'INSERT INTO configurations (name, %s) SELECT %L, %s FROM configurations WHERE id = %s RETURNING id',
+        cols, '${perfilTeste}', cols, origem) INTO novo;
+      -- A lista de apps do perfil alimenta s.applications, que o teste do kiosk le.
+      INSERT INTO configurationapplications
+        (configurationid, applicationid, remove, showicon, applicationversionid,
+         action, screenorder, keycode, bottom, longtap, usekiosk)
+      SELECT novo, applicationid, remove, showicon, applicationversionid,
+             action, screenorder, keycode, bottom, longtap, usekiosk
+        FROM configurationapplications WHERE configurationid = origem;
+      -- O painel exige um app de conteudo sempre que o modo kiosk esta ligado
+      -- (save() -> error.empty.configuration.contentApp), e o preset de bloqueio
+      -- liga o kiosk. O app de conteudo e uma escolha de negocio que o operador faz
+      -- no typeahead, entao o perfil de teste ja nasce com um: a versao do agente
+      -- que o proprio perfil instala, que e o que o preset tambem elege como main app.
+      UPDATE configurations SET contentappid = (
+        SELECT ca.applicationversionid
+          FROM configurationapplications ca
+          JOIN applications a ON a.id = ca.applicationid
+         WHERE ca.configurationid = novo
+           AND a.pkg = 'com.hmdm.launcher'
+           AND ca.action = 1
+           AND ca.applicationversionid IS NOT NULL
+         LIMIT 1)
+      WHERE id = novo;
+    END $$;`);
+}
+
 function idDoPerfil(nome) {
   const bruto = psql(`select id from configurations where name = '${nome}';`).trim();
   const id = parseInt(bruto, 10);
@@ -34,8 +83,7 @@ function idDoPerfil(nome) {
       .trim().split('\n').filter(Boolean).join(', ');
     throw new Error(
       `fixture ausente: nao existe o perfil "${nome}" neste servidor. ` +
-      `Perfis presentes: ${existentes || '(nenhum)'}. ` +
-      `Semeie o perfil antes de rodar este teste.`);
+      `Perfis presentes: ${existentes || '(nenhum)'}.`);
   }
   return id;
 }
@@ -44,9 +92,13 @@ test.beforeAll(() => {
   psql(`insert into users(login, email, name, password, customerid, userroleid, alldevicesavailable, allconfigavailable, passwordreset, authtoken)
         select '${admin}', '${admin}@local.test', '${admin}', '${hash(password)}', customerid, 2, true, true, false, null
         from users where login = 'admin';`);
+  criaPerfilDeTeste();
 });
 test.afterAll(() => {
   psql(`delete from users where login = '${admin}';`);
+  psql(`delete from configurationapplications
+          where configurationid in (select id from configurations where name = '${perfilTeste}');
+        delete from configurations where name = '${perfilTeste}';`);
 });
 
 async function signIn(page) {
@@ -390,7 +442,7 @@ test('editor de perfil expoe controle grafico de GPS e salva politica coerente',
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = idDoPerfil('Kiosk Total (6.37.3)');
+  const configId = idDoPerfil(perfilTeste);
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="location-policy-panel"]', { timeout: 20000 });
   await page.waitForTimeout(1800);
@@ -455,7 +507,7 @@ test('editor de perfil expoe kiosk completo, APK MDM e allowlist pela GUI', asyn
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = idDoPerfil('Kiosk Total (6.37.3)');
+  const configId = idDoPerfil(perfilTeste);
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000, state: 'attached' });
   await page.waitForTimeout(1800);
