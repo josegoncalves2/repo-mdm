@@ -3,8 +3,8 @@
 
     <div class="hwmdm-page-toolbar">
         <div>
-            <h3>Dashboard</h3>
-            <p>Fleet status at a glance: enrollment, last known locations and open alerts.</p>
+            <h3 localized>nav.dashboard</h3>
+            <p localized>dashboard.page.subtitle</p>
         </div>
     </div>
 
@@ -29,7 +29,8 @@
              label used to sit in. -->
         <div class="summary-panel-header">
             <h3>Backup / Import / Export</h3>
-            <button type="button" class="btn btn-default summary-panel-action" ng-click="openTab('GOVERNANCE')">
+            <button type="button" class="btn btn-default summary-panel-action" ng-click="openTab('GOVERNANCE')"
+                    data-testid="dashboard-open-governance">
                 <span class="glyphicon glyphicon-hdd"></span> Open backups &amp; import/export
             </button>
         </div>

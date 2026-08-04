@@ -112,6 +112,20 @@ if (!document.localization) document.localization = [];
         'nav.extensions': 'Plugins',
         'nav.governance': 'Backup & restore',
 
+        // Page headings reuse the nav.* key of the sidebar entry that opens them, so the
+        // title and the menu item cannot drift apart again. Only the subtitle is per-screen.
+        'dashboard.page.subtitle': 'Fleet status at a glance: enrollment, last known locations and open alerts.',
+        'devices.page.subtitle': 'Device inventory, enrollment state, remote actions and operational filtering.',
+        'gpsmap.page.subtitle': 'Live map with the last location reported by each device.',
+        'remote.page.subtitle': 'Pick a device, send an action, and open a screenshot session when the agent supports it.',
+        'configurations.page.subtitle': 'Device enrollment profiles, kiosk policy, application set and QR provisioning.',
+        'governance.page.subtitle': 'Export settings, import a saved setup, and manage database backups from one place.',
+        'icons.page.subtitle': 'Icons available to the launcher shown on the managed devices.',
+        'users.page.subtitle': 'Accounts that can sign in to this console, and the role each one carries.',
+        'roles.page.subtitle': 'Roles and what each role is allowed to do in this console.',
+        'groups.page.subtitle': 'Groups used to filter the device list and to scope what a user may see.',
+        'common.page.subtitle': 'Choose which columns appear in the Devices list for each role.',
+
         // --- Kiosk -----------------------------------------------------------------------
         'kiosk.page.subtitle': 'Dedicated control surface for restricted tablets, allowed apps, MDM APK, GPS and remote apply.',
         'kiosk.save.profile': 'Save kiosk profile',
@@ -345,6 +359,18 @@ if (!document.localization) document.localization = [];
         'nav.general': 'Padroes do servidor',
         'nav.extensions': 'Plugins',
         'nav.governance': 'Backup e restauracao',
+
+        'dashboard.page.subtitle': 'Situacao da frota num relance: inscricao, ultimas localizacoes e alertas abertos.',
+        'devices.page.subtitle': 'Inventario de dispositivos, estado de inscricao, acoes remotas e filtros operacionais.',
+        'gpsmap.page.subtitle': 'Mapa em tempo real com a ultima localizacao reportada por cada dispositivo.',
+        'remote.page.subtitle': 'Escolha um dispositivo, envie uma acao e abra uma sessao de tela quando o agente suportar.',
+        'configurations.page.subtitle': 'Perfis de inscricao, politica de quiosque, conjunto de apps e provisionamento por QR.',
+        'governance.page.subtitle': 'Exporte configuracoes, importe um setup salvo e gerencie backups do banco em um so lugar.',
+        'icons.page.subtitle': 'Icones disponiveis para o launcher exibido nos dispositivos gerenciados.',
+        'users.page.subtitle': 'Contas que podem entrar neste console e o papel de cada uma.',
+        'roles.page.subtitle': 'Papeis e o que cada papel pode fazer neste console.',
+        'groups.page.subtitle': 'Grupos usados para filtrar a lista de dispositivos e limitar o que um usuario ve.',
+        'common.page.subtitle': 'Escolha quais colunas aparecem na lista de dispositivos para cada papel.',
 
         // --- Quiosque --------------------------------------------------------------------
         'kiosk.page.subtitle': 'Controle dedicado de tablets restritos: apps permitidos, APK do MDM, GPS e aplicacao remota.',

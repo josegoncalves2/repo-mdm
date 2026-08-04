@@ -21,6 +21,25 @@ function psql(sql) {
     { input: sql, encoding: 'utf8' });
 }
 
+// Os dois testes do editor de perfil trabalham sobre um perfil semeado a mao.
+// Sem ele, parseInt('') virava NaN, o editor abria em /configuration/NaN como se
+// fosse um perfil novo, e a falha aparecia la na frente como "mainApp.url e
+// undefined" - o que parece defeito do painel e nao e. Falhar aqui diz o que
+// realmente falta.
+function idDoPerfil(nome) {
+  const bruto = psql(`select id from configurations where name = '${nome}';`).trim();
+  const id = parseInt(bruto, 10);
+  if (!Number.isFinite(id)) {
+    const existentes = psql('select name from configurations order by id;')
+      .trim().split('\n').filter(Boolean).join(', ');
+    throw new Error(
+      `fixture ausente: nao existe o perfil "${nome}" neste servidor. ` +
+      `Perfis presentes: ${existentes || '(nenhum)'}. ` +
+      `Semeie o perfil antes de rodar este teste.`);
+  }
+  return id;
+}
+
 test.beforeAll(() => {
   psql(`insert into users(login, email, name, password, customerid, userroleid, alldevicesavailable, allconfigavailable, passwordreset, authtoken)
         select '${admin}', '${admin}@local.test', '${admin}', '${hash(password)}', customerid, 2, true, true, false, null
@@ -140,7 +159,7 @@ test('drawer abre, navega e fecha no telefone', async ({ page }) => {
   expect(dupes.filter(l => /devices table/i.test(l)).length, '"Devices table" ainda existe').toBe(0);
 
   // Backup precisa estar visivel e clicavel no menu.
-  const backup = page.locator('.hwmdm-nav-link', { hasText: /backup/i });
+  const backup = page.locator('[data-testid="nav-governance"]');
   await expect(backup).toHaveCount(1);
   await backup.click();
   await page.waitForTimeout(1200);
@@ -159,7 +178,7 @@ test('botoes de backup/import/export estao visiveis e clicaveis', async ({ page 
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  await page.locator('.hwmdm-nav-link', { hasText: /backup/i }).click();
+  await page.locator('[data-testid="nav-governance"]').click();
   await page.waitForTimeout(1500);
 
   const report = await page.evaluate(() => {
@@ -207,7 +226,7 @@ test('acesso remoto: acoes vem do catalogo do servidor e IP de proxy/tunel nao a
   });
   console.log('\n=== CATALOGO DO SERVIDOR (' + catalog.length + '):', catalog.join(', '));
 
-  await page.locator('.hwmdm-nav-link', { hasText: /remote access/i }).click();
+  await page.locator('[data-testid="nav-remote"]').click();
   await page.waitForTimeout(3000);
 
   const ui = await page.evaluate(() => ({
@@ -252,8 +271,8 @@ test('console limpo: sem 404 de bundle de plugin e sem erro de JS', async ({ pag
   page.on('pageerror', e => errors.push(String(e)));
 
   await signIn(page);
-  for (const tab of [/dashboard/i, /remote access/i, /backup/i, /device profiles/i, /plugins/i]) {
-    await page.locator('.hwmdm-nav-link', { hasText: tab }).first().click();
+  for (const tab of ['nav-summary', 'nav-remote', 'nav-governance', 'nav-confs', 'nav-extensions']) {
+    await page.locator(`[data-testid="${tab}"]`).first().click();
     await page.waitForTimeout(1800);
   }
 
@@ -272,7 +291,7 @@ test('editor de perfil e um fluxo linear, sem abas e com uma unica barra de salv
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  await page.locator('.hwmdm-nav-link', { hasText: /device profiles/i }).click();
+  await page.locator('[data-testid="nav-confs"]').click();
   await page.waitForTimeout(2000);
 
   // abre o primeiro perfil da lista
@@ -325,7 +344,7 @@ test('editor de perfil e um fluxo linear, sem abas e com uma unica barra de salv
   expect(per, 'as etapas de aplicativo nao ficaram adjacentes').toBe(agent + 1);
 
   // jump link tem que levar a etapa ao topo util
-  await page.locator('.cfg-step-link', { hasText: /per-app settings/i }).click();
+  await page.locator('[data-testid="cfg-step-appsettings"]').click();
   await page.waitForTimeout(1200);
   const jumped = await page.evaluate(() => Math.round(document.getElementById('cfg-appsettings').getBoundingClientRect().top));
   console.log('=== APOS CLICAR NO JUMP LINK "Per-app settings": topo da secao em y=' + jumped);
@@ -371,7 +390,7 @@ test('editor de perfil expoe controle grafico de GPS e salva politica coerente',
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = parseInt(psql("select id from configurations where name = 'Kiosk Total (6.37.3)'").trim(), 10);
+  const configId = idDoPerfil('Kiosk Total (6.37.3)');
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="location-policy-panel"]', { timeout: 20000 });
   await page.waitForTimeout(1800);
@@ -436,7 +455,7 @@ test('editor de perfil expoe kiosk completo, APK MDM e allowlist pela GUI', asyn
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = parseInt(psql("select id from configurations where name = 'Kiosk Total (6.37.3)'").trim(), 10);
+  const configId = idDoPerfil('Kiosk Total (6.37.3)');
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000, state: 'attached' });
   await page.waitForTimeout(1800);
@@ -601,7 +620,7 @@ test('chave de localizacao do comando nao suportado existe e e usada', async ({ 
 test('atalho de backup/import/export aparece no dashboard', async ({ page }) => {
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.locator('.hwmdm-nav-link', { hasText: /dashboard/i }).click();
+  await page.locator('[data-testid="nav-summary"]').click();
   await page.waitForTimeout(2000);
 
   const panel = await page.evaluate(() => {
@@ -624,7 +643,7 @@ test('atalho de backup/import/export aparece no dashboard', async ({ page }) => 
   expect(panel.buttons.length).toBeGreaterThan(0);
   panel.buttons.forEach(b => expect(b.clickable, `botao "${b.text}" coberto`).toBe(true));
 
-  await page.locator('.summary-panel button', { hasText: /open backups/i }).click();
+  await page.locator('[data-testid="dashboard-open-governance"]').click();
   await page.waitForTimeout(1500);
   const landed = await page.evaluate(() => (document.querySelector('.governance-page h3') || {}).textContent || '');
   console.log('=== "Open backups" levou para: "' + landed.trim() + '"');
