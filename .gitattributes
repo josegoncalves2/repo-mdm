@@ -1,0 +1,15 @@
+# Os scripts de shell e o entrypoint do container rodam no Linux (WSL / Docker), mesmo
+# quando o clone e' feito no Windows. Com core.autocrlf=true eles voltavam com CRLF a cada
+# checkout, e o resultado era:
+#
+#   provision.sh ......... env: $'bash\r': No such file or directory
+#   docker-entrypoint.sh . exec /docker-entrypoint.sh: no such file or directory
+#
+# Forcar eol=lf faz a correcao sobreviver ao proximo checkout, em vez de precisar de um
+# `sed -i 's/\r$//'` manual toda vez que alguem clona o repositorio.
+*.sh text eol=lf
+docker-entrypoint.sh text eol=lf
+
+# O .env e' lido com `. ./source/.env`; um \r no fim da linha vira parte do valor da
+# variavel e o shell reclama de comando nao encontrado.
+.env.example text eol=lf
