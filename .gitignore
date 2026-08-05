@@ -1,49 +1,19 @@
-# ===== Segredos e config local (NUNCA versionar) =====
-# .env carrega a senha do banco e o SHARED_SECRET deste ambiente.
-# O modelo versionado e' source/.env.example -- veja PROVISIONAMENTO.md.
-source/.env
-prompt.md
-.runtime/
-enrollment-qr.*
+# Politica deste repositorio: versionar TUDO de producao, sem excecao.
+# APKs, WARs, .env, volumes do Tomcat, configuracao -- tudo entra.
+# So existem DUAS exclusoes, e ambas sao imposicoes tecnicas, nao preferencia.
 
-# ===== Dados de runtime =====
-# volumes/ tem o banco vivo, os logs e o webapp explodido pelo Tomcat.
-# O que precisa viajar entre maquinas e' o dump em source/sql/ e o APK em dist/.
-source/volumes/
-artifacts/
-test-results/
-tests/playwright/test-results/
+# ===== 1. Limite rigido do GitHub: 100 MB por arquivo =====
+# O GitHub RECUSA no servidor o push de qualquer arquivo acima de 100 MB.
+# Nao e' configuravel. Este APK tem 132 MB; versiona-lo exigiria Git LFS.
+# O arquivo continua em producao normalmente -- so nao viaja pelo git.
+source/volumes/work/files/WhatsApp.apk
 
-# ===== Saidas de build (regeraveis; nao versionar) =====
-server-source/server/target/
-server-source/common/target/
-server-source/plugins/**/target/
-server-source/swagger/target/
-server-source/jwt/target/
-server-source/notification/target/
-server-source/install/target/
-server-source/server/webtarget/
-server-source/**/node_modules/
-android-source/app/build/
-android-source/build/
-android-source/.gradle/
-android-source/local.properties
-.maven/
-.m2-docker/
-node_modules/
-
-# ===== SDK Android (baixado, pesado demais para git) =====
-# Reinstalado pelo scripts/provision.sh
-.android-sdk/
-
-# ===== Ambientes Python / caches =====
-.venv*
-__pycache__/
-.pytest_cache/
-*.pyc
-
-# ===== IDE / SO / harness =====
-.idea/
-.vscode/
-.claude/
-.DS_Store
+# ===== 2. Diretorio interno do PostgreSQL =====
+# source/volumes/db/ sao os arquivos binarios internos do Postgres (uid 70).
+# Copia-los com o banco no ar produz snapshot rasgado que pode nao restaurar.
+# O artefato correto, versionado e restauravel, e' o dump:
+#     source/sql/hmdm-dump.sql
+# Regenerar:
+#     docker exec source-postgresql-1 pg_dump -U hmdm -d hmdm --clean --if-exists \
+#       > source/sql/hmdm-dump.sql
+source/volumes/db/

@@ -1,2 +1,5 @@
-.env
-volumes/*
+# Vazio de proposito.
+# A politica de versionamento deste repositorio e' UNICA e vive em /.gitignore
+# na raiz: versiona-se tudo de producao, sem excecao.
+#
+# Este arquivo antes excluia '.env' e 'volumes/*'. Ambos agora SAO versionados.
