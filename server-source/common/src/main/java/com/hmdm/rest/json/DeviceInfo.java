@@ -111,6 +111,14 @@ public class DeviceInfo implements Serializable {
     @ApiModelProperty("CPU architecture")
     private String cpu;
 
+    // O agente reporta este campo desde a 6.37.5. Sem ele declarado aqui o valor era
+    // descartado no /public/sync/info: a classe e' @JsonIgnoreProperties(ignoreUnknown=true)
+    // e o SyncResource regrava o info com objectMapper.writeValueAsString(deviceInfo), ou
+    // seja, o que nao existe nesta classe nao chega ao banco. O painel lia info.deviceIp e
+    // por isso mostrava "nao reportado" para sempre.
+    @ApiModelProperty("The IPv4 address of the device's own network interface, as seen by the device")
+    private String deviceIp;
+
     @ApiModelProperty(value = "Custom property #1")
     private String custom1;
 
@@ -307,6 +315,14 @@ public class DeviceInfo implements Serializable {
         this.cpu = cpu;
     }
 
+    public String getDeviceIp() {
+        return deviceIp;
+    }
+
+    public void setDeviceIp(String deviceIp) {
+        this.deviceIp = deviceIp;
+    }
+
     public String getCustom1() {
         return custom1;
     }
@@ -365,6 +381,7 @@ public class DeviceInfo implements Serializable {
                 ", iccid2='" + iccid2 + '\'' +
                 ", serial='" + serial + '\'' +
                 ", cpu='" + cpu + '\'' +
+                ", deviceIp='" + deviceIp + '\'' +
                 ", custom1='" + custom1 + '\'' +
                 ", custom2='" + custom2 + '\'' +
                 ", custom3='" + custom3 + '\'' +
