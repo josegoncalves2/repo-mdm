@@ -1,0 +1,22 @@
+# Arquivo local, NAO versionado. Remova-o para voltar ao comportamento original.
+#
+# Por que existe: este repositorio fica em /mnt/c, que no WSL e' 9p/drvfs. O initdb do
+# Postgres nao consegue ajustar as permissoes do datadir ali:
+#
+#     initdb: error: could not change permissions of directory
+#             "/var/lib/postgresql/data": Operation not permitted
+#
+# O provisionamento anterior contornava isso indo para /tmp -- que o WSL limpa a cada
+# boot, e foi assim que o ambiente (banco inclusive) se perdeu.
+#
+# Aqui so' o datadir sai do bind e vai para um volume nomeado, que vive em
+# /var/lib/docker dentro do WSL e sobrevive a reboot. Todo o resto (webapp, work,
+# webapps, hmdm-config) continua no bind do repositorio, exatamente como antes.
+services:
+
+  postgresql:
+    volumes:
+      - hmdm-db:/var/lib/postgresql/data
+
+volumes:
+  hmdm-db:
