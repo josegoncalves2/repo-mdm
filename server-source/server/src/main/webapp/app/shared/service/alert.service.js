@@ -4,7 +4,7 @@ angular.module('headwind-kiosk')
 
         var showAlert = function (message, callback, okButtonTextKey) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/shared/view/alert.html?v=h671d5da90c',
+                templateUrl: 'app/shared/view/alert.html?v=h0d5cae8a0e',
                 controller: 'AlertController',
                 resolve: {
                     message: function () {

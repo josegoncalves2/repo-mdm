@@ -21,13 +21,84 @@ function psql(sql) {
     { input: sql, encoding: 'utf8' });
 }
 
+// Os dois testes do editor de perfil apontavam para um perfil semeado a mao,
+// "Kiosk Total (6.37.3)", nomeado por uma versao de APK que o catalogo ja passou.
+// Onde ele nao existe, parseInt('') virava NaN, o editor abria /configuration/NaN
+// como se fosse um perfil novo, e a falha aparecia la na frente como "mainApp.url
+// e undefined" - o que parece defeito do painel e nao e.
+//
+// Nenhuma das assercoes depende do conteudo do perfil: tudo o que elas checam vem
+// dos cliques que o proprio teste da (GPS gerenciado, ultimo APK do agente, preset
+// de bloqueio). O perfil so precisa existir. Entao o teste cria o seu, do mesmo
+// jeito que ja cria o usuario admin, e apaga no fim.
+const perfilTeste = `Perfil de teste UI ${Date.now()}`;
+
+function criaPerfilDeTeste() {
+  // Copia da primeira configuracao existente, sem enumerar coluna por coluna:
+  // a tabela tem ~70 colunas e a lista mudaria a cada migracao do schema.
+  // name e qrcodekey ficam de fora da copia - o nome e o do teste e qrcodekey tem
+  // constraint unica, entao precisa do proprio default em vez do valor copiado.
+  psql(`
+    DO $$
+    DECLARE cols text; origem integer; novo integer;
+    BEGIN
+      SELECT min(id) INTO origem FROM configurations;
+      SELECT string_agg(quote_ident(column_name), ', ') INTO cols
+        FROM information_schema.columns
+       WHERE table_name = 'configurations'
+         AND column_name NOT IN ('id', 'name', 'qrcodekey');
+      EXECUTE format(
+        'INSERT INTO configurations (name, %s) SELECT %L, %s FROM configurations WHERE id = %s RETURNING id',
+        cols, '${perfilTeste}', cols, origem) INTO novo;
+      -- A lista de apps do perfil alimenta s.applications, que o teste do kiosk le.
+      INSERT INTO configurationapplications
+        (configurationid, applicationid, remove, showicon, applicationversionid,
+         action, screenorder, keycode, bottom, longtap, usekiosk)
+      SELECT novo, applicationid, remove, showicon, applicationversionid,
+             action, screenorder, keycode, bottom, longtap, usekiosk
+        FROM configurationapplications WHERE configurationid = origem;
+      -- O painel exige um app de conteudo sempre que o modo kiosk esta ligado
+      -- (save() -> error.empty.configuration.contentApp), e o preset de bloqueio
+      -- liga o kiosk. O app de conteudo e uma escolha de negocio que o operador faz
+      -- no typeahead, entao o perfil de teste ja nasce com um: a versao do agente
+      -- que o proprio perfil instala, que e o que o preset tambem elege como main app.
+      UPDATE configurations SET contentappid = (
+        SELECT ca.applicationversionid
+          FROM configurationapplications ca
+          JOIN applications a ON a.id = ca.applicationid
+         WHERE ca.configurationid = novo
+           AND a.pkg = 'com.hmdm.launcher'
+           AND ca.action = 1
+           AND ca.applicationversionid IS NOT NULL
+         LIMIT 1)
+      WHERE id = novo;
+    END $$;`);
+}
+
+function idDoPerfil(nome) {
+  const bruto = psql(`select id from configurations where name = '${nome}';`).trim();
+  const id = parseInt(bruto, 10);
+  if (!Number.isFinite(id)) {
+    const existentes = psql('select name from configurations order by id;')
+      .trim().split('\n').filter(Boolean).join(', ');
+    throw new Error(
+      `fixture ausente: nao existe o perfil "${nome}" neste servidor. ` +
+      `Perfis presentes: ${existentes || '(nenhum)'}.`);
+  }
+  return id;
+}
+
 test.beforeAll(() => {
   psql(`insert into users(login, email, name, password, customerid, userroleid, alldevicesavailable, allconfigavailable, passwordreset, authtoken)
         select '${admin}', '${admin}@local.test', '${admin}', '${hash(password)}', customerid, 2, true, true, false, null
         from users where login = 'admin';`);
+  criaPerfilDeTeste();
 });
 test.afterAll(() => {
   psql(`delete from users where login = '${admin}';`);
+  psql(`delete from configurationapplications
+          where configurationid in (select id from configurations where name = '${perfilTeste}');
+        delete from configurations where name = '${perfilTeste}';`);
 });
 
 async function signIn(page) {
@@ -140,7 +211,7 @@ test('drawer abre, navega e fecha no telefone', async ({ page }) => {
   expect(dupes.filter(l => /devices table/i.test(l)).length, '"Devices table" ainda existe').toBe(0);
 
   // Backup precisa estar visivel e clicavel no menu.
-  const backup = page.locator('.hwmdm-nav-link', { hasText: /backup/i });
+  const backup = page.locator('[data-testid="nav-governance"]');
   await expect(backup).toHaveCount(1);
   await backup.click();
   await page.waitForTimeout(1200);
@@ -159,7 +230,7 @@ test('botoes de backup/import/export estao visiveis e clicaveis', async ({ page 
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  await page.locator('.hwmdm-nav-link', { hasText: /backup/i }).click();
+  await page.locator('[data-testid="nav-governance"]').click();
   await page.waitForTimeout(1500);
 
   const report = await page.evaluate(() => {
@@ -207,7 +278,7 @@ test('acesso remoto: acoes vem do catalogo do servidor e IP de proxy/tunel nao a
   });
   console.log('\n=== CATALOGO DO SERVIDOR (' + catalog.length + '):', catalog.join(', '));
 
-  await page.locator('.hwmdm-nav-link', { hasText: /remote access/i }).click();
+  await page.locator('[data-testid="nav-remote"]').click();
   await page.waitForTimeout(3000);
 
   const ui = await page.evaluate(() => ({
@@ -252,8 +323,8 @@ test('console limpo: sem 404 de bundle de plugin e sem erro de JS', async ({ pag
   page.on('pageerror', e => errors.push(String(e)));
 
   await signIn(page);
-  for (const tab of [/dashboard/i, /remote access/i, /backup/i, /device profiles/i, /plugins/i]) {
-    await page.locator('.hwmdm-nav-link', { hasText: tab }).first().click();
+  for (const tab of ['nav-summary', 'nav-remote', 'nav-governance', 'nav-confs', 'nav-extensions']) {
+    await page.locator(`[data-testid="${tab}"]`).first().click();
     await page.waitForTimeout(1800);
   }
 
@@ -272,7 +343,7 @@ test('editor de perfil e um fluxo linear, sem abas e com uma unica barra de salv
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  await page.locator('.hwmdm-nav-link', { hasText: /device profiles/i }).click();
+  await page.locator('[data-testid="nav-confs"]').click();
   await page.waitForTimeout(2000);
 
   // abre o primeiro perfil da lista
@@ -325,7 +396,7 @@ test('editor de perfil e um fluxo linear, sem abas e com uma unica barra de salv
   expect(per, 'as etapas de aplicativo nao ficaram adjacentes').toBe(agent + 1);
 
   // jump link tem que levar a etapa ao topo util
-  await page.locator('.cfg-step-link', { hasText: /per-app settings/i }).click();
+  await page.locator('[data-testid="cfg-step-appsettings"]').click();
   await page.waitForTimeout(1200);
   const jumped = await page.evaluate(() => Math.round(document.getElementById('cfg-appsettings').getBoundingClientRect().top));
   console.log('=== APOS CLICAR NO JUMP LINK "Per-app settings": topo da secao em y=' + jumped);
@@ -371,12 +442,16 @@ test('editor de perfil expoe controle grafico de GPS e salva politica coerente',
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = parseInt(psql("select id from configurations where name = 'Kiosk Total (6.37.3)'").trim(), 10);
+  const configId = idDoPerfil(perfilTeste);
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
   await page.waitForSelector('[data-testid="location-policy-panel"]', { timeout: 20000 });
   await page.waitForTimeout(1800);
 
+  // O editor mostra uma secao por vez, entao cada controle e alcancado pelo passo dono dele:
+  // a politica de localizacao esta no passo 1 e o APK do agente no passo 3.
+  await page.locator('[data-testid="cfg-step-basics"]').click();
   await page.locator('[data-testid="enable-managed-gps"]').click();
+  await page.locator('[data-testid="cfg-step-agent"]').click();
   await page.locator('[data-testid="use-latest-mdm-agent"]').click();
   await expect.poll(async () => page.evaluate(() => {
     const s = angular.element(document.querySelector('[data-testid="location-policy-panel"]')).scope();
@@ -432,11 +507,13 @@ test('editor de perfil expoe kiosk completo, APK MDM e allowlist pela GUI', asyn
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
 
-  const configId = parseInt(psql("select id from configurations where name = 'Kiosk Total (6.37.3)'").trim(), 10);
+  const configId = idDoPerfil(perfilTeste);
   await page.goto(`${base}/#/configuration/${configId}`, { waitUntil: 'domcontentloaded' });
-  await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000 });
+  await page.waitForSelector('[data-testid="kiosk-control-center"]', { timeout: 20000, state: 'attached' });
   await page.waitForTimeout(1800);
 
+  // O centro de controle do kiosk vive no passo 3 do editor, que so aparece ao seleciona-lo.
+  await page.locator('[data-testid="cfg-step-agent"]').click();
   await page.locator('[data-testid="kiosk-lockdown-preset"]').click();
   const model = await page.evaluate(() => {
     const s = angular.element(document.querySelector('[data-testid="kiosk-control-center"]')).scope();
@@ -595,7 +672,7 @@ test('chave de localizacao do comando nao suportado existe e e usada', async ({ 
 test('atalho de backup/import/export aparece no dashboard', async ({ page }) => {
   await signIn(page);
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.locator('.hwmdm-nav-link', { hasText: /dashboard/i }).click();
+  await page.locator('[data-testid="nav-summary"]').click();
   await page.waitForTimeout(2000);
 
   const panel = await page.evaluate(() => {
@@ -618,7 +695,7 @@ test('atalho de backup/import/export aparece no dashboard', async ({ page }) => 
   expect(panel.buttons.length).toBeGreaterThan(0);
   panel.buttons.forEach(b => expect(b.clickable, `botao "${b.text}" coberto`).toBe(true));
 
-  await page.locator('.summary-panel button', { hasText: /open backups/i }).click();
+  await page.locator('[data-testid="dashboard-open-governance"]').click();
   await page.waitForTimeout(1500);
   const landed = await page.evaluate(() => (document.querySelector('.governance-page h3') || {}).textContent || '');
   console.log('=== "Open backups" levou para: "' + landed.trim() + '"');

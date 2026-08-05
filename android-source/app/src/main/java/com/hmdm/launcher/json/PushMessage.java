@@ -48,6 +48,7 @@ public class PushMessage {
     public static final String TYPE_LOCK_KIOSK = "lockKiosk";
     public static final String TYPE_WIPE = "wipe";
     public static final String TYPE_SCREENSHOT = "screenshot";
+    public static final String TYPE_TEXT_MESSAGE = "textMessage";
 
     public String getMessageType() {
         return messageType;

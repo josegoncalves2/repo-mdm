@@ -126,7 +126,7 @@ angular.module( 'headwind-kiosk' )
 
     $scope.about = function () {
         $modal.open({
-            templateUrl: 'app/components/about/about.html?v=h58ff4a64d1',
+            templateUrl: 'app/components/about/about.html?v=h5a80a6eddf',
             controller: 'AboutController'
         });
     };

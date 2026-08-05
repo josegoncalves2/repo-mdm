@@ -18,7 +18,7 @@ angular.module('headwind-kiosk')
             // Com scope:true o ng-model resolve 'configuration' herdado do pai por
             // referencia, e escrever .restrictions altera o mesmo objeto que o controller ve.
             scope: true,
-            templateUrl: 'app/components/main/view/directive/mdmOptionPicker.html?v=ha08750dccd',
+            templateUrl: 'app/components/main/view/directive/mdmOptionPicker.html?v=hc619afb59f',
             link: function (scope, element, attrs, ngModel) {
 
                 // Sem bindings '=', as entradas sao lidas por watch sobre o escopo pai.

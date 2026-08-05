@@ -27,6 +27,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.UserManager;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -41,6 +42,9 @@ import com.hmdm.launcher.json.Application;
 import com.hmdm.launcher.json.Download;
 import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.ServerConfig;
+import com.hmdm.launcher.server.ServerService;
+import com.hmdm.launcher.server.ServerServiceKeeper;
+import com.hmdm.launcher.service.ScreenCaptureService;
 import com.hmdm.launcher.util.InstallUtils;
 import com.hmdm.launcher.util.LegacyUtils;
 import com.hmdm.launcher.util.RemoteLogger;
@@ -59,7 +63,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+
 public class PushNotificationProcessor {
+    // Folga para a MainActivity chegar ao onCreate/onResume e registrar o receiver antes de
+    // receber o broadcast, no caso de ela ter sido destruida.
+    private static final long LAUNCHER_RESUME_DELAY_MS = 700;
+
     static ThreadPoolExecutor executor = new ThreadPoolExecutor(
             1, 4,
             0L, TimeUnit.MILLISECONDS,
@@ -100,8 +113,7 @@ public class PushNotificationProcessor {
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_PERMISSIVE_MODE)) {
             // Turn on permissive mode
-            LocalBroadcastManager.getInstance(context).
-                    sendBroadcast(new Intent(Const.ACTION_PERMISSIVE_MODE));
+            executor.execute(() -> enablePermissiveMode(context));
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_RUN_COMMAND)) {
             // Run a command-line script
@@ -113,12 +125,10 @@ public class PushNotificationProcessor {
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_EXIT_KIOSK)) {
             // Temporarily exit kiosk mode
-            LocalBroadcastManager.getInstance(context).
-                sendBroadcast(new Intent(Const.ACTION_EXIT_KIOSK));
+            exitKiosk(context);
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_ADMIN_PANEL)) {
-            LocalBroadcastManager.getInstance(context).
-                    sendBroadcast(new Intent(Const.ACTION_ADMIN_PANEL));
+            deliverToLauncher(context, Const.ACTION_ADMIN_PANEL);
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_CLEAR_DOWNLOADS)) {
             // Clear download history
@@ -144,13 +154,17 @@ public class PushNotificationProcessor {
             // Factory reset the device
             executor.execute(() -> wipe(context, message.getPayloadJSON()));
             return;
+        } else if (message.getMessageType().equals(PushMessage.TYPE_TEXT_MESSAGE)) {
+            // Text message from the panel's Messages screen. The server queues it and marks it
+            // "Sent"; until this branch existed nothing on the device read it, so it was never
+            // shown to the user and never acknowledged - the panel showed "Sent" forever.
+            showTextMessage(context, message.getPayloadJSON());
+            return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_SCREENSHOT)) {
-            // Not supported on unprivileged (non-system, non-rooted) builds.
-            // Reported explicitly so the server gets a negative acknowledgement instead of silence.
-            RemoteLogger.log(context, Const.LOG_WARN, "Screenshot command rejected: silent screen capture " +
-                    "requires the signature-level permission android.permission.READ_FRAME_BUFFER " +
-                    "(or MediaProjection, which needs interactive user consent). " +
-                    "Headwind MDM is not a system-signed app, so this is not implemented.");
+            // Capture and upload. On Android 11+ with the accessibility service enabled this
+            // succeeds without a per-session consent dialog; below that there is no silent
+            // path, and the reason is logged back to the server rather than swallowed.
+            executor.execute(() -> takeAndUploadScreenshot(context));
             return;
         }
 
@@ -161,6 +175,173 @@ public class PushNotificationProcessor {
             intent.putExtra(Const.INTENT_PUSH_NOTIFICATION_EXTRA, jsonObject.toString());
         }
         context.sendBroadcast(intent);
+    }
+
+    /**
+     * Liga o modo permissivo, o mesmo que o botao "Modo permissivo" do painel de administracao
+     * do proprio aparelho (AdminActivity.clearRestrictions).
+     *
+     * Antes daqui so' saia um LocalBroadcast de ACTION_PERMISSIVE_MODE, que nenhum componente
+     * do app escuta - nao ha' receiver registrado para essa acao em lugar nenhum. Ou seja, o
+     * comando remoto nao levantava restricao alguma: quem faz o trabalho de verdade e'
+     * unlockUserRestrictions + disableScreenshots + parar o servico de controle de status, que
+     * e' o que o botao local sempre fez e o caminho remoto nunca fez.
+     */
+    private static void enablePermissiveMode(Context context) {
+        try {
+            SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+            String restrictions =
+                    UserManager.DISALLOW_SAFE_BOOT + "," +
+                    UserManager.DISALLOW_USB_FILE_TRANSFER + "," +
+                    UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA + "," +
+                    UserManager.DISALLOW_CONFIG_BRIGHTNESS + "," +
+                    UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT + "," +
+                    UserManager.DISALLOW_ADJUST_VOLUME;
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null && config.getRestrictions() != null) {
+                restrictions = "," + config.getRestrictions();
+            }
+            Utils.unlockUserRestrictions(context, restrictions);
+            Utils.disableScreenshots(false, context);
+            LocalBroadcastManager.getInstance(context)
+                    .sendBroadcast(new Intent(Const.ACTION_STOP_CONTROL));
+            RemoteLogger.log(context, Const.LOG_INFO, "Permissive mode enabled by admin command");
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Failed to enable permissive mode: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Shows a text message pushed by the messaging plugin and tells the server it arrived.
+     *
+     * The delivery receipt is sent from here rather than from the UI because the message has
+     * reached the device whether or not the launcher happens to be in the foreground; the
+     * "read" receipt is the UI's job and is sent when the user dismisses the dialog.
+     */
+    private static void showTextMessage(Context context, JSONObject payload) {
+        if (payload == null) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Text message ignored: empty payload");
+            return;
+        }
+        final int messageId = payload.optInt("id", 0);
+        final String text = payload.optString("text", "");
+        if (text.trim().isEmpty()) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Text message " + messageId + " ignored: empty text");
+            return;
+        }
+
+        Intent intent = new Intent(Const.ACTION_SHOW_MESSAGE);
+        intent.putExtra(Const.EXTRA_MESSAGE_ID, messageId);
+        intent.putExtra(Const.EXTRA_MESSAGE_TEXT, text);
+        // Precisa da MainActivity viva para exibir o dialogo: com o launcher fora da frente o
+        // broadcast se perdia e a mensagem nunca aparecia, embora o painel a marcasse enviada.
+        deliverToLauncher(context, intent);
+
+        if (messageId > 0) {
+            confirmMessageStatus(context, messageId, Const.MESSAGE_STATUS_DELIVERED);
+        }
+    }
+
+    /**
+     * Captura a tela a pedido do painel e envia o PNG para o servidor.
+     *
+     * O servidor grava em screenshots/{number}.png dentro do diretorio de arquivos, que e' de
+     * onde "Ver ultima captura de tela" e o painel de acesso remoto ja' liam a imagem - antes
+     * disso ninguem escrevia esse arquivo e o link respondia 404 para sempre.
+     *
+     * Roda fora da thread principal: a captura e o upload sao bloqueantes.
+     */
+    private static void takeAndUploadScreenshot(Context context) {
+        if (!ScreenCaptureService.isAvailable()) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Screenshot command rejected: " + ScreenCaptureService.unavailableReason());
+            return;
+        }
+
+        ScreenCaptureService.capture(new ScreenCaptureService.CaptureCallback() {
+            @Override
+            public void onCaptured(byte[] pngBytes) {
+                if (pngBytes == null || pngBytes.length == 0) {
+                    RemoteLogger.log(context, Const.LOG_WARN, "Screen capture produced no bytes");
+                    return;
+                }
+                executor.execute(() -> uploadScreenshot(context, pngBytes));
+            }
+
+            @Override
+            public void onFailed(String reason) {
+                RemoteLogger.log(context, Const.LOG_WARN, "Screen capture failed: " + reason);
+            }
+        });
+    }
+
+    /**
+     * Envia o PNG ao servidor, caindo para o servidor secundario se o primario nao responder -
+     * o mesmo caminho que os outros envios do agente usam.
+     */
+    private static void uploadScreenshot(Context context, byte[] pngBytes) {
+        try {
+            SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+            RequestBody body = RequestBody.create(MediaType.parse("image/png"), pngBytes);
+
+            Response<ResponseBody> response = null;
+            try {
+                ServerService serverService = ServerServiceKeeper.getServerServiceInstance(context);
+                response = serverService.uploadScreenshot(
+                        settingsHelper.getServerProject(), settingsHelper.getDeviceId(), body).execute();
+            } catch (Exception e) {
+                // Cai para o servidor secundario abaixo.
+            }
+            if (response == null) {
+                ServerService secondary = ServerServiceKeeper.getSecondaryServerServiceInstance(context);
+                response = secondary.uploadScreenshot(
+                        settingsHelper.getServerProject(), settingsHelper.getDeviceId(), body).execute();
+            }
+
+            if (response.isSuccessful()) {
+                RemoteLogger.log(context, Const.LOG_INFO,
+                        "Screenshot uploaded (" + pngBytes.length + " bytes)");
+            } else {
+                RemoteLogger.log(context, Const.LOG_WARN,
+                        "Screenshot upload rejected by the server: HTTP " + response.code());
+            }
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Screenshot upload failed: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Reports a message status (delivered / read) back to the messaging plugin.
+     * Runs off the main thread; a failure is logged and not retried, because the panel
+     * treats a missing receipt as "not confirmed" rather than as an error.
+     */
+    public static void confirmMessageStatus(Context context, int messageId, int status) {
+        executor.execute(() -> {
+            try {
+                SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+                ServerService serverService = ServerServiceKeeper.getServerServiceInstance(context);
+                Response<ResponseBody> response = null;
+                try {
+                    response = serverService.confirmMessageStatus(
+                            settingsHelper.getServerProject(), messageId, status).execute();
+                } catch (Exception e) {
+                    // Falls through to the secondary server below.
+                }
+                if (response == null) {
+                    ServerService secondary = ServerServiceKeeper.getSecondaryServerServiceInstance(context);
+                    response = secondary.confirmMessageStatus(
+                            settingsHelper.getServerProject(), messageId, status).execute();
+                }
+                if (!response.isSuccessful()) {
+                    RemoteLogger.log(context, Const.LOG_WARN, "Message " + messageId +
+                            " status " + status + " rejected by the server: HTTP " + response.code());
+                }
+            } catch (Exception e) {
+                RemoteLogger.log(context, Const.LOG_WARN, "Failed to confirm message " + messageId +
+                        " status " + status + ": " + e.getMessage());
+            }
+        });
     }
 
     private static void runApplication(Context context, JSONObject payload) {
@@ -385,6 +566,63 @@ public class PushNotificationProcessor {
      * Force the device back into lock task mode. The actual startLockTask() call must happen on the
      * foreground Activity, so we hand off to MainActivity via a local broadcast.
      */
+    /**
+     * Traz o launcher para a frente e entrega uma acao a ele.
+     *
+     * Os comandos que dependem da MainActivity chegavam so' como LocalBroadcast. O
+     * LocalBroadcastManager entrega apenas a receivers registrados naquele instante, e o
+     * receiver da MainActivity vive de onCreate ate' onDestroy - ou seja, com o aparelho em
+     * uso normal (outro app na frente, ou a activity ja' destruida) a mensagem era descartada
+     * em silencio e o comando "nao surtia efeito". Era exatamente por isso que "Bloquear
+     * (kiosk)" funcionava e o resto nao: so' o lockKiosk subia a activity antes de avisar.
+     *
+     * A activity e' iniciada primeiro e o broadcast sai depois de um instante, para dar tempo
+     * de o receiver estar registrado quando a activity precisou ser recriada.
+     */
+    private static void deliverToLauncher(Context context, String action) {
+        deliverToLauncher(context, new Intent(action));
+    }
+
+    private static void deliverToLauncher(Context context, Intent intent) {
+        try {
+            Intent launcherIntent = new Intent(context, com.hmdm.launcher.ui.MainActivity.class);
+            launcherIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            context.startActivity(launcherIntent);
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Failed to bring the launcher to front for "
+                    + intent.getAction() + ": " + e.getMessage());
+        }
+        executor.execute(() -> {
+            try {
+                Thread.sleep(LAUNCHER_RESUME_DELAY_MS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+        });
+    }
+
+    /**
+     * Sai do modo kiosk temporariamente.
+     *
+     * Espelha o lockKiosk: alem de avisar a MainActivity, grava kioskMode=false na
+     * configuracao. Sem gravar, o efeito dependia unicamente de um broadcast que podia se
+     * perder, e mesmo quando chegava a MainActivity so' alterava o objeto em memoria - a
+     * proxima leitura da configuracao trazia o kiosk de volta.
+     */
+    private static void exitKiosk(Context context) {
+        RemoteLogger.log(context, Const.LOG_INFO, "Exiting kiosk by a Push message");
+        SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+        ServerConfig config = settingsHelper.getConfig();
+        if (config == null) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Exit kiosk failed: no configuration available yet");
+            return;
+        }
+        config.setKioskMode(false);
+        settingsHelper.updateConfig(config);
+        deliverToLauncher(context, Const.ACTION_EXIT_KIOSK);
+    }
+
     private static void lockKiosk(Context context) {
         RemoteLogger.log(context, Const.LOG_INFO, "Locking kiosk by a Push message");
         ServerConfig config = SettingsHelper.getInstance(context.getApplicationContext()).getConfig();

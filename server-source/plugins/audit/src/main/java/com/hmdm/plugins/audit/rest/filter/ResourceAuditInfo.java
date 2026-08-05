@@ -63,7 +63,14 @@ public enum ResourceAuditInfo {
     DEVICE_PASSWORD_RESET("PUT", "/rest/plugins/devicereset/private/password", true, "plugin.audit.action.password.reset", true, true),
     DEVICE_FACTORY_RESET("PUT", "/rest/plugins/devicereset/private/reset", false, "plugin.audit.action.device.reset", false, true),
     DEVICE_LOCK("PUT", "/rest/plugins/devicereset/private/lock", true, "plugin.audit.action.device.lock", true, true),
-    UPDATE_UPDATE("POST", "/rest/private/update", true, "plugin.audit.action.update.update", true, true);
+    UPDATE_UPDATE("POST", "/rest/private/update", true, "plugin.audit.action.update.update", true, true),
+
+    // Comandos remotos: sao acoes que mudam o estado do aparelho (ate' apagar o aparelho
+    // inteiro), entao precisam ficar registradas com quem pediu e com o corpo da requisicao.
+    // O curinga no meio da URI cobre o id do dispositivo.
+    DEVICE_REMOTE_COMMAND("POST", "/rest/private/devices/*/command", true, "plugin.audit.action.device.remote.command", true, true),
+    // O corpo do force kiosk e' sempre vazio, entao nao ha' o que registrar dele.
+    DEVICE_FORCE_KIOSK("POST", "/rest/private/devices/*/lock", true, "plugin.audit.action.device.force.kiosk", false, true);
 
     /**
      * <p>Method for the REST resource to track audit log for.</p>

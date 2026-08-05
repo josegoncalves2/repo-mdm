@@ -39,7 +39,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.hmdm.notification.PushService;
+import com.hmdm.notification.persistence.domain.PushMessage;
 import com.hmdm.persistence.*;
+import com.hmdm.service.RemoteCommand;
 import com.hmdm.persistence.domain.*;
 import com.hmdm.rest.json.*;
 import com.hmdm.rest.json.view.devicelist.DeviceListView;
@@ -440,6 +442,110 @@ public class DeviceResource {
             return Response.OK();
         } catch (Exception e) {
             log.error("Failed to save the description for device #{}", deviceId, e);
+            return Response.INTERNAL_ERROR();
+        }
+    }
+
+    // =================================================================================================================
+    @ApiOperation(
+            value = "List supported remote commands",
+            notes = "Returns the commands this server build can actually deliver. The control panel renders its " +
+                    "buttons from this list, so it can never offer an action the backend would reject."
+    )
+    @GET
+    @Path("/commands")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getSupportedCommands() {
+        try {
+            return Response.OK(RemoteCommand.supportedActions());
+        } catch (Exception e) {
+            log.error("Failed to list the supported remote commands", e);
+            return Response.INTERNAL_ERROR();
+        }
+    }
+
+    // =================================================================================================================
+    @ApiOperation(
+            value = "Send a remote command to a device",
+            notes = "Resolves the logical command name into a push message understood by the device agent and " +
+                    "delivers it over both the MQTT and the polling channels. The command is rejected unless the " +
+                    "current user holds the RBAC permission bound to it."
+    )
+    @POST
+    @Path("/{id}/command")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response sendDeviceCommand(@PathParam("id") @ApiParam("Device ID") Integer id,
+                                      DeviceCommandRequest request) {
+        return dispatchCommand(id, request == null ? null : request.getAction(),
+                request == null ? null : request.getParams());
+    }
+
+    // =================================================================================================================
+    @ApiOperation(
+            value = "Force a device back into kiosk mode",
+            notes = "Shortcut for the 'lock_screen' remote command."
+    )
+    @POST
+    @Path("/{id}/lock")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response forceKiosk(@PathParam("id") @ApiParam("Device ID") Integer id) {
+        return dispatchCommand(id, RemoteCommand.LOCK_SCREEN.getAction(), null);
+    }
+
+    /**
+     * <p>Resolves, authorises and delivers a remote command.</p>
+     *
+     * <p>An unknown action is refused with the list of the ones this build knows, because the
+     * alternative - forwarding it to the agent anyway - produces a device that silently
+     * ignores the message while the panel reports success.</p>
+     */
+    private Response dispatchCommand(Integer id, String action, Map<String, Object> params) {
+        try {
+            final Device dbDevice = this.deviceDAO.getDeviceById(id);
+            if (dbDevice == null) {
+                log.error("Remote command '{}' refused: device #{} does not exist", action, id);
+                return Response.DEVICE_NOT_FOUND_ERROR();
+            }
+
+            final RemoteCommand command = RemoteCommand.byAction(action).orElse(null);
+            if (command == null) {
+                log.warn("Rejected unknown remote command '{}' for device #{}. Supported commands: {}",
+                        action, id, RemoteCommand.supportedActions());
+                return Response.ERROR("error.remote.command.unsupported");
+            }
+
+            // edit_devices is the blanket permission the legacy panel has always used; the
+            // per-command permission is what allows a narrower operator role to exist.
+            if (!SecurityContext.get().hasPermission("edit_devices")
+                    && !SecurityContext.get().hasPermission(command.getPermission())) {
+                log.error("Unauthorized attempt to send remote command '{}' to device #{}", action, id,
+                        SecurityException.onCustomerDataAccessViolation(id, "device"));
+                return Response.PERMISSION_DENIED();
+            }
+
+            final String payload;
+            try {
+                payload = command.buildPayload(params);
+            } catch (IllegalArgumentException e) {
+                log.warn("Rejected remote command '{}' for device #{}: {}", action, id, e.getMessage());
+                return Response.ERROR(e.getMessage());
+            }
+
+            PushMessage message = new PushMessage();
+            message.setDeviceId(dbDevice.getId());
+            message.setMessageType(command.getPushType());
+            message.setPayload(payload);
+            this.pushService.send(message);
+
+            Map<String, Object> result = new HashMap<>();
+            result.put("action", command.getAction());
+            result.put("pushType", command.getPushType());
+            result.put("deviceId", dbDevice.getId());
+            result.put("deviceNumber", dbDevice.getNumber());
+            return Response.OK(result);
+        } catch (Exception e) {
+            log.error("Failed to send remote command '{}' to device #{}", action, id, e);
             return Response.INTERNAL_ERROR();
         }
     }

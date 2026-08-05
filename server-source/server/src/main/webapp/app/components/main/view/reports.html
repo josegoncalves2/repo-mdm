@@ -1,22 +1,21 @@
 <div class="hwmdm-list-page reports-page" ng-controller="ReportsTabController">
     <div class="hwmdm-page-toolbar">
         <div>
-            <h3>Reports &amp; Telemetry</h3>
-            <p>Fleet composition, health and app inventory, computed live from the current device list.</p>
+            <h3 localized>nav.reports</h3>
+            <p localized>reports.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
-            <span class="reports-generated" ng-if="generatedAt && !loading">{{deviceCount}} devices · generated {{generatedAt | date:'short'}}</span>
-            <button type="button" class="btn btn-default" ng-click="refresh()" ng-disabled="loading">Refresh</button>
-            <button type="button" class="btn btn-primary" ng-click="exportCsv()" ng-disabled="loading || !devices.length">Export CSV</button>
+            <span class="reports-generated" ng-if="generatedAt && !loading">{{deviceCount}} {{'reports.devices.generated' | localize}} {{generatedAt | date:'short'}}</span>
+            <button type="button" class="btn btn-default" ng-click="refresh()" ng-disabled="loading" localized>button.refresh</button>
         </div>
     </div>
 
     <div class='form-group' ng-if='errorMessage'><div class='error'><span>{{errorMessage}}</span></div></div>
-    <div class="ext-hub-empty" ng-if="!loading && !errorMessage && deviceCount === 0">No devices enrolled yet.</div>
+    <div class="ext-hub-empty" ng-if="!loading && !errorMessage && deviceCount === 0" localized>reports.empty</div>
 
     <div class="reports-grid" ng-if="!loading && deviceCount > 0">
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Status</h4>
+            <h4 class="ext-hub-section-title" localized>reports.section.status</h4>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in statusBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
@@ -27,64 +26,71 @@
         </section>
 
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Android version</h4>
+            <h4 class="ext-hub-section-title" localized>reports.section.android</h4>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in osBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
                     <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
                     <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-                <div class="ext-hub-empty" ng-if="!osBreakdown.length">No Android version data reported yet.</div>
+                <div class="ext-hub-empty" ng-if="!osBreakdown.length" localized>reports.empty.android</div>
             </div>
         </section>
 
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Battery health</h4>
+            <h4 class="ext-hub-section-title" localized>reports.section.battery</h4>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in batteryBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
                     <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
                     <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-                <div class="ext-hub-empty" ng-if="!batteryBreakdown.length">No battery data reported yet.</div>
+                <div class="ext-hub-empty" ng-if="!batteryBreakdown.length" localized>reports.empty.battery</div>
             </div>
         </section>
 
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Storage health</h4>
+            <h4 class="ext-hub-section-title" localized>reports.section.storage</h4>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in storageBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
                     <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
                     <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-                <div class="ext-hub-empty" ng-if="!storageBreakdown.length">No storage data reported yet.</div>
+                <div class="ext-hub-empty" ng-if="!storageBreakdown.length" localized>reports.empty.storage</div>
             </div>
         </section>
 
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Device models</h4>
+            <h4 class="ext-hub-section-title" localized>reports.section.models</h4>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in modelBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
                     <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
                     <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-                <div class="ext-hub-empty" ng-if="!modelBreakdown.length">No model data reported yet.</div>
+                <div class="ext-hub-empty" ng-if="!modelBreakdown.length" localized>reports.empty.models</div>
             </div>
         </section>
 
         <section class="ext-hub-section">
-            <h4 class="ext-hub-section-title">Most installed apps</h4>
-            <p class="ext-hub-section-hint">Share of the fleet with each application installed (top 20). Network data-usage telemetry is not collected by the launcher yet, so it cannot be shown here.</p>
+            <h4 class="ext-hub-section-title" localized>reports.section.apps</h4>
+            <p class="ext-hub-section-hint" localized>reports.apps.hint</p>
             <div class="reports-bars">
                 <div class="reports-bar-row" ng-repeat="row in appBreakdown">
                     <span class="reports-bar-label">{{row.label}}</span>
                     <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
                     <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-                <div class="ext-hub-empty" ng-if="!appBreakdown.length">No application inventory reported yet.</div>
+                <div class="ext-hub-empty" ng-if="!appBreakdown.length" localized>reports.empty.apps</div>
             </div>
         </section>
+    </div>
+
+    <!-- Export closes the report, so it sits after the data it exports, not next to the title. -->
+    <div class="reports-footer-actions" ng-if="!loading && deviceCount > 0">
+        <button type="button" class="btn btn-primary" data-testid="reports-export-csv"
+                ng-click="exportCsv()" ng-disabled="loading || !devices.length"
+                localized>reports.export.csv</button>
     </div>
 </div>

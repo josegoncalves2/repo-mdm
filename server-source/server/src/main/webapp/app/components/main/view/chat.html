@@ -1,5 +1,12 @@
 <!-- Localization completed -->
 <div class="chat-page" ng-controller="ChatTabController">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.chat</h3>
+            <p localized>chat.page.subtitle</p>
+        </div>
+    </div>
+
     <div class='form-group' ng-show='errorMessage'>
         <div class='error'><span>{{errorMessage}}</span></div>
     </div>
@@ -16,19 +23,24 @@
             <div class="summary-panel-header">
                 <h3 localized>chat.title</h3>
             </div>
+            <!--
+                A plain select, not a free-text autocomplete. The autocomplete only showed
+                anything once the operator had already typed a prefix of a device number they
+                had to know by heart, so there was no way to just pick a device from a list.
+            -->
             <div class="form-group">
-                <label localized>plugin.messaging.label.device</label>
-                <input type="text"
-                       ng-model="chat.deviceNumber"
-                       localized-placeholder="search.placeholder.device"
-                       autocomplete="off"
-                       class="form-control"
-                       typeahead="device for device in getDevices($viewValue)"
-                       typeahead-loading="loadingDevices"
-                       typeahead-wait-ms="300"
-                       typeahead-focus-first="false"
-                       typeahead-input-formatter="deviceLookupFormatter($model)"
-                       typeahead-no-results="noResults">
+                <label for="chat-device-select" localized>plugin.messaging.label.device</label>
+                <select id="chat-device-select"
+                        class="form-control"
+                        data-testid="chat-device-select"
+                        ng-model="chat.deviceNumber"
+                        ng-disabled="loadingDevices || devices.length === 0"
+                        ng-options="device.number as deviceLabel(device) for device in devices">
+                    <option value="" localized>chat.device.select.placeholder</option>
+                </select>
+                <div class="field-hint" ng-if="loadingDevices" localized>remote.loading</div>
+                <div class="field-hint" ng-if="!loadingDevices && devices.length === 0"
+                     localized>chat.device.select.empty</div>
             </div>
             <div class="form-group">
                 <label localized>plugin.messaging.label.message</label>

@@ -1,3 +1,9 @@
+# Sobe com `docker compose up -d` num clone recem-feito, sem nenhum passo previo.
+#
+# Todo ${VAR} tem valor padrao para desenvolvimento local, entao a ausencia de
+# source/.env (que e' gitignored, porque carrega senha e segredo reais) nao impede
+# a subida. Quando o .env existe, o compose o le automaticamente e os valores dele
+# vencem estes padroes -- o fluxo do scripts/provision.sh continua igual.
 services:
 
   postgresql:
@@ -5,11 +11,16 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: ${SQL_USER}
-      POSTGRES_PASSWORD: ${SQL_PASS}
-      POSTGRES_DB: ${SQL_BASE}
+      POSTGRES_USER: ${SQL_USER:-hmdm}
+      POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
+      POSTGRES_DB: ${SQL_BASE:-hmdm}
     volumes:
       - ./volumes/db:/var/lib/postgresql/data
+      # O Postgres executa o que estiver aqui na PRIMEIRA inicializacao do cluster,
+      # e aceita .sql.gz nativamente. Sem isto o banco sobe vazio, sem usuario
+      # nenhum, e nao ha como entrar no painel. O provision.sh restaura o mesmo
+      # dump quando ja existe banco; os dois caminhos levam ao mesmo lugar.
+      - ./sql/hmdm-dump.sql.gz:/docker-entrypoint-initdb.d/10-hmdm-dump.sql.gz:ro
 
   hmdm:
     image: headwindmdm/hmdm:0.1.8
@@ -23,22 +34,26 @@ services:
       - ./volumes/work:/usr/local/tomcat/work
       - ./volumes/hmdm-config:/usr/local/tomcat/conf/Catalina/localhost
       - ./volumes/webapps:/usr/local/tomcat/webapps
+      # A WAR versionada entra direto no cache que o docker-entrypoint.sh procura.
+      # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
+      # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
+      - ../dist/hmdm.war:/usr/local/tomcat/work/cache/hmdm-5.39.2-os.war:ro
     environment:
       SQL_HOST: postgresql
-      SQL_USER: ${SQL_USER}
-      SQL_BASE: ${SQL_BASE}
-      SQL_PASS: ${SQL_PASS}
-      BASE_DOMAIN: ${BASE_DOMAIN}
-      LOCAL_IP: ${LOCAL_IP}
-      PROXY_ADDRESSES: ${PROXY_ADDRESSES}
-      PROTOCOL: ${PROTOCOL}
-      PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL}
-      ADMIN_EMAIL: ${ADMIN_EMAIL}
-      SHARED_SECRET: ${SHARED_SECRET}
-      HMDM_VARIANT: ${HMDM_VARIANT}
-      DOWNLOAD_CREDENTIALS: ${DOWNLOAD_CREDENTIALS}
-      HMDM_URL: ${HMDM_URL}
-      CLIENT_VERSION: ${CLIENT_VERSION}
-      FORCE_RECONFIGURE: ${FORCE_RECONFIGURE}
+      SQL_USER: ${SQL_USER:-hmdm}
+      SQL_BASE: ${SQL_BASE:-hmdm}
+      SQL_PASS: ${SQL_PASS:-hmdm}
+      BASE_DOMAIN: ${BASE_DOMAIN:-localhost}
+      LOCAL_IP: ${LOCAL_IP:-}
+      PROXY_ADDRESSES: ${PROXY_ADDRESSES:-}
+      PROTOCOL: ${PROTOCOL:-http}
+      PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL:-http}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
+      SHARED_SECRET: ${SHARED_SECRET:-hwmdm-local-dev}
+      HMDM_VARIANT: ${HMDM_VARIANT:-os}
+      DOWNLOAD_CREDENTIALS: ${DOWNLOAD_CREDENTIALS:-}
+      HMDM_URL: ${HMDM_URL:-}
+      CLIENT_VERSION: ${CLIENT_VERSION:-6.36}
+      FORCE_RECONFIGURE: ${FORCE_RECONFIGURE:-true}
       APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
       AUTO_UPDATE_WEBAPP: "false"

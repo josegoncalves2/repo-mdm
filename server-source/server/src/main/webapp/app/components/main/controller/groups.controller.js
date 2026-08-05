@@ -29,7 +29,7 @@ angular.module('headwind-kiosk')
 
         $scope.editGroup = function (group) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/group.html?v=hf285e6c1dc',
+                templateUrl: 'app/components/main/view/modal/group.html?v=h5b98b992ea',
                 controller: 'GroupModalController',
                 resolve: {
                     group: function () {

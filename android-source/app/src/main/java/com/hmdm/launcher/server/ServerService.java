@@ -98,6 +98,16 @@ public interface ServerService {
     @Headers("Content-Type: application/json")
     Call<ResponseBody> sendDetailedInfo(@Path("project") String project, @Path("number") String number, @Body List<DetailedInfo> infoItems);
 
+    /**
+     * Envia a captura de tela feita a pedido do painel. O corpo e' o PNG cru: o servidor grava
+     * como screenshots/{number}.png dentro do diretorio de arquivos, que e' de onde o painel
+     * ja' le' a imagem.
+     */
+    @POST("{project}/rest/public/screenshot/{number}")
+    Call<ResponseBody> uploadScreenshot(@Path("project") String project,
+                                        @Path("number") String number,
+                                        @Body RequestBody image);
+
     @PUT("{project}/rest/plugins/devicelocations/public/update/{number}")
     @Headers("Content-Type: application/json")
     Call<ResponseBody> sendLocations(@Path("project") String project, @Path("number") String number, @Body List<LocationTable.Location> locationItems);
@@ -116,5 +126,14 @@ public interface ServerService {
     @POST("{project}/rest/plugins/devicereset/public/password/{number}")
     @Headers("Content-Type: application/json")
     Call<ResponseBody> confirmPasswordReset(@Path("project") String project, @Path("number") String number, @Body DeviceInfo deviceInfo);
+
+    // Acknowledges a text message pushed by the messaging plugin. Without this the message
+    // stays "Sent" in the panel forever, with no way to tell it ever reached the device.
+    // Status values match com.hmdm.plugins.messaging.persistence.domain.Message:
+    // 0 = sent, 1 = delivered, 2 = read.
+    @GET("{project}/rest/plugins/messaging/public/status/{id}/{status}")
+    Call<ResponseBody> confirmMessageStatus(@Path("project") String project,
+                                            @Path("id") int id,
+                                            @Path("status") int status);
 
 }

@@ -1,6 +1,13 @@
 <!-- Localization completed -->
 <div class="hwmdm-dashboard" ng-controller="SummaryTabController">
 
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.dashboard</h3>
+            <p localized>dashboard.page.subtitle</p>
+        </div>
+    </div>
+
     <div class='form-group' ng-show='errorMessage'>
         <div class='error'><span>{{errorMessage}}</span></div>
     </div>
@@ -15,29 +22,28 @@
     </div>
 
     <section class="summary-panel" ng-if="hasPermission('settings') || hasPermission('system.backup.manage') || hasPermission('plugin_deviceexport_access') || hasPermission('plugin_deviceimport_access')">
+        <!-- One destination, one button. Three buttons all opening the same screen implied
+             three different places to go, which is the confusion this panel exists to fix.
+             The button sits in the header row: as a block of its own it left the panel as a
+             full-width band whose right half was empty, which is the void the "Quick access"
+             label used to sit in. -->
         <div class="summary-panel-header">
             <h3>Backup / Import / Export</h3>
-            <span>Quick access</span>
-        </div>
-        <!-- One destination, one button. Three buttons all opening the same screen implied
-             three different places to go, which is the confusion this panel exists to fix. -->
-        <p class="summary-panel-hint">
-            Export the current settings as a JSON file, import a saved one, or manage database backups.
-        </p>
-        <div class="gov-actions-row">
-            <button type="button" class="btn btn-default" ng-click="openTab('GOVERNANCE')">
+            <button type="button" class="btn btn-default summary-panel-action" ng-click="openTab('GOVERNANCE')"
+                    data-testid="dashboard-open-governance">
                 <span class="glyphicon glyphicon-hdd"></span> Open backups &amp; import/export
             </button>
         </div>
+        <p class="summary-panel-hint">
+            Export the current settings as a JSON file, import a saved one, or manage database backups.
+        </p>
     </section>
 
     <div class="summary-layout">
         <section class="summary-panel summary-map-panel">
             <div class="summary-panel-header">
                 <h3>Last device locations</h3>
-                <span>
-                    {{locatedDevices.length}} devices
-                </span>
+                <span>{{locatedDevices.length}} {{locatedDevices.length === 1 ? 'device' : 'devices'}}</span>
             </div>
             <div class="summary-map-shell">
                 <div id="summary-map" class="summary-map"></div>
@@ -51,7 +57,7 @@
         <section class="summary-panel summary-recent-panel">
             <div class="summary-panel-header">
                 <h3>Recent devices</h3>
-                <span>{{recentDevices.length}}</span>
+                <span>{{recentDevices.length}} {{recentDevices.length === 1 ? 'device' : 'devices'}}</span>
             </div>
             <div class="summary-device-list">
                 <div class="summary-device-row" ng-repeat="device in recentDevices">
@@ -76,7 +82,7 @@
     <section class="summary-panel summary-alert-panel">
         <div class="summary-panel-header">
             <h3>Operational alerts</h3>
-            <span>{{alerts.length}}</span>
+            <span>{{alerts.length}} open</span>
         </div>
         <div class="summary-alert-list">
             <div class="summary-alert-row" ng-repeat="alert in alerts | limitTo:20" ng-class="getAlertClass(alert)">

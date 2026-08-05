@@ -101,10 +101,12 @@
             bind:boolToVisible="@{showContent}"
             android:id="@+id/activity_main_content_wrapper">
 
+            <!-- fitCenter (e nao centerCrop) para o logo aparecer inteiro tambem com o
+                 aparelho deitado; ver o comentario em MainActivity.updateConfig. -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:id="@+id/activity_main_background"/>
 
             <LinearLayout

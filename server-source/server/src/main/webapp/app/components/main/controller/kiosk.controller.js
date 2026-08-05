@@ -43,12 +43,12 @@ angular.module('headwind-kiosk')
         var defaultSelected = false;
 
         $scope.tabs = [
-            {id: 'devices', label: 'Devices'},
-            {id: 'lockdown', label: 'Lockdown policy'},
-            {id: 'apps', label: 'Allowed apps'},
-            {id: 'agent', label: 'MDM APK'},
-            {id: 'location', label: 'GPS'},
-            {id: 'apply', label: 'Apply'}
+            {id: 'devices', label: localization.localize('kiosk.tab.devices')},
+            {id: 'lockdown', label: localization.localize('kiosk.tab.lockdown')},
+            {id: 'apps', label: localization.localize('kiosk.tab.apps')},
+            {id: 'agent', label: localization.localize('kiosk.tab.agent')},
+            {id: 'location', label: localization.localize('kiosk.tab.location')},
+            {id: 'apply', label: localization.localize('kiosk.tab.apply')}
         ];
 
         var versionIndex = function (versionText) {
@@ -360,14 +360,15 @@ angular.module('headwind-kiosk')
         $scope.getAgentSummary = function () {
             var agent = launcherApp();
             if (!agent) {
-                return 'No MDM agent APK in this profile';
+                return localization.localize('kiosk.agent.none');
             }
             return (agent.name || agent.pkg) + (agent.version ? ' ' + agent.version : '');
         };
 
         $scope.getContentAppSummary = function () {
             var app = contentApp();
-            return app ? ((app.name || app.pkg) + (app.version ? ' ' + app.version : '')) : 'No launch app selected';
+            return app ? ((app.name || app.pkg) + (app.version ? ' ' + app.version : ''))
+                       : localization.localize('kiosk.launch.app.none');
         };
 
         $scope.getDeviceIpDisplay = function (device) {
@@ -382,6 +383,46 @@ angular.module('headwind-kiosk')
                 return localization.localize('devices.ip.infra.hidden');
             }
             return localization.localize('devices.ip.not.reported.hint');
+        };
+
+        // device.kioskMode is the lock-task state the agent last reported, and it is null
+        // until a device has actually checked in. Rendering that null as "Not locked" made
+        // a device that has never reported look identical to one that reported itself
+        // unlocked - and contradicted the profile policy shown in the status strip.
+        var deviceKioskState = function (device) {
+            if (!device || device.kioskMode === null || device.kioskMode === undefined) {
+                return 'unknown';
+            }
+            return device.kioskMode ? 'locked' : 'unlocked';
+        };
+
+        $scope.kioskStateLabel = function (device) {
+            return localization.localize('kiosk.device.state.' + deviceKioskState(device));
+        };
+
+        $scope.kioskStateClass = function (device) {
+            switch (deviceKioskState(device)) {
+                case 'locked':
+                    return 'text-success';
+                case 'unlocked':
+                    return 'text-danger';
+                default:
+                    return 'text-muted';
+            }
+        };
+
+        // Only worth a note when the device does not match what the profile asks for,
+        // so the operator can tell "policy not applied yet" from "policy says no kiosk".
+        $scope.kioskStateNote = function (device) {
+            var state = deviceKioskState(device);
+            var wanted = !!($scope.configuration && $scope.configuration.kioskMode);
+            if (state === 'unknown') {
+                return localization.localize('kiosk.device.state.unknown.hint');
+            }
+            if (wanted && state === 'unlocked') {
+                return localization.localize('kiosk.device.state.pending.hint');
+            }
+            return null;
         };
 
         $scope.profileDevices = function () {
@@ -421,7 +462,7 @@ angular.module('headwind-kiosk')
             configurationService.updateConfiguration(request, function (response) {
                 $scope.saving = false;
                 if (response.status === 'OK') {
-                    $scope.feedback = 'Kiosk profile saved and queued for devices.';
+                    $scope.feedback = localization.localize('kiosk.save.feedback');
                     if (response.data) {
                         $scope.configuration = response.data;
                         normalizeConfigurationCollections();

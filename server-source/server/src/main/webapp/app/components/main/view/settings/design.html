@@ -2,8 +2,8 @@
 <div class="width-1000 hwmdm-settings-page" ng-controller="SettingsTabController" ng-init="initDesignSettings()">
     <div class="hwmdm-page-toolbar">
         <div>
-            <h3 localized>form.settings.design.title</h3>
-            <p>Launcher theme, icon scale and desktop title rules used by enrolled devices.</p>
+            <h3 localized>settings.design.title</h3>
+            <p localized>settings.design.subtitle</p>
         </div>
     </div>
 
@@ -14,109 +14,22 @@
                 <div ng-show="errorMessage" class="error"><span>{{errorMessage}}</span></div>
             </div>
 
+            <!--
+                Only the web console is configured here. The launcher theme that goes down to
+                the tablets (background, icon size, desktop title) belongs to a device profile
+                and is edited in step 6 "Home screen appearance" of the profile editor - having
+                it on this page as well meant two places claimed to own the same setting.
+            -->
             <div class="hwmdm-theme-grid">
                 <section class="hwmdm-form-section">
                     <div class="hwmdm-form-section-head">
-                        <h4>Launcher dos devices</h4>
-                        <p>Tema padrao enviado para os aparelhos enrolled.</p>
+                        <h4 localized>settings.design.console.title</h4>
+                        <p localized>settings.design.console.subtitle</p>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" localized>form.settings.design.color.font</label>
-                        <div class="col-sm-8">
-                            <input ng-model="settings.backgroundColor" colorpicker type="text" class="form-control"
-                                   localized-placeholder="form.settings.design.color.font.placeholder"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" localized>form.settings.design.color.app.names</label>
-                        <div class="col-sm-8">
-                            <input ng-model="settings.textColor" colorpicker type="text" class="form-control"
-                                   localized-placeholder="form.settings.design.color.app.names.placeholder"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" localized>form.settings.design.url.background.image</label>
-                        <div class="col-sm-8">
-                            <div class="hwmdm-inline-action">
-                                <input ng-model="settings.backgroundImageUrl"
-                                       type="text" class="form-control"
-                                       localized-placeholder="form.settings.design.url.background.image.placeholder">
-                                <button type="button" class="btn btn-default" ng-click="uploadBackground()"
-                                        localized>form.configuration.settings.design.upload</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" for="iconSize" localized>form.settings.design.size.icon</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" id="iconSize" ng-model="settings.iconSize">
-                                <option ng-value="'SMALL'" ng-selected="settings.iconSize === 'SMALL'"
-                                        localized>form.settings.design.size.icon.small</option>
-                                <option ng-value="'MEDIUM'" ng-selected="settings.iconSize === 'MEDIUM'"
-                                        localized>form.settings.design.size.icon.medium</option>
-                                <option ng-value="'LARGE'" ng-selected="settings.iconSize === 'LARGE'"
-                                        localized>form.settings.design.size.icon.large</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" for="desktopHeader" localized>form.configuration.settings.design.desktop.header</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" id="desktopHeader" ng-model="settings.desktopHeader">
-                                <option ng-value="'NO_HEADER'" ng-selected="settings.desktopHeader === 'NO_HEADER'"
-                                        localized>form.configuration.settings.design.desktop.header.no</option>
-                                <option ng-value="'DEVICE_ID'" ng-selected="settings.desktopHeader === 'DEVICE_ID'"
-                                        localized>form.configuration.settings.design.desktop.header.deviceid</option>
-                                <option ng-value="'DESCRIPTION'" ng-selected="settings.desktopHeader === 'DESCRIPTION'"
-                                        localized>form.configuration.settings.design.desktop.header.description</option>
-                                <option ng-value="'TEMPLATE'" ng-selected="settings.desktopHeader === 'TEMPLATE'"
-                                        localized>form.configuration.settings.design.desktop.header.custom</option>
-                                <option ng-if="settings.customPropertyName1" ng-value="'CUSTOM1'" ng-selected="settings.desktopHeader === 'CUSTOM1'">{{settings.customPropertyName1}}</option>
-                                <option ng-if="settings.customPropertyName2" ng-value="'CUSTOM2'" ng-selected="settings.desktopHeader === 'CUSTOM2'">{{settings.customPropertyName2}}</option>
-                                <option ng-if="settings.customPropertyName3" ng-value="'CUSTOM3'" ng-selected="settings.desktopHeader === 'CUSTOM3'">{{settings.customPropertyName3}}</option>
-                            </select>
-                            <div class="field-hint" ng-if="settings.desktopHeader === 'DESCRIPTION' || settings.desktopHeader === 'CUSTOM1' || settings.desktopHeader === 'CUSTOM2' || settings.desktopHeader === 'CUSTOM3'" localized>form.configuration.settings.design.desktop.header.hint</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group" ng-if="settings.desktopHeader === 'TEMPLATE'">
-                        <label class="col-sm-4 control-label" localized>form.configuration.settings.design.desktop.header.template</label>
-                        <div class="col-sm-8">
-                            <input ng-model="settings.desktopHeaderTemplate"
-                                   type="text" class="form-control"
-                                   placeholder="{{desktopHeaderTemplatePlaceholder}}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" localized>form.settings.design.preview</label>
-                        <div class="col-sm-8">
-                            <div class="design-preview"
-                                 ng-style="{
-                                     'background-color': settings.backgroundColor || '#000000',
-                                     'background-image': settings.backgroundImageUrl ? 'url(' + settings.backgroundImageUrl + ')' : 'none'
-                                 }">
-                                <div class="design-preview-icon"></div>
-                                <div class="design-preview-label"
-                                     ng-style="{'color': settings.textColor || '#ffffff'}">{{'form.settings.design.preview.app.name' | localize}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="hwmdm-form-section">
-                    <div class="hwmdm-form-section-head">
-                        <h4>Console administrativo</h4>
-                        <p>Aparencia do painel web salva nas configuracoes do servidor.</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" for="webPrimaryColor">Cor principal</label>
+                        <label class="col-sm-4 control-label" for="webPrimaryColor"
+                               localized>settings.design.console.primary.color</label>
                         <div class="col-sm-8">
                             <input id="webPrimaryColor"
                                    ng-model="settings.webPrimaryColor"
@@ -124,12 +37,13 @@
                                    type="text"
                                    class="form-control"
                                    ng-pattern="/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/">
-                            <div class="field-hint">Botoes, links e item ativo do menu.</div>
+                            <div class="field-hint" localized>settings.design.console.primary.color.hint</div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="webSidebarColor">Cor da lateral</label>
+                        <label class="col-sm-4 control-label" for="webSidebarColor"
+                               localized>settings.design.console.sidebar.color</label>
                         <div class="col-sm-8">
                             <input id="webSidebarColor"
                                    ng-model="settings.webSidebarColor"
@@ -137,12 +51,13 @@
                                    type="text"
                                    class="form-control"
                                    ng-pattern="/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/">
-                            <div class="field-hint">Fundo do menu lateral.</div>
+                            <div class="field-hint" localized>settings.design.console.sidebar.color.hint</div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="webTextColor">Cor do texto</label>
+                        <label class="col-sm-4 control-label" for="webTextColor"
+                               localized>settings.design.console.text.color</label>
                         <div class="col-sm-8">
                             <input id="webTextColor"
                                    ng-model="settings.webTextColor"
@@ -150,23 +65,47 @@
                                    type="text"
                                    class="form-control"
                                    ng-pattern="/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/">
-                            <div class="field-hint">Texto principal do painel e do menu.</div>
+                            <div class="field-hint" localized>settings.design.console.text.color.hint</div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="webLogoUrl">Logo do console</label>
+                        <label class="col-sm-4 control-label" for="webLogoUrl"
+                               localized>settings.design.console.logo</label>
                         <div class="col-sm-8">
                             <div class="hwmdm-inline-action">
                                 <input id="webLogoUrl"
                                        ng-model="settings.webLogoUrl"
                                        type="url"
                                        class="form-control">
-                                <button type="button" class="btn btn-default" ng-click="uploadLogo()">Escolher arquivo</button>
+                                <button type="button" class="btn btn-default" ng-click="uploadLogo()"
+                                        localized>settings.design.console.logo.choose</button>
                             </div>
-                            <div class="field-hint">Vazio mantem a marca Headwind MDM.</div>
+                            <div class="field-hint" localized>settings.design.console.logo.hint</div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" localized>settings.design.console.logo.preview</label>
+                        <div class="col-sm-8">
+                            <div class="hwmdm-logo-preview">
+                                <img ng-if="settings.webLogoUrl" ng-src="{{settings.webLogoUrl}}"
+                                     class="hwmdm-brand-logo" alt=""/>
+                                <span ng-if="!settings.webLogoUrl" class="hwmdm-brand-mark">HW</span>
+                                <span class="hwmdm-logo-preview-name">Headwind MDM</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="hwmdm-form-section hwmdm-form-section-note">
+                    <div class="hwmdm-form-section-head">
+                        <h4 localized>settings.design.launcher.moved.title</h4>
+                        <p localized>settings.design.launcher.moved.body</p>
+                    </div>
+                    <button type="button" class="btn btn-default" ng-click="openTab('CONFS')"
+                            data-testid="design-open-profiles"
+                            localized>settings.design.launcher.moved.action</button>
                 </section>
             </div>
 

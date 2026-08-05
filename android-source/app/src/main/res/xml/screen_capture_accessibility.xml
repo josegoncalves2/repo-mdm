@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Servico de acessibilidade usado somente para capturar a tela.
+
+    Captura silenciosa de tela no Android exige uma destas tres coisas: permissao de nivel
+    de assinatura (READ_FRAME_BUFFER, so' para app de sistema), MediaProjection (que abre um
+    dialogo de consentimento a cada sessao, o que inviabiliza auditoria) ou a capacidade
+    canTakeScreenshot de um servico de acessibilidade, disponivel a partir do Android 11.
+    Este arquivo declara a terceira.
+
+    Nao pedimos eventos de acessibilidade de verdade: accessibilityEventTypes fica vazio e o
+    servico nao inspeciona nem interage com o conteudo das telas. Ele existe unicamente para
+    responder ao comando remoto de captura.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canTakeScreenshot="true"
+    android:notificationTimeout="100" />

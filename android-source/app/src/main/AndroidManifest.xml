@@ -251,6 +251,19 @@
         <service android:name=".pro.service.CheckForegroundAppAccessibilityService"
                  android:exported="false"/>
 
+        <!-- Captura de tela para o acesso remoto. Precisa ser exported porque quem faz o bind
+             e' o proprio sistema, e precisa exigir BIND_ACCESSIBILITY_SERVICE para que so' o
+             sistema consiga fazer esse bind. -->
+        <service android:name=".service.ScreenCaptureService"
+                 android:exported="true"
+                 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                       android:resource="@xml/screen_capture_accessibility"/>
+        </service>
+
         <service android:name="org.eclipse.paho.android.service.MqttService"
             android:foregroundServiceType="specialUse|systemExempted"
             android:exported="false">
