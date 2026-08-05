@@ -44,6 +44,7 @@ import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.ServerConfig;
 import com.hmdm.launcher.server.ServerService;
 import com.hmdm.launcher.server.ServerServiceKeeper;
+import com.hmdm.launcher.service.ScreenCaptureService;
 import com.hmdm.launcher.util.InstallUtils;
 import com.hmdm.launcher.util.LegacyUtils;
 import com.hmdm.launcher.util.RemoteLogger;
@@ -62,6 +63,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 
@@ -158,12 +161,10 @@ public class PushNotificationProcessor {
             showTextMessage(context, message.getPayloadJSON());
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_SCREENSHOT)) {
-            // Not supported on unprivileged (non-system, non-rooted) builds.
-            // Reported explicitly so the server gets a negative acknowledgement instead of silence.
-            RemoteLogger.log(context, Const.LOG_WARN, "Screenshot command rejected: silent screen capture " +
-                    "requires the signature-level permission android.permission.READ_FRAME_BUFFER " +
-                    "(or MediaProjection, which needs interactive user consent). " +
-                    "Headwind MDM is not a system-signed app, so this is not implemented.");
+            // Capture and upload. On Android 11+ with the accessibility service enabled this
+            // succeeds without a per-session consent dialog; below that there is no silent
+            // path, and the reason is logged back to the server rather than swallowed.
+            executor.execute(() -> takeAndUploadScreenshot(context));
             return;
         }
 
@@ -239,6 +240,74 @@ public class PushNotificationProcessor {
 
         if (messageId > 0) {
             confirmMessageStatus(context, messageId, Const.MESSAGE_STATUS_DELIVERED);
+        }
+    }
+
+    /**
+     * Captura a tela a pedido do painel e envia o PNG para o servidor.
+     *
+     * O servidor grava em screenshots/{number}.png dentro do diretorio de arquivos, que e' de
+     * onde "Ver ultima captura de tela" e o painel de acesso remoto ja' liam a imagem - antes
+     * disso ninguem escrevia esse arquivo e o link respondia 404 para sempre.
+     *
+     * Roda fora da thread principal: a captura e o upload sao bloqueantes.
+     */
+    private static void takeAndUploadScreenshot(Context context) {
+        if (!ScreenCaptureService.isAvailable()) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Screenshot command rejected: " + ScreenCaptureService.unavailableReason());
+            return;
+        }
+
+        ScreenCaptureService.capture(new ScreenCaptureService.CaptureCallback() {
+            @Override
+            public void onCaptured(byte[] pngBytes) {
+                if (pngBytes == null || pngBytes.length == 0) {
+                    RemoteLogger.log(context, Const.LOG_WARN, "Screen capture produced no bytes");
+                    return;
+                }
+                executor.execute(() -> uploadScreenshot(context, pngBytes));
+            }
+
+            @Override
+            public void onFailed(String reason) {
+                RemoteLogger.log(context, Const.LOG_WARN, "Screen capture failed: " + reason);
+            }
+        });
+    }
+
+    /**
+     * Envia o PNG ao servidor, caindo para o servidor secundario se o primario nao responder -
+     * o mesmo caminho que os outros envios do agente usam.
+     */
+    private static void uploadScreenshot(Context context, byte[] pngBytes) {
+        try {
+            SettingsHelper settingsHelper = SettingsHelper.getInstance(context.getApplicationContext());
+            RequestBody body = RequestBody.create(MediaType.parse("image/png"), pngBytes);
+
+            Response<ResponseBody> response = null;
+            try {
+                ServerService serverService = ServerServiceKeeper.getServerServiceInstance(context);
+                response = serverService.uploadScreenshot(
+                        settingsHelper.getServerProject(), settingsHelper.getDeviceId(), body).execute();
+            } catch (Exception e) {
+                // Cai para o servidor secundario abaixo.
+            }
+            if (response == null) {
+                ServerService secondary = ServerServiceKeeper.getSecondaryServerServiceInstance(context);
+                response = secondary.uploadScreenshot(
+                        settingsHelper.getServerProject(), settingsHelper.getDeviceId(), body).execute();
+            }
+
+            if (response.isSuccessful()) {
+                RemoteLogger.log(context, Const.LOG_INFO,
+                        "Screenshot uploaded (" + pngBytes.length + " bytes)");
+            } else {
+                RemoteLogger.log(context, Const.LOG_WARN,
+                        "Screenshot upload rejected by the server: HTTP " + response.code());
+            }
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN, "Screenshot upload failed: " + e.getMessage());
         }
     }
 
