@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="7903180715631665059" name="abc_action_bar_home_description">"Přejít na plochu"</string>
+    <string msgid="6794660482873516081" name="abc_action_bar_up_description">"Přejít nahoru"</string>
+    <string msgid="1155814932213556626" name="abc_action_menu_overflow_description">"Více možností"</string>
+    <string msgid="2571498368472823490" name="abc_action_mode_done">"Hotovo"</string>
+    <string msgid="3732416590524162402" name="abc_activity_chooser_view_see_all">"Zobrazit vše"</string>
+    <string msgid="1798588241954930982" name="abc_activitychooserview_choose_application">"Vybrat aplikaci"</string>
+    <string msgid="3403923230105792483" name="abc_capital_off">"VYP"</string>
+    <string msgid="7831734969929204599" name="abc_capital_on">"ZAP"</string>
+    <string msgid="5725160506500770567" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="944415252197684443" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="129742188101734366" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="6840127756824236027" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="4974283687810130415" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="8046416353848716905" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="3271697756921353410" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="2304645930658438191" name="abc_menu_space_shortcut_label">"mezerník"</string>
+    <string msgid="8327365089695024394" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="3570106412128999382" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="940844115270746197" name="abc_search_hint">"Vyhledat…"</string>
+    <string msgid="1769270744562318534" name="abc_searchview_description_clear">"Smazat dotaz"</string>
+    <string msgid="908784302972860853" name="abc_searchview_description_query">"Dotaz pro vyhledávání"</string>
+    <string msgid="5466662225065974044" name="abc_searchview_description_search">"Hledat"</string>
+    <string msgid="8203855622131699655" name="abc_searchview_description_submit">"Odeslat dotaz"</string>
+    <string msgid="3478748990613108725" name="abc_searchview_description_voice">"Hlasové vyhledávání"</string>
+    <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Sdílet s"</string>
+    <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Sdílet s aplikací <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Sbalit"</string>
+    <string name="access_to_app_denied">Balíček není povolen:</string>
+    <string name="access_to_app_denied_2">Požádejte svého administrátora, aby tento balíček povolil v konfiguraci.\n\nPokračujte kliknutím na tlačítko \'Zavřít\' nebo Domů.</string>
+    <string name="accessibility_service_description">Aktivní monitorování aplikací přes MDM</string>
+    <string name="activity_not_found">Nelze provést akci %s, protože aktivita nebyla nalezena.</string>
+    <string name="admin_allow_settings">Otevřít nastavení</string>
+    <string name="admin_change_device_id">Změnit ID zařízení</string>
+    <string name="admin_change_server_url">Změnit adresu serveru</string>
+    <string name="admin_clear_restrictions">Smazat omezení</string>
+    <string name="admin_exit">Odejít do systémového launcheru</string>
+    <string name="admin_not_supported">Vaše zařízení nemá možnost vytvoření administrátora zařízení. Vyberte přeskočit pro pokračování.</string>
+    <string name="admin_refresh">Aktualizovat konfiguraci</string>
+    <string name="admin_reset_network">Resetovat nastavení sítě</string>
+    <string name="admin_reset_network_hint">Nastavení sítě bylo resetováno. Nyní můžete znovu připojit síť a aktualizovat konfiguraci</string>
+    <string name="admin_reset_permissions">Zkontrolovat oprávnění</string>
+    <string name="admin_title">Administrátor</string>
+    <string name="background_location">%s vyžaduje oprávnění sledování polohy na pozadí. Vyberte \'Pokračovat\' pro otevření nastavení. Vyberte \'Poloha\' a možnost sledování polohy kdykoliv.</string>
+    <string name="background_location_continue">Pokračovat</string>
+    <string name="browser_not_found">Webová stránka nelze otevřít, protože nebyl nalezen prohlížeč. Prosím přidejte aplikaci prohlížeče do konfigurace zařízení.</string>
+    <string name="certificate_install_failed">Nepodařilo se nainstalovat certifikát %1$s: %2$s</string>
+    <string name="close">Zavřít</string>
+    <string name="critical_server_failure">Ukončeno - Chyba serveru! Prosím opravta chybu a restartujte %s, nebo kompletně reinstalujte.</string>
+    <string name="device_id">ID zařízení</string>
+    <string name="device_locked">Toto zařízení (%s) bylo zamknuto administrátorem.</string>
+    <string name="dialog_accessibility_service_continue">Pokračovat</string>
+    <string name="dialog_accessibility_service_message">Prosím povolte aplikaci oprávnění ke službám přístupnosti. Bude otevřeno nastavení. Najděte \"%s\" a povolte přístup, poté se vraťte.</string>
+    <string name="dialog_accessibility_service_skip">Přeskočit</string>
+    <string name="dialog_administrator_mode_continue">Pokračovat</string>
+    <string name="dialog_administrator_mode_message">Prosím povolte aplikaci možnost běhu jako administrátor zařízení. Bude otevřeno nastavení. Vyberte \"Administrátoři zařízeni\" a aktivujte administrátora pro \"%s\", poté se vraťte.</string>
+    <string name="dialog_administrator_mode_skip">Přeskočit</string>
+    <string name="dialog_app_not_allowed_admin">Administrátor</string>
+    <string name="dialog_app_not_allowed_close">Zavřít</string>
+    <string name="dialog_enter_device_id_error">ID není registrováno na %s. Získejte ID ze záložky \"Zařízení\" admin panelu.</string>
+    <string name="dialog_enter_device_id_exit">Ukončit</string>
+    <string name="dialog_enter_device_id_qrcode">QR kód</string>
+    <string name="dialog_enter_device_id_save">Uložit</string>
+    <string name="dialog_enter_device_id_title">Vložte ID zařízení na %s</string>
+    <string name="dialog_enter_device_id_variants">Varianty</string>
+    <string name="dialog_enter_password_cancel">Zavřít</string>
+    <string name="dialog_enter_password_login">Přihlásit se</string>
+    <string name="dialog_enter_server_error">Prosím zadejte platnou URL serveru.</string>
+    <string name="dialog_enter_server_ok">OK</string>
+    <string name="dialog_enter_server_title">Prosím zadejte adres URL serveru</string>
+    <string name="dialog_history_settings_continue">Pokračovat</string>
+    <string name="dialog_history_settings_skip">Přeskočit</string>
+    <string name="dialog_history_settings_title">Prosím povolte aplikaci přístup k diagnostickým datům.\n\nToto nastavení pomáhá k ovládání nastavení a aplikací.\n\nToto nastavení může způsobit rychlejší vybití baterie. Pokud chcete šetřit baterii, toto nastavení přeskočte (použijte kiosk nebo nastavení přístupnosti).\n\nVyberte \"Pokračovat\" pro otevření nastavení. Vyberte položku \"%s\" a povolte oprávnění, poté se vraťte.</string>
+    <string name="dialog_manage_storage_title">Povolte aplikaci spravovat úložiště.\n\nTato možnost umožňuje Headwind MDM spravovat soubory ve vašem zařízení.</string>
+    <string name="dialog_miui_developer_title">MIUI vyžaduje ruční nastavení vašeho zařízení. Na stavové obrazovce 7x poklepejte na \"Číslo sestavení\". Toto povolí možnosti vývojáře.</string>
+    <string name="dialog_miui_optimization_title">MIUI vyžaduje ruční nastavení vašeho zařízení. Nastavení vývojáře se nyní otevře. Najděte položku \"MIUI optimization\" a vypněte ji.</string>
+    <string name="dialog_miui_permissions_title">MIUI vyžaduje ruční nastavení vlastních oprávnění. Oprávnění aplikace se nyní otevřou. Vyberte \"Ostatní oprávnění\" a povolte \"Zobrazovat vyskakovací okna při běhu v pozadí\", poté se vraťte.</string>
+    <string name="dialog_network_error_title">Chyba připojení k %s. Zkontrolujte připojení k internetu a zkuste znovu.</string>
+    <string name="dialog_overlay_settings_title">Prosím povolte aplikaci vykreslování přes ostatní okna.\n\nToto nastavení pomáhá lépe blokovat nežádoucí aplikace a umožní nouzové odemykání kiosku.\n\nVyberte \"Pokračovat\" pro otevření nastavení. Vyberte položku \"%s\" a povolte oprávnění, poté se vraťte.</string>
+    <string name="dialog_permission_title">Tato aplikace vyžaduje oprávnění k jejímu běhu. Prosím aktivujte je.</string>
+    <string name="dialog_root_message">Potřebujete ROOT přístup</string>
+    <string name="dialog_server_error_title">MDM server %s vrátil neplatnou odpověď. Prosím kontaktujte administrátora.</string>
+    <string name="dialog_unknown_sources_continue">Pokračovat</string>
+    <string name="dialog_unknown_sources_title">Prosím povolte instalaci z neznámých zdrojů. Bude otevřeno nastavení. Vyberte \"Neznámé zdroje\" a povolte instalaci, poté se vraťte.</string>
+    <string name="empty_configuration">Prázdná konfigurace! Pokouším se stáhnout konfiguraci ze serveru.</string>
+    <string name="enter_admin_password">Zadejte administrátorské heslo</string>
+    <string name="fault_loop_detected">Launcher se dostal do neobnovitelného stavu! Prosím kontaktujte vašeho administrátora.</string>
+    <string name="file_create_error">Chyba při vytváření souboru</string>
+    <string name="imei">IMEI</string>
+    <string name="initializing_mdm">Připravuji aplikaci pro správu zařízení...</string>
+    <string name="install_error">Chyba instalace</string>
+    <string name="internal_error">Aplikace zaznamenala vnitřní chybu. Prosím restartujte zařízení a zkuste znovu.</string>
+    <string name="invalid_web_link">Webový odkaz nelze otevřít, protože má špatný formát. Prosím kontaktujte vašeho administrátora.</string>
+    <string name="kiosk_mode_requires_overlays">Režim kiosk vypnut: chybí oprávnění pro vykreslování přes aplikace. Prosím povolte oprávnění pro %s.</string>
+    <string name="launcher_version">Verze launcheru</string>
+    <string name="location_disable">Zakázat polohu</string>
+    <string name="location_service_text">Poloha zařízení je sledována</string>
+    <string name="main_activity_applications_update">Aktualizace aplikací</string>
+    <string name="main_activity_cancel">Ukončit</string>
+    <string name="main_activity_details">Podrobnosti</string>
+    <string name="main_activity_exit">Ukončit</string>
+    <string name="main_activity_repeat">Zkusit znovu</string>
+    <string name="main_activity_reset">Reset</string>
+    <string name="main_activity_update_config">Získávám konfigurační soubor ze serveru</string>
+    <string name="main_activity_wifi">WiFi</string>
+    <string name="main_app_downloading">Aplikace se stahuje</string>
+    <string name="main_app_downloading_error">Aplikace se nepodařila stáhnout</string>
+    <string name="main_app_installing">Aplikace se instaluje</string>
+    <string name="main_app_removing">Aplikace se odebírá</string>
+    <string name="main_application_start">Aplikace se zapíná</string>
+    <string name="main_downloading_configuration">Aktualizace konfiguračního souboru</string>
+    <string name="main_downloading_content">Aktualizace dat</string>
+    <string name="main_file_downloading">Soubor se stahuje</string>
+    <string name="main_file_downloading_error">Soubor se nepodařilo stáhnout</string>
+    <string name="main_start_preparations">Příprava spuštění</string>
+    <string name="main_update_applications">Instalace a aktualizace aplikací</string>
+    <string name="manage_storage_not_supported">Vaše zařízení nemá možnost spravovat externí úložiště.</string>
+    <string name="mdm_choice_message">Toto zažízení bude plně řízeno vaší organizací. Vaše data nejsou soukromá a mohou být kdykoliv smazána, nebo zobrazena vaším administrátotem.</string>
+    <string name="message_set_password">Vaše heslo nesplňuje požadavky. Nyní se otevře nastavení. Prosím změnte si heslo.</string>
+    <string name="message_turn_off_gps">Nyní se otevře nastavení. Prosím vypněte lokalizaci přes GPS.</string>
+    <string name="message_turn_off_mobile_data">Mobilní data jsou zapnuta. Vypněte je prosím ve stavové liště.</string>
+    <string name="message_turn_on_gps">Nyní se otevře nastavení. Prosím zapněte lokalizaci přes GPS.</string>
+    <string name="message_turn_on_mobile_data">Mobilní data jsou vypnuta. Zapněte je prosím ve stavové liště</string>
+    <string name="mqtt_service_text">Push notifikace jsou zapnuté</string>
+    <string name="overlays_not_supported">Překreslování obrazovku bohužel není podporováno na vašem zařízení.</string>
+    <string name="package_id_copied">ID balíčku se zkopíruje do schránky</string>
+    <string name="permissions_reset_hint">Zavřete panel administrátora pro kontrolu a nastavení oprávnění.</string>
+    <string name="permissive_mode_enabled">Máte povoleno 3 minuty spouštět všechny aplikace.</string>
+    <string name="phone_number">Telefonní číslo</string>
+    <string name="qrcode_contents_error">Neplatný obsah QR kódu. Prosím vygenerujte QR kód znovu ve webové administraci %s.</string>
+    <string name="reboot">Restartovat zařízení</string>
+    <string name="reboot_failed">Nedostatečná oprávnění pro restartování zařízení.</string>
+    <string msgid="730395136688082741" name="search_menu_title">"Hledat"</string>
+    <string name="select_system_launcher">Vyberte %s jako hlavní launcher a klepněte na \'Vždy\':</string>
+    <string name="serial_number">Sériové číslo</string>
+    <string name="settings_allowed">Máte povoleno 3 minuty měnit nastavení.</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="switch_off_blockings">Vypínám omezení...</string>
+    <string name="work_profile_message">Na tomto zařízení se vytvoří pracovní profil, který patří vaší organizaci. Pracovní profil je oddělen od vašeho soukromého a lze mezi nimi kdykoliv přepínat.</string>
+    <string name="wrong_password">Špatné heslo</string>
+    <string name="zxing_app_name">Barcode Scanner</string>
+    <string name="zxing_button_ok">OK</string>
+    <string name="zxing_msg_camera_framework_bug">Omlouváme se, zjistili jsem problém s fotoaparátem. Možná bude nutné restartovat zařízení.</string>
+    <string name="zxing_msg_default_status">Zaměřte čtvercem na čárový kód</string>
+</resources>

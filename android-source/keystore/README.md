@@ -22,7 +22,7 @@ Faça backup dele fora desta máquina.
 | Senha (store e key) | `HwMdm!Release2026` |
 | Algoritmo | RSA 4096 / SHA384withRSA |
 | Validade | 10950 dias (30 anos, a partir de 2026-07-26) |
-| DN | `CN=Headwind MDM Self-Hosted, OU=TI, O=Puzzlepunker, L=Olimpia, ST=SP, C=BR` |
+| DN | `CN=Headwind MDM Self-Hosted, OU=TI, O=Prefeitura Municipal de Olimpia, L=Olimpia, ST=SP, C=BR` |
 
 A senha está em claro aqui e no `app/build.gradle` de propósito: este repositório é
 privado e self-hosted, e o risco de perder a credencial (reset de todos os tablets)

@@ -247,22 +247,15 @@
             </intent-filter>
         </service>
 
-        <!-- Stub -->
-        <service android:name=".pro.service.CheckForegroundAppAccessibilityService"
-                 android:exported="false"/>
+        <!-- CheckForegroundAppAccessibilityService removido: mesmo como stub, uma classe
+             registrada como service com nome de AccessibilityService faz o Play Protect
+             sinalizar o APK sideloaded. O launcher -os oficial nao declara acessibilidade
+             nenhuma, e e' esse o padrao que instala sem bloqueio. -->
 
-        <!-- Captura de tela para o acesso remoto. Precisa ser exported porque quem faz o bind
-             e' o proprio sistema, e precisa exigir BIND_ACCESSIBILITY_SERVICE para que so' o
-             sistema consiga fazer esse bind. -->
-        <service android:name=".service.ScreenCaptureService"
-                 android:exported="true"
-                 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService"/>
-            </intent-filter>
-            <meta-data android:name="android.accessibilityservice"
-                       android:resource="@xml/screen_capture_accessibility"/>
-        </service>
+        <!-- ScreenCaptureService removido do manifest: declarar um servico de acessibilidade
+             faz o Google Play Protect bloquear a instalacao do APK sideloaded. O restante do
+             Acesso Remoto (reboot, run_app, lock_screen, run_command etc.) nao depende dele.
+             A classe permanece no codigo; so' nao e' mais registrada como servico de sistema. -->
 
         <service android:name="org.eclipse.paho.android.service.MqttService"
             android:foregroundServiceType="specialUse|systemExempted"

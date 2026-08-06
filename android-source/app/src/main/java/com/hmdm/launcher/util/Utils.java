@@ -55,6 +55,7 @@ import androidx.annotation.RequiresApi;
 
 import com.hmdm.launcher.BuildConfig;
 import com.hmdm.launcher.Const;
+import com.hmdm.launcher.util.RemoteLogger;
 import com.hmdm.launcher.json.Action;
 import com.hmdm.launcher.json.ServerConfig;
 import com.hmdm.launcher.policy.KioskPolicy;
@@ -755,6 +756,32 @@ public class Utils {
                 RemoteLogger.log(context, Const.LOG_WARN, "Failed to update password quality: " + e.getMessage());
             }
             return true;
+        }
+    }
+
+    /**
+     * Desativa o verificador de pacotes do Google (Google Play Protect) enquanto este launcher
+     * for Device Owner. Sem isto, o Play Protect bloqueia a instalacao de APKs assinados por
+     * um certificado que o Google nao reconhece -- que e' o caso de qualquer build proprio.
+     * E' best-effort: em algumas versoes do Android estes globals nao estao na allowlist de
+     * setGlobalSetting e a chamada lanca SecurityException, que e' apenas registrada.
+     */
+    public static void disablePlayProtect(Context context) {
+        if (!Utils.isDeviceOwner(context)) {
+            return;
+        }
+        try {
+            DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(
+                    Context.DEVICE_POLICY_SERVICE);
+            ComponentName admin = LegacyUtils.getAdminComponentName(context);
+            // "package_verifier_enable" e' o interruptor legado do verificador de instalacoes.
+            try { dpm.setGlobalSetting(admin, "package_verifier_enable", "0"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect verifier_enable: " + e.getMessage()); }
+            // "package_verifier_user_consent" = -1 nega o consentimento de envio de apps ao Google.
+            try { dpm.setGlobalSetting(admin, "package_verifier_user_consent", "-1"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect user_consent: " + e.getMessage()); }
+            // "upload_apk_enable" desliga o envio de APKs desconhecidos para analise.
+            try { dpm.setGlobalSetting(admin, "upload_apk_enable", "0"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect upload_apk: " + e.getMessage()); }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

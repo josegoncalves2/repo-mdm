@@ -11,6 +11,9 @@ services:
     ports:
       - 5432:5432
     environment:
+      # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam
+      # 3h adiantados em relacao ao horario local (America/Sao_Paulo).
+      TZ: America/Sao_Paulo
       POSTGRES_USER: ${SQL_USER:-hmdm}
       POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
       POSTGRES_DB: ${SQL_BASE:-hmdm}
@@ -39,6 +42,8 @@ services:
       # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
       - ../dist/hmdm.war:/usr/local/tomcat/work/cache/hmdm-5.39.2-os.war:ro
     environment:
+      # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga 3h adiantado.
+      TZ: America/Sao_Paulo
       SQL_HOST: postgresql
       SQL_USER: ${SQL_USER:-hmdm}
       SQL_BASE: ${SQL_BASE:-hmdm}

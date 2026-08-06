@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.hmdm.launcher.app-mergeOpensourceReleaseResources-28:/values-w400dp-v13/values-w400dp-v13.xml",
+            "map": [
+                {
+                    "source": "/opt/projetos/hwmdm/android-source/app/src/main/res/values-w400dp/dimens.xml",
+                    "from": {
+                        "startLines": "21,22,20",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "802,850,741",
+                        "endColumns": "47,53,60",
+                        "endOffsets": "845,899,797"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,103,157",
+                        "endColumns": "47,53,60",
+                        "endOffsets": "98,152,213"
+                    }
+                }
+            ]
+        }
+    ]
+}

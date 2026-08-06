@@ -1,0 +1,11 @@
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/domain/PostgresDeviceLogRecord.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/domain/PostgresDeviceLogPluginSettings.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/DeviceLogPostgresPersistenceConfiguration.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/guice/module/DeviceLogPostgresLiquibaseModule.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/guice/module/DeviceLogPostgresPersistenceModule.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/mapper/PostgresDeviceLogMapper.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/guice/module/DeviceLogPostgresServiceModule.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/PostgresDeviceLogDAO.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/PostgresDeviceLogPluginSettingsDAO.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/dao/domain/PostgresDeviceLogRule.java
+/src/plugins/devicelog/postgres/src/main/java/com/hmdm/plugins/devicelog/persistence/postgres/guice/module/DeviceLogPostgresTaskModule.java

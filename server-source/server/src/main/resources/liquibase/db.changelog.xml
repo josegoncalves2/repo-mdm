@@ -2609,4 +2609,63 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="06.08.26-10:20" author="olimpia" context="common">
+        <comment>applications#latestVersion is kept in sync by the database, not only by the DAO</comment>
+        <createProcedure>
+            CREATE OR REPLACE FUNCTION mdm_refresh_latest_version()
+            RETURNS TRIGGER AS $$
+            DECLARE
+            affected INTEGER;
+            BEGIN
+            IF (TG_OP = 'DELETE') THEN
+            affected := OLD.applicationId;
+            ELSE
+            affected := NEW.applicationId;
+            END IF;
+
+            UPDATE applications
+            SET latestVersion = (
+            SELECT apv.id
+            FROM applicationVersions apv
+            WHERE apv.applicationId = affected
+            ORDER BY mdm_app_version_comparison_index(apv.version) DESC, apv.id DESC
+            LIMIT 1)
+            WHERE id = affected;
+
+            IF (TG_OP = 'UPDATE' AND OLD.applicationId IS DISTINCT FROM NEW.applicationId) THEN
+            UPDATE applications
+            SET latestVersion = (
+            SELECT apv.id
+            FROM applicationVersions apv
+            WHERE apv.applicationId = OLD.applicationId
+            ORDER BY mdm_app_version_comparison_index(apv.version) DESC, apv.id DESC
+            LIMIT 1)
+            WHERE id = OLD.applicationId;
+            END IF;
+
+            IF (TG_OP = 'DELETE') THEN
+            RETURN OLD;
+            END IF;
+            RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;
+        </createProcedure>
+        <rollback>
+            DROP FUNCTION IF EXISTS mdm_refresh_latest_version() CASCADE;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="06.08.26-10:21" author="olimpia" context="common">
+        <comment>Trigger,new: applicationVersions keeps applications#latestVersion fresh</comment>
+        <sql>
+            DROP TRIGGER IF EXISTS mdm_application_versions_latest ON applicationVersions;
+            CREATE TRIGGER mdm_application_versions_latest
+            AFTER INSERT OR UPDATE OR DELETE ON applicationVersions
+            FOR EACH ROW EXECUTE PROCEDURE mdm_refresh_latest_version();
+        </sql>
+        <rollback>
+            DROP TRIGGER IF EXISTS mdm_application_versions_latest ON applicationVersions;
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>

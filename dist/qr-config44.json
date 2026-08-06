@@ -1,0 +1,14 @@
+{
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "com.hmdm.launcher/com.hmdm.launcher.AdminReceiver",
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "http://192.168.1.75:8080/files/hmdm-6.37.6-olimpia-screenshot.apk",
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM": "auYzwtU_bW4jdr_HCitcO4cbtySaapfreHeG25ASIUE",
+  "android.app.extra.PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED": true,
+  "android.app.extra.PROVISIONING_ADMIN_EXTRAS_BUNDLE": {
+    "com.hmdm.BASE_URL": "http://192.168.1.75:8080",
+    "com.hmdm.SERVER_PROJECT": ""
+  },
+  "android.app.extra.PROVISIONING_WIFI_SSID": "PMETO",
+  "android.app.extra.PROVISIONING_WIFI_SECURITY_TYPE": "WPA",
+  "android.app.extra.PROVISIONING_WIFI_PASSWORD": "pmeto1054",
+  "android.app.extra.PROVISIONING_SKIP_ENCRYPTION": true
+}

@@ -879,6 +879,13 @@ public class MainActivity
         preferences.edit().putInt(Const.PREFERENCES_DEVICE_OWNER, deviceOwner ?
             Const.PREFERENCES_ON : Const.PREFERENCES_OFF).commit();
 
+        // Enquanto formos Device Owner, desliga o Google Play Protect para que ele nao
+        // bloqueie a instalacao silenciosa de apps assinados fora do Google (o proprio
+        // launcher e os apps gerenciados). Best-effort; falha silenciosa onde nao permitido.
+        if (deviceOwner) {
+            Utils.disablePlayProtect(this);
+        }
+
         int miuiPermissionMode = preferences.getInt(Const.PREFERENCES_MIUI_PERMISSIONS, -1);
         if (miuiPermissionMode == -1) {
             preferences.

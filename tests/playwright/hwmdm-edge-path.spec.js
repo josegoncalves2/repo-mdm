@@ -15,7 +15,7 @@ test('caminho interno x caminho da borda publica', async () => {
   test.setTimeout(120000);
   for (const [nome, url, extra] of [
     ['ultimo salto (LAN)', base, {}],
-    ['borda publica', publica, { Host: 'mdm.puzzlepunker.com.br' }],
+    ['borda publica', publica, { Host: 'mdm.olimpia.sp.gov.br' }],
   ]) {
     const ctx = await request.newContext({ ignoreHTTPSErrors: true, extraHTTPHeaders: extra });
     try {

@@ -41,10 +41,12 @@ android {
             storePassword "HwMdm!Release2026"
             keyAlias "hwmdm"
             keyPassword "HwMdm!Release2026"
-            // targetSdk 34 rejects an APK carrying only the v1 (JAR) signature.
-            enableV1Signing true
+            // Espelha o esquema do launcher -os oficial da Headwind, que instala sem Play
+            // Protect: somente v2. O v1 (JAR) e' rejeitado no targetSdk 34; o v3 carrega
+            // metadados de rotacao de chave que aumentam o escrutinio do Play Protect.
+            enableV1Signing false
             enableV2Signing true
-            enableV3Signing true
+            enableV3Signing false
         }
     }
 

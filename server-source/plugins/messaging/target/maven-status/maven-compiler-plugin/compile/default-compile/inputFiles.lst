@@ -1,0 +1,10 @@
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/json/SendRequest.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/MessagingResource.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/domain/Message.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingRestModule.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/MessagingPluginConfigurationImpl.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/mapper/MessageMapper.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingPersistenceModule.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/MessagingDAO.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/json/MessageFilter.java
+/src/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingLiquibaseModule.java

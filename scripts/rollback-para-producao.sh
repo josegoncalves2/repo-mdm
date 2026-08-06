@@ -28,6 +28,10 @@ echo "==> 2/5 Removendo o override de compose (gambiarra de WSL, quebra o datadi
 rm -f source/docker-compose.override.yaml
 
 echo "==> 3/5 Voltando a arvore para $TAG"
+# O Tomcat reexplode webapps/ROOT/ como root a cada boot. Sem devolver o dono
+# antes, o 'git reset' morre com "Permission denied" em centenas de arquivos --
+# foi exatamente o que aconteceu na primeira tentativa de merge.
+sudo chown -R "$(id -un):$(id -gn)" source/volumes/webapps
 git reset --hard "$TAG"
 # reset --hard nao remove arquivos nao rastreados; o override acima ja foi tratado.
 git status --short
