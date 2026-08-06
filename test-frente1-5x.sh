@@ -7,7 +7,7 @@ TESTS_PASSED=0
 TESTS_FAILED=0
 LOOP_COUNT=5
 KNOWN_PROXY_IPS="10.0.17.106,10.0.9.1,10.1.1.1"
-KIOSK_APK="hmdm-6.37.3-kiosk.apk"
+KIOSK_APK="hmdm-v1.0-kiosk.apk"
 
 log_pass() {
   echo "✓ $@"
@@ -76,7 +76,7 @@ test_layout_fix() {
 test_kiosk_apk_available() {
   local i=1
   echo ""
-  echo "=== TESTE 3: APK 6.37.3-kiosk disponível (5 rodadas) ==="
+  echo "=== TESTE 3: APK v1.0-kiosk disponível (5 rodadas) ==="
 
   while [ $i -le $LOOP_COUNT ]; do
     echo "Rodada $i:"

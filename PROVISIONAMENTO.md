@@ -19,9 +19,8 @@ Confira tudo de uma vez:
 ## Subida em um comando
 
 ```bash
-git clone https://github.com/josegoncalves2/repo-olmdm.git
-cd repo-olmdm
-git checkout main/aleluia
+git clone https://github.com/josegoncalves2/repo-mdm.git
+cd repo-mdm
 
 ./scripts/provision.sh \
   --dominio mdm.suaempresa.com.br \
@@ -63,7 +62,7 @@ comecar do zero.
 | Caminho | O que e' |
 |---|---|
 | `dist/hmdm.war` | Aplicacao construida, **com as alteracoes Java deste projeto**. Nao troque pelo WAR do h-mdm.com. |
-| `dist/hmdm-6.37.4-kiosk.apk` | Agente Android assinado (v2+v3), com as APIs de kiosk |
+| `dist/hmdm-v1.0-kiosk.apk` | Agente Android assinado (v2+v3), com as APIs de kiosk |
 | `source/sql/hmdm-dump.sql.gz` | Dump do banco (perfis, dispositivos, usuarios) |
 | `server-source/` | Codigo do servidor e do painel web |
 | `android-source/` | Codigo do agente Android + keystore de release |

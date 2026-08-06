@@ -19,37 +19,18 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
 }
 apply plugin: 'com.android.application'
 
 repositories {
-    google()
+    jcenter()
     mavenCentral()
 }
 
 android {
     compileSdkVersion 34
-
-    // Release signing identity. This keystore MUST NEVER be replaced: Android refuses to update
-    // an installed app when the signing certificate changes, so a new keystore would force a
-    // factory reset on every enrolled tablet. See android-source/keystore/README.md.
-    signingConfigs {
-        release {
-            storeFile file("${rootDir}/keystore/hwmdm-release.jks")
-            storePassword "HwMdm!Release2026"
-            keyAlias "hwmdm"
-            keyPassword "HwMdm!Release2026"
-            // Espelha o esquema do launcher -os oficial da Headwind, que instala sem Play
-            // Protect: somente v2. O v1 (JAR) e' rejeitado no targetSdk 34; o v3 carrega
-            // metadados de rotacao de chave que aumentam o escrutinio do Play Protect.
-            enableV1Signing false
-            enableV2Signing true
-            enableV3Signing false
-        }
-    }
-
     defaultConfig {
         applicationId "com.hmdm.launcher"
         //minSdkVersion 16
@@ -60,18 +41,18 @@ android {
         // downgrade the dependency to com.fasterxml.jackson to 2.13.5
         minSdkVersion 26
         targetSdkVersion 34
-        versionCode 15377
-        versionName "6.37.6"
+        versionCode 15379
+        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         dataBinding {
             enabled = true
         }
         buildFeatures {
-            aidl = true
+            aidl true
             buildConfig = true
         }
-        namespace = 'com.hmdm.launcher'
-        multiDexEnabled = true
+        namespace 'com.hmdm.launcher'
+        multiDexEnabled true
 
         // Default URL of the web panel (scheme + host!)
         buildConfigField("String", "BASE_URL", "\"https://app.h-mdm.com\"")
@@ -126,6 +107,23 @@ android {
         // (this option is banned by Play Protect in some countries!)
         buildConfigField("Boolean", "USE_ACCESSIBILITY", "false")
     }
+    // A identidade de assinatura tem de ser sempre esta: o Android recusa atualizar o app
+    // se o certificado mudar, e trocar o keystore obriga factory reset em todo tablet ja
+    // matriculado. Ver android-source/keystore/README.md.
+    signingConfigs {
+        release {
+            storeFile file('../keystore/hwmdm-release.jks')
+            storePassword 'HwMdm!Release2026'
+            keyAlias 'hwmdm'
+            keyPassword 'HwMdm!Release2026'
+            // v1 sozinho e' recusado pelo Android 14 e sinalizado pelo Play Protect.
+            // v3 desligado de proposito: e' o padrao do binario oficial hmdm-6.36-os.apk
+            // (sem bloco de rotacao de chave). Ver scripts/verificar-apk.sh.
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing false
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -140,11 +138,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    tasks.withType(JavaCompile).configureEach {
-        options.compilerArgs += ['-Xlint:none', '-nowarn']
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     packagingOptions {

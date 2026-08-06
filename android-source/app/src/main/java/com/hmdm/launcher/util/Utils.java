@@ -39,14 +39,12 @@ import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.graphics.Color;
-import android.location.LocationManager;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.ProxyInfo;
 import android.os.Build;
 import android.os.UserManager;
 import android.provider.Settings;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -55,10 +53,8 @@ import androidx.annotation.RequiresApi;
 
 import com.hmdm.launcher.BuildConfig;
 import com.hmdm.launcher.Const;
-import com.hmdm.launcher.util.RemoteLogger;
 import com.hmdm.launcher.json.Action;
 import com.hmdm.launcher.json.ServerConfig;
-import com.hmdm.launcher.policy.KioskPolicy;
 import com.hmdm.launcher.ui.MainActivity;
 
 import java.io.BufferedReader;
@@ -70,7 +66,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -665,39 +660,6 @@ public class Utils {
         audioManager.setStreamVolume(stream, volume, 0);
     }
 
-    public static boolean setLocationEnabledPolicy(Context context, boolean enabled) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-            RemoteLogger.log(context, Const.LOG_INFO,
-                    "Location policy requires Android 11+; falling back to location settings prompt");
-            return false;
-        }
-
-        DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
-        if (dpm == null) {
-            RemoteLogger.log(context, Const.LOG_WARN,
-                    "Location policy not applied: DevicePolicyManager unavailable");
-            return false;
-        }
-        if (!dpm.isDeviceOwnerApp(context.getPackageName())) {
-            RemoteLogger.log(context, Const.LOG_WARN,
-                    "Location policy not applied: app is not Device Owner");
-            return false;
-        }
-
-        try {
-            dpm.setLocationEnabled(adminComponentName, enabled);
-            RemoteLogger.log(context, Const.LOG_INFO,
-                    "Location policy applied: location enabled=" + enabled);
-            return true;
-        } catch (Exception e) {
-            RemoteLogger.log(context, Const.LOG_WARN,
-                    "Location policy failed: " + e.getClass().getSimpleName() +
-                            (e.getMessage() != null ? ": " + e.getMessage() : ""));
-            return false;
-        }
-    }
-
     public static boolean disableScreenshots(Boolean disabled, Context context) {
         if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return false;
@@ -756,32 +718,6 @@ public class Utils {
                 RemoteLogger.log(context, Const.LOG_WARN, "Failed to update password quality: " + e.getMessage());
             }
             return true;
-        }
-    }
-
-    /**
-     * Desativa o verificador de pacotes do Google (Google Play Protect) enquanto este launcher
-     * for Device Owner. Sem isto, o Play Protect bloqueia a instalacao de APKs assinados por
-     * um certificado que o Google nao reconhece -- que e' o caso de qualquer build proprio.
-     * E' best-effort: em algumas versoes do Android estes globals nao estao na allowlist de
-     * setGlobalSetting e a chamada lanca SecurityException, que e' apenas registrada.
-     */
-    public static void disablePlayProtect(Context context) {
-        if (!Utils.isDeviceOwner(context)) {
-            return;
-        }
-        try {
-            DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(
-                    Context.DEVICE_POLICY_SERVICE);
-            ComponentName admin = LegacyUtils.getAdminComponentName(context);
-            // "package_verifier_enable" e' o interruptor legado do verificador de instalacoes.
-            try { dpm.setGlobalSetting(admin, "package_verifier_enable", "0"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect verifier_enable: " + e.getMessage()); }
-            // "package_verifier_user_consent" = -1 nega o consentimento de envio de apps ao Google.
-            try { dpm.setGlobalSetting(admin, "package_verifier_user_consent", "-1"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect user_consent: " + e.getMessage()); }
-            // "upload_apk_enable" desliga o envio de APKs desconhecidos para analise.
-            try { dpm.setGlobalSetting(admin, "upload_apk_enable", "0"); } catch (Exception e) { RemoteLogger.log(context, Const.LOG_WARN, "disablePlayProtect upload_apk: " + e.getMessage()); }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -1011,63 +947,6 @@ public class Utils {
         }
     }
 
-    /**
-     * Make the MDM agent itself undeletable and untouchable from the device UI while kiosk is on.
-     * - setUninstallBlocked() hides/greys out "Uninstall" for our package
-     * - DISALLOW_UNINSTALL_APPS blocks uninstalling anything at all
-     * - setUserControlDisabledPackages() (API 30+) blocks "Force stop" and "Clear data" on our package,
-     *   which is the remaining way a user could kill the agent from Settings.
-     * Each step is logged individually so a failure is visible instead of silent.
-     */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public static void protectFromUninstall(Context context, boolean protect) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            return;
-        }
-        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
-        DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        if (dpm == null || !dpm.isDeviceOwnerApp(context.getPackageName())) {
-            RemoteLogger.log(context, Const.LOG_WARN,
-                    "Uninstall protection skipped: not the Device Owner");
-            return;
-        }
-        String pkg = context.getPackageName();
-
-        try {
-            dpm.setUninstallBlocked(adminComponentName, pkg, protect);
-            RemoteLogger.log(context, Const.LOG_INFO, "setUninstallBlocked(" + pkg + ", " + protect + ") - success");
-        } catch (Exception e) {
-            RemoteLogger.log(context, Const.LOG_WARN, "setUninstallBlocked failed: " +
-                    e.getClass().getSimpleName() + ": " + e.getMessage());
-        }
-
-        try {
-            if (protect) {
-                dpm.addUserRestriction(adminComponentName, UserManager.DISALLOW_UNINSTALL_APPS);
-            } else {
-                dpm.clearUserRestriction(adminComponentName, UserManager.DISALLOW_UNINSTALL_APPS);
-            }
-            RemoteLogger.log(context, Const.LOG_INFO, "DISALLOW_UNINSTALL_APPS set to " + protect + " - success");
-        } catch (Exception e) {
-            RemoteLogger.log(context, Const.LOG_WARN, "DISALLOW_UNINSTALL_APPS failed: " +
-                    e.getClass().getSimpleName() + ": " + e.getMessage());
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            try {
-                List<String> protectedPkgs = protect
-                        ? Collections.singletonList(pkg)
-                        : Collections.<String>emptyList();
-                dpm.setUserControlDisabledPackages(adminComponentName, protectedPkgs);
-                RemoteLogger.log(context, Const.LOG_INFO,
-                        "setUserControlDisabledPackages(" + protectedPkgs + ") - success (force-stop/clear-data blocked)");
-            } catch (Exception e) {
-                RemoteLogger.log(context, Const.LOG_WARN, "setUserControlDisabledPackages failed: " +
-                        e.getClass().getSimpleName() + ": " + e.getMessage());
-            }
-        }
-    }
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static void lockUserRestrictions(Context context, String restrictions) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -1076,48 +955,16 @@ public class Utils {
 
         ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
         DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        if (dpm == null) {
-            RemoteLogger.log(context, Const.LOG_WARN, "Restrictions not applied: DevicePolicyManager unavailable");
-            return;
-        }
-        if (!dpm.isDeviceOwnerApp(context.getPackageName())) {
-            RemoteLogger.log(context, Const.LOG_WARN, "Restrictions not applied: " + context.getPackageName() +
-                    " is not the Device Owner. addUserRestriction() requires Device Owner provisioning.");
+        if (dpm == null || !dpm.isDeviceOwnerApp(context.getPackageName())) {
             return;
         }
 
-        List<String> applied = new ArrayList<>();
-        List<String> failed = new ArrayList<>();
-        List<String> viaLockTask = new ArrayList<>();
-        for (String restriction : KioskPolicy.parseRestrictions(restrictions)) {
-            if (KioskPolicy.isLockTaskRestriction(restriction)) {
-                // Not a UserManager key - enforced by ProUtils.updateKioskOptions() through
-                // setStatusBarDisabled()/setLockTaskFeatures(). Calling addUserRestriction() here
-                // would throw and be reported as a failure, which would be misleading.
-                viaLockTask.add(restriction);
-                Log.d(Const.LOG_TAG, "Restriction delegated to lock task config: " + restriction);
-                continue;
-            }
+        String[] restrictionList = restrictions.split(",");
+        for (String r : restrictionList) {
             try {
-                dpm.addUserRestriction(adminComponentName, restriction);
-                applied.add(restriction);
-                Log.d(Const.LOG_TAG, "Restriction applied: " + restriction);
+                dpm.addUserRestriction(adminComponentName, r.trim());
             } catch (Exception e) {
-                String reason = e.getClass().getSimpleName() +
-                        (e.getMessage() != null ? ": " + e.getMessage() : "");
-                failed.add(restriction + " (" + reason + ")");
-                Log.w(Const.LOG_TAG, "Restriction FAILED: " + restriction + " -> " + reason);
             }
-        }
-        RemoteLogger.log(context, Const.LOG_INFO, "Restrictions applied " + applied.size() + "/" +
-                (applied.size() + failed.size()) + " via addUserRestriction: " + TextUtils.join(",", applied));
-        if (!viaLockTask.isEmpty()) {
-            RemoteLogger.log(context, Const.LOG_INFO, "Restrictions enforced via lock task config (" +
-                    viaLockTask.size() + "): " + TextUtils.join(",", viaLockTask));
-        }
-        if (!failed.isEmpty()) {
-            RemoteLogger.log(context, Const.LOG_WARN, "Restrictions FAILED (" + failed.size() + "): " +
-                    TextUtils.join(" | ", failed));
         }
     }
 
@@ -1276,28 +1123,6 @@ public class Utils {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * Block all kiosk functionality until GPS is turned on
-     * (called by StatusControlService when GPS is required but disabled)
-     */
-    public static void blockKioskUntilGpsOn(Context context) {
-        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        if (lm == null) return;
-
-        boolean gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        if (!gpsEnabled) {
-            // Open persistent location settings prompt
-            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            try {
-                context.startActivity(intent);
-                Log.i(Const.LOG_TAG, "Blocking kiosk: GPS required but disabled, opening location settings");
-            } catch (Exception e) {
-                Log.e(Const.LOG_TAG, "Failed to open location settings", e);
             }
         }
     }

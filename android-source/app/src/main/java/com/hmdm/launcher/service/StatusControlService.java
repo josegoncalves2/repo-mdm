@@ -164,14 +164,7 @@ public class StatusControlService extends Service {
             if (lm != null) {
                 boolean enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
                 if (config.getGps() && !enabled) {
-                    // GPS required but disabled: show persistent notification and block kiosk/apps
                     notifyStatusViolation(Const.GPS_ON_REQUIRED);
-                    // Keep enforcing until GPS is actually on
-                    if (settingsHelper.getConfig().getKioskMode() != null &&
-                        settingsHelper.getConfig().getKioskMode()) {
-                        // In kiosk mode, disable launcher buttons until GPS is on
-                        Utils.blockKioskUntilGpsOn(this);
-                    }
                     return;
                 } else if (!config.getGps() && enabled) {
                     notifyStatusViolation(Const.GPS_OFF_REQUIRED);

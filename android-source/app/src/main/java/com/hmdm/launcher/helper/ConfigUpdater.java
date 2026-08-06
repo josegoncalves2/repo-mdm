@@ -30,7 +30,6 @@ import com.hmdm.launcher.json.Download;
 import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
-import com.hmdm.launcher.pro.ProUtils;
 import com.hmdm.launcher.pro.worker.DetailedInfoWorker;
 import com.hmdm.launcher.server.ServerServiceKeeper;
 import com.hmdm.launcher.service.PushLongPollingService;
@@ -149,9 +148,6 @@ public class ConfigUpdater {
             Utils.releaseUserRestrictions(context, settingsHelper.getConfig().getRestrictions());
             // Explicitly release restrictions of installing/uninstalling apps
             Utils.releaseUserRestrictions(context, "no_install_apps,no_uninstall_apps");
-            // Lift self-protection so the agent can update/uninstall packages during this cycle.
-            // It is re-armed in lockRestrictions() once the install/update pass is finished.
-            Utils.protectFromUninstall(context, false);
         }
 
         if (uiNotifier != null) {
@@ -956,8 +952,6 @@ public class ConfigUpdater {
         if (settingsHelper.getConfig() != null && settingsHelper.getConfig().getRestrictions() != null) {
             Utils.lockUserRestrictions(context, settingsHelper.getConfig().getRestrictions());
         }
-        // Re-arm self-protection: while kiosk is on, the agent must not be removable from the device
-        Utils.protectFromUninstall(context, ProUtils.kioskModeRequired(context));
         String lockedPackages = settingsHelper.getAppPreference(context.getPackageName(), "locked_packages");
         Utils.lockPackages(context, lockedPackages, true);
         String unlockedPackages = settingsHelper.getAppPreference(context.getPackageName(), "unlocked_packages");
@@ -1073,11 +1067,6 @@ public class ConfigUpdater {
                                     confirmationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     try {
                                         context.startActivity(confirmationIntent);
-                                        // RETRY: If user doesn't install after 2 minutes, try again
-                                        String packageName = intent.getStringExtra(Const.PACKAGE_NAME);
-                                        if (packageName != null) {
-                                            scheduleInstallRetry(packageName, 120000); // 2 minutes
-                                        }
                                     } catch (Exception e) {
                                     }
                                 } else {
@@ -1419,24 +1408,5 @@ public class ConfigUpdater {
 
         // Midnight included
         return minute >= appUpdateFromMinute || minute <= appUpdateToMinute;
-    }
-
-    // Schedule a retry for APK installation if user doesn't confirm within timeout
-    private void scheduleInstallRetry(String packageName, long delayMs) {
-        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
-            Log.i(Const.LOG_TAG, "APK install retry scheduled for: " + packageName);
-            // Mark package for re-installation attempt
-            if (applicationsForInstall != null && pendingInstallations != null) {
-                for (Application app : applicationsForInstall) {
-                    if (app.getPkg() != null && app.getPkg().equals(packageName)) {
-                        Log.i(Const.LOG_TAG, "Re-attempting installation for: " + packageName);
-                        // App will be re-installed on next sync/config update
-                        RemoteLogger.log(context, Const.LOG_INFO,
-                                "APK install retry after user confirmation timeout: " + packageName);
-                        break;
-                    }
-                }
-            }
-        }, delayMs);
     }
 }

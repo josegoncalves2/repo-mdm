@@ -50,10 +50,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Collections;
 import java.util.List;
 
 public class DeviceInfoProvider {
@@ -180,7 +176,6 @@ public class DeviceInfoProvider {
         deviceInfo.setLauncherType(Utils.getLauncherVariant());
         deviceInfo.setCpu(Build.CPU_ABI);
         deviceInfo.setSerial(getSerialNumber());
-        deviceInfo.setDeviceIp(getLocalIpAddress());
 
         deviceInfo.setImsi(getImsi(context, 0));
         deviceInfo.setIccid(getIccid(context, 0));
@@ -235,36 +230,6 @@ public class DeviceInfoProvider {
                 return location;
             }
         } catch (Exception e) {
-        }
-        return null;
-    }
-
-    /**
-     * Endereco IPv4 do proprio aparelho, para o campo "DEVICE IP" do painel.
-     *
-     * Percorre as interfaces ativas e devolve o primeiro IPv4 que nao seja de loopback -
-     * na pratica o Wi-Fi ou a rede movel. Nao usa WifiManager de proposito: aquele caminho
-     * exige ACCESS_WIFI_STATE, so' enxerga Wi-Fi e devolve 0.0.0.0 quando o aparelho esta
-     * na rede movel. Enderecos IPv6 sao descartados porque o painel exibe uma coluna curta
-     * e o IPv4 e' o que identifica o aparelho nas redes onde este MDM opera.
-     *
-     * Devolve null quando nao ha' interface utilizavel; nesse caso o campo simplesmente nao
-     * e' enviado (a classe serializa apenas nao-nulos) e o painel mostra "nao reportado".
-     */
-    public static String getLocalIpAddress() {
-        try {
-            for (NetworkInterface itf : Collections.list(NetworkInterface.getNetworkInterfaces())) {
-                if (itf.isLoopback() || !itf.isUp()) {
-                    continue;
-                }
-                for (InetAddress addr : Collections.list(itf.getInetAddresses())) {
-                    if (!addr.isLoopbackAddress() && addr instanceof Inet4Address) {
-                        return addr.getHostAddress();
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.w(Const.LOG_TAG, "Failed to get the device IP address: " + e.getMessage());
         }
         return null;
     }

@@ -19,7 +19,7 @@
 #   ./scripts/publicar-apk.sh                          # publica o ultimo build
 #   ./scripts/publicar-apk.sh --apk caminho/x.apk
 #   ./scripts/publicar-apk.sh --perfil 44              # tambem aponta o perfil 44
-#   ./scripts/publicar-apk.sh --perfil 44 --nome hmdm-6.37.7-kiosk.apk
+#   ./scripts/publicar-apk.sh --perfil 44 --nome hmdm-v1.0-kiosk.apk
 set -euo pipefail
 
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -106,34 +106,44 @@ URL="${BASE_URL}/files/${NOME}"
 
 # ---------------------------------------------------------------- 4/6 banco
 info "4/6 Registrando no banco"
-SQL_PERFIL=""
+
+# Se o pacote nao existe em applications, o INSERT nao produz linha e os UPDATEs abaixo
+# gravariam mainappid = NULL -- exatamente o estrago descrito em PROVISIONAMENTO.md.
+# Melhor abortar aqui do que deixar o perfil sem app principal.
+APPID="$("${PSQL[@]}" -tA -c "SELECT id FROM applications WHERE pkg='${PKG}' ORDER BY id LIMIT 1;" | tr -d '\r')"
+[ -n "$APPID" ] || { erro "pacote ${PKG} nao esta cadastrado em applications -- cadastre o app no painel primeiro"; exit 1; }
+
+# Uma unica instrucao: em Postgres a saida de uma CTE que escreve so' e' visivel dentro
+# da propria instrucao, entao os dois lados da relacao tem de viajar juntos aqui.
+CTE_PERFIL=""; STMT_FINAL="SELECT id FROM nova;"
 if [ -n "$PERFIL" ]; then
-    # Os dois lados da relacao na MESMA transacao. Atualizar so' configurations.mainappid
-    # deixa o perfil inconsistente e o proximo save do painel zera o mainappid.
-    SQL_PERFIL="
-UPDATE configurationapplications
-   SET applicationversionid = (SELECT id FROM nova)
- WHERE configurationid = ${PERFIL}
-   AND applicationid = (SELECT applicationid FROM nova);
-UPDATE configurations
+    CTE_PERFIL=", sync_ca AS (
+    UPDATE configurationapplications ca
+       SET applicationversionid = (SELECT id FROM nova)
+     WHERE ca.configurationid = ${PERFIL}
+       AND ca.applicationid = (SELECT applicationid FROM nova)
+       AND (SELECT id FROM nova) IS NOT NULL
+    RETURNING ca.id
+)"
+    STMT_FINAL="UPDATE configurations
    SET mainappid = (SELECT id FROM nova)
- WHERE id = ${PERFIL};"
+ WHERE id = ${PERFIL}
+   AND (SELECT id FROM nova) IS NOT NULL
+   AND (SELECT count(*) FROM sync_ca) >= 0;"
 fi
 
 "${PSQL[@]}" >/dev/null <<SQL
 BEGIN;
-WITH app AS (
-    SELECT id FROM applications WHERE pkg = '${PKG}' ORDER BY id LIMIT 1
-), nova AS (
+WITH nova AS (
     INSERT INTO applicationversions (applicationid, version, url, apkhash, versioncode)
-    SELECT app.id, '${VERSAO}', '${URL}', '${HASH}', ${VCODE} FROM app
+    VALUES (${APPID}, '${VERSAO}', '${URL}', '${HASH}', ${VCODE})
     ON CONFLICT (applicationid, version)
     DO UPDATE SET url = EXCLUDED.url,
                   apkhash = EXCLUDED.apkhash,
                   versioncode = EXCLUDED.versioncode
     RETURNING id, applicationid
-)
-${SQL_PERFIL:-SELECT id FROM nova;}
+)${CTE_PERFIL}
+${STMT_FINAL}
 COMMIT;
 SQL
 ok "applicationversions: ${PKG} ${VERSAO} -> ${URL}"

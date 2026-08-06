@@ -43,7 +43,5 @@
   "table.heading.plugin.audit.ipAddress": "IP-address",
   "table.heading.plugin.audit.action": "Action",
   "table.heading.plugin.audit.payload": "Payload",
-  "notfound.common.plugin.audit.logs": "No audit log records found. Try a different query.",
-  "plugin.audit.action.device.remote.command": "Remote command sent to device",
-  "plugin.audit.action.device.force.kiosk": "Kiosk mode forced on device"
+  "notfound.common.plugin.audit.logs": "No audit log records found. Try a different query."
 }

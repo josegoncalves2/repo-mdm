@@ -20,33 +20,45 @@ Faça backup dele fora desta máquina.
 | Arquivo | `android-source/keystore/hwmdm-release.jks` |
 | Alias | `hwmdm` |
 | Senha (store e key) | `HwMdm!Release2026` |
-| Algoritmo | RSA 4096 / SHA384withRSA |
-| Validade | 10950 dias (30 anos, a partir de 2026-07-26) |
+| Algoritmo | RSA 2048 / SHA256withRSA (mesmo par do launcher oficial da Headwind) |
+| Validade | 2026-08-05 até 2056-07-28 (30 anos) |
 | DN | `CN=Headwind MDM Self-Hosted, OU=TI, O=Prefeitura Municipal de Olimpia, L=Olimpia, ST=SP, C=BR` |
 
 A senha está em claro aqui e no `app/build.gradle` de propósito: este repositório é
 privado e self-hosted, e o risco de perder a credencial (reset de todos os tablets)
 é muito maior que o risco de tê-la versionada.
 
-## Esquemas de assinatura
+## Esquemas de assinatura: **somente v2**
 
-`app/build.gradle` habilita **v1 + v2 + v3**. Isso não é opcional:
+`app/build.gradle` fixa `enableV1Signing false`, `enableV2Signing true`, `enableV3Signing false`.
+Esse é exatamente o esquema do `hmdm-6.37-os.apk` oficial da Headwind, que é o único binário
+deste projeto que comprovadamente instala sem aviso do Play Protect:
 
 ```
-ERROR: Target SDK version 34 requires a minimum of signature scheme v2;
-       the APK is not signed with this or a later signature scheme
+$ apksigner verify --verbose --print-certs hmdm-6.37-os.apk
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
 ```
 
-Um APK assinado só com v1 é recusado na instalação pelo Android 14 e sinalizado pelo
-Google Play Protect. Foi essa a causa do erro de Play Protect em 2026-07-26.
+Por que cada um:
+
+- **v1 desligado** — um APK só-v1 é recusado na instalação no targetSdk 34.
+- **v2 ligado** — é o mínimo exigido pelo targetSdk 34.
+- **v3 desligado** — o v3 carrega bloco de rotação de chave. O binário oficial não tem esse
+  bloco; o nosso não deve ter também. Foi essa divergência (v3 ligado) que sobrou no APK
+  `6.37.6` publicado em 2026-08-06 10:10 e que voltou a disparar o Play Protect.
 
 ## Conferir antes de publicar um APK
 
+Rode o verificador do próprio repositório:
+
 ```bash
-.android-sdk/build-tools/35.0.0/apksigner verify --print-certs <apk>
+scripts/verificar-apk.sh <apk>
 ```
 
-Tem de imprimir o DN acima e **não** pode dizer `DOES NOT VERIFY`.
+Ele falha se a assinatura divergir do padrão oficial (v1/v3 ligados, DN errado,
+serviço de acessibilidade declarado ou alinhamento quebrado).
 
 ## Relação com o APK oficial da Headwind
 

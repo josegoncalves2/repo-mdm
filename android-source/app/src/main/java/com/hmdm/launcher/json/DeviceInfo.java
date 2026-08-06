@@ -54,10 +54,6 @@ public class DeviceInfo {
     private String imsi2;
     private String cpu;
     private String serial;
-    // Endereco IP da propria interface de rede do aparelho. O painel mostra este valor como
-    // "DEVICE IP"; sem ele so' restava o publicIp visto pelo servidor, que numa rede com NAT
-    // ou proxy e' o endereco do salto de saida e nao identifica o aparelho.
-    private String deviceIp;
 
     // These fields are reserved for custom builds of Headwind MDM
     private String custom1;
@@ -294,14 +290,6 @@ public class DeviceInfo {
 
     public void setSerial(String serial) {
         this.serial = serial;
-    }
-
-    public String getDeviceIp() {
-        return deviceIp;
-    }
-
-    public void setDeviceIp(String deviceIp) {
-        this.deviceIp = deviceIp;
     }
 
     public String getCustom1() {

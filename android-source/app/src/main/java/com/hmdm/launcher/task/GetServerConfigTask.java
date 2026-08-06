@@ -139,12 +139,14 @@ public class GetServerConfigTask extends AsyncTask< Void, Integer, Integer > {
                     throw new Exception("Content app in kiosk mode is not set");
                 }
 
-                // Overlay blockers are auxiliary; Device Owner lock task remains the source of truth.
+                // Prevent from occasional launch in the kiosk mode without any possibility to exit!
                 if (ProUtils.kioskModeRequired(context) &&
                         !context.getPackageName().equals(settingsHelper.getConfig().getMainApp()) &&
                         Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                         !Settings.canDrawOverlays(context) && !BuildConfig.ENABLE_KIOSK_WITHOUT_OVERLAYS) {
-                        RemoteLogger.log(context, Const.LOG_WARN, "Kiosk overlay blockers unavailable: no permission to draw over other windows.");
+                        RemoteLogger.log(context, Const.LOG_WARN, "Kiosk mode disabled: no permission to draw over other windows.");
+                        settingsHelper.getConfig().setKioskMode(false);
+                        settingsHelper.updateConfig(settingsHelper.getConfig());
                 }
 
                 ProUtils.processConfig(context, serverConfig);

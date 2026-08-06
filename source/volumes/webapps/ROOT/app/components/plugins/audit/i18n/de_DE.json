@@ -43,7 +43,5 @@
   "table.heading.plugin.audit.ipAddress": "IP-Adresse",
   "table.heading.plugin.audit.action": "Aktion",
   "table.heading.plugin.audit.payload": "Payload",
-  "notfound.common.plugin.audit.logs": "Keine Überwachungsprotokolldatensätze gefunden. Versuchen Sie eine andere Abfrage.",
-  "plugin.audit.action.device.remote.command": "Fernbefehl an Gerät gesendet",
-  "plugin.audit.action.device.force.kiosk": "Kioskmodus auf Gerät erzwungen"
+  "notfound.common.plugin.audit.logs": "Keine Überwachungsprotokolldatensätze gefunden. Versuchen Sie eine andere Abfrage."
 }

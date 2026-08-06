@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:231:9-239:20
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:233:9-241:20
 	android:grantUriPermissions
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:235:13-47
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:237:13-47
 	android:authorities
 		INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:233:13-60
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:235:13-60
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:234:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:236:13-37
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:232:13-62
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:234:13-62
 manifest
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-283:12
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-283:12
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-283:12
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-283:12
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-291:12
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-291:12
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-291:12
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:22:1-291:12
 MERGED from [androidx.databinding:databinding-adapters:8.13.2] /home/sahwmdm/.gradle/caches/8.13/transforms/78962f3281a3b1b71b623d1bd7686c15/transformed/databinding-adapters-8.13.2/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.13.2] /home/sahwmdm/.gradle/caches/8.13/transforms/df11e0cc65f11d6e6ad9c17b05ff2600/transformed/databinding-runtime-8.13.2/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/928ceb5a87450803aa7bb0c2358c4f64/transformed/material-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -228,170 +228,174 @@ uses-permission#android.permission.FOREGROUND_SERVICE_LOCATION
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:66:5-86
 	android:name
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:66:22-83
+uses-permission#android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:68:5-94
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:68:22-91
 uses-permission#android.permission.SCHEDULE_EXACT_ALARM
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:67:5-79
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:69:5-79
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:67:22-76
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:69:22-76
 uses-permission#android.permission.REQUEST_PASSWORD_COMPLEXITY
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:68:5-86
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:70:5-86
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:68:22-83
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:70:22-83
 uses-permission#android.permission.MASTER_CLEAR
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:69:5-70:46
-	tools:ignore
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:70:9-44
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:69:22-68
-uses-permission#android.permission.WRITE_SETTINGS
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:71:5-72:46
 	tools:ignore
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:72:9-44
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:71:22-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:71:22-68
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:73:5-74:46
+	tools:ignore
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:74:9-44
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:73:22-70
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_AIRPLANE_MODE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:74:5-93
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:76:5-93
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:74:22-90
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:76:22-90
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_APPS_CONTROL
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:75:5-92
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:77:5-92
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:75:22-89
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:77:22-89
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_AUDIO_OUTPUT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:76:5-92
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:78:5-92
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:76:22-89
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:78:22-89
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_BLUETOOTH
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:77:5-89
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:79:5-89
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:77:22-86
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:79:22-86
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_CALLS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:78:5-85
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:80:5-85
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:78:22-82
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:80:22-82
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_CERTIFICATES
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:79:5-92
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:81:5-92
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:79:22-89
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:81:22-89
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_DEBUGGING_FEATURES
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:80:5-98
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:82:5-98
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:80:22-95
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:82:22-95
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_DISPLAY
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:81:5-87
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:83:5-87
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:81:22-84
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:83:22-84
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_FACTORY_RESET
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:82:5-93
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:84:5-93
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:82:22-90
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:84:22-90
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_FUN
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:83:5-83
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:85:5-83
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:83:22-80
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:85:22-80
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_INSTALL_UNKNOWN_SOURCES
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:84:5-103
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:86:5-103
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:84:22-100
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:86:22-100
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_LOCALE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:85:5-86
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:87:5-86
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:85:22-83
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:87:22-83
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_LOCATION
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:86:5-88
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:88:5-88
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:86:22-85
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:88:22-85
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_LOCK_CREDENTIALS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:87:5-96
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:89:5-96
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:87:22-93
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:89:22-93
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_MICROPHONE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:88:5-90
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:90:5-90
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:88:22-87
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:90:22-87
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_MOBILE_NETWORK
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:89:5-94
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:91:5-94
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:89:22-91
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:91:22-91
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_MODIFY_USERS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:90:5-92
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:90:22-89
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:91:5-100
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:91:22-97
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_OVERRIDE_APN
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:92:5-92
 	android:name
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:92:22-89
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_NEARBY_COMMUNICATION
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:93:5-100
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:93:22-97
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_OVERRIDE_APN
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:94:5-92
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:94:22-89
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_PHYSICAL_MEDIA
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:93:5-94
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:93:22-91
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_PRINTING
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:94:5-88
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:94:22-85
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_RESET_PASSWORD
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:95:5-94
 	android:name
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:95:22-91
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_PRINTING
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:96:5-88
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:96:22-85
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_RESET_PASSWORD
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:97:5-94
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:97:22-91
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_RESTRICT_PRIVATE_DNS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:96:5-100
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:98:5-100
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:96:22-97
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:98:22-97
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_SAFE_BOOT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:97:5-89
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:99:5-89
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:97:22-86
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:99:22-86
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_SCREEN_CONTENT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:98:5-94
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:98:22-91
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_SMS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:99:5-83
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:99:22-80
-uses-permission#android.permission.MANAGE_DEVICE_POLICY_SYSTEM_UPDATES
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:100:5-94
 	android:name
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:100:22-91
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_SMS
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:101:5-83
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:101:22-80
+uses-permission#android.permission.MANAGE_DEVICE_POLICY_SYSTEM_UPDATES
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:102:5-94
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:102:22-91
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_SYSTEM_DIALOGS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:101:5-94
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:103:5-94
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:101:22-91
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:103:22-91
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_TIME
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:102:5-84
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:104:5-84
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:102:22-81
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:104:22-81
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_USB_FILE_TRANSFER
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:103:5-97
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:105:5-97
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:103:22-94
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:105:22-94
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_VPN
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:104:5-83
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:106:5-83
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:104:22-80
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:106:22-80
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_WALLPAPER
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:105:5-89
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:107:5-89
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:105:22-86
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:107:22-86
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_WIFI
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:106:5-84
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:108:5-84
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:106:22-81
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:108:22-81
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_WINDOWS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:107:5-87
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:109:5-87
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:107:22-84
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:109:22-84
 uses-permission#android.permission.MANAGE_DEVICE_POLICY_WIPE_DATA
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:108:5-89
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:5-89
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:108:22-86
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:22-86
 uses-sdk
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:5-73
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:5-73
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:5-73
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:5-73
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:5-73
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:5-73
 MERGED from [androidx.databinding:databinding-adapters:8.13.2] /home/sahwmdm/.gradle/caches/8.13/transforms/78962f3281a3b1b71b623d1bd7686c15/transformed/databinding-adapters-8.13.2/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-adapters:8.13.2] /home/sahwmdm/.gradle/caches/8.13/transforms/78962f3281a3b1b71b623d1bd7686c15/transformed/databinding-adapters-8.13.2/AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:databinding-runtime:8.13.2] /home/sahwmdm/.gradle/caches/8.13/transforms/df11e0cc65f11d6e6ad9c17b05ff2600/transformed/databinding-runtime-8.13.2/AndroidManifest.xml:5:5-44
@@ -475,32 +479,32 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /home/sahwmdm/.gradle/cac
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/sahwmdm/.gradle/caches/8.13/transforms/76d61942979747a03778cc8f6ce979ac/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/sahwmdm/.gradle/caches/8.13/transforms/76d61942979747a03778cc8f6ce979ac/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
 	tools:overrideLibrary
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:110:15-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:15-70
 	android:targetSdkVersion
 		INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml
 uses-feature#android.hardware.telephony
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:5-88
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:5-88
 	android:required
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:61-85
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:61-85
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:112:19-60
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:19-60
 uses-feature#android.hardware.touchscreen
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:113:5-90
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:115:5-90
 	android:required
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:113:63-87
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:115:63-87
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:113:19-62
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:115:19-62
 uses-feature#android.software.leanback
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:5-87
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:116:5-87
 	android:required
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:60-84
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:116:60-84
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:114:19-59
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:116:19-59
 application
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:116:5-281:19
-INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:116:5-281:19
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:118:5-289:19
+INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:118:5-289:19
 MERGED from [com.google.android.material:material:1.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/928ceb5a87450803aa7bb0c2358c4f64/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/928ceb5a87450803aa7bb0c2358c4f64/transformed/material-1.1.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.work:work-runtime:2.9.1] /home/sahwmdm/.gradle/caches/8.13/transforms/9172f1f48b4ddbe3cb5ba74df53b3acc/transformed/work-runtime-2.9.1/AndroidManifest.xml:28:5-143:19
@@ -520,280 +524,298 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/sahwmdm/.gradle/cache
 	android:extractNativeLibs
 		INJECTED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml
 	android:requestLegacyExternalStorage
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:120:9-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:122:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] /home/sahwmdm/.gradle/caches/8.13/transforms/00eeb73d329f60914ee7cf1a9183d8d3/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:119:9-35
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:121:9-35
 	android:label
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:118:9-47
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:120:9-47
 	android:hardwareAccelerated
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:125:9-43
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:127:9-43
 	tools:ignore
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:126:9-48
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:128:9-48
 	android:icon
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:117:9-43
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:119:9-43
 	android:theme
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:123:9-40
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:125:9-40
 	android:networkSecurityConfig
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:122:9-69
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:124:9-69
 	android:usesCleartextTraffic
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:121:9-44
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:123:9-44
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:124:9-28
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:126:9-28
 activity#com.hmdm.launcher.ui.MainActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:128:9-142:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:130:9-144:20
 	android:launchMode
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:130:13-48
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:132:13-48
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:132:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:134:13-36
 	android:banner
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:131:13-46
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:133:13-46
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:129:13-44
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:131:13-44
 intent-filter#action:name:android.app.action.PROVISIONING_SUCCESSFUL+action:name:android.intent.action.MAIN+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.HOME+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:133:13-141:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:135:13-143:29
 action#android.intent.action.MAIN
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:134:17-69
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:136:17-69
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:134:25-66
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:136:25-66
 action#android.app.action.PROVISIONING_SUCCESSFUL
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:135:17-84
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:137:17-84
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:135:25-82
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:137:25-82
 category#android.intent.category.LAUNCHER
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:137:17-77
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:139:17-77
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:137:27-74
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:139:27-74
 category#android.intent.category.LEANBACK_LAUNCHER
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:138:17-86
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:140:17-86
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:138:27-83
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:140:27-83
 category#android.intent.category.DEFAULT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:139:17-76
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:141:17-76
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:139:27-73
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:141:27-73
 category#android.intent.category.HOME
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:140:17-73
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:142:17-73
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:140:27-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:142:27-70
 activity#com.hmdm.launcher.ui.AdminActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:143:9-147:11
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:145:9-149:11
 	android:excludeFromRecents
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:145:13-46
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:147:13-46
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:146:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:148:13-37
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:144:13-45
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:146:13-45
 activity#com.hmdm.launcher.ui.AdminModeRequestActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:148:9-152:15
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:150:9-154:15
 	android:excludeFromRecents
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:150:13-46
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:152:13-46
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:151:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:153:13-37
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:149:13-56
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:151:13-56
 activity#com.journeyapps.barcodescanner.CaptureActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:154:9-158:39
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:156:9-160:39
 MERGED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:47:9-53:63
 MERGED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:47:9-53:63
 	android:clearTaskOnLaunch
 		ADDED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:49:13-45
 	android:screenOrientation
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:156:13-51
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:158:13-51
 		REJECTED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:50:13-56
 	android:stateNotNeeded
 		ADDED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:51:13-42
 	android:windowSoftInputMode
 		ADDED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:53:13-60
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:158:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:160:13-37
 	android:theme
 		ADDED from [com.journeyapps:zxing-android-embedded:4.1.0] /home/sahwmdm/.gradle/caches/8.13/transforms/90719572ef325b5bd834714958aeae63/transformed/jetified-zxing-android-embedded-4.1.0/AndroidManifest.xml:52:13-54
 	tools:replace
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:157:13-46
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:159:13-46
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:155:13-74
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:157:13-74
 activity#com.hmdm.launcher.ui.InitialSetupActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:160:9-169:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:162:9-171:20
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:164:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:166:13-36
 	android:permission
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:163:13-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:165:13-70
 	android:theme
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:162:13-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:164:13-52
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:161:13-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:163:13-52
 intent-filter#action:name:android.app.action.ADMIN_POLICY_COMPLIANCE+category:name:android.intent.category.DEFAULT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:165:13-168:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:167:13-170:29
 action#android.app.action.ADMIN_POLICY_COMPLIANCE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:166:17-85
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:168:17-85
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:166:25-82
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:168:25-82
 activity#com.hmdm.launcher.ui.MdmChoiceSetupActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:171:9-180:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:173:9-182:20
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:175:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:177:13-36
 	android:permission
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:174:13-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:176:13-70
 	android:theme
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:173:13-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:175:13-52
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:172:13-54
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:174:13-54
 intent-filter#action:name:android.app.action.GET_PROVISIONING_MODE+category:name:android.intent.category.DEFAULT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:176:13-179:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:178:13-181:29
 action#android.app.action.GET_PROVISIONING_MODE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:177:17-83
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:179:17-83
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:177:25-80
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:179:25-80
 activity#com.hmdm.launcher.ui.ErrorDetailsActivity
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:182:9-185:39
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:184:9-187:39
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:185:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:187:13-37
 	android:theme
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:184:13-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:186:13-52
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:183:13-52
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:185:13-52
 receiver#com.hmdm.launcher.AdminReceiver
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:187:9-200:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:189:9-202:20
 	android:label
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:189:13-51
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:191:13-51
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:190:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:192:13-36
 	android:permission
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:191:13-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:193:13-70
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:188:13-59
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:190:13-59
 meta-data#android.app.device_admin
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:192:13-194:56
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:194:13-196:56
 	android:resource
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:194:17-53
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:196:17-53
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:193:17-56
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:195:17-56
 intent-filter#action:name:android.app.action.DEVICE_ADMIN_ENABLED+action:name:android.app.action.PROFILE_PROVISIONING_COMPLETE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:196:13-199:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:198:13-201:29
 action#android.app.action.DEVICE_ADMIN_ENABLED
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:197:17-82
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:199:17-82
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:197:25-79
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:199:25-79
 action#android.app.action.PROFILE_PROVISIONING_COMPLETE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:198:17-91
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:200:17-91
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:198:25-88
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:200:25-88
 receiver#com.hmdm.launcher.receiver.SimChangedReceiver
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:202:9-207:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:204:9-209:20
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:203:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:205:13-36
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:202:19-79
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:204:19-79
 intent-filter#action:name:android.intent.action.SIM_STATE_CHANGED
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:204:13-206:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:206:13-208:29
 action#android.intent.action.SIM_STATE_CHANGED
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:205:17-81
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:207:17-81
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:205:25-79
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:207:25-79
 receiver#com.hmdm.launcher.receiver.ShutdownReceiver
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:209:9-215:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:211:9-217:20
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:210:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:212:13-36
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:209:19-77
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:211:19-77
 intent-filter#action:name:android.intent.action.ACTION_SHUTDOWN+action:name:android.intent.action.QUICKBOOT_POWEROFF
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:211:13-214:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:213:13-216:29
 action#android.intent.action.ACTION_SHUTDOWN
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:212:17-80
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:214:17-80
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:212:25-77
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:214:25-77
 action#android.intent.action.QUICKBOOT_POWEROFF
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:213:17-83
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:215:17-83
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:213:25-80
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:215:25-80
 receiver#com.hmdm.launcher.receiver.BootReceiver
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:217:9-229:20
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:219:9-231:20
 	android:enabled
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:220:13-35
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:222:13-35
 	android:label
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:219:13-41
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:221:13-41
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:221:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:223:13-36
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:218:13-67
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:220:13-67
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON+category:name:android.intent.category.DEFAULT
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:222:13-228:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:224:13-230:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:224:17-78
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:226:17-78
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:224:25-76
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:226:25-76
 action#android.intent.action.QUICKBOOT_POWERON
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:225:17-81
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:225:25-79
-action#com.htc.intent.action.QUICKBOOT_POWERON
 ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:227:17-81
 	android:name
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:227:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:229:17-81
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:229:25-79
 service#com.hmdm.launcher.pro.service.CheckForegroundApplicationService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:241:9-242:38
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:243:9-244:38
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:242:13-36
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:244:13-36
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:241:18-79
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:243:18-79
 service#com.hmdm.launcher.service.PluginApiService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:244:9-248:19
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:9-250:19
 	android:enabled
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:244:59-81
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:59-81
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:244:82-105
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:82-105
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:244:18-58
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:18-58
 intent-filter#action:name:com.hmdm.action.Connect
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:245:13-247:29
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:247:13-249:29
 action#com.hmdm.action.Connect
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:17-66
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:248:17-66
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:246:25-63
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:248:25-63
 service#org.eclipse.paho.android.service.MqttService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:260:9-265:19
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:257:9-262:19
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:262:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:259:13-37
 	android:foregroundServiceType
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:261:13-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:258:13-70
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:260:18-77
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:257:18-77
 property#android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:263:13-264:60
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:260:13-261:60
 	android:value
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:264:17-58
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:261:17-58
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:263:23-82
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:260:23-82
 service#com.hmdm.launcher.service.LocationService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:267:9-269:39
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:264:9-266:39
+	android:exported
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:266:13-37
+	android:foregroundServiceType
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:265:13-53
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:264:18-57
+service#com.hmdm.launcher.service.StatusControlService
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:268:9-269:39
 	android:exported
 		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:269:13-37
-	android:foregroundServiceType
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:268:13-53
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:267:18-57
-service#com.hmdm.launcher.service.StatusControlService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:271:9-272:39
-	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:272:13-37
-	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:271:18-62
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:268:18-62
 service#com.hmdm.launcher.service.PushLongPollingService
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:274:9-279:19
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:271:9-276:19
 	android:exported
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:276:13-37
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:273:13-37
 	android:foregroundServiceType
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:275:13-70
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:272:13-70
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:274:18-64
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:271:18-64
+service#com.hmdm.launcher.service.ScreenshotService
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:280:9-282:39
+	android:exported
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:282:13-37
+	android:foregroundServiceType
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:281:13-60
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:280:18-59
+activity#com.hmdm.launcher.ui.ScreenshotConsentActivity
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:284:9-287:39
+	android:excludeFromRecents
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:286:13-46
+	android:exported
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:287:13-37
+	android:theme
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:285:13-72
+	android:name
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:284:19-63
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:236:13-238:57
+ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:238:13-240:57
 	android:resource
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:238:17-55
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:240:17-55
 	android:name
-		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:237:17-67
+		ADDED from /opt/projetos/hwmdm/android-source/app/src/main/AndroidManifest.xml:239:17-67
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.work:work-runtime:2.9.1] /home/sahwmdm/.gradle/caches/8.13/transforms/9172f1f48b4ddbe3cb5ba74df53b3acc/transformed/work-runtime-2.9.1/AndroidManifest.xml:29:9-37:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /home/sahwmdm/.gradle/caches/8.13/transforms/f31e9d1da53ef96c37d73819271a7b63/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20

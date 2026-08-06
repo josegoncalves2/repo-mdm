@@ -99,7 +99,6 @@ import com.hmdm.launcher.json.Application;
 import com.hmdm.launcher.json.DeviceInfo;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
-import com.hmdm.launcher.policy.KioskPolicy;
 import com.hmdm.launcher.pro.ProUtils;
 import com.hmdm.launcher.pro.service.CheckForegroundAppAccessibilityService;
 import com.hmdm.launcher.pro.service.CheckForegroundApplicationService;
@@ -120,7 +119,6 @@ import com.hmdm.launcher.util.PreferenceLogger;
 import com.hmdm.launcher.util.RemoteLogger;
 import com.hmdm.launcher.util.SystemUtils;
 import com.hmdm.launcher.util.Utils;
-import com.hmdm.launcher.worker.PushNotificationProcessor;
 import com.hmdm.launcher.worker.SendDeviceInfoWorker;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.NetworkPolicy;
@@ -200,8 +198,6 @@ public class MainActivity
     private static boolean interruptResumeFlow = false;
     private static final int BOOT_DURATION_SEC = 120;
     private static final int PAUSE_BETWEEN_AUTORUNS_SEC = 5;
-    private static final int KIOSK_LOCK_VERIFY_ATTEMPTS = 5;
-    private static final long KIOSK_LOCK_VERIFY_DELAY_MS = 750;
     private boolean sendDeviceInfoScheduled = false;
     // This flag notifies "download error" dialog what we're downloading: application or file
     // We cannot send this flag as the method parameter because dialog calls MainActivity methods
@@ -303,32 +299,20 @@ public class MainActivity
                     if (lockConfig != null) {
                         lockConfig.setKioskMode(true);
                         RemoteLogger.log(MainActivity.this, Const.LOG_INFO, "Lock kiosk by admin command");
-                        String lockKioskApp = KioskPolicy.resolveMainApp(lockConfig.getMainApp(), getPackageName());
-                        // Re-arm the allowlist and lock task features, then (re)enter lock task
-                        ProUtils.updateKioskAllowedApps(lockKioskApp, MainActivity.this, false);
-                        ProUtils.updateKioskOptions(MainActivity.this);
-                        if (!ProUtils.startCosuKioskMode(lockKioskApp, MainActivity.this, false)) {
-                            RemoteLogger.log(MainActivity.this, Const.LOG_WARN, "Lock kiosk command failed to enter lock task");
-                        }
                         showContent(lockConfig);
-                    } else {
-                        RemoteLogger.log(MainActivity.this, Const.LOG_WARN, "Lock kiosk command ignored: no configuration");
+                    }
+                    break;
+
+                case Const.ACTION_SHOW_MESSAGE:
+                    String messageText = intent.getStringExtra(Const.EXTRA_MESSAGE_TEXT);
+                    if (messageText != null && !messageText.trim().isEmpty()) {
+                        android.widget.Toast.makeText(MainActivity.this, messageText,
+                                android.widget.Toast.LENGTH_LONG).show();
                     }
                     break;
 
                 case Const.ACTION_ADMIN_PANEL:
                     openAdminPanel();
-                    break;
-
-                case Const.ACTION_SHOW_MESSAGE:
-                    // A dialog cannot be shown over another app, so a message that arrives
-                    // while the launcher is in the background is held until it resumes
-                    // instead of being dropped.
-                    pendingMessageId = intent.getIntExtra(Const.EXTRA_MESSAGE_ID, 0);
-                    pendingMessageText = intent.getStringExtra(Const.EXTRA_MESSAGE_TEXT);
-                    if (!isBackground) {
-                        showPendingAdminMessage();
-                    }
                     break;
             }
 
@@ -378,11 +362,6 @@ public class MainActivity
     private View rightToolbarView;
 
     private boolean firstStartAfterProvisioning = false;
-
-    // Text message waiting to be shown; set when a message arrives while the launcher is
-    // in the background and consumed on the next onResume.
-    private int pendingMessageId = 0;
-    private String pendingMessageText = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -581,8 +560,8 @@ public class MainActivity
         intentFilter.addAction(Const.ACTION_POLICY_VIOLATION);
         intentFilter.addAction(Const.ACTION_EXIT_KIOSK);
         intentFilter.addAction(Const.ACTION_LOCK_KIOSK);
-        intentFilter.addAction(Const.ACTION_ADMIN_PANEL);
         intentFilter.addAction(Const.ACTION_SHOW_MESSAGE);
+        intentFilter.addAction(Const.ACTION_ADMIN_PANEL);
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, intentFilter);
     }
 
@@ -599,9 +578,6 @@ public class MainActivity
         statusBarUpdater.startUpdating(this, binding.clock, binding.batteryState);
 
         startServicesWithRetry();
-
-        // Hard GPS enforcement: block launcher if GPS is required but disabled
-        checkAndEnforceGpsIfRequired();
 
         if (interruptResumeFlow) {
             interruptResumeFlow = false;
@@ -627,8 +603,6 @@ public class MainActivity
             bottomAppListAdapter.updateShortcuts(this);
             bottomAppListAdapter.notifyDataSetChanged();
         }
-
-        showPendingAdminMessage();
     }
 
     private void lockOrientation() {
@@ -879,13 +853,6 @@ public class MainActivity
         preferences.edit().putInt(Const.PREFERENCES_DEVICE_OWNER, deviceOwner ?
             Const.PREFERENCES_ON : Const.PREFERENCES_OFF).commit();
 
-        // Enquanto formos Device Owner, desliga o Google Play Protect para que ele nao
-        // bloqueie a instalacao silenciosa de apps assinados fora do Google (o proprio
-        // launcher e os apps gerenciados). Best-effort; falha silenciosa onde nao permitido.
-        if (deviceOwner) {
-            Utils.disablePlayProtect(this);
-        }
-
         int miuiPermissionMode = preferences.getInt(Const.PREFERENCES_MIUI_PERMISSIONS, -1);
         if (miuiPermissionMode == -1) {
             preferences.
@@ -949,9 +916,7 @@ public class MainActivity
         }
 
         int overlayMode = preferences.getInt( Const.PREFERENCES_OVERLAY, - 1 );
-        // The overlay permission is also needed in the open source build: the kiosk mode uses
-        // overlays to block the status bar and the Samsung app list gesture.
-        if (overlayMode == -1 && needRequestOverlay()) {
+        if (ProUtils.isPro() && overlayMode == -1 && needRequestOverlay()) {
             if ( checkAlarmWindow() ) {
                 preferences.
                         edit().
@@ -1097,12 +1062,17 @@ public class MainActivity
 
     private void createButtons() {
         ServerConfig config = settingsHelper.getConfig();
-        String kioskApp = config != null ? KioskPolicy.resolveMainApp(config.getMainApp(), getPackageName()) : getPackageName();
-        if (ProUtils.kioskModeRequired(this) && !getPackageName().equals(kioskApp)) {
+        if (ProUtils.kioskModeRequired(this) && !getPackageName().equals(settingsHelper.getConfig().getMainApp())) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                     !Settings.canDrawOverlays( this ) &&
                     !BuildConfig.ENABLE_KIOSK_WITHOUT_OVERLAYS) {
-                RemoteLogger.log(this, Const.LOG_WARN, "Kiosk overlay blockers unavailable: no permission to draw over other windows.");
+                RemoteLogger.log(this, Const.LOG_WARN, "Kiosk mode disabled: no permission to draw over other windows.");
+                Toast.makeText(this, getString(R.string.kiosk_mode_requires_overlays,
+                        getString(R.string.white_app_name)), Toast.LENGTH_LONG).show();
+                config.setKioskMode(false);
+                settingsHelper.updateConfig(config);
+                createLauncherButtons();
+                return;
             }
             View kioskUnlockButton = null;
             if (config.isKioskExit()) {     // Should be true by default, but false on older web panel versions
@@ -1244,7 +1214,7 @@ public class MainActivity
     }
 
     private boolean checkAlarmWindow() {
-        if (!Utils.canDrawOverlays(this)) {
+        if (ProUtils.isPro() && !Utils.canDrawOverlays(this)) {
             if (SystemUtils.autoSetOverlayPermission(this, getPackageName())) {
                 // Permission auto granted, but we double check
                 if (Utils.canDrawOverlays(this)) {
@@ -1825,22 +1795,11 @@ public class MainActivity
         }
 
         if (ProUtils.kioskModeRequired(this)) {
-            String kioskApp = KioskPolicy.resolveMainApp(settingsHelper.getConfig().getMainApp(), getPackageName());
-            if (kioskApp.equals(getPackageName())) {
-                // Headwind MDM itself is the kiosk target (mainApp = com.hmdm.launcher).
-                // Arm or refresh lock task, then KEEP GOING so our own restricted screen gets drawn.
-                // Returning here would leave the loading spinner on screen until something else
-                // happens to trigger another onResume.
-                if (!ProUtils.isKioskModeRunning(this)) {
-                    if (!startKiosk(kioskApp)) {
-                        Log.e(Const.LOG_TAG, "Kiosk mode failed to start for the launcher itself, proceed with the default flow");
-                    }
-                } else {
-                    // Here we go if the configuration is changed when launcher is in the kiosk mode
-                    ProUtils.updateKioskAllowedApps(kioskApp, this, false);
-                    ProUtils.updateKioskOptions(this);
-                }
-            } else if (kioskApp.trim().length() > 0) {
+            String kioskApp = settingsHelper.getConfig().getMainApp();
+            if (kioskApp != null && kioskApp.trim().length() > 0 &&
+                    // If Headwind MDM itself is set as kiosk app, the kiosk mode is already turned on;
+                    // So here we just proceed to drawing the content
+                    (!kioskApp.equals(getPackageName()) || !ProUtils.isKioskModeRunning(this))) {
                 if (ProUtils.getKioskAppIntent(kioskApp, this) != null && startKiosk(kioskApp)) {
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     return;
@@ -1848,7 +1807,13 @@ public class MainActivity
                     Log.e(Const.LOG_TAG, "Kiosk mode failed, proceed with the default flow");
                 }
             } else {
-                Log.e(Const.LOG_TAG, "Kiosk mode disabled: please setup the main app!");
+                if (kioskApp != null && kioskApp.equals(getPackageName()) && ProUtils.isKioskModeRunning(this)) {
+                    // Here we go if the configuration is changed when launcher is in the kiosk mode
+                    ProUtils.updateKioskAllowedApps(kioskApp, this, false);
+                    ProUtils.updateKioskOptions(this);
+                } else {
+                    Log.e(Const.LOG_TAG, "Kiosk mode disabled: please setup the main app!");
+                }
             }
         } else {
             if (ProUtils.isKioskModeRunning(this)) {
@@ -1876,13 +1841,6 @@ public class MainActivity
 
         if (mainAppListAdapter == null || needRedrawContentAfterReconfigure) {
             needRedrawContentAfterReconfigure = false;
-            boolean showLauncherContent = KioskPolicy.shouldShowLauncherContent(
-                    config.isKioskMode(),
-                    config.getMainApp(),
-                    getPackageName()
-            );
-            binding.activityMainContent.setVisibility(showLauncherContent ? View.VISIBLE : View.GONE);
-            binding.activityBottomLayout.setVisibility(showLauncherContent ? View.VISIBLE : View.GONE);
 
             if ( config.getBackgroundImageUrl() != null && config.getBackgroundImageUrl().length() > 0 ) {
                 if (picasso == null) {
@@ -1918,7 +1876,7 @@ public class MainActivity
                             picasso.load(config.getBackgroundImageUrl())
                                     .networkPolicy(NetworkPolicy.OFFLINE)
                                     .fit()
-                                    .centerInside()
+                                    .centerCrop()
                                     .into(binding.activityMainBackground);
                         }
                     });
@@ -1926,16 +1884,9 @@ public class MainActivity
                 }
 
                 picasso.load(config.getBackgroundImageUrl())
-                    // fit continua sendo a protecao contra o crash com imagens grandes demais em
-                    // alguns aparelhos: ela reduz a imagem para o tamanho da view antes de decodificar.
-                    //
-                    // centerInside no lugar de centerCrop: centerCrop preenche a view inteira e corta
-                    // o que sobra do lado maior. Com o aparelho em pe' a proporcao da imagem batia
-                    // com a da tela e o corte nao aparecia; deitado, a mesma imagem era ampliada
-                    // ate' cobrir a largura e o logo era cortado em cima e embaixo. centerInside
-                    // cabe a imagem inteira dentro da view nas duas orientacoes, sem cortar.
+                    // fit and centerCrop is a workaround against a crash on too large images on some devices
                     .fit()
-                    .centerInside()
+                    .centerCrop()
                     .into(binding.activityMainBackground);
 
             } else {
@@ -1953,15 +1904,11 @@ public class MainActivity
             mainAppListAdapter = new MainAppListAdapter(this, this, this);
             mainAppListAdapter.setSpanCount(spanCount);
 
-            if (showLauncherContent) {
-                binding.activityMainContent.setLayoutManager(new GridLayoutManager(this, spanCount));
-                binding.activityMainContent.setAdapter(mainAppListAdapter);
-                mainAppListAdapter.notifyDataSetChanged();
-            } else {
-                binding.activityMainContent.setAdapter(null);
-            }
+            binding.activityMainContent.setLayoutManager(new GridLayoutManager(this, spanCount));
+            binding.activityMainContent.setAdapter(mainAppListAdapter);
+            mainAppListAdapter.notifyDataSetChanged();
 
-            int bottomAppCount = showLauncherContent ? AppShortcutManager.getInstance().getInstalledAppCount(this, true) : 0;
+            int bottomAppCount = AppShortcutManager.getInstance().getInstalledAppCount(this, true);
             if (bottomAppCount > 0) {
                 bottomAppListAdapter = new BottomAppListAdapter(this, this, this);
                 bottomAppListAdapter.setSpanCount(spanCount);
@@ -1994,50 +1941,12 @@ public class MainActivity
         }
         if (kioskDelay == 0) {
             // Standard flow: no delay as earlier
-            boolean started = ProUtils.startCosuKioskMode(kioskApp, MainActivity.this, false);
-            if (started) {
-                verifyKioskLockTask(kioskApp, KIOSK_LOCK_VERIFY_ATTEMPTS);
-            }
-            return started;
+            return ProUtils.startCosuKioskMode(kioskApp, MainActivity.this, false);
         } else {
             // Delayed kiosk start
-            handler.postDelayed(() -> {
-                if (ProUtils.startCosuKioskMode(kioskApp, MainActivity.this, false)) {
-                    verifyKioskLockTask(kioskApp, KIOSK_LOCK_VERIFY_ATTEMPTS);
-                }
-            }, kioskDelay);
+            handler.postDelayed(() -> ProUtils.startCosuKioskMode(kioskApp, MainActivity.this, false), kioskDelay);
             return true;
         }
-    }
-
-    private void verifyKioskLockTask(String kioskApp, int attemptsLeft) {
-        if (!ProUtils.kioskModeRequired(this)) {
-            return;
-        }
-        if (ProUtils.isKioskModeRunning(this)) {
-            RemoteLogger.log(this, Const.LOG_INFO, "Kiosk lock task verified.");
-            return;
-        }
-        if (attemptsLeft <= 0) {
-            RemoteLogger.log(this, Const.LOG_ERROR,
-                    "Kiosk profile is active but Android still reports lock task OFF after retries.");
-            return;
-        }
-
-        final String lockPackage = KioskPolicy.resolveMainApp(kioskApp, getPackageName());
-        handler.postDelayed(() -> {
-            if (!ProUtils.kioskModeRequired(MainActivity.this)) {
-                return;
-            }
-            if (ProUtils.isKioskModeRunning(MainActivity.this)) {
-                RemoteLogger.log(MainActivity.this, Const.LOG_INFO, "Kiosk lock task verified after retry.");
-                return;
-            }
-            RemoteLogger.log(MainActivity.this, Const.LOG_WARN,
-                    "Kiosk lock task is not active; retrying startLockTask (" + attemptsLeft + " left)");
-            ProUtils.startCosuKioskMode(lockPackage, MainActivity.this, false);
-            verifyKioskLockTask(lockPackage, attemptsLeft - 1);
-        }, KIOSK_LOCK_VERIFY_DELAY_MS);
     }
 
     private void showLockScreen() {
@@ -2962,82 +2871,5 @@ public class MainActivity
                 .replace("CUSTOM2", config.getCustom2() != null ? config.getCustom2() : "")
                 .replace("CUSTOM3", config.getCustom3() != null ? config.getCustom3() : "");
         FileUtils.writeStringToFile(dstFile, content);
-    }
-
-    // Hard GPS enforcement: blocks launcher if GPS required but disabled
-    private void checkAndEnforceGpsIfRequired() {
-        ServerConfig config = settingsHelper.getConfig();
-        if (config == null || config.getGps() == null || !config.getGps()) {
-            return;
-        }
-
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (lm == null) return;
-
-        boolean gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        if (!gpsEnabled) {
-            Log.w(Const.LOG_TAG, "GPS required but disabled - showing blocking dialog");
-            showGpsBlockingDialog();
-        }
-    }
-
-    /**
-     * Shows the text message last sent from the panel's Messages screen, if any is waiting.
-     *
-     * The dialog is TYPE_APPLICATION so it works while the device is in kiosk (lock task)
-     * mode, where a notification shade the user cannot pull down would hide the message.
-     * Dismissing it is what marks the message as read on the server - the delivery receipt
-     * was already sent by PushNotificationProcessor when the push arrived.
-     */
-    private void showPendingAdminMessage() {
-        final int messageId = pendingMessageId;
-        final String text = pendingMessageText;
-        if (text == null || text.trim().isEmpty()) {
-            return;
-        }
-        pendingMessageId = 0;
-        pendingMessageText = null;
-        RemoteLogger.log(this, Const.LOG_INFO, "Showing text message " + messageId);
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.dialog_message_title)
-                .setMessage(text)
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .setCancelable(false)
-                .setPositiveButton(R.string.dialog_message_ok, (d, which) -> {
-                    if (messageId > 0) {
-                        PushNotificationProcessor.confirmMessageStatus(
-                                MainActivity.this, messageId, Const.MESSAGE_STATUS_READ);
-                    }
-                })
-                .create();
-        dialog.setCanceledOnTouchOutside(false);
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION);
-        }
-        dialog.show();
-    }
-
-    private void showGpsBlockingDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("GPS Obrigatório")
-                .setMessage("GPS deve estar LIGADO para usar este dispositivo.\n\n" +
-                            "Vá a Configurações > Localização e ATIVE o GPS.")
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setCancelable(false)
-                .setPositiveButton("Abrir Configurações", (dialog, which) -> {
-                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(intent);
-                })
-                .setNegativeButton("Verificar Novamente", (dialog, which) -> {
-                    checkAndEnforceGpsIfRequired();
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION);
-        }
-        dialog.show();
     }
 }

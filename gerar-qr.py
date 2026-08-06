@@ -12,6 +12,7 @@ import base64
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import urllib.error
@@ -167,11 +168,25 @@ def provisioning_payload(config: Dict[str, str], base_url: str, device_id: Optio
 
 
 def write_qr_png(payload: Dict[str, object], output: Path) -> None:
+    data = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     try:
         import qrcode
-    except ImportError as exc:
-        raise EnrollmentError("Pacote Python 'qrcode' não está instalado; JSON foi gerado, PNG não.") from exc
-    image = qrcode.make(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+    except ImportError:
+        # O PNG é o artefato que a equipe leva até o tablet: ele não pode deixar de existir
+        # só porque um pacote Python opcional não está instalado. O qrencode(1) faz o mesmo
+        # trabalho e costuma já estar na máquina.
+        qrencode = shutil.which("qrencode")
+        if qrencode is None:
+            raise EnrollmentError(
+                "Nem o pacote Python 'qrcode' nem o utilitário 'qrencode' estão disponíveis; "
+                "JSON foi gerado, PNG não. Instale um dos dois: sudo apt install qrencode"
+            )
+        subprocess.run(
+            [qrencode, "-t", "PNG", "-o", str(output), "-s", "6", "-m", "2", "-l", "M", data],
+            check=True,
+        )
+        return
+    image = qrcode.make(data)
     image.save(output)
 
 

@@ -1,8 +1,9 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Using: /home/sahwmdm/android-sdk/build-tools/35.0.0/aidl -p/home/sahwmdm/android-sdk/platforms/android-34/framework.aidl -o/opt/projetos/hwmdm/android-source/app/build/generated/aidl_source_output_dir/opensourceRelease/out -I/opt/projetos/hwmdm/android-source/app/src/main/aidl -I/opt/projetos/hwmdm/android-source/app/src/opensource/aidl -I/opt/projetos/hwmdm/android-source/app/src/release/aidl -I/opt/projetos/hwmdm/android-source/app/src/opensourceRelease/aidl -I/home/sahwmdm/.gradle/caches/8.13/transforms/00eeb73d329f60914ee7cf1a9183d8d3/transformed/core-1.9.0/aidl -I/home/sahwmdm/.gradle/caches/8.13/transforms/97be29755e6b940ef3dec554e527f2c8/transformed/versionedparcelable-1.1.1/aidl -d/tmp/aidl12732963777956700866.d /opt/projetos/hwmdm/android-source/app/src/main/aidl/com/hmdm/IMdmApi.aidl
+ * Using: /home/sahwmdm/android-sdk/build-tools/35.0.0/aidl -p/home/sahwmdm/android-sdk/platforms/android-34/framework.aidl -o/opt/projetos/hwmdm/android-source/app/build/generated/aidl_source_output_dir/opensourceRelease/out -I/opt/projetos/hwmdm/android-source/app/src/main/aidl -I/opt/projetos/hwmdm/android-source/app/src/opensource/aidl -I/opt/projetos/hwmdm/android-source/app/src/release/aidl -I/opt/projetos/hwmdm/android-source/app/src/opensourceRelease/aidl -I/home/sahwmdm/.gradle/caches/8.13/transforms/00eeb73d329f60914ee7cf1a9183d8d3/transformed/core-1.9.0/aidl -I/home/sahwmdm/.gradle/caches/8.13/transforms/97be29755e6b940ef3dec554e527f2c8/transformed/versionedparcelable-1.1.1/aidl -d/tmp/aidl10919768484469410641.d /opt/projetos/hwmdm/android-source/app/src/main/aidl/com/hmdm/IMdmApi.aidl
  */
 package com.hmdm;
+// Declare any non-default types here with import statements
 public interface IMdmApi extends android.os.IInterface
 {
   /** Default implementation for IMdmApi. */
@@ -60,14 +61,6 @@ public interface IMdmApi extends android.os.IInterface
     @Override public boolean sendPush(java.lang.String apiKey, java.lang.String type, java.lang.String payload) throws android.os.RemoteException
     {
       return false;
-    }
-    // Added in library version 1.1.9
-    /**
-     * Force the configuration update and report live progress events
-     * to the supplied callback. Pass null to behave like forceConfigUpdate().
-     */
-    @Override public void forceConfigUpdateWithCallback(com.hmdm.IMdmApiCallback callback) throws android.os.RemoteException
-    {
     }
     @Override
     public android.os.IBinder asBinder() {
@@ -210,14 +203,6 @@ public interface IMdmApi extends android.os.IInterface
           boolean _result = this.sendPush(_arg0, _arg1, _arg2);
           reply.writeNoException();
           reply.writeInt(((_result)?(1):(0)));
-          break;
-        }
-        case TRANSACTION_forceConfigUpdateWithCallback:
-        {
-          com.hmdm.IMdmApiCallback _arg0;
-          _arg0 = com.hmdm.IMdmApiCallback.Stub.asInterface(data.readStrongBinder());
-          this.forceConfigUpdateWithCallback(_arg0);
-          reply.writeNoException();
           break;
         }
         default:
@@ -433,26 +418,6 @@ public interface IMdmApi extends android.os.IInterface
         }
         return _result;
       }
-      // Added in library version 1.1.9
-      /**
-       * Force the configuration update and report live progress events
-       * to the supplied callback. Pass null to behave like forceConfigUpdate().
-       */
-      @Override public void forceConfigUpdateWithCallback(com.hmdm.IMdmApiCallback callback) throws android.os.RemoteException
-      {
-        android.os.Parcel _data = android.os.Parcel.obtain();
-        android.os.Parcel _reply = android.os.Parcel.obtain();
-        try {
-          _data.writeInterfaceToken(DESCRIPTOR);
-          _data.writeStrongInterface(callback);
-          boolean _status = mRemote.transact(Stub.TRANSACTION_forceConfigUpdateWithCallback, _data, _reply, 0);
-          _reply.readException();
-        }
-        finally {
-          _reply.recycle();
-          _data.recycle();
-        }
-      }
     }
     static final int TRANSACTION_queryConfig = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
     static final int TRANSACTION_log = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
@@ -464,7 +429,6 @@ public interface IMdmApi extends android.os.IInterface
     static final int TRANSACTION_setCustom = (android.os.IBinder.FIRST_CALL_TRANSACTION + 7);
     static final int TRANSACTION_forceConfigUpdate = (android.os.IBinder.FIRST_CALL_TRANSACTION + 8);
     static final int TRANSACTION_sendPush = (android.os.IBinder.FIRST_CALL_TRANSACTION + 9);
-    static final int TRANSACTION_forceConfigUpdateWithCallback = (android.os.IBinder.FIRST_CALL_TRANSACTION + 10);
   }
   /** @hide */
   public static final java.lang.String DESCRIPTOR = "com.hmdm.IMdmApi";
@@ -495,12 +459,6 @@ public interface IMdmApi extends android.os.IInterface
    * Returns true on success and false if the api key is invalid
    */
   public boolean sendPush(java.lang.String apiKey, java.lang.String type, java.lang.String payload) throws android.os.RemoteException;
-  // Added in library version 1.1.9
-  /**
-   * Force the configuration update and report live progress events
-   * to the supplied callback. Pass null to behave like forceConfigUpdate().
-   */
-  public void forceConfigUpdateWithCallback(com.hmdm.IMdmApiCallback callback) throws android.os.RemoteException;
   /** @hide */
   static class _Parcel {
     static private <T> T readTypedObject(

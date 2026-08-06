@@ -73,8 +73,6 @@
     <string name="dialog_history_settings_skip">Pular</string>
     <string name="dialog_history_settings_title">Permita que o aplicativo acesse os dados de uso.\n\nEsta opção permite o controle de aplicativos e configurações.\n\nEsta opção pode causar um esgotamento mais rápido da bateria. Para economizar bateria, pule esta opção (use os serviços de acessibilidade ou o modo quiosque).\n\nToque em \"Continuar\" para abrir uma página de configurações. Encontre o item \"%s\", conceda a permissão e toque em \"Voltar\".</string>
     <string name="dialog_manage_storage_title">Por favor, permita que a aplicação gerencie o armazenamento.\n\nEsta opção permite o Headwind MDM gerir ficheiros no seu dispositivo.</string>
-    <string name="dialog_message_ok">OK</string>
-    <string name="dialog_message_title">Mensagem do administrador</string>
     <string name="dialog_miui_developer_title">MIUI requer uma configuração manual no seu device. Na tela de informações do dispositivo, TOQUE 7 VEZES EM \"NÚMERO DA VERSÃO\". Isso vai ativar as opções de desenvolvedor.</string>
     <string name="dialog_miui_optimization_title">MIUI requer uma configuração manual no seu device. Developer settings window will now open. Scroll the screen down and uncheck \"MIUI optimization\".</string>
     <string name="dialog_miui_permissions_title">MIUI requer uma configuração manual no seu device. A tela de permissões do aplicativo vai ser aberta. Toque em \"Outras permissões\", ative \"Mostrar Janelas pop-up enquanto está em segundo plano\" e toque em \"Voltar\".</string>

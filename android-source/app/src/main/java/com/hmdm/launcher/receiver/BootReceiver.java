@@ -9,7 +9,6 @@ import com.hmdm.launcher.Const;
 import com.hmdm.launcher.helper.Initializer;
 import com.hmdm.launcher.helper.SettingsHelper;
 import com.hmdm.launcher.pro.ProUtils;
-import com.hmdm.launcher.ui.MainActivity;
 import com.hmdm.launcher.util.RemoteLogger;
 
 public class BootReceiver extends BroadcastReceiver {
@@ -22,16 +21,6 @@ public class BootReceiver extends BroadcastReceiver {
         if (!settingsHelper.isBaseUrlSet()) {
             // We're here before initializing after the factory reset! Let's ignore this call
             return;
-        }
-
-        // Re-arm the kiosk policies FIRST, synchronously, from the cached configuration.
-        // This runs before Initializer.init() (which is async and network-dependent) and before any
-        // Activity is started, so there is no window in which the device is booted but unrestricted.
-        try {
-            ProUtils.rearmKioskPoliciesAtBoot(context);
-        } catch (Exception e) {
-            Log.e(Const.LOG_TAG, "Failed to re-arm kiosk policies at boot", e);
-            RemoteLogger.log(context, Const.LOG_ERROR, "Boot re-arm failed: " + e.getMessage());
         }
 
         long lastAppStartTime = settingsHelper.getAppStartTime();
@@ -50,9 +39,11 @@ public class BootReceiver extends BroadcastReceiver {
             SettingsHelper.getInstance(context).setMainActivityRunning(false);
             if (ProUtils.kioskModeRequired(context)) {
                 Log.i(Const.LOG_TAG, "Kiosk mode required, forcing Headwind MDM to run in the foreground");
-                Intent launcherIntent = new Intent(context, MainActivity.class);
-                launcherIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                context.startActivity(launcherIntent);
+                // If kiosk mode is required, then we just simulate clicking Home and starting MainActivity
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory(Intent.CATEGORY_HOME);
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(homeIntent);
             }
         });
     }

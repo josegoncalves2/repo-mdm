@@ -64,6 +64,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <!-- Necessaria a partir do Android 14 para o servico que faz a captura de tela -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.REQUEST_PASSWORD_COMPLEXITY" />
     <uses-permission android:name="android.permission.MASTER_CLEAR"
@@ -247,15 +249,10 @@
             </intent-filter>
         </service>
 
-        <!-- CheckForegroundAppAccessibilityService removido: mesmo como stub, uma classe
-             registrada como service com nome de AccessibilityService faz o Play Protect
-             sinalizar o APK sideloaded. O launcher -os oficial nao declara acessibilidade
-             nenhuma, e e' esse o padrao que instala sem bloqueio. -->
-
-        <!-- ScreenCaptureService removido do manifest: declarar um servico de acessibilidade
-             faz o Google Play Protect bloquear a instalacao do APK sideloaded. O restante do
-             Acesso Remoto (reboot, run_app, lock_screen, run_command etc.) nao depende dele.
-             A classe permanece no codigo; so' nao e' mais registrada como servico de sistema. -->
+        <!-- Removido: declaracao nua de servico com "AccessibilityService" no nome era o
+             gatilho classico do Play Protect no scan estatico do manifest (USE_ACCESSIBILITY
+             ja e' false em build.gradle, nada em codigo chamava este stub). O binario oficial
+             hmdm-6.36-os.apk nao declara isso; ver scripts/verificar-apk.sh. -->
 
         <service android:name="org.eclipse.paho.android.service.MqttService"
             android:foregroundServiceType="specialUse|systemExempted"
@@ -277,6 +274,17 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Push notification service"/>
         </service>
+
+        <!-- Captura de tela pedida pelo painel (push "screenshot"). A activity so existe
+             para obter o consentimento de MediaProjection, que o Android exige sempre. -->
+        <service android:name=".service.ScreenshotService"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="false"/>
+
+        <activity android:name=".ui.ScreenshotConsentActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:exported="false"/>
 
     </application>
 

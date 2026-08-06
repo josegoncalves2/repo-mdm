@@ -266,10 +266,6 @@ public class Initializer {
             }
         }
 
-        if (config.getGps() != null) {
-            Utils.setLocationEnabledPolicy(context, config.getGps());
-        }
-
         if (config.getTimeZone() != null) {
             Utils.setTimeZone(config.getTimeZone(), context);
         }

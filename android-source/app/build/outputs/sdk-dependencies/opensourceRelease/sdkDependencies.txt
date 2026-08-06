@@ -1434,7 +1434,7 @@ module_dependencies {
 }
 repositories {
   maven_repo {
-    url: "https://repo.maven.apache.org/maven2/"
+    url: "https://jcenter.bintray.com/"
   }
 }
 repositories {
@@ -1444,7 +1444,7 @@ repositories {
 }
 repositories {
   maven_repo {
-    url: "https://dl.google.com/dl/android/maven2/"
+    url: "https://jcenter.bintray.com/"
   }
 }
 repositories {

@@ -43,7 +43,5 @@
   "table.heading.plugin.audit.ipAddress": "Direccion IP",
   "table.heading.plugin.audit.action": "Accion",
   "table.heading.plugin.audit.payload": "Carga Util",
-  "notfound.common.plugin.audit.logs": "No se encontraron registros de auditoria en el log. Intente con una consulta diferente.",
-  "plugin.audit.action.device.remote.command": "Comando remoto enviado al dispositivo",
-  "plugin.audit.action.device.force.kiosk": "Modo quiosco forzado en el dispositivo"
+  "notfound.common.plugin.audit.logs": "No se encontraron registros de auditoria en el log. Intente con una consulta diferente."
 }

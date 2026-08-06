@@ -43,7 +43,5 @@
   "table.heading.plugin.audit.ipAddress": "Địa chỉ IP",
   "table.heading.plugin.audit.action": "Hành động",
   "table.heading.plugin.audit.payload": "Dữ liệu",
-  "notfound.common.plugin.audit.logs": "Không tìm thấy bản ghi kiểm toán. Thử truy vấn khác.",
-  "plugin.audit.action.device.remote.command": "Đã gửi lệnh từ xa tới thiết bị",
-  "plugin.audit.action.device.force.kiosk": "Đã buộc chế độ kiosk trên thiết bị"
+  "notfound.common.plugin.audit.logs": "Không tìm thấy bản ghi kiểm toán. Thử truy vấn khác."
 }

@@ -1,3 +1,1 @@
-# Vazio de proposito.
-# A politica de versionamento deste repositorio e' UNICA e vive em /.gitignore
-# na raiz: versiona-se tudo de producao, sem excecao.
+/build

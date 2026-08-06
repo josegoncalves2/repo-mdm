@@ -25,7 +25,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 34
-        // Library version 1.1.9
+        // Library version 1.1.8
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,16 +37,9 @@ android {
         }
     }
     buildFeatures {
-        aidl = true
+        aidl true
     }
-    namespace = 'com.hmdm'
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    tasks.withType(JavaCompile).configureEach {
-        options.compilerArgs += ['-Xlint:none', '-nowarn']
-    }
+    namespace 'com.hmdm'
 
 }
 

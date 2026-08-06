@@ -43,7 +43,5 @@
   "table.heading.plugin.audit.ipAddress": "IPアドレス",
   "table.heading.plugin.audit.action": "アクション",
   "table.heading.plugin.audit.payload": "ペイロード",
-  "notfound.common.plugin.audit.logs": "監査ログ レコードが見つかりません。別のクエリを試してください。",
-  "plugin.audit.action.device.remote.command": "デバイスにリモートコマンドを送信",
-  "plugin.audit.action.device.force.kiosk": "デバイスでキオスクモードを強制"
+  "notfound.common.plugin.audit.logs": "監査ログ レコードが見つかりません。別のクエリを試してください。"
 }

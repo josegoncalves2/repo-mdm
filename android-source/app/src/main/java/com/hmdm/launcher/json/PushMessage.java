@@ -45,10 +45,12 @@ public class PushMessage {
     public static final String TYPE_GRANT_PERMISSIONS = "grantPermissions";
     public static final String TYPE_ADMIN_PANEL = "adminPanel";
     public static final String TYPE_CLEAR_APP_DATA = "clearAppData";
+    // Os quatro abaixo o servidor ja enviava (com.hmdm.service.RemoteCommand), mas o
+    // agente nao os conhecia: caiam no broadcast generico de plugins e nada acontecia.
     public static final String TYPE_LOCK_KIOSK = "lockKiosk";
-    public static final String TYPE_WIPE = "wipe";
-    public static final String TYPE_SCREENSHOT = "screenshot";
     public static final String TYPE_TEXT_MESSAGE = "textMessage";
+    public static final String TYPE_SCREENSHOT = "screenshot";
+    public static final String TYPE_WIPE = "wipe";
 
     public String getMessageType() {
         return messageType;

@@ -32,6 +32,9 @@ public class Const {
     public static final String ACTION_TOGGLE_PERMISSIVE = "TOGGLE_PERMISSIVE";      // Permanent action
     public static final String ACTION_EXIT_KIOSK = "EXIT_KIOSK";
     public static final String ACTION_LOCK_KIOSK = "LOCK_KIOSK";
+    public static final String ACTION_SHOW_MESSAGE = "SHOW_MESSAGE";
+    public static final String EXTRA_MESSAGE_TEXT = "MESSAGE_TEXT";
+    public static final String EXTRA_MESSAGE_DURATION = "MESSAGE_DURATION";
     public static final String ACTION_ADMIN_PANEL = "ADMIN_PANEL";
     public static final String ACTION_STOP_CONTROL = "STOP_CONTROL";
     public static final String ACTION_EXIT = "EXIT";
@@ -41,15 +44,8 @@ public class Const {
     public static final String ACTION_ADMIN = "ADMIN";
     public static final String ACTION_INSTALL_COMPLETE = "INSTALL_COMPLETE";
     public static final String ACTION_DISABLE_BLOCK_WINDOW = "DISABLE_BLOCK_WINDOW";
-    public static final String ACTION_SHOW_MESSAGE = "SHOW_MESSAGE";
 
     public static final String EXTRA_ENABLED = "ENABLED";
-    public static final String EXTRA_MESSAGE_ID = "MESSAGE_ID";
-    public static final String EXTRA_MESSAGE_TEXT = "MESSAGE_TEXT";
-
-    // Mirror of com.hmdm.plugins.messaging.persistence.domain.Message on the server.
-    public static final int MESSAGE_STATUS_DELIVERED = 1;
-    public static final int MESSAGE_STATUS_READ = 2;
 
     public static long CONNECTION_TIMEOUT = 10000;
     public static long LONG_POLLING_READ_TIMEOUT = 300000;
