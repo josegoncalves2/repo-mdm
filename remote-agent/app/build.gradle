@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.hwmdm.remote'
+    compileSdk 34
+
+    defaultConfig {
+        // Pacote proprio: NAO usar com.hmdm.control, que e' do aPuppet oficial. Instalar
+        // dois APKs disputando o mesmo pacote quebraria os dois.
+        applicationId "com.hwmdm.remote"
+        // 24 = Android 7. dispatchGesture (injecao de toque via acessibilidade) so existe
+        // a partir dai, e e' o recurso central deste app.
+        minSdk 24
+        targetSdk 34
+        versionCode 4
+        versionName "1.3"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../../android-source/keystore/hwmdm-release.jks')
+            storePassword 'HwMdm!Release2026'
+            keyAlias 'hwmdm'
+            keyPassword 'HwMdm!Release2026'
+            // Mesmo perfil conferido por scripts/verificar-apk.sh: v2 apenas.
+            // v1 e' dispensavel com minSdk 24 e sinaliza no scan estatico; v3 traz bloco de
+            // rotacao de chave que o binario oficial nao tem.
+            enableV1Signing false
+            enableV2Signing true
+            enableV3Signing false
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        aidl true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+    // OkHttp traz o cliente WebSocket. Mesma versao que o launcher ja resolve, entao o
+    // artefato ja esta no cache do Gradle e o build continua offline.
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

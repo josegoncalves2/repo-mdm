@@ -13,6 +13,16 @@
 #   ./scripts/rollback-para-producao.sh              # so' codigo + webapp
 #   ./scripts/rollback-para-producao.sh --com-banco  # tambem restaura o dump
 set -euo pipefail
+RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Nomes de container sao PERGUNTADOS ao Compose, nunca escritos a mao: eram
+# "source-*-1" ate o projeto Compose ganhar um `name:` proprio, e todo script com o
+# nome antigo cravado passou a falhar com "No such container", as vezes no meio da
+# execucao. Perguntar mantem os dois em sincronia sozinhos.
+_compose() { docker compose -f "$RAIZ/source/docker-compose.yaml" "$@"; }
+PG_CONTAINER="$(_compose ps -q postgresql 2>/dev/null | head -1)"
+HMDM_CONTAINER="$(_compose ps -q hmdm 2>/dev/null | head -1)"
+
 
 TAG=pre-fix-20260805
 REPO=/opt/projetos/hwmdm
@@ -43,10 +53,10 @@ if [ "$COM_BANCO" = "--com-banco" ]; then
   echo "==> 5/5 Restaurando o banco a partir de $BK/hmdm-prefix.sql"
   echo "     aguardando o Postgres aceitar conexao..."
   for _ in $(seq 1 30); do
-    docker exec source-postgresql-1 pg_isready -U hmdm -d hmdm >/dev/null 2>&1 && break
+    docker exec "$PG_CONTAINER" pg_isready -U hmdm -d hmdm >/dev/null 2>&1 && break
     sleep 2
   done
-  docker exec -i source-postgresql-1 psql -U hmdm -d hmdm < "$BK/hmdm-prefix.sql" >/dev/null
+  docker exec -i "$PG_CONTAINER" psql -U hmdm -d hmdm < "$BK/hmdm-prefix.sql" >/dev/null
   echo "     banco restaurado"
 else
   echo "==> 5/5 Banco preservado (use --com-banco para restaurar o dump)"

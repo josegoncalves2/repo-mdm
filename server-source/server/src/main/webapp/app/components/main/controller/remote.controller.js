@@ -1,10 +1,10 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('RemoteAccessTabController', function ($scope, $interval, $timeout, $window, deviceService, confirmModal,
+    .controller('RemoteAccessTabController', function ($scope, $document, deviceService,
+                                                       remoteSupportService, remoteSupportPlayer, confirmModal,
                                                        alertService, localization, authService, deviceFocusService) {
 
         var MAX_SEARCH_LENGTH = 100;
-        var LIVE_VIEW_REFRESH_MS = 2500;
 
         /*
          * Presentation metadata for the remote actions.
@@ -63,7 +63,6 @@ angular.module('headwind-kiosk')
         var COMMAND_UI = {
             lock_screen: {group: 'session', labelKey: 'button.remote.lock', permission: 'device.lifecycle.lock'},
             unlock_screen: {group: 'session', labelKey: 'button.remote.unlock', permission: 'device.lifecycle.unlock'},
-            screenshot: {group: 'session', labelKey: 'button.remote.screenshot', permission: 'device.remote_access.control'},
             admin_panel: {group: 'session', labelKey: 'button.remote.adminpanel', permission: 'device.remote_access.control'},
             message: {
                 group: 'session', labelKey: 'button.remote.message', permission: 'device.remote_access.control',
@@ -139,28 +138,31 @@ angular.module('headwind-kiosk')
         $scope.searchValue = '';
         $scope.selectedDevice = null;
         $scope.supportMessage = '';
-        $scope.supportSession = {
-            active: false,
-            refreshing: false,
-            touching: false,
-            imgSrc: null,
-            lastRefresh: null
-        };
-        $scope.screenshotFailed = false;
-        var liveViewTimer = null;
 
-        $scope.onScreenshotLoadError = function () {
-            $scope.$applyAsync(function () {
-                $scope.screenshotFailed = true;
-                $scope.supportSession.imgSrc = null;
-            });
+        /*
+         * Estado da sessao de suporte remoto.
+         *
+         * "connecting" cobre o handshake inteiro: o painel pediu a sessao e o push saiu, mas
+         * nenhum video chegou ainda. Esse intervalo nao e' instantaneo -- o tablet precisa
+         * receber o chamado e, no Android 14, alguem precisa aceitar o aviso de captura --
+         * entao e' um estado proprio, e nao algo dobrado em "ligado" ou "desligado".
+         */
+        $scope.remote = {
+            connecting: false,
+            connected: false,
+            streaming: false,
+            input: false,
+            width: 0,
+            height: 0,
+            fps: 0,
+            kbps: 0,
+            startedAt: null,
+            error: null,
+            inputNote: null,
+            typing: ''
         };
 
-        $scope.onScreenshotLoadSuccess = function () {
-            $scope.$applyAsync(function () {
-                $scope.screenshotFailed = false;
-            });
-        };
+        $scope.remoteSupported = remoteSupportPlayer.isSupported();
 
         var hasAnyPermission = function (permissions) {
             return permissions.some(function (permission) {
@@ -346,25 +348,11 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return;
             }
-            if ($scope.selectedDevice && $scope.selectedDevice.id !== device.id) {
-                $scope.stopSupportSession();
-            }
+            // Trocar de aparelho encerra a sessao anterior, em vez de deixar o
+            // tablet transmitindo para um visualizador que ninguem esta olhando.
+            $scope.stopRemote();
             $scope.selectedDevice = device;
-            $scope.screenshotFailed = false;
-            $scope.supportSession.imgSrc = null;
-            $scope.supportSession.lastRefresh = null;
-            $scope.stopSupportSession();
-        };
-
-        $scope.getScreenshotUrl = function (device, bustCache) {
-            if (!device || !device.number) {
-                return '';
-            }
-            var url = 'files/screenshots/' + encodeURIComponent(device.number) + '.png';
-            if (bustCache) {
-                url += '?ts=' + Date.now();
-            }
-            return url;
+            $scope.cancelCommand();
         };
 
         /*
@@ -548,80 +536,216 @@ angular.module('headwind-kiosk')
             });
         };
 
-        $scope.refreshRemoteScreen = function () {
-            if (!$scope.selectedDevice || !$scope.selectedDevice.online || $scope.supportSession.refreshing) {
+        /*
+         * ---------------------------------------------------------------------------------
+         * Sessao de suporte remoto
+         * ---------------------------------------------------------------------------------
+         *
+         * Pedir a sessao ao servidor devolve duas coisas: uma vaga de relay para o uplink de
+         * video do aparelho, e o caminho do socket que este navegador deve assistir. O
+         * aparelho e' chamado por push, entao a imagem aparece quando ele atende -- nao
+         * quando esta chamada retorna.
+         *
+         * Quem transmite e' o agente de suporte (com.hwmdm.remote), um aplicativo separado.
+         * O launcher continua sendo o hmdm-6.36-os.apk oficial, sem uma linha alterada: ele
+         * apenas repassa por broadcast o push que nao conhece, que e' comportamento dele.
+         */
+        var player = null;
+
+        var canvas = function () {
+            return $document[0].getElementById('remote-screen-canvas');
+        };
+
+        var resetRemote = function () {
+            $scope.remote.connecting = false;
+            $scope.remote.connected = false;
+            $scope.remote.streaming = false;
+            $scope.remote.input = false;
+            $scope.remote.width = 0;
+            $scope.remote.height = 0;
+            $scope.remote.fps = 0;
+            $scope.remote.kbps = 0;
+            $scope.remote.startedAt = null;
+            $scope.remote.inputNote = null;
+        };
+
+        $scope.startRemote = function () {
+            var device = $scope.selectedDevice;
+            if (!device || !device.id || !device.online
+                    || $scope.remote.connecting || $scope.remote.connected) {
                 return;
             }
-            var device = $scope.selectedDevice;
-            $scope.supportSession.refreshing = true;
-            $scope.screenshotFailed = false;
-            deviceService.sendCommand({id: device.id}, {action: 'screenshot', params: {}}, function () {
-                $timeout(function () {
-                    if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
-                        $scope.supportSession.refreshing = false;
-                        return;
-                    }
-                    var url = $scope.getScreenshotUrl(device, true);
-                    var probe = new $window.Image();
-                    probe.onload = function () {
-                        $scope.$applyAsync(function () {
-                            if ($scope.selectedDevice && $scope.selectedDevice.id === device.id) {
-                                $scope.supportSession.imgSrc = url;
-                                $scope.supportSession.lastRefresh = new Date();
-                                $scope.screenshotFailed = false;
-                            }
-                            $scope.supportSession.refreshing = false;
-                        });
-                    };
-                    probe.onerror = function () {
-                        $scope.$applyAsync(function () {
-                            if ($scope.selectedDevice && $scope.selectedDevice.id === device.id) {
-                                $scope.supportSession.imgSrc = null;
-                                $scope.screenshotFailed = true;
-                            }
-                            $scope.supportSession.refreshing = false;
-                        });
-                    };
-                    probe.src = url;
-                }, 900);
+            if (!canvas()) {
+                return;
+            }
+            resetRemote();
+            $scope.remote.error = null;
+            $scope.remote.connecting = true;
+
+            remoteSupportService.start({id: device.id}, {}, function (response) {
+                if (response.status !== 'OK' || !response.data || !response.data.socket) {
+                    $scope.remote.connecting = false;
+                    $scope.remote.error = localization.localize('remote.error.session.start');
+                    return;
+                }
+                if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
+                    // O operador mudou de aparelho enquanto a chamada estava em voo; nao
+                    // deixe o tablet transmitindo para um visualizador que nunca vai abrir.
+                    remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+                    return;
+                }
+                $scope.remote.connected = true;
+                $scope.remote.startedAt = new Date();
+                openPlayer(response.data.socket, device.id);
             }, function () {
-                $scope.supportSession.refreshing = false;
-                $scope.screenshotFailed = true;
+                $scope.remote.connecting = false;
+                $scope.remote.error = localization.localize('remote.error.session.start');
             });
         };
 
-        /*
-         * Remote tap ("remote_touch") was removed rather than left in place: it is not in the
-         * server's command catalog and the Android agent has no input-injection channel, so
-         * every click on the preview produced an error alert. The screenshot preview is a
-         * viewer, and it now says so instead of pretending to be interactive.
-         */
-
-        $scope.startSupportSession = function () {
-            if (!$scope.selectedDevice || !$scope.selectedDevice.online) {
-                return;
-            }
-            $scope.supportSession.active = true;
-            $scope.refreshRemoteScreen();
-            if (liveViewTimer) {
-                $interval.cancel(liveViewTimer);
-            }
-            liveViewTimer = $interval($scope.refreshRemoteScreen, LIVE_VIEW_REFRESH_MS);
+        var openPlayer = function (socketPath, deviceId) {
+            closePlayer();
+            player = remoteSupportPlayer.create(canvas(), {
+                onStatus: function (status) {
+                    $scope.$applyAsync(function () {
+                        $scope.remote.connecting = !status.streaming;
+                        $scope.remote.streaming = !!status.streaming;
+                        $scope.remote.input = !!status.input;
+                        $scope.remote.width = status.width || 0;
+                        $scope.remote.height = status.height || 0;
+                        if (status.streaming) {
+                            $scope.remote.error = null;
+                            // Dizer isto antes do primeiro clique frustrado: sem
+                            // acessibilidade habilitada no aparelho a tela e' so' vista.
+                            $scope.remote.inputNote = status.input
+                                ? null
+                                : localization.localize('remote.input.unavailable');
+                        }
+                    });
+                },
+                onStats: function (stats) {
+                    $scope.$applyAsync(function () {
+                        $scope.remote.fps = stats.fps;
+                        $scope.remote.kbps = stats.kbps;
+                    });
+                },
+                onInputResult: function (result) {
+                    if (!result.applied) {
+                        $scope.$applyAsync(function () {
+                            $scope.remote.inputNote = localization.localize('remote.input.rejected');
+                        });
+                    }
+                },
+                onError: function (key) {
+                    $scope.$applyAsync(function () {
+                        $scope.remote.error = localization.localize(key);
+                    });
+                },
+                onTransport: function (kind) {
+                    // O operador precisa saber por qual caminho a imagem esta vindo: HTTP
+                    // funciona atras de qualquer proxy, mas tem latencia maior que o socket.
+                    $scope.$applyAsync(function () {
+                        $scope.remote.transport = kind;
+                    });
+                },
+                onClose: function () {
+                    $scope.$applyAsync(function () {
+                        $scope.remote.connecting = false;
+                        $scope.remote.connected = false;
+                        $scope.remote.streaming = false;
+                    });
+                }
+            }, deviceId);
+            player.open(socketPath);
         };
 
-        $scope.stopSupportSession = function () {
-            $scope.supportSession.active = false;
-            $scope.supportSession.refreshing = false;
-            if (liveViewTimer) {
-                $interval.cancel(liveViewTimer);
-                liveViewTimer = null;
+        var closePlayer = function () {
+            if (player) {
+                player.close();
+                player = null;
             }
+        };
+
+        /**
+         * Encerra nas duas pontas. Fechar so' o lado do navegador deixaria o aparelho
+         * capturando a propria tela indefinidamente.
+         */
+        $scope.stopRemote = function () {
+            var device = $scope.selectedDevice;
+            var wasOpen = $scope.remote.connected || $scope.remote.connecting;
+            closePlayer();
+            resetRemote();
+            if (wasOpen && device && device.id) {
+                remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+            }
+        };
+
+        // -----------------------------------------------------------------------------
+        // Entrada: o que o operador faz no canvas vira toque no aparelho.
+        // -----------------------------------------------------------------------------
+
+        var pressedAt = null;
+        var pressedTime = 0;
+
+        // Limiares para separar as tres intencoes num unico ponteiro. Abaixo de 12 px de
+        // deslocamento e' clique parado, nao arrasto curto; acima de 500 ms sem sair do
+        // lugar e' toque longo, que abre menu de contexto no Android.
+        var DRAG_THRESHOLD = 0.02;
+        var LONG_PRESS_MS = 500;
+
+        $scope.onScreenDown = function (event) {
+            if (!player || !$scope.remote.streaming) {
+                return;
+            }
+            pressedAt = player.toUnit(event);
+            pressedTime = Date.now();
+        };
+
+        $scope.onScreenUp = function (event) {
+            if (!player || !$scope.remote.streaming || !pressedAt) {
+                return;
+            }
+            var released = player.toUnit(event);
+            var held = Date.now() - pressedTime;
+            var start = pressedAt;
+            pressedAt = null;
+            if (!released) {
+                return;
+            }
+
+            var moved = Math.abs(released.x - start.x) + Math.abs(released.y - start.y);
+            if (moved > DRAG_THRESHOLD) {
+                player.swipe(start.x, start.y, released.x, released.y, Math.max(80, Math.min(held, 2000)));
+            } else if (held >= LONG_PRESS_MS) {
+                player.longPress(start.x, start.y);
+            } else {
+                player.tap(start.x, start.y);
+            }
+        };
+
+        $scope.sendRemoteKey = function (name) {
+            if (player && $scope.remote.streaming) {
+                player.key(name);
+            }
+        };
+
+        /*
+         * A digitacao vai por um campo proprio, e nao capturando teclas sobre o canvas.
+         * O Android aplica o texto no campo em foco de uma vez (ACTION_SET_TEXT); mandar
+         * tecla a tecla disputaria com o aplicativo em foco no aparelho. Alem disso, um
+         * campo visivel deixa o operador conferir o que vai enviar antes de enviar.
+         */
+        $scope.sendRemoteText = function () {
+            var text = ($scope.remote.typing || '').trim();
+            if (!player || !$scope.remote.streaming || text.length === 0) {
+                return;
+            }
+            player.type(text);
+            $scope.remote.typing = '';
         };
 
         $scope.$on('$destroy', function () {
-            if (liveViewTimer) {
-                $interval.cancel(liveViewTimer);
-            }
+            $scope.stopRemote();
         });
 
         loadCommandCatalog();

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Suporte Remoto</string>
+
+    <string name="status_title">Suporte remoto</string>
+    <string name="status_waiting">Aguardando chamado do suporte</string>
+    <string name="status_sharing">Sessão de suporte em andamento</string>
+
+    <string name="mdm_linked">Conectado ao MDM: %1$s</string>
+    <string name="mdm_not_linked">Não foi possível falar com o agente MDM. Este aplicativo depende dele para saber o servidor e o número deste aparelho.</string>
+
+    <string name="perm_accessibility_title">Permissão de acessibilidade</string>
+    <string name="perm_accessibility_hint">Necessária para que o técnico consiga tocar e digitar remotamente. Sem ela a tela é apenas visualizada.</string>
+    <string name="perm_accessibility_open">Abrir configurações de acessibilidade</string>
+    <string name="perm_granted">Concedida</string>
+    <string name="perm_missing">Pendente</string>
+
+    <!-- O texto da notificação é deliberadamente explícito: enquanto a tela estiver sendo
+         transmitida, quem estiver com o aparelho na mão tem de conseguir ver isso. -->
+    <string name="notif_channel_agent">Agente de suporte remoto</string>
+    <string name="notif_channel_sharing">Transmissão de tela</string>
+    <string name="notif_agent_text">Pronto para atendimento remoto</string>
+    <string name="notif_sharing_title">A tela deste aparelho está sendo exibida ao suporte</string>
+    <string name="notif_sharing_text">A sessão termina quando o técnico encerrar.</string>
+</resources>

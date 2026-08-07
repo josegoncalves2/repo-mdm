@@ -100,53 +100,92 @@
                     </div>
 
                     <div class="device-preview-screen remote-preview-screen">
-                        <div ng-if="supportSession.refreshing" class="remote-preview-state">
-                            <img src="images/loading.gif" alt="Loading..." class="remote-preview-spinner">
-                            <div localized>remote.screen.waiting</div>
+                        <!-- O canvas fica sempre montado: o player pinta nele quadro a quadro,
+                             e recria-lo a cada mudanca de estado perderia o decodificador.
+                             mousedown/mouseup em vez de click porque a distincao entre toque,
+                             toque longo e arrasto depende de quanto tempo e quanto se moveu. -->
+                        <canvas id="remote-screen-canvas"
+                                class="remote-live-canvas"
+                                ng-class="{'remote-live-canvas-interactive': remote.input}"
+                                ng-show="remote.streaming"
+                                ng-mousedown="onScreenDown($event)"
+                                ng-mouseup="onScreenUp($event)"></canvas>
+
+                        <div ng-if="remote.connecting" class="remote-preview-state">
+                            <img src="images/loading.gif" alt="" class="remote-preview-spinner">
+                            <strong localized>remote.screen.connecting.title</strong>
+                            <p class="remote-preview-copy" localized>remote.screen.connecting.body</p>
                         </div>
 
-                        <div ng-if="screenshotFailed && !supportSession.refreshing" class="remote-preview-state remote-preview-state-error">
+                        <div ng-if="remote.error && !remote.streaming"
+                             class="remote-preview-state remote-preview-state-error">
                             <div class="remote-preview-icon">!</div>
                             <strong localized>remote.screen.failed.title</strong>
-                            <p class="remote-preview-copy">
-                                <span localized>remote.screen.failed.body</span>
-                            </p>
-                            <button class="btn btn-sm btn-warning" ng-click="refreshRemoteScreen()"
-                                    ng-disabled="supportSession.refreshing || !selectedDevice.online"
+                            <p class="remote-preview-copy">{{remote.error}}</p>
+                            <button class="btn btn-sm btn-warning" ng-click="startRemote()"
+                                    ng-disabled="!selectedDevice.online || remote.connecting"
                                     localized>remote.screen.try.again</button>
                         </div>
 
-                        <img ng-if="supportSession.imgSrc && !supportSession.refreshing && !screenshotFailed"
-                             ng-src="{{supportSession.imgSrc}}"
-                             class="remote-preview-image"
-                             alt="{{'remote.screen.alt' | localize}}" />
-
-                        <div ng-if="!supportSession.imgSrc && !supportSession.refreshing && !screenshotFailed"
+                        <div ng-if="!remote.connecting && !remote.streaming && !remote.error"
                              class="remote-preview-state">
                             <strong localized>remote.screen.idle.title</strong>
                             <p class="remote-preview-copy">
-                                <span ng-if="selectedDevice.online" localized>remote.screen.idle.body</span>
+                                <span ng-if="selectedDevice.online && remoteSupported" localized>remote.screen.idle.body</span>
                                 <span ng-if="!selectedDevice.online" localized>remote.screen.idle.offline</span>
+                                <span ng-if="selectedDevice.online && !remoteSupported" localized>remote.error.stream.unsupported</span>
                             </p>
-                            <button class="btn btn-primary" ng-click="startSupportSession()"
-                                    ng-disabled="supportSession.refreshing || !selectedDevice.online"
-                                    localized>remote.screen.request</button>
+                            <button class="btn btn-primary" ng-click="startRemote()"
+                                    ng-disabled="!selectedDevice.online || remote.connecting || !remoteSupported"
+                                    localized>remote.screen.request.access</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="remote-live-bar">
                     <button type="button" class="btn btn-primary btn-sm"
-                            ng-click="startSupportSession()"
-                            ng-disabled="!selectedDevice.online || supportSession.refreshing"
-                            localized>remote.screen.refresh</button>
+                            ng-click="startRemote()"
+                            ng-disabled="!selectedDevice.online || remote.connecting || remote.connected || !remoteSupported"
+                            localized>remote.screen.connect</button>
                     <button type="button" class="btn btn-default btn-sm"
-                            ng-click="stopSupportSession()"
-                            ng-disabled="!supportSession.active"
-                            localized>remote.screen.stop</button>
-                    <span class="remote-ip-note" ng-if="supportSession.lastRefresh">
-                        {{'remote.screen.last.refresh' | localize}}: {{supportSession.lastRefresh | date:'mediumTime'}}
+                            ng-click="stopRemote()"
+                            ng-disabled="!remote.connected && !remote.connecting"
+                            localized>remote.screen.disconnect</button>
+
+                    <span class="remote-ip-note" ng-if="remote.streaming">
+                        {{'remote.screen.live' | localize}} ·
+                        {{remote.width}}x{{remote.height}} ·
+                        {{remote.fps}} fps · {{remote.kbps}} kbps
                     </span>
+                </div>
+
+                <!-- Teclas de navegacao e digitacao. So aparecem com a sessao ao vivo: fora
+                     dela nao teriam para onde ir. -->
+                <div class="remote-input-bar" ng-if="remote.streaming">
+                    <div class="remote-input-keys">
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('back')"
+                                ng-disabled="!remote.input" localized>remote.key.back</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('home')"
+                                ng-disabled="!remote.input" localized>remote.key.home</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('recents')"
+                                ng-disabled="!remote.input" localized>remote.key.recents</button>
+                    </div>
+
+                    <div class="remote-input-typing">
+                        <input type="text" class="form-control" ng-model="remote.typing"
+                               ng-disabled="!remote.input"
+                               ng-keypress="$event.which === 13 && sendRemoteText()"
+                               localized-placeholder="remote.type.placeholder"/>
+                        <button class="btn btn-primary" ng-click="sendRemoteText()"
+                                ng-disabled="!remote.input || !remote.typing"
+                                localized>remote.type.send</button>
+                    </div>
+
+                    <p class="remote-ip-note" ng-if="remote.inputNote">{{remote.inputNote}}</p>
+                    <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>
                 </div>
 
                 <div class="remote-actions-shell">

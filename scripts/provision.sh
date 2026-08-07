@@ -10,6 +10,15 @@
 set -euo pipefail
 
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Nomes de container sao PERGUNTADOS ao Compose, nunca escritos a mao: eram
+# "source-*-1" ate o projeto Compose ganhar um `name:` proprio, e todo script com o
+# nome antigo cravado passou a falhar com "No such container", as vezes no meio da
+# execucao. Perguntar mantem os dois em sincronia sozinhos.
+_compose() { docker compose -f "$RAIZ/source/docker-compose.yaml" "$@"; }
+PG_CONTAINER="$(_compose ps -q postgresql 2>/dev/null | head -1)"
+HMDM_CONTAINER="$(_compose ps -q hmdm 2>/dev/null | head -1)"
+
 cd "$RAIZ"
 
 DOMINIO=""; IP=""; PROXY=""; SENHA=""; SEGREDO=""; EMAIL=""
@@ -123,31 +132,31 @@ info "Subindo os containers"
 
 info "Aguardando o Postgres aceitar conexao"
 for _ in $(seq 1 60); do
-    if docker exec source-postgresql-1 pg_isready -U "$SQL_USER" >/dev/null 2>&1; then break; fi
+    if docker exec "$PG_CONTAINER" pg_isready -U "$SQL_USER" >/dev/null 2>&1; then break; fi
     sleep 2
 done
-docker exec source-postgresql-1 pg_isready -U "$SQL_USER" >/dev/null 2>&1 \
+docker exec "$PG_CONTAINER" pg_isready -U "$SQL_USER" >/dev/null 2>&1 \
     && ok "Postgres respondendo" || { erro "Postgres nao subiu"; exit 1; }
 
 # ---------------------------------------------------------------- dump
-TABELAS=$(docker exec source-postgresql-1 psql -U "$SQL_USER" -d "$SQL_BASE" -tAc \
+TABELAS=$(docker exec "$PG_CONTAINER" psql -U "$SQL_USER" -d "$SQL_BASE" -tAc \
           "select count(*) from information_schema.tables where table_schema='public';" 2>/dev/null || echo 0)
 if [ "$RESTAURAR_DUMP" -eq 1 ] && [ "${TABELAS:-0}" -lt 5 ] && [ -f source/sql/hmdm-dump.sql.gz ]; then
     info "Banco vazio -- restaurando source/sql/hmdm-dump.sql.gz"
     gunzip -c source/sql/hmdm-dump.sql.gz | \
-        docker exec -i source-postgresql-1 psql -U "$SQL_USER" -d "$SQL_BASE" >/dev/null 2>&1
+        docker exec -i "$PG_CONTAINER" psql -U "$SQL_USER" -d "$SQL_BASE" >/dev/null 2>&1
     ok "dump restaurado"
 
     # As URLs do dump apontam para o dominio/IP de ORIGEM. Sem reescrever, os tablets
     # tentam baixar o APK de um host que nao existe nesta rede.
     info "Reapontando URLs do dump para ${PUBLIC_PROTOCOL}://${BASE_DOMAIN}"
-    docker exec -i source-postgresql-1 psql -U "$SQL_USER" -d "$SQL_BASE" <<SQL >/dev/null
+    docker exec -i "$PG_CONTAINER" psql -U "$SQL_USER" -d "$SQL_BASE" <<SQL >/dev/null
 UPDATE applicationversions
    SET url = regexp_replace(url, '^https?://[^/]+', '${PUBLIC_PROTOCOL}://${BASE_DOMAIN}')
  WHERE url ~ '^https?://';
 UPDATE applications SET icontext = icontext WHERE false;
 SQL
-    RESTAM=$(docker exec source-postgresql-1 psql -U "$SQL_USER" -d "$SQL_BASE" -tAc \
+    RESTAM=$(docker exec "$PG_CONTAINER" psql -U "$SQL_USER" -d "$SQL_BASE" -tAc \
              "select count(*) from applicationversions where url ~ '^https?://' and url not like '%${BASE_DOMAIN}%';")
     [ "${RESTAM:-0}" -eq 0 ] && ok "todas as URLs reapontadas" \
                              || erro "${RESTAM} URL(s) ainda apontam para outro host -- confira applicationversions"
@@ -158,13 +167,13 @@ fi
 # ---------------------------------------------------------------- esperar Tomcat
 info "Aguardando o Tomcat subir (pode levar ~1 min)"
 for _ in $(seq 1 90); do
-    if docker logs source-hmdm-1 2>&1 | tail -40 | grep -q 'Server startup in'; then break; fi
+    if docker logs "$HMDM_CONTAINER" 2>&1 | tail -40 | grep -q 'Server startup in'; then break; fi
     sleep 3
 done
-if docker logs source-hmdm-1 2>&1 | tail -40 | grep -q 'Server startup in'; then
+if docker logs "$HMDM_CONTAINER" 2>&1 | tail -40 | grep -q 'Server startup in'; then
     ok "Tomcat no ar"
 else
-    erro "Tomcat nao sinalizou startup. Veja: docker logs source-hmdm-1"
+    erro "Tomcat nao sinalizou startup. Veja: docker logs "$HMDM_CONTAINER""
     exit 1
 fi
 
@@ -179,7 +188,7 @@ if [ -f "$ROOTXML" ]; then
         && ok "proxy.addresses = '${PROXY_ADDRESSES}'" \
         || erro "proxy.addresses no ROOT.xml nao bate com o .env"
 fi
-docker exec source-hmdm-1 sh -c 'ls /usr/local/tomcat/webapps/ROOT/app/components/main/view/kiosk.html' >/dev/null 2>&1 \
+docker exec "$HMDM_CONTAINER" sh -c 'ls /usr/local/tomcat/webapps/ROOT/app/components/main/view/kiosk.html' >/dev/null 2>&1 \
     && ok "layout novo aplicado (kiosk.html servido)" \
     || erro "kiosk.html ausente -- o overlay do webapp nao rodou"
 

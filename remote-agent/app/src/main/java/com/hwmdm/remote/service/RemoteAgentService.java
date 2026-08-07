@@ -1,0 +1,233 @@
+package com.hwmdm.remote.service;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ServiceInfo;
+import android.os.Build;
+import android.os.IBinder;
+import android.util.Log;
+
+import com.hwmdm.remote.R;
+import com.hwmdm.remote.mdm.MdmLink;
+import com.hwmdm.remote.mdm.RemoteLog;
+import com.hwmdm.remote.service.ScreenStreamService;
+import com.hwmdm.remote.ui.ProjectionConsentActivity;
+
+import org.json.JSONObject;
+
+/**
+ * <p>Servico residente. E' ele que faz este aplicativo existir enquanto ninguem o abre.</p>
+ *
+ * <p>Duas responsabilidades:</p>
+ *
+ * <ol>
+ *   <li>Manter registrado, <b>em runtime</b>, o receiver do gatilho remoto. O registro tem
+ *       de ser em runtime: desde o Android 8 um receiver declarado no manifest nao recebe
+ *       broadcast implicito, e o launcher emite o dele sem destinatario explicito
+ *       ({@code sendBroadcast(new Intent("com.hmdm.push." + tipo))}). Declarar no manifest
+ *       compilaria, instalaria, e nunca dispararia -- o pior tipo de falha.</li>
+ *   <li>Descobrir servidor e numero do aparelho pelo agente MDM, para nao haver
+ *       configuracao duplicada.</li>
+ * </ol>
+ *
+ * <p>Como o gatilho chega: o painel manda o push {@code remoteScreenStart}; o launcher
+ * 6.36 nao conhece esse tipo, e por isso o repassa a quem estiver ouvindo, com o payload
+ * em {@code com.hmdm.PUSH_DATA}. Nao ha nenhuma alteracao no launcher -- esse repasse e'
+ * comportamento oficial dele para tipos desconhecidos.</p>
+ */
+public class RemoteAgentService extends Service {
+
+    private static final String TAG = "hwmdm-remote";
+
+    private static final String CHANNEL_ID = "hwmdm_remote_agent";
+    private static final int NOTIFICATION_ID = 0xA1;
+
+    /** Prefixo e extra definidos por com.hmdm.launcher.Const. */
+    private static final String PUSH_PREFIX = "com.hmdm.push.";
+    private static final String PUSH_EXTRA = "com.hmdm.PUSH_DATA";
+
+    public static final String PUSH_START = PUSH_PREFIX + "remoteScreenStart";
+    public static final String PUSH_STOP = PUSH_PREFIX + "remoteScreenStop";
+
+    private volatile MdmLink.Config config;
+    private BroadcastReceiver trigger;
+
+    /*
+     * Momento do ultimo chamado aceito.
+     *
+     * O operador clica "Conectar" varias vezes quando a imagem demora, e cada clique vira
+     * um chamado. No Android 14 cada um abre um pedido de consentimento novo e uma sessao
+     * nova, e as sessoes passam a se atropelar. Aceitar um chamado por vez e' o que
+     * transforma cliques ansiosos em uma unica sessao, em vez de varias meio-abertas.
+     */
+    private volatile long lastRequestAt;
+    private static final long REQUEST_DEBOUNCE_MS = 15_000L;
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, RemoteAgentService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intent);
+        } else {
+            context.startService(intent);
+        }
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        startForegroundCompat();
+        registerTrigger();
+        new Thread(this::refreshConfig, "hwmdm-remote-mdmlink").start();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // START_STICKY: se o sistema matar o servico por pressao de memoria, ele volta.
+        // Um agente de suporte que so' funciona ate o primeiro aperto de RAM nao serve.
+        return START_STICKY;
+    }
+
+    private void registerTrigger() {
+        trigger = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (intent == null || intent.getAction() == null) {
+                    return;
+                }
+                if (PUSH_START.equals(intent.getAction())) {
+                    RemoteLog.i(RemoteAgentService.this, "Chamado de suporte recebido do launcher");
+                    onStartRequested(intent.getStringExtra(PUSH_EXTRA));
+                } else if (PUSH_STOP.equals(intent.getAction())) {
+                    Log.i(TAG, "Suporte remoto: encerramento pedido pelo painel");
+                    ScreenStreamService.stop(RemoteAgentService.this);
+                }
+            }
+        };
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(PUSH_START);
+        filter.addAction(PUSH_STOP);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // O broadcast vem de outro aplicativo (o launcher), entao tem de ser exportado.
+            registerReceiver(trigger, filter, Context.RECEIVER_EXPORTED);
+        } else {
+            registerReceiver(trigger, filter);
+        }
+        RemoteLog.i(this, "Agente de suporte no ar; gatilho registrado em " + PUSH_START);
+    }
+
+    /**
+     * O payload traz o endereco do relay e o token de uso unico que o servidor emitiu para
+     * esta sessao. Sem eles nao ha o que fazer: recusamos em vez de tentar adivinhar um
+     * endereco, porque adivinhar aqui significaria transmitir a tela para o lugar errado.
+     */
+    private void onStartRequested(String payload) {
+        final long now = System.currentTimeMillis();
+        if (now - lastRequestAt < REQUEST_DEBOUNCE_MS && ScreenStreamService.isStreaming()) {
+            RemoteLog.i(this, "Chamado ignorado: ja ha uma sessao em andamento");
+            return;
+        }
+        lastRequestAt = now;
+
+        if (payload == null || payload.trim().isEmpty()) {
+            RemoteLog.w(this, "Chamado recusado: push sem parametros de sessao");
+            return;
+        }
+        try {
+            JSONObject json = new JSONObject(payload);
+            String token = json.optString("token", null);
+            if (token == null || token.trim().isEmpty()) {
+                RemoteLog.w(this, "Chamado recusado: push sem token de sessao");
+                return;
+            }
+
+            MdmLink.Config current = config;
+            if (current == null) {
+                current = MdmLink.query(this);
+                config = current;
+            }
+
+            // A URL do relay pode vir pronta no payload; quando nao vem, montamos a partir
+            // do que o agente MDM informou, que e' a fonte de verdade do endereco.
+            String url = json.optString("url", null);
+            if ((url == null || url.trim().isEmpty()) && current != null) {
+                url = current.socketUrl("/ws/remote/agent/"
+                        + android.net.Uri.encode(current.deviceId));
+            }
+            if (url == null || url.trim().isEmpty()) {
+                RemoteLog.w(this, "Chamado recusado: sem endereco de relay e sem vinculo com o MDM");
+                return;
+            }
+
+            RemoteLog.i(this, "Iniciando sessao; relay=" + url
+                    + " consentimento_em_cache=" + ScreenStreamService.hasConsent());
+            ProjectionConsentActivity.startSession(this, url, token,
+                    json.optString("format", "h264"),
+                    json.optInt("fps", 15),
+                    json.optInt("bitrate", 2000000),
+                    json.optInt("maxWidth", 800));
+        } catch (Throwable t) {
+            RemoteLog.e(this, "Chamado recusado: payload ilegivel (" + t + ")");
+        }
+    }
+
+    private void refreshConfig() {
+        MdmLink.Config c = MdmLink.query(this);
+        config = c;
+        RemoteLog.i(this, c == null
+                ? "Sem vinculo com o agente MDM"
+                : "Vinculado ao MDM: " + c);
+    }
+
+    public MdmLink.Config getConfig() {
+        return config;
+    }
+
+    private void startForegroundCompat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (nm != null && nm.getNotificationChannel(CHANNEL_ID) == null) {
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                        getString(R.string.notif_channel_agent), NotificationManager.IMPORTANCE_MIN);
+                nm.createNotificationChannel(channel);
+            }
+        }
+        Notification notification = new androidx.core.app.NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.notif_agent_text))
+                .setSmallIcon(android.R.drawable.ic_menu_view)
+                .setPriority(androidx.core.app.NotificationCompat.PRIORITY_MIN)
+                .setOngoing(true)
+                .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            startForeground(NOTIFICATION_ID, notification,
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
+        } else {
+            startForeground(NOTIFICATION_ID, notification);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        if (trigger != null) {
+            try {
+                unregisterReceiver(trigger);
+            } catch (Throwable ignored) {
+                // Ja removido.
+            }
+            trigger = null;
+        }
+        super.onDestroy();
+    }
+}

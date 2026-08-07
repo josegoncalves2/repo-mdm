@@ -980,7 +980,7 @@ angular.module('headwind-kiosk')
 
         $scope.openBulkUpdateModal = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.update.html?v=h72a09113f5',
+                templateUrl: 'app/components/main/view/modal/device.update.html?v=hedfaabbcba',
                 controller: 'DeviceUpdateModalController',
                 resolve: {
                     devices: function () {
@@ -996,7 +996,7 @@ angular.module('headwind-kiosk')
 
         $scope.openBulkGroupModal = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.group.html?v=hcc4d01556b',
+                templateUrl: 'app/components/main/view/modal/device.group.html?v=hd48597816e',
                 controller: 'DeviceGroupModalController',
                 resolve: {
                     devices: function () {
@@ -1029,7 +1029,7 @@ angular.module('headwind-kiosk')
 
         $scope.editDevice = function (device) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.html?v=h9c8263af9b',
+                templateUrl: 'app/components/main/view/modal/device.html?v=h91de02c67b',
                 controller: 'DeviceModalController',
                 resolve: {
                     device: function () {
@@ -1068,6 +1068,12 @@ angular.module('headwind-kiosk')
             });
         };
 
+        /*
+         * O menu de acoes trazia "Solicitar screenshot" e "Ver ultima captura de tela"; as duas
+         * pertenciam ao mecanismo de imagem parada, que nao existe mais. Uma sessao de video ao
+         * vivo so' faz sentido na tela que a exibe, entao o menu leva o operador ate la com o
+         * dispositivo ja selecionado, em vez de disparar um comando sem onde aparecer.
+         */
         $scope.openRemoteAccess = function (device) {
             deviceFocusService.focus(device);
             $scope.openTab('REMOTE');
@@ -1083,7 +1089,6 @@ angular.module('headwind-kiosk')
             reboot: 'button.remote.reboot',
             wipe: 'button.remote.wipe',
             set_config: 'button.remote.config',
-            screenshot: 'button.remote.screenshot',
             message: 'button.remote.message'
         };
 
@@ -1113,28 +1118,6 @@ angular.module('headwind-kiosk')
             }
         };
 
-        /*
-         * "Ver ultima captura de tela" era um <a href> direto para files/screenshots/<numero>.png.
-         * Esse caminho nao e' servido por nenhum recurso do servidor, entao o link sempre abria a
-         * pagina de erro 404 crua do Tomcat numa aba nova. A imagem passa a ser testada antes: a
-         * aba so' abre se a captura existir, e quando nao existe o motivo aparece na propria tela.
-         */
-        $scope.viewLastScreenshot = function (device) {
-            if (!device || !device.number) {
-                return;
-            }
-            var url = 'files/screenshots/' + encodeURIComponent(device.number) + '.png?ts=' + Date.now();
-            var probe = new $window.Image();
-            probe.onload = function () {
-                $window.open(url, '_blank');
-            };
-            probe.onerror = function () {
-                $scope.$applyAsync(function () {
-                    alertService.showAlertMessage(localization.localize('devices.screenshot.unavailable'));
-                });
-            };
-            probe.src = url;
-        };
 
         $scope.notifyPluginOnDevice = function (plugin, device) {
             $rootScope.$emit('plugin-' + plugin.identifier + '-device-selected', device);
@@ -1146,7 +1129,7 @@ angular.module('headwind-kiosk')
 
         $scope.manageApplicationSettings = function (device) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/device.applicationSettings.html?v=h140e1dfeb7',
+                templateUrl: 'app/components/main/view/modal/device.applicationSettings.html?v=h944f50f39c',
                 controller: 'DeviceApplicationSettingsModalController',
                 size: 'lg',
                 resolve: {
@@ -1425,7 +1408,7 @@ angular.module('headwind-kiosk')
 
         $scope.addApplicationSetting = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
+                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
                     applicationSetting: function () {
@@ -1448,7 +1431,7 @@ angular.module('headwind-kiosk')
 
         $scope.editApplicationSetting = function (setting) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
+                templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
                     applicationSetting: function () {

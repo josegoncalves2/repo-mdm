@@ -48,6 +48,12 @@ import java.util.stream.Collectors;
  *
  * <p>The panel builds its buttons from {@link #supportedActions()} rather than from its own
  * hardcoded list, so a build that gains or loses a command never disagrees with the UI.</p>
+ *
+ * <p>Starting and stopping the live remote-access session is deliberately <b>not</b> in this
+ * catalog. Those two messages carry a one-time relay token that only the server can mint, so
+ * they are issued by com.hmdm.rest.resource.RemoteScreenResource instead of through the generic
+ * command endpoint - routing them here would mean handing out a session that no relay slot is
+ * waiting for.</p>
  */
 public enum RemoteCommand {
 
@@ -55,7 +61,6 @@ public enum RemoteCommand {
     UNLOCK_SCREEN("unlock_screen", "exitKiosk", "device.lifecycle.unlock"),
     REBOOT("reboot", "reboot", "device.lifecycle.reboot"),
     WIPE("wipe", "wipe", "device.lifecycle.wipe"),
-    SCREENSHOT("screenshot", "screenshot", "device.remote_access.control"),
     MESSAGE("message", "textMessage", "device.remote_access.control"),
     SET_CONFIG("set_config", "configUpdated", "device.remote_access.control"),
     ADMIN_PANEL("admin_panel", "adminPanel", "device.remote_access.control"),

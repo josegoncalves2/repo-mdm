@@ -46,7 +46,14 @@ erro() { printf '\033[1;31mERRO\033[0m %s\n' "$*" >&2; }
 # shellcheck disable=SC1091
 set -a; . ./source/.env; set +a
 BASE_URL="${PUBLIC_PROTOCOL}://${BASE_DOMAIN}"
-PSQL=(docker exec -i source-postgresql-1 psql -U "$SQL_USER" -d "$SQL_BASE" -v ON_ERROR_STOP=1)
+# O nome do container e' PERGUNTADO ao Compose, nunca escrito a mao. Ele foi
+# "source-postgresql-1" ate o projeto Compose ganhar um `name:` proprio, e todo script
+# que tinha o nome antigo cravado passou a falhar com "No such container" -- num ponto
+# em que metade da publicacao ja tinha acontecido. Perguntar mantem os dois em sincronia
+# sozinhos, inclusive quando COMPOSE_PROJECT_NAME muda no .env.
+PG_CONTAINER="$(docker compose -f "$RAIZ/source/docker-compose.yaml" ps -q postgresql 2>/dev/null | head -1)"
+[ -n "$PG_CONTAINER" ] || { erro "container do postgres nao esta rodando -- suba a stack primeiro (docker compose -f source/docker-compose.yaml up -d)"; exit 1; }
+PSQL=(docker exec -i "$PG_CONTAINER" psql -U "$SQL_USER" -d "$SQL_BASE" -v ON_ERROR_STOP=1)
 
 # ---------------------------------------------------------------- ferramentas
 SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/android-sdk}}"
@@ -156,7 +163,7 @@ if [ -n "$PERFIL" ] && [ "$PULAR_QR" -eq 0 ]; then
     if [ -z "$CHAVE" ]; then
         erro "perfil ${PERFIL} nao existe"; exit 1
     fi
-    HWMDM_POSTGRES_CONTAINER=source-postgresql-1 \
+    HWMDM_POSTGRES_CONTAINER="$PG_CONTAINER" \
         python3 gerar-qr.py --config-key "$CHAVE" --base-url "$BASE_URL" \
             --json-out "dist/qr-config${PERFIL}.json" \
             --png-out  "dist/qr-config${PERFIL}.png" \

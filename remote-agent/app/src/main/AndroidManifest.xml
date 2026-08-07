@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Agente de acesso remoto do HWMDM.
+
+  Este APK e' um aplicativo comum. Ele NAO substitui nem altera o launcher: o
+  hmdm-6.36-os.apk oficial continua sendo o agente MDM, intocado. A unica ligacao entre os
+  dois e' a API publica de plugins que o proprio launcher expoe
+  (com.hmdm.action.Connect) e o broadcast com.hmdm.push.* que ele emite para tipos de push
+  que nao conhece.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!-- Exigida a partir do Android 14 para servico que projeta a tela -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!-- O launcher expoe o PluginApiService com este pacote; sem <queries> o Android 11+
+         esconderia o pacote e o bind falharia em silencio. -->
+    <queries>
+        <package android:name="com.hmdm.launcher"/>
+        <intent>
+            <action android:name="com.hmdm.action.Connect"/>
+        </intent>
+    </queries>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@android:drawable/ic_menu_view"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <!-- Tela unica: mostra o estado da sessao e leva o operador as duas permissoes que
+             o Android exige que o proprio usuario conceda. -->
+        <activity android:name=".ui.StatusActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Invisivel. So existe para obter o consentimento de MediaProjection, que o
+             Android exige sempre e que nenhum privilegio de device owner dispensa. -->
+        <activity android:name=".ui.ProjectionConsentActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:exported="false"/>
+
+        <!-- Servico residente: mantem o vinculo com o launcher e o receiver do gatilho
+             remoto registrado em runtime. Registrar o receiver no manifest nao serviria —
+             o Android 8+ nao entrega broadcast implicito a receiver declarado. -->
+        <service android:name=".service.RemoteAgentService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Remote support agent"/>
+        </service>
+
+        <service android:name=".service.ScreenStreamService"
+            android:foregroundServiceType="mediaProjection"
+            android:exported="false"/>
+
+        <!-- Injecao de toque e digitacao. O Android nao oferece outra via a um aplicativo
+             sem assinatura de sistema: INJECT_EVENTS e' signature-only. -->
+        <service android:name=".service.InputInjectionService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/input_injection_config"/>
+        </service>
+
+        <receiver android:name=".receiver.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,15 @@
+// Versoes alinhadas com android-source/build.gradle para que os dois projetos usem a mesma
+// toolchain ja baixada (Gradle 8.13, AGP 8.13.2, JDK 21) e o build continue offline.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.2'
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

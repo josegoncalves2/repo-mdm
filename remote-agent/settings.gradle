@@ -1,0 +1,29 @@
+/*
+ * Projeto Gradle separado, de proposito.
+ *
+ * O agente de acesso remoto NAO e' um modulo de android-source. Aquele diretorio contem o
+ * fork do launcher Headwind, que por regra do projeto nunca e' publicado --
+ * scripts/verificar-apk.sh linha 3: o hmdm-6.36-os.apk oficial e "o unico permitido". Um
+ * modulo dentro dali convidaria a confusao de publicar o launcher junto.
+ *
+ * Este APK e' um aplicativo comum, instalado pelo MDM como qualquer outro app gerenciado.
+ * Nao passa pela matricula por QR, que e' onde o Play Protect bloqueia builds proprios.
+ */
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "hwmdm-remote-agent"
+include ':app'

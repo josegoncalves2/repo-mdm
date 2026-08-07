@@ -33,6 +33,13 @@
         <listener-class>com.hmdm.guice.Initializer</listener-class>
     </listener>
 
+    <!-- Registra os endpoints WebSocket do suporte remoto. Este web.xml usa a DTD 2.3, e a
+         implantacao anterior provou que o Tomcat nao varre anotacoes nesse caso: sem este
+         listener o visualizador falha com 404 e nada aparece no log. -->
+    <listener>
+        <listener-class>com.hmdm.remote.RemoteEndpointDeployer</listener-class>
+    </listener>
+
     <session-config>
         <session-timeout>1440</session-timeout>
     </session-config>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Configuracao do servico de acessibilidade usado para injetar toque e digitacao.
+
+  O escopo e' deliberadamente minimo. Nao pedimos canRetrieveWindowContent nem
+  eventos de conteudo: este servico nao le nada da tela nem observa o que o usuario faz.
+  Ele so' precisa de duas capacidades de saida — reproduzir gestos e enviar acoes globais
+  (voltar, inicio, recentes). Pedir mais do que isso e' o que faz um app de acesso remoto
+  parecer spyware num scan estatico, e aqui nao ha motivo para pedir.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/perm_accessibility_hint"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canPerformGestures="true"
+    android:notificationTimeout="200"/>

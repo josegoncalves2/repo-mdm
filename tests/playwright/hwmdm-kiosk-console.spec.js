@@ -259,14 +259,17 @@ test('Kiosk continua responsivo em celular sem overflow horizontal', async ({ pa
   }
 });
 
-test('Remote access nao renderiza imagem quebrada quando screenshot nao existe', async ({ page }) => {
+test('Acesso remoto nao renderiza imagem quebrada quando a sessao nao abre', async ({ page }) => {
   await signIn(page);
-  await page.locator('.hwmdm-nav-link', { hasText: /remote access/i }).click();
+  await page.locator('.hwmdm-nav-link', { hasText: /remote access|acesso remoto/i }).click();
   await page.waitForSelector('.remote-screen-panel', { timeout: 20000 });
 
-  const refresh = page.locator('.remote-live-bar button', { hasText: /refresh screenshot/i }).first();
-  if (await refresh.isEnabled()) {
-    await refresh.click();
+  // A tela remota e' um <canvas> alimentado por video ao vivo, nao mais uma <img> de
+  // captura. O que este teste ainda protege e' o resto da moldura: se a sessao nao
+  // abrir (dispositivo offline no ambiente de teste), nada pode virar imagem quebrada.
+  const connect = page.locator('.remote-live-bar button', { hasText: /connect|conectar/i }).first();
+  if (await connect.isEnabled()) {
+    await connect.click();
     await page.waitForTimeout(3500);
   }
 

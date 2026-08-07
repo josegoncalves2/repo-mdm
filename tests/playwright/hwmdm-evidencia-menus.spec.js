@@ -244,7 +244,7 @@ test('acesso remoto: placeholder ou coisa real', async ({ page }) => {
         botoes: [...m.querySelectorAll('button')].map(b => ({
           t: b.innerText.replace(/\s+/g, ' ').trim(), dis: b.disabled
         })).filter(b => b.t),
-        temImagemTela: !!m.querySelector('.remote-screen-shell img, img.remote-screenshot')
+        temTelaAoVivo: !!m.querySelector('.remote-screen-shell canvas#remote-screen-canvas')
       };
     });
     console.log('\n===== APOS SELECIONAR O 1o DEVICE =====');

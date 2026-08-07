@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# Nomes de container sao PERGUNTADOS ao Compose, nunca escritos a mao: eram
+# "source-*-1" ate o projeto Compose ganhar um `name:` proprio, e todo script com o
+# nome antigo cravado passou a falhar com "No such container", as vezes no meio da
+# execucao. Perguntar mantem os dois em sincronia sozinhos.
+_compose() { docker compose -f "$RAIZ/source/docker-compose.yaml" "$@"; }
+PG_CONTAINER="$(_compose ps -q postgresql 2>/dev/null | head -1)"
+HMDM_CONTAINER="$(_compose ps -q hmdm 2>/dev/null | head -1)"
 # ROLLBACK do deploy de 04/08/2026 (plugin messaging).
 #
 # Uso:  bash ~/rollback.sh                 -> usa o backup mais recente
@@ -24,7 +32,7 @@ echo "  WAR de cache alvo: $CACHE_NAME"
 echo
 
 echo "=== parando o container ==="
-docker stop source-hmdm-1
+docker stop "$HMDM_CONTAINER"
 
 # Os arquivos sob volumes/ pertencem ao root (criados de dentro do container), por isso
 # as escritas passam por um container em vez de sudo.
@@ -37,7 +45,7 @@ docker run --rm -v "$VOLUMES/webapps":/w alpine \
   sh -c 'rm -rf /w/ROOT /w/ROOT.war && ls -la /w'
 
 echo "=== subindo ==="
-docker start source-hmdm-1
+docker start "$HMDM_CONTAINER"
 
 echo "=== aguardando responder ==="
 for i in $(seq 1 60); do
@@ -52,7 +60,7 @@ cat <<EOF
 ROLLBACK DO WAR CONCLUIDO.
 
 Se tambem precisar reverter o BANCO (so se algo o corrompeu):
-  docker exec -i source-postgresql-1 sh -c \\
+  docker exec -i "$PG_CONTAINER" sh -c \\
     'PGPASSWORD="\$POSTGRES_PASSWORD" psql -U "\$POSTGRES_USER" -d "\$POSTGRES_DB"' \\
     < $BK/hmdm-db.sql
 

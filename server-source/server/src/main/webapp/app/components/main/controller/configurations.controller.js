@@ -89,7 +89,7 @@ angular.module('headwind-kiosk')
 
         $scope.copyConfiguration = function (configuration) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h3b1585c6a9',
+                templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h29b640c39a',
                 controller: 'CopyConfigurationModalController',
                 resolve: {
                     configuration: function () {
@@ -302,7 +302,7 @@ angular.module('headwind-kiosk')
 
         $scope.newApp = function () {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/application.html?v=h00e1f45dd2',
+                templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
                 controller: 'ApplicationModalController',
                 resolve: {
                     application: function () {
@@ -417,7 +417,7 @@ angular.module('headwind-kiosk')
 
             $scope.uploadBackground = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/file.html?v=h3971118c30',
+                    templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
                     // Defined in files.controller.js
                     controller: 'FileModalController'
                 });
@@ -624,7 +624,7 @@ angular.module('headwind-kiosk')
 
             $scope.addApp = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hdbf84a3eb2',
+                    templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hc4068664a0',
                     controller: 'AddConfigurationAppModalController',
                     resolve: {
                         applications: function () {
@@ -1093,7 +1093,7 @@ angular.module('headwind-kiosk')
 
             $scope.editFile = function (configFile) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationFile.html?v=h0782ca84b0',
+                    templateUrl: 'app/components/main/view/modal/configurationFile.html?v=hc0af3ddb4d',
                     controller: 'FileEditorController',
                     resolve: {
                         configFile: function() {
@@ -1129,7 +1129,7 @@ angular.module('headwind-kiosk')
 
             $scope.addApplicationSetting = function () {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
+                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
                         applicationSetting: function () {
@@ -1164,7 +1164,7 @@ angular.module('headwind-kiosk')
 
             $scope.selectVersion = function (application) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=h00f64bedc1',
+                    templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=hc48e44eed2',
                     controller: 'ConfigurationAppVersionSelectController',
                     resolve: {
                         application: function () {
@@ -1309,7 +1309,7 @@ angular.module('headwind-kiosk')
 
             $scope.editDetails = function (application) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h00c816b732',
+                    templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h4e66e49969',
                     controller: 'ConfigurationAppDetailsController',
                     resolve: {
                         application: function () {
@@ -1361,7 +1361,7 @@ angular.module('headwind-kiosk')
 
             $scope.editApplicationSetting = function (setting) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9cef5a751a',
+                    templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
                         applicationSetting: function () {
@@ -1410,7 +1410,7 @@ angular.module('headwind-kiosk')
 
             $scope.removeFile = function (file) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h87a696ba2e',
+                    templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h9ab42ea0f4',
                     controller: 'RemoveConfigurationFileModalController',
                     resolve: {
                         file: function () {
