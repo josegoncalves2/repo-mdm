@@ -4,6 +4,15 @@
 # source/.env (que e' gitignored, porque carrega senha e segredo reais) nao impede
 # a subida. Quando o .env existe, o compose o le automaticamente e os valores dele
 # vencem estes padroes -- o fluxo do scripts/provision.sh continua igual.
+#
+# name: fixa o nome do projeto Compose. Sem isto, o Compose usa o nome da PASTA
+# ("source") como nome do projeto -- e como TODO clone deste repo tem uma pasta
+# "source" identica, um `docker compose up` num segundo clone na MESMA maquina
+# reconhece os containers do primeiro como se fossem dele e os RECRIA, derrubando
+# o que estava rodando. Ja aconteceu em producao. Se for subir mais de uma
+# instancia no mesmo host, rode com um nome proprio:
+#     COMPOSE_PROJECT_NAME=outro-nome docker compose up -d
+name: ${COMPOSE_PROJECT_NAME:-hwmdm}
 services:
 
   postgresql:
