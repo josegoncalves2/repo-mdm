@@ -1,12 +1,17 @@
 # Politica deste repositorio: versionar TUDO de producao, sem excecao.
 # APKs, WARs, .env, volumes do Tomcat, configuracao -- tudo entra.
-# So existem DUAS exclusoes, e ambas sao imposicoes tecnicas, nao preferencia.
+# So existem TRES exclusoes, e todas sao imposicoes tecnicas, nao preferencia.
 
 # ===== 1. Limite rigido do GitHub: 100 MB por arquivo =====
 # O GitHub RECUSA no servidor o push de qualquer arquivo acima de 100 MB.
 # Nao e' configuravel. Este APK tem 132 MB; versiona-lo exigiria Git LFS.
 # O arquivo continua em producao normalmente -- so nao viaja pelo git.
 source/volumes/work/files/WhatsApp.apk
+
+# Mesmo limite, mesmo motivo: o modules image do JDK vendorizado tem 135 MB.
+# Removido do historico via git filter-branch em 2026-08-07. Continua em
+# disco normalmente (necessario para o toolchain funcionar), so nao versiona.
+.jdk21/lib/modules
 
 # ===== 2. Diretorio interno do PostgreSQL =====
 # source/volumes/db/ sao os arquivos binarios internos do Postgres (uid 70).
