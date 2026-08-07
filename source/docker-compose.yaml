@@ -46,6 +46,10 @@ services:
       - ./volumes/work:/usr/local/tomcat/work
       - ./volumes/hmdm-config:/usr/local/tomcat/conf/Catalina/localhost
       - ./volumes/webapps:/usr/local/tomcat/webapps
+      # BackupResource grava/le dumps aqui. Fora do container de proposito -- um backup
+      # que so existe dentro do proprio container que ele deveria proteger nao serve
+      # de nada quando esse container e' o que precisa ser restaurado.
+      - ./volumes/backups:/opt/hmdm/backups
       # A WAR versionada entra direto no cache que o docker-entrypoint.sh procura.
       # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
       # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.

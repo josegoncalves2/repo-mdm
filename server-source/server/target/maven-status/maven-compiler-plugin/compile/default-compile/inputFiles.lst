@@ -40,6 +40,7 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/MainRestModule.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/ConfigureModule.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/SyncConfigurationFile.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/RestoreResult.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/PublicRestModule.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/UserResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/PublicFilesResource.java
@@ -58,6 +59,7 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/DeviceResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/user/UserView.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/task/FileCheckTask.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/BackupInfo.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/devicelist/ApplicationView.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/NameResponse.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/FilesResource.java
@@ -65,4 +67,5 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/PersistenceModule.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/AuthOptionsResponse.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/SyncApplicationSetting.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/BackupResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/SummaryResource.java

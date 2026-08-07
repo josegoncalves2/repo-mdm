@@ -1,6 +1,7 @@
 com/hmdm/rest/json/UpdateEntry.class
 com/hmdm/guice/module/PrivateRestModule.class
 com/hmdm/rest/resource/PublicResource.class
+com/hmdm/rest/json/RestoreResult.class
 com/hmdm/rest/resource/GroupResource.class
 com/hmdm/rest/resource/PushApiResource.class
 com/hmdm/rest/json/view/devicelist/DeviceInfoView.class
@@ -21,6 +22,7 @@ com/hmdm/rest/json/view/FileView.class
 com/hmdm/task/FileMigrateTask.class
 com/hmdm/rest/json/view/user/PermissionView.class
 com/hmdm/rest/resource/IconFileResource.class
+com/hmdm/rest/resource/BackupResource.class
 com/hmdm/rest/json/DeviceGroupBulkRequest.class
 com/hmdm/rest/resource/PasswordResetResource.class
 com/hmdm/rest/resource/AuthResource.class
@@ -28,6 +30,7 @@ com/hmdm/HMDMApplication$1.class
 com/hmdm/rest/json/view/devicelist/DeviceApplicationView.class
 com/hmdm/rest/resource/HintResource.class
 com/hmdm/rest/resource/IconResource.class
+com/hmdm/rest/json/BackupInfo.class
 com/hmdm/rest/json/NameResponse.class
 com/hmdm/rest/json/SummaryResponse.class
 com/hmdm/rest/resource/ConfigurationResource.class

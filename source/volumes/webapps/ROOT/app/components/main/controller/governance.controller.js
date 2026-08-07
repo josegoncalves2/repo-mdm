@@ -137,11 +137,9 @@ angular.module('headwind-kiosk')
         // -------------------------------------------------------------------------------------------
 
         /*
-         * The database-backup section talks to rest/private/backup/*, which this server build
-         * does not implement (verified against the live server: GET rest/private/backup/list
-         * answers 404). Rather than presenting buttons that fail silently and an empty list
-         * that reads as "no backups yet", the section states that the API is missing and the
-         * actions stay disabled until it exists.
+         * rest/private/backup/* is implemented server-side by BackupResource (superadmin-only).
+         * The 404 fallback below is kept so the panel still degrades gracefully instead of
+         * failing silently if it's ever pointed at an older server build without this API.
          */
         $scope.backupApiAvailable = true;
         $scope.backupApiChecked = false;
