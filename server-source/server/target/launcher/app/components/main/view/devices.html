@@ -506,10 +506,7 @@
                             <a ng-click="sendRemoteMessage(device)" localized>button.remote.message</a>
                         </li>
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
-                            <a ng-click="sendRemoteCommand(device, 'screenshot')" localized>button.remote.screenshot</a>
-                        </li>
-                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
-                            <a ng-click="viewLastScreenshot(device)" localized>button.remote.screenshot.view</a>
+                            <a ng-click="openRemoteAccess(device)" localized>button.remote.liveview.open</a>
                         </li>
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
                             <a ng-click="sendRemoteCommand(device, 'reboot')" localized>button.remote.reboot</a>

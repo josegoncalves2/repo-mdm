@@ -18,7 +18,7 @@ angular.module('headwind-kiosk')
             // Escopo FILHO, nao isolado: com isolado o ng-model do elemento e' avaliado
             // contra o escopo isolado e nunca alcanca configuration.adminExtras.
             scope: true,
-            templateUrl: 'app/components/main/view/directive/mdmExtrasEditor.html?v=h15ef86a894',
+            templateUrl: 'app/components/main/view/directive/mdmExtrasEditor.html?v=h2aa92a4a65',
             link: function (scope, element, attrs, ngModel) {
 
                 scope.desabilitado = false;

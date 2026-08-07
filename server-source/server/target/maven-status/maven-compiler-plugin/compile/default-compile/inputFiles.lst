@@ -13,6 +13,7 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/UpdateResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/LiquibaseModule.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/guice/module/EventListenerModule.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/remote/RemoteAgentEndpoint.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/ConfigurationResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/devicelist/DeviceView.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/FileView.java
@@ -25,8 +26,9 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/DownloadFilesServlet.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/ConfigurationFileResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/VideosResource.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/remote/RemoteSessionHub.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/RemoteSupportResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/PasswordResetResource.java
-/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/PublicScreenshotResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/UserRoleResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/user/PermissionView.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/HintResource.java
@@ -55,6 +57,8 @@
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/SyncResponse.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/UpdateRequest.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/task/FileMigrateTask.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/remote/RemoteViewerEndpoint.java
+/opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/remote/RemoteEndpointDeployer.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/RegistrationRequest.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/resource/DeviceResource.java
 /opt/projetos/hwmdm/server-source/server/src/main/java/com/hmdm/rest/json/view/user/UserView.java

@@ -4,7 +4,7 @@ angular.module('headwind-kiosk')
         return {
             show: function (message) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'app/shared/view/progress.html?v=h477984ed5a',
+                    templateUrl: 'app/shared/view/progress.html?v=h29043166fa',
                     controller: 'ProgressDialogController',
                     resolve: {
                         message: function () {
