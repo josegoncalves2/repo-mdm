@@ -130,6 +130,7 @@ public class DeviceResource {
                 configuration.setId(deviceConfigurationId);
                 configuration.setName(device.getConfigName());
                 configuration.setPermissive(dbConfig.getPermissive());
+                configuration.setKeepaliveTime(dbConfig.getKeepaliveTime());
                 if (dbConfig.getMainAppId() != null && dbConfig.getMainAppId() > 0 &&
                         dbConfig.getEventReceivingComponent() != null && dbConfig.getEventReceivingComponent().length() > 0) {
                     configuration.setQrCodeKey(dbConfig.getQrCodeKey());

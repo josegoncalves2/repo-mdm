@@ -190,6 +190,38 @@ public class DeviceView {
         return device.getStatusCode();
     }
 
+    /**
+     * <p>How long ago (in seconds) the device last checked in, or {@code null} if it has never
+     * checked in ({@link Device#getLastUpdate()} is 0).</p>
+     */
+    @ApiModelProperty("Seconds since the device's last check-in, or null if it never checked in")
+    public Long getLastUpdateAgeSec() {
+        Long lastUpdate = device.getLastUpdate();
+        if (lastUpdate == null || lastUpdate <= 0) {
+            return null;
+        }
+        return Math.max(0L, (System.currentTimeMillis() - lastUpdate) / 1000L);
+    }
+
+    /**
+     * <p>How many seconds of silence are tolerated before the device counts as offline.
+     * Deliberately the same 2-hour cutoff the device list's own "green" status color already
+     * uses (see the CASE WHEN in DeviceMapper.xml's allowedDevicesSelect) rather than the
+     * per-configuration keepalive interval: on real data, keepaliveTime (a handful of seconds)
+     * does not track how often this agent actually checks in (many minutes between syncs in
+     * practice), so it produced a device the rest of the panel calls "green" while this field
+     * called it offline. One already-trusted definition of online beats two disagreeing ones.</p>
+     */
+    @ApiModelProperty("Seconds of silence tolerated before the device counts as offline")
+    public int getOnlineThresholdSec() {
+        return 2 * 3600;
+    }
+
+    @ApiModelProperty("Whether the device has checked in within its online threshold")
+    public boolean getOnline() {
+        return "green".equals(device.getStatusCode());
+    }
+
     @ApiModelProperty("An info on device state submitted by device to MDM server")
     public DeviceInfoView getInfo() {
         return deviceInfo;
