@@ -1,5 +1,7 @@
 package com.hmdm.rest.json;
 
+import com.hmdm.persistence.domain.DeviceLocationSummary;
+
 import java.util.List;
 
 public class SummaryResponse {
@@ -19,6 +21,52 @@ public class SummaryResponse {
     private List<Integer> appFailureByConfig;
     private List<Integer> appMismatchByConfig;
     private List<Integer> appSuccessByConfig;
+
+    // Dashboard widgets: recent activity, last known GPS fixes, operational alerts.
+    private List<DeviceLocationSummary> recentDevices;
+    private List<DeviceLocationSummary> locatedDevices;
+    private long devicesWithLocation;
+    // No alerting engine exists in this codebase yet (no rules define what counts as an
+    // alert), so this stays honestly empty rather than faking data. See PROVISIONAMENTO.md.
+    private List<Object> alerts = new java.util.ArrayList<>();
+    private long criticalAlerts;
+    private long warningAlerts;
+
+    public List<DeviceLocationSummary> getRecentDevices() {
+        return recentDevices;
+    }
+
+    public void setRecentDevices(List<DeviceLocationSummary> recentDevices) {
+        this.recentDevices = recentDevices;
+    }
+
+    public List<DeviceLocationSummary> getLocatedDevices() {
+        return locatedDevices;
+    }
+
+    public void setLocatedDevices(List<DeviceLocationSummary> locatedDevices) {
+        this.locatedDevices = locatedDevices;
+    }
+
+    public long getDevicesWithLocation() {
+        return devicesWithLocation;
+    }
+
+    public void setDevicesWithLocation(long devicesWithLocation) {
+        this.devicesWithLocation = devicesWithLocation;
+    }
+
+    public List<Object> getAlerts() {
+        return alerts;
+    }
+
+    public long getCriticalAlerts() {
+        return criticalAlerts;
+    }
+
+    public long getWarningAlerts() {
+        return warningAlerts;
+    }
 
 
     public List<ChartItem> getStatusSummary() {

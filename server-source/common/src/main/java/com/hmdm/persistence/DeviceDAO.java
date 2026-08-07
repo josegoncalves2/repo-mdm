@@ -120,6 +120,18 @@ public class DeviceDAO extends AbstractDAO<Device> {
         return count.intValue();
     }
 
+    public List<DeviceLocationSummary> getDeviceLocations(Integer groupId) {
+        return SecurityContext.get().getCurrentUser()
+                .map(currentUser -> this.mapper.getDeviceLocations((long) currentUser.getCustomerId(), groupId))
+                .orElse(new ArrayList<>());
+    }
+
+    public List<DeviceLocationSummary> getRecentDevices(int limit) {
+        return SecurityContext.get().getCurrentUser()
+                .map(currentUser -> this.mapper.getRecentDevices((long) currentUser.getCustomerId(), limit))
+                .orElse(new ArrayList<>());
+    }
+
     public List<Device> getAllDevices() {
         DeviceSearchRequest request = new DeviceSearchRequest();
         List<Device> devices = getListWithCurrentUser(currentUser -> {

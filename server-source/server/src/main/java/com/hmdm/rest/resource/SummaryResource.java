@@ -22,6 +22,7 @@
 package com.hmdm.rest.resource;
 
 import com.hmdm.persistence.DeviceDAO;
+import com.hmdm.persistence.domain.DeviceLocationSummary;
 import com.hmdm.persistence.domain.DeviceSummaryRequest;
 import com.hmdm.persistence.domain.SummaryConfigItem;
 import com.hmdm.rest.json.Response;
@@ -155,7 +156,31 @@ public class SummaryResource {
 
         summaryResponse.setDevicesEnrolledMonthly(deviceDAO.getDevicesEnrolledMonthly());
 
+        List<DeviceLocationSummary> located = deviceDAO.getDeviceLocations(null);
+        summaryResponse.setLocatedDevices(located);
+        summaryResponse.setDevicesWithLocation(located.size());
+        summaryResponse.setRecentDevices(deviceDAO.getRecentDevices(10));
+
         return Response.OK(summaryResponse);
+    }
+
+    // =================================================================================================================
+    @ApiOperation(
+            value = "Get device locations",
+            notes = "Gets the last known GPS location for each device that has reported one",
+            response = DeviceLocationSummary.class,
+            responseContainer = "List"
+    )
+    @GET
+    @Path("/locations")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDeviceLocations(@QueryParam("groupId") Integer groupId) {
+        try {
+            return Response.OK(deviceDAO.getDeviceLocations(groupId));
+        } catch (Exception e) {
+            log.error("Unexpected error when getting device locations", e);
+            return Response.INTERNAL_ERROR();
+        }
     }
 
 }

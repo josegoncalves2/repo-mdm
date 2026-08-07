@@ -41,6 +41,7 @@
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/persistence/ConfigurationUpdatedEventListener.java
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/persistence/mapper/CommonMapper.java
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/event/HandleEventTask.java
+/opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/persistence/domain/DeviceLocationSummary.java
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/service/EmailService.java
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/persistence/ConfigurationDAO.java
 /opt/projetos/hwmdm/server-source/common/src/main/java/com/hmdm/util/FileExistsException.java

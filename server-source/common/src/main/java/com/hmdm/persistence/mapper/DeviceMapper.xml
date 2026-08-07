@@ -410,6 +410,45 @@
         AND (users.allDevicesAvailable = TRUE OR NOT access.id IS NULL);
     </select>
 
+    <sql id="deviceLocationColumns">
+        DISTINCT devices.id AS id,
+        devices.number AS number,
+        devices.infojson -&gt;&gt; 'model' AS model,
+        devices.infojson -&gt;&gt; 'deviceIp' AS deviceIp,
+        (devices.infojson -&gt; 'location' -&gt;&gt; 'lat')::DOUBLE PRECISION AS lat,
+        (devices.infojson -&gt; 'location' -&gt;&gt; 'lon')::DOUBLE PRECISION AS lon,
+        (devices.infojson -&gt; 'location' -&gt;&gt; 'ts')::BIGINT AS locationTs,
+        devices.lastUpdate AS lastUpdate,
+        configurations.name AS configName,
+        CASE
+            WHEN (EXTRACT(EPOCH FROM NOW()) * 1000 - devices.lastupdate) &lt; (2 * 3600 * 1000) THEN 'green'
+            WHEN (EXTRACT(EPOCH FROM NOW()) * 1000 - devices.lastupdate) &lt; (4 * 3600 * 1000) THEN 'yellow'
+            ELSE 'red'
+        END AS statusCode
+    </sql>
+
+    <select id="getDeviceLocations" resultType="DeviceLocationSummary">
+        SELECT <include refid="deviceLocationColumns"/>
+        FROM devices
+        LEFT JOIN configurations ON devices.configurationId = configurations.id
+        <if test="groupId != null">
+            INNER JOIN deviceGroups ON devices.id = deviceGroups.deviceId AND deviceGroups.groupId = #{groupId}
+        </if>
+        WHERE devices.customerId = #{customerId}
+          AND devices.infojson -&gt; 'location' -&gt;&gt; 'lat' IS NOT NULL
+          AND devices.infojson -&gt; 'location' -&gt;&gt; 'lon' IS NOT NULL
+        ORDER BY devices.lastUpdate DESC;
+    </select>
+
+    <select id="getRecentDevices" resultType="DeviceLocationSummary">
+        SELECT <include refid="deviceLocationColumns"/>
+        FROM devices
+        LEFT JOIN configurations ON devices.configurationId = configurations.id
+        WHERE devices.customerId = #{customerId}
+        ORDER BY devices.lastUpdate DESC
+        LIMIT #{limit};
+    </select>
+
     <select id="countDevicesByConfig" parameterType="DeviceSummaryRequest" resultType="SummaryConfigItem">
         SELECT COUNT(DISTINCT devices.id) AS counter, configurations.id, configurations.name
         FROM devices

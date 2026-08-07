@@ -99,6 +99,10 @@ public interface DeviceMapper {
 
     Long countAllDevicesForSummary(DeviceSummaryRequest filter);
 
+    List<DeviceLocationSummary> getDeviceLocations(@Param("customerId") Long customerId, @Param("groupId") Integer groupId);
+
+    List<DeviceLocationSummary> getRecentDevices(@Param("customerId") Long customerId, @Param("limit") int limit);
+
     List<SummaryConfigItem> countDevicesByConfig(DeviceSummaryRequest filter);
 
     @Update({"UPDATE devices SET " +

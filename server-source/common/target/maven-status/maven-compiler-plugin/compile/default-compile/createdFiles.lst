@@ -95,6 +95,7 @@ com/hmdm/persistence/mapper/UsageStatsMapper.class
 com/hmdm/persistence/DAOException.class
 com/hmdm/persistence/domain/Icon.class
 com/hmdm/persistence/PendingSignupDAO.class
+com/hmdm/persistence/domain/DeviceLocationSummary.class
 com/hmdm/rest/filter/AuthFilter.class
 com/hmdm/persistence/CommonAppAccessException.class
 com/hmdm/persistence/domain/UsageStats.class
