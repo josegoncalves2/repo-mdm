@@ -44,6 +44,7 @@ com/hmdm/persistence/domain/Customer.class
 com/hmdm/persistence/mapper/ApplicationMapper.class
 com/hmdm/persistence/domain/UserRoleSettings.class
 com/hmdm/event/EventType.class
+com/hmdm/service/RemoteCommand$1.class
 com/hmdm/persistence/domain/ApplicationVersion.class
 com/hmdm/guice/LiquibaseJARResourceAccessor.class
 com/hmdm/persistence/ApplicationVersionPackageMismatchException.class

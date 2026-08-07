@@ -48,6 +48,14 @@
             </intent-filter>
         </activity>
 
+        <!-- Janela da mensagem enviada pelo painel (push textMessage). singleTask para que
+             uma segunda mensagem substitua a primeira em vez de empilhar janelas. -->
+        <activity android:name=".ui.MessageActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog.Alert"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:exported="false"/>
+
         <!-- Invisivel. So existe para obter o consentimento de MediaProjection, que o
              Android exige sempre e que nenhum privilegio de device owner dispensa. -->
         <activity android:name=".ui.ProjectionConsentActivity"

@@ -141,6 +141,8 @@ public interface SyncResponseInt {
 
     Boolean getLockSafeSettings();
 
+    Boolean getFactoryReset();
+
     Boolean getPermissive();
 
     Boolean getKioskExit();

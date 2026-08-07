@@ -41,6 +41,7 @@ import javax.ws.rs.core.MediaType;
 import com.hmdm.notification.PushService;
 import com.hmdm.notification.persistence.domain.PushMessage;
 import com.hmdm.persistence.*;
+import com.hmdm.remote.DeviceResetHub;
 import com.hmdm.service.RemoteCommand;
 import com.hmdm.persistence.domain.*;
 import com.hmdm.rest.json.*;
@@ -533,15 +534,30 @@ public class DeviceResource {
                 return Response.ERROR(e.getMessage());
             }
 
+            /*
+             * Apagar o aparelho nao viaja como push. O launcher 6.36 nao tem o tipo 'wipe' -
+             * a constante nao existe no binario, e o push era recebido e descartado. O que
+             * ele implementa e' ler factoryReset ao atualizar a configuracao, entao armamos
+             * o pedido e mandamos um configUpdated, que ele entende. O aparelho ainda
+             * confirma em /rest/plugins/devicereset/public/{number} antes de apagar.
+             */
+            final String pushType;
+            if (command == RemoteCommand.WIPE) {
+                DeviceResetHub.getInstance().request(dbDevice.getNumber());
+                pushType = RemoteCommand.SET_CONFIG.getPushType();
+            } else {
+                pushType = command.getPushType();
+            }
+
             PushMessage message = new PushMessage();
             message.setDeviceId(dbDevice.getId());
-            message.setMessageType(command.getPushType());
-            message.setPayload(payload);
+            message.setMessageType(pushType);
+            message.setPayload(command == RemoteCommand.WIPE ? null : payload);
             this.pushService.send(message);
 
             Map<String, Object> result = new HashMap<>();
             result.put("action", command.getAction());
-            result.put("pushType", command.getPushType());
+            result.put("pushType", pushType);
             result.put("deviceId", dbDevice.getId());
             result.put("deviceNumber", dbDevice.getNumber());
             return Response.OK(result);

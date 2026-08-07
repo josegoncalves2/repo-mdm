@@ -44,6 +44,7 @@ import javax.ws.rs.core.MediaType;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.hmdm.event.DeviceBatteryLevelUpdatedEvent;
+import com.hmdm.remote.DeviceResetHub;
 import com.hmdm.event.DeviceInfoUpdatedEvent;
 import com.hmdm.event.DeviceLocationUpdatedEvent;
 import com.hmdm.event.EventService;
@@ -399,6 +400,17 @@ public class SyncResource {
         data.setPermissive(configuration.getPermissive());
         data.setKioskExit(configuration.getKioskExit());
         data.setShowWifi(configuration.getShowWifi());
+
+        /*
+         * Restauracao de fabrica pedida pelo operador. Vai por aqui, e nao por push, porque
+         * o launcher 6.36 nao conhece o tipo de push 'wipe' -- ele le este campo ao
+         * atualizar a configuracao. Enviado apenas quando ha pedido armado: mandar
+         * 'false' em toda sincronizacao seria ruido, e o launcher trata ausente e falso
+         * do mesmo jeito.
+         */
+        if (DeviceResetHub.getInstance().isRequested(dbDevice.getNumber())) {
+            data.setFactoryReset(true);
+        }
 
         data.setKioskMode(configuration.isKioskMode());
         if (data.isKioskMode()) {

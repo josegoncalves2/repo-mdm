@@ -34,11 +34,15 @@ public class PublicRestModule extends ServletModule {
     protected void configureServlets() {
         this.filter("*").through(HstsFilter.class);
         this.filter("/rest/public/*").through(PublicIPFilter.class);
+        // Quem chama e' o aparelho, nao o painel, entao vale o mesmo filtro de IP dos
+        // demais enderecos de aparelho -- ainda que o caminho nao comece por /rest/public.
+        this.filter("/rest/plugins/devicereset/public/*").through(PublicIPFilter.class);
         this.serve("/files/*").with(DownloadFilesServlet.class);
         this.bind(AuthResource.class);
         this.bind(JWTAuthResource.class);
         this.bind(PublicResource.class);
         this.bind(SyncResource.class);
+        this.bind(DeviceResetResource.class);
         this.bind(PublicFilesResource.class);
         this.bind(QRCodeResource.class);
         this.bind(StatsResource.class);

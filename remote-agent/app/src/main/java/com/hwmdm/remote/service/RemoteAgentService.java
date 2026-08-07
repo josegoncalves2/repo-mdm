@@ -14,9 +14,11 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.hwmdm.remote.R;
+import com.hwmdm.remote.mdm.LauncherControl;
 import com.hwmdm.remote.mdm.MdmLink;
 import com.hwmdm.remote.mdm.RemoteLog;
 import com.hwmdm.remote.service.ScreenStreamService;
+import com.hwmdm.remote.ui.MessageActivity;
 import com.hwmdm.remote.ui.ProjectionConsentActivity;
 
 import org.json.JSONObject;
@@ -54,6 +56,15 @@ public class RemoteAgentService extends Service {
 
     public static final String PUSH_START = PUSH_PREFIX + "remoteScreenStart";
     public static final String PUSH_STOP = PUSH_PREFIX + "remoteScreenStop";
+
+    /*
+     * Dois tipos de push que o painel sempre ofereceu e que o launcher 6.36 oficial nao
+     * implementa: as constantes textMessage e lockKiosk nao existem no binario. Ele os
+     * recebe, nao reconhece, e repassa para os plugins -- onde ate agora nao havia ninguem.
+     * Atender aqui e' o que faz esses botoes funcionarem sem tocar no launcher.
+     */
+    public static final String PUSH_MESSAGE = PUSH_PREFIX + "textMessage";
+    public static final String PUSH_LOCK_KIOSK = PUSH_PREFIX + "lockKiosk";
 
     private volatile MdmLink.Config config;
     private BroadcastReceiver trigger;
@@ -111,6 +122,10 @@ public class RemoteAgentService extends Service {
                 } else if (PUSH_STOP.equals(intent.getAction())) {
                     Log.i(TAG, "Suporte remoto: encerramento pedido pelo painel");
                     ScreenStreamService.stop(RemoteAgentService.this);
+                } else if (PUSH_MESSAGE.equals(intent.getAction())) {
+                    onMessageRequested(intent.getStringExtra(PUSH_EXTRA));
+                } else if (PUSH_LOCK_KIOSK.equals(intent.getAction())) {
+                    onLockKioskRequested();
                 }
             }
         };
@@ -118,6 +133,8 @@ public class RemoteAgentService extends Service {
         IntentFilter filter = new IntentFilter();
         filter.addAction(PUSH_START);
         filter.addAction(PUSH_STOP);
+        filter.addAction(PUSH_MESSAGE);
+        filter.addAction(PUSH_LOCK_KIOSK);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // O broadcast vem de outro aplicativo (o launcher), entao tem de ser exportado.
             registerReceiver(trigger, filter, Context.RECEIVER_EXPORTED);
@@ -179,6 +196,46 @@ public class RemoteAgentService extends Service {
                     json.optInt("maxWidth", 800));
         } catch (Throwable t) {
             RemoteLog.e(this, "Chamado recusado: payload ilegivel (" + t + ")");
+        }
+    }
+
+    /**
+     * <p>Push {@code textMessage}: uma mensagem que o operador quer que apareca no aparelho.</p>
+     *
+     * <p>O payload e' o que com.hmdm.service.RemoteCommand monta: {@code text} obrigatorio e
+     * {@code duration} opcional em segundos. Uma mensagem vazia nao vira uma janela em
+     * branco -- isso so' confundiria quem esta' com o aparelho -- entao ela e' recusada e o
+     * motivo vai para o log do servidor, onde o operador consegue ver.</p>
+     */
+    private void onMessageRequested(String payload) {
+        if (payload == null || payload.trim().isEmpty()) {
+            RemoteLog.w(this, "Mensagem recusada: push sem conteudo");
+            return;
+        }
+        try {
+            JSONObject json = new JSONObject(payload);
+            String text = json.optString("text", "");
+            if (text.trim().isEmpty()) {
+                RemoteLog.w(this, "Mensagem recusada: campo 'text' vazio");
+                return;
+            }
+            int duration = json.optInt("duration", 10);
+            MessageActivity.show(this, text, duration);
+            RemoteLog.i(this, "Mensagem exibida no aparelho (" + duration + "s)");
+        } catch (Throwable t) {
+            RemoteLog.e(this, "Mensagem recusada: payload ilegivel (" + t + ")");
+        }
+    }
+
+    /**
+     * Push {@code lockKiosk}: devolver o aparelho ao quiosque, o inverso de {@code exitKiosk}.
+     */
+    private void onLockKioskRequested() {
+        String failure = LauncherControl.bringToFront(this);
+        if (failure == null) {
+            RemoteLog.i(this, "Quiosque restaurado: launcher trazido ao primeiro plano");
+        } else {
+            RemoteLog.w(this, "Nao foi possivel restaurar o quiosque: " + failure);
         }
     }
 

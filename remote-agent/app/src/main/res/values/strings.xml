@@ -15,6 +15,11 @@
     <string name="perm_granted">Concedida</string>
     <string name="perm_missing">Pendente</string>
 
+    <!-- Mensagem enviada pelo operador do painel (push textMessage). -->
+    <string name="message_title">Mensagem do suporte</string>
+    <string name="message_dismiss">OK</string>
+    <string name="message_empty">(mensagem sem conteúdo)</string>
+
     <!-- O texto da notificação é deliberadamente explícito: enquanto a tela estiver sendo
          transmitida, quem estiver com o aparelho na mão tem de conseguir ver isso. -->
     <string name="notif_channel_agent">Agente de suporte remoto</string>

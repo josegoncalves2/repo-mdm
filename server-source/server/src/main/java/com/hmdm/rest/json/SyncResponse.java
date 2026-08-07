@@ -124,6 +124,15 @@ public class SyncResponse implements Serializable, SyncResponseInt {
     @ApiModelProperty("Flag disabling safe settings")
     private Boolean lockSafeSettings;
 
+    /*
+     * Ordem de restauracao de fabrica. Fica na resposta de sincronizacao, e nao numa
+     * mensagem push, porque e' assim que o launcher 6.36 a le: ele nao conhece o tipo de
+     * push 'wipe', mas ao atualizar a configuracao chama checkFactoryReset() e obedece a
+     * este campo -- confirmando antes com o servidor.
+     */
+    @ApiModelProperty("Order to erase the device (read by the launcher on config update)")
+    private Boolean factoryReset;
+
     @ApiModelProperty("Flag enabling permissive mode")
     private Boolean permissive;
 
@@ -790,6 +799,14 @@ public class SyncResponse implements Serializable, SyncResponseInt {
     @Override
     public Boolean getLockSafeSettings() {
         return lockSafeSettings;
+    }
+
+    public Boolean getFactoryReset() {
+        return factoryReset;
+    }
+
+    public void setFactoryReset(Boolean factoryReset) {
+        this.factoryReset = factoryReset;
     }
 
     public void setLockSafeSettings(Boolean lockSafeSettings) {

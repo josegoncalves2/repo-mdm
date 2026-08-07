@@ -70,12 +70,14 @@ com/hmdm/task/FileCheckTask.class
 com/hmdm/guice/module/EventListenerModule.class
 com/hmdm/rest/json/view/devicelist/ConfigurationFileView.class
 com/hmdm/rest/json/view/devicelist/DeviceListView.class
+com/hmdm/remote/DeviceResetHub.class
 com/hmdm/rest/json/view/devicelist/ApplicationView.class
 com/hmdm/rest/resource/SignupResource.class
 com/hmdm/rest/json/view/user/UserRoleView.class
 com/hmdm/rest/json/SettingObject.class
 com/hmdm/rest/json/MoveFileRequest.class
 com/hmdm/rest/json/LimitResponse.class
+com/hmdm/rest/resource/DeviceResetResource.class
 com/hmdm/rest/json/SyncResponse.class
 com/hmdm/rest/resource/SummaryResource.class
 com/hmdm/rest/json/UploadAppRequest.class

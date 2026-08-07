@@ -152,11 +152,57 @@ public class LongPollingServlet extends HttpServlet {
         req.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
         final AsyncContext asyncContext = req.startAsync();
         asyncContext.setTimeout(pollingTimeout);
+        /*
+         * A consulta so' pode ser respondida uma vez.
+         *
+         * Um long-polling que expira gera DOIS eventos: onTimeout e, logo depois,
+         * onComplete. Responder no onComplete parecia bastar -- ate' se notar de onde vem a
+         * perda de comandos: se o container ja' tratou o timeout, ele mesmo marcou a
+         * resposta como erro 500, e o que o onComplete escreve depois vai para dentro de
+         * uma pagina de erro que o aparelho nao consegue interpretar. As mensagens, essas,
+         * ja' tinham saido do banco. O comando sumia sem erro em lugar nenhum -- era o
+         * "as vezes o botao nao faz nada".
+         *
+         * Entao quem chegar primeiro responde, e o outro so' encerra.
+         */
+        final java.util.concurrent.atomic.AtomicBoolean answered =
+                new java.util.concurrent.atomic.AtomicBoolean(false);
+
         asyncContext.addListener(new AsyncListener() {
             @Override
             public void onComplete(AsyncEvent event) throws IOException {
                 log.debug("onComplete");
-                List<PushMessage> messages = pushSenderPolling.getPendingMessages(event.getAsyncContext());
+                if (answered.compareAndSet(false, true)) {
+                    deliver(event.getAsyncContext());
+                }
+                pushSenderPolling.unregister(event.getAsyncContext());
+            }
+
+            @Override
+            public void onTimeout(AsyncEvent event) throws IOException {
+                log.debug("onTimeout");
+                if (!answered.compareAndSet(false, true)) {
+                    return;
+                }
+                // Responder aqui, e nao no onComplete que vem a seguir, e' o que mantem a
+                // resposta em 200: o container so' transforma a consulta expirada em erro
+                // quando o listener nao a conclui por conta propria.
+                deliver(event.getAsyncContext());
+                pushSenderPolling.unregister(event.getAsyncContext());
+                try {
+                    event.getAsyncContext().complete();
+                } catch (Exception e) {
+                    log.debug("Consulta de '{}' ja' encerrada pelo container", deviceNumber);
+                }
+            }
+
+            /**
+             * Entrega ao aparelho as mensagens acumuladas nesta consulta. Uma consulta que
+             * expira sem nenhuma mensagem responde uma lista vazia -- que e' uma resposta
+             * valida, e nao um erro: e' o caso normal de um aparelho ocioso.
+             */
+            private void deliver(javax.servlet.AsyncContext context) {
+                List<PushMessage> messages = pushSenderPolling.getPendingMessages(context);
                 if (messages.size() > 0) {
                     log.info("Delivering push-messages to device '{}': {}", deviceNumber, messages);
                 }
@@ -181,18 +227,12 @@ public class LongPollingServlet extends HttpServlet {
                     log.debug("Succesfully delivered");
                 } catch (Exception e) {
                     log.warn("Failed to deliver push messages to device '{}': {}", deviceNumber, e.getMessage());
-                    // Put pending messages back to the database
+                    // Devolve as mensagens ao banco: elas nao chegaram, entao tem de
+                    // continuar pendentes para a proxima consulta.
                     for (PushMessage m : messages) {
                         notificationDAO.send(m);
                     }
                 }
-                pushSenderPolling.unregister(event.getAsyncContext());
-            }
-
-            @Override
-            public void onTimeout(AsyncEvent event) throws IOException {
-                log.debug("onTimeout");
-                // Timeout is followed by the Complete event, so nothing to do here
             }
 
             @Override
