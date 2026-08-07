@@ -59,9 +59,9 @@ import java.util.List;
  * Backups are stored at {@link #BACKUP_DIR}, a path outside the application container's own
  * filesystem (mounted from the host), so they survive container recreation.</p>
  *
- * <p>Every operation here is gated behind {@link SecurityContext#isSuperAdmin()}: a restore
- * overwrites the entire live database, so this is not something a regular admin role should
- * be able to trigger.</p>
+ * <p>Every operation here is gated behind the "settings" permission (same gate as
+ * {@link SettingsResource}): a restore overwrites the entire live database, so this needs
+ * to stay restricted to admin-level roles, not every panel user.</p>
  */
 @Api(tags = {"Backup"}, authorizations = {@Authorization("Bearer Token")})
 @Singleton
@@ -87,7 +87,7 @@ public class BackupResource {
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         try {
@@ -116,7 +116,7 @@ public class BackupResource {
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response create() {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         try {
@@ -137,7 +137,7 @@ public class BackupResource {
     @Path("/{filename}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response remove(@PathParam("filename") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         File file = resolve(filename);
@@ -160,7 +160,7 @@ public class BackupResource {
     @Path("/{filename}/download")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public javax.ws.rs.core.Response download(@PathParam("filename") @ApiParam("The backup file name") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
         }
         File file = resolve(filename);
@@ -188,7 +188,7 @@ public class BackupResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{filename}/restore")
     public Response restore(@PathParam("filename") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         File target = resolve(filename);
