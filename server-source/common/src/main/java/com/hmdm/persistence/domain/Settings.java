@@ -55,6 +55,18 @@ public class Settings implements CustomerData, Serializable {
      * ser aceito na gravacao.
      */
     private String webLogoUrl;
+
+    /*
+     * Cores do branding do painel web, o mesmo caso do logo: as colunas existem
+     * (webprimarycolor, websidebarcolor, webtextcolor), o painel as envia no mesmo POST de
+     * design, e o backend nunca teve os campos -- entao eram ignoradas na desserializacao e
+     * o SQL nao as gravava.
+     */
+    private String webPrimaryColor;
+
+    private String webSidebarColor;
+
+    private String webTextColor;
     @ApiModelProperty("A size of the icons for Default Design of mobile application")
     private IconSize iconSize = SMALL;
     @ApiModelProperty("A type of desktop header for Default Design of mobile application")
@@ -157,6 +169,30 @@ public class Settings implements CustomerData, Serializable {
 
     public void setWebLogoUrl(String webLogoUrl) {
         this.webLogoUrl = webLogoUrl;
+    }
+
+    public String getWebPrimaryColor() {
+        return this.webPrimaryColor;
+    }
+
+    public void setWebPrimaryColor(String webPrimaryColor) {
+        this.webPrimaryColor = webPrimaryColor;
+    }
+
+    public String getWebSidebarColor() {
+        return this.webSidebarColor;
+    }
+
+    public void setWebSidebarColor(String webSidebarColor) {
+        this.webSidebarColor = webSidebarColor;
+    }
+
+    public String getWebTextColor() {
+        return this.webTextColor;
+    }
+
+    public void setWebTextColor(String webTextColor) {
+        this.webTextColor = webTextColor;
     }
 
     public Integer getId() {

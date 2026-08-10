@@ -51,6 +51,9 @@ public interface CommonMapper {
                     "desktopHeader, " +
                     "desktopHeaderTemplate, " +
                     "webLogoUrl, " +
+                    "webPrimaryColor, " +
+                    "webSidebarColor, " +
+                    "webTextColor, " +
                     "customerId" +
                     ") VALUES (" +
                     "#{backgroundColor}, " +
@@ -60,6 +63,9 @@ public interface CommonMapper {
                     "#{desktopHeader}, " +
                     "#{desktopHeaderTemplate}, " +
                     "#{webLogoUrl}, " +
+                    "#{webPrimaryColor}, " +
+                    "#{webSidebarColor}, " +
+                    "#{webTextColor}, " +
                     "#{customerId}" +
                     ") " +
                     "ON CONFLICT ON CONSTRAINT settings_customer_unique DO " +
@@ -70,7 +76,10 @@ public interface CommonMapper {
                     "iconSize = EXCLUDED.iconSize, " +
                     "desktopHeader = EXCLUDED.desktopHeader, " +
                     "desktopHeaderTemplate = EXCLUDED.desktopHeaderTemplate, " +
-                    "webLogoUrl = EXCLUDED.webLogoUrl"
+                    "webLogoUrl = EXCLUDED.webLogoUrl, " +
+                    "webPrimaryColor = EXCLUDED.webPrimaryColor, " +
+                    "webSidebarColor = EXCLUDED.webSidebarColor, " +
+                    "webTextColor = EXCLUDED.webTextColor"
     })
     void saveDefaultDesignSettings(Settings settings);
 
