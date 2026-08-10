@@ -63,6 +63,15 @@ services:
     environment:
       # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga 3h adiantado.
       TZ: America/Sao_Paulo
+      # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
+      # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
+      # dono root:root (o processo roda como root dentro do container, sem userns-remap).
+      # Root le/escreve esses arquivos de qualquer forma, entao o app nunca vê erro; quem
+      # apanha e' tudo que roda FORA do container com o usuario do host (sahwmdm): backup,
+      # inspecao manual, qualquer script em scripts/. 0022 mantem dono root mas deixa os
+      # arquivos world-readable (644 em vez de 640), sem abrir escrita para ninguem alem
+      # do dono.
+      UMASK: "0022"
       SQL_HOST: postgresql
       SQL_USER: ${SQL_USER:-hmdm}
       SQL_BASE: ${SQL_BASE:-hmdm}
