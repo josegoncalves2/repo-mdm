@@ -61,9 +61,22 @@ public class InputInjectionService extends AccessibilityService {
         super.onDestroy();
     }
 
+    /**
+     * <p>A unica coisa que este servico escuta: qual aplicativo assumiu a tela.</p>
+     *
+     * <p>Nao ha leitura de conteudo -- {@code getPackageName()} vem no proprio evento, sem
+     * {@code canRetrieveWindowContent}. Serve a {@link ProtectionGuard}, que devolve o
+     * aparelho a tela inicial quando as Configuracoes sobem com a protecao ativa.</p>
+     */
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        // Nao observamos nada. O servico existe para agir, nao para escutar.
+        if (event == null || event.getEventType() != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            return;
+        }
+        if (ProtectionGuard.shouldBlock(this, event.getPackageName())) {
+            performGlobalAction(GLOBAL_ACTION_HOME);
+            ProtectionGuard.reportBlock(this, event.getPackageName());
+        }
     }
 
     @Override

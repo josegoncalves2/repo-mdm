@@ -54,6 +54,8 @@ document.localization ['zh_CN'] = {
     'breadcrumb.remote': 'Remote Access',
     'button.remote.lock': 'Force kiosk lock',
     'button.remote.unlock': 'Temporary unlock',
+    'button.remote.protect': 'Protect settings',
+    'button.remote.release': 'Release settings',
     'button.remote.config': 'Update configuration',
     'button.remote.message': 'Show message',
     'button.remote.liveview.open': 'Open the live remote screen',

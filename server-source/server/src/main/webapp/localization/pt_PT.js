@@ -229,6 +229,8 @@ document.localization ['pt_PT'] = {
     'button.show.password': 'Mostrar senha',
     'button.hide.password': 'Ocultar senha',
     'button.remote.unlock': 'Liberar temporariamente',
+    'button.remote.protect': 'Proteger configurações',
+    'button.remote.release': 'Liberar configurações',
     'button.remote.config': 'Atualizar configuração',
     'button.remote.message': 'Exibir mensagem',
     'button.remote.liveview.open': 'Abrir tela remota ao vivo',

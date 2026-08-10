@@ -54,6 +54,7 @@
 /src/server/src/main/java/com/hmdm/remote/RemoteSessionHub.java
 /src/server/src/main/java/com/hmdm/rest/json/DeviceGroupBulkRequest.java
 /src/server/src/main/java/com/hmdm/rest/resource/UpdateResource.java
+/src/server/src/main/java/com/hmdm/rest/resource/DeviceIpResource.java
 /src/server/src/main/java/com/hmdm/rest/json/SignupCompleteRequest.java
 /src/server/src/main/java/com/hmdm/remote/RemoteViewerEndpoint.java
 /src/server/src/main/java/com/hmdm/rest/resource/PublicFilesResource.java

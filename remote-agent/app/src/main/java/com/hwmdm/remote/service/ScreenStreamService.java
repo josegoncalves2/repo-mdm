@@ -99,6 +99,9 @@ public class ScreenStreamService extends Service {
     /** Teto de seguranca: uma sessao interrompida nao pode manter a tela acesa para sempre. */
     private static final long SCREEN_LOCK_TIMEOUT_MS = 2 * 60 * 60 * 1000L;
 
+    private volatile long ultimoAvisoEntrada;
+    private static final long AVISO_ENTRADA_INTERVALO_MS = 30_000L;
+
     public static void cacheConsent(int resultCode, Intent data) {
         consentResultCode = resultCode;
         consentData = data;
@@ -295,6 +298,16 @@ public class ScreenStreamService extends Service {
                 // A sessao continua valendo: a tela e' transmitida, so' nao ha toque.
                 Log.w(TAG, "Comando '" + type + "' ignorado: acessibilidade nao habilitada no aparelho");
                 reportInput(type, false, "accessibility_disabled");
+                // Tambem no log do servidor, com intervalo: o operador clica dezenas de
+                // vezes achando que a conexao caiu, e ate aqui a unica pista de que o
+                // problema era uma permissao ficava no logcat do aparelho -- onde ninguem
+                // que esteja no painel vai olhar.
+                long agora = System.currentTimeMillis();
+                if (agora - ultimoAvisoEntrada > AVISO_ENTRADA_INTERVALO_MS) {
+                    ultimoAvisoEntrada = agora;
+                    RemoteLog.w(this, "Toque recebido do painel e descartado: a acessibilidade "
+                            + "esta desligada neste aparelho, entao a sessao e' so' visualizacao");
+                }
                 return;
             }
 

@@ -230,6 +230,8 @@ document.localization ['en_US'] = {
     'button.show.password': 'Show password',
     'button.hide.password': 'Hide password',
     'button.remote.unlock': 'Temporarily unlock',
+    'button.remote.protect': 'Protect settings',
+    'button.remote.release': 'Release settings',
     'button.remote.config': 'Update configuration',
     'button.remote.message': 'Show message',
     'button.remote.liveview.open': 'Open the live remote screen',

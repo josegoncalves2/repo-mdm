@@ -75,7 +75,21 @@ public enum RemoteCommand {
     CLEAR_DOWNLOADS("clear_downloads", "clearDownloadHistory", "device.remote_access.control"),
     RUN_COMMAND("run_command", "runCommand", "device.remote_access.control"),
     INTENT("intent", "intent", "device.remote_access.control"),
-    BROADCAST("broadcast", "broadcast", "device.remote_access.control");
+    BROADCAST("broadcast", "broadcast", "device.remote_access.control"),
+
+    /*
+     * Protecao das Configuracoes do aparelho, atendida pelo app companheiro.
+     *
+     * Nao e' modo quiosque: o launcher 6.36 open source nao tem quiosque -- o binario nao
+     * contem startLockTask nem setLockTaskPackages, e a classe que decidiria isso e' um stub
+     * na versao livre. Quem bloqueia e' o servico de acessibilidade do agente, devolvendo o
+     * aparelho a tela inicial quando as Configuracoes sobem.
+     *
+     * O par tem de existir inteiro. Uma vez ativa, a protecao impede chegar ao interruptor
+     * que a desligaria, entao sem o comando de liberar um engano custaria o aparelho.
+     */
+    PROTECT_SETTINGS("protect_settings", "protectionOn", "device.lifecycle.lock"),
+    RELEASE_SETTINGS("release_settings", "protectionOff", "device.lifecycle.unlock");
 
     public static final int MAX_MESSAGE_LENGTH = 500;
     private static final int MAX_PATH_LENGTH = 1024;

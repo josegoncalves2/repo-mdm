@@ -67,6 +67,17 @@ public class RemoteAgentService extends Service {
     public static final String PUSH_MESSAGE = PUSH_PREFIX + "textMessage";
     public static final String PUSH_LOCK_KIOSK = PUSH_PREFIX + "lockKiosk";
 
+    /*
+     * Liga e desliga a protecao que impede abrir as Configuracoes no aparelho. Tipos novos,
+     * atendidos so' por este aplicativo -- o launcher os repassa por nao conhecer.
+     *
+     * O par existe porque a protecao se sustenta sozinha: uma vez ativa, desliga-la pelo
+     * aparelho exigiria entrar nas Configuracoes, que e' exatamente o que ela bloqueia. Sem
+     * um jeito de soltar a distancia, um engano custaria o tablet.
+     */
+    public static final String PUSH_PROTECT_ON = PUSH_PREFIX + "protectionOn";
+    public static final String PUSH_PROTECT_OFF = PUSH_PREFIX + "protectionOff";
+
     private volatile MdmLink.Config config;
     private BroadcastReceiver trigger;
     private Thread addressReporter;
@@ -132,6 +143,10 @@ public class RemoteAgentService extends Service {
                     onMessageRequested(intent.getStringExtra(PUSH_EXTRA));
                 } else if (PUSH_LOCK_KIOSK.equals(intent.getAction())) {
                     onLockKioskRequested();
+                } else if (PUSH_PROTECT_ON.equals(intent.getAction())) {
+                    onProtectionRequested(true);
+                } else if (PUSH_PROTECT_OFF.equals(intent.getAction())) {
+                    onProtectionRequested(false);
                 }
             }
         };
@@ -141,6 +156,8 @@ public class RemoteAgentService extends Service {
         filter.addAction(PUSH_STOP);
         filter.addAction(PUSH_MESSAGE);
         filter.addAction(PUSH_LOCK_KIOSK);
+        filter.addAction(PUSH_PROTECT_ON);
+        filter.addAction(PUSH_PROTECT_OFF);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // O broadcast vem de outro aplicativo (o launcher), entao tem de ser exportado.
             registerReceiver(trigger, filter, Context.RECEIVER_EXPORTED);
@@ -242,6 +259,28 @@ public class RemoteAgentService extends Service {
             RemoteLog.i(this, "Quiosque restaurado: launcher trazido ao primeiro plano");
         } else {
             RemoteLog.w(this, "Nao foi possivel restaurar o quiosque: " + failure);
+        }
+    }
+
+    /**
+     * <p>Liga ou desliga a protecao das Configuracoes.</p>
+     *
+     * <p>Ligar sem acessibilidade nao produz protecao nenhuma: e' o servico de
+     * acessibilidade que enxerga a janela subir e devolve o aparelho a tela inicial. Dizer
+     * isso no log evita o pior resultado possivel aqui -- alguem confiar numa protecao que
+     * nao esta em vigor.</p>
+     */
+    private void onProtectionRequested(boolean active) {
+        ProtectionGuard.setActive(this, active);
+        if (!active) {
+            RemoteLog.i(this, "Protecao desligada: as Configuracoes voltam a abrir normalmente");
+            return;
+        }
+        if (InputInjectionService.isAvailable()) {
+            RemoteLog.i(this, "Protecao ligada: as Configuracoes ficam bloqueadas neste aparelho");
+        } else {
+            RemoteLog.w(this, "Protecao ligada, mas SEM EFEITO: depende da acessibilidade, "
+                    + "que esta desligada neste aparelho");
         }
     }
 

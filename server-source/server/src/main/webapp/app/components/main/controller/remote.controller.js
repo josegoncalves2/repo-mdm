@@ -63,6 +63,8 @@ angular.module('headwind-kiosk')
         var COMMAND_UI = {
             lock_screen: {group: 'session', labelKey: 'button.remote.lock', permission: 'device.lifecycle.lock'},
             unlock_screen: {group: 'session', labelKey: 'button.remote.unlock', permission: 'device.lifecycle.unlock'},
+            protect_settings: {group: 'session', labelKey: 'button.remote.protect', permission: 'device.lifecycle.lock'},
+            release_settings: {group: 'session', labelKey: 'button.remote.release', permission: 'device.lifecycle.unlock'},
             admin_panel: {group: 'session', labelKey: 'button.remote.adminpanel', permission: 'device.remote_access.control'},
             message: {
                 group: 'session', labelKey: 'button.remote.message', permission: 'device.remote_access.control',
