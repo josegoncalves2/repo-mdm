@@ -107,6 +107,21 @@ public class InputInjectionService extends AccessibilityService {
         instance = this;
         Log.i(TAG, "Injecao de toque disponivel");
         RemoteLog.i(this, "Acessibilidade CONECTADA: toque e digitacao remotos disponiveis");
+
+        // Garante que o servico que recebe os pushes (protectionOn, textMessage, lockKiosk,
+        // remoteScreenStart) esteja no ar.
+        //
+        // Por que aqui: num aparelho recem-matriculado o usuario faz os ajustes todos pelas
+        // Configuracoes do Android -- sobreposicao, acessibilidade -- e nunca chega a abrir
+        // este aplicativo. Sem abrir, o RemoteAgentService nao subia, o receiver dos pushes
+        // nao ficava registrado, e comandos como "Proteger configuracoes" chegavam ao
+        // launcher e morriam sem ninguem ouvindo. Habilitar a acessibilidade e' um passo que
+        // o usuario SEMPRE faz; amarrar a partida do agente a ele fecha essa lacuna.
+        try {
+            RemoteAgentService.start(this);
+        } catch (Throwable t) {
+            Log.w(TAG, "Falha ao subir o agente a partir da acessibilidade", t);
+        }
     }
 
     @Override
