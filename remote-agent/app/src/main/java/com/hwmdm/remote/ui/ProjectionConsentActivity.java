@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.media.projection.MediaProjectionManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.hwmdm.remote.mdm.RemoteLog;
 import com.hwmdm.remote.service.ProtectionGuard;
@@ -34,6 +36,17 @@ public class ProjectionConsentActivity extends Activity {
     /** Inicia a sessao, pedindo consentimento apenas quando nao ha token aproveitavel. */
     public static void startSession(Context context, String url, String token, String format,
                                     int fps, int bitrate, int maxWidth) {
+        // Acorda a tela ANTES de qualquer outra coisa. Ate aqui nada no fluxo de chamada
+        // pedia para a tela ligar -- so' o ScreenStreamService, depois de a sessao ja estar
+        // em andamento, tratava disso. Se o aparelho estiver dormindo quando o chamado
+        // chega, a activity de consentimento e' criada (a isencao de sobreposicao cuida
+        // disso) mas a tela fisica nunca acende: o dialogo fica esperando uma resposta que
+        // o usuario nao pode dar porque nao ve nada, e a sessao trava em "conectando" com a
+        // tela do tablet preta ate alguem tocar fisicamente no aparelho. E' o mesmo sintoma
+        // relatado como "a tela fica preta se nao mexer no tablet", so' que na largada da
+        // sessao em vez de no meio dela.
+        wakeScreenForConsent(context);
+
         if (ScreenStreamService.hasConsent()) {
             launchService(context, buildIntent(context, url, token, format, fps, bitrate, maxWidth));
             return;
@@ -65,9 +78,40 @@ public class ProjectionConsentActivity extends Activity {
         }
     }
 
+    /**
+     * <p>Wake lock de vida curta so' para acender a tela fisica a tempo do dialogo de
+     * consentimento aparecer.</p>
+     *
+     * <p>{@code SCREEN_BRIGHT_WAKE_LOCK} com {@code ACQUIRE_CAUSES_WAKEUP} e' o mesmo par
+     * ja usado por {@link ScreenStreamService} para manter a tela acesa durante a
+     * transmissao -- aqui ele cobre a lacuna anterior a isso, entre o push chegar e a
+     * sessao comecar de fato. O teto de 30s nao precisa ser generoso: assim que a
+     * activity aparece, a propria janela dela carrega {@code FLAG_KEEP_SCREEN_ON} (ver
+     * {@link #onCreate}), e assim que o usuario responde o {@code ScreenStreamService}
+     * assume com o seu proprio lock.</p>
+     */
+    private static void wakeScreenForConsent(Context context) {
+        try {
+            PowerManager power = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            if (power == null) {
+                return;
+            }
+            PowerManager.WakeLock lock = power.newWakeLock(
+                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                    "hwmdm:consentimento");
+            lock.setReferenceCounted(false);
+            lock.acquire(30_000L);
+        } catch (Throwable ignored) {
+            // Acender a tela e' o que torna o dialogo visivel, nao um requisito para a
+            // sessao existir -- um aparelho ja acordado (o caso comum, alguem com o
+            // tablet na mao pedindo suporte) nao depende disto em nada.
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        applyScreenWakeFlags();
         MediaProjectionManager manager =
                 (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
         if (manager == null) {
@@ -76,6 +120,30 @@ public class ProjectionConsentActivity extends Activity {
             return;
         }
         startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CODE);
+    }
+
+    /**
+     * <p>Faz esta janela aparecer por cima da tela de bloqueio e manter a tela acesa
+     * enquanto estiver visivel.</p>
+     *
+     * <p>{@code FLAG_TURN_SCREEN_ON} e {@code FLAG_DISMISS_KEYGUARD} estao obsoletos desde
+     * o Android 8.1 em favor de {@code setTurnScreenOn}/{@code setShowWhenLocked}, e mesmo
+     * assim ficam os dois aqui: aparelhos anteriores ao 8.1 so entendem as flags de janela,
+     * e manter as duas formas cobre a faixa inteira sem precisar de outro caminho. Um
+     * aparelho com bloqueio protegido por senha continua exigindo a senha -- isto nao
+     * contorna isso, so evita que a tela fique preta num aparelho sem bloqueio nenhum, que
+     * e' o caso normal de um tablet em quiosque.</p>
+     */
+    @SuppressWarnings("deprecation")
+    private void applyScreenWakeFlags() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            setShowWhenLocked(true);
+            setTurnScreenOn(true);
+        }
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
     }
 
     @Override
