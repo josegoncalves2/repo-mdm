@@ -204,17 +204,20 @@ public class DeviceView {
     }
 
     /**
-     * <p>How many seconds of silence are tolerated before the device counts as offline.
-     * Deliberately the same 2-hour cutoff the device list's own "green" status color already
-     * uses (see the CASE WHEN in DeviceMapper.xml's allowedDevicesSelect) rather than the
-     * per-configuration keepalive interval: on real data, keepaliveTime (a handful of seconds)
-     * does not track how often this agent actually checks in (many minutes between syncs in
-     * practice), so it produced a device the rest of the panel calls "green" while this field
-     * called it offline. One already-trusted definition of online beats two disagreeing ones.</p>
+     * <p>How many seconds of silence are tolerated before the device counts as offline. The
+     * same 5-minute cutoff the device list's "green" status now uses (the CASE WHEN in
+     * DeviceMapper.xml), so this field and the status color never disagree.</p>
+     *
+     * <p>Five minutes is only safe because lastUpdate is now touched on every polling inquiry
+     * (see LongPollingServlet), which every device does about once a minute. Before that,
+     * lastUpdate moved only on the far rarer configuration sync, and the cutoff had to be two
+     * hours to avoid calling a live device offline between syncs. With the frequent touch, a
+     * device that stops talking -- wiped, powered off, off the network -- drops to offline in
+     * minutes instead of hours.</p>
      */
     @ApiModelProperty("Seconds of silence tolerated before the device counts as offline")
     public int getOnlineThresholdSec() {
-        return 2 * 3600;
+        return 5 * 60;
     }
 
     @ApiModelProperty("Whether the device has checked in within its online threshold")

@@ -193,6 +193,11 @@ public class UnsecureDAO {
         this.deviceMapper.updateDeviceIp(id, publicIp);
     }
 
+    /** Registra que o aparelho falou com o servidor agora; ver touchDeviceLastUpdate. */
+    public void touchDeviceLastUpdate(Integer id) {
+        this.deviceMapper.touchDeviceLastUpdate(id);
+    }
+
     public void updateDeviceCustomProperties(Integer id, Device device) {
         this.deviceMapper.updateDeviceCustomProperties(id, device.getCustom1(), device.getCustom2(), device.getCustom3());
     }

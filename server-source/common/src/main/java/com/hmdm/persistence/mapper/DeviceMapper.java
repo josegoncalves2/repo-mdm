@@ -126,6 +126,20 @@ public interface DeviceMapper {
     void updateDeviceIp(@Param("deviceId") Integer deviceId,
                         @Param("publicIp") String publicIp);
 
+    /*
+     * Marca "o aparelho falou com o servidor agora".
+     *
+     * lastUpdate ate' aqui so' era escrito na sincronizacao de configuracao, que na pratica
+     * acontece de 5 a 50 minutos de intervalo -- por isso o status "online" tolerava 2 horas
+     * de silencio, senao um aparelho vivo pareceria offline entre uma sincronizacao e outra.
+     * O polling, que todo aparelho faz a cada ~65s, e' o sinal real de que ele esta' vivo;
+     * tocar lastUpdate a cada polling e' o que permite baixar o limite de online para poucos
+     * minutos sem falso-offline.
+     */
+    @Update({"UPDATE devices SET lastUpdate = CAST(EXTRACT(EPOCH FROM NOW()) * 1000 AS BIGINT) " +
+            "WHERE id = #{deviceId}"})
+    void touchDeviceLastUpdate(@Param("deviceId") Integer deviceId);
+
     @Update({"UPDATE devices SET " +
             "  custom1 = #{custom1}, " +
             "  custom2 = #{custom2}, " +

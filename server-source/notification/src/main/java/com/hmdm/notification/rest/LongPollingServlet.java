@@ -142,6 +142,16 @@ public class LongPollingServlet extends HttpServlet {
             return;
         }
 
+        // Cada polling e' prova de que o aparelho esta' vivo agora. Registrar isso em
+        // lastUpdate e' o que permite o status "online" refletir os ultimos minutos em vez
+        // de tolerar 2 horas de silencio -- um aparelho apagado para de pollar e cai para
+        // offline em minutos, nao em horas.
+        try {
+            unsecureDAO.touchDeviceLastUpdate(device.getId());
+        } catch (Exception e) {
+            log.debug("Falha ao registrar contato do aparelho '{}'", deviceNumber, e);
+        }
+
         // Unfortunately the output buffer can't be disabled or reduced (the minimal buffer size is 8192)
         // Even setting in server.xml: <Connector ... socket.appWriteBufSize="1" /> doesn't change anything!
         // Therefore, when the client is disconnected, the response is still "sent" to him without an exception.

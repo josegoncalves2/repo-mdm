@@ -83,10 +83,13 @@ angular.module('headwind-kiosk')
         };
 
         var reportedDeviceIp = function (device) {
-            if (!device || !device.info) {
+            if (!device) {
                 return null;
             }
-            var ip = device.info.deviceIp || device.info.ip || device.info.localIp || null;
+            // publicIp e' a fonte real (o agente reporta o endereco do aparelho); os campos
+            // de info ficam por compatibilidade -- o launcher 6.36 nao envia nenhum deles.
+            var info = device.info || {};
+            var ip = info.deviceIp || info.ip || info.localIp || device.publicIp || null;
             return isInfrastructureIp(ip) ? null : ip;
         };
 
@@ -385,15 +388,32 @@ angular.module('headwind-kiosk')
             return localization.localize('devices.ip.not.reported.hint');
         };
 
-        // device.kioskMode is the lock-task state the agent last reported, and it is null
-        // until a device has actually checked in. Rendering that null as "Not locked" made
-        // a device that has never reported look identical to one that reported itself
-        // unlocked - and contradicted the profile policy shown in the status strip.
+        // O estado real de bloqueio deste parque nao e' o "kioskMode" do Headwind.
+        //
+        // O launcher 6.36 open source NAO tem o quiosque single-app (lock task): a funcao
+        // ProUtils.isKioskModeRunning() e' um stub que devolve false fixo, e e' dela que sai
+        // o device.kioskMode reportado. Ou seja, esse campo e' SEMPRE false neste launcher,
+        // e ler so' ele fazia a coluna dizer "Nao bloqueado" para aparelhos que estao, sim,
+        // travados -- porque estao presos no launcher do MDM como home (defaultLauncher) em
+        // modo gerenciado (mdmMode), com as restricoes do perfil aplicadas.
+        //
+        // Entao a coluna passa a distinguir tres realidades em vez de duas:
+        //   locked  -> quiosque single-app de fato rodando (so' com o launcher pago);
+        //   managed -> preso no launcher do MDM como home, gerenciado (o estado destes tablets);
+        //   unlocked-> nem uma coisa nem outra.
         var deviceKioskState = function (device) {
-            if (!device || device.kioskMode === null || device.kioskMode === undefined) {
+            var info = device && device.info;
+            if (!info && (device.kioskMode === null || device.kioskMode === undefined)) {
                 return 'unknown';
             }
-            return device.kioskMode ? 'locked' : 'unlocked';
+            var kiosk = info ? info.kioskMode : device.kioskMode;
+            if (kiosk) {
+                return 'locked';
+            }
+            if (info && info.defaultLauncher && info.mdmMode) {
+                return 'managed';
+            }
+            return 'unlocked';
         };
 
         $scope.kioskStateLabel = function (device) {
@@ -403,6 +423,7 @@ angular.module('headwind-kiosk')
         $scope.kioskStateClass = function (device) {
             switch (deviceKioskState(device)) {
                 case 'locked':
+                case 'managed':
                     return 'text-success';
                 case 'unlocked':
                     return 'text-danger';
@@ -415,12 +436,18 @@ angular.module('headwind-kiosk')
         // so the operator can tell "policy not applied yet" from "policy says no kiosk".
         $scope.kioskStateNote = function (device) {
             var state = deviceKioskState(device);
-            var wanted = !!($scope.configuration && $scope.configuration.kioskMode);
             if (state === 'unknown') {
                 return localization.localize('kiosk.device.state.unknown.hint');
             }
-            if (wanted && state === 'unlocked') {
-                return localization.localize('kiosk.device.state.pending.hint');
+            // Launcher gerenciado e' um estado bom e final neste launcher -- nao ha um
+            // quiosque single-app "pendente" que va' aplicar depois, porque o APK livre nao
+            // o tem. A nota explica o que esse estado garante, em vez de prometer mais.
+            if (state === 'managed') {
+                return localization.localize('kiosk.device.state.managed.hint');
+            }
+            // Aparelho que deveria estar gerenciado e nao esta': aviso real.
+            if (state === 'unlocked') {
+                return localization.localize('kiosk.device.state.unlocked.hint');
             }
             return null;
         };
