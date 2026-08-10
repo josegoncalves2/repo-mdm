@@ -50,6 +50,7 @@ public interface CommonMapper {
                     "iconSize, " +
                     "desktopHeader, " +
                     "desktopHeaderTemplate, " +
+                    "webLogoUrl, " +
                     "customerId" +
                     ") VALUES (" +
                     "#{backgroundColor}, " +
@@ -58,6 +59,7 @@ public interface CommonMapper {
                     "#{iconSize}, " +
                     "#{desktopHeader}, " +
                     "#{desktopHeaderTemplate}, " +
+                    "#{webLogoUrl}, " +
                     "#{customerId}" +
                     ") " +
                     "ON CONFLICT ON CONSTRAINT settings_customer_unique DO " +
@@ -67,7 +69,8 @@ public interface CommonMapper {
                     "backgroundImageUrl = EXCLUDED.backgroundImageUrl, " +
                     "iconSize = EXCLUDED.iconSize, " +
                     "desktopHeader = EXCLUDED.desktopHeader, " +
-                    "desktopHeaderTemplate = EXCLUDED.desktopHeaderTemplate"
+                    "desktopHeaderTemplate = EXCLUDED.desktopHeaderTemplate, " +
+                    "webLogoUrl = EXCLUDED.webLogoUrl"
     })
     void saveDefaultDesignSettings(Settings settings);
 

@@ -46,6 +46,15 @@ public class Settings implements CustomerData, Serializable {
     private String textColor;
     @ApiModelProperty("An URL for background image color for Default Design of mobile application")
     private String backgroundImageUrl;
+
+    /*
+     * Logotipo do painel web. O campo existe no banco (settings.weblogourl) e o painel o
+     * envia e o exibe no cabecalho, mas o backend nunca teve a propriedade: o JSON chegava,
+     * o campo era ignorado na desserializacao, o servidor respondia 200 e nada mudava.
+     * Declarar aqui e' o que faz o SELECT * mapear a coluna na leitura e o corpo do POST
+     * ser aceito na gravacao.
+     */
+    private String webLogoUrl;
     @ApiModelProperty("A size of the icons for Default Design of mobile application")
     private IconSize iconSize = SMALL;
     @ApiModelProperty("A type of desktop header for Default Design of mobile application")
@@ -140,6 +149,14 @@ public class Settings implements CustomerData, Serializable {
 
     public void setBackgroundImageUrl(String backgroundImageUrl) {
         this.backgroundImageUrl = backgroundImageUrl;
+    }
+
+    public String getWebLogoUrl() {
+        return this.webLogoUrl;
+    }
+
+    public void setWebLogoUrl(String webLogoUrl) {
+        this.webLogoUrl = webLogoUrl;
     }
 
     public Integer getId() {
