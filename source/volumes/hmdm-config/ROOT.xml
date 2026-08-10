@@ -56,7 +56,7 @@
 
     <!-- If you have any reverse proxies, specify them here (IP addresses,
     comma-separated) for correct logging of IP addresses -->
-    <Parameter name="proxy.addresses" value="192.168.1.254"/>
+    <Parameter name="proxy.addresses" value="192.168.1.254,192.168.250.254"/>
 
     <!-- Name of the HTTP header containing the device IP address.
     Defaults to X-Real-IP -->
