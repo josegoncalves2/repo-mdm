@@ -62,8 +62,10 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return null;
             }
+            // publicIp e' a fonte real (o agente reporta o endereco do aparelho); os campos
+            // de info ficam por compatibilidade -- o launcher 6.36 nao envia nenhum deles.
             var info = device.info || {};
-            var ip = info.deviceIp || info.ip || info.localIp || null;
+            var ip = info.deviceIp || info.ip || info.localIp || device.publicIp || null;
             return ip && !infrastructureIps[String(ip).trim()] ? ip : null;
         };
 

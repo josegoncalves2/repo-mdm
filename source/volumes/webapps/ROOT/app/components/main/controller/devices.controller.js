@@ -159,10 +159,14 @@ angular.module('headwind-kiosk')
         };
 
         var reportedDeviceIp = function (device) {
-            if (!device || !device.info) {
+            if (!device) {
                 return null;
             }
-            var ip = device.info.deviceIp || device.info.ip || device.info.localIp || null;
+            // publicIp e' a fonte real: o agente grava o endereco do proprio aparelho ali, e
+            // o servidor recusa gravar endereco de proxy. Os campos de info sao consultados
+            // antes so' por compatibilidade -- o launcher 6.36 nao envia nenhum deles.
+            var info = device.info || {};
+            var ip = info.deviceIp || info.ip || info.localIp || device.publicIp || null;
             return isInfrastructureIp(ip) ? null : ip;
         };
 
