@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.hwmdm.remote.R;
 import com.hwmdm.remote.mdm.MdmLink;
+import com.hwmdm.remote.mdm.RemoteLog;
 import com.hwmdm.remote.service.InputInjectionService;
+import com.hwmdm.remote.service.ProtectionGuard;
 import com.hwmdm.remote.service.RemoteAgentService;
 import com.hwmdm.remote.service.ScreenStreamService;
 
@@ -127,6 +129,42 @@ public class StatusActivity extends Activity {
         boolean overlay = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this);
         overlayView.setText(overlay ? R.string.perm_granted : R.string.perm_missing);
         overlayView.setTextColor(overlay ? Color.parseColor("#2E7D32") : Color.parseColor("#EF6C00"));
+
+        armProtectionIfReady(input, overlay);
+    }
+
+    /**
+     * <p>Liga a protecao das Configuracoes sozinha assim que as duas permissoes de que o
+     * suporte remoto depende -- acessibilidade e sobreposicao -- estiverem concedidas.</p>
+     *
+     * <p>Sem isto, um aparelho recem-cadastrado fica sem protecao ate' alguem lembrar de
+     * mandar "Proteger configuracoes" pelo painel -- um passo manual extra que, esquecido,
+     * deixa qualquer pessoa desfazer as duas permissoes direto pelas Configuracoes do
+     * Android. Amarrar a ativacao ao fim do proprio cadastro fecha essa janela sem exigir
+     * nada do operador.</p>
+     *
+     * <p>So' dispara aqui -- em {@link #onResume()}, com o tecnico de volta neste
+     * aplicativo -- e nunca a partir de {@code onServiceConnected} da acessibilidade: aquele
+     * evento acontece com a tela das Configuracoes ainda aberta, e ligar a protecao ali
+     * fecharia as proprias Configuracoes antes da sobreposicao ser concedida, quebrando o
+     * segundo passo deste mesmo cadastro.</p>
+     *
+     * <p>Dispara uma unica vez por aparelho ({@link ProtectionGuard#wasAutoEngaged}): depois
+     * disso quem decide se a protecao fica ligada ou desligada e' o painel, para que
+     * "Liberar configuracoes" (manutencao) nao seja desfeito sozinho na proxima vez que este
+     * aplicativo for aberto.</p>
+     */
+    private void armProtectionIfReady(boolean input, boolean overlay) {
+        if (!input || !overlay) {
+            return;
+        }
+        if (ProtectionGuard.isActive(this) || ProtectionGuard.wasAutoEngaged(this)) {
+            return;
+        }
+        ProtectionGuard.setActive(this, true);
+        ProtectionGuard.markAutoEngaged(this);
+        RemoteLog.i(this, "Protecao das Configuracoes ativada automaticamente: "
+                + "acessibilidade e sobreposicao concedidas");
     }
 
     private void openOverlaySettings() {

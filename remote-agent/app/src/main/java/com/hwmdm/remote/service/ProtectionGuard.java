@@ -50,6 +50,7 @@ public final class ProtectionGuard {
 
     private static final String PREFS = "hwmdm_protecao";
     private static final String KEY_ACTIVE = "ativa";
+    private static final String KEY_AUTO_ENGAGED = "auto_engajada";
 
     /**
      * Pacotes de Configuracoes. Samsung usa o proprio alem do padrao do Android, e os dois
@@ -80,6 +81,26 @@ public final class ProtectionGuard {
     public static void setActive(Context context, boolean active) {
         prefs(context).edit().putBoolean(KEY_ACTIVE, active).apply();
         cache = active;
+    }
+
+    /**
+     * <p>Se a protecao ja foi ligada automaticamente neste aparelho, ao fim do primeiro
+     * cadastro das permissoes (ver {@link com.hwmdm.remote.ui.StatusActivity}).</p>
+     *
+     * <p>Existe para a auto-ativacao acontecer <b>uma vez so'</b>. Sem essa marca, toda vez
+     * que o tecnico reabrisse o aplicativo com acessibilidade e sobreposicao concedidas a
+     * protecao voltaria sozinha -- inclusive logo depois de o painel manda-la desligar de
+     * proposito (comando "Liberar configuracoes", usado para manutencao). Isso tornaria o
+     * botao de liberar inutil na pratica. A marca fica gravada mesmo quando a protecao e'
+     * liberada depois, entao "liberar pelo painel" continua valendo ate alguem religar --
+     * pelo painel ou reinstalando o aplicativo.</p>
+     */
+    public static boolean wasAutoEngaged(Context context) {
+        return prefs(context).getBoolean(KEY_AUTO_ENGAGED, false);
+    }
+
+    public static void markAutoEngaged(Context context) {
+        prefs(context).edit().putBoolean(KEY_AUTO_ENGAGED, true).apply();
     }
 
     /**
