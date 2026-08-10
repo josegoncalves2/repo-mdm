@@ -2963,7 +2963,7 @@ COPY public.applications (id, pkg, name, showicon, customerid, system, latestver
 77	com.samsung.android.app.telephonyui	Samsung Telephony	f	1	t	10076	f	app	\N	\N	f	f	\N
 86	com.whatsapp	WhatsApp	t	1	f	10092	f	app	\N	\N	f	f	\N
 46	com.hmdm.launcher	Headwind MDM	f	1	f	10045	f	app	\N	\N	f	f	\N
-87	com.hwmdm.remote	Suporte Remoto	t	1	f	10105	t	app	\N	\N	t	f	\N
+87	com.hwmdm.remote	Suporte Remoto	t	1	f	10106	t	app	\N	\N	t	f	\N
 \.
 
 
@@ -3051,6 +3051,7 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10104	87	1.5	http://192.168.1.75:8080/files/hwmdm-remote-1.5.apk	iLED381c+YCo5UIajQPlx+kQRPelU0CET29Oj49AyBM	f	\N	\N	6
 10092	86	2.26.29.71	http://192.168.1.75:8080/files/WhatsApp.apk	\N	f	\N	\N	262907130
 10105	87	1.6	http://192.168.1.75:8080/files/hwmdm-remote-1.6.apk	VulxLaiyWWhCEM7rm2tdB9d0NpDyUHPKul0FaKdQohU	f	\N	\N	7
+10106	87	1.7	http://192.168.1.75:8080/files/hwmdm-remote-1.7.apk	pvp4UTk/0py5P+/JsWIRlv05iw7VgESmIYxXCkc+Kmk	f	\N	\N	8
 \.
 
 
@@ -3118,12 +3119,10 @@ COPY public.configurationapplications (id, configurationid, applicationid, remov
 801	1	49	f	f	10048	1	\N	\N	f	f	f
 802	1	50	f	f	10049	1	\N	\N	f	f	f
 804	1	46	f	f	10045	1	\N	\N	f	f	f
-806	44	9	f	f	10008	1	\N	\N	f	f	f
-808	44	86	f	t	10092	1	\N	\N	f	f	f
 812	11	9	f	f	10008	1	\N	\N	f	f	f
 814	11	86	f	t	10092	1	\N	\N	f	f	f
 813	11	46	f	f	10045	1	\N	\N	f	f	f
-815	11	87	f	t	10105	1	\N	\N	f	f	f
+815	11	87	f	t	10106	1	\N	\N	f	f	f
 \.
 
 
@@ -3151,7 +3150,6 @@ COPY public.configurations (id, name, description, type, password, backgroundcol
 1	Common - Minimal	Suitable for generic Android devices; minimum of apps installed	0	12345678			\N	SMALL	NO_HEADER	t	1	t	\N	\N	\N	10045	com.hmdm.launcher.AdminReceiver	f	6fb9c8dc81483173a0c0e9f8b2e46be1	\N	f	t	0	\N	\N	\N	DONOTTRACK	polling	\N	180	f	60	f	PMETO	pmeto1054	\N	\N	f	f	f	f	\N	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	\N	\N	\N	/	\N	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	\N	f	\N	\N	f	f	UNLIMITED	\N	\N	\N
 2	MIUI (Xiaomi Redmi)	Optimized for MIUI-running devices	0	12345678			\N	SMALL	NO_HEADER	t	1	t	\N	\N	\N	\N	com.hmdm.launcher.AdminReceiver	f	8e6ca072ddb926a1af61578dfa9fc334	\N	f	f	0	\N	\N	\N	DONOTTRACK	polling	\N	180	f	60	f	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	\N	\N	\N	/	\N	\N	\N	\N	f	\N	\N	\N	\N	\N	f	GRANTALL	\N	t	\N	\N	f	f	UNLIMITED	\N	\N	\N
 11	Kiosk Total (6.37.3)	Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.	0	08448402	\N	\N	\N	SMALL	NO_HEADER	t	1	t	f	t	f	10045	com.hmdm.launcher.AdminReceiver	t	ee6fb8ac963bea8e14bcc123235120f5	10008	f	f	0	\N	\N	\N	GPS	polling	\N	180	f	60	f	PMETO	pmeto1054	WPA	\N	f	f	f	f	f	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	t	\N	no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location	/	60	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	f	f	\N	\N	f	f	UNLIMITED	t	\N	\N
-44	Kiosk Total (6.37.7)	Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.	0	08448402	\N	\N	\N	SMALL	NO_HEADER	t	1	t	f	t	f	\N	com.hmdm.launcher.AdminReceiver	t	2944dfa7981bab8ea1253c0277a59c68	10008	f	f	0	\N	\N	\N	GPS	polling	\N	180	f	60	f	PMETO	pmeto1054	WPA	\N	f	f	f	f	f	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	t	\N	no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location	/	60	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	f	f	\N	\N	f	f	UNLIMITED	t	\N	\N
 \.
 
 
@@ -3412,10 +3410,10 @@ COPY public.devicegroups (id, deviceid, groupid) FROM stdin;
 --
 
 COPY public.devices (id, number, description, lastupdate, configurationid, oldconfigurationid, info, imei, phone, customerid, imeiupdatets, custom1, custom2, custom3, oldnumber, fastsearch, enrolltime, infojson, publicip) FROM stdin;
-46	R9XT200AMYY	\N	1786365573074	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.187","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.5","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":21,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.739365,"lon":-48.9137262,"ts":1786365516423},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786365516423, "lat": -20.739365, "lon": -48.9137262}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.187", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.5", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 21, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.126
-47	R9XT106VP1E	\N	1786365839067	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.6","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":33,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393596,"lon":-48.9137301,"ts":1786365799892},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786365799892, "lat": -20.7393596, "lon": -48.9137301}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.6", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 33, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.122
-48	R9XT106Y5RP	\N	1786364940525	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.5","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":0,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393939,"lon":-48.9137773,"ts":1786364940219},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "location": {"ts": 1786364940219, "lat": -20.7393939, "lon": -48.9137773}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.5", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 0, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.165
-49	R9XT108EM8T	\N	1786365742380	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.6","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT108EM8T","imei":"350538862350639","batteryLevel":96,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.739362,"lon":-48.91373,"ts":1786365713483},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862350639","serial":"R9XT108EM8T","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	8EM8T	1786362889484	{"cpu": "arm64-v8a", "imei": "350538862350639", "files": [], "imei2": "350538862350639", "model": "SM-T225", "serial": "R9XT108EM8T", "mdmMode": true, "deviceId": "R9XT108EM8T", "location": {"ts": 1786365713483, "lat": -20.739362, "lon": -48.91373}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.6", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 96, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.123
+46	R9XT200AMYY	\N	1786367985246	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.187","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.6","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":42,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393636,"lon":-48.9137266,"ts":1786367976589},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786367976589, "lat": -20.7393636, "lon": -48.9137266}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.187", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.6", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 42, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.126
+47	R9XT106VP1E	\N	1786368019037	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.6","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":31,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393783,"lon":-48.9137281,"ts":1786367990090},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786367990090, "lat": -20.7393783, "lon": -48.9137281}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.6", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 31, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.122
+48	R9XT106Y5RP	\N	1786368092486	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.5","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":1,"androidVersion":"14","mdmMode":true,"kioskMode":false,"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.5", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 1, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.165
+49	R9XT108EM8T	\N	1786367482147	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.6","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT108EM8T","imei":"350538862350639","batteryLevel":95,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393986,"lon":-48.9137773,"ts":1786367459801},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862350639","serial":"R9XT108EM8T","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	8EM8T	1786362889484	{"cpu": "arm64-v8a", "imei": "350538862350639", "files": [], "imei2": "350538862350639", "model": "SM-T225", "serial": "R9XT108EM8T", "mdmMode": true, "deviceId": "R9XT108EM8T", "location": {"ts": 1786367459801, "lat": -20.7393986, "lon": -48.9137773}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.6", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 95, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.123
 \.
 
 
@@ -3425,9 +3423,9 @@ COPY public.devices (id, number, description, lastupdate, configurationid, oldco
 
 COPY public.devicestatuses (deviceid, configfilesstatus, applicationsstatus) FROM stdin;
 49	UP_TO_DATE	SUCCESS
+46	UP_TO_DATE	SUCCESS
 47	UP_TO_DATE	SUCCESS
-48	UP_TO_DATE	SUCCESS
-46	UP_TO_DATE	VERSION_MISMATCH
+48	UP_TO_DATE	VERSION_MISMATCH
 \.
 
 
@@ -4064,6 +4062,7 @@ COPY public.pendingpushes (id, messageid, status, createtime, sendtime) FROM std
 4188	4192	1	1786365703321	1786365706240
 4189	4193	1	1786365771112	1786365776140
 4190	4194	1	1786365825452	1786365829652
+4191	4195	1	1786365966002	1786365966381
 \.
 
 
@@ -9200,6 +9199,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5069	1786361798828	1	302	hwmdm_pt_304138	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_pt_304138"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5070	1786362771327	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5071	1786365771053	1	303	hwmdm_op_306157	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_op_306157"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5072	1786367948838	1	1	admin	plugin.audit.action.remove.configuration	Method: DELETE\nURI: /rest/private/configurations/44\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 \.
 
 
@@ -15994,6 +15994,15 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 70314	1786365829668	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
 70327	1786365885379	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70331	1786365920019	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70343	1786365971410	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70348	1786366017477	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70350	1786366037335	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70357	1786366103328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70360	1786366149472	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70362	1786366169328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70371	1786366278730	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739185000000003, lon=-48.91376833333334
+70374	1786366296137	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70377	1786366301336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70241	1786365516437	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
 70248	1786365558962	1	49	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
 70249	1786365558999	1	49	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT108EM8T @ https://mdm.olimpia.sp.gov.br
@@ -16015,6 +16024,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 70321	1786365832662	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
 70322	1786365833052	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
 70328	1786365893717	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70332	1786365936519	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70344	1786365971784	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70345	1786365977320	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70346	1786365996623	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70368	1786366235336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70369	1786366235372	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70376	1786366301333	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70242	1786365520073	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
 70251	1786365568338	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70255	1786365621391	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
@@ -16032,6 +16048,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 70317	1786365829753	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
 70324	1786365839407	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73913333333333, lon=-48.914125
 70330	1786365900337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70347	1786366005111	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70349	1786366037335	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70351	1786366037422	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70355	1786366097531	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70356	1786366103333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70363	1786366175270	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70365	1786366206580	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70375	1786366296446	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
 70245	1786365544018	1	49	46	192.168.1.254	DEBUG	4	App com.whatsapp installed successfully
 70246	1786365555487	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
 70260	1786365666393	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
@@ -16057,6 +16081,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 70318	1786365832563	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70323	1786365834676	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70326	1786365876415	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70334	1786365951530	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70342	1786365966834	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+70353	1786366083429	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70359	1786366146471	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70370	1786366236029	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70373	1786366295481	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
 70250	1786365565910	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
 70254	1786365594338	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 70256	1786365626005	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
@@ -16070,6 +16100,259 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 70319	1786365833611	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
 70325	1786365859912	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
 70329	1786365898332	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70333	1786365951500	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739383333333333, lon=-48.91399833333333
+70335	1786365964336	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70336	1786365966337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70337	1786365966398	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+70338	1786365966774	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+70339	1786365966783	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+70340	1786365966788	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+70341	1786365966801	1	49	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+70352	1786366069613	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739361666666664, lon=-48.913783333333335
+70354	1786366086368	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70358	1786366117231	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70361	1786366169333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70364	1786366175923	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70366	1786366215522	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70367	1786366235332	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70372	1786366281567	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70378	1786366343981	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+70379	1786366347515	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70380	1786366348990	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70381	1786366355585	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70382	1786366356550	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70383	1786366367337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70384	1786366386009	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70385	1786366394236	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73928833333333, lon=-48.91398000000001
+70386	1786366413469	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70387	1786366414332	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70388	1786366416652	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70389	1786366479514	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70390	1786366483990	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+70391	1786366484796	1	46	46	192.168.1.254	INFO	3	Configuration updated
+70392	1786366485049	1	46	46	192.168.1.254	INFO	3	Device owner: true
+70393	1786366485353	1	46	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+70394	1786366485491	1	46	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.6
+70395	1786366491249	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70396	1786366489433	1	46	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+70397	1786366489752	1	46	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+70398	1786366491353	1	46	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+70399	1786366491361	1	46	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT200AMYY @ https://mdm.olimpia.sp.gov.br
+70400	1786366491661	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+70401	1786366500252	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70402	1786366506482	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70403	1786366512236	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739596666666667, lon=-48.91393500000001
+70404	1786366536354	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70405	1786366539667	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70406	1786366545320	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70407	1786366566587	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137262
+70408	1786366587599	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137301
+70409	1786366588726	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70410	1786366597405	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70411	1786366605329	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70413	1786366630244	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739565000000002, lon=-48.914065
+70414	1786366639463	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70417	1786366716597	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70419	1786366735299	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70428	1786366836806	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70431	1786366875393	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70434	1786366954391	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70438	1786366980111	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739365000000003, lon=-48.91381666666666
+70441	1786367018445	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70443	1786367046767	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70468	1786367318333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70470	1786367337430	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70475	1786367399706	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70477	1786367406700	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70482	1786367466806	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70485	1786367490857	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70489	1786367552333	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70491	1786367560107	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739443333333334, lon=-48.913746666666675
+70496	1786367616768	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70498	1786367623453	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+70501	1786367624807	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+70504	1786367667568	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70511	1786367729913	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70515	1786367766671	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70519	1786367816328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70531	1786367948331	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70533	1786367976594	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70539	1786367997401	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70541	1786368018065	1	47	46	192.168.1.254	INFO	3	Configuration updated
+70542	1786368018102	1	47	46	192.168.1.254	INFO	3	Device owner: true
+70555	1786368063457	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70575	1786368090448	1	48	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.6
+70577	1786368091427	1	48	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.6
+70578	1786368096397	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+70579	1786368096421	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393727, lon=-48.9137124
+70581	1786368103329	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70589	1786368140045	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70598	1786368193239	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+70599	1786368194624	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+70600	1786368194660	1	48	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+70601	1786368194668	1	48	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP consentimento_em_cache=false
+70602	1786368194698	1	48	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+70604	1786368194889	1	48	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+70412	1786366611400	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70422	1786366743397	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70423	1786366776703	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70424	1786366807328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70426	1786366809344	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70429	1786366847115	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70432	1786366926564	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70439	1786366986665	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70453	1786367156330	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70462	1786367256794	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70464	1786367271482	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70466	1786367288330	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70467	1786367316766	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70469	1786367325109	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739361666666664, lon=-48.91372166666667
+70471	1786367346594	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70488	1786367535574	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70502	1786367648334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70503	1786367665014	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70505	1786367669807	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70518	1786367799358	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70520	1786367819769	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70521	1786367840930	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70523	1786367849821	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70532	1786367968714	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393965, lon=-48.9137775
+70534	1786367978334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70536	1786367984305	1	46	46	192.168.1.254	INFO	3	Device owner: true
+70544	1786368029624	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393965, lon=-48.9137775
+70568	1786368088245	1	48	46	192.168.1.254	INFO	3	Device owner: true
+70570	1786368088901	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70571	1786368088959	1	48	46	192.168.1.254	DEBUG	4	Got the BOOT_RECEIVER broadcast
+70572	1786368088967	1	48	46	192.168.1.254	INFO	3	Device owner: true
+70573	1786368089656	1	48	46	192.168.1.254	VERBOSE	5	Request location updates. gps=true, network=true, passive=true
+70574	1786368089904	1	48	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+70590	1786368146343	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70592	1786368152804	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.9137164
+70603	1786368195346	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70605	1786368198254	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70607	1786368200056	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70613	1786368239827	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393965, lon=-48.9137775
+70614	1786368246893	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70415	1786366677553	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70416	1786366706285	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739362, lon=-48.91373
+70418	1786366723288	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70427	1786366818930	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70433	1786366941339	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70437	1786366963291	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70440	1786367007599	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70442	1786367024330	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70445	1786367078544	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70447	1786367086366	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70454	1786367186605	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70456	1786367201281	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70458	1786367211112	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73938, lon=-48.91375500000001
+70460	1786367228064	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70472	1786367354334	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70476	1786367403374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70479	1786367439241	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739430000000002, lon=-48.91378666666666
+70481	1786367459815	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70483	1786367469423	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70484	1786367486331	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70490	1786367556667	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70492	1786367582332	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70495	1786367609702	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70497	1786367618349	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70499	1786367624034	1	47	46	192.168.1.254	INFO	3	Configuration updated
+70500	1786367624068	1	47	46	192.168.1.254	INFO	3	Device owner: true
+70510	1786367726121	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70512	1786367733414	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70514	1786367764294	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739355, lon=-48.91402
+70517	1786367790487	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70524	1786367865510	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70526	1786367882328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70527	1786367901036	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70529	1786367929995	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70538	1786367990099	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70540	1786368014329	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70543	1786368021173	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+70549	1786368034535	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=0fcApBhX4CY0I9J9WMYmrdjYbhE7zb_p
+70550	1786368034568	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+70551	1786368034790	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
+70553	1786368037492	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70576	1786368090790	1	48	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+70580	1786368096820	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70583	1786368129697	1	48	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+70584	1786368130127	1	48	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+70585	1786368130410	1	48	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+70586	1786368130570	1	48	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+70596	1786368169333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70597	1786368186784	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70420	1786366741232	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739175, lon=-48.913869999999996
+70436	1786366957831	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70444	1786367073336	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70446	1786367080130	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70448	1786367090325	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70451	1786367138648	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70455	1786367196687	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70457	1786367205329	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70459	1786367222326	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70474	1786367384333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70478	1786367420363	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70480	1786367450336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70487	1786367519919	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70494	1786367604908	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70507	1786367678231	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739413333333335, lon=-48.914061666666676
+70509	1786367714341	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70513	1786367750331	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70516	1786367780334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70525	1786367879870	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70537	1786367986958	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+70545	1786368032483	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+70546	1786368032494	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+70547	1786368032501	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+70548	1786368032585	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+70556	1786368054144	1	48	46	192.168.1.254	INFO	3	MDM Launcher 6.36-opensource started
+70557	1786368066370	1	48	46	192.168.1.254	DEBUG	4	Push notifications enqueued: 15 mins
+70558	1786368066434	1	48	46	192.168.1.254	INFO	3	SIM card removed
+70559	1786368067250	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+70560	1786368067747	1	48	46	192.168.1.254	INFO	3	Configuration updated
+70563	1786368080326	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70582	1786368129397	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70587	1786368132060	1	48	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+70588	1786368132073	1	48	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106Y5RP @ https://mdm.olimpia.sp.gov.br
+70595	1786368157258	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70609	1786368213240	1	48	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP?token=Ywd6AwJIyRqLMZ3KxGTwr-nFJWnS7REa
+70610	1786368213919	1	48	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+70611	1786368214254	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.9137164
+70421	1786366741831	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70425	1786366808043	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70430	1786366858236	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739131666666665, lon=-48.91349833333334
+70435	1786366957349	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70449	1786367095110	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73946833333333, lon=-48.913885
+70450	1786367136583	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70452	1786367139485	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70461	1786367252335	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70463	1786367262367	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70465	1786367288174	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137773
+70473	1786367376871	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137328
+70486	1786367516337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70493	1786367601623	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70506	1786367676873	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393611, lon=-48.9137317
+70508	1786367684328	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70522	1786367846340	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70528	1786367912335	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70530	1786367931560	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70535	1786367983143	1	46	46	192.168.1.254	INFO	3	Configuration updated
+70552	1786368036710	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137266
+70554	1786368050113	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137281
+70561	1786368074094	1	48	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+70562	1786368074150	1	48	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106Y5RP @ https://mdm.olimpia.sp.gov.br
+70564	1786368085699	1	48	46	192.168.1.254	INFO	3	Configuration updated
+70565	1786368085738	1	48	46	192.168.1.254	INFO	3	Device owner: true
+70566	1786368088139	1	48	46	192.168.1.254	DEBUG	4	Network type changed: WIFI
+70567	1786368088186	1	48	46	192.168.1.254	INFO	3	Configuration updated
+70569	1786368089733	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393965, lon=-48.9137775
+70591	1786368149837	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393965, lon=-48.9137775
+70593	1786368156646	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+70594	1786368156659	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+70606	1786368199650	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70608	1786368212324	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+70612	1786368214752	1	48	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
 \.
 
 
@@ -16755,6 +17038,7 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 4192	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"vUoigU9dohXk153RcCuzzyS7j1-O3bKx","maxWidth":800}
 4193	runCommand	47	{"command":"cmd appops set com.hwmdm.remote SYSTEM_ALERT_WINDOW allow"}
 4194	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"Dtttu0XQofyYPLl4f8OVs_rwgHcEaPHi","maxWidth":800}
+4195	remoteScreenStop	47	\N
 \.
 
 
@@ -17003,7 +17287,7 @@ SELECT pg_catalog.setval('public.applications_id_seq', 87, true);
 -- Name: applicationversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.applicationversions_id_seq', 10105, true);
+SELECT pg_catalog.setval('public.applicationversions_id_seq', 10106, true);
 
 
 --
@@ -17087,7 +17371,7 @@ SELECT pg_catalog.setval('public.icons_id_seq', 1, false);
 -- Name: pendingpushes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4190, true);
+SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4191, true);
 
 
 --
@@ -17108,7 +17392,7 @@ SELECT pg_catalog.setval('public.permissions_id_seq', 134, true);
 -- Name: plugin_audit_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5071, true);
+SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5072, true);
 
 
 --
@@ -17164,7 +17448,7 @@ SELECT pg_catalog.setval('public.plugin_deviceinfo_settings_id_seq', 1, true);
 -- Name: plugin_devicelog_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 70331, true);
+SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 70614, true);
 
 
 --
@@ -17213,7 +17497,7 @@ SELECT pg_catalog.setval('public.plugins_id_seq', 6, true);
 -- Name: pushmessages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pushmessages_id_seq', 4194, true);
+SELECT pg_catalog.setval('public.pushmessages_id_seq', 4195, true);
 
 
 --

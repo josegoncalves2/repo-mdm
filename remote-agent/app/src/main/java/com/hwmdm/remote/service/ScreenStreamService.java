@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
@@ -91,6 +92,12 @@ public class ScreenStreamService extends Service {
     private static int consentResultCode = 0;
     private static Intent consentData = null;
     private static volatile boolean streaming = false;
+
+    /** Segura a tela acesa durante a sessao; ver {@link #acquireScreenLock()}. */
+    private PowerManager.WakeLock screenLock;
+
+    /** Teto de seguranca: uma sessao interrompida nao pode manter a tela acesa para sempre. */
+    private static final long SCREEN_LOCK_TIMEOUT_MS = 2 * 60 * 60 * 1000L;
 
     public static void cacheConsent(int resultCode, Intent data) {
         consentResultCode = resultCode;
@@ -395,6 +402,7 @@ public class ScreenStreamService extends Service {
             }
 
             streaming = true;
+            acquireScreenLock();
             announce();
             RemoteLog.i(this, "Transmitindo " + width + "x" + height
                     + (InputInjectionService.isAvailable() ? " com toque" : " somente visualizacao"));
@@ -585,7 +593,59 @@ public class ScreenStreamService extends Service {
         stopSelf();
     }
 
+    /**
+     * <p>Mantem a tela acesa enquanto durar a sessao, e acende se estiver apagada.</p>
+     *
+     * <p>Sem isto o atendimento morre sozinho: o aparelho atinge o tempo de suspensao, a
+     * tela apaga, e o que o tecnico ve congela num quadro preto -- sem erro nenhum, porque
+     * do ponto de vista do encoder nao ha falha, so' deixou de existir conteudo mudando.</p>
+     *
+     * <p>{@code SCREEN_BRIGHT_WAKE_LOCK} esta' obsoleto desde o Android 4.2, e mesmo assim
+     * e' o certo aqui: a alternativa recomendada, {@code FLAG_KEEP_SCREEN_ON}, exige uma
+     * janela, e este servico nao tem nenhuma -- criar uma janela invisivel so' para segurar
+     * a tela dependeria da permissao de sobreposicao e acrescentaria uma superficie que
+     * nada desenha.</p>
+     *
+     * <p>O tempo limite nao e' zelo excessivo: e' o que impede que uma sessao interrompida
+     * de mau jeito -- rede caindo no meio, processo morto pelo sistema -- deixe a tela de
+     * um tablet acesa ate a bateria acabar.</p>
+     */
+    private void acquireScreenLock() {
+        if (screenLock != null) {
+            return;
+        }
+        try {
+            PowerManager power = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (power == null) {
+                return;
+            }
+            screenLock = power.newWakeLock(
+                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                    "hwmdm:sessao-remota");
+            screenLock.setReferenceCounted(false);
+            screenLock.acquire(SCREEN_LOCK_TIMEOUT_MS);
+        } catch (Throwable t) {
+            // Manter a tela acesa e' conforto, nao requisito: uma sessao sem isso continua
+            // valendo mais do que uma sessao que nao comeca.
+            screenLock = null;
+        }
+    }
+
+    private void releaseScreenLock() {
+        if (screenLock == null) {
+            return;
+        }
+        try {
+            if (screenLock.isHeld()) {
+                screenLock.release();
+            }
+        } catch (Throwable ignored) {
+        }
+        screenLock = null;
+    }
+
     private void cleanup() {
+        releaseScreenLock();
         if (virtualDisplay != null) {
             try { virtualDisplay.release(); } catch (Throwable ignored) { }
             virtualDisplay = null;
