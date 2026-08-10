@@ -169,7 +169,18 @@ public class BaseIPFilter {
      * Check if an IP is a known infrastructure/proxy/tunnel IP
      */
     private boolean isInfrastructureIp(String ip) {
-        return INFRASTRUCTURE_IPS.contains(ip);
+        if (INFRASTRUCTURE_IPS.contains(ip)) {
+            return true;
+        }
+        // Um proxy declarado nunca e' o endereco de um aparelho: e' o endereco de quem
+        // entregou a conexao. Sem isto, uma rede em que todos os tablets saem pelo mesmo
+        // proxy mostra o mesmo IP para todos eles, que e' o do proxy.
+        for (String proxy : proxies) {
+            if (ip != null && ip.equals(proxy.trim())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

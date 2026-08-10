@@ -108,16 +108,54 @@ custa um segundo clique; um pedido indevido custa o aparelho.
 
 ## `DEVICE IP` na lista de dispositivos
 
-Duas causas independentes:
+O painel mostrava o mesmo endereco para todos os aparelhos. Tres camadas de causa, nesta
+ordem:
 
-1. `proxy.addresses` vazio no `ROOT.xml`. O `192.168.1.254` e' um **MikroTik HttpProxy**, e
-   sem declara-lo o servidor grava o endereco de quem entregou a conexao — o proxy — para
-   todo aparelho. O `provision.sh` ja avisa disso (linha 74) e aceita `--proxy`.
-2. O `info` que o 6.36 envia **nao tem campo de IP nenhum** (`model`, `imei`, `serial`,
-   `androidVersion`, `kioskMode`, ...). A aba de acesso remoto procura
-   `deviceIp`/`ip`/`localIp` e por isso mostra "nao informado" — o launcher nunca informou.
+**1. `proxy.addresses` vazio no `ROOT.xml`.** O `192.168.1.254` e' um **MikroTik
+HttpProxy**; sem declara-lo, o servidor gravava o endereco de quem entregou a conexao. O
+`provision.sh` ja avisa disso (linha 74) e aceita `--proxy`.
 
-O item 1 e' configuracao. O item 2 exige o app companheiro reportar o proprio IP.
+A correcao nao colava entre reinicios, e a razao vale registrar: com
+`FORCE_RECONFIGURE=true` o entrypoint **regenera** o `ROOT.xml` a cada subida, a partir de
+`$TEMPLATE_DIR/conf/context_template.xml`. Como `templates/` nao estava montado, ele usava
+o template de dentro da imagem — onde a opcao vem comentada — e desfazia qualquer edicao
+manual. O compose passa a montar `./templates`, e o template do repositorio ja' tinha o
+marcador `_PROXY_ADDRESSES_`.
+
+**2. Ha um segundo NAT.** Com o header habilitado, os aparelhos passaram de
+`192.168.1.254` para `192.168.250.254` — um salto adiante, ainda um endereco so' para
+todos. Nenhum cabecalho resolve: o segundo NAT nao escreve nenhum.
+
+**3. O launcher nao informa o proprio endereco.** O `info` que o 6.36 envia nao tem campo
+de IP (`model`, `imei`, `serial`, `androidVersion`, `kioskMode`, ...).
+
+O 6.36 **tem** o cliente do plugin `deviceinfo` — as duas URLs estao no dex e a tabela
+local `info_history` tem colunas `deviceIp` e `wifiIp`. Mas mesmo com
+`plugin_deviceinfo_settings.senddata = true` os tablets nunca chamaram
+`deviceinfo-plugin-settings/device/{numero}`: em tres dias de log de acesso, as unicas
+chamadas partiram da propria maquina do servidor, durante o teste. O gatilho do worker
+esta' em algum caminho que o binario nao percorre nesta configuracao. Caminho abandonado.
+
+### Como ficou
+
+O agente `com.hwmdm.remote` (v1.5) informa o proprio endereco em
+`PUT /rest/plugins/deviceip/public/{numero}` (`DeviceIpResource`), a cada 5 minutos e na
+partida — DHCP renova, o aparelho troca de ponto de acesso, e um cadastro que envelhece em
+silencio e' pior do que campo vazio.
+
+O endereco vem do **socket**, nao da lista de interfaces: `NetworkReporter` conecta um
+socket UDP ao servidor (o que nao envia trafego, so' fixa a rota) e le o endereco local
+escolhido. Percorrer `NetworkInterface` devolveria a primeira interface com endereco, que
+num tablet com Wi-Fi, dados moveis e interfaces virtuais frequentemente nao e' a que esta'
+em uso.
+
+E o servidor deixou de gravar endereco de proxy, em duas frentes:
+
+- `SyncResource` usa `getOperationalRemoteAddr()` em vez de `getRemoteAddr()` — o primeiro
+  devolve null para endereco de infraestrutura;
+- `BaseIPFilter.isInfrastructureIp` passa a considerar os proxies declarados, e
+  `DeviceMapper.updateDeviceInfo` grava `COALESCE(#{publicIp}, publicIp)`, para que um null
+  preserve o que o aparelho informou em vez de apaga-lo.
 
 ## Pendencia: assinatura do launcher instalado
 

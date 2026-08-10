@@ -82,6 +82,22 @@ public final class MdmLink {
             return base + path;
         }
 
+        /**
+         * A mesma base, sem trocar o esquema: para chamar a API REST do painel, e nao o
+         * relay. Mantida ao lado de {@link #socketUrl(String)} porque as duas descrevem o
+         * mesmo servidor, e separa-las convida a divergirem.
+         */
+        public String httpUrl(String path) {
+            String base = serverHost == null ? "" : serverHost.trim();
+            while (base.endsWith("/")) {
+                base = base.substring(0, base.length() - 1);
+            }
+            if (serverPath != null && !serverPath.trim().isEmpty()) {
+                base = base + "/" + serverPath.trim();
+            }
+            return base + path;
+        }
+
         @Override
         public String toString() {
             return deviceId + " @ " + serverHost;

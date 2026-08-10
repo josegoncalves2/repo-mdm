@@ -575,10 +575,14 @@ public class SyncResource {
                         !prevInfo.getImei().equals(deviceInfo.getImei())) {
                     dbDevice.setImeiUpdateTs(System.currentTimeMillis());
                 }
+                // getOperationalRemoteAddr, e nao getRemoteAddr: o segundo devolve o
+                // endereco de quem entregou a conexao, que atras de um proxy e' o proxy --
+                // e o painel acabava mostrando o mesmo IP para todos os aparelhos. Este
+                // devolve null nesse caso, e o UPDATE preserva o que ja' estava la'.
                 this.unsecureDAO.updateDeviceInfo(dbDevice.getId(),
                         objectMapper.writeValueAsString(deviceInfo),
                         dbDevice.getImeiUpdateTs(),
-                        remoteAddrResolver.getRemoteAddr(request));
+                        remoteAddrResolver.getOperationalRemoteAddr(request));
 
                 boolean needUpdate = false;
                 if (deviceInfo.getCustom1() != null) {

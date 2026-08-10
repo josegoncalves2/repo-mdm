@@ -25,6 +25,7 @@ com/hmdm/rest/json/view/user/PermissionView.class
 com/hmdm/rest/resource/IconFileResource.class
 com/hmdm/rest/resource/BackupResource.class
 com/hmdm/remote/RemoteSessionHub$1.class
+com/hmdm/rest/resource/DeviceIpResource.class
 com/hmdm/rest/json/DeviceGroupBulkRequest.class
 com/hmdm/rest/resource/PasswordResetResource.class
 com/hmdm/rest/resource/AuthResource.class

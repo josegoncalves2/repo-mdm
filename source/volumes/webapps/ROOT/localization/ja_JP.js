@@ -2,9 +2,9 @@ if (! document.localization) document.localization = [];
 
 document.localization ['ja_JP'] = {
     'close': 'Close',
-    'button.remote.liveview': 'Live view',
-    'remote.liveview.disclaimer': 'Auto-refreshing screenshot, not a true video stream. Tap-through control is not supported yet.',
-    'remote.liveview.refreshed.at': 'Refreshed at',
+    'button.remote.liveview': 'Live remote access',
+    'remote.liveview.disclaimer': 'The device screen is streamed live as encoded video over the existing MDM channel. Input injection is not supported.',
+    'remote.liveview.refreshed.at': 'Session opened at',
     'plugin.audit.action.remote.lock': 'Forced kiosk lock on a device',
     'plugin.audit.action.remote.command': 'Sent a remote command to a device',
     'plugin.audit.action.chat.send': 'Sent a chat message to a device',
@@ -56,8 +56,7 @@ document.localization ['ja_JP'] = {
     'button.remote.unlock': 'Temporary unlock',
     'button.remote.config': 'Update configuration',
     'button.remote.message': 'Show message',
-    'button.remote.screenshot': 'Request screenshot',
-    'button.remote.screenshot.view': 'View last screenshot',
+    'button.remote.liveview.open': 'Open the live remote screen',
     'button.remote.adb': 'ADB access',
     'button.remote.adb.enable': 'Enable ADB',
     'button.remote.adb.disable': 'Disable ADB',

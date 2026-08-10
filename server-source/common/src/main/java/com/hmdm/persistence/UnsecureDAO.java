@@ -184,6 +184,15 @@ public class UnsecureDAO {
         this.deviceMapper.updateDeviceInfo(id, info, imeiUpdateTs, publicIp);
     }
 
+    /**
+     * Grava o endereco que o proprio aparelho informou. Separado de
+     * {@link #updateDeviceInfo} porque nao acompanha uma sincronizacao: o agente informa o
+     * endereco quando ele muda, independentemente do ciclo de configuracao.
+     */
+    public void updateDeviceIp(Integer id, String publicIp) {
+        this.deviceMapper.updateDeviceIp(id, publicIp);
+    }
+
     public void updateDeviceCustomProperties(Integer id, Device device) {
         this.deviceMapper.updateDeviceCustomProperties(id, device.getCustom1(), device.getCustom2(), device.getCustom3());
     }

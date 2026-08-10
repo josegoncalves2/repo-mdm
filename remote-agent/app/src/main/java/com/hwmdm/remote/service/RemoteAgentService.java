@@ -16,6 +16,7 @@ import android.util.Log;
 import com.hwmdm.remote.R;
 import com.hwmdm.remote.mdm.LauncherControl;
 import com.hwmdm.remote.mdm.MdmLink;
+import com.hwmdm.remote.mdm.NetworkReporter;
 import com.hwmdm.remote.mdm.RemoteLog;
 import com.hwmdm.remote.service.ScreenStreamService;
 import com.hwmdm.remote.ui.MessageActivity;
@@ -68,6 +69,10 @@ public class RemoteAgentService extends Service {
 
     private volatile MdmLink.Config config;
     private BroadcastReceiver trigger;
+    private Thread addressReporter;
+
+    /** De quanto em quanto tempo o aparelho reconfirma o proprio endereco. */
+    private static final long ADDRESS_REPORT_INTERVAL_MS = 5 * 60 * 1000L;
 
     /*
      * Momento do ultimo chamado aceito.
@@ -100,6 +105,7 @@ public class RemoteAgentService extends Service {
         startForegroundCompat();
         registerTrigger();
         new Thread(this::refreshConfig, "hwmdm-remote-mdmlink").start();
+        startAddressReporting();
     }
 
     @Override
@@ -245,6 +251,36 @@ public class RemoteAgentService extends Service {
         RemoteLog.i(this, c == null
                 ? "Sem vinculo com o agente MDM"
                 : "Vinculado ao MDM: " + c);
+        NetworkReporter.report(this, c);
+    }
+
+    /**
+     * <p>Reenvia o endereco do aparelho de tempos em tempos.</p>
+     *
+     * <p>Um endereco entregue por DHCP muda -- na renovacao da concessao, ao trocar de
+     * ponto de acesso, ao voltar de um periodo sem rede. Informar so' uma vez, na partida,
+     * daria um cadastro que envelhece em silencio: o painel mostraria com confianca um
+     * endereco onde nao ha mais ninguem, que e' pior do que nao mostrar nada.</p>
+     */
+    private void startAddressReporting() {
+        addressReporter = new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Thread.sleep(ADDRESS_REPORT_INTERVAL_MS);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
+                }
+                MdmLink.Config current = config;
+                if (current == null) {
+                    current = MdmLink.query(this);
+                    config = current;
+                }
+                NetworkReporter.report(this, current);
+            }
+        }, "hwmdm-remote-ip");
+        addressReporter.setDaemon(true);
+        addressReporter.start();
     }
 
     public MdmLink.Config getConfig() {
@@ -277,6 +313,10 @@ public class RemoteAgentService extends Service {
 
     @Override
     public void onDestroy() {
+        if (addressReporter != null) {
+            addressReporter.interrupt();
+            addressReporter = null;
+        }
         if (trigger != null) {
             try {
                 unregisterReceiver(trigger);

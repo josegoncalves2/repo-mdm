@@ -2963,7 +2963,7 @@ COPY public.applications (id, pkg, name, showicon, customerid, system, latestver
 77	com.samsung.android.app.telephonyui	Samsung Telephony	f	1	t	10076	f	app	\N	\N	f	f	\N
 86	com.whatsapp	WhatsApp	t	1	f	10092	f	app	\N	\N	f	f	\N
 46	com.hmdm.launcher	Headwind MDM	f	1	f	10045	f	app	\N	\N	f	f	\N
-87	com.hwmdm.remote	Suporte Remoto	t	1	f	10103	t	app	\N	\N	t	f	\N
+87	com.hwmdm.remote	Suporte Remoto	t	1	f	10104	t	app	\N	\N	t	f	\N
 \.
 
 
@@ -3048,6 +3048,7 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10049	50	1.04	http://192.168.1.75:8080/files/LauncherRestarter-1.04.apk	\N	f	\N	\N	0
 10102	87	1.3	http://192.168.1.75:8080/files/hwmdm-remote-1.3.apk	fTOWfYkSzgBndhfyav8mLU6eJyg19T0DOTuOfHrUG4U	f	\N	\N	0
 10103	87	1.4	http://192.168.1.75:8080/files/hwmdm-remote-1.4.apk	w8F42l7BvCeWw1t9F++oA8lFisKvnNovwwGjssc34Mw	f	\N	\N	5
+10104	87	1.5	http://192.168.1.75:8080/files/hwmdm-remote-1.5.apk	iLED381c+YCo5UIajQPlx+kQRPelU0CET29Oj49AyBM	f	\N	\N	6
 10092	86	2.26.29.71	http://192.168.1.75:8080/files/WhatsApp.apk	\N	f	\N	\N	262907130
 \.
 
@@ -3121,7 +3122,7 @@ COPY public.configurationapplications (id, configurationid, applicationid, remov
 812	11	9	f	f	10008	1	\N	\N	f	f	f
 814	11	86	f	t	10092	1	\N	\N	f	f	f
 813	11	46	f	f	10045	1	\N	\N	f	f	f
-815	11	87	f	t	10103	1	\N	\N	f	f	f
+815	11	87	f	t	10104	1	\N	\N	f	f	f
 \.
 
 
@@ -3158,7 +3159,7 @@ COPY public.configurations (id, name, description, type, password, backgroundcol
 --
 
 COPY public.customers (id, name, description, filesdir, master, prefix, registrationtime, lastlogintime, accounttype, expirytime, devicelimit, customerstatus, email, firstname, lastname, language, inactivestate, pausestate, abandonstate, sizelimit, signupstatus, signuptoken) FROM stdin;
-1	DEFAULT	Default customer account used for managing the application data in PRIVATE usage scenario		f	e1-	\N	1786131378954	0	\N	3	\N	\N	\N	\N	\N	0	0	0	100	active	\N
+1	DEFAULT	Default customer account used for managing the application data in PRIVATE usage scenario		f	e1-	\N	1786360554882	0	\N	3	\N	\N	\N	\N	\N	0	0	0	100	active	\N
 \.
 
 
@@ -3410,10 +3411,10 @@ COPY public.devicegroups (id, deviceid, groupid) FROM stdin;
 --
 
 COPY public.devices (id, number, description, lastupdate, configurationid, oldconfigurationid, info, imei, phone, customerid, imeiupdatets, custom1, custom2, custom3, oldnumber, fastsearch, enrolltime, infojson, publicip) FROM stdin;
-46	R9XT200AMYY	\N	1786131202718	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.4","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":44,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393707,"lon":-48.9137274,"ts":1786131186285},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786131186285, "lat": -20.7393707, "lon": -48.9137274}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.4", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 44, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
-47	R9XT106VP1E	\N	1786130644708	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.3","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":78,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393661,"lon":-48.913737,"ts":1786130641098},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786130641098, "lat": -20.7393661, "lon": -48.913737}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.3", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 78, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
+46	R9XT200AMYY	\N	1786194449824	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.187","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.4","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":1,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.739372,"lon":-48.913747,"ts":1786194005226},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786194005226, "lat": -20.739372, "lon": -48.913747}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.187", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.4", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 1, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
+47	R9XT106VP1E	\N	1786360557798	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"151.0.7922.108","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.4","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":39,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393947,"lon":-48.913777,"ts":1786360420297},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786360420297, "lat": -20.7393947, "lon": -48.913777}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "151.0.7922.108", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.4", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 39, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
 49	R9XT108EM8T	\N	0	11	\N	\N	\N	\N	1	\N	\N	\N	\N	\N	8EM8T	\N	\N	\N
-48	R9XT106Y5RP	\N	1786131181447	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.4","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":65,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393601,"lon":-48.9137287,"ts":1786131171169},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "location": {"ts": 1786131171169, "lat": -20.7393601, "lon": -48.9137287}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.4", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 65, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
+48	R9XT106Y5RP	\N	1786219329512	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.4","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":1,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.739367,"lon":-48.913737,"ts":1786218582420},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "location": {"ts": 1786218582420, "lat": -20.739367, "lon": -48.913737}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.4", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 1, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.250.254
 \.
 
 
@@ -3422,10 +3423,10 @@ COPY public.devices (id, number, description, lastupdate, configurationid, oldco
 --
 
 COPY public.devicestatuses (deviceid, configfilesstatus, applicationsstatus) FROM stdin;
-46	UP_TO_DATE	SUCCESS
-47	UP_TO_DATE	VERSION_MISMATCH
+46	UP_TO_DATE	VERSION_MISMATCH
 49	OTHER	FAILURE
-48	UP_TO_DATE	FAILURE
+48	UP_TO_DATE	VERSION_MISMATCH
+47	UP_TO_DATE	VERSION_MISMATCH
 \.
 
 
@@ -4054,6 +4055,9 @@ COPY public.pendingpushes (id, messageid, status, createtime, sendtime) FROM std
 4179	4183	1	1786131085690	1786131160420
 4180	4184	1	1786131171188	1786131175713
 4181	4185	1	1786131379229	1786131384186
+4182	4186	0	1786360555080	\N
+4183	4187	0	1786360555284	\N
+4184	4188	0	1786360555353	\N
 \.
 
 
@@ -9185,6 +9189,8 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5064	1786131085496	1	299	hwmdm_diag2_266728	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_diag2_266728"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5065	1786131164965	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5066	1786131379009	1	300	hwmdm_diag2_268106	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_diag2_268106"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5067	1786359013195	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5068	1786360554945	1	301	hwmdm_pub_295259	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_pub_295259"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 \.
 
 
@@ -9241,6 +9247,7 @@ COPY public.plugin_deviceinfo_deviceparams_wifi (id, recordid, rssi, ssid, secur
 --
 
 COPY public.plugin_deviceinfo_settings (id, customerid, datapreserveperiod, senddata, intervalmins) FROM stdin;
+1	1	30	t	5
 \.
 
 
@@ -11853,6 +11860,3674 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 66126	1786131200839	1	46	46	192.168.1.254	INFO	3	Device owner: true
 66128	1786131239016	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393707, lon=-48.9137274
 66130	1786131310049	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.9137419
+66131	1786130861941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66132	1786130867002	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66133	1786130912812	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393703, lon=-48.9137365
+66134	1786130925350	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+66135	1786130925362	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+66136	1786130925371	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+66137	1786130930362	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66138	1786130948383	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+66139	1786130953394	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66140	1786130974143	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393612, lon=-48.913737
+66141	1786131019534	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66142	1786131035480	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739369, lon=-48.9137283
+66143	1786131041966	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66144	1786131047026	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66145	1786131096892	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393756, lon=-48.9137287
+66146	1786131136943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66147	1786131177270	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=aQKzP0JsG2fSjdqBVqDNp9L8991hTRxK
+66148	1786131177334	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+66149	1786131177430	1	47	87	192.168.1.254	ERROR	1	Encoder indisponivel em 464x800: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
+66150	1786131177436	1	47	87	192.168.1.254	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
+66151	1786131197822	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393716, lon=-48.9137296
+66152	1786131202743	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66153	1786131259935	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66154	1786131281297	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66155	1786131328467	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66156	1786131335853	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66157	1786131340902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66158	1786131389565	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66159	1786131420133	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66160	1786131539302	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66161	1786131543124	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66162	1786131548443	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.91381333333334
+66163	1786131640484	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66164	1786131640641	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66165	1786131641505	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66166	1786131641586	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66167	1786131641814	1	47	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+66168	1786131642078	1	47	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.4
+66169	1786131643513	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66170	1786131652007	1	47	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+66171	1786131652104	1	47	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+66172	1786131652701	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66173	1786131653118	1	47	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+66174	1786131653134	1	47	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106VP1E @ https://mdm.olimpia.sp.gov.br
+66175	1786131680867	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739451666666664, lon=-48.913824999999996
+66176	1786131701596	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66177	1786131709127	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66178	1786131761092	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66179	1786131775270	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66180	1786131792548	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.913868333333326
+66181	1786131821204	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66182	1786131841220	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66183	1786131881301	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66184	1786131907268	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66185	1786131958315	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66186	1786131973318	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66187	1786132018425	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66188	1786132039268	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66189	1786132078534	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66190	1786132105212	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66191	1786132168352	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66194	1786131330926	1	46	87	192.168.1.254	ERROR	1	Uplink falhou: java.io.EOFException
+66195	1786131331901	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66196	1786131354281	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66197	1786131379152	1	46	46	192.168.1.254	INFO	3	Got Push Message, type textMessage
+66198	1786131379197	1	46	87	192.168.1.254	INFO	3	Mensagem exibida no aparelho (30s)
+66199	1786131384158	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66200	1786131384222	1	46	46	192.168.1.254	INFO	3	Got Push Message, type lockKiosk
+66201	1786131384261	1	46	87	192.168.1.254	INFO	3	Quiosque restaurado: launcher trazido ao primeiro plano
+66202	1786131389231	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66203	1786131412405	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393977, lon=-48.9137809
+66214	1786131801372	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66215	1786131816519	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66216	1786131867372	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66217	1786131876622	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66218	1786131933373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66219	1786131936729	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66220	1786131999369	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66221	1786132026552	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66222	1786132065371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66223	1786132086654	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66228	1786132237411	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66259	1786132795311	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66261	1786132730863	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66263	1786132849374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66264	1786132859957	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66266	1786132880641	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739233333333335, lon=-48.91366333333334
+66277	1786133105511	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66282	1786133222479	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66283	1786133222515	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66285	1786133232563	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739398333333334, lon=-48.913793333333324
+66287	1786133264375	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66288	1786133289111	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73919833333333, lon=-48.91362000000001
+66291	1786133349658	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739286666666665, lon=-48.913745
+66293	1786133359092	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66294	1786133395764	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66296	1786133424374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66303	1786133490373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66306	1786133516634	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66308	1786133556374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66311	1786133575855	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66313	1786133622374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66314	1786133631431	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66333	1786133851422	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66336	1786133914059	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66345	1786134118828	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66362	1786134553276	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66364	1786134566368	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66397	1786135227334	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66398	1786135227345	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137247
+66403	1786135395609	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66404	1786135395653	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66408	1786135559089	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66411	1786135625298	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66414	1786135750574	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66418	1786136012105	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66428	1786136527749	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66433	1786136656851	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66435	1786136827085	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66192	1786132171255	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66193	1786132228466	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66224	1786132131371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66225	1786132146758	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66226	1786132197368	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66234	1786132387443	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66235	1786132433500	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66237	1786132448202	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66239	1786132454619	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739391666666666, lon=-48.91386166666666
+66240	1786132508309	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66244	1786132568413	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66246	1786132585375	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66251	1786132657844	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66252	1786132681496	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66254	1786132694206	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739363333333333, lon=-48.91372833333333
+66256	1786132717946	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66267	1786132915376	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66270	1786132981372	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66272	1786132986649	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66281	1786133196152	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66304	1786133505172	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66305	1786133515750	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66310	1786133571329	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66323	1786133719850	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66325	1786133748360	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.7394, lon=-48.913765
+66328	1786133770158	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.9137274
+66330	1786133803000	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66335	1786133886373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66338	1786133980123	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739250000000002, lon=-48.91361833333334
+66342	1786134086114	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66347	1786134206110	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66349	1786134212249	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.738983333333334, lon=-48.91344000000001
+66355	1786134426138	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66357	1786134434943	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66360	1786134500367	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66361	1786134550884	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66363	1786134560119	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739293333333332, lon=-48.91362000000001
+66378	1786134830366	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66396	1786135120836	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66405	1786135396389	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66409	1786135565421	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137358
+66423	1786136405980	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66425	1786136409600	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66432	1786136602614	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66434	1786136792467	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66436	1786136977126	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66437	1786137007616	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66441	1786137127197	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66204	1786131454377	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66205	1786131495731	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739368, lon=-48.9137262
+66206	1786131536182	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66207	1786131538073	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66208	1786131603370	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66209	1786131606525	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66210	1786131666625	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66211	1786131669366	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66212	1786131726728	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66213	1786131735371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66227	1786132236560	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66233	1786132387101	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+66236	1786132434545	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66238	1786132453369	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66241	1786132519374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66247	1786132594309	1	48	46	192.168.1.254	VERBOSE	5	Request location updates. gps=true, network=true, passive=true
+66248	1786132594695	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66250	1786132651371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66253	1786132683687	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66255	1786132717375	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66258	1786132783373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66274	1786133047372	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66276	1786133070897	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66280	1786133195110	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66298	1786133440165	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.9137274
+66299	1786133440186	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66300	1786133455539	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66309	1786133571216	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66324	1786133745578	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393604, lon=-48.9137281
+66327	1786133766718	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73915, lon=-48.91363666666666
+66329	1786133785382	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66332	1786133840082	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66337	1786133952373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66340	1786134028104	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137247
+66343	1786134087638	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66344	1786134100123	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739066666666666, lon=-48.91388
+66351	1786134320737	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66353	1786134339969	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66367	1786134632368	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66368	1786134665763	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66370	1786134689440	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66373	1786134739362	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137358
+66374	1786134739489	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73915, lon=-48.91363666666666
+66377	1786134792126	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739520000000002, lon=-48.91411333333334
+66380	1786134832390	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66381	1786134835026	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66386	1786134896371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66389	1786134984799	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66391	1786135067690	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66392	1786135067801	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66401	1786135394728	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66402	1786135394858	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66406	1786135432653	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66416	1786135926731	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66420	1786136152480	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66440	1786137127189	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66229	1786132263371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66231	1786132303212	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66232	1786132327620	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739346666666666, lon=-48.913775
+66245	1786132574826	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739391666666666, lon=-48.913803333333334
+66260	1786132796971	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66262	1786132825505	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66275	1786133057360	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66278	1786133105781	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66286	1786133256216	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66292	1786133338101	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66295	1786133410109	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739314999999998, lon=-48.913781666666665
+66302	1786133465651	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739408333333333, lon=-48.91381166666667
+66307	1786133527127	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739331666666665, lon=-48.91376
+66312	1786133579812	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739230000000003, lon=-48.913688333333326
+66315	1786133632778	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66317	1786133637370	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66319	1786133688376	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66320	1786133692881	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66322	1786133703322	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66326	1786133754375	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66331	1786133820374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66341	1786134030418	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66356	1786134434120	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66358	1786134445232	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739196666666665, lon=-48.91349833333334
+66359	1786134495206	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66371	1786134698367	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66372	1786134725868	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66375	1786134764374	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66376	1786134781754	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66382	1786134835097	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66384	1786134847292	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66385	1786134895544	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66387	1786134897761	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66393	1786135068296	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66394	1786135068339	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66399	1786135239875	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66400	1786135285598	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66407	1786135504802	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66410	1786135565858	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73915, lon=-48.91363666666666
+66413	1786135710258	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66415	1786135886339	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66417	1786136004017	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66422	1786136277955	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66426	1786136526782	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137358
+66427	1786136526861	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73915, lon=-48.91363666666666
+66429	1786136546252	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393769, lon=-48.913757
+66438	1786137125334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66442	1786137255902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66230	1786132300496	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+66242	1786132550494	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66243	1786132559666	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66249	1786132595833	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.9137274
+66257	1786132719644	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739584999999998, lon=-48.91381333333334
+66265	1786132861151	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66268	1786132920063	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66269	1786132980169	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66271	1786132978031	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66273	1786132999632	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739393333333332, lon=-48.91387666666666
+66279	1786133116685	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739296666666668, lon=-48.91372833333333
+66284	1786133225949	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66289	1786133328673	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66290	1786133338522	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137327
+66297	1786133439912	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66301	1786133455869	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137538
+66316	1786133637262	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739298333333334, lon=-48.913746666666675
+66318	1786133685469	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393604, lon=-48.9137281
+66321	1786133694955	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73915, lon=-48.91363666666666
+66334	1786133860448	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739320000000003, lon=-48.91381333333334
+66339	1786134026538	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66346	1786134171124	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66348	1786134208851	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66350	1786134318107	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66352	1786134328266	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739338333333333, lon=-48.91390166666667
+66354	1786134419334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66365	1786134577976	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66366	1786134610990	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66369	1786134676122	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739381666666667, lon=-48.91381833333333
+66379	1786134832232	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66383	1786134841859	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393979, lon=-48.9137762
+66388	1786134906269	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739520000000002, lon=-48.91411333333334
+66390	1786135010754	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66395	1786135069137	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66412	1786135710411	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66419	1786136122945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66421	1786136260755	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66424	1786136406176	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66430	1786136546394	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739520000000002, lon=-48.91411333333334
+66431	1786136547454	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66439	1786137114396	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137247
+66443	1786137263752	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66444	1786137355859	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66445	1786137369352	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66446	1786137380122	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66447	1786137381937	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66448	1786137384301	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739361666666664, lon=-48.91373
+66449	1786137421409	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66450	1786137427340	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66451	1786137428186	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66452	1786137441318	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66453	1786137446369	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66454	1786137487560	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66455	1786137488291	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66456	1786137501419	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66457	1786137512374	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66458	1786137529379	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739381666666667, lon=-48.91380666666667
+66459	1786137550003	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66460	1786137553507	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66461	1786137561523	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66462	1786137578377	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66463	1786137610113	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66465	1786137621631	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66467	1786137645497	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66468	1786137681736	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66470	1786137695145	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66478	1786138127998	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66481	1786138308758	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66484	1786138456569	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66485	1786138508976	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66487	1786138523772	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739371666666667, lon=-48.91374333333333
+66503	1786138839372	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66522	1786139291214	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66523	1786139276386	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66527	1786139527976	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66532	1786139699623	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66537	1786140003692	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66553	1786141003226	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66561	1786141347248	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66563	1786141483836	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66564	1786141490264	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66571	1786142020195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66577	1786142281674	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66580	1786142422130	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66581	1786142473624	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66592	1786143077508	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66593	1786143077658	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66605	1786143206959	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66612	1786143379661	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66614	1786143543445	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66617	1786143686808	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66622	1786144127627	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66626	1786144330226	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66627	1786144363176	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66628	1786144391740	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66631	1786144617155	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66635	1786144800963	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66637	1786144930134	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66644	1786145002757	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66652	1786145113587	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739536666666666, lon=-48.913380000000004
+66654	1786145138794	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66656	1786145142712	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66657	1786145183080	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66659	1786145204740	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66665	1786145280311	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66670	1786145355921	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73929, lon=-48.91373
+66675	1786145403380	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66677	1786145423500	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66678	1786145464740	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66682	1786145489384	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66685	1786145550555	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66686	1786145604690	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66687	1786145711252	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66689	1786145734857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66694	1786145972941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66703	1786146199377	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66714	1786146463380	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66715	1786146476072	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66716	1786146483503	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66720	1786146529378	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66721	1786146549111	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66729	1786146738400	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66733	1786146753835	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66744	1786147032570	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66464	1786137619353	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66466	1786137644375	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66469	1786137685511	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66471	1786137710373	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66472	1786137727819	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66473	1786137771914	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66474	1786137839599	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66475	1786137982957	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66477	1786138122015	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66482	1786138341375	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66486	1786138509485	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66489	1786138575370	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66492	1786138641368	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66495	1786138695060	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66498	1786138707371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66499	1786138749602	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66501	1786138773371	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66502	1786138815556	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66505	1786138865076	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73929, lon=-48.91373
+66506	1786138927859	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66508	1786139099992	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66509	1786139227746	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66510	1786139227882	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66518	1786139266684	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66519	1786139266834	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66524	1786139363448	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66530	1786139641601	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66531	1786139691614	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66533	1786139777589	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66534	1786139829800	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66536	1786139974259	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66540	1786140095045	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66541	1786140182055	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66544	1786140428915	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66546	1786140509913	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66547	1786140535362	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66548	1786140537648	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66549	1786140556469	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66552	1786140961738	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66555	1786141097482	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66558	1786141231711	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66560	1786141329021	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66562	1786141483564	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66567	1786141741224	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66568	1786141763109	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66570	1786141929687	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66573	1786142109293	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66574	1786142125329	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66575	1786142261511	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66578	1786142324855	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66579	1786142324936	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66582	1786142521968	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66583	1786142529370	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66584	1786142529422	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66585	1786142632658	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66587	1786142879277	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66588	1786142880230	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66591	1786143016436	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66596	1786143079067	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66597	1786143129964	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73929, lon=-48.91373
+66603	1786143206240	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66604	1786143206391	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66608	1786143207635	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66616	1786143670738	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66618	1786143850680	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66619	1786143910252	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66621	1786144034916	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66476	1786138027395	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66479	1786138203908	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66483	1786138391011	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66490	1786138584664	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66491	1786138627814	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66493	1786138649866	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73937, lon=-48.91376
+66494	1786138689499	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66496	1786138695542	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66497	1786138699781	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66500	1786138759924	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73929, lon=-48.91373
+66511	1786139228344	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66512	1786139228371	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66514	1786139255318	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66516	1786139256234	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66517	1786139256267	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66526	1786139505902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66545	1786140476749	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66550	1786140688965	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66556	1786141139448	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73929, lon=-48.91373
+66565	1786141531970	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66569	1786141877066	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66586	1786142770076	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66589	1786142893172	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66594	1786143078215	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66595	1786143078253	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66601	1786143206210	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66602	1786143206252	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66609	1786143241444	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66610	1786143302675	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66611	1786143302751	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66613	1786143470250	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66620	1786143991480	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66623	1786144177415	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66625	1786144330181	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66634	1786144630147	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66636	1786144874681	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66640	1786144941465	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66650	1786145073378	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66651	1786145100927	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66653	1786145122973	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66658	1786145202824	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66663	1786145271380	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66667	1786145336631	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66669	1786145339411	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66676	1786145416578	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66679	1786145468627	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66681	1786145483609	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66684	1786145543710	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66697	1786146075337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66701	1786146133377	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66702	1786146187689	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66710	1786146371964	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66712	1786146397378	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66713	1786146415968	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66718	1786146510471	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66725	1786146646868	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66728	1786146669403	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66732	1786146746612	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66739	1786147031285	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66748	1786147167438	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66757	1786147525612	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66762	1786147775240	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66769	1786148307797	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66771	1786148444153	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66772	1786148444266	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66774	1786148568851	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66480	1786138231289	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66488	1786138567712	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66504	1786138840758	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66507	1786138963466	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66513	1786139229190	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66515	1786139255463	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66520	1786139275437	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66521	1786139275481	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66525	1786139426841	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66528	1786139595823	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913805
+66529	1786139631662	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137305
+66535	1786139882761	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66538	1786140040567	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66539	1786140040834	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137242
+66542	1786140307504	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66543	1786140419961	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66551	1786140825594	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66554	1786141003332	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66557	1786141139857	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66559	1786141319805	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66566	1786141636187	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66572	1786142028326	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66576	1786142281662	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66590	1786143015437	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66598	1786143130347	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66599	1786143205496	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66600	1786143205646	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66606	1786143206846	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66607	1786143206881	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66615	1786143603731	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66633	1786144721078	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66639	1786144940747	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66641	1786144942755	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66642	1786144976987	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739386666666668, lon=-48.913871666666665
+66646	1786145007380	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66647	1786145049161	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66649	1786145072743	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66668	1786145337384	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66680	1786145469380	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66683	1786145535379	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66692	1786145844942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66704	1786146208553	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66705	1786146250269	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.913865
+66707	1786146270908	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66708	1786146331008	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66717	1786146507814	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66727	1786146661378	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66730	1786146745786	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66731	1786146746347	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66735	1786147031129	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66736	1786147031262	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66624	1786144177419	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66629	1786144470876	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66662	1786145270793	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66664	1786145279300	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66666	1786145303292	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66671	1786145356280	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393776, lon=-48.9137578
+66674	1786145402784	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66688	1786145727183	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66691	1786145816799	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66700	1786146125039	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66711	1786146383355	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739413333333335, lon=-48.913830000000004
+66719	1786146510566	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66722	1786146595379	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66724	1786146619434	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66726	1786146647381	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66734	1786146886903	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66742	1786147031827	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66743	1786147031866	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66745	1786147032816	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66751	1786147313612	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66763	1786147911120	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66630	1786144480571	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66632	1786144630136	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66638	1786144930171	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66643	1786144989060	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66645	1786145006489	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66648	1786145062865	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66655	1786145139382	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66660	1786145205380	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66661	1786145243186	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66672	1786145363391	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66673	1786145399516	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66690	1786145807808	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66693	1786145847737	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66695	1786146066079	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66696	1786146068810	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66698	1786146105136	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739381666666667, lon=-48.91382
+66699	1786146127582	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66706	1786146265377	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66709	1786146331379	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66723	1786146609220	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66737	1786147031181	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66738	1786147031277	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66740	1786147031856	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66741	1786147031894	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66747	1786147125193	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66750	1786147227442	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66756	1786147456240	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66759	1786147583232	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66761	1786147752755	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66764	1786148059500	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66765	1786148144264	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66773	1786148548918	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66775	1786148707106	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66776	1786148820289	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66779	1786148978865	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66782	1786149129610	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66746	1786147032846	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66749	1786147208890	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66752	1786147314419	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66753	1786147314536	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66754	1786147377940	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66755	1786147451041	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66758	1786147556892	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66760	1786147752760	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66766	1786148190057	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66767	1786148231952	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66768	1786148282140	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66770	1786148319643	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66777	1786148877604	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66778	1786148896458	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66780	1786149013983	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66783	1786149130035	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66784	1786149132713	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66785	1786149132974	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66781	1786149061677	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66786	1786149266187	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66787	1786149272994	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66788	1786149313106	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66789	1786149388627	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66790	1786149403496	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66791	1786149539780	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66792	1786149677151	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66793	1786149732625	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66794	1786149781676	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66795	1786149804965	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66796	1786149813819	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66797	1786149950890	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66798	1786149952682	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66799	1786150032313	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66800	1786150076754	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66801	1786150122826	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66802	1786150207433	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66803	1786150221660	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66804	1786150321058	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66805	1786150343149	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66806	1786150479644	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66807	1786150565723	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66808	1786150596667	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66809	1786150632806	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66810	1786150803841	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66811	1786150804419	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66812	1786150804632	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66813	1786150805169	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66814	1786150805200	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66815	1786150806038	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66816	1786150830021	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66817	1786150865941	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66818	1786150983017	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66819	1786151031659	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66820	1786151118757	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66821	1786151232764	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66822	1786151232899	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66823	1786151233354	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66824	1786151233500	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66825	1786151233476	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66826	1786151233510	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66827	1786151234101	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66828	1786151234136	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66829	1786151234919	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66830	1786151287653	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66831	1786151234297	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66832	1786151382503	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66833	1786151459285	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66834	1786151532896	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66835	1786151605103	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66836	1786151723720	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66837	1786151724040	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66838	1786151840628	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66839	1786151840771	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66840	1786151833048	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66841	1786151837712	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66842	1786151844517	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66843	1786151977123	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66844	1786152079603	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66845	1786152112998	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66846	1786152133275	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66847	1786152254815	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66848	1786152357770	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66849	1786152374621	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66850	1786152433121	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66851	1786152450088	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66852	1786152519052	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66856	1786152752016	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66864	1786153333531	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66866	1786153528033	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66882	1786154403986	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66884	1786154423073	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66890	1786154659989	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66891	1786154660023	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66902	1786155204570	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66908	1786155386908	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66909	1786155386941	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66911	1786155492126	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66924	1786156159488	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66927	1786156282373	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66928	1786156300385	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66936	1786156653577	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66940	1786156940301	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66949	1786157516465	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66955	1786157724213	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66959	1786158003301	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66979	1786158891249	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66982	1786159035948	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66987	1786159160973	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66990	1786159502303	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66991	1786159502433	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66992	1786159503121	1	46	46	192.168.1.254	INFO	3	Configuration updated
+66993	1786159503151	1	46	46	192.168.1.254	INFO	3	Device owner: true
+66995	1786159543902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67001	1786159862585	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67002	1786159931341	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+67011	1786159992395	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67013	1786160007127	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67022	1786160144372	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67024	1786160187446	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67032	1786160307660	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67034	1786160324660	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73933333333333, lon=-48.913733333333326
+67047	1786160497779	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67051	1786160582360	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67065	1786161095063	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91360666666666
+67066	1786161131931	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137281
+67077	1786161334387	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67078	1786161378268	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735801666666667, lon=-48.91372333333334
+67080	1786161400033	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67087	1786161501361	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67093	1786161664430	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67095	1786161672131	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67099	1786161853022	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67100	1786161916534	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67102	1786161967379	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67104	1786162091085	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67114	1786162431177	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67122	1786163102398	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67127	1786163269128	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67128	1786163298933	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67132	1786163538178	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67133	1786163538205	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67135	1786163542736	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67140	1786164002815	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67144	1786164108573	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67154	1786164558116	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67156	1786164681973	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67160	1786165038409	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66853	1786152526050	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66858	1786152880680	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66865	1786153392042	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66867	1786153528746	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66869	1786153671097	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66870	1786153671146	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66872	1786153776105	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66874	1786153924541	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66876	1786154128361	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66878	1786154233901	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66880	1786154318124	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66886	1786154479375	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66887	1786154546638	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66897	1786154855796	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66898	1786154908672	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66910	1786155387410	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66912	1786155496420	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66917	1786155735035	1	48	46	192.168.1.254	INFO	3	Configuration updated
+66918	1786155735087	1	48	46	192.168.1.254	INFO	3	Device owner: true
+66920	1786155767789	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66922	1786155901798	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66926	1786156261969	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66929	1786156364335	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66934	1786156561963	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66941	1786156964411	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66958	1786158001310	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66961	1786158076842	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66966	1786158287297	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66967	1786158302103	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66971	1786158423961	1	47	46	192.168.1.254	INFO	3	Configuration updated
+66972	1786158423988	1	47	46	192.168.1.254	INFO	3	Device owner: true
+66975	1786158521927	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66981	1786159027238	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66984	1786159106653	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66994	1786159503777	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+66997	1786159664224	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67009	1786159948876	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67010	1786159989655	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73939, lon=-48.91372666666666
+67012	1786159999102	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67014	1786160012375	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67015	1786160052497	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67017	1786160067233	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67023	1786160155523	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67025	1786160197030	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67028	1786160247554	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67033	1786160321038	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67035	1786160329025	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67038	1786160367759	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67046	1786160490410	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67052	1786160560412	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67053	1786160560434	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67054	1786160657735	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+67058	1786160836705	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67059	1786160912276	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+67061	1786160956878	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67069	1786161161860	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67070	1786161192036	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137281
+67073	1786161260787	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137281
+67075	1786161268386	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67076	1786161320890	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137281
+67079	1786161379636	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393709, lon=-48.9137407
+67092	1786161598427	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67105	1786162239843	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67115	1786162512047	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67117	1786162679274	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66854	1786152594727	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66863	1786153188859	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66881	1786154339845	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66896	1786154833096	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66899	1786154963928	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66906	1786155385563	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66907	1786155385679	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66921	1786155882995	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66932	1786156474983	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66937	1786156740674	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66945	1786157263219	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66947	1786157390895	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66948	1786157390961	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66956	1786157723684	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66964	1786158226859	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66977	1786158588739	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66983	1786159065234	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66988	1786159221442	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66989	1786159400534	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66998	1786159772805	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66999	1786159843442	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+67020	1786160127341	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67026	1786160210379	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67031	1786160276371	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67037	1786160365493	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67042	1786160427864	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67043	1786160460924	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67045	1786160487971	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67048	1786160527078	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67050	1786160548076	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67055	1786160670325	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67060	1786160921408	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67063	1786161071119	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67068	1786161136604	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67088	1786161502818	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67094	1786161667042	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67098	1786161819803	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67103	1786161975469	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67106	1786162239959	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67113	1786162382717	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67118	1786162690402	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67119	1786162742457	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67121	1786162961587	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67124	1786163220173	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67125	1786163220240	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67130	1786163537310	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67131	1786163537455	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67137	1786163774841	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67139	1786163974183	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67145	1786164163420	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67146	1786164163487	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67147	1786164228831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67151	1786164556503	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67155	1786164574222	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67158	1786164961439	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66855	1786152616371	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66857	1786152780396	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66860	1786152915090	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66861	1786153034500	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66873	1786153812135	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66877	1786154180605	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66883	1786154415136	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66888	1786154656735	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66892	1786154660707	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66893	1786154669518	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66895	1786154810334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66900	1786154983955	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66913	1786155561955	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66919	1786155735841	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+66930	1786156398542	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66931	1786156417873	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66935	1786156621780	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66938	1786156787427	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66942	1786157068476	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66944	1786157263047	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66950	1786157535361	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66952	1786157646887	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66960	1786158004070	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66963	1786158226712	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66965	1786158227118	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66969	1786158423239	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66970	1786158423392	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66976	1786158586428	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66978	1786158719554	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66985	1786159129067	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66986	1786159133032	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66996	1786159636295	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67004	1786159945446	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67005	1786159945694	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67019	1786160119456	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67021	1786160130979	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67040	1786160408373	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67056	1786160779808	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67062	1786161059453	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67064	1786161073274	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137281
+67067	1786161136386	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67084	1786161436645	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67086	1786161466387	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67090	1786161536340	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67101	1786161952922	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67116	1786162600817	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67120	1786162879672	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67126	1786163237552	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67141	1786164072674	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67142	1786164072753	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67161	1786165038815	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+66859	1786152916330	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66862	1786153053413	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66868	1786153634091	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66871	1786153770743	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66875	1786154060930	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66879	1786154264467	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739188333333335, lon=-48.91387833333333
+66885	1786154461966	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66889	1786154659337	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66894	1786154716148	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66901	1786155079144	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66903	1786155269230	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66904	1786155294190	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91373
+66905	1786155355618	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66914	1786155632377	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66915	1786155734255	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66916	1786155734413	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+66923	1786156046069	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66925	1786156219105	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66933	1786156479025	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393732, lon=-48.9137269
+66939	1786156935609	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66943	1786157169602	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66946	1786157300159	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66951	1786157535470	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66953	1786157671713	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137307
+66954	1786157723673	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66957	1786157860034	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66962	1786158152299	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66968	1786158377515	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+66973	1786158424837	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+66974	1786158513457	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394055, lon=-48.9137751
+66980	1786158962102	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67000	1786159844218	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67003	1786159933333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67006	1786159947169	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67007	1786159947245	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67008	1786159947841	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67016	1786160065138	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67018	1786160078375	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67027	1786160215637	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67029	1786160263186	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67030	1786160275747	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67036	1786160342373	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67039	1786160395179	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67041	1786160425604	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67044	1786160474373	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67049	1786160540374	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67057	1786160785815	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67071	1786161202384	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67072	1786161235154	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739486666666668, lon=-48.913711666666664
+67074	1786161264344	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67081	1786161400387	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67082	1786161420493	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67083	1786161420574	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67085	1786161439520	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393709, lon=-48.9137407
+67089	1786161532387	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67091	1786161561751	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67096	1786161700528	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67097	1786161711539	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67107	1786162240734	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67108	1786162240765	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67109	1786162241801	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67110	1786162342067	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67111	1786162342148	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67112	1786162376696	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67123	1786163102663	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67134	1786163539042	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67129	1786163420675	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67143	1786164088021	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67149	1786164515565	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67150	1786164556335	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67136	1786163724499	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67138	1786163838204	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67148	1786164372314	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67152	1786164557079	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67153	1786164557115	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67157	1786164823266	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67159	1786164966139	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67162	1786165041548	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67163	1786165041628	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67164	1786165102427	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67165	1786165178651	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67166	1786165239280	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67167	1786165263037	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67168	1786165370722	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67169	1786165485987	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67170	1786165638491	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67171	1786165644547	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67172	1786165719378	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67173	1786165780381	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67174	1786165905874	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67175	1786165906000	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67176	1786165906009	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67177	1786165983071	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67178	1786166041317	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67179	1786166177207	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67180	1786166177356	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67181	1786166178017	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67182	1786166178065	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67183	1786166178822	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67184	1786166238958	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67185	1786166314520	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67186	1786166375444	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67187	1786166450759	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67188	1786166509853	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67189	1786166523164	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67190	1786166609817	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67191	1786166838877	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67192	1786166881069	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67193	1786166905100	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67194	1786166947643	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67195	1786166947722	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67196	1786167017453	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67197	1786167044475	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67198	1786167044804	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67199	1786167104949	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67200	1786167241271	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67201	1786167341888	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67202	1786167379614	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67203	1786167457087	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67204	1786167509370	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67205	1786167554487	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67206	1786167728455	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67207	1786167771991	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67208	1786167772067	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67209	1786167788541	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67210	1786167847676	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67211	1786167963985	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67212	1786167963391	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67213	1786167963442	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67214	1786167963517	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67215	1786167963956	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67216	1786167963996	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67217	1786168024548	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67218	1786168104783	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67219	1786168273751	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67220	1786168339303	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67221	1786168371345	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67222	1786168402832	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67223	1786168510232	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67244	1786169574537	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67251	1786169943676	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67252	1786170004664	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67253	1786170042760	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67255	1786170043798	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67257	1786170048050	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67258	1786170055352	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67261	1786170268585	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67262	1786170268598	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67264	1786170431895	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67269	1786170554399	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67279	1786171243433	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67282	1786171383997	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67287	1786171798833	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67290	1786171924483	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67296	1786172241855	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67297	1786172241884	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67299	1786172243089	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67300	1786172302652	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67311	1786172742870	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67317	1786173142722	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67322	1786173365738	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67325	1786173593585	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67328	1786173729996	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67334	1786173995650	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67337	1786174001968	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67338	1786174204287	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67345	1786174753666	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67350	1786174890766	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67354	1786175153134	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67356	1786175242001	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67358	1786175354919	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67375	1786175966955	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67377	1786176142507	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67384	1786176443542	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67385	1786176443587	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67386	1786176444655	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67392	1786176742644	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67394	1786176860145	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67395	1786176965274	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67403	1786177291049	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67406	1786177505083	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67408	1786177684917	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67413	1786177749553	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67421	1786178109845	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67424	1786178395264	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67429	1786178764798	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67437	1786179176248	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67453	1786180044050	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67461	1786180468928	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67462	1786180535114	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67464	1786180535859	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67465	1786180535887	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67466	1786180596472	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67470	1786180860630	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67471	1786180860710	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67474	1786181029831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67480	1786181429046	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67523	1786182512736	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67528	1786182572843	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67542	1786182869463	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67546	1786183058113	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67547	1786183137588	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67566	1786183580400	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67569	1786183646402	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67577	1786183825335	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67224	1786168542555	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67225	1786168580972	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67226	1786168581051	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67228	1786168749926	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67238	1786169223646	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67248	1786169674416	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67267	1786170511261	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67268	1786170534673	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67273	1786170777507	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67275	1786171040373	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67289	1786171924474	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67304	1786172404804	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67305	1786172404835	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67308	1786172466426	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67314	1786172847416	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67315	1786172880578	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67321	1786173364224	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67348	1786174890286	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67351	1786174894695	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67352	1786174910171	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67355	1786175241972	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67360	1786175485483	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67363	1786175582925	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67376	1786176043893	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67378	1786176169591	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67398	1786177088234	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67401	1786177171555	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67411	1786177748481	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67412	1786177748521	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67419	1786178044881	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67423	1786178264693	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67425	1786178531042	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67428	1786178667101	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67436	1786179143388	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67446	1786179759837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67451	1786179977458	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67456	1786180045373	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67482	1786181551246	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67487	1786181563537	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67489	1786181692637	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67490	1786181692649	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67491	1786181692719	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67506	1786182270686	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67508	1786182277363	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67520	1786182467003	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67525	1786182541369	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67530	1786182607366	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67533	1786182666795	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67535	1786182674040	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67538	1786182734148	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67540	1786182741476	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67551	1786183316462	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67562	1786183514399	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67565	1786183571825	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67567	1786183585124	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67568	1786183622483	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67570	1786183669110	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67574	1786183778403	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67227	1786168706095	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67230	1786168803835	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67231	1786168804368	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67232	1786168804408	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67245	1786169615492	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67246	1786169640621	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67249	1786169762205	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67254	1786170042902	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67256	1786170043857	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67266	1786170440784	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67270	1786170610790	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67272	1786170740105	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67274	1786170941350	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67286	1786171662611	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67288	1786171919354	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67298	1786172249766	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67307	1786172463980	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67310	1786172711034	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67316	1786172983407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67323	1786173394799	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67329	1786173865415	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67330	1786173865550	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67333	1786173867225	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67340	1786174341998	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67341	1786174361609	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67342	1786174478860	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67353	1786175032354	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67357	1786175318335	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67368	1786175902057	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67370	1786175905752	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67371	1786175905789	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67373	1786175908085	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67380	1786176412332	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67388	1786176687142	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67389	1786176734852	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67390	1786176747504	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67393	1786176834640	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67404	1786177342739	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67407	1786177607176	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67409	1786177747607	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67410	1786177747846	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67416	1786177951571	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67420	1786178139259	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67431	1786178843222	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67434	1786178871701	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67440	1786179443430	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67441	1786179484977	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67447	1786179845133	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67448	1786179895812	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67450	1786179896324	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67454	1786180044564	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67455	1786180044590	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67457	1786180053302	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67458	1786180113827	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67467	1786180604843	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67469	1786180758209	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67472	1786180893834	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67478	1786181316761	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67484	1786181562152	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67485	1786181562938	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67486	1786181562965	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67502	1786182211397	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67504	1786182216761	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67505	1786182256910	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67507	1786182272312	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67512	1786182343366	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67513	1786182392253	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73962, lon=-48.913648333333335
+67515	1786182402684	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67229	1786168803618	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67233	1786168805036	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67234	1786168805146	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67236	1786169021388	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67240	1786169328736	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67250	1786169898273	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67259	1786170140152	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67263	1786170278293	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67265	1786170440199	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67276	1786171069391	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67281	1786171379552	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67284	1786171525043	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67294	1786172241186	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67295	1786172241340	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67302	1786172404151	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67303	1786172404293	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67309	1786172574677	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67312	1786172748725	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67318	1786173189111	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67319	1786173189190	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67320	1786173189306	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67324	1786173465693	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67326	1786173612181	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67335	1786174001607	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67336	1786174001631	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67343	1786174510247	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67361	1786175542419	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67369	1786175902210	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67374	1786175959298	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67382	1786176442826	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67391	1786176783686	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67396	1786177044281	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67397	1786177080847	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67399	1786177112767	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67402	1786177248608	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67405	1786177445477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67414	1786177890923	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67415	1786177949829	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67426	1786178543217	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67427	1786178610460	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67432	1786178843342	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67433	1786178861213	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67438	1786179370725	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67439	1786179443395	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67443	1786179621492	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67449	1786179896107	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67452	1786180043966	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67459	1786180250435	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67463	1786180535258	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67475	1786181175511	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67476	1786181244909	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67483	1786181546947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67488	1786181645189	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67493	1786182005539	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67495	1786182138086	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67497	1786182141489	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67499	1786182152764	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67500	1786182196809	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67510	1786182332412	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67518	1786182422932	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67521	1786182468737	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67534	1786182673366	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67537	1786182732630	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67539	1786182739366	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67544	1786183000936	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67553	1786183370063	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67646	1786186808379	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67235	1786168885394	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67237	1786169190251	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67239	1786169173649	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67241	1786169425957	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67242	1786169461643	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67243	1786169461718	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67247	1786169641626	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67260	1786170168771	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67271	1786170649507	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67277	1786171131270	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67278	1786171131347	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67280	1786171341066	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67283	1786171477433	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67285	1786171640547	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67291	1786172057540	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67292	1786172108806	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67293	1786172111322	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67301	1786172398370	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67306	1786172405650	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67313	1786172819887	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137329
+67327	1786173729831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67331	1786173866227	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67332	1786173866263	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67339	1786174208001	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67344	1786174617727	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67346	1786174796518	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67347	1786174889774	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67349	1786174890635	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67359	1786175393747	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67362	1786175543024	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67364	1786175726615	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67365	1786175775009	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67366	1786175846488	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137347
+67367	1786175856584	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73942, lon=-48.913778333333326
+67372	1786175906300	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67379	1786176289352	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67381	1786176442479	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67383	1786176442996	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67387	1786176550658	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67400	1786177112781	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67417	1786177989422	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67418	1786178034096	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67422	1786178245836	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67430	1786178811039	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67435	1786179038266	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67442	1786179508888	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67444	1786179654902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67445	1786179743536	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67460	1786180343745	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67468	1786180671439	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67473	1786180925123	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67477	1786181311742	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67479	1786181378735	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73463333333333, lon=-48.91484333333333
+67481	1786181550821	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137363
+67492	1786181823353	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67494	1786182038393	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67496	1786182139437	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67498	1786182145008	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67501	1786182204742	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67503	1786182212218	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67509	1786182317020	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67511	1786182336839	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67514	1786182392528	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67516	1786182406897	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67519	1786182452629	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67517	1786182409368	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67524	1786182534787	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67526	1786182558008	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67529	1786182600634	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67531	1786182618115	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67536	1786182693051	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67541	1786182753157	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67543	1786182905451	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67548	1786183236357	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67549	1786183242987	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67554	1786183373146	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67557	1786183435751	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67559	1786183448400	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67560	1786183503380	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739293333333332, lon=-48.913693333333335
+67571	1786183684369	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67573	1786183728062	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67522	1786182475366	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67527	1786182568387	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67532	1786182632943	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67545	1786183045649	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67550	1786183313577	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67552	1786183359255	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739348333333332, lon=-48.913736666666665
+67555	1786183382403	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67556	1786183433248	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67572	1786183712405	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67575	1786183788170	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67578	1786183844402	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67558	1786183445573	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67561	1786183505650	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67563	1786183525018	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67564	1786183566801	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67576	1786183820970	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67579	1786183848274	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67580	1786183908379	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67581	1786183910403	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67582	1786183938307	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67583	1786183979609	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67584	1786184127259	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67585	1786184153073	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67586	1786184153301	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67587	1786184153925	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67588	1786184153951	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67589	1786184154718	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67590	1786184230109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67591	1786184245874	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67592	1786184290687	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67593	1786184345858	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67594	1786184375591	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67595	1786184381432	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67596	1786184381595	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67597	1786184382240	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67598	1786184382282	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67599	1786184383510	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67600	1786184397501	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67601	1786184477991	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67602	1786184603440	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67603	1786184808247	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67604	1786184845713	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67605	1786184964407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67606	1786185036896	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67607	1786185077051	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67608	1786185092976	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67609	1786185112388	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67610	1786185162857	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67611	1786185212937	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67612	1786185213092	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67613	1786185213169	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67614	1786185213678	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67615	1786185213705	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67616	1786185214774	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67617	1786185245684	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67618	1786185294676	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67619	1786185333053	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67620	1786185425906	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67621	1786185468954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67622	1786185558351	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67623	1786185678679	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67624	1786185680464	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67625	1786185605786	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67626	1786185746655	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67627	1786185794013	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67628	1786185821951	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67629	1786185822031	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67630	1786185897501	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67631	1786185915006	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67632	1786185990755	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67633	1786186034520	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67634	1786186046855	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67635	1786186145981	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67636	1786186171036	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67637	1786186177889	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67638	1786186293109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67639	1786186346204	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67640	1786186395505	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67641	1786186570035	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67642	1786186574862	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67643	1786186645928	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67644	1786186702695	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67645	1786186803678	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67647	1786186809726	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67648	1786186887269	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67652	1786187045775	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67660	1786187623715	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67666	1786187944353	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67667	1786187944376	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67672	1786188147510	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67673	1786188147537	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67674	1786188148288	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67677	1786188352496	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67678	1786188446948	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67696	1786189161504	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67702	1786189347243	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67704	1786189386313	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67715	1786189995155	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67717	1786190107596	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67719	1786190197199	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67727	1786190646551	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67728	1786190646564	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67729	1786190646637	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67731	1786190687173	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67734	1786191107473	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67743	1786191546730	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67748	1786192048739	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67750	1786192145434	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67751	1786192190247	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67753	1786192341806	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67779	1786193287217	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67787	1786193849483	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67797	1786194111706	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67806	1786194875247	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67807	1786194891047	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67808	1786194999913	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67809	1786195029612	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67813	1786195341319	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67826	1786196551126	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67831	1786196784450	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67835	1786196820234	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67839	1786196910804	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67840	1786196910834	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67845	1786197329569	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67857	1786198110398	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67861	1786198358717	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67862	1786198402254	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67869	1786198817582	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67872	1786199234236	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67880	1786199771885	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67882	1786199929291	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67889	1786200325429	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67892	1786200558326	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67894	1786200559114	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67895	1786200559142	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67900	1786200929452	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67905	1786201176026	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67915	1786201704128	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67921	1786202056373	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67925	1786202553215	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67928	1786202667797	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67929	1786202713408	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67933	1786202878866	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67941	1786203635324	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67962	1786204476342	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67964	1786204485348	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67965	1786204497992	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393697, lon=-48.9137309
+67967	1786204542292	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67970	1786204603172	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393697, lon=-48.9137309
+67972	1786204609540	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.747675, lon=-48.90673833333334
+67649	1786186925604	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67654	1786187135022	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67655	1786187222414	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67665	1786187841947	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67675	1786188230886	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67676	1786188292037	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67680	1786188448827	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67687	1786188747109	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67692	1786188848043	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67703	1786189383094	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67705	1786189477833	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67712	1786189814443	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67716	1786189995173	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67723	1786190404507	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67725	1786190412001	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67733	1786190978033	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67735	1786191117066	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67739	1786191369729	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67740	1786191388936	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67741	1786191448314	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67745	1786191764185	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67746	1786191915012	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67747	1786192048588	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67768	1786193003806	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67769	1786193003837	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67771	1786193004724	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67772	1786193065407	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67774	1786193249036	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67775	1786193249175	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67780	1786193250563	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67791	1786194006704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67796	1786194102706	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67798	1786194247138	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67800	1786194450105	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67803	1786194664410	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67817	1786195893235	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67819	1786195950656	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67829	1786196722831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67830	1786196784327	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67837	1786196910214	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67838	1786196910270	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67842	1786196911595	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67848	1786197487875	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67854	1786197751801	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67859	1786198207519	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67865	1786198598425	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67868	1786198747409	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67879	1786199615712	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67884	1786200135851	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67885	1786200163590	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67886	1786200259367	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67888	1786200278768	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67899	1786200793354	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67904	1786201126246	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67907	1786201176782	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67908	1786201176814	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67912	1786201341285	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67919	1786201919786	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67923	1786202316595	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67926	1786202572329	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67927	1786202647898	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67947	1786204131736	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67951	1786204344294	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67969	1786204599256	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67971	1786204608277	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67976	1786204674178	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67978	1786204719463	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67650	1786186991546	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67658	1786187547466	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67662	1786187711365	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67671	1786188147022	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67679	1786188447217	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67682	1786188584459	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67683	1786188592121	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67686	1786188746964	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67691	1786188748376	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67706	1786189518933	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67713	1786189872245	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67714	1786189947927	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67718	1786190131528	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67722	1786190404318	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67726	1786190540334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67742	1786191525250	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67754	1786192363331	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67759	1786192448187	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+67781	1786193349435	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67786	1786193724981	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67788	1786193893948	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67792	1786194005165	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.913650000000004
+67794	1786194008914	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67801	1786194481354	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67804	1786194736451	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67810	1786195029415	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67814	1786195479357	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67820	1786195968795	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67821	1786196026512	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67824	1786196349881	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67827	1786196610189	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67841	1786196940965	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67844	1786197201702	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67846	1786197375544	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67852	1786197728959	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67853	1786197752006	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67856	1786198017716	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67863	1786198477943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67871	1786199098578	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67875	1786199370391	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67881	1786199851853	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67883	1786200004853	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67890	1786200422293	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67896	1786200559791	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67897	1786200688893	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67902	1786201052223	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67909	1786201177548	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+67910	1786201213206	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67911	1786201312614	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67917	1786201740545	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67918	1786201796920	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67924	1786202436919	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67932	1786202849324	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67934	1786203002695	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67938	1786203475355	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67939	1786203572000	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67940	1786203632513	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67942	1786203753212	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67944	1786203889414	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67946	1786204052326	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67948	1786204231545	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67950	1786204344149	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67952	1786204344893	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393665, lon=-48.913734
+67953	1786204344932	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67954	1786204345886	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67956	1786204360245	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67957	1786204403386	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393665, lon=-48.913734
+67651	1786186997121	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67657	1786187405981	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67659	1786187575681	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67663	1786187762040	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67669	1786188146828	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67670	1786188146977	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67681	1786188489743	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67690	1786188800314	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67693	1786188976226	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67695	1786189132341	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67697	1786189161651	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67709	1786189615692	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67710	1786189732561	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67730	1786190652889	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67756	1786192447368	1	46	46	192.168.1.254	INFO	3	Configuration updated
+67757	1786192447396	1	46	46	192.168.1.254	INFO	3	Device owner: true
+67761	1786192629974	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67763	1786192803353	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67765	1786192933919	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67766	1786193003059	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67767	1786193003195	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67777	1786193249694	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67778	1786193249725	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67783	1786193366572	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67785	1786193602096	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67789	1786193945168	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67799	1786194449430	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67802	1786194635802	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67805	1786194764376	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67812	1786195276695	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67815	1786195662965	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67822	1786196072583	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67828	1786196640030	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67832	1786196785134	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67833	1786196785167	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67836	1786196851294	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67843	1786197068445	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67849	1786197588257	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67850	1786197604074	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67864	1786198478194	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67866	1786198651277	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67873	1786199251746	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67876	1786199387755	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67877	1786199408151	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67887	1786200271299	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67891	1786200458311	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67898	1786200688222	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67906	1786201176213	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67916	1786201740240	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67920	1786201952412	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67930	1786202739715	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67931	1786202803429	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67935	1786203139426	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67937	1786203330387	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67943	1786203760470	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67945	1786203896298	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67949	1786204343040	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67955	1786204353549	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67958	1786204410197	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67960	1786204419354	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67961	1786204437411	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.737591666666667, lon=-48.916181666666674
+67963	1786204479050	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67966	1786204539160	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67974	1786204659363	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67986	1786204815346	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67991	1786204899779	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67653	1786187069647	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67656	1786187332671	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67661	1786187699182	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67664	1786187834422	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67668	1786188095378	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67684	1786188686924	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67685	1786188687002	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67688	1786188747634	1	48	46	192.168.1.254	INFO	3	Configuration updated
+67689	1786188747664	1	48	46	192.168.1.254	INFO	3	Device owner: true
+67694	1786189026724	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67698	1786189162173	1	47	46	192.168.1.254	INFO	3	Configuration updated
+67699	1786189162199	1	47	46	192.168.1.254	INFO	3	Device owner: true
+67700	1786189193716	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67701	1786189269058	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67707	1786189522552	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67708	1786189587911	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67711	1786189752109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67720	1786190332971	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67721	1786190333073	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67724	1786190409763	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67732	1786190786009	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67736	1786191186540	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67737	1786191249499	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67738	1786191253085	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67744	1786191611446	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67749	1786192053649	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67752	1786192265936	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67755	1786192446929	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67758	1786192493592	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67760	1786192508990	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67762	1786192646281	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67764	1786192918588	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67770	1786193004521	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67773	1786193161760	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67776	1786193249212	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393634, lon=-48.9137329
+67782	1786193359759	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67784	1786193550011	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67790	1786193966294	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67793	1786194005228	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.913747
+67795	1786194007223	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739645, lon=-48.913778333333326
+67811	1786195204795	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67816	1786195831925	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67818	1786195950476	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67823	1786196203133	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67825	1786196466952	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67834	1786196785858	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+67847	1786197452628	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67851	1786197624218	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67855	1786197864631	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67858	1786198207232	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67860	1786198271674	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67867	1786198682715	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67870	1786198985935	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67874	1786199306037	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67878	1786199483489	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67893	1786200558491	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+67901	1786201013532	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137251
+67903	1786201065354	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67913	1786201467699	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67914	1786201603158	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67922	1786202183479	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67936	1786203153597	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67968	1786204551347	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67973	1786204617348	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67977	1786204683346	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67982	1786204749350	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67985	1786204806284	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67959	1786204418959	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67975	1786204669926	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393612, lon=-48.9137293
+67980	1786204734166	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393758, lon=-48.9137253
+67989	1786204881347	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67994	1786204947346	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68007	1786205654904	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68011	1786205732376	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68024	1786206823419	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68028	1786206964261	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68029	1786206964275	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68031	1786207285704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68034	1786207587928	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67979	1786204732613	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.742361666666667, lon=-48.92223333333333
+67981	1786204740330	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67983	1786204779566	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67984	1786204793600	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393758, lon=-48.9137253
+67998	1786205083748	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68003	1786205516468	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68006	1786205654803	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68017	1786206129874	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68022	1786206537369	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68025	1786206877123	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68027	1786206960387	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67987	1786204839676	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67992	1786204902737	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68001	1786205317719	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68012	1786205855109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68016	1786206058951	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68018	1786206264842	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68026	1786206877297	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68032	1786207355383	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68036	1786207720903	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68037	1786207743568	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67988	1786204872328	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67990	1786204898370	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393758, lon=-48.9137253
+67993	1786204938280	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+67995	1786204959884	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+67996	1786204999651	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+67997	1786204999677	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+67999	1786205181302	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68000	1786205181316	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68004	1786205516725	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68005	1786205596035	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68013	1786205991377	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68014	1786206046630	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68015	1786206046706	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68020	1786206454199	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68021	1786206528437	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68033	1786207421910	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68002	1786205444322	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68008	1786205655474	1	48	46	192.168.1.254	INFO	3	Configuration updated
+68009	1786205655500	1	48	46	192.168.1.254	INFO	3	Device owner: true
+68010	1786205656306	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+68019	1786206392225	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68023	1786206722472	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68030	1786207139766	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68035	1786207654746	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68038	1786207790430	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68039	1786207856468	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68040	1786207992829	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68041	1786208031401	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68042	1786208031420	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68043	1786208066816	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68044	1786208158671	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68045	1786208282857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68046	1786208283021	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68047	1786208284007	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68048	1786208284048	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68049	1786208284651	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68050	1786208399317	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68051	1786208427938	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68052	1786208503392	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68053	1786208504826	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68054	1786208639477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68055	1786208742520	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68056	1786208856007	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68057	1786208878568	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68058	1786208879017	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68059	1786208879031	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68060	1786209014667	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68061	1786209110263	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68062	1786209150475	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68063	1786209321149	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68064	1786209454071	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68065	1786209576956	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68066	1786209612343	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68067	1786209743368	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68068	1786209748636	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68069	1786209755324	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68070	1786209809483	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68071	1786209810068	1	48	46	192.168.1.254	INFO	3	Configuration updated
+68072	1786209810098	1	48	46	192.168.1.254	INFO	3	Device owner: true
+68073	1786209810862	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+68074	1786209863701	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68075	1786209863780	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68076	1786209874105	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68077	1786209908642	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68078	1786210002097	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68079	1786210009774	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68080	1786210155536	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68081	1786210263064	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68082	1786210356054	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68083	1786210378388	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68084	1786210456094	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68085	1786210572825	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68086	1786210648257	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68087	1786210648333	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68088	1786210690588	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68089	1786210826697	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68090	1786210866790	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68091	1786210979872	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68092	1786211116140	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68093	1786211256156	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68094	1786211287091	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68095	1786211423717	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68096	1786211528937	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68097	1786211568871	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68098	1786211597489	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68099	1786211597568	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68103	1786211801720	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68111	1786212370944	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68112	1786212370982	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68114	1786212383545	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68117	1786212510806	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68123	1786213212269	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68126	1786213477644	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68127	1786213509240	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68128	1786213509322	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68136	1786214060628	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68145	1786214369455	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68147	1786214623501	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68149	1786214763369	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68162	1786215827374	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68177	1786216542708	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68179	1786216722191	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68191	1786217675340	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68199	1786218327665	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68210	1786218885390	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68219	1786219360156	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68222	1786219737899	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68223	1786219813313	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68224	1786219813444	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68229	1786219882598	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68232	1786220288309	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68236	1786220782992	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68237	1786220783079	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68243	1786221448792	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68247	1786221737314	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68248	1786221873243	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68258	1786223058314	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68265	1786223571768	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68273	1786224450995	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68280	1786225140288	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68282	1786225469901	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68284	1786225623563	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68285	1786225623645	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68289	1786226314027	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68299	1786226747846	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68300	1786226778678	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68310	1786227077888	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68313	1786227144034	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68314	1786227177744	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68316	1786227392662	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68317	1786227392801	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68329	1786228137524	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68348	1786230144666	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68357	1786231053416	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68366	1786231734592	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68367	1786231795234	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68379	1786232915604	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68384	1786233600674	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68385	1786233661345	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68386	1786233661428	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68388	1786233840273	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68391	1786234320075	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68394	1786234589233	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68395	1786234589297	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68398	1786235019238	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68399	1786235019386	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68404	1786235318551	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68424	1786237333394	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68441	1786238893935	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68100	1786211664977	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68101	1786211713520	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68105	1786211937847	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68107	1786212157036	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68113	1786212371631	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68121	1786212946018	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68122	1786213139092	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68124	1786213341295	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68129	1786213598381	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68134	1786213831801	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68138	1786214258282	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68140	1786214258972	1	48	46	192.168.1.254	INFO	3	Configuration updated
+68141	1786214259002	1	48	46	192.168.1.254	INFO	3	Device owner: true
+68158	1786215559849	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68170	1786216172123	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68173	1786216236348	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68180	1786216823662	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68194	1786217926429	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68195	1786217987650	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68196	1786217987728	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68201	1786218332048	1	48	46	192.168.1.254	INFO	3	Configuration updated
+68202	1786218332077	1	48	46	192.168.1.254	INFO	3	Device owner: true
+68203	1786218332661	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+68207	1786218582438	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68209	1786218737233	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68211	1786218926655	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68212	1786218960691	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68213	1786218960772	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68215	1786219064765	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68221	1786219604770	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68227	1786219881992	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68228	1786219882046	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68231	1786220142574	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68234	1786220521903	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68238	1786220783909	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68241	1786221176735	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68252	1786222477377	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68259	1786223268407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68270	1786223936629	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68271	1786224179679	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68274	1786224543153	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68277	1786224712738	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68286	1786225736291	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68288	1786226051227	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68292	1786226560026	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68293	1786226612930	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739386666666668, lon=-48.91387833333333
+68295	1786226618806	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68296	1786226678912	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68303	1786226879836	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68306	1786226945893	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68320	1786227394615	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68324	1786227781635	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68326	1786227994300	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68327	1786228058146	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68328	1786228069960	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68330	1786228220905	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68334	1786228667884	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68336	1786228954228	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68343	1786229711937	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68353	1786230746197	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68358	1786231190009	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68360	1786231190829	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68361	1786231190880	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68362	1786231191523	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68365	1786231609032	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68380	1786233051713	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68381	1786233150114	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68389	1786234058945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68102	1786211740612	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68130	1786213597493	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68133	1786213813081	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68139	1786214258431	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68142	1786214259776	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+68143	1786214327516	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68144	1786214327594	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68148	1786214750303	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68151	1786214917272	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68154	1786215255217	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68155	1786215255296	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68160	1786215697425	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68164	1786216036028	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68172	1786216172957	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68174	1786216312498	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68182	1786216959803	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68183	1786217020880	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68187	1786217314833	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68200	1786218327804	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68205	1786218521995	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68214	1786219000599	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68216	1786219136978	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68218	1786219328860	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68225	1786219881259	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68226	1786219881403	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68240	1786221051204	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68251	1786222344130	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68254	1786222681996	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68255	1786222682073	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68272	1786224326145	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68301	1786226813996	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68304	1786226910817	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68307	1786226970924	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68315	1786227256825	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68323	1786227664069	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68325	1786227884250	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68333	1786228547319	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68335	1786228788587	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68340	1786229292960	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68341	1786229422650	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68344	1786229857956	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68349	1786230231632	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68350	1786230362312	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68352	1786230576291	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68363	1786231296617	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68368	1786231806088	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68369	1786231899438	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68370	1786232010361	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68372	1786232249140	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68374	1786232556177	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68392	1786234435364	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68397	1786234888410	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68403	1786235195607	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68408	1786235682037	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68409	1786235818277	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68413	1786236320197	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68414	1786236320330	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68415	1786236320337	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68416	1786236534527	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68420	1786237051674	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68427	1786237717285	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68429	1786238006650	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68434	1786238452035	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68438	1786238892515	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68456	1786240360321	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68458	1786240598165	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68104	1786211855972	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68109	1786212369994	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68110	1786212370139	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68115	1786212500570	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68116	1786212500644	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68118	1786212677204	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68125	1786213363157	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68135	1786213923831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68146	1786214487181	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68152	1786215002925	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68153	1786215232165	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68161	1786215808181	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68165	1786216171606	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68166	1786216171664	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68167	1786216171721	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68168	1786216172367	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68169	1786216172390	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68171	1786216172818	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68175	1786216358340	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68176	1786216407234	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68181	1786216938958	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68184	1786217021310	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68186	1786217275099	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68189	1786217536946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68193	1786217811598	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68198	1786218258175	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68208	1786218607300	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68217	1786219266837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68220	1786219495963	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68235	1786220646712	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68239	1786220897605	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68242	1786221312915	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68245	1786221683606	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68246	1786221683698	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68250	1786222180203	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68253	1786222605177	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68256	1786222758954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68260	1786223414166	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68266	1786223706224	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68267	1786223706307	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68268	1786223706307	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68278	1786224849281	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68283	1786225618707	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68287	1786225875123	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68302	1786226838792	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68305	1786226915175	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739415, lon=-48.91343666666667
+68321	1786227528073	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68322	1786227551253	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68331	1786228329492	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68332	1786228447263	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68337	1786228970225	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68338	1786228970343	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68339	1786229156397	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68359	1786231190152	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68373	1786232386974	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68376	1786232755883	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68383	1786233443101	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68387	1786233703639	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68390	1786234194652	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68400	1786235019957	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68401	1786235019985	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68410	1786235958185	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68422	1786237188574	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68423	1786237188587	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68426	1786237576484	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68106	1786212062781	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68108	1786212245938	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68119	1786212805209	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68120	1786212925962	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68131	1786213698818	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68132	1786213736438	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.913737
+68137	1786214251653	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68150	1786214886865	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68156	1786215388333	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68157	1786215457971	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68159	1786215609294	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68163	1786215909612	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68178	1786216686470	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68185	1786217096542	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68188	1786217400581	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68190	1786217672980	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68192	1786217787111	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68197	1786218053797	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68204	1786218394891	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68206	1786218531496	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68230	1786220006885	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68233	1786220423730	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68244	1786221583828	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68249	1786222009025	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68257	1786222917510	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68261	1786223570332	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68262	1786223570475	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68263	1786223571152	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68264	1786223571174	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68269	1786223813675	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68275	1786224604099	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137288
+68276	1786224604180	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.735321666666668, lon=-48.90876166666667
+68279	1786225003970	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68281	1786225290701	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68290	1786226414576	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68291	1786226550267	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68294	1786226615959	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68297	1786226682106	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68298	1786226745043	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.7394, lon=-48.91376666666667
+68308	1786227011839	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68309	1786227071286	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68311	1786227080912	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68312	1786227141016	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68318	1786227393546	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68319	1786227393607	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68342	1786229581375	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68345	1786229994031	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68346	1786229994082	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68347	1786229994112	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68351	1786230500641	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68354	1786230858856	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68355	1786230882173	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68356	1786230882189	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68364	1786231460751	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68371	1786232149301	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68375	1786232686741	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68377	1786232756260	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68378	1786232822860	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68382	1786233307173	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68396	1786234725812	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68412	1786236233378	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68417	1786236652358	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68435	1786238574920	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68445	1786239177336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68454	1786240092523	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68465	1786241270674	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68476	1786242563516	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68393	1786234588881	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68402	1786235020663	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68405	1786235525867	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68406	1786235571960	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68407	1786235572038	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68411	1786236094940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68418	1786236823833	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68419	1786236941530	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68421	1786237187988	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68425	1786237428081	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68437	1786238892363	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68446	1786239284372	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68447	1786239420740	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68457	1786240461689	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68460	1786240761239	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68461	1786240761319	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68464	1786241160589	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68467	1786241599614	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68472	1786242000287	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68475	1786242460656	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68481	1786242692968	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68482	1786242752755	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68487	1786243123644	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68491	1786243535231	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68494	1786243908118	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68500	1786244385018	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68514	1786245977411	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68519	1786246441154	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68523	1786246671414	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68524	1786246671446	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68527	1786246954813	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68531	1786247238805	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68538	1786247981195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68428	1786237898820	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68430	1786238142460	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68431	1786238142537	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68432	1786238153905	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68433	1786238301105	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68436	1786238736203	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68439	1786238893349	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68440	1786238893376	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68442	1786239040866	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68443	1786239040945	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68448	1786239517024	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68450	1786239778178	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68451	1786239839409	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68452	1786239839474	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68453	1786239956575	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68463	1786240990135	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68466	1786241406577	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68473	1786242187172	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68477	1786242691514	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68485	1786242883385	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68486	1786243009525	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68513	1786245840968	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68521	1786246670438	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68532	1786247366774	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68534	1786247717508	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68539	1786248147785	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68444	1786239041906	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68449	1786239652477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68455	1786240246852	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68468	1786241713569	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68469	1786241713638	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68470	1786241713734	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68474	1786242323502	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68478	1786242691646	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68483	1786242753216	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68493	1786243762186	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68495	1786243995986	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68502	1786244724495	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68503	1786244860426	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68510	1786245495044	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68512	1786245707837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68518	1786246304342	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68522	1786246670580	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68526	1786246770403	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68533	1786247502464	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68459	1786240746063	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68462	1786240886665	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68471	1786241869725	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68479	1786242692149	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68480	1786242692178	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68484	1786242819921	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68489	1786243473124	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68490	1786243534947	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68492	1786243636742	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68498	1786244384841	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68499	1786244384880	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68505	1786245121584	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68509	1786245354954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68511	1786245614482	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68516	1786246168669	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68517	1786246168746	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68528	1786246973092	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68529	1786246973108	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68535	1786247845554	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68536	1786247917207	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68537	1786247917287	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68488	1786243270656	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68496	1786244132035	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68497	1786244274198	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68501	1786244520543	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68504	1786244996417	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68506	1786245219046	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68507	1786245280494	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68508	1786245280573	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68515	1786246158412	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68520	1786246593638	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68525	1786246672353	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68530	1786247108805	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68540	1786248278157	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68541	1786248398483	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68542	1786248546958	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68543	1786248685212	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68544	1786248745654	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739743333333333, lon=-48.914035
+68545	1786248745732	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137828
+68546	1786248774565	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68547	1786248832860	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68548	1786248840597	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68549	1786248893010	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68550	1786248906442	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68551	1786248962396	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68552	1786248972442	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68553	1786249022508	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68554	1786249038547	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68555	1786249082585	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68556	1786249104444	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68557	1786249170537	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68558	1786249172446	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137338
+68559	1786249184316	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.79894, lon=-48.81362666666667
+68560	1786249236483	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68561	1786249245928	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393637, lon=-48.9137306
+68562	1786249302632	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68563	1786249350044	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393637, lon=-48.9137306
+68564	1786249353419	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68565	1786249368481	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68566	1786249532729	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68567	1786249621209	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68568	1786249765658	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68569	1786249844978	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68570	1786249845395	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68571	1786249860321	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68572	1786249995577	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68573	1786250131647	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68574	1786250268765	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68575	1786250397882	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68576	1786250503228	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68577	1786250638783	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68578	1786250638925	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68579	1786250639582	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68580	1786250639620	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68581	1786250640387	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68582	1786250699979	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68583	1786250715699	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68584	1786250822855	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68585	1786250966373	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68586	1786251102994	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68587	1786251237567	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68588	1786251373737	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68589	1786251498709	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68590	1786251634400	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68591	1786251639571	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68592	1786251695606	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68593	1786251803361	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68596	1786252223225	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68603	1786252910254	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68611	1786253657762	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68613	1786253892369	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68615	1786254189357	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68616	1786254249673	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68626	1786254970180	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68665	1786258651566	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68673	1786259404227	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68677	1786259637305	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68682	1786260279047	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68715	1786263313464	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68718	1786263722166	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68734	1786265553737	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68739	1786265963821	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68740	1786265963845	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68745	1786266203790	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68750	1786266927887	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68756	1786267497202	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68767	1786268648664	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68786	1786270151429	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68793	1786270876444	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68794	1786270981038	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68797	1786271046275	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68800	1786271134145	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394022, lon=-48.9137786
+68807	1786271376300	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68808	1786271419847	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68810	1786271442251	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68811	1786271480771	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68816	1786271697701	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68822	1786272451414	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68823	1786272496452	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68824	1786272568142	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68825	1786272587531	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68826	1786272723547	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68828	1786273072464	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68836	1786273630965	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68837	1786273631028	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68840	1786273863790	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68847	1786274626413	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68855	1786275609494	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68857	1786275894559	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68865	1786276669360	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68872	1786277387927	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68873	1786277388079	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68882	1786278193829	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68886	1786278466621	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68899	1786279908496	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68900	1786279970347	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68917	1786281315320	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68924	1786282056096	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68934	1786283075009	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68935	1786283210628	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68938	1786283612282	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68942	1786283914570	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68965	1786286039372	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68980	1786287429349	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68983	1786287836409	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68989	1786288420206	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68994	1786288998924	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68995	1786288999067	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69011	1786290219834	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69014	1786290619423	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69022	1786291479389	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69023	1786291617638	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69025	1786291858286	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+69028	1786292007264	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68594	1786251940437	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68600	1786252628113	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68602	1786252774101	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68605	1786253167886	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68609	1786253396241	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68619	1786254463477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68621	1786254464385	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68622	1786254464422	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68630	1786255249379	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68633	1786255598581	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68634	1786255692125	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68638	1786255976911	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68640	1786256286187	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68641	1786256437106	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68643	1786256711070	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68647	1786256969594	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68652	1786257665942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68653	1786257740194	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68654	1786257740274	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68657	1786258078116	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68660	1786258344645	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68661	1786258345247	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68662	1786258345275	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68666	1786258654178	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68667	1786258654259	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68670	1786259076711	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68678	1786259767760	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68688	1786260991468	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68695	1786261741578	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68702	1786262173106	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68709	1786262843130	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68717	1786263586465	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68720	1786263994445	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68724	1786264327369	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68729	1786265118310	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68733	1786265357414	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68736	1786265792530	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68748	1786266654383	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68754	1786267185243	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68759	1786267911220	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68763	1786268162243	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68773	1786269151526	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68780	1786269855165	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68784	1786269856671	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68787	1786270294785	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68795	1786270983357	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394033, lon=-48.9137832
+68796	1786271042357	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394033, lon=-48.9137832
+68798	1786271073189	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73800333333333, lon=-48.91292833333333
+68805	1786271310283	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68806	1786271359147	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394022, lon=-48.9137786
+68809	1786271421389	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68813	1786271574347	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68817	1786271815507	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68818	1786271933378	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68820	1786272178985	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68829	1786273208486	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68851	1786275289919	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68852	1786275463559	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68853	1786275494308	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68860	1786276267434	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68861	1786276310086	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68862	1786276385211	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68866	1786276792249	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68870	1786277250516	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68871	1786277301715	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68876	1786277389461	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68595	1786252095221	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68598	1786252504835	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68604	1786253022077	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68612	1786253723633	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68617	1786254249808	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68620	1786254463627	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68625	1786254824963	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68649	1786257212872	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68650	1786257379213	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68651	1786257517451	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68656	1786257942427	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68659	1786258344397	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68663	1786258346307	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68668	1786258797491	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68671	1786259219902	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68676	1786259532959	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68681	1786260143223	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68686	1786260661230	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68692	1786261493264	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68693	1786261493330	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68694	1786261566083	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68698	1786262171668	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68700	1786262172305	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68701	1786262172341	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68708	1786262706905	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68727	1786264763075	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68737	1786265950557	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68738	1786265963196	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68747	1786266554517	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68753	1786267056296	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68762	1786268041919	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68765	1786268410573	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68768	1786268797156	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68769	1786268797235	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68771	1786268945626	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68772	1786269073627	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68774	1786269287402	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68779	1786269718887	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68782	1786269856070	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68783	1786269856128	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68801	1786271178250	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68802	1786271238942	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394022, lon=-48.9137786
+68819	1786272084267	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68831	1786273482089	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68832	1786273482109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68833	1786273533282	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68838	1786273631615	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68841	1786274045291	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68850	1786275079556	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68856	1786275758886	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68859	1786276158081	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68880	1786277936603	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68884	1786278266785	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68888	1786278768618	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68904	1786280358640	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68905	1786280460897	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68908	1786280875726	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68912	1786281177770	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68922	1786281907273	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68923	1786281938098	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68927	1786282421856	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68928	1786282593375	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68930	1786282838514	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68937	1786283492040	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68946	1786284487838	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68950	1786284795086	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68952	1786285122731	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68597	1786252353782	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68601	1786252637954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68606	1786253262728	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68618	1786254332721	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68627	1786255133609	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68631	1786255355288	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68636	1786255943020	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68637	1786255943634	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68639	1786256111973	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68645	1786256848052	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68646	1786256848245	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68655	1786257802323	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68658	1786258213935	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68664	1786258464682	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68674	1786259532240	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68675	1786259532318	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68687	1786260830195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68690	1786261257917	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68691	1786261429244	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68696	1786261867026	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68704	1786262438095	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68705	1786262453426	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68706	1786262453510	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68711	1786263096172	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68712	1786263205947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68713	1786263282761	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68714	1786263282842	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68716	1786263450183	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68719	1786263858610	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68722	1786264224930	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68723	1786264225011	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68735	1786265656139	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68742	1786266083458	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68743	1786266083469	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68744	1786266083547	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68751	1786267025583	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68752	1786267025660	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68757	1786267633196	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68766	1786268525399	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68770	1786268799903	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68775	1786269423844	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68785	1786270000499	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68803	1786271244080	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68804	1786271299045	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394022, lon=-48.9137786
+68814	1786271581649	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68815	1786271656867	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68821	1786272315321	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68827	1786272898930	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68830	1786273361747	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68835	1786273630162	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68843	1786274349940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68844	1786274442389	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68849	1786274899285	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68854	1786275571107	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68864	1786276487592	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68869	1786277235337	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68874	1786277388727	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68875	1786277388757	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68877	1786277575623	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68879	1786277808492	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68885	1786278371824	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68891	1786278999938	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68894	1786279232059	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68895	1786279393285	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68599	1786252627716	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68607	1786253341988	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68608	1786253382954	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68610	1786253534744	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68614	1786254056232	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68623	1786254465070	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68624	1786254688563	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68628	1786255189658	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68629	1786255190098	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68632	1786255462401	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68635	1786255843291	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68642	1786256575341	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68644	1786256847755	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68648	1786257087177	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68669	1786258928056	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68672	1786259295230	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68679	1786259918806	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68680	1786260023771	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68683	1786260533234	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68684	1786260533426	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68685	1786260533480	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68689	1786261114551	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68697	1786262018704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68699	1786262171822	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68703	1786262307957	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68707	1786262542112	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68710	1786262960174	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68721	1786264217169	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68725	1786264464238	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68726	1786264619104	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68728	1786264954508	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68730	1786265254134	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68731	1786265270968	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68732	1786265271049	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68741	1786265964599	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68746	1786266354835	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68749	1786266790634	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68755	1786267360944	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68758	1786267775675	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68760	1786267911478	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68761	1786267911494	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68764	1786268300486	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68776	1786269578716	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68777	1786269629177	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68778	1786269629255	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68781	1786269855303	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68788	1786270440196	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68789	1786270512396	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739236666666667, lon=-48.912715
+68790	1786270512474	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137314
+68791	1786270576394	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68792	1786270740298	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68799	1786271112107	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68812	1786271508400	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68834	1786273629999	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68839	1786273743197	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68842	1786274178489	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68845	1786274449831	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68846	1786274510258	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68848	1786274763124	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68858	1786276019102	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68863	1786276403723	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68867	1786276943288	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68868	1786277099455	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68878	1786277672909	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68881	1786278057020	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68883	1786278205413	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68887	1786278624139	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68890	1786278999651	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68892	1786279075143	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68893	1786279135446	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68896	1786279529710	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68903	1786280152007	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68913	1786281313854	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68915	1786281314624	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68916	1786281314651	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68920	1786281794750	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68921	1786281874009	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68929	1786282736932	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68932	1786282914080	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68936	1786283346790	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68947	1786284654236	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68954	1786285123625	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68955	1786285123655	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68956	1786285124275	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68962	1786285809889	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68963	1786285811390	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68977	1786287307206	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68981	1786287600896	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68992	1786288758690	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68996	1786288999830	1	47	46	192.168.1.254	INFO	3	Configuration updated
+68997	1786288999852	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69001	1786289132167	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69004	1786289513249	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69012	1786290327356	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69016	1786290911064	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+69017	1786290977625	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69020	1786291210757	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69031	1786292414072	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69038	1786292773538	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69039	1786292846493	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+69041	1786293032052	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69049	1786293362328	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69063	1786293752611	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69068	1786294065276	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69072	1786294515343	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69073	1786294651217	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69078	1786295145413	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69084	1786295793130	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69095	1786296703735	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69096	1786296703759	1	47	46	192.168.1.254	INFO	3	Device owner: true
+68889	1786278863344	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68897	1786279634195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68907	1786280757801	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68911	1786281050820	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68914	1786281313936	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68918	1786281467052	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68925	1786282206809	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68926	1786282286459	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68939	1786283712135	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68940	1786283771012	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68943	1786284028683	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68945	1786284306878	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68958	1786285372676	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68967	1786286300355	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68972	1786286671017	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68974	1786286935266	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68982	1786287677674	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68984	1786288043773	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68990	1786288496026	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68998	1786289000493	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+68999	1786289060171	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+69000	1786289129260	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+69015	1786290829199	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69024	1786291743149	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69026	1786291873647	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69029	1786292134830	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69043	1786293183379	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69044	1786293242132	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69046	1786293280260	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739383333333333, lon=-48.91331166666667
+69047	1786293302225	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69058	1786293624520	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739328333333333, lon=-48.913675
+69067	1786293928694	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69086	1786296015844	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69094	1786296703633	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+68898	1786279772848	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68901	1786280012840	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68902	1786280015380	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68906	1786280650281	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68909	1786280908861	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68910	1786280957496	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68919	1786281636115	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68931	1786282838767	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68933	1786282969710	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68941	1786283788945	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68944	1786284170381	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68948	1786284756647	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68949	1786284790622	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68951	1786285000029	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68959	1786285530608	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68968	1786286397650	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68970	1786286535332	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68973	1786286806866	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68978	1786287332184	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68979	1786287375605	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68986	1786288254874	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68988	1786288295400	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68993	1786288863128	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69002	1786289259811	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69005	1786289649025	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69008	1786289933853	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+69010	1786290096541	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69019	1786291086553	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69027	1786291894142	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+69030	1786292278140	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69033	1786292711034	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69034	1786292772058	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+69035	1786292772193	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69052	1786293444946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69055	1786293510893	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69060	1786293662271	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69064	1786293774995	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69074	1786294692283	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69085	1786295910867	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69088	1786296293087	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69089	1786296354210	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69090	1786296428868	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68953	1786285122872	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+68957	1786285294240	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68960	1786285678270	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68961	1786285740487	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68964	1786285952195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68966	1786286174718	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68969	1786286534870	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+68971	1786286551347	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68975	1786287071043	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68976	1786287207081	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68985	1786288179455	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+68987	1786288294976	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+68991	1786288622485	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69003	1786289395851	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69006	1786289797425	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69007	1786289861445	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739123333333335, lon=-48.91381166666667
+69009	1786289934443	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69013	1786290463058	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69018	1786291003272	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137814
+69021	1786291380680	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69032	1786292575106	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69040	1786292847362	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69042	1786293180764	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69045	1786293246832	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69048	1786293312737	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69056	1786293576939	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69057	1786293602157	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69059	1786293642992	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69069	1786294167550	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69071	1786294379353	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69075	1786294805455	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69079	1786295280922	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69082	1786295528287	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69092	1786296702904	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69093	1786296703035	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69036	1786292772819	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69037	1786292772885	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69050	1786293378993	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69051	1786293436404	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739526666666666, lon=-48.91347166666666
+69053	1786293446038	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69054	1786293506151	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69061	1786293708839	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69062	1786293722374	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69065	1786293790230	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69066	1786293837216	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69070	1786294303390	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69076	1786294838210	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69077	1786295019962	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69080	1786295417107	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69081	1786295427033	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69083	1786295744464	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69087	1786296156641	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69091	1786296565166	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69097	1786296704814	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69098	1786296842637	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69099	1786296978988	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69100	1786297091117	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69101	1786297285849	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69102	1786297290807	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69103	1786297422335	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69104	1786297558184	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69105	1786297628845	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69106	1786297704316	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69107	1786297792598	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69108	1786297928307	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69109	1786298084382	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69110	1786298221221	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69111	1786298282197	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69112	1786298335268	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69113	1786298471024	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69114	1786298607190	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69115	1786298607653	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69116	1786298762780	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69117	1786298898548	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69118	1786299034466	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69119	1786299149368	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69120	1786299277386	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69121	1786299285488	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69122	1786299472859	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69123	1786299605253	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69124	1786299651152	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69125	1786299741239	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69126	1786299877307	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69127	1786300014043	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69128	1786300129976	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69129	1786300191021	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69130	1786300273246	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69131	1786300373183	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69132	1786300498543	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69133	1786300500417	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69134	1786300583072	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69135	1786300583738	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69136	1786300583765	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69137	1786300584650	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69138	1786300593517	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69139	1786300746959	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69140	1786300892991	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69141	1786301056624	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69142	1786301115528	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69143	1786301195000	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69144	1786301331393	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69145	1786301450881	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69146	1786301467263	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69150	1786302183059	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69151	1786302183076	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69161	1786303350729	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69192	1786306036424	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69195	1786306407253	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69206	1786307643784	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69209	1786307902341	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69211	1786308192287	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69219	1786308611399	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69222	1786308866010	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69227	1786309308541	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69228	1786309310668	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69231	1786309428716	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69233	1786309682167	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69236	1786309961219	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69238	1786310240279	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69245	1786310973603	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69259	1786312396490	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69263	1786312690303	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69266	1786312943973	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69273	1786313930080	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69276	1786314205806	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69277	1786314342174	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69281	1786314779837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69285	1786315196565	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69289	1786315396714	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69303	1786315792578	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69306	1786315879094	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69309	1786315969623	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69321	1786316548284	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69322	1786316768462	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69323	1786316937457	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69331	1786317731029	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69342	1786319005954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69348	1786319583766	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69359	1786320378744	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69362	1786320852329	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69366	1786321189700	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69372	1786321827154	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69382	1786323008326	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69395	1786324149971	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69399	1786324461475	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69402	1786324876376	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69417	1786326426785	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69423	1786327223786	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69424	1786327299368	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69429	1786327899649	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69430	1786327899782	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69444	1786328982763	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69448	1786329364133	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69451	1786329737802	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69457	1786330285639	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69460	1786330644075	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69466	1786331279146	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69471	1786331584393	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69472	1786331584417	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69474	1786331709053	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69479	1786332321005	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69482	1786332596595	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69485	1786332815407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69487	1786333196448	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69503	1786334883188	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69507	1786335295760	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69509	1786335296422	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69512	1786335451871	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69147	1786301619835	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69149	1786301994136	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69160	1786303214772	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69163	1786303470826	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69166	1786303941824	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69170	1786304371927	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69171	1786304402653	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69172	1786304494846	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69178	1786304758499	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69179	1786304953052	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69182	1786305176412	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69185	1786305426838	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69189	1786305762057	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69193	1786306172453	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69201	1786307098409	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69204	1786307533615	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69218	1786308505556	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69224	1786309151578	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69240	1786310389463	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69241	1786310580754	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69251	1786311815292	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69254	1786312142401	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69255	1786312250013	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69258	1786312396042	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69262	1786312554568	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69265	1786312943363	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69275	1786314109547	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69280	1786314644030	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69284	1786315067737	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69291	1786315462553	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69292	1786315489933	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69295	1786315587987	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69305	1786315858732	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69308	1786315939205	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69320	1786316361576	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69328	1786317411050	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69330	1786317611864	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69333	1786317997866	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69337	1786318374789	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69340	1786318737144	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69344	1786319172532	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69347	1786319447374	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69352	1786320042925	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69357	1786320219420	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69369	1786321460943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69380	1786322735978	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69385	1786323271908	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69390	1786324013773	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69391	1786324013928	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69392	1786324014359	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69393	1786324014383	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69398	1786324451277	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69414	1786326161366	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69431	1786327900417	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69432	1786327900454	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69439	1786328419339	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69447	1786329256066	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69450	1786329626563	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69455	1786330021955	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69458	1786330434300	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69459	1786330638932	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69464	1786331043606	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69467	1786331419074	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69468	1786331509952	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69480	1786332460482	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69493	1786333731504	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69499	1786334512136	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69727	1786355502551	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69148	1786301857925	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69153	1786302474906	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69154	1786302474915	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69157	1786302930616	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69164	1786303626935	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69168	1786304057173	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69169	1786304223438	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69175	1786304585266	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69176	1786304585296	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69187	1786305627331	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69188	1786305662209	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69194	1786306266597	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69196	1786306632542	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69197	1786306632653	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69199	1786306958677	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69200	1786307003688	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69203	1786307408173	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69210	1786308056698	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69213	1786308503901	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69214	1786308504023	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69215	1786308504892	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69216	1786308504916	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69217	1786308505096	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69220	1786308747604	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69221	1786308780390	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69223	1786309001454	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69234	1786309818629	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69235	1786309866507	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69242	1786310701501	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69246	1786311110519	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69247	1786311185945	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69248	1786311259175	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69249	1786311395711	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69260	1786312396547	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69268	1786313276640	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69269	1786313297003	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69270	1786313427809	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69293	1786315528684	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69294	1786315551323	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739425, lon=-48.913648333333335
+69296	1786315594735	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69297	1786315648084	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69300	1786315717064	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69307	1786315924582	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69310	1786315990524	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69311	1786316066619	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69317	1786316154296	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69324	1786317070588	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69329	1786317475603	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69334	1786318150900	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69335	1786318161125	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69338	1786318422251	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69339	1786318557975	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69341	1786318872869	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69350	1786319870338	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69358	1786320375587	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69365	1786321132852	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69367	1786321325381	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69370	1786321586640	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69373	1786321990995	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69376	1786322348754	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69377	1786322424265	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69378	1786322482536	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69381	1786322871866	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69386	1786323288966	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69387	1786323475909	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69394	1786324015221	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69152	1786302318870	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69155	1786302651640	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69158	1786303059211	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69159	1786303120382	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69173	1786304584474	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69174	1786304584627	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69180	1786304963351	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69183	1786305229557	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69186	1786305549575	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69198	1786306821913	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69212	1786308409163	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69225	1786309242772	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69226	1786309288716	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69229	1786309348747	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69230	1786309385214	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69237	1786310097923	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69243	1786310837516	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69244	1786310841934	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69252	1786311917109	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69253	1786311955526	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69271	1786313573064	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69272	1786313793648	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69274	1786314108612	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69278	1786314343200	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69283	1786314992139	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69286	1786315314351	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69287	1786315316891	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69288	1786315394646	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137313
+69290	1786315422193	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739555, lon=-48.91362833333333
+69304	1786315849490	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739363333333333, lon=-48.913913333333326
+69313	1786316152718	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69314	1786316152843	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69325	1786317156367	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69326	1786317210000	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69327	1786317346976	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69343	1786319123735	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69345	1786319311237	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69346	1786319371902	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69360	1786320512164	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69368	1786321333105	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69374	1786322095971	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69379	1786322567720	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69383	1786323122561	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69389	1786323877946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69407	1786325255415	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69410	1786325637712	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69411	1786325851591	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69416	1786326289711	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69420	1786326927025	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69421	1786327057387	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69422	1786327111332	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69425	1786327354347	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69428	1786327743492	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69440	1786328568104	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69443	1786328896953	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69446	1786329142402	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69452	1786329745466	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69473	1786331585051	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69476	1786331819307	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69477	1786332052094	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69491	1786333584467	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69496	1786334277844	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69156	1786302802592	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69162	1786303457972	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69165	1786303763174	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69167	1786304049363	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69177	1786304585932	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69181	1786305070822	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69184	1786305305395	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69190	1786305898940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69191	1786306035987	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69202	1786307232306	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69205	1786307587385	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393984, lon=-48.9137776
+69207	1786307774257	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69208	1786307845957	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69232	1786309529526	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69239	1786310253326	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69250	1786311679035	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69256	1786312395859	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739065, lon=-48.91374166666666
+69257	1786312395976	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69261	1786312401251	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69264	1786312807152	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69267	1786313143386	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69279	1786314492548	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69282	1786314915763	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69298	1786315660684	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69299	1786315713409	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739373333333333, lon=-48.913801666666664
+69301	1786315726629	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69302	1786315777172	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69312	1786316077398	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69315	1786316153578	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69316	1786316153638	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69318	1786316200651	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69319	1786316261672	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69332	1786317846353	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69336	1786318298837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69349	1786319733566	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69351	1786320042781	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69353	1786320043461	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69354	1786320043484	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69355	1786320044203	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69356	1786320132648	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69361	1786320719425	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69363	1786320936253	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69364	1786321071910	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69371	1786321699149	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69375	1786322127315	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69384	1786323133848	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69388	1786323614188	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69396	1786324165293	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69397	1786324364252	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69400	1786324579356	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69403	1786325022301	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69404	1786325114305	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69405	1786325114426	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69408	1786325375416	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69412	1786325972304	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69415	1786326289412	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69426	1786327500279	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69435	1786328036392	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69436	1786328112237	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69438	1786328288776	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69441	1786328706074	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69442	1786328836634	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69463	1786330925673	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69469	1786331583599	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69470	1786331583754	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69475	1786331709601	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69481	1786332524332	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69401	1786324735509	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69406	1786325244857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69409	1786325500867	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69413	1786326033252	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69418	1786326545374	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69419	1786326811620	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69427	1786327605395	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69433	1786327901096	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69434	1786327930380	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69437	1786328173190	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69445	1786329118942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69449	1786329490189	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69453	1786329899070	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69454	1786329960636	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69456	1786330139709	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69461	1786330779743	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69462	1786330841201	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69465	1786331180317	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69478	1786332188571	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69488	1786333334838	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69490	1786333471336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69494	1786333933741	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69495	1786334161805	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69497	1786334376641	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69505	1786335145359	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69510	1786335297063	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69511	1786335297133	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69515	1786335715298	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69526	1786337064718	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69534	1786337632257	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69537	1786337698102	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69540	1786337785935	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69550	1786338094297	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69558	1786338705708	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69559	1786338708410	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69568	1786339175411	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69588	1786341322111	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69589	1786341397749	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69591	1786341580684	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69592	1786341775240	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69603	1786342930527	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69604	1786342930559	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69612	1786343777224	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69616	1786344217553	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69626	1786345441264	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69629	1786345720331	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69634	1786346240015	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69637	1786346631922	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69638	1786346693719	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69650	1786347592641	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69653	1786348060243	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69655	1786348199910	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69658	1786348651609	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69659	1786348679783	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69662	1786349079505	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69663	1786349094736	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69666	1786349511790	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69672	1786350114970	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69673	1786350182653	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69674	1786350318813	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69677	1786350691720	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69678	1786350691819	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69685	1786350996643	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69687	1786351296163	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69701	1786352875730	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69483	1786332679454	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69484	1786332679515	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69486	1786333091484	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69489	1786333452465	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69492	1786333600996	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69504	1786335008977	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69506	1786335288032	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69516	1786335851750	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69523	1786336614369	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69525	1786336932428	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69541	1786337830202	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69544	1786337896257	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69547	1786337972762	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69551	1786338105811	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69555	1786338317195	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69561	1786338959160	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69562	1786339028313	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69563	1786339034628	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69573	1786339640141	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69577	1786340111763	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69578	1786340239371	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69593	1786341800884	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69595	1786342120857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69599	1786342605494	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69614	1786344088508	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69625	1786345341429	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69633	1786346116304	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69636	1786346511573	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69639	1786346769849	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69656	1786348336349	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69665	1786349363115	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69676	1786350556298	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69681	1786350815854	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69682	1786350815883	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69689	1786351575210	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69690	1786351635838	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69693	1786351987380	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69694	1786351987495	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69697	1786352405647	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69700	1786352684750	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69705	1786353438945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69498	1786334430239	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69501	1786334686407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69514	1786335600357	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69520	1786336294954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69522	1786336443724	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69524	1786336795912	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69528	1786337198369	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69531	1786337456499	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69539	1786337764362	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69542	1786337852548	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69543	1786337879951	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69545	1786337912663	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69557	1786338577707	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69560	1786338792371	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69565	1786339040189	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69566	1786339040219	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69580	1786340487158	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69581	1786340511524	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69582	1786340648196	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69585	1786340913870	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69587	1786341199223	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69590	1786341450112	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69605	1786342931423	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69606	1786342991649	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69609	1786343444407	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69611	1786343702993	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69615	1786344095208	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69620	1786344752628	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69621	1786344952301	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69622	1786345062379	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69628	1786345710075	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69632	1786346104344	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69640	1786346931451	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69646	1786347123245	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69652	1786347927104	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69661	1786348943449	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69683	1786350816636	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69684	1786350960799	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69692	1786351841459	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69698	1786352548042	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69699	1786352609807	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69702	1786353126620	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69703	1786353126629	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69500	1786334573317	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69502	1786334793936	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69508	1786335296365	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69517	1786335986924	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69518	1786336158423	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69521	1786336356430	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69527	1786337197845	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69530	1786337398149	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69535	1786337665710	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69538	1786337725824	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69548	1786338028250	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69552	1786338160147	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69556	1786338453725	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69569	1786339335485	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69572	1786339550572	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69574	1786339780940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69575	1786339850082	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69579	1786340375568	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69594	1786341951885	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69596	1786342258334	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69600	1786342747319	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69601	1786342929837	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69613	1786343928251	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69617	1786344355801	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69618	1786344614368	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69627	1786345577749	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69630	1786345845808	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69631	1786345989125	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69635	1786346375508	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69642	1786346954793	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69643	1786346954822	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69647	1786347259505	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69648	1786347395989	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69679	1786350815111	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69680	1786350815172	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69686	1786351078648	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69688	1786351411365	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69696	1786352243547	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69704	1786353293020	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69513	1786335477486	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739651666666667, lon=-48.91378833333333
+69519	1786336181545	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393998, lon=-48.9137789
+69529	1786337322112	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69532	1786337566497	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69533	1786337607243	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69536	1786337686801	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739328333333333, lon=-48.91377333333333
+69546	1786337962302	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69549	1786338045694	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69553	1786338165914	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69554	1786338218078	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69564	1786339038201	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69567	1786339041230	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69570	1786339453257	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69571	1786339530088	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69576	1786339925745	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69583	1786340794732	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69584	1786340807551	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69586	1786341043871	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69597	1786342394827	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69598	1786342604735	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69602	1786342929986	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69607	1786343139757	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69608	1786343275602	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69610	1786343605697	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69619	1786344734691	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69623	1786345152240	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69624	1786345198371	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69641	1786346954321	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69644	1786346955756	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69645	1786346997800	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69649	1786347592234	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69651	1786347729524	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69654	1786348064183	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69657	1786348518477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69660	1786348754178	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69664	1786349214814	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69667	1786349647636	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69668	1786349739722	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69669	1786349783905	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69670	1786349906924	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69671	1786350039336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69675	1786350441096	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69691	1786351672492	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69695	1786352143703	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69706	1786353587436	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69707	1786353736002	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69708	1786353828086	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69709	1786353871853	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69710	1786354007803	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69711	1786354191609	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69712	1786354209545	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69713	1786354327490	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69714	1786354503936	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69715	1786354639941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69716	1786354770702	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69717	1786354770870	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69718	1786354771375	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69719	1786354771403	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69720	1786354772186	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69721	1786354806037	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69722	1786354905865	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69723	1786355054352	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69724	1786355159396	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69725	1786355220757	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69726	1786355357204	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69728	1786355622685	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69730	1786355735336	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69734	1786356191125	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69737	1786356703160	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69739	1786356790086	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69750	1786358154785	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69751	1786358215926	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69753	1786358410617	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69770	1786359821147	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69773	1786359886766	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69776	1786359999935	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69783	1786360216734	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69729	1786355698321	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69735	1786356418870	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69738	1786356779063	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69747	1786357894987	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69759	1786358742336	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69785	1786360300093	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69786	1786360342490	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73931, lon=-48.91377000000001
+69788	1786360360204	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69731	1786355870975	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69743	1786357187302	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69746	1786357819239	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69749	1786358039477	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69755	1786358740858	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69757	1786358741644	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69758	1786358741677	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69760	1786358817550	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69761	1786358878039	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69762	1786359004717	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69767	1786359570323	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69768	1786359670803	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137351
+69771	1786359821299	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69772	1786359879736	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69775	1786359953023	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69778	1786360084919	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69781	1786360150971	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69782	1786360210351	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69732	1786356006206	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69733	1786356060513	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69740	1786356928456	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69742	1786357110107	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69744	1786357407283	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69748	1786357934504	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69763	1786359140934	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69764	1786359140949	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.91366333333334
+69766	1786359443641	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69779	1786360090146	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69780	1786360150253	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69789	1786360414962	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69736	1786356554817	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69741	1786357082006	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69745	1786357550489	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69752	1786358291024	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69754	1786358582139	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69756	1786358741002	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+69765	1786359276032	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69769	1786359706213	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69774	1786359939836	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69777	1786360018969	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69784	1786360282863	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69787	1786360348917	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69790	1786360420211	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393947, lon=-48.913777
+69791	1786360420231	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73931, lon=-48.91377000000001
+69792	1786360539029	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+69793	1786360556763	1	47	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+69794	1786360556847	1	47	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+69795	1786360557770	1	47	46	192.168.1.254	INFO	3	Configuration updated
+69796	1786360558054	1	47	46	192.168.1.254	INFO	3	Device owner: true
+69797	1786360561259	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+69798	1786360561854	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 \.
 
 
@@ -12529,6 +16204,9 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 4183	lockKiosk	46	\N
 4184	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"fXumfzkp6ikxQuZerJ5O-UaGcO3mqci-","maxWidth":800}
 4185	lockKiosk	46	\N
+4186	configUpdated	46	\N
+4187	configUpdated	48	\N
+4188	configUpdated	49	\N
 \.
 
 
@@ -12777,7 +16455,7 @@ SELECT pg_catalog.setval('public.applications_id_seq', 87, true);
 -- Name: applicationversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.applicationversions_id_seq', 10103, true);
+SELECT pg_catalog.setval('public.applicationversions_id_seq', 10104, true);
 
 
 --
@@ -12861,7 +16539,7 @@ SELECT pg_catalog.setval('public.icons_id_seq', 1, false);
 -- Name: pendingpushes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4181, true);
+SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4184, true);
 
 
 --
@@ -12882,7 +16560,7 @@ SELECT pg_catalog.setval('public.permissions_id_seq', 134, true);
 -- Name: plugin_audit_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5066, true);
+SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5068, true);
 
 
 --
@@ -12931,14 +16609,14 @@ SELECT pg_catalog.setval('public.plugin_deviceinfo_deviceparams_wifi_id_seq', 1,
 -- Name: plugin_deviceinfo_settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_deviceinfo_settings_id_seq', 1, false);
+SELECT pg_catalog.setval('public.plugin_deviceinfo_settings_id_seq', 1, true);
 
 
 --
 -- Name: plugin_devicelog_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 66130, true);
+SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 69798, true);
 
 
 --
@@ -12987,7 +16665,7 @@ SELECT pg_catalog.setval('public.plugins_id_seq', 6, true);
 -- Name: pushmessages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pushmessages_id_seq', 4185, true);
+SELECT pg_catalog.setval('public.pushmessages_id_seq', 4188, true);
 
 
 --
@@ -13057,7 +16735,7 @@ SELECT pg_catalog.setval('public.userrolesettings_id_seq', 9, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 300, true);
+SELECT pg_catalog.setval('public.users_id_seq', 301, true);
 
 
 --

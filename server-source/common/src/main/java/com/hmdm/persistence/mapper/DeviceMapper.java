@@ -111,12 +111,20 @@ public interface DeviceMapper {
             "  lastUpdate = CAST(EXTRACT(EPOCH FROM NOW()) * 1000 AS BIGINT), " +
             "  enrollTime = COALESCE(enrollTime, CAST(EXTRACT(EPOCH FROM NOW()) * 1000 AS BIGINT)), " +
             "  imeiUpdateTs = #{imeiUpdateTs}, " +
-            "  publicIp = #{publicIp} " +
+            // COALESCE, e nao atribuicao direta: quando a sincronizacao chega por um proxy
+            // o endereco observado e' o do proxy, nao o do aparelho, e nesse caso o
+            // chamador passa null. Sobrescrever com null apagaria o endereco que o proprio
+            // aparelho informou -- que e' o unico que vale.
+            "  publicIp = COALESCE(#{publicIp}, publicIp) " +
             "WHERE id = #{deviceId}"})
     void updateDeviceInfo(@Param("deviceId") Integer deviceId,
                           @Param("info") String info,
                           @Param("imeiUpdateTs") Long imeiUpdateTs,
                           @Param("publicIp") String publicIp);
+
+    @Update({"UPDATE devices SET publicIp = #{publicIp} WHERE id = #{deviceId}"})
+    void updateDeviceIp(@Param("deviceId") Integer deviceId,
+                        @Param("publicIp") String publicIp);
 
     @Update({"UPDATE devices SET " +
             "  custom1 = #{custom1}, " +

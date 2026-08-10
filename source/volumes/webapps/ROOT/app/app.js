@@ -102,12 +102,12 @@ angular.module('headwind-kiosk',
         $stateProvider
             .state('qr', {
                 url: '/qr/{qrCode}/{deviceId}',
-                templateUrl: 'app/components/main/view/qr.html?v=h3a8ad14607',
+                templateUrl: 'app/components/main/view/qr.html?v=hc543735f01',
                 controller: 'QRController'
             })
             .state('summary', {
                 url: '/summary',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.summary" | localize}}' //label to show in breadcrumbs
@@ -119,7 +119,7 @@ angular.module('headwind-kiosk',
             })
             .state('main', {
                 url: '/',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.devices" | localize}}' //label to show in breadcrumbs
@@ -131,7 +131,7 @@ angular.module('headwind-kiosk',
             })
             .state('remote', {
                 url: '/remote',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.remote" | localize}}' //label to show in breadcrumbs
@@ -143,7 +143,7 @@ angular.module('headwind-kiosk',
             })
             .state('kiosk', {
                 url: '/kiosk',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: 'Kiosk'
@@ -155,7 +155,7 @@ angular.module('headwind-kiosk',
             })
             .state('gpsMap', {
                 url: '/gpsMap',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.gpsmap" | localize}}' //label to show in breadcrumbs
@@ -167,7 +167,7 @@ angular.module('headwind-kiosk',
             })
             .state('chat', {
                 url: '/chat',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.chat" | localize}}' //label to show in breadcrumbs
@@ -185,7 +185,7 @@ angular.module('headwind-kiosk',
             // entry gives each screen its own history entry.
             .state('reports', {
                 url: '/reports',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: 'Reports'
@@ -196,7 +196,7 @@ angular.module('headwind-kiosk',
             })
             .state('governance', {
                 url: '/governance',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: 'Backup & restore'
@@ -207,7 +207,7 @@ angular.module('headwind-kiosk',
             })
             .state('generalSettings', {
                 url: '/generalSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: 'Server defaults'
@@ -218,7 +218,7 @@ angular.module('headwind-kiosk',
             })
             .state('extensions', {
                 url: '/extensions',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: 'Plugins'
@@ -229,7 +229,7 @@ angular.module('headwind-kiosk',
             })
             .state('applications', {
                 url: '/applications',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.applications" | localize}}' //label to show in breadcrumbs
@@ -240,7 +240,7 @@ angular.module('headwind-kiosk',
             })
             .state('appVersionsEditor', {
                 url: '/application/{id}/versions',
-                templateUrl: 'app/components/main/view/applicationVersions.html?v=h2b2cf5e4a3',
+                templateUrl: 'app/components/main/view/applicationVersions.html?v=h7b4cd95319',
                 controller: 'ApplicationVersionEditor',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.application.versions" | localize}}', //label to show in breadcrumbs
@@ -250,7 +250,7 @@ angular.module('headwind-kiosk',
             })
             .state('configurations', {
                 url: '/configurations',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.configurations" | localize}}' //label to show in breadcrumbs
@@ -261,7 +261,7 @@ angular.module('headwind-kiosk',
             })
             .state('files', {
                 url: '/files',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.files" | localize}}' //label to show in breadcrumbs
@@ -272,7 +272,7 @@ angular.module('headwind-kiosk',
             })
             .state('designSettings', {
                 url: '/designSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.default.design" | localize}}' //label to show in breadcrumbs
@@ -283,7 +283,7 @@ angular.module('headwind-kiosk',
             })
             .state('commonSettings', {
                 url: '/commonSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.common.settings" | localize}}' //label to show in breadcrumbs
@@ -303,7 +303,7 @@ angular.module('headwind-kiosk',
             })
             .state('users', {
                 url: '/users',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.users" | localize}}' //label to show in breadcrumbs
@@ -314,7 +314,7 @@ angular.module('headwind-kiosk',
             })
             .state('roles', {
                 url: '/roles',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.roles" | localize}}' //label to show in breadcrumbs
@@ -325,7 +325,7 @@ angular.module('headwind-kiosk',
             })
             .state('groups', {
                 url: '/groups',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.groups" | localize}}' //label to show in breadcrumbs
@@ -336,7 +336,7 @@ angular.module('headwind-kiosk',
             })
             .state('icons', {
                 url: '/icons',
-                templateUrl: 'app/components/main/view/content.html?v=hf8e203f2ca',
+                templateUrl: 'app/components/main/view/content.html?v=h18de1927ad',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"tab.icons" | localize}}' //label to show in breadcrumbs
@@ -380,12 +380,12 @@ angular.module('headwind-kiosk',
             })
             .state('login', {
                 url: '/login',
-                templateUrl: 'app/components/main/view/login.html?v=hd642193f21',
+                templateUrl: 'app/components/main/view/login.html?v=h7e17f3868c',
                 controller: 'LoginController'
             })
             .state('profile', {
                 url: '/profile',
-                templateUrl: 'app/components/main/view/profile.html?v=h96817a2d9b',
+                templateUrl: 'app/components/main/view/profile.html?v=h5b0676a2ee',
                 controller: 'ProfileController'
             })
             .state('updates', {
@@ -396,32 +396,32 @@ angular.module('headwind-kiosk',
             })
             .state('control-panel', {
                 url: '/control-panel',
-                templateUrl: 'app/components/control-panel/view/panel.html?v=h3ff15d4e10',
+                templateUrl: 'app/components/control-panel/view/panel.html?v=h30e59aa872',
                 controller: 'ControlPanelController'
             })
             .state('passwordReset', {
                 url: '/passwordReset/{token}',
-                templateUrl: 'app/components/main/view/passwordReset.html?v=h4d3492617f',
+                templateUrl: 'app/components/main/view/passwordReset.html?v=h44419da27e',
                 controller: 'PasswordResetController'
             })
             .state('passwordRecovery', {
                 url: '/passwordRecovery',
-                templateUrl: 'app/components/main/view/passwordRecovery.html?v=h762fd9ee56',
+                templateUrl: 'app/components/main/view/passwordRecovery.html?v=h12658dc04f',
                 controller: 'PasswordRecoveryController'
             })
             .state('twoFactorAuth', {
                 url: '/twofactor',
-                templateUrl: 'app/components/main/view/twoFactorAuth.html?v=h87a04248d9',
+                templateUrl: 'app/components/main/view/twoFactorAuth.html?v=h67065d9895',
                 controller: 'TwoFactorAuthController'
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'app/components/main/view/signup.html?v=h1d55103704',
+                templateUrl: 'app/components/main/view/signup.html?v=hefb40716dc',
                 controller: 'SignupController'
             })
             .state('signupComplete', {
                 url: '/signupComplete/{token}',
-                templateUrl: 'app/components/main/view/signupComplete.html?v=h2266e338bc',
+                templateUrl: 'app/components/main/view/signupComplete.html?v=hdd7c42bf6b',
                 controller: 'SignupCompleteController'
             })
     })

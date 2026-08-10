@@ -21,7 +21,7 @@ angular.module('headwind-kiosk')
 
         $scope.editRole = function (role) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/main/view/modal/role.html?v=h9619222374',
+                templateUrl: 'app/components/main/view/modal/role.html?v=h9f603a9f3c',
                 controller: 'RoleModalController',
                 resolve: {
                     role: function () {
