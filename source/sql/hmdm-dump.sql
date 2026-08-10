@@ -2963,7 +2963,7 @@ COPY public.applications (id, pkg, name, showicon, customerid, system, latestver
 77	com.samsung.android.app.telephonyui	Samsung Telephony	f	1	t	10076	f	app	\N	\N	f	f	\N
 86	com.whatsapp	WhatsApp	t	1	f	10092	f	app	\N	\N	f	f	\N
 46	com.hmdm.launcher	Headwind MDM	f	1	f	10045	f	app	\N	\N	f	f	\N
-87	com.hwmdm.remote	Suporte Remoto	t	1	f	10110	t	app	\N	\N	t	f	\N
+87	com.hwmdm.remote	Suporte Remoto	t	1	f	10113	t	app	\N	\N	t	f	\N
 \.
 
 
@@ -3056,6 +3056,9 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10108	87	1.9	http://192.168.1.75:8080/files/hwmdm-remote-1.9.apk	tQ8z/EAavdYpInOeGTuB3Ac/y5geUWBUdUXHds2Fda4	f	\N	\N	10
 10109	87	1.10	http://192.168.1.75:8080/files/hwmdm-remote-1.10.apk	SMXyxa12zTB9IMdaXnO71JWMOpLNDJofchcK90mPe1Q	f	\N	\N	11
 10110	87	1.11	http://192.168.1.75:8080/files/hwmdm-remote-1.11.apk	jXzRAAwavptrVlxFHDrY1s2+iq6y0cokd4gu3LJWyYg	f	\N	\N	12
+10111	87	1.12	http://192.168.1.75:8080/files/hwmdm-remote-1.12.apk	tAJysfJ3DYSdwP2OrEa9Yd6RTiGvpO4xjbqhYC+P+MI	f	\N	\N	13
+10112	87	1.13	http://192.168.1.75:8080/files/hwmdm-remote-1.13.apk	FpgS+aeKQgdGDyXTUflEr76YyvJvKsEhcA/cdVp5Mug	f	\N	\N	14
+10113	87	1.14	http://192.168.1.75:8080/files/hwmdm-remote-1.14.apk	IgxFToQDmDGSzv8CQJG7tGLFuyu5y9Ds4gsiQ3+kfeI	f	\N	\N	15
 \.
 
 
@@ -3126,7 +3129,7 @@ COPY public.configurationapplications (id, configurationid, applicationid, remov
 812	11	9	f	f	10008	1	\N	\N	f	f	f
 814	11	86	f	t	10092	1	\N	\N	f	f	f
 813	11	46	f	f	10045	1	\N	\N	f	f	f
-815	11	87	f	t	10110	1	\N	\N	f	f	f
+815	11	87	f	t	10113	1	\N	\N	f	f	f
 \.
 
 
@@ -3162,7 +3165,7 @@ COPY public.configurations (id, name, description, type, password, backgroundcol
 --
 
 COPY public.customers (id, name, description, filesdir, master, prefix, registrationtime, lastlogintime, accounttype, expirytime, devicelimit, customerstatus, email, firstname, lastname, language, inactivestate, pausestate, abandonstate, sizelimit, signupstatus, signuptoken) FROM stdin;
-1	DEFAULT	Default customer account used for managing the application data in PRIVATE usage scenario		f	e1-	\N	1786371947461	0	\N	3	\N	\N	\N	\N	\N	0	0	0	100	active	\N
+1	DEFAULT	Default customer account used for managing the application data in PRIVATE usage scenario		f	e1-	\N	1786380994954	0	\N	3	\N	\N	\N	\N	\N	0	0	0	100	active	\N
 \.
 
 
@@ -3414,10 +3417,10 @@ COPY public.devicegroups (id, deviceid, groupid) FROM stdin;
 --
 
 COPY public.devices (id, number, description, lastupdate, configurationid, oldconfigurationid, info, imei, phone, customerid, imeiupdatets, custom1, custom2, custom3, oldnumber, fastsearch, enrolltime, infojson, publicip) FROM stdin;
-46	R9XT200AMYY	\N	1786372007320	11	\N	{"model":"SM-T225","permissions":[1,0,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.187","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.7","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":41,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393969,"lon":-48.9137787,"ts":1786371974622},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786371974622, "lat": -20.7393969, "lon": -48.9137787}, "kioskMode": false, "permissions": [1, 0, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.187", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.7", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 41, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.126
-47	R9XT106VP1E	\N	1786371960528	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.11","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":26,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.739351666666668,"lon":-48.913795,"ts":1786371926996},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786371926996, "lat": -20.739351666666668, "lon": -48.913795}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.11", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 26, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.122
-48	R9XT106Y5RP	\N	1786371936884	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.189","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.9","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":30,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393649,"lon":-48.9137325,"ts":1786371933008},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "location": {"ts": 1786371933008, "lat": -20.7393649, "lon": -48.9137325}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.189", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.9", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 30, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.165
-49	R9XT108EM8T	\N	1786371983460	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.11","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT108EM8T","imei":"350538862350639","batteryLevel":91,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393627,"lon":-48.9137262,"ts":1786371954384},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862350639","serial":"R9XT108EM8T","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	8EM8T	1786362889484	{"cpu": "arm64-v8a", "imei": "350538862350639", "files": [], "imei2": "350538862350639", "model": "SM-T225", "serial": "R9XT108EM8T", "mdmMode": true, "deviceId": "R9XT108EM8T", "location": {"ts": 1786371954384, "lat": -20.7393627, "lon": -48.9137262}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.11", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 91, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.123
+46	R9XT200AMYY	\N	1786381122339	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.187","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.14","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT200AMYY","imei":"350538862379893","batteryLevel":39,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393667,"lon":-48.9137422,"ts":1786381118218},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862379893","serial":"R9XT200AMYY","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	0AMYY	1786102021427	{"cpu": "arm64-v8a", "imei": "350538862379893", "files": [], "imei2": "350538862379893", "model": "SM-T225", "serial": "R9XT200AMYY", "mdmMode": true, "deviceId": "R9XT200AMYY", "location": {"ts": 1786381118218, "lat": -20.7393667, "lon": -48.9137422}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.187", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.14", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 39, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.126
+47	R9XT106VP1E	\N	1786381220602	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.188","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.14","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106VP1E","imei":"350538862256901","batteryLevel":52,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393671,"lon":-48.9137243,"ts":1786381209274},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862256901","serial":"R9XT106VP1E","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6VP1E	1786123743714	{"cpu": "arm64-v8a", "imei": "350538862256901", "files": [], "imei2": "350538862256901", "model": "SM-T225", "serial": "R9XT106VP1E", "mdmMode": true, "deviceId": "R9XT106VP1E", "location": {"ts": 1786381209274, "lat": -20.7393671, "lon": -48.9137243}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.188", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.14", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 52, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.122
+48	R9XT106Y5RP	\N	1786380851384	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"150.0.7871.189","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.14","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT106Y5RP","imei":"350538862283871","batteryLevel":60,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393655,"lon":-48.9137449,"ts":1786380813848},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862283871","serial":"R9XT106Y5RP","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	6Y5RP	1786131082259	{"cpu": "arm64-v8a", "imei": "350538862283871", "files": [], "imei2": "350538862283871", "model": "SM-T225", "serial": "R9XT106Y5RP", "mdmMode": true, "deviceId": "R9XT106Y5RP", "location": {"ts": 1786380813848, "lat": -20.7393655, "lon": -48.9137449}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "150.0.7871.189", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.14", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 60, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.165
+49	R9XT108EM8T	\N	1786381069654	11	\N	{"model":"SM-T225","permissions":[1,1,1,0],"applications":[{"id":null,"name":"Chrome Browser","pkg":"com.android.chrome","version":"120.0.6099.193","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Headwind MDM","pkg":"com.hmdm.launcher","version":"6.36","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"WhatsApp","pkg":"com.whatsapp","version":"2.26.29.71","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false},{"id":null,"name":"Suporte Remoto","pkg":"com.hwmdm.remote","version":"1.14","versionCode":0,"arch":null,"url":null,"split":false,"urlArmeabi":null,"urlArm64":null,"showIcon":false,"useKiosk":false,"system":false,"configurations":[],"latestVersion":null,"runAfterInstall":false,"runAtBoot":false,"skipVersion":false,"type":null,"iconId":null,"bottom":false,"longTap":false,"intent":null,"remove":false,"selected":false,"customerId":0,"customerName":null,"commonApplication":false,"deletionProhibited":false,"outdated":false,"latestVersionText":null,"usedVersionId":null,"filePath":null,"action":0,"common":false}],"files":[],"deviceId":"R9XT108EM8T","imei":"350538862350639","batteryLevel":83,"androidVersion":"14","mdmMode":true,"kioskMode":false,"location":{"lat":-20.7393673,"lon":-48.9137403,"ts":1786381030293},"launcherType":"opensource","launcherPackage":"com.hmdm.launcher","defaultLauncher":true,"imei2":"350538862350639","serial":"R9XT108EM8T","cpu":"arm64-v8a"}	\N	\N	1	\N	\N	\N	\N	\N	8EM8T	1786362889484	{"cpu": "arm64-v8a", "imei": "350538862350639", "files": [], "imei2": "350538862350639", "model": "SM-T225", "serial": "R9XT108EM8T", "mdmMode": true, "deviceId": "R9XT108EM8T", "location": {"ts": 1786381030293, "lat": -20.7393673, "lon": -48.9137403}, "kioskMode": false, "permissions": [1, 1, 1, 0], "applications": [{"id": null, "pkg": "com.android.chrome", "url": null, "arch": null, "name": "Chrome Browser", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "120.0.6099.193", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hmdm.launcher", "url": null, "arch": null, "name": "Headwind MDM", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "6.36", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.whatsapp", "url": null, "arch": null, "name": "WhatsApp", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "2.26.29.71", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}, {"id": null, "pkg": "com.hwmdm.remote", "url": null, "arch": null, "name": "Suporte Remoto", "type": null, "split": false, "action": 0, "bottom": false, "common": false, "iconId": null, "intent": null, "remove": false, "system": false, "longTap": false, "version": "1.14", "filePath": null, "outdated": false, "selected": false, "showIcon": false, "urlArm64": null, "useKiosk": false, "runAtBoot": false, "customerId": 0, "urlArmeabi": null, "skipVersion": false, "versionCode": 0, "customerName": null, "latestVersion": null, "usedVersionId": null, "configurations": [], "runAfterInstall": false, "commonApplication": false, "latestVersionText": null, "deletionProhibited": false}], "batteryLevel": 83, "launcherType": "opensource", "androidVersion": "14", "defaultLauncher": true, "launcherPackage": "com.hmdm.launcher"}	192.168.1.123
 \.
 
 
@@ -3426,10 +3429,10 @@ COPY public.devices (id, number, description, lastupdate, configurationid, oldco
 --
 
 COPY public.devicestatuses (deviceid, configfilesstatus, applicationsstatus) FROM stdin;
-46	UP_TO_DATE	VERSION_MISMATCH
-47	UP_TO_DATE	SUCCESS
-48	UP_TO_DATE	VERSION_MISMATCH
+48	UP_TO_DATE	SUCCESS
 49	UP_TO_DATE	SUCCESS
+46	UP_TO_DATE	SUCCESS
+47	UP_TO_DATE	SUCCESS
 \.
 
 
@@ -3464,601 +3467,15 @@ COPY public.icons (id, customerid, name, fileid) FROM stdin;
 --
 
 COPY public.pendingpushes (id, messageid, status, createtime, sendtime) FROM stdin;
-3588	3592	1	1786106362203	1786106365324
-3589	3593	1	1786106392133	1786106394623
-3590	3594	1	1786106394572	1786106394623
-3591	3595	1	1786106397075	1786106399890
-3592	3596	1	1786106399590	1786106399890
-3593	3597	1	1786106402092	1786106404948
-3594	3598	1	1786106404575	1786106404948
-3595	3599	1	1786106407298	1786106410010
-3596	3600	1	1786106409593	1786106410010
-3597	3601	1	1786106412072	1786106415286
-3598	3602	1	1786106414591	1786106415286
-3599	3603	1	1786106417100	1786106491515
-3600	3604	1	1786106419574	1786106491515
-3601	3605	1	1786106422078	1786106491515
-3602	3606	1	1786106424571	1786106491515
-3603	3607	1	1786106427092	1786106491515
-3604	3608	1	1786106429574	1786106491515
-3605	3609	1	1786106432070	1786106491515
-3606	3610	1	1786106434576	1786106491515
-3607	3611	1	1786106437078	1786106491515
-3608	3612	1	1786106439577	1786106491515
-3609	3613	1	1786106442072	1786106491515
-3610	3614	1	1786106444574	1786106491515
-3611	3615	1	1786106447070	1786106491515
-3612	3616	1	1786106449571	1786106491515
-3613	3617	1	1786106452074	1786106491515
-3614	3618	1	1786106454572	1786106491515
-3615	3619	1	1786106457069	1786106491515
-3616	3620	1	1786106459573	1786106491515
-3617	3621	1	1786106462071	1786106491515
-3618	3622	1	1786106464713	1786106491515
-3619	3623	1	1786106467215	1786106491515
-3620	3624	1	1786106470598	1786106491515
-3621	3625	1	1786106475592	1786106491515
-3622	3626	1	1786106477591	1786106491515
-3623	3627	1	1786106480582	1786106491515
-3624	3628	1	1786106482587	1786106491515
-3625	3629	1	1786106485594	1786106491515
-3626	3630	1	1786106487583	1786106491515
-3627	3631	1	1786106490594	1786106491515
-3628	3632	1	1786106492584	1786106519483
-3629	3633	1	1786106495590	1786106519483
-3630	3634	1	1786106497608	1786106519483
-3631	3635	1	1786106500580	1786106519483
-3632	3636	1	1786106502610	1786106519483
-3633	3637	1	1786106505591	1786106519483
-3634	3638	1	1786106507685	1786106519483
-3635	3639	1	1786106510638	1786106519483
-3636	3640	1	1786106512591	1786106519483
-3637	3641	1	1786106515602	1786106519483
-3638	3642	1	1786106517600	1786106519483
-3639	3643	1	1786106520591	1786106524576
-3640	3644	1	1786106522808	1786106524576
-3641	3645	1	1786106525581	1786106529673
-3642	3646	1	1786106527586	1786106529673
-3643	3647	1	1786107100592	1786107116798
-3644	3648	1	1786107520592	1786107525335
-3645	3649	1	1786108162226	1786108166267
-3646	3650	1	1786108164729	1786108166267
-3647	3651	1	1786108167227	1786108171539
-3648	3652	1	1786108169747	1786108171539
-3649	3653	1	1786108172230	1786108176618
-3650	3654	1	1786108174733	1786108176618
-3651	3655	1	1786108177241	1786108181692
-3652	3656	1	1786108179737	1786108181692
-3653	3657	1	1786108182230	1786108186773
-3654	3658	1	1786108184730	1786108186773
-3655	3659	1	1786108187229	1786108192055
-3656	3660	1	1786108189735	1786108192055
-3657	3661	1	1786108192229	1786108197345
-3658	3662	1	1786108194734	1786108197345
-3659	3663	1	1786108197229	1786108197345
-3660	3664	1	1786108199741	1786108202404
-3661	3665	1	1786108202230	1786108202404
-3662	3666	1	1786108204731	1786108207518
-3663	3667	1	1786108207231	1786108207518
-3664	3668	1	1786108209724	1786108212583
-3665	3669	1	1786108212229	1786108212583
-3666	3670	1	1786108214725	1786108217651
-3667	3671	1	1786108217236	1786108217651
-3668	3672	1	1786108219730	1786108222709
-3669	3673	1	1786108222231	1786108222709
-3670	3674	1	1786108224729	1786108227761
-3671	3675	1	1786108227232	1786108227761
-3672	3676	1	1786108229725	1786108232818
-3673	3677	1	1786108231700	1786108232818
-3674	3678	1	1786108234198	1786108237896
-3675	3679	1	1786108627427	1786108629965
-3676	3680	1	1786108629935	1786108629965
-3677	3681	1	1786108632427	1786108635096
-3678	3682	1	1786108634927	1786108635096
-3679	3683	1	1786108637418	1786108640236
-3680	3684	1	1786108639921	1786108640236
-3681	3685	1	1786108642422	1786108645300
-3682	3686	1	1786108644949	1786108645300
-3683	3687	1	1786108647458	1786108650362
-3684	3688	1	1786108649924	1786108650362
-3685	3689	1	1786108652427	1786108655430
-3686	3690	1	1786108654921	1786108655430
-3687	3691	1	1786108657423	1786108660531
-3688	3692	1	1786108659924	1786108660531
-3689	3693	1	1786108662427	1786108665641
-3690	3694	1	1786108664923	1786108665641
-3691	3695	1	1786108667428	1786108670706
-3692	3696	1	1786108669966	1786108670706
-3693	3697	1	1786108672432	1786108675783
-3694	3698	1	1786108674923	1786108675783
-3695	3699	1	1786108677429	1786108680862
-3696	3700	1	1786108679938	1786108680862
-3697	3701	1	1786108682603	1786108685929
-3698	3702	1	1786108685620	1786108685929
-3699	3703	1	1786108687623	1786108691037
-3700	3704	1	1786108690606	1786108691037
-3701	3705	1	1786108695613	1786108700835
-3702	3706	1	1786108702427	1786108705914
-3703	3707	1	1786108704920	1786108705914
-3704	3708	1	1786108707418	1786108710966
-3705	3709	1	1786108709930	1786108710966
-3706	3710	1	1786108712447	1786108716019
-3707	3711	1	1786108714931	1786108716019
-3708	3712	1	1786108717417	1786108721077
-3709	3713	1	1786108719963	1786108721077
-3710	3714	1	1786108722417	1786108726469
-3711	3715	1	1786108724929	1786108726469
-3712	3716	1	1786108727418	1786108731549
-3713	3717	1	1786108729924	1786108731549
-3714	3718	1	1786108732416	1786108736614
-3717	3721	1	1786108740620	1786108741681
-3721	3725	1	1786108750607	1786108751803
-3715	3719	1	1786108734958	1786108736614
-3716	3720	1	1786108737615	1786108741681
-3718	3722	1	1786108742615	1786108746740
-3719	3723	1	1786108745610	1786108746740
-3720	3724	1	1786108747612	1786108751803
-3722	3726	1	1786108752613	1786108756858
-3723	3727	1	1786108755606	1786108756858
-3724	3728	1	1786108757602	1786108761917
-3725	3729	1	1786108760604	1786108761917
-3726	3730	1	1786108762612	1786108767095
-3727	3731	1	1786108765607	1786108767095
-3728	3732	1	1786108767604	1786108772204
-3729	3733	1	1786108770603	1786108772204
-3730	3734	1	1786108772612	1786108777278
-3731	3735	1	1786108775611	1786108777278
-3732	3736	1	1786108777613	1786108782332
-3733	3737	1	1786108780649	1786108782332
-3734	3738	1	1786108782608	1786108787388
-3735	3739	1	1786108785608	1786108787388
-3736	3740	1	1786108787611	1786108792457
-3737	3741	1	1786108790608	1786108792457
-3738	3742	1	1786108792615	1786108797682
-3739	3743	1	1786108922421	1786108925976
-3740	3744	1	1786108924927	1786108925976
-3741	3745	1	1786108927431	1786108931033
-3742	3746	1	1786108930297	1786108931033
-3743	3747	1	1786108932423	1786108936094
-3744	3748	1	1786108934932	1786108936094
-3745	3749	1	1786108937416	1786108941154
-3746	3750	1	1786108940287	1786108941154
-3747	3751	1	1786108942432	1786108946220
-3748	3752	1	1786108944931	1786108946220
-3749	3753	1	1786108947417	1786108951278
-3750	3754	1	1786108949964	1786108951278
-3751	3755	1	1786108952430	1786108956354
-3752	3756	1	1786108954927	1786108956354
-3753	3757	1	1786108957431	1786108961404
-3754	3758	1	1786108959918	1786108961404
-3755	3759	1	1786108962420	1786108966458
-3756	3760	1	1786108964928	1786108966458
-3757	3761	1	1786108967425	1786108971518
-3758	3762	1	1786108969969	1786108971518
-3759	3763	1	1786108972421	1786108976687
-3760	3764	1	1786108974919	1786108976687
-3761	3765	1	1786108977434	1786109006039
-3762	3766	1	1786108979929	1786109006039
-3763	3767	1	1786108982434	1786109006039
-3764	3768	1	1786108984930	1786109006039
-3765	3769	1	1786108987429	1786109006039
-3766	3770	1	1786108989917	1786109006039
-3767	3771	1	1786108992427	1786109006039
-3768	3772	1	1786108994922	1786109006039
-3769	3773	1	1786108997429	1786109006039
-3770	3774	1	1786108999928	1786109006039
-3771	3775	1	1786109002428	1786109006039
-3772	3776	1	1786109004925	1786109006039
-3773	3777	1	1786109007424	1786109011143
-3774	3778	1	1786109009919	1786109011143
-3775	3779	1	1786109012426	1786109016217
-3776	3780	1	1786109014929	1786109016217
-3777	3781	1	1786109017425	1786109021344
-3778	3782	1	1786109019923	1786109021344
-3779	3783	1	1786109022418	1786109026401
-3780	3784	1	1786109024916	1786109026401
-3781	3785	1	1786109027419	1786109031451
-3782	3786	1	1786109029932	1786109031451
-3783	3787	1	1786109032417	1786109036497
-3784	3788	1	1786109034931	1786109036497
-3785	3789	1	1786109037424	1786109041559
-3786	3790	1	1786109039919	1786109041559
-3787	3791	1	1786109042436	1786109046628
-3788	3792	1	1786109044925	1786109046628
-3789	3793	1	1786109047434	1786109051919
-3790	3794	1	1786109049924	1786109051919
-3791	3795	1	1786109052422	1786109056980
-3792	3796	1	1786109054918	1786109056980
-3793	3797	1	1786109057419	1786109062076
-3794	3798	1	1786109059920	1786109062076
-3795	3799	1	1786109062417	1786109067136
-3796	3800	1	1786109064919	1786109067136
-3797	3801	1	1786109067425	1786109072210
-3798	3802	1	1786109069930	1786109072210
-3799	3803	1	1786109072424	1786109077269
-3800	3804	1	1786109074923	1786109077269
-3801	3805	1	1786109077416	1786109082325
-3802	3806	1	1786109080290	1786109082325
-3803	3807	1	1786109082426	1786109087387
-3804	3808	1	1786109084927	1786109087387
-3805	3809	1	1786109087430	1786109092441
-3806	3810	1	1786109089965	1786109092441
-3807	3811	1	1786109092419	1786109097499
-3808	3812	1	1786109094939	1786109097499
-3809	3813	1	1786109097424	1786109097499
-3810	3814	1	1786109099965	1786109102562
-3811	3815	1	1786109102434	1786109102562
-3812	3816	1	1786109104920	1786109107795
-3813	3817	1	1786109107420	1786109107795
-3814	3818	1	1786109109926	1786109113069
-3815	3819	1	1786109112428	1786109113069
-3816	3820	1	1786109114924	1786109126336
-3817	3821	1	1786109117434	1786109126336
-3818	3822	1	1786109119922	1786109126336
-3819	3823	1	1786109122424	1786109126336
-3820	3824	1	1786109364993	1786109433821
-3821	3825	1	1786109957902	1786109997687
-3822	3826	1	1786109960407	1786109997687
-3823	3827	1	1786109962906	1786109997687
-3824	3828	1	1786109965414	1786109997687
-3825	3829	1	1786109967941	1786109997687
-3826	3830	1	1786109970416	1786109997687
-3827	3831	1	1786109972916	1786109997687
-3828	3832	1	1786109975404	1786109997687
-3829	3833	1	1786109977905	1786109997687
-3830	3834	1	1786109980432	1786109997687
-3831	3835	1	1786109983289	1786109997687
-3832	3836	1	1786109985428	1786109997687
-3833	3837	1	1786109987910	1786109997687
-3834	3838	1	1786109989875	1786109997687
-3841	3845	1	1786110005410	1786110008164
-3842	3846	1	1786110007909	1786110008164
-3843	3847	1	1786110010416	1786110013231
-3844	3848	1	1786110012907	1786110013231
-3845	3849	1	1786110015413	1786110018294
-3848	3852	1	1786110022909	1786110023345
-3849	3853	1	1786110025413	1786110028401
-3854	3858	1	1786110037904	1786110038502
-3855	3859	1	1786110040403	1786110043550
-3858	3862	1	1786110047907	1786110048604
-3859	3863	1	1786110050403	1786110053661
-3861	3865	1	1786110053904	1786110058723
-3835	3839	1	1786109990405	1786109997687
-3836	3840	1	1786109992906	1786109997687
-3837	3841	1	1786109995404	1786109997687
-3846	3850	1	1786110017913	1786110018294
-3847	3851	1	1786110020413	1786110023345
-3852	3856	1	1786110032908	1786110033459
-3853	3857	1	1786110035412	1786110038502
-3862	3866	1	1786110055410	1786110058723
-3838	3842	1	1786109997909	1786110003089
-3839	3843	1	1786110000415	1786110003089
-3840	3844	1	1786110003970	1786110008164
-3850	3854	1	1786110027911	1786110028401
-3851	3855	1	1786110030408	1786110033459
-3856	3860	1	1786110042906	1786110043550
-3857	3861	1	1786110045402	1786110048604
-3863	3867	1	1786110057909	1786110058723
-3869	3873	1	1786110070711	1786110073875
-3860	3864	1	1786110052905	1786110053661
-3864	3868	1	1786110060407	1786110063768
-3867	3871	1	1786110067906	1786110068824
-3865	3869	1	1786110062913	1786110063768
-3866	3870	1	1786110065404	1786110068824
-3868	3872	1	1786110070406	1786110073875
-3870	3874	1	1786110072905	1786110073875
-3871	3875	1	1786110075413	1786110078920
-3872	3876	1	1786110077902	1786110078920
-3873	3877	1	1786110080408	1786110084002
-3874	3878	1	1786110082910	1786110084002
-3875	3879	1	1786110085414	1786110089050
-3876	3880	1	1786110087904	1786110089050
-3877	3881	1	1786110088524	1786110089050
-3878	3882	1	1786110090410	1786110094124
-3879	3883	1	1786110092903	1786110094124
-3880	3884	1	1786110095415	1786110099182
-3881	3885	1	1786110097907	1786110099182
-3882	3886	1	1786110100455	1786110104386
-3883	3887	1	1786110102919	1786110104386
-3884	3888	1	1786110105405	1786110109833
-3885	3889	1	1786110107907	1786110109833
-3886	3890	1	1786110404004	1786110406040
-3887	3891	1	1786111162780	1786111165505
-3888	3892	1	1786111165477	1786111165505
-3889	3893	1	1786111167964	1786111170571
-3890	3894	1	1786111170467	1786111170571
-3891	3895	1	1786111172971	1786111175623
-3892	3896	1	1786111175502	1786111175623
-3893	3897	1	1786111177962	1786111180679
-3894	3898	1	1786111180473	1786111180679
-3895	3899	1	1786111182976	1786111185746
-3896	3900	1	1786111185487	1786111185746
-3897	3901	1	1786111187974	1786111190821
-3898	3902	1	1786111190476	1786111190821
-3899	3903	1	1786111192977	1786111195859
-3900	3904	1	1786111195470	1786111195859
-3901	3905	1	1786111197965	1786111200947
-3902	3906	1	1786111200618	1786111200947
-3903	3907	1	1786111203617	1786111206018
-3904	3908	1	1786111205623	1786111206018
-3905	3909	1	1786111208617	1786111211066
-3906	3910	1	1786111210622	1786111211066
-3907	3911	1	1786111213616	1786111216132
-3908	3912	1	1786111215617	1786111216132
-3909	3913	1	1786111218617	1786111221487
-3910	3914	1	1786111220624	1786111221487
-3911	3915	1	1786111223621	1786111226567
-3912	3916	1	1786111225621	1786111226567
-3913	3917	1	1786111228648	1786111231826
-3914	3918	1	1786111230621	1786111231826
-3915	3919	1	1786111233626	1786111236886
-3916	3920	1	1786111235618	1786111236886
-3917	3921	1	1786111237976	1786111241941
-3918	3922	1	1786111240463	1786111241941
-3919	3923	1	1786111242993	1786111246999
-3920	3924	1	1786111245471	1786111246999
-3921	3925	1	1786111247974	1786111252079
-3922	3926	1	1786111250466	1786111252079
-3923	3927	1	1786111252976	1786111257158
-3924	3928	1	1786111255470	1786111257158
-3925	3929	1	1786111257970	1786111262209
-3926	3930	1	1786111260474	1786111262209
-3927	3931	1	1786111262975	1786111267268
-3928	3932	1	1786111265475	1786111267268
-3929	3933	1	1786111267973	1786111272536
-3930	3934	1	1786111270473	1786111272536
-3931	3935	1	1786111272976	1786111277607
-3932	3936	1	1786111275476	1786111277607
-3933	3937	1	1786111277968	1786111282660
-3934	3938	1	1786111280473	1786111282660
-3935	3939	1	1786111282968	1786111287722
-3936	3940	1	1786111285464	1786111287722
-3937	3941	1	1786111287978	1786111292793
-3938	3942	1	1786111290478	1786111292793
-3939	3943	1	1786111292978	1786111297863
-3940	3944	1	1786111295506	1786111297863
-3961	3965	1	1786111350466	1786111353902
-3962	3966	1	1786111352976	1786111353902
-3941	3945	1	1786111297973	1786111302971
-3942	3946	1	1786111300476	1786111302971
-3943	3947	1	1786111305472	1786111308017
-3944	3948	1	1786111307983	1786111313124
-3945	3949	1	1786111310471	1786111313124
-3946	3950	1	1786111312983	1786111313124
-3947	3951	1	1786111315474	1786111318199
-3948	3952	1	1786111317968	1786111318199
-3949	3953	1	1786111320476	1786111323262
-3950	3954	1	1786111322963	1786111323262
-3951	3955	1	1786111325468	1786111328325
-3952	3956	1	1786111327969	1786111328325
-3953	3957	1	1786111330469	1786111333392
-3954	3958	1	1786111332964	1786111338640
-3955	3959	1	1786111335478	1786111338640
-3956	3960	1	1786111337973	1786111338640
-3957	3961	1	1786111340465	1786111343776
-3958	3962	1	1786111342964	1786111343776
-3959	3963	1	1786111345469	1786111348834
-3960	3964	1	1786111347969	1786111348834
-3963	3967	1	1786111355471	1786111358966
-3964	3968	1	1786111357975	1786111358966
-3965	3969	1	1786111360473	1786111364045
-3966	3970	1	1786111362976	1786111364045
-3967	3971	1	1786111365476	1786111369107
-3968	3972	1	1786111367971	1786111369107
-3969	3973	1	1786111370474	1786111374170
-3970	3974	1	1786111372968	1786111374170
-3971	3975	1	1786111375469	1786111379243
-3972	3976	1	1786111377975	1786111379243
-3973	3977	1	1786111380472	1786111384315
-3974	3978	1	1786111382967	1786111384315
-3975	3979	1	1786111385491	1786111389381
-3976	3980	1	1786111387967	1786111389381
-3977	3981	1	1786111390479	1786111394451
-3978	3982	1	1786111392976	1786111394451
-3979	3983	1	1786111395463	1786111399500
-3980	3984	1	1786111397984	1786111399500
-3981	3985	1	1786111400633	1786111404550
-3982	3986	1	1786111403650	1786111404550
-3983	3987	1	1786111408627	1786111409598
-3984	3988	1	1786111413620	1786111414644
-3985	3989	1	1786111415619	1786111419682
-3986	3990	1	1786111418621	1786111419682
-3987	3991	1	1786111420680	1786111424730
-3988	3992	1	1786111423621	1786111424730
-3989	3993	1	1786111428617	1786111429790
-3990	3994	1	1786111430627	1786111434846
-3991	3995	1	1786111433619	1786111434846
-3992	3996	1	1786111435613	1786111439913
-3993	3997	1	1786111438644	1786111439913
-3994	3998	1	1786111443616	1786111444967
-3996	4000	1	1786111448626	1786111450009
-3997	4001	1	1786111450620	1786111455057
-3998	4002	1	1786111453620	1786111455057
-3999	4003	1	1786111455619	1786111460102
-4007	4011	1	1786112448623	1786112483197
-4012	4016	1	1786112464640	1786112483197
-4017	4021	1	1786112483625	1786112506274
-3995	3999	1	1786111445623	1786111450009
-4002	4006	1	1786112260631	1786112276532
-4006	4010	1	1786112445622	1786112483197
-4011	4015	1	1786112458628	1786112483197
-4016	4020	1	1786112480629	1786112483197
-4021	4025	1	1786112500636	1786112506274
-4000	4004	1	1786111458627	1786111460102
-4001	4005	1	1786112080628	1786112081148
-4003	4007	1	1786112438017	1786112483197
-4008	4012	1	1786112450621	1786112483197
-4013	4017	1	1786112468635	1786112483197
-4014	4018	1	1786112473663	1786112483197
-4018	4022	1	1786112485629	1786112506274
-4005	4009	1	1786112443630	1786112483197
-4010	4014	1	1786112455627	1786112483197
-4015	4019	1	1786112478624	1786112483197
-4020	4024	1	1786112493623	1786112506274
-4023	4027	1	1786112584632	1786112589630
-4004	4008	1	1786112440626	1786112483197
-4009	4013	1	1786112453636	1786112483197
-4019	4023	1	1786112488622	1786112506274
-4022	4026	1	1786112582035	1786112584588
-4024	4028	1	1786112587622	1786112589630
-4025	4029	1	1786112589629	1786112594710
-4026	4030	1	1786112592664	1786112594710
-4027	4031	1	1786112594627	1786112594710
-4028	4032	1	1786112597623	1786112599776
-4029	4033	1	1786112602625	1786112604839
-4030	4034	1	1786112604632	1786112604839
-4031	4035	1	1786112606973	1786112629267
-4032	4036	1	1786112607623	1786112629267
-4033	4037	1	1786112607997	1786112629267
-4034	4038	1	1786112609718	1786112629267
-4035	4039	1	1786112610482	1786112629267
-4036	4040	1	1786112612624	1786112629267
-4037	4041	1	1786112612976	1786112629267
-4038	4042	1	1786112614641	1786112629267
-4039	4043	1	1786112615483	1786112629267
-4040	4044	1	1786112617622	1786112629267
-4041	4045	1	1786112617976	1786112629267
-4042	4046	1	1786112619638	1786112629267
-4043	4047	1	1786112620473	1786112629267
-4044	4048	1	1786112622626	1786112629267
-4045	4049	1	1786112622978	1786112629267
-4046	4050	1	1786112625486	1786112629267
-4047	4051	1	1786112627624	1786112629267
-4048	4052	1	1786112627975	1786112629267
-4049	4053	1	1786112629634	1786112715485
-4050	4054	1	1786112630625	1786112715485
-4051	4055	1	1786112632623	1786112715485
-4052	4056	1	1786112633637	1786112715485
-4053	4057	1	1786112636242	1786112715485
-4054	4058	1	1786112638656	1786112715485
-4055	4059	1	1786112639946	1786112715485
-4056	4060	1	1786112643631	1786112715485
-4057	4061	1	1786112645625	1786112715485
-4058	4062	1	1786112648666	1786112715485
-4059	4063	1	1786112650626	1786112715485
-4060	4064	1	1786112653624	1786112715485
-4061	4065	1	1786112658624	1786112715485
-4062	4066	1	1786112660748	1786112715485
-4063	4067	1	1786112663687	1786112715485
-4064	4068	1	1786112668625	1786112715485
-4065	4069	1	1786112670634	1786112715485
-4066	4070	1	1786112673632	1786112715485
-4067	4071	1	1786112675632	1786112715485
-4068	4072	1	1786112678632	1786112715485
-4069	4073	1	1786112680625	1786112715485
-4070	4074	1	1786112683633	1786112715485
-4071	4075	1	1786112689014	1786112715485
-4072	4076	1	1786112691517	1786112715485
-4073	4077	1	1786112694019	1786112715485
-4074	4078	1	1786112696527	1786112715485
-4075	4079	1	1786112699024	1786112715485
-4076	4080	1	1786112707386	1786112715485
-4077	4081	1	1786112709899	1786112715485
-4078	4082	1	1786112712357	1786112715485
-4079	4083	1	1786112714865	1786112715485
-4080	4084	1	1786112717365	1786112720684
-4081	4085	1	1786112720898	1786112725746
-4082	4086	1	1786112722357	1786112725746
-4083	4087	1	1786112725627	1786112731976
-4084	4088	1	1786112730624	1786112731976
-4085	4089	1	1786112732624	1786112737066
-4086	4090	1	1786112735623	1786112737066
-4087	4091	1	1786112737624	1786112767586
-4088	4092	1	1786112739858	1786112767586
-4089	4093	1	1786112740865	1786112767586
-4090	4094	1	1786112799130	1786112802010
-4091	4095	1	1786112804469	1786112807065
-4092	4096	1	1786112807982	1786112812120
-4093	4097	1	1786112808609	1786112812120
-4094	4098	1	1786112836452	1786112840928
-4095	4099	1	1786112838040	1786112840928
-4096	4100	1	1786112896526	1786112900117
-4097	4101	1	1786112897361	1786112900117
-4098	4102	1	1786113193251	1786113197346
-4099	4103	1	1786113194147	1786113197346
-4100	4104	1	1786113476189	1786113480489
-4101	4105	1	1786113477916	1786113480489
-4102	4106	1	1786113724742	1786113727425
-4103	4107	1	1786113911878	1786113913811
-4104	4108	1	1786113914479	1786113940616
-4105	4109	1	1786113915005	1786113940616
-4106	4110	1	1786113964675	1786113968286
-4107	4111	1	1786114102288	1786114129488
-4108	4112	1	1786114103165	1786114129488
-4109	4113	1	1786114106189	1786114129488
-4110	4114	1	1786114106833	1786114129488
-4111	4115	1	1786114107552	1786114129488
-4112	4116	1	1786114188326	1786114192607
-4113	4117	1	1786114189012	1786114192607
-4114	4118	1	1786114191243	1786114192607
-4115	4119	1	1786114195212	1786114197681
-4116	4120	1	1786114218586	1786114222580
-4117	4121	1	1786114229736	1786114234171
-4118	4122	1	1786114246522	1786114248360
-4119	4123	1	1786114247315	1786114248360
-4120	4124	1	1786114247765	1786114248360
-4121	4125	1	1786120847449	1786120883513
-4122	4126	1	1786120850081	1786120883513
-4123	4127	1	1786120886929	1786120911182
-4124	4128	1	1786121031856	1786121035498
-4125	4129	1	1786121040505	1786121060690
-4126	4130	1	1786121052532	1786121060690
-4127	4131	1	1786121056137	1786121060690
-4128	4132	1	1786121073343	1786121076532
-4129	4133	1	1786121134552	1786121138277
-4130	4134	1	1786121278038	1786121310753
-4131	4135	1	1786121278663	1786121310753
-4132	4136	1	1786121280282	1786121310753
-4133	4137	1	1786122924674	1786122981459
-4134	4138	1	1786123023446	1786123027778
-4135	4139	1	1786123024308	1786123027778
-4136	4140	1	1786123071788	1786123075898
-4137	4141	1	1786123394737	1786123396122
-4138	4142	1	1786123460052	1786123463707
-4139	4143	1	1786123474129	1786123476408
-4140	4144	1	1786123483092	1786123529137
-4141	4145	1	1786123550886	1786123554287
 4142	4146	1	1786123931850	1786123932769
 4143	4147	1	1786123933133	1786123937895
 4144	4148	1	1786123939877	1786123943044
 4146	4150	1	1786124068624	1786124079528
-4145	4149	1	1786124068624	1786124103369
-4147	4151	1	1786124129369	1786124133787
 4148	4152	1	1786124440369	1786124444700
 4149	4153	1	1786124481923	1786124486279
 4150	4154	1	1786124821757	1786124825021
-4151	4155	1	1786127791520	1786127792905
-4152	4156	1	1786127791655	1786127792905
-4153	4157	1	1786127791696	1786127792905
-4154	4158	1	1786127791764	1786127792905
-4155	4159	1	1786127791851	1786127792905
-4156	4160	1	1786127791902	1786127792905
-4157	4161	1	1786127791942	1786127792905
-4158	4162	1	1786127791982	1786127792905
-4159	4163	1	1786127792015	1786127792905
-4160	4164	1	1786127792047	1786127792905
-4161	4165	1	1786127792107	1786127792905
-4162	4166	1	1786127792142	1786127792905
-4163	4167	1	1786127792176	1786127792905
-4164	4168	1	1786127792212	1786127792905
-4165	4169	1	1786127792249	1786127792905
-4166	4170	1	1786127792298	1786127792905
-4167	4171	1	1786127792403	1786127792905
 4168	4172	1	1786127962303	1786127968471
-4169	4173	1	1786128821426	1786128825195
-4170	4174	1	1786128828592	1786128830240
-4171	4175	1	1786128829629	1786128830240
-4172	4176	1	1786128847522	1786128849241
 4173	4177	1	1786128899008	1786128976135
-4174	4178	1	1786130838823	1786130840332
-4175	4179	1	1786130909154	1786130913485
-4176	4180	1	1786130913161	1786130913485
-4177	4181	1	1786130917286	1786130918553
-4178	4182	1	1786130918586	1786130923599
-4179	4183	1	1786131085690	1786131160420
-4180	4184	1	1786131171188	1786131175713
-4181	4185	1	1786131379229	1786131384186
-4182	4186	1	1786360555080	1786362910482
 4184	4188	1	1786360555353	1786362928341
 4183	4187	1	1786360555284	1786363158138
 4186	4190	1	1786363236770	1786363240960
@@ -4071,10 +3488,25 @@ COPY public.pendingpushes (id, messageid, status, createtime, sendtime) FROM std
 4193	4197	1	1786370192989	1786370198217
 4194	4198	1	1786370287520	1786370288073
 4195	4199	1	1786370295575	1786370324770
-4196	4200	1	1786371183423	1786371188278
-4197	4201	1	1786371676712	1786371681382
 4198	4202	1	1786371754327	1786371758567
 4199	4203	1	1786371970515	1786371975120
+4201	4205	1	1786372888014	1786372893299
+4202	4206	1	1786372936033	1786372940050
+4204	4208	1	1786373332436	1786373336826
+4206	4210	1	1786373501033	1786373505801
+4207	4211	1	1786377768063	1786377770563
+4208	4212	1	1786377771628	1786377774154
+4209	4213	1	1786377773189	1786377774154
+4210	4214	1	1786377801581	1786377805812
+4211	4215	1	1786377856859	1786377860975
+4212	4216	1	1786378085695	1786378090165
+4213	4217	1	1786378288953	1786378300619
+4214	4218	1	1786378318863	1786378319065
+4215	4219	1	1786378319693	1786378324117
+4216	4220	1	1786378380384	1786378384516
+4217	4221	1	1786378394216	1786378398802
+4218	4222	1	1786378398028	1786378398802
+4219	4223	1	1786378596264	1786378601286
 \.
 
 
@@ -9030,6 +8462,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4832	1786026784436	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4833	1786026786945	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4834	1786026789469	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
+5084	1786373500963	1	314	hwmdm_r_324129	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_r_324129"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 4835	1786026791970	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4873	1786026886934	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4874	1786026889454	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -9058,6 +8491,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4855	1786026841934	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4856	1786026844472	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4857	1786026846946	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
+5085	1786378070900	1	315	hwmdm_z_324699	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_z_324699"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 4858	1786026849448	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4859	1786026851935	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4883	1786026911939	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -9219,6 +8653,33 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5077	1786371280944	1	307	hwmdm_u9_316616	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_u9_316616"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5078	1786371676688	1	308	hwmdm_a_318744	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_a_318744"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5079	1786371947513	1	309	hwmdm_b_319724	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_b_319724"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5080	1786372161911	1	310	hwmdm_c_321395	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_c_321395"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5081	1786372720049	1	311	hwmdm_pp_321825	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_pp_321825"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5082	1786372887890	1	312	hwmdm_d_322262	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_d_322262"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5083	1786373148164	1	313	hwmdm_e_323082	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_e_323082"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5086	1786378357943	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5087	1786378596128	1	316	smoke_326698	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"smoke_326698"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5088	1786379926071	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false,"webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5089	1786379996002	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false,"webLogoUrl":"http://192.168.1.75:8080/files/logo2.png"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5090	1786380324126	1	317	logo_328902	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"logo_328902"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5091	1786380324596	1	317	logo_328902	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id": 1, "backgroundColor": "#1c40e3", "textColor": "#fcfcfc", "backgroundImageUrl": "http://192.168.1.75:8080/files/BG_Tablet.png", "webLogoUrl": "http://192.168.1.75:8080/files/logo_olimpia.jpg", "iconSize": "LARGE", "desktopHeader": "DEVICE_ID", "desktopHeaderTemplate": null, "customerId": 1, "useDefaultLanguage": true, "language": null, "createNewDevices": true, "newDeviceGroupId": 1, "newDeviceConfigurationId": 11, "phoneNumberFormat": "+9 (999) 999-99-99", "customPropertyName1": null, "customPropertyName2": null, "customPropertyName3": null, "customMultiline1": false, "customMultiline2": false, "customMultiline3": false, "customSend1": false, "customSend2": false, "customSend3": false, "sendDescription": false, "passwordReset": false, "passwordLength": 0, "passwordStrength": 0, "twoFactor": false, "idleLogout": null, "singleCustomer": true, "accountType": 0, "expiryTime": null, "deviceLimit": 0, "deviceCount": 0, "sizeLimit": 0, "common": false}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5092	1786380690801	1	318	brand_330442	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"brand_330442"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5093	1786380691183	1	318	brand_330442	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id": 1, "backgroundColor": "#1c40e3", "textColor": "#fcfcfc", "backgroundImageUrl": "http://192.168.1.75:8080/files/BG_Tablet.png", "webLogoUrl": "http://192.168.1.75:8080/files/logo_olimpia.jpg", "webPrimaryColor": "#1c40e3", "webSidebarColor": "#0a1e6e", "webTextColor": "#ffffff", "iconSize": "LARGE", "desktopHeader": "DEVICE_ID", "desktopHeaderTemplate": null, "customerId": 1, "useDefaultLanguage": true, "language": null, "createNewDevices": true, "newDeviceGroupId": 1, "newDeviceConfigurationId": 11, "phoneNumberFormat": "+9 (999) 999-99-99", "customPropertyName1": null, "customPropertyName2": null, "customPropertyName3": null, "customMultiline1": false, "customMultiline2": false, "customMultiline3": false, "customSend1": false, "customSend2": false, "customSend3": false, "sendDescription": false, "passwordReset": false, "passwordLength": 0, "passwordStrength": 0, "twoFactor": false, "idleLogout": null, "singleCustomer": true, "accountType": 0, "expiryTime": null, "deviceLimit": 0, "deviceCount": 0, "sizeLimit": 0, "common": false}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5094	1786380820262	1	319	sweep_331516	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"sweep_331516"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5095	1786380849586	1	320	wp_331788	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"wp_331788"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5096	1786380854165	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#ac0000","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5097	1786380858625	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#f37c7c","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5100	1786380881159	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5105	1786380899727	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#d51735","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5098	1786380866214	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#000000","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5099	1786380875214	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#27b4e6","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5101	1786380881470	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5102	1786380886480	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#4e4f56","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5104	1786380894348	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5106	1786380916320	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/favicon.png","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#d51735","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5103	1786380891165	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#b5bbe0","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
+5108	1786380994976	1	321	pp_333262	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"pp_333262"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
+5107	1786380930968	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/favicon.png","webPrimaryColor":"","webSidebarColor":"","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 \.
 
 
@@ -17172,6 +16633,1470 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 71412	1786372042100	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739325, lon=-48.913785000000004
 71413	1786372045638	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 71414	1786372050665	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71415	1786372095509	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393621, lon=-48.913728
+71416	1786372126618	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71417	1786372126631	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+71418	1786372126636	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+71419	1786372126691	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+71420	1786372129939	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=w2OgHqSVfE2z2yGtOJwH4Cyv-A0dki-b
+71421	1786372130008	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+71422	1786372130275	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+71423	1786372130281	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
+71424	1786372131632	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71425	1786372132552	1	47	87	192.168.1.254	WARNING	2	Toque recebido do painel e descartado: a acessibilidade esta desligada neste aparelho, entao a sessao e' so' visualizacao
+71426	1786372161098	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739311666666666, lon=-48.913705
+71427	1786372161974	1	47	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71428	1786372161982	1	47	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71429	1786372162521	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71430	1786372162583	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71431	1786372162827	1	47	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71432	1786372163240	1	47	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.12
+71433	1786372166983	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71434	1786372173630	1	47	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71435	1786372176767	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71442	1786372188985	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=QNlwPTkhhzuLcbNkbGeDWajiertUQ49b
+71464	1786372509688	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393629, lon=-48.9137315
+71466	1786372045618	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71467	1786372050669	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71468	1786372056244	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393999, lon=-48.9137814
+71469	1786372135937	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71470	1786372143782	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137272
+71471	1786372162030	1	48	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71472	1786372162037	1	48	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71473	1786372162640	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71474	1786372162683	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71475	1786372164888	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71488	1786372558485	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71489	1786372558535	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71507	1786372166609	1	49	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71508	1786372166680	1	49	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+71509	1786372167004	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+71510	1786372183390	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71511	1786372183527	1	49	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+71512	1786372183536	1	49	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT108EM8T @ https://mdm.olimpia.sp.gov.br
+71513	1786372226323	1	49	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=NAO MARCADA para o Suporte Remoto (o launcher Headwind tem um servico proprio na mesma lista; confira qual foi ativado), sobreposicao=ATIVA, protecao=desligada
+71514	1786372248948	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71515	1786372272919	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71516	1786372315159	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71524	1786372593465	1	49	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71528	1786372623795	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71529	1786372624101	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71530	1786372624707	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71541	1786372695052	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71544	1786372720067	1	47	46	192.168.1.254	INFO	3	Got Push Message, type protectionOn
+71545	1786372720082	1	47	87	192.168.1.254	INFO	3	Protecao ligada: as Configuracoes ficam bloqueadas neste aparelho
+71548	1786372769189	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71552	1786372795365	1	47	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=LIGADA
+71556	1786372843181	1	48	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=DESLIGADA, protecao=desligada
+71559	1786372856951	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71587	1786372895735	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71600	1786372907523	1	47	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71611	1786372963375	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71622	1786373058958	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71624	1786373095961	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71626	1786373116384	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71628	1786373124955	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71645	1786373149155	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71646	1786373149191	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71648	1786372034643	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393969, lon=-48.9137787
+71649	1786372045776	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71650	1786372050829	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71651	1786372064547	1	46	87	192.168.1.254	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: timeout
+71652	1786372070838	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71653	1786372094748	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393969, lon=-48.9137787
+71654	1786372135997	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71655	1786372162021	1	46	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71656	1786372162028	1	46	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71657	1786372163297	1	46	46	192.168.1.254	INFO	3	Configuration updated
+71436	1786372180139	1	47	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+71437	1786372180152	1	47	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106VP1E @ https://mdm.olimpia.sp.gov.br
+71444	1786372189313	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+71445	1786372189318	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
+71449	1786372210363	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137303
+71456	1786372387955	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71457	1786372393028	1	47	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71458	1786372436233	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71459	1786372436284	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71486	1786372476590	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394015, lon=-48.913779
+71487	1786372496902	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71493	1786372562821	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71517	1786372409618	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71518	1786372422303	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71519	1786372474951	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71520	1786372483406	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71521	1786372540947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71522	1786372543506	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71542	1786372695954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71547	1786372761100	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71549	1786372773735	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393757, lon=-48.9137189
+71555	1786372842072	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393597, lon=-48.9137358
+71557	1786372844300	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71561	1786372885985	1	49	46	192.168.1.254	INFO	3	Configuration updated
+71562	1786372886030	1	49	46	192.168.1.254	INFO	3	Device owner: true
+71564	1786372887816	1	47	87	192.168.1.254	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
+71566	1786372888048	1	49	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71568	1786372888643	1	49	46	192.168.1.254	INFO	3	Device owner: true
+71570	1786372889121	1	49	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.13
+71583	1786372893466	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71586	1786372893835	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71592	1786372900350	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71602	1786372915486	1	49	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=desligada
+71613	1786372983900	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137527
+71618	1786373029909	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71620	1786373055283	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71621	1786373056057	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71625	1786373106397	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393706, lon=-48.9137219
+71632	1786373139151	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71633	1786373139342	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71638	1786373148381	1	49	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71639	1786373148509	1	48	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71640	1786373148516	1	48	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71643	1786373149261	1	49	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71647	1786373152038	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71438	1786372185685	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71439	1786372185696	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+71440	1786372185703	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+71441	1786372185753	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+71453	1786372321946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71461	1786372448342	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393971, lon=-48.9137827
+71495	1786372571032	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393929, lon=-48.9137647
+71525	1786372603515	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71532	1786372628822	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71536	1786372658212	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393995, lon=-48.9137765
+71539	1786372686192	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393618, lon=-48.9137352
+71546	1786372725075	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71550	1786372780704	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393722, lon=-48.9137233
+71551	1786372790951	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71553	1786372826939	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71567	1786372888599	1	49	46	192.168.1.254	INFO	3	Configuration updated
+71571	1786372888580	1	47	46	192.168.1.254	INFO	3	MDM Launcher 6.36-opensource started
+71572	1786372892358	1	47	46	192.168.1.254	DEBUG	4	Push notifications enqueued: 15 mins
+71573	1786372892366	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71579	1786372893106	1	47	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71582	1786372893181	1	48	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71584	1786372893477	1	47	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.13
+71607	1786372945061	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71608	1786372956319	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393754, lon=-48.9137217
+71614	1786372988672	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71616	1786372993825	1	47	87	192.168.1.254	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
+71629	1786373133030	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71443	1786372189095	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+71450	1786372255953	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71462	1786372453943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71465	1786372519947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71476	1786372167037	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71477	1786372205112	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393631, lon=-48.9137275
+71478	1786372233016	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71479	1786372242610	1	48	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=NAO MARCADA para o Suporte Remoto (o launcher Headwind tem um servico proprio na mesma lista; confira qual foi ativado), sobreposicao=DESLIGADA, protecao=desligada
+71480	1786372266402	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393677, lon=-48.9137307
+71481	1786372299066	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71482	1786372353842	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394033, lon=-48.9137775
+71483	1786372364909	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71484	1786372415222	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.913731
+71485	1786372431059	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71494	1786372563621	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393628, lon=-48.913736
+71496	1786372572407	1	48	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71523	1786372585951	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71526	1786372606947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71531	1786372624787	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393672, lon=-48.9137273
+71537	1786372672949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71540	1786372694040	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71558	1786372848219	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71560	1786372885383	1	49	46	192.168.1.254	DEBUG	4	Forcing configuration update
+71565	1786372887979	1	47	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71569	1786372888983	1	49	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71576	1786372892980	1	47	46	192.168.1.254	VERBOSE	5	Request location updates. gps=true, network=true, passive=true
+71577	1786372892996	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71578	1786372893047	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393597, lon=-48.9137358
+71580	1786372893099	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71581	1786372893170	1	48	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71585	1786372893772	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71589	1786372896884	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71590	1786372896899	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394031, lon=-48.9137791
+71591	1786372898187	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71593	1786372899262	1	49	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71594	1786372900150	1	49	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71595	1786372900253	1	49	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+71596	1786372900473	1	49	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+71597	1786372900733	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+71605	1786372940009	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71606	1786372940055	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71609	1786372962824	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71610	1786372962863	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71612	1786372963859	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71630	1786373138038	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71631	1786373138882	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71634	1786373139372	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71635	1786373141673	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71636	1786373148341	1	47	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71637	1786373148345	1	47	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71658	1786372163338	1	46	46	192.168.1.254	INFO	3	Device owner: true
+71659	1786372166284	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71660	1786372167028	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71661	1786372206115	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71662	1786372233277	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71663	1786372266218	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71664	1786372299127	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71665	1786372326324	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71666	1786372365074	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71667	1786372394384	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71687	1786372431220	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71688	1786372544630	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71689	1786372548872	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71446	1786372190652	1	47	87	192.168.1.254	WARNING	2	Toque recebido do painel e descartado: a acessibilidade esta desligada neste aparelho, entao a sessao e' so' visualizacao
+71447	1786372190695	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71448	1786372195092	1	47	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=NAO MARCADA para o Suporte Remoto (o launcher Headwind tem um servico proprio na mesma lista; confira qual foi ativado), sobreposicao=ATIVA, protecao=desligada
+71451	1786372268097	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393678, lon=-48.9137408
+71452	1786372280097	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739398333333334, lon=-48.91381
+71454	1786372329309	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393997, lon=-48.9137804
+71455	1786372387073	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393669, lon=-48.913736
+71460	1786372439989	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71463	1786372495233	1	47	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=desligada
+71490	1786372559462	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71491	1786372561364	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71492	1786372561370	1	48	46	192.168.1.254	INFO	3	Device owner: true
+71497	1786372045629	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71498	1786372050655	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71499	1786372104015	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71500	1786372135947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71501	1786372162068	1	49	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71502	1786372162634	1	49	46	192.168.1.254	INFO	3	Configuration updated
+71503	1786372162673	1	49	46	192.168.1.254	INFO	3	Device owner: true
+71504	1786372162968	1	49	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71505	1786372163234	1	49	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.12
+71506	1786372164674	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393627, lon=-48.9137262
+71527	1786372620891	1	49	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=desligada
+71533	1786372630308	1	47	46	192.168.1.254	VERBOSE	5	Request location updates. gps=true, network=true, passive=true
+71534	1786372630313	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71535	1786372630362	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394003, lon=-48.9137814
+71538	1786372684974	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+71543	1786372719446	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394028, lon=-48.9137767
+71554	1786372835105	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137255
+71563	1786372887046	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+71574	1786372892404	1	47	46	192.168.1.254	DEBUG	4	Network type changed: WIFI
+71575	1786372892476	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71588	1786372895853	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71598	1786372900766	1	49	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT108EM8T @ https://mdm.olimpia.sp.gov.br
+71599	1786372905394	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71601	1786372912931	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71603	1786372917935	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71604	1786372934999	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+71615	1786372993680	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71617	1786373018009	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739369, lon=-48.9137307
+71619	1786373045211	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393687, lon=-48.9137285
+71623	1786373078851	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393682, lon=-48.9137359
+71627	1786373121948	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71641	1786373148845	1	49	46	192.168.1.254	INFO	3	Configuration updated
+71642	1786373148875	1	49	46	192.168.1.254	INFO	3	Device owner: true
+71644	1786373149403	1	49	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.14
+71668	1786373152385	1	49	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71669	1786373153130	1	49	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71670	1786373153198	1	49	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+71671	1786373153426	1	49	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+71672	1786373153520	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+71673	1786373153346	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71674	1786373153519	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71675	1786373153614	1	49	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT108EM8T @ https://mdm.olimpia.sp.gov.br
+71676	1786373153714	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71677	1786372946834	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71678	1786372946910	1	46	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71679	1786372946915	1	46	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71680	1786372948109	1	46	46	192.168.1.254	INFO	3	Configuration updated
+71681	1786372948138	1	46	46	192.168.1.254	INFO	3	Device owner: true
+71682	1786372955115	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71683	1786372955652	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71684	1786373021063	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71685	1786373031155	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393613, lon=-48.9137349
+71686	1786373044770	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739421666666665, lon=-48.913748333333324
+71707	1786373168438	1	49	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=desligada
+71715	1786373219954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71721	1786373264253	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71722	1786373265009	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71729	1786373293144	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71731	1786373326065	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71741	1786373352065	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71758	1786373409640	1	46	46	192.168.1.254	INFO	3	Device owner: true
+71768	1786373483951	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71769	1786373492956	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71772	1786373501034	1	46	46	192.168.1.254	INFO	3	Got Push Message, type protectionOff
+71779	1786373506011	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71781	1786373506043	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71783	1786373528633	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393713, lon=-48.9137272
+71787	1786373571956	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71789	1786373576436	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393777, lon=-48.9137243
+71797	1786373638140	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71801	1786373698976	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393788, lon=-48.9137241
+71804	1786373704084	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71806	1786373739364	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137298
+71812	1786373786516	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.9137338
+71813	1786373807366	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71816	1786373835976	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71818	1786373847724	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137235
+71834	1786373982947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71860	1786374161966	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71872	1786374267945	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393769, lon=-48.9137261
+71881	1786374361144	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71885	1786374378479	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71887	1786374391402	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73939, lon=-48.913648333333335
+71893	1786374429946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71899	1786374495947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71901	1786374514017	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73931333333333, lon=-48.91358166666667
+71903	1786374545446	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71910	1786374561947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71912	1786374607623	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393697, lon=-48.9137282
+71914	1786374615263	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71917	1786374665449	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739345, lon=-48.913746666666675
+71690	1786372605739	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71691	1786372614214	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71692	1786372746694	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71693	1786372757539	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71694	1786372817404	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137308
+71695	1786372823219	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71696	1786372944189	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394007, lon=-48.9137765
+71697	1786373094041	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393566, lon=-48.9137348
+71698	1786373152387	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393721, lon=-48.9137274
+71699	1786373152710	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71700	1786373156149	1	46	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+71701	1786373156157	1	46	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+71706	1786373166193	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393788, lon=-48.9137258
+71708	1786373176497	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71710	1786373198155	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739418333333333, lon=-48.913783333333335
+71720	1786373255764	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393684, lon=-48.9137232
+71732	1786373327516	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71733	1786373327553	1	47	46	192.168.1.254	INFO	3	Device owner: true
+71738	1786373318783	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137285
+71742	1786373356892	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+71743	1786373359086	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71748	1786373361718	1	46	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY?token=BjGUIGz8Dr5N8unYJ0bOuE_9mAxrioJ-
+71749	1786373361765	1	46	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+71751	1786373361901	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71754	1786373386166	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71756	1786373403419	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393607, lon=-48.9137278
+71764	1786373432681	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394062, lon=-48.9137825
+71765	1786373446276	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71766	1786373447207	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71767	1786373465644	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393969, lon=-48.9137791
+71786	1786373571948	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71788	1786373572008	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71794	1786373637687	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393754, lon=-48.9137256
+71799	1786373657418	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71802	1786373703948	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71808	1786373766573	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71820	1786373867484	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71822	1786373896273	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71825	1786373902134	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71827	1786373916947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71830	1786373967947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71832	1786373975742	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71837	1786374033952	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71841	1786374099075	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393804, lon=-48.9137269
+71843	1786374107325	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71845	1786374119141	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393567, lon=-48.9137294
+71847	1786374127783	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+71851	1786374128986	1	46	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+71853	1786374141740	1	46	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71854	1786374141948	1	46	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+71855	1786374142739	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71858	1786374143305	1	46	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+71864	1786374188797	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71866	1786374194326	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739340000000002, lon=-48.91372500000001
+71868	1786374206690	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393852, lon=-48.913777
+71874	1786374294990	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71877	1786374318473	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71879	1786374338648	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71883	1786374363986	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71906	1786374549621	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71985	1786375209101	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71702	1786373158779	1	46	46	192.168.1.254	INFO	3	Configuration updated
+71703	1786373158823	1	46	46	192.168.1.254	INFO	3	Device owner: true
+71716	1786373220067	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71718	1786373227559	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.913721
+71725	1786373285948	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71736	1786373336785	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71737	1786373336831	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71739	1786373341836	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71744	1786373359406	1	46	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71745	1786373359417	1	46	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+71746	1786373359421	1	46	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+71747	1786373359494	1	46	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+71750	1786373361951	1	46	87	192.168.1.254	INFO	3	Transmitindo 464x800 somente visualizacao
+71755	1786373387205	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71757	1786373409565	1	46	46	192.168.1.254	INFO	3	Configuration updated
+71760	1786373417949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71762	1786373426959	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71763	1786373429995	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71771	1786373496106	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71778	1786373505694	1	48	87	192.168.1.254	INFO	3	Protecao desligada: as Configuracoes voltam a abrir normalmente
+71780	1786373506069	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71782	1786373507202	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71793	1786373619021	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71795	1786373637954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71805	1786373717530	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71817	1786373836082	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71821	1786373887836	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393706, lon=-48.913723
+71823	1786373897971	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71831	1786373968081	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71839	1786374057780	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739366, lon=-48.913733
+71840	1786374096018	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71865	1786374194284	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71870	1786374228014	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71873	1786374273852	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393783, lon=-48.9137398
+71876	1786374317366	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71878	1786374324148	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739520000000002, lon=-48.91396833333333
+71891	1786374425726	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393582, lon=-48.913738
+71895	1786374476635	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71897	1786374485291	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71905	1786374546401	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71924	1786374698132	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71926	1786374730273	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137238
+71931	1786374763947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71704	1786373161160	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71705	1786373161791	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71709	1786373193901	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137294
+71711	1786373204163	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71712	1786373204196	1	47	46	192.168.1.254	INFO	3	Configuration updated
+71717	1786373227303	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71719	1786373236601	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71724	1786373285951	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71726	1786373286113	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71727	1786373288723	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393703, lon=-48.9137285
+71728	1786373288730	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+71740	1786373351949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71770	1786373493869	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393743, lon=-48.9137148
+71773	1786373501001	1	47	46	192.168.1.254	INFO	3	Got Push Message, type protectionOff
+71784	1786373536061	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71785	1786373553587	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71790	1786373596166	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71792	1786373615461	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393584, lon=-48.9137314
+71796	1786373637950	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71803	1786373703949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71810	1786373769950	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71815	1786373831920	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71824	1786373901952	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71826	1786373909097	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393612, lon=-48.9137298
+71828	1786373949244	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393488, lon=-48.913731
+71829	1786373964020	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71833	1786373977394	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71835	1786373996418	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393708, lon=-48.9137198
+71836	1786374029968	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71838	1786374037731	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393781, lon=-48.9137281
+71842	1786374099950	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71844	1786374107660	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71846	1786374127694	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71848	1786374128600	1	46	46	192.168.1.254	INFO	3	Configuration updated
+71849	1786374128637	1	46	46	192.168.1.254	INFO	3	Device owner: true
+71850	1786374128825	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71852	1786374129336	1	46	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.14
+71856	1786374143083	1	46	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+71857	1786374143103	1	46	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT200AMYY @ https://mdm.olimpia.sp.gov.br
+71859	1786374158050	1	46	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=desligada
+71861	1786374165950	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71863	1786374173950	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71867	1786374196002	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739516666666667, lon=-48.91375166666667
+71869	1786374212529	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393557, lon=-48.9137289
+71871	1786374231954	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71880	1786374339716	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71888	1786374399775	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71890	1786374423750	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393672, lon=-48.9137298
+71892	1786374426984	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71894	1786374438003	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739376666666665, lon=-48.91376166666667
+71896	1786374484976	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393697, lon=-48.9137185
+71898	1786374488076	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71902	1786374544001	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137298
+71904	1786374546309	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739368, lon=-48.913729
+71908	1786374553015	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739613333333335, lon=-48.913830000000004
+71915	1786374627949	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71919	1786374670862	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71921	1786374681107	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739565000000002, lon=-48.913985000000004
+71925	1786374721818	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393597, lon=-48.9137316
+71929	1786374757420	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71713	1786373213825	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394047, lon=-48.9137792
+71714	1786373219949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71723	1786373275072	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71730	1786373293738	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71734	1786373328088	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+71735	1786373331781	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+71752	1786373364416	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71753	1786373371418	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394006, lon=-48.9137794
+71759	1786373412466	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+71761	1786373418008	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71774	1786373501057	1	49	46	192.168.1.254	INFO	3	Got Push Message, type protectionOff
+71775	1786373501068	1	49	87	192.168.1.254	INFO	3	Protecao desligada: as Configuracoes voltam a abrir normalmente
+71776	1786373505533	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71777	1786373505685	1	48	46	192.168.1.254	INFO	3	Got Push Message, type protectionOff
+71791	1786373597307	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393642, lon=-48.9137308
+71798	1786373656276	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71800	1786373677908	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393639, lon=-48.9137308
+71807	1786373746089	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137318
+71809	1786373769947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71811	1786373770032	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71814	1786373826433	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393663, lon=-48.9137304
+71819	1786373851028	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71862	1786374168439	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71875	1786374297948	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71882	1786374362549	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739361, lon=-48.9137264
+71884	1786374364372	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137096
+71886	1786374383945	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71889	1786374405010	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71900	1786374488722	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393556, lon=-48.9137283
+71911	1786374606627	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393644, lon=-48.9137347
+71923	1786374696301	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71927	1786374730978	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71907	1786374549658	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71909	1786374553947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71913	1786374610766	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71916	1786374662585	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71918	1786374669048	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393556, lon=-48.9137311
+71920	1786374681055	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71922	1786374693947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71928	1786374747060	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71930	1786374759947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71932	1786374774006	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71933	1786374788155	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393741, lon=-48.9137234
+71934	1786374807176	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739475000000002, lon=-48.913778333333326
+71935	1786374813108	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71936	1786374818461	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71937	1786374820389	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71938	1786374825947	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71939	1786374829948	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71940	1786374833378	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.91373
+71941	1786374833451	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393748, lon=-48.9137292
+71942	1786374849516	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137354
+71943	1786374877628	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71944	1786374879260	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71945	1786374880493	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71946	1786374891948	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71947	1786374895349	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137298
+71948	1786374895943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71949	1786374910861	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393667, lon=-48.9137327
+71950	1786374935209	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71951	1786374941085	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71952	1786374945205	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71953	1786374957945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71954	1786374961949	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71955	1786374967032	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71956	1786374972109	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393676, lon=-48.9137198
+71957	1786374995318	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71958	1786375003845	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393596, lon=-48.9137324
+71959	1786375006896	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71960	1786375011049	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71961	1786375023949	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71962	1786375027135	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71963	1786375027944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71964	1786375033449	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393616, lon=-48.9137284
+71965	1786375055420	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71966	1786375065265	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393587, lon=-48.9137329
+71967	1786375072850	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71968	1786375077203	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71969	1786375089945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71970	1786375093944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71971	1786375094826	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393559, lon=-48.9137312
+71972	1786375099137	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393695, lon=-48.9137471
+71973	1786375115530	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71974	1786375126586	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137266
+71975	1786375139092	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71976	1786375143255	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71977	1786375155996	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71978	1786375159945	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71979	1786375171325	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739445, lon=-48.913685
+71980	1786375177362	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+71981	1786375185681	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137314
+71982	1786375190423	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73937, lon=-48.91372166666667
+71983	1786375205150	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71984	1786375205317	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+71986	1786375213738	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.9137264
+71990	1786375247028	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393748, lon=-48.913729
+71991	1786375270994	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71997	1786375280572	1	48	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.14
+71998	1786375285198	1	48	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+71999	1786375285467	1	48	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+72000	1786375286517	1	48	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+72001	1786375286525	1	48	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+72002	1786375286545	1	48	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106Y5RP @ https://mdm.olimpia.sp.gov.br
+72003	1786375287419	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+72007	1786375335342	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739428333333333, lon=-48.91368333333333
+72024	1786375463561	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137279
+72028	1786375505185	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393633, lon=-48.9137393
+72036	1786375563384	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.9137324
+72038	1786375576344	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739365000000003, lon=-48.913736666666665
+72042	1786375594230	1	47	46	192.168.1.254	INFO	3	Configuration updated
+72043	1786375594292	1	47	46	192.168.1.254	INFO	3	Device owner: true
+72046	1786375613459	1	47	46	192.168.1.254	DEBUG	4	App com.hwmdm.remote installed successfully
+72047	1786375613973	1	47	46	192.168.1.254	INFO	3	Launched app after install: com.hwmdm.remote
+72048	1786375615890	1	47	87	192.168.1.254	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
+72049	1786375615900	1	47	87	192.168.1.254	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
+72050	1786375615906	1	47	87	192.168.1.254	INFO	3	Vinculado ao MDM: R9XT106VP1E @ https://mdm.olimpia.sp.gov.br
+72051	1786375616069	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+72053	1786375619274	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72059	1786375679377	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72072	1786375786459	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72074	1786375805383	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+72080	1786375846557	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72086	1786375908216	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72088	1786375867826	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393713, lon=-48.9137244
+72096	1786375982239	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72098	1786375996430	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72103	1786376012716	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393718, lon=-48.9137246
+72105	1786376073414	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137282
+72111	1786376116654	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72124	1786376211975	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72127	1786376246123	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72139	1786376344004	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72141	1786376358827	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393655, lon=-48.913732
+72143	1786376390932	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393767, lon=-48.9137204
+72150	1786376444174	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72152	1786376473704	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73928833333333, lon=-48.913746666666675
+72156	1786376513633	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393738, lon=-48.9137263
+72164	1786376561701	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+72172	1786376631570	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393708, lon=-48.9137219
+72175	1786376718830	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393934, lon=-48.9137756
+72184	1786376837944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72188	1786376872070	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72194	1786376977283	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72196	1786376982650	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72202	1786377048458	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137338
+72209	1786377138826	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393721, lon=-48.9137355
+72211	1786377175436	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72219	1786377252950	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72221	1786377258945	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72223	1786377265094	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72226	1786377331144	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72228	1786377369983	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137161
+72230	1786377396988	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71987	1786375221945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72010	1786375347857	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72012	1786375353958	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72014	1786375357944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72022	1786375442452	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72026	1786375485978	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72030	1786375515258	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72031	1786375524335	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72045	1786375594994	1	47	46	192.168.1.254	INFO	3	Silently installing app com.hwmdm.remote 1.14
+72055	1786375630859	1	47	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=LIGADA
+72057	1786375625758	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393562, lon=-48.9137275
+72063	1786375687942	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72065	1786375717865	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72073	1786375800863	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393663, lon=-48.9137319
+72078	1786375829331	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72081	1786375850133	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72100	1786376013942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72113	1786376132318	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72114	1786376145949	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72116	1786376154848	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393623, lon=-48.9137294
+72122	1786376211505	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393633, lon=-48.9137345
+72126	1786376222482	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739351666666668, lon=-48.91371000000001
+72131	1786376277984	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72135	1786376326690	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72137	1786376334358	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72142	1786376378126	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72146	1786376409940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72148	1786376416472	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72153	1786376475941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72166	1786376568667	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72169	1786376620863	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72176	1786376739943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72182	1786376806149	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72186	1786376841540	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739367, lon=-48.9137327
+72191	1786376928736	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393806, lon=-48.9137236
+72193	1786376941223	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137338
+72198	1786377003942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72207	1786377120050	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72210	1786377168660	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137338
+72218	1786377207018	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.738993333333333, lon=-48.91352666666667
+72220	1786377258607	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393591, lon=-48.9137319
+72222	1786377261346	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393683, lon=-48.9137277
+72229	1786377381060	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393718, lon=-48.9137338
+72231	1786377399944	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72236	1786377463945	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72238	1786377469159	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72240	1786377492602	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393739, lon=-48.9137144
+72242	1786377530401	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393567, lon=-48.9137289
+72249	1786377614961	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72251	1786377661098	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72255	1786377679130	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394041, lon=-48.91378
+72264	1786377726453	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72267	1786377726923	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72275	1786377747974	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393736, lon=-48.9137246
+72278	1786377752174	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72283	1786377752441	1	48	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72304	1786377774201	1	48	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72315	1786377805769	1	48	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72316	1786377805775	1	48	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP consentimento_em_cache=false
+72317	1786377805781	1	48	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72319	1786377806946	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71988	1786375225944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71992	1786375275004	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137394
+72006	1786375309564	1	48	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=DESLIGADA, protecao=desligada
+72008	1786375340869	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393706, lon=-48.9137251
+72019	1786375419980	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72023	1786375456010	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739269999999998, lon=-48.913701666666675
+72025	1786375469378	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72027	1786375489943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72029	1786375513678	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+72041	1786375593049	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72044	1786375594719	1	47	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+72052	1786375617945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72058	1786375673809	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72060	1786375678659	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+72066	1786375739559	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393743, lon=-48.9137372
+72069	1786375744661	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393661, lon=-48.9137241
+72071	1786375784088	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72077	1786375819947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72079	1786375842739	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739425, lon=-48.913693333333335
+72084	1786375885943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72089	1786375920322	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73937833333333, lon=-48.913668333333334
+72091	1786375943311	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72092	1786375947943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72094	1786375951946	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72095	1786375979171	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72104	1786376056542	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72106	1786376079422	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72108	1786376093620	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393682, lon=-48.9137293
+72121	1786376206470	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72123	1786376211946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72125	1786376216210	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393666, lon=-48.9137294
+72132	1786376297496	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393568, lon=-48.9137308
+72138	1786376343945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72147	1786376410024	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72154	1786376476183	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72158	1786376541939	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72183	1786376831985	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72185	1786376838787	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72187	1786376845285	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72192	1786376937941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72203	1786377051395	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393559, lon=-48.9137343
+72212	1786377192521	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72214	1786377197200	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394086, lon=-48.9137799
+72216	1786377200033	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393717, lon=-48.9137282
+72225	1786377319884	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393738, lon=-48.9137321
+72234	1786377431308	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393718, lon=-48.91374
+72247	1786377597941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72258	1786377686956	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393736, lon=-48.9137246
+72285	1786377757351	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72290	1786377768734	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394047, lon=-48.9137821
+72291	1786377769027	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72292	1786377769037	1	48	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72293	1786377769041	1	48	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP consentimento_em_cache=false
+72294	1786377769049	1	48	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72296	1786377770513	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72297	1786377770573	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72299	1786377774106	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72300	1786377774113	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72306	1786377779121	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72313	1786377805693	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+71989	1786375237469	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+71993	1786375279240	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+71996	1786375280410	1	48	46	192.168.1.254	DEBUG	4	Downloading app: com.hwmdm.remote
+72004	1786375287952	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72016	1786375401386	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393712, lon=-48.9137235
+72018	1786375409271	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72033	1786375551959	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72035	1786375559165	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72037	1786375574796	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+72039	1786375581332	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72056	1786375647830	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739401, lon=-48.9137784
+72061	1786375682185	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+72068	1786375753943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72070	1786375769225	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72076	1786375815942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72082	1786375862153	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.9137296
+72085	1786375889438	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72090	1786375928376	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739371, lon=-48.9137306
+72093	1786375949576	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393765, lon=-48.9137229
+72101	1786376017947	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72107	1786376079944	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72109	1786376104374	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739415, lon=-48.91367
+72115	1786376145929	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72117	1786376156430	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393584, lon=-48.9137376
+72118	1786376180182	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72120	1786376197943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72128	1786376266580	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72130	1786376277942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72133	1786376312288	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72136	1786376329582	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393553, lon=-48.9137336
+72145	1786376408472	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72149	1786376420193	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137308
+72151	1786376452292	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393548, lon=-48.9137386
+72159	1786376560073	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72160	1786376560223	1	49	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72165	1786376566672	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72167	1786376570197	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137371
+72168	1786376607941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72170	1786376626157	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72177	1786376771359	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72179	1786376777676	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72181	1786376780199	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393562, lon=-48.9137317
+72197	1786376990029	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739361, lon=-48.9137331
+72200	1786377043131	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72204	1786377069942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72206	1786377109281	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72213	1786377192931	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72215	1786377199167	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72217	1786377201941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72224	1786377267942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72239	1786377469144	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393677, lon=-48.9137324
+72243	1786377531938	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72250	1786377615656	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394012, lon=-48.9137768
+72259	1786377724419	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72260	1786377724431	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72261	1786377724436	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72263	1786377726346	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=BbvY2t_NhSc15ef44o1phg-snyDQZpcC
+72269	1786377728774	1	46	46	192.168.1.254	INFO	3	Configuration updated
+72270	1786377728802	1	46	46	192.168.1.254	INFO	3	Device owner: true
+72274	1786377740942	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72277	1786377751110	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+71994	1786375279896	1	48	46	192.168.1.254	INFO	3	Configuration updated
+71995	1786375280028	1	48	46	192.168.1.254	INFO	3	Device owner: true
+72005	1786375291944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72009	1786375347810	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72011	1786375349166	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72013	1786375355663	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137316
+72015	1786375360849	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739355, lon=-48.9137328
+72017	1786375407186	1	46	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.738993333333333, lon=-48.91352666666667
+72020	1786375423944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72021	1786375423725	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393587, lon=-48.9137349
+72032	1786375524697	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393986, lon=-48.9137784
+72034	1786375555946	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72040	1786375585883	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393751, lon=-48.913729
+72054	1786375621946	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72062	1786375684010	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72064	1786375701545	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73936666666667, lon=-48.91372666666666
+72067	1786375750160	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72075	1786375806768	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72083	1786375881942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72087	1786375916498	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72097	1786375988449	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739463333333333, lon=-48.913701666666675
+72099	1786376010909	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393568, lon=-48.9137303
+72102	1786376048086	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72110	1786376114336	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72112	1786376129300	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72119	1786376190401	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72129	1786376272874	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393664, lon=-48.9137376
+72134	1786376318838	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393656, lon=-48.9137374
+72140	1786376347581	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739365000000003, lon=-48.91371000000001
+72144	1786376399943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72155	1786376508877	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393711, lon=-48.9137225
+72157	1786376529739	1	48	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.73928833333333, lon=-48.913746666666675
+72161	1786376560748	1	49	46	192.168.1.254	INFO	3	Configuration updated
+72162	1786376560778	1	49	46	192.168.1.254	INFO	3	Device owner: true
+72163	1786376561203	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72171	1786376627785	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393681, lon=-48.9137204
+72173	1786376634233	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72174	1786376673941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72178	1786376771968	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72180	1786376779462	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72189	1786376877167	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72190	1786376911128	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72195	1786376982029	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72199	1786377042057	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72201	1786377047943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72205	1786377108561	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393619, lon=-48.9137338
+72208	1786377135941	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72227	1786377333946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72233	1786377403923	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72237	1786377465943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72244	1786377553955	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393697, lon=-48.9137262
+72246	1786377595136	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72248	1786377608791	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72252	1786377674980	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393528, lon=-48.9137306
+72254	1786377677589	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393778, lon=-48.9137264
+72256	1786377683223	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72265	1786377726904	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72266	1786377726908	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72268	1786377728243	1	46	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72272	1786377729788	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+72273	1786377740335	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393636, lon=-48.9137382
+72298	1786377774037	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72232	1786377403343	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72235	1786377463141	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72241	1786377529084	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72245	1786377591770	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394007, lon=-48.9137866
+72253	1786377675163	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72257	1786377685898	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72262	1786377724531	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72271	1786377729430	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72276	1786377749492	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72279	1786377752338	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72280	1786377752352	1	48	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72281	1786377752359	1	48	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP consentimento_em_cache=false
+72282	1786377752368	1	48	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72284	1786377756125	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72295	1786377769110	1	48	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72301	1786377774125	1	48	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72302	1786377774130	1	48	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP consentimento_em_cache=false
+72303	1786377774136	1	48	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72305	1786377775581	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72307	1786377782020	1	47	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72311	1786377800685	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72312	1786377801714	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394003, lon=-48.9137782
+72314	1786377805760	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72325	1786377814700	1	48	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72326	1786377814704	1	48	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72329	1786377820149	1	48	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72338	1786377840945	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72340	1786377843776	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72362	1786377950067	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72365	1786377957544	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393736, lon=-48.9137246
+72368	1786377997943	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72372	1786378013569	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137223
+72376	1786378040990	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72387	1786378090158	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72388	1786378090170	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72389	1786378090175	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+72390	1786378090181	1	49	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72398	1786378099204	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393597, lon=-48.9137292
+72419	1786378220880	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72421	1786378230825	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393974, lon=-48.9137803
+72424	1786378252486	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72428	1786378295791	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393703, lon=-48.9137243
+72433	1786378300844	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72436	1786378305184	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72438	1786378315618	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72441	1786378318996	1	49	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=DESLIGADA, protecao=LIGADA
+72446	1786378324229	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72286	1786377765500	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72287	1786377765513	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72288	1786377765517	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72289	1786377765570	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72308	1786377794314	1	46	46	192.168.1.254	INFO	3	Configuration updated
+72309	1786377794343	1	46	46	192.168.1.254	INFO	3	Device owner: true
+72318	1786377805849	1	48	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72320	1786377807978	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393736, lon=-48.9137246
+72322	1786377810769	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72354	1786377884370	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72355	1786377884845	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72364	1786377952354	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.73937, lon=-48.9137282
+72375	1786378038942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72392	1786378091891	1	49	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T?token=KvnjMOgIG3m9fs9zWbzYf20aw_UX1-l3
+72393	1786378091933	1	49	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72394	1786378092168	1	49	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=nao wakelock=sim
+72395	1786378092173	1	49	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72399	1786378104398	1	49	87	192.168.1.254	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
+72403	1786378145494	1	49	46	192.168.1.254	INFO	3	Got Push Message, type exitKiosk
+72404	1786378145502	1	49	46	192.168.1.254	INFO	3	Exit kiosk by admin command
+72405	1786378150502	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72412	1786378169405	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393722, lon=-48.9137313
+72414	1786378171071	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393625, lon=-48.9137264
+72418	1786378215945	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72430	1786378300491	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72445	1786378324156	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72310	1786377797688	1	46	46	192.168.1.254	VERBOSE	5	Update flow completed
+72321	1786377810123	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72323	1786377814111	1	48	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP?token=fKOPVBDZkbjY7mWyYytxODQndSD0o2Hf
+72327	1786377818115	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72331	1786377820332	1	48	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72332	1786377830006	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393675, lon=-48.9137273
+72344	1786377861036	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72345	1786377861046	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72346	1786377861050	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+72347	1786377861108	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72352	1786377866048	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72353	1786377868082	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393736, lon=-48.9137246
+72356	1786377888965	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393987, lon=-48.9137836
+72363	1786377950330	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393961, lon=-48.9137827
+72369	1786378001094	1	47	46	192.168.1.254	VERBOSE	5	GPS location update: lat=-20.739363333333333, lon=-48.91375333333334
+72373	1786378018570	1	49	87	192.168.1.254	WARNING	2	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=DESLIGADA, protecao=desligada
+72374	1786378033886	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72377	1786378063945	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72382	1786378075918	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72401	1786378107140	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72406	1786378155226	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72408	1786378157919	1	49	46	192.168.1.254	INFO	3	Configuration updated
+72409	1786378157959	1	49	46	192.168.1.254	INFO	3	Device owner: true
+72410	1786378160558	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.913717
+72411	1786378161347	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+72415	1786378173087	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72417	1786378214981	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72425	1786378281944	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72429	1786378296700	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72434	1786378300916	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72435	1786378304898	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72439	1786378319005	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72440	1786378319053	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72324	1786377814219	1	48	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72341	1786377844897	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72343	1786377860928	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72348	1786377862820	1	49	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T?token=cSVeOz4FX29B6uxXOEvZSZVPHrGQUmDS
+72349	1786377862931	1	49	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72350	1786377863333	1	49	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72351	1786377863337	1	49	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72357	1786377891193	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393613, lon=-48.9137386
+72358	1786377906940	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72359	1786377909199	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72360	1786377931936	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72361	1786377944856	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72366	1786377972942	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72367	1786377975146	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72370	1786378004850	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72378	1786378065503	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72381	1786378074853	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137142
+72385	1786378089891	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72396	1786378094970	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72400	1786378104943	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72402	1786378138395	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72420	1786378221768	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393662, lon=-48.9137296
+72422	1786378234200	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137302
+72426	1786378284050	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72427	1786378291291	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137298
+72442	1786378324061	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72443	1786378324142	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72444	1786378324151	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72328	1786377819794	1	48	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72330	1786377820253	1	48	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72333	1786377838763	1	48	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72334	1786377839883	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72335	1786377839895	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72336	1786377839904	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+72337	1786377839988	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72339	1786377841084	1	49	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72342	1786377855923	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72371	1786378011648	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393694, lon=-48.9137305
+72379	1786378070909	1	49	46	192.168.1.254	INFO	3	Got Push Message, type protectionOn
+72380	1786378070921	1	49	87	192.168.1.254	INFO	3	Protecao ligada: as Configuracoes ficam bloqueadas neste aparelho
+72383	1786378084890	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72384	1786378088037	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393712, lon=-48.9137332
+72386	1786378089900	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72391	1786378090256	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72397	1786378095171	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72407	1786378155810	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72413	1786378170950	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72416	1786378188727	1	49	87	192.168.1.254	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
+72423	1786378239136	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72431	1786378300830	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72432	1786378300839	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72437	1786378309101	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393722, lon=-48.9137293
+72447	1786378326432	1	49	87	192.168.1.254	ERROR	1	Uplink falhou: java.io.EOFException
+72448	1786378331438	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72449	1786378336469	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72450	1786378365743	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72451	1786378404909	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72452	1786378404920	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72453	1786378404925	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+72454	1786378404931	1	49	87	192.168.1.254	WARNING	2	Consentimento pode nao aparecer: falta a permissao de sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)
+72455	1786378404986	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72456	1786378406503	1	49	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T?token=HGYyJwUuri0noo7t8JtKLedPm98RGXFG
+72457	1786378406574	1	49	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72458	1786378406732	1	49	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=nao wakelock=sim
+72459	1786378406738	1	49	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72460	1786378409921	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72461	1786378425752	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72462	1786378446756	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72463	1786378447763	1	49	46	192.168.1.254	INFO	3	Got Push Message, type protectionOff
+72464	1786378447768	1	49	87	192.168.1.254	INFO	3	Protecao desligada: as Configuracoes voltam a abrir normalmente
+72465	1786378452768	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72466	1786378486829	1	49	46	192.168.1.254	INFO	3	Got Push Message, type protectionOn
+72467	1786378486838	1	49	87	192.168.1.254	INFO	3	Protecao ligada: as Configuracoes ficam bloqueadas neste aparelho
+72468	1786378491839	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72469	1786378493118	1	49	87	192.168.1.254	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
+72470	1786378514876	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72471	1786378541434	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72472	1786378557708	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72473	1786378572979	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72474	1786378574874	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72475	1786378596223	1	49	46	192.168.1.254	INFO	3	Got Push Message, type textMessage
+72476	1786378596307	1	49	87	192.168.1.254	INFO	3	Mensagem exibida no aparelho (8s)
+72477	1786378601233	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72478	1786378601287	1	49	46	192.168.1.254	INFO	3	Got Push Message, type protectionOn
+72479	1786378601296	1	49	87	192.168.1.254	INFO	3	Protecao ligada: as Configuracoes ficam bloqueadas neste aparelho
+72480	1786378606297	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72481	1786378631897	1	49	87	192.168.1.254	INFO	3	Permissoes neste aparelho: acessibilidade=ATIVA, sobreposicao=ATIVA, protecao=LIGADA
+72482	1786378634891	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72488	1786378730403	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72492	1786378793555	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72499	1786378929100	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72500	1786378929123	1	49	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72501	1786378929141	1	49	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T consentimento_em_cache=false
+72502	1786378929190	1	49	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72508	1786378950259	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72510	1786379010267	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72513	1786379131706	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72515	1786379197707	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72517	1786378331601	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72518	1786378336653	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72519	1786378370480	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393607, lon=-48.913729
+72520	1786378414753	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72521	1786378431733	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393608, lon=-48.9137337
+72522	1786378480903	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72523	1786378519071	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739398, lon=-48.9137779
+72524	1786378546952	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72525	1786378580466	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393707, lon=-48.9137369
+72526	1786378612899	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72537	1786378921159	1	48	46	192.168.1.254	INFO	3	Device owner: true
+72538	1786378921893	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+72539	1786378939455	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393749, lon=-48.9137249
+72540	1786378942834	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72541	1786379000744	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393646, lon=-48.9137271
+72542	1786379008679	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72543	1786379062088	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393972, lon=-48.9137832
+72544	1786379074934	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72545	1786379140881	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72546	1786379149359	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393742, lon=-48.9137221
+72559	1786378741787	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72560	1786378801824	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72561	1786378807944	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72562	1786378944672	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72563	1786378951719	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72564	1786379009882	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72565	1786379012827	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72566	1786379072929	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72567	1786379076031	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72568	1786379127247	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72595	1786378398815	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72596	1786378398885	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72597	1786378403816	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72598	1786378464826	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393554, lon=-48.9137352
+72599	1786378502296	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393714, lon=-48.9137298
+72600	1786378518155	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72601	1786378583705	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72602	1786378590668	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393747, lon=-48.9137254
+72603	1786378673369	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393718, lon=-48.9137264
+72604	1786378699820	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72645	1786379264699	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72646	1786379264782	1	47	87	192.168.1.254	ERROR	1	Encoder indisponivel em 464x800: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
+72647	1786379264792	1	47	87	192.168.1.254	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
+72648	1786379264894	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=6gjZPmzJyPUsSEN4MONT_WonR1Km4TaR
+72649	1786379264921	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72650	1786379265159	1	47	87	192.168.1.254	INFO	3	Encerrando a sessao anterior antes de abrir a nova
+72651	1786379265166	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=JxtFaPIN-817S6_pLtHxVwT5RdW92CNI
+72652	1786379265170	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72653	1786379265174	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72483	1786378635736	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72486	1786378698863	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72490	1786378762002	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72495	1786378844844	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72498	1786378888334	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72509	1786378999704	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72514	1786379144948	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72585	1786378384711	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72586	1786378384721	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72587	1786378384727	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72588	1786378384809	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72589	1786378389721	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72590	1786378393733	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72591	1786378398741	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72592	1786378398796	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72593	1786378398805	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72594	1786378398805	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72635	1786379260733	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72636	1786379261185	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72637	1786379261189	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72638	1786379262704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72639	1786379264142	1	47	87	192.168.1.254	INFO	3	Encerrando a sessao anterior antes de abrir a nova
+72640	1786379264151	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=aVESPBmmJAKl00bjiesTBtnm63wVrasD
+72641	1786379264182	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72642	1786379264286	1	47	87	192.168.1.254	ERROR	1	Encoder indisponivel em 464x800: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
+72643	1786379264295	1	47	87	192.168.1.254	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
+72644	1786379264672	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=KlrNAynZP-Zk8K5_MPeczQHiVCdArqm4
+72672	1786379337406	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72674	1786379338922	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72678	1786379359524	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393988, lon=-48.9137769
+72679	1786379395369	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394044, lon=-48.9137758
+72681	1786379402704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72683	1786379405846	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72697	1786379557706	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72699	1786379569439	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393939, lon=-48.9137825
+72706	1786379640717	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393624, lon=-48.9137339
+72713	1786379703311	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72714	1786379704140	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72726	1786379850697	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72728	1786379867670	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72730	1786379895515	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72740	1786379975431	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72742	1786379988134	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72745	1786380007948	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393607, lon=-48.9137338
+72746	1786380025160	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137305
+72748	1786380065971	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72758	1786380159707	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72764	1786380186042	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72767	1786380213938	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72770	1786380225706	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72772	1786380263810	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72484	1786378667295	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72516	1786379204951	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72549	1786378331769	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72550	1786378336818	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72551	1786378381994	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393717, lon=-48.9137321
+72552	1786378415024	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72553	1786378444322	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393654, lon=-48.9137284
+72554	1786378504793	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72555	1786378513902	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72556	1786378579993	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72557	1786378590498	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72558	1786378740711	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72569	1786379141978	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72570	1786379187352	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72571	1786379207925	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72572	1786379247450	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72573	1786379263706	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72605	1786378713301	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393703, lon=-48.9137243
+72606	1786378765705	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72607	1786378800518	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393751, lon=-48.9137251
+72608	1786378831706	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72609	1786378862357	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393731, lon=-48.9137297
+72610	1786378866673	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72611	1786378866695	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72612	1786378866708	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72613	1786378867123	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72614	1786378871690	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72655	1786379265384	1	47	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72656	1786379265388	1	47	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72657	1786379265447	1	47	87	192.168.1.254	INFO	3	Encerrando a sessao anterior antes de abrir a nova
+72658	1786379265454	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=vHJIrP1zor8zp7eAItgaIC9-WS1ShB4M
+72659	1786379265489	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72660	1786379265607	1	47	87	192.168.1.254	ERROR	1	Encoder indisponivel em 464x800: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
+72661	1786379265616	1	47	87	192.168.1.254	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
+72662	1786379267972	1	47	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72664	1786379272773	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72669	1786379274357	1	47	46	192.168.1.254	VERBOSE	5	Update flow completed
+72671	1786379308377	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393562, lon=-48.9137306
+72673	1786379336675	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72680	1786379397781	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393715, lon=-48.9137247
+72682	1786379404869	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72689	1786379492293	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72690	1786379492339	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72692	1786379495681	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72696	1786379553402	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72700	1786379578129	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393716, lon=-48.9137339
+72702	1786379600702	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72716	1786379735936	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72718	1786379764993	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72720	1786379779231	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393701, lon=-48.9137394
+72721	1786379789207	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393675, lon=-48.9137454
+72723	1786379799010	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137387
+72725	1786379841172	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739365, lon=-48.9137315
+72733	1786379914322	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72735	1786379921735	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72739	1786379963769	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393679, lon=-48.9137327
+72741	1786379980703	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72751	1786380092282	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72762	1786380169392	1	49	46	192.168.1.254	VERBOSE	5	Update flow completed
+72763	1786380184847	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137409
+72485	1786378671706	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72494	1786378825110	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72496	1786378856697	1	49	87	192.168.1.254	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
+72511	1786379065707	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72575	1786378329151	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72576	1786378334168	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72577	1786378362466	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72578	1786378362475	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72579	1786378362483	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72580	1786378362567	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72581	1786378367476	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72582	1786378379437	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72583	1786378379488	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393816, lon=-48.9137248
+72584	1786378384451	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72625	1786378998704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72626	1786379010878	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137296
+72627	1786379064708	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72628	1786379072180	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394015, lon=-48.9137787
+72629	1786379130701	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72630	1786379185585	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394019, lon=-48.9137879
+72631	1786379196706	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72632	1786379247005	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393616, lon=-48.9137271
+72633	1786379259846	1	47	87	192.168.1.254	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
+72634	1786379260683	1	47	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E?token=HF6yz0HZ_NtCk81JcSQVSixXC9N0BfkL
+72665	1786379273002	1	49	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72667	1786379268953	1	47	46	192.168.1.254	INFO	3	Configuration updated
+72668	1786379269001	1	47	46	192.168.1.254	INFO	3	Device owner: true
+72675	1786379340535	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72677	1786379355028	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72684	1786379420736	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394031, lon=-48.9137786
+72685	1786379456725	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393766, lon=-48.9137226
+72694	1786379534704	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72698	1786379561116	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72705	1786379640379	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393748, lon=-48.9137301
+72710	1786379698852	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72715	1786379732709	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72717	1786379764389	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72734	1786379915377	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72738	1786379960700	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72743	1786379997477	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7386405, lon=-48.9103661
+72744	1786379999728	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72754	1786380131918	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72755	1786380147736	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7386405, lon=-48.9103661
+72760	1786380168564	1	49	46	192.168.1.254	INFO	3	Configuration updated
+72761	1786380168611	1	49	46	192.168.1.254	INFO	3	Device owner: true
+72771	1786380246285	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393532, lon=-48.9137507
+72487	1786378724844	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72489	1786378737703	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72491	1786378784847	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394097, lon=-48.9137869
+72493	1786378803710	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72497	1786378869708	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72503	1786378930983	1	49	87	192.168.1.254	INFO	3	Discando o relay: ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T?token=f_4S6OauCAwaOGjsheYE6gqFkGJIUPnr
+72504	1786378931016	1	49	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72505	1786378931310	1	49	87	192.168.1.254	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
+72506	1786378931322	1	49	87	192.168.1.254	INFO	3	Transmitindo 464x800 com toque
+72507	1786378934125	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72512	1786379070268	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72527	1786378641865	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137289
+72528	1786378678947	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72529	1786378729286	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393666, lon=-48.9137353
+72530	1786378744794	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72531	1786378790771	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393633, lon=-48.9137407
+72532	1786378810761	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72533	1786378852039	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393704, lon=-48.913726
+72534	1786378876888	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72535	1786378920293	1	48	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72536	1786378921125	1	48	46	192.168.1.254	INFO	3	Configuration updated
+72547	1786379206724	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72548	1786379210733	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393641, lon=-48.9137303
+72574	1786379264959	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393734, lon=-48.91373
+72615	1786378907028	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72616	1786378912061	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72617	1786378913254	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStart
+72618	1786378913264	1	47	87	192.168.1.254	INFO	3	Chamado de suporte recebido do launcher
+72619	1786378913270	1	47	87	192.168.1.254	INFO	3	Iniciando sessao; relay=ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E consentimento_em_cache=false
+72620	1786378913354	1	47	87	192.168.1.254	INFO	3	Pedindo consentimento de captura ao usuario
+72621	1786378918266	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72622	1786378923437	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393625, lon=-48.9137339
+72623	1786378927903	1	47	46	192.168.1.254	INFO	3	Got Push Message, type remoteScreenStop
+72624	1786378932910	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72663	1786379272112	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393666, lon=-48.9137383
+72666	1786379273870	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72687	1786379471942	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72691	1786379494191	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394157, lon=-48.9138442
+72693	1786379518034	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739363, lon=-48.9137331
+72701	1786379579362	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393644, lon=-48.9137374
+72708	1786379669681	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72711	1786379700161	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393706, lon=-48.9137323
+72736	1786379923186	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393768, lon=-48.9137259
+72737	1786379933776	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72747	1786380026700	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72753	1786380131912	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393717, lon=-48.913729
+72756	1786380148755	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72769	1786380223706	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72654	1786379265195	1	47	87	192.168.1.254	INFO	3	Relay aceitou a conexao; iniciando captura
+72670	1786379278013	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72676	1786379343707	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72686	1786379468702	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72688	1786379482179	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393648, lon=-48.9137328
+72695	1786379537889	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72703	1786379603735	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72704	1786379630783	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137312
+72707	1786379666705	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72709	1786379692161	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393684, lon=-48.9137349
+72712	1786379701944	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393643, lon=-48.9137355
+72719	1786379769704	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72722	1786379798700	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72724	1786379801676	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72727	1786379852226	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393758, lon=-48.9138039
+72729	1786379861251	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137301
+72731	1786379902824	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393699, lon=-48.9137429
+72732	1786379912215	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7386405, lon=-48.9103661
+72749	1786380070798	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393738, lon=-48.9137216
+72750	1786380086559	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393693, lon=-48.9137296
+72752	1786380093696	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72757	1786380157946	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72759	1786380167906	1	49	46	192.168.1.254	DEBUG	4	Forcing configuration update
+72765	1786380197762	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72766	1786380208841	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7386405, lon=-48.9103661
+72768	1786380220523	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393763, lon=-48.9137289
+72773	1786380336321	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72774	1786380339316	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72775	1786380353572	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393708, lon=-48.9137478
+72776	1786380355403	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72777	1786380397413	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72778	1786380405073	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72779	1786380414844	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393649, lon=-48.9137365
+72780	1786380421297	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72781	1786380476220	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394036, lon=-48.9137807
+72782	1786380487142	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72783	1786380534856	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393635, lon=-48.9137541
+72784	1786380547292	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72785	1786380547363	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72786	1786380553294	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72787	1786380596202	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393667, lon=-48.9137422
+72788	1786380608408	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72789	1786380613860	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72790	1786380619243	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72791	1786380650344	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72792	1786380744390	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72793	1786380758288	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72794	1786380810575	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72795	1786380819400	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72796	1786380969292	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72797	1786380970957	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72798	1786380995249	1	49	46	192.168.1.254	INFO	3	Got Push Message, type textMessage
+72799	1786380995340	1	49	87	192.168.1.254	INFO	3	Mensagem exibida no aparelho (5s)
+72800	1786381000254	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72801	1786381030311	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72802	1786381065577	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72803	1786381090410	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72804	1786381131578	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72805	1786381150516	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72806	1786380283879	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72807	1786380288938	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72808	1786380307601	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393763, lon=-48.9137283
+72809	1786380370925	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72810	1786380394687	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393725, lon=-48.913729
+72811	1786380437071	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72812	1786380456099	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739354, lon=-48.9137386
+72813	1786380503126	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72814	1786380517300	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393727, lon=-48.9137362
+72815	1786380568870	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72816	1786380604838	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393659, lon=-48.91373
+72817	1786380634915	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72818	1786380650473	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72819	1786380655507	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72820	1786380666233	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393527, lon=-48.9137284
+72821	1786380727468	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393612, lon=-48.9137356
+72822	1786380736803	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72823	1786380802748	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72824	1786380815030	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393655, lon=-48.9137449
+72825	1786380849666	1	48	46	192.168.1.254	INFO	3	Got Push Message, type configUpdated
+72826	1786380849675	1	48	46	192.168.1.254	DEBUG	4	Update configuration by MainActivity
+72827	1786380850363	1	48	46	192.168.1.254	INFO	3	Configuration updated
+72828	1786380850413	1	48	46	192.168.1.254	INFO	3	Device owner: true
+72829	1786380852902	1	48	46	192.168.1.254	VERBOSE	5	Update flow completed
+72830	1786380854674	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72831	1786380876365	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739372, lon=-48.9137249
+72832	1786380920613	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72833	1786380937728	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7394013, lon=-48.9137812
+72834	1786380986765	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72835	1786381024959	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393722, lon=-48.9137218
+72836	1786381052609	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72837	1786381086344	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393691, lon=-48.9137265
+72838	1786381118759	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72839	1786381147634	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393745, lon=-48.9137282
+72840	1786381184703	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72841	1786381197582	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72842	1786381213615	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72843	1786380281897	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393678, lon=-48.9137274
+72844	1786380326232	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72845	1786380343305	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393717, lon=-48.913729
+72846	1786380391857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72847	1786380430342	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393767, lon=-48.9137256
+72848	1786380457858	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72849	1786380491669	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393645, lon=-48.9137325
+72850	1786380523857	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72851	1786380589854	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72852	1786380605233	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393724, lon=-48.9137266
+72853	1786380650338	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72854	1786380655364	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72855	1786380666603	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393721, lon=-48.9137281
+72856	1786380727916	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393698, lon=-48.9137371
+72857	1786380736577	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72858	1786380802575	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72859	1786380815370	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393657, lon=-48.9137445
+72860	1786380868570	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72861	1786380876590	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393637, lon=-48.9137357
+72862	1786380934571	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72863	1786380937932	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393658, lon=-48.9137356
+72864	1786381000572	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72865	1786381025336	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393717, lon=-48.9137257
+72866	1786381066577	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72867	1786381117078	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393649, lon=-48.9137353
+72868	1786381149859	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393748, lon=-48.913725
+72869	1786381149866	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72870	1786381210467	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393671, lon=-48.9137243
+72871	1786381215574	1	47	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72872	1786381235008	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393719, lon=-48.9137169
+72873	1786381250753	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72874	1786381263576	1	49	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
+72875	1786381273717	1	49	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393673, lon=-48.9137403
+72876	1786381276694	1	47	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393672, lon=-48.9137341
+72877	1786381296317	1	48	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393716, lon=-48.9137371
+72878	1786381316597	1	48	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 \.
 
 
@@ -17216,6 +18141,7 @@ COPY public.plugin_messaging_messages (id, customerid, deviceid, ts, message, st
 
 COPY public.plugin_push_messages (id, customerid, deviceid, ts, messagetype, payload) FROM stdin;
 2	1	47	1786361799061	textMessage	{"text":"teste plugin push","duration":15}
+3	1	49	1786380995229	textMessage	{"text":"Mensagens push OK","duration":5}
 \.
 
 
@@ -17255,601 +18181,15 @@ COPY public.pluginsdisabled (pluginid, customerid) FROM stdin;
 --
 
 COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
-3592	screenshot	46	\N
-3593	screenshot	46	\N
-3594	screenshot	46	\N
-3595	screenshot	46	\N
-3596	screenshot	46	\N
-3597	screenshot	46	\N
-3598	screenshot	46	\N
-3599	screenshot	46	\N
-3600	screenshot	46	\N
-3601	screenshot	46	\N
-3602	screenshot	46	\N
-3603	screenshot	46	\N
-3604	screenshot	46	\N
-3605	screenshot	46	\N
-3606	screenshot	46	\N
-3607	screenshot	46	\N
-3608	screenshot	46	\N
-3609	screenshot	46	\N
-3610	screenshot	46	\N
-3611	screenshot	46	\N
-3612	screenshot	46	\N
-3613	screenshot	46	\N
-3614	screenshot	46	\N
-3615	screenshot	46	\N
-3616	screenshot	46	\N
-3617	screenshot	46	\N
-3618	screenshot	46	\N
-3619	screenshot	46	\N
-3620	screenshot	46	\N
-3621	screenshot	46	\N
-3622	screenshot	46	\N
-3623	screenshot	46	\N
-3624	screenshot	46	\N
-3625	screenshot	46	\N
-3626	screenshot	46	\N
-3627	screenshot	46	\N
-3628	screenshot	46	\N
-3629	screenshot	46	\N
-3630	screenshot	46	\N
-3631	screenshot	46	\N
-3632	screenshot	46	\N
-3633	screenshot	46	\N
-3634	screenshot	46	\N
-3635	screenshot	46	\N
-3636	screenshot	46	\N
-3637	screenshot	46	\N
-3638	screenshot	46	\N
-3639	screenshot	46	\N
-3640	screenshot	46	\N
-3641	screenshot	46	\N
-3642	screenshot	46	\N
-3643	screenshot	46	\N
-3644	screenshot	46	\N
-3645	screenshot	46	\N
-3646	screenshot	46	\N
-3647	screenshot	46	\N
-3648	screenshot	46	\N
-3649	screenshot	46	\N
-3650	screenshot	46	\N
-3651	screenshot	46	\N
-3652	screenshot	46	\N
-3653	screenshot	46	\N
-3654	screenshot	46	\N
-3655	screenshot	46	\N
-3656	screenshot	46	\N
-3657	screenshot	46	\N
-3658	screenshot	46	\N
-3659	screenshot	46	\N
-3660	screenshot	46	\N
-3661	screenshot	46	\N
-3662	screenshot	46	\N
-3663	screenshot	46	\N
-3664	screenshot	46	\N
-3665	screenshot	46	\N
-3666	screenshot	46	\N
-3667	screenshot	46	\N
-3668	screenshot	46	\N
-3669	screenshot	46	\N
-3670	screenshot	46	\N
-3671	screenshot	46	\N
-3672	screenshot	46	\N
-3673	screenshot	46	\N
-3674	screenshot	46	\N
-3675	screenshot	46	\N
-3676	screenshot	46	\N
-3677	screenshot	46	\N
-3678	screenshot	46	\N
-3679	screenshot	46	\N
-3680	screenshot	46	\N
-3681	screenshot	46	\N
-3682	screenshot	46	\N
-3683	screenshot	46	\N
-3684	screenshot	46	\N
-3685	screenshot	46	\N
-3686	screenshot	46	\N
-3687	screenshot	46	\N
-3688	screenshot	46	\N
-3689	screenshot	46	\N
-3690	screenshot	46	\N
-3691	screenshot	46	\N
-3692	screenshot	46	\N
-3693	screenshot	46	\N
-3694	screenshot	46	\N
-3695	screenshot	46	\N
-3696	screenshot	46	\N
-3697	screenshot	46	\N
-3698	screenshot	46	\N
-3699	screenshot	46	\N
-3700	screenshot	46	\N
-3701	screenshot	46	\N
-3702	screenshot	46	\N
-3703	screenshot	46	\N
-3704	screenshot	46	\N
-3705	screenshot	46	\N
-3706	screenshot	46	\N
-3707	screenshot	46	\N
-3708	screenshot	46	\N
-3709	screenshot	46	\N
-3710	screenshot	46	\N
-3711	screenshot	46	\N
-3712	screenshot	46	\N
-3713	screenshot	46	\N
-3714	screenshot	46	\N
-3715	screenshot	46	\N
-3716	screenshot	46	\N
-3717	screenshot	46	\N
-3718	screenshot	46	\N
-3719	screenshot	46	\N
-3720	screenshot	46	\N
-3721	screenshot	46	\N
-3722	screenshot	46	\N
-3723	screenshot	46	\N
-3724	screenshot	46	\N
-3725	screenshot	46	\N
-3726	screenshot	46	\N
-3727	screenshot	46	\N
-3728	screenshot	46	\N
-3729	screenshot	46	\N
-3730	screenshot	46	\N
-3731	screenshot	46	\N
-3732	screenshot	46	\N
-3733	screenshot	46	\N
-3734	screenshot	46	\N
-3735	screenshot	46	\N
-3736	screenshot	46	\N
-3737	screenshot	46	\N
-3738	screenshot	46	\N
-3739	screenshot	46	\N
-3740	screenshot	46	\N
-3741	screenshot	46	\N
-3742	screenshot	46	\N
-3743	screenshot	46	\N
-3744	screenshot	46	\N
-3745	screenshot	46	\N
-3746	screenshot	46	\N
-3747	screenshot	46	\N
-3748	screenshot	46	\N
-3749	screenshot	46	\N
-3758	screenshot	46	\N
-3759	screenshot	46	\N
-3769	screenshot	46	\N
-3750	screenshot	46	\N
-3751	screenshot	46	\N
-3760	screenshot	46	\N
-3761	screenshot	46	\N
-3767	screenshot	46	\N
-3752	screenshot	46	\N
-3753	screenshot	46	\N
-3762	screenshot	46	\N
-3763	screenshot	46	\N
-3768	screenshot	46	\N
-3754	screenshot	46	\N
-3755	screenshot	46	\N
-3764	screenshot	46	\N
-3765	screenshot	46	\N
-3770	screenshot	46	\N
-3756	screenshot	46	\N
-3757	screenshot	46	\N
-3766	screenshot	46	\N
-3771	screenshot	46	\N
-3772	screenshot	46	\N
-3773	screenshot	46	\N
-3774	screenshot	46	\N
-3775	screenshot	46	\N
-3776	screenshot	46	\N
-3777	screenshot	46	\N
-3778	screenshot	46	\N
-3779	screenshot	46	\N
-3780	screenshot	46	\N
-3781	screenshot	46	\N
-3782	screenshot	46	\N
-3783	screenshot	46	\N
-3784	screenshot	46	\N
-3785	screenshot	46	\N
-3786	screenshot	46	\N
-3787	screenshot	46	\N
-3788	screenshot	46	\N
-3789	screenshot	46	\N
-3790	screenshot	46	\N
-3791	screenshot	46	\N
-3792	screenshot	46	\N
-3793	screenshot	46	\N
-3794	screenshot	46	\N
-3795	screenshot	46	\N
-3796	screenshot	46	\N
-3797	screenshot	46	\N
-3798	screenshot	46	\N
-3799	screenshot	46	\N
-3800	screenshot	46	\N
-3801	screenshot	46	\N
-3802	screenshot	46	\N
-3803	screenshot	46	\N
-3804	screenshot	46	\N
-3805	screenshot	46	\N
-3806	screenshot	46	\N
-3807	screenshot	46	\N
-3808	screenshot	46	\N
-3809	screenshot	46	\N
-3810	screenshot	46	\N
-3811	screenshot	46	\N
-3812	screenshot	46	\N
-3813	screenshot	46	\N
-3814	screenshot	46	\N
-3815	screenshot	46	\N
-3816	screenshot	46	\N
-3817	screenshot	46	\N
-3818	screenshot	46	\N
-3819	screenshot	46	\N
-3820	screenshot	46	\N
-3821	screenshot	46	\N
-3822	screenshot	46	\N
-3823	screenshot	46	\N
-3824	configUpdated	46	\N
-3825	screenshot	46	\N
-3826	screenshot	46	\N
-3827	screenshot	46	\N
-3828	screenshot	46	\N
-3829	screenshot	46	\N
-3830	screenshot	46	\N
-3831	screenshot	46	\N
-3832	screenshot	46	\N
-3833	screenshot	46	\N
-3834	screenshot	46	\N
-3835	screenshot	46	\N
-3836	screenshot	46	\N
-3837	screenshot	46	\N
-3838	textMessage	46	{"duration":10,"text":"tezste"}
-3839	screenshot	46	\N
-3840	screenshot	46	\N
-3841	screenshot	46	\N
-3842	screenshot	46	\N
-3843	screenshot	46	\N
-3844	screenshot	46	\N
-3845	screenshot	46	\N
-3846	screenshot	46	\N
-3847	screenshot	46	\N
-3848	screenshot	46	\N
-3849	screenshot	46	\N
-3850	screenshot	46	\N
-3851	screenshot	46	\N
-3852	screenshot	46	\N
-3853	screenshot	46	\N
-3854	screenshot	46	\N
-3855	screenshot	46	\N
-3856	screenshot	46	\N
-3857	screenshot	46	\N
-3858	screenshot	46	\N
-3859	screenshot	46	\N
-3860	screenshot	46	\N
-3861	screenshot	46	\N
-3862	screenshot	46	\N
-3863	screenshot	46	\N
-3864	screenshot	46	\N
-3865	textMessage	46	{"duration":10,"text":"teste"}
-3866	screenshot	46	\N
-3867	screenshot	46	\N
-3868	screenshot	46	\N
-3869	screenshot	46	\N
-3870	screenshot	46	\N
-3871	screenshot	46	\N
-3872	screenshot	46	\N
-3873	configUpdated	46	\N
-3874	screenshot	46	\N
-3875	screenshot	46	\N
-3876	screenshot	46	\N
-3877	screenshot	46	\N
-3878	screenshot	46	\N
-3879	screenshot	46	\N
-3880	screenshot	46	\N
-3881	adminPanel	46	\N
-3882	screenshot	46	\N
-3883	screenshot	46	\N
-3884	screenshot	46	\N
-3885	screenshot	46	\N
-3886	screenshot	46	\N
-3887	screenshot	46	\N
-3888	screenshot	46	\N
-3889	screenshot	46	\N
-3890	configUpdated	46	\N
-3891	screenshot	46	\N
-3892	screenshot	46	\N
-3893	screenshot	46	\N
-3894	screenshot	46	\N
-3895	screenshot	46	\N
-3896	screenshot	46	\N
-3897	screenshot	46	\N
-3898	screenshot	46	\N
-3899	screenshot	46	\N
-3900	screenshot	46	\N
-3901	screenshot	46	\N
-3902	screenshot	46	\N
-3903	screenshot	46	\N
-3904	screenshot	46	\N
-3905	screenshot	46	\N
-3906	screenshot	46	\N
-3907	screenshot	46	\N
-3908	screenshot	46	\N
-3909	screenshot	46	\N
-3910	screenshot	46	\N
-3911	screenshot	46	\N
-3912	screenshot	46	\N
-3913	screenshot	46	\N
-3914	screenshot	46	\N
-3915	screenshot	46	\N
-3916	screenshot	46	\N
-3917	screenshot	46	\N
-3918	screenshot	46	\N
-3919	screenshot	46	\N
-3920	screenshot	46	\N
-3921	screenshot	46	\N
-3922	screenshot	46	\N
-3923	screenshot	46	\N
-3924	screenshot	46	\N
-3925	screenshot	46	\N
-3932	screenshot	46	\N
-3926	screenshot	46	\N
-3927	screenshot	46	\N
-3933	screenshot	46	\N
-3935	screenshot	46	\N
-3928	screenshot	46	\N
-3929	screenshot	46	\N
-3934	screenshot	46	\N
-3930	screenshot	46	\N
-3931	screenshot	46	\N
-3936	screenshot	46	\N
-3937	screenshot	46	\N
-3938	screenshot	46	\N
-3939	screenshot	46	\N
-3940	screenshot	46	\N
-3941	screenshot	46	\N
-3942	screenshot	46	\N
-3943	screenshot	46	\N
-3944	screenshot	46	\N
-3945	screenshot	46	\N
-3946	screenshot	46	\N
-3947	screenshot	46	\N
-3948	screenshot	46	\N
-3949	screenshot	46	\N
-3950	screenshot	46	\N
-3951	screenshot	46	\N
-3952	screenshot	46	\N
-3953	screenshot	46	\N
-3954	screenshot	46	\N
-3955	screenshot	46	\N
-3956	screenshot	46	\N
-3957	screenshot	46	\N
-3958	screenshot	46	\N
-3959	screenshot	46	\N
-3960	screenshot	46	\N
-3961	screenshot	46	\N
-3962	screenshot	46	\N
-3963	screenshot	46	\N
-3964	screenshot	46	\N
-3965	screenshot	46	\N
-3966	screenshot	46	\N
-3967	screenshot	46	\N
-3968	screenshot	46	\N
-3969	screenshot	46	\N
-3970	screenshot	46	\N
-3971	screenshot	46	\N
-3972	screenshot	46	\N
-3973	screenshot	46	\N
-3974	screenshot	46	\N
-3975	screenshot	46	\N
-3976	screenshot	46	\N
-3977	screenshot	46	\N
-3978	screenshot	46	\N
-3979	screenshot	46	\N
-3980	screenshot	46	\N
-3981	screenshot	46	\N
-3982	screenshot	46	\N
-3983	screenshot	46	\N
-3984	screenshot	46	\N
-3985	screenshot	46	\N
-3986	screenshot	46	\N
-3987	screenshot	46	\N
-3988	screenshot	46	\N
-3989	screenshot	46	\N
-3990	screenshot	46	\N
-3991	screenshot	46	\N
-3992	screenshot	46	\N
-3993	screenshot	46	\N
-3994	screenshot	46	\N
-3995	screenshot	46	\N
-3996	screenshot	46	\N
-3997	screenshot	46	\N
-3998	screenshot	46	\N
-3999	screenshot	46	\N
-4000	screenshot	46	\N
-4001	screenshot	46	\N
-4002	screenshot	46	\N
-4003	screenshot	46	\N
-4004	screenshot	46	\N
-4005	screenshot	46	\N
-4006	screenshot	46	\N
-4007	screenshot	46	\N
-4008	screenshot	46	\N
-4009	screenshot	46	\N
-4010	screenshot	46	\N
-4011	screenshot	46	\N
-4012	screenshot	46	\N
-4013	screenshot	46	\N
-4014	screenshot	46	\N
-4015	screenshot	46	\N
-4016	screenshot	46	\N
-4017	screenshot	46	\N
-4018	screenshot	46	\N
-4019	screenshot	46	\N
-4020	screenshot	46	\N
-4021	screenshot	46	\N
-4022	screenshot	46	\N
-4023	screenshot	46	\N
-4024	screenshot	46	\N
-4025	screenshot	46	\N
-4026	screenshot	46	\N
-4027	screenshot	46	\N
-4028	screenshot	46	\N
-4029	screenshot	46	\N
-4030	screenshot	46	\N
-4031	screenshot	46	\N
-4032	screenshot	46	\N
-4033	screenshot	46	\N
-4034	screenshot	46	\N
-4035	screenshot	46	\N
-4036	screenshot	46	\N
-4037	screenshot	46	\N
-4038	screenshot	46	\N
-4039	screenshot	46	\N
-4040	screenshot	46	\N
-4041	screenshot	46	\N
-4042	screenshot	46	\N
-4043	screenshot	46	\N
-4044	screenshot	46	\N
-4045	screenshot	46	\N
-4046	screenshot	46	\N
-4047	screenshot	46	\N
-4048	screenshot	46	\N
-4049	screenshot	46	\N
-4050	screenshot	46	\N
-4051	screenshot	46	\N
-4052	screenshot	46	\N
-4053	screenshot	46	\N
-4054	screenshot	46	\N
-4055	screenshot	46	\N
-4056	screenshot	46	\N
-4057	screenshot	46	\N
-4058	screenshot	46	\N
-4059	screenshot	46	\N
-4060	screenshot	46	\N
-4061	screenshot	46	\N
-4062	screenshot	46	\N
-4063	screenshot	46	\N
-4064	screenshot	46	\N
-4065	screenshot	46	\N
-4066	screenshot	46	\N
-4067	screenshot	46	\N
-4068	screenshot	46	\N
-4069	screenshot	46	\N
-4070	screenshot	46	\N
-4071	screenshot	46	\N
-4072	screenshot	46	\N
-4073	screenshot	46	\N
-4074	screenshot	46	\N
-4075	screenshot	46	\N
-4076	screenshot	46	\N
-4077	screenshot	46	\N
-4078	screenshot	46	\N
-4079	screenshot	46	\N
-4080	screenshot	46	\N
-4081	screenshot	46	\N
-4082	screenshot	46	\N
-4083	screenshot	46	\N
-4084	screenshot	46	\N
-4085	screenshot	46	\N
-4086	screenshot	46	\N
-4087	screenshot	46	\N
-4088	screenshot	46	\N
-4089	screenshot	46	\N
-4090	screenshot	46	\N
-4091	screenshot	46	\N
-4092	screenshot	46	\N
-4093	screenshot	46	\N
-4094	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"G6-G1beysWIJPIdkSQBGEJVVTM35kXa6","maxWidth":800}
-4095	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"qPFDoDnGcAjkuRupMoCasW5-s6e0IzaH","maxWidth":800}
-4096	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"Rhj76FSxhRQD-enjvBNt050p19wf0fpw","maxWidth":800}
-4097	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"gNfIu65PsCbZRVkgX03sSy7SYoy_lXI8","maxWidth":800}
-4098	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"AdEtAAX02zDASx7GehRJuCll8fNTGzaD","maxWidth":800}
-4099	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"rQvo_wzn40QxoarnFqqpIh6cXL20n2-d","maxWidth":800}
-4100	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"tutcVSV445jpPNC5wipkhPkrqA5vzaz7","maxWidth":800}
-4101	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"YQ1jfSccvJQ7fe726L8zeHDU0CN5eQHN","maxWidth":800}
-4102	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"OCTmQOYJiIJSdNAAbs0m3j73GUiEe5iE","maxWidth":800}
-4103	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"VkBGZK7NapBvRctoY-nmRdUS4PA3Cxg-","maxWidth":800}
-4104	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"pYBD8OBfOnqMC_3XAMAGBbpjWl41egDU","maxWidth":800}
-4105	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"epJqgsKcU9hdSoCORy0NnpPqYliL2_h6","maxWidth":800}
-4106	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"fpC8kz6lJvMHQ90tRich9ndnoqYu1-Ci","maxWidth":800}
-4107	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"jCCwuhaUIhevUcL_XQyoED7J9Lj_NjEA","maxWidth":800}
-4108	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"TOyePA-oQXQl5e1uYCjHRhORHhrx2Jw9","maxWidth":800}
-4109	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"vrGZ4bfhss0I7Q-kRxCV9Jd4kDVVSnXt","maxWidth":800}
-4110	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"lqJclsFriM9ZJ3PNm3fNY57pQn1houSM","maxWidth":800}
-4111	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"YrtDJvidZh_TM1cO6a8MnP7fmzPhsx6s","maxWidth":800}
-4112	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"W4aDP0FMGltNgNedGJmWeMrAJpSwEeCg","maxWidth":800}
-4113	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"XITZV52egBE3a5WX5wrjq4MKQQ5b2R3m","maxWidth":800}
-4114	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"SoSvUlXVB5-zoSrcqtpgWU2FVlh7TJhn","maxWidth":800}
-4115	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"2foODgsH8eTgIrrGiGoJbyQXuYQs7dzy","maxWidth":800}
-4116	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"kAXc9lHySDlHqUov8plgSmhO-olZaIWo","maxWidth":800}
-4117	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"71eS51Sr-bDl--OiYIIFV6oPPWdIWnV9","maxWidth":800}
-4118	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"vvW-hYvGIzptczSqayQY2ImB1XLxzsaf","maxWidth":800}
-4119	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"18kyTBszr7VZ46WLlDYBHkIX272XfiX7","maxWidth":800}
-4120	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"48kG3_Fy_uHwnRP6P13jvxM7TSYiGfc8","maxWidth":800}
-4121	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"_98bPGX9-fTQwFG9pPQMaZc-OOkFm3u9","maxWidth":800}
-4122	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"ft0q0wxgXsdxMql7QaVqNtpSFd0qGZJj","maxWidth":800}
-4123	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"AROTRqf4yow9yvTWSk7XLEfCpNg95-Hb","maxWidth":800}
-4124	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"TGvQBGw-6iUFskf9Oy6lt-2LC6n4PcO8","maxWidth":800}
-4125	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"UQ2I0GsTr79qjuwr4AmjBH8isB1hsjhP","maxWidth":800}
-4126	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"yGnLGvcaQ-EDLA6_Os1Sq0Z59L9bL4Qg","maxWidth":800}
-4127	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"OcX_143t-QeY9_pNN8VrOWReu4qporif","maxWidth":800}
-4128	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"oh5E6_3XPPwDYW2yy2zEbyNG1TslSEY5","maxWidth":800}
-4129	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"R3X5HEmcCJ0DZWsESL4TQN9_pdHTLR28","maxWidth":800}
-4130	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"_vTqKdihHGEsN_O3orcmQi-WH0ZIpFWW","maxWidth":800}
-4131	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"2xpB1vAgcVIYpGcCFbo5CIWoKyerDIMI","maxWidth":800}
-4132	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"CsIs4_DvPf-Das0gKDFNMoOGMA1VjtA8","maxWidth":800}
-4133	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"tYK0AQVWkR7cDokMXJEjiVZ_UWADRQt7","maxWidth":800}
-4134	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"dVA1IUXmxXjVK1DVS0JO6Y4Y8b2dhgXT","maxWidth":800}
-4135	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"Zeozd2TI5LP6FsML7v2I2nlavsAdQDSq","maxWidth":800}
-4136	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"ndbFhfo7TFRULgR0BDocjkxTVqvoKSiH","maxWidth":800}
-4137	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"zHSoEQO-U0P9JJjf3qaFDf3kSkX7iJQ1","maxWidth":800}
-4138	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"mWhsuIidOMe2UUu9SRtF6dTHqlofTmi2","maxWidth":800}
-4139	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"y2cDuP7FpibRV4E6O-hygPuEUucg5_dA","maxWidth":800}
-4140	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"qS3JmZCQg_jg4xrcfiRnEQ27Ea_-n6lf","maxWidth":800}
-4141	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"8Wr4jgJqd0QXr-EnDWY1gY6n-vnu2n60","maxWidth":800}
-4142	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"oHp1urMjEIJ9jiyD298GeqbP7aTFuIev","maxWidth":800}
-4143	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"_ui30jA8Fw60NxqjULZVPgtGO_kgaK6t","maxWidth":800}
-4144	configUpdated	46	\N
-4145	configUpdated	46	\N
 4146	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"k3n1_VAcyNJRYq24GkD34IRGaZ8Wcqxh","maxWidth":800}
 4147	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"J196xMWruc8t7ocDO5CMp4w8WgcpWyBf","maxWidth":800}
 4148	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"GLkl1gvCMfQE0BP_-pfG6Jz-cpd_A06n","maxWidth":800}
-4149	configUpdated	46	\N
 4150	configUpdated	47	\N
-4151	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"zTeLcozTpXSgpb3M9WVjo1JmrFrxeQ8t","maxWidth":800}
 4152	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"lWqoKECkYANckyEBBBzxlVUmE61y8ASl","maxWidth":800}
 4153	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"UcL3bjTm2_3dnpXryTs8ZxZgOP3SxSFw","maxWidth":800}
 4154	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"Eu-OQntyDZLYa6jI39R-7kn2ygz3tAni","maxWidth":800}
-4155	exitKiosk	46	\N
-4156	configUpdated	46	\N
-4157	adminPanel	46	\N
-4158	permissiveMode	46	\N
-4159	grantPermissions	46	\N
-4160	clearDownloadHistory	46	\N
-4161	lockKiosk	46	\N
-4162	textMessage	46	{"duration":10,"text":"diagnostico hwmdm"}
-4163	runApp	46	{"pkg":"com.hwmdm.remote"}
-4164	uninstallApp	46	{"pkg":"com.exemplo.inexistente"}
-4165	clearAppData	46	{"pkg":"com.exemplo.inexistente"}
-4166	deleteFile	46	{"path":"/sdcard/Download/hwmdm-diag-inexistente.bin"}
-4167	deleteDir	46	{"path":"/sdcard/Download/hwmdm-diag-inexistente"}
-4168	purgeDir	46	{"path":"/sdcard/Download/hwmdm-diag-inexistente"}
-4169	runCommand	46	{"command":"echo hwmdm-diag"}
-4170	intent	46	{"action":"com.hwmdm.DIAG"}
-4171	broadcast	46	{"action":"com.hwmdm.DIAG"}
 4172	remoteScreenStop	47	\N
-4173	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"4P_-I7mj2H1vO6wU0Dj9d0x-e0Xgy-pH","maxWidth":800}
-4174	remoteScreenStop	46	\N
-4175	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"XuNOiYzbGff6WdDR5T0DJbB9811ZUyw9","maxWidth":800}
-4176	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"p5xEpRpGhBQ_YemDtiGZRfdL5Js7aloD","maxWidth":800}
 4177	remoteScreenStop	47	\N
-4178	permissiveMode	46	\N
-4179	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"GLwnBlVVofbj5PxIx5D6nOySn6kTS1MF","maxWidth":800}
-4180	remoteScreenStop	46	\N
-4181	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"jNpalawbc8CrPivtYY_vVJxuqS5sQneU","maxWidth":800}
-4182	remoteScreenStop	46	\N
-4183	lockKiosk	46	\N
-4184	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT200AMYY","token":"fXumfzkp6ikxQuZerJ5O-UaGcO3mqci-","maxWidth":800}
-4185	lockKiosk	46	\N
-4186	configUpdated	46	\N
 4187	configUpdated	48	\N
 4188	configUpdated	49	\N
 4190	remoteScreenStart	49	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T","token":"P6H87STgmJDJghJ6cQ2gy8yI3lg3J0jl","maxWidth":800}
@@ -17862,10 +18202,25 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 4197	protectionOff	49	\N
 4198	protectionOn	47	\N
 4199	protectionOff	47	\N
-4200	remoteScreenStop	46	\N
-4201	configUpdated	46	\N
 4202	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"WB85quLqyCQ3dkMdKyDAvnFSJ-plEN4x","maxWidth":800}
 4203	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"uJH5Fmkib8tYp9g-yMUzY_dB_sFw8SWh","maxWidth":800}
+4205	configUpdated	48	\N
+4206	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"7tcRvmRo9b-NeYnJ7oucQX8LtgJaEA_7","maxWidth":800}
+4208	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"4l0_YsN0q3kClKKeDOEn2nXs2vP1kULH","maxWidth":800}
+4210	protectionOff	48	\N
+4211	remoteScreenStop	47	\N
+4212	remoteScreenStop	48	\N
+4213	remoteScreenStart	48	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP","token":"KWDCvKfyStCrclSSpNugi9DLriGUULzY","maxWidth":800}
+4214	remoteScreenStart	48	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106Y5RP","token":"fKOPVBDZkbjY7mWyYytxODQndSD0o2Hf","maxWidth":800}
+4215	remoteScreenStart	49	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T","token":"cSVeOz4FX29B6uxXOEvZSZVPHrGQUmDS","maxWidth":800}
+4216	remoteScreenStart	49	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT108EM8T","token":"KvnjMOgIG3m9fs9zWbzYf20aw_UX1-l3","maxWidth":800}
+4217	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"vHJIrP1zor8zp7eAItgaIC9-WS1ShB4M","maxWidth":800}
+4218	remoteScreenStop	47	\N
+4219	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"JxtFaPIN-817S6_pLtHxVwT5RdW92CNI","maxWidth":800}
+4220	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"KlrNAynZP-Zk8K5_MPeczQHiVCdArqm4","maxWidth":800}
+4221	remoteScreenStart	47	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.75:8080/ws/remote/agent/R9XT106VP1E","token":"aVESPBmmJAKl00bjiesTBtnm63wVrasD","maxWidth":800}
+4222	remoteScreenStop	47	\N
+4223	protectionOn	49	\N
 \.
 
 
@@ -17874,7 +18229,7 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 --
 
 COPY public.settings (id, backgroundcolor, textcolor, backgroundimageurl, iconsize, desktopheader, customerid, usedefaultlanguage, language, createnewdevices, newdevicegroupid, newdeviceconfigurationid, phonenumberformat, custompropertyname1, custompropertyname2, custompropertyname3, custommultiline1, custommultiline2, custommultiline3, customsend1, customsend2, customsend3, desktopheadertemplate, senddescription, passwordreset, passwordlength, passwordstrength, twofactor, idlelogout, webprimarycolor, websidebarcolor, webtextcolor, weblogourl) FROM stdin;
-1	#1c40e3	#fcfcfc	http://192.168.1.75:8080/files/BG_Tablet.png	LARGE	DEVICE_ID	1	t	\N	t	1	11	+9 (999) 999-99-99	\N	\N	\N	f	f	f	f	f	f	\N	f	f	0	0	f	\N	#0a4e92	#ffffff	#17202A	https://i.ytimg.com/vi/NfoH_n3lm3Q/maxresdefault.jpg
+1	#1c40e3	#fcfcfc	http://192.168.1.75:8080/files/BG_Tablet.png	LARGE	DEVICE_ID	1	t	\N	t	1	11	+9 (999) 999-99-99	\N	\N	\N	f	f	f	f	f	f	\N	f	f	0	0	f	\N				http://192.168.1.75:8080/files/favicon.png
 \.
 
 
@@ -17897,6 +18252,8 @@ COPY public.uploadedfiles (id, customerid, filepath, uploadtime, description, de
 6	1	phoneproxy-1.02.apk	1784707552000	Dialer Helper	\N	f	\N	f
 11	1	BG_Tablet.png	1785179621339	\N	/Download/BG_Tablet.png	f	\N	f
 13	1	logo2.png	1786130474660	logo	/Download/logo2.png	f	\N	f
+14	1	logo_olimpia.jpg	1786379924576	\N	/Download/logo_olimpia.jpg	f	\N	f
+15	1	favicon.png	1786380914475	\N	/Download/favicon.png	f	\N	f
 \.
 
 
@@ -18114,7 +18471,7 @@ SELECT pg_catalog.setval('public.applications_id_seq', 87, true);
 -- Name: applicationversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.applicationversions_id_seq', 10110, true);
+SELECT pg_catalog.setval('public.applicationversions_id_seq', 10113, true);
 
 
 --
@@ -18198,7 +18555,7 @@ SELECT pg_catalog.setval('public.icons_id_seq', 1, false);
 -- Name: pendingpushes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4199, true);
+SELECT pg_catalog.setval('public.pendingpushes_id_seq', 4234, true);
 
 
 --
@@ -18219,7 +18576,7 @@ SELECT pg_catalog.setval('public.permissions_id_seq', 134, true);
 -- Name: plugin_audit_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5079, true);
+SELECT pg_catalog.setval('public.plugin_audit_log_id_seq', 5108, true);
 
 
 --
@@ -18275,7 +18632,7 @@ SELECT pg_catalog.setval('public.plugin_deviceinfo_settings_id_seq', 1, true);
 -- Name: plugin_devicelog_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 71414, true);
+SELECT pg_catalog.setval('public.plugin_devicelog_log_id_seq', 72878, true);
 
 
 --
@@ -18303,7 +18660,7 @@ SELECT pg_catalog.setval('public.plugin_messaging_messages_id_seq', 1, false);
 -- Name: plugin_push_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.plugin_push_messages_id_seq', 2, true);
+SELECT pg_catalog.setval('public.plugin_push_messages_id_seq', 3, true);
 
 
 --
@@ -18324,14 +18681,14 @@ SELECT pg_catalog.setval('public.plugins_id_seq', 6, true);
 -- Name: pushmessages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.pushmessages_id_seq', 4203, true);
+SELECT pg_catalog.setval('public.pushmessages_id_seq', 4238, true);
 
 
 --
 -- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.settings_id_seq', 28, true);
+SELECT pg_catalog.setval('public.settings_id_seq', 44, true);
 
 
 --
@@ -18345,7 +18702,7 @@ SELECT pg_catalog.setval('public.trialkey_id_seq', 1, false);
 -- Name: uploadedfiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.uploadedfiles_id_seq', 13, true);
+SELECT pg_catalog.setval('public.uploadedfiles_id_seq', 15, true);
 
 
 --
@@ -18394,7 +18751,7 @@ SELECT pg_catalog.setval('public.userrolesettings_id_seq', 9, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 309, true);
+SELECT pg_catalog.setval('public.users_id_seq', 321, true);
 
 
 --
