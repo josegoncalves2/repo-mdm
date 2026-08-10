@@ -3,6 +3,8 @@ package com.hwmdm.remote.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Gravity;
@@ -35,6 +37,7 @@ public class StatusActivity extends Activity {
     private TextView sessionView;
     private TextView mdmView;
     private TextView inputView;
+    private TextView overlayView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,23 @@ public class StatusActivity extends Activity {
         addSpace(root, 16);
         addText(root, getString(R.string.perm_accessibility_hint), 12, false);
 
+        addSpace(root, 32);
+
+        // A permissao que decide se o atendimento comeca sozinho ou so' depois de alguem
+        // abrir este aplicativo. Fica ao lado da acessibilidade porque as duas sao
+        // concedidas do mesmo jeito: uma vez por aparelho, pelo usuario, nas Configuracoes.
+        addText(root, getString(R.string.perm_overlay_title), 16, true);
+        overlayView = addText(root, "", 14, false);
+        addSpace(root, 8);
+
+        Button overlay = new Button(this);
+        overlay.setText(R.string.perm_overlay_open);
+        overlay.setOnClickListener(v -> openOverlaySettings());
+        root.addView(overlay);
+
+        addSpace(root, 16);
+        addText(root, getString(R.string.perm_overlay_hint), 12, false);
+
         setContentView(root);
     }
 
@@ -92,6 +112,20 @@ public class StatusActivity extends Activity {
         boolean input = InputInjectionService.isAvailable();
         inputView.setText(input ? R.string.perm_granted : R.string.perm_missing);
         inputView.setTextColor(input ? Color.parseColor("#2E7D32") : Color.parseColor("#EF6C00"));
+
+        boolean overlay = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this);
+        overlayView.setText(overlay ? R.string.perm_granted : R.string.perm_missing);
+        overlayView.setTextColor(overlay ? Color.parseColor("#2E7D32") : Color.parseColor("#EF6C00"));
+    }
+
+    private void openOverlaySettings() {
+        try {
+            startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()))
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        } catch (Throwable ignored) {
+            // Aparelho sem essa tela de configuracao; nada a fazer daqui.
+        }
     }
 
     private void openAccessibilitySettings() {

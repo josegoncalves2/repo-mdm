@@ -157,6 +157,61 @@ E o servidor deixou de gravar endereco de proxy, em duas frentes:
   `DeviceMapper.updateDeviceInfo` grava `COALESCE(#{publicIp}, publicIp)`, para que um null
   preserve o que o aparelho informou em vez de apaga-lo.
 
+## Sessao de tela: por que as vezes nao aparecia nada no tablet
+
+Sintoma: clicar em Conectar no painel e o tablet nao mostrar nada. Intermitente --
+funcionava logo depois de alguem mexer no aparelho, falhava com ele parado.
+
+O push chegava. O log mostrava a sequencia comecar e morrer no mesmo ponto:
+
+```
+Got Push Message, type remoteScreenStart
+Chamado de suporte recebido do launcher
+Iniciando sessao; relay=ws://... consentimento_em_cache=false
+(nada mais)
+```
+
+Falta o trecho `Discando o relay` -> `Relay aceitou` -> `Transmitindo`, que so' acontece
+depois que o usuario aceita a captura. Ou seja: a tela de consentimento nunca aparecia.
+
+**Causa:** desde o Android 10 o sistema **descarta em silencio** o `startActivity` de um
+aplicativo que nao esteve em primeiro plano recentemente. Sem excecao, sem log, sem nada na
+tela. A isencao documentada e' a permissao `SYSTEM_ALERT_WINDOW` (sobreposicao), que nao
+estava declarada no manifest do agente.
+
+**Nao ha como conceder remotamente.** Verificado, nao suposto:
+
+| Tentativa | Resultado |
+|---|---|
+| `appops set com.hwmdm.remote SYSTEM_ALERT_WINDOW allow` | `java.lang.SecurityException` |
+| `cmd appops set ...` | `java.lang.SecurityException` |
+| push `grantPermissions` do launcher | nao serve: usa `setPermissionGrantState`, que so' cobre permissoes runtime |
+
+O launcher executa comandos com o proprio UID, que nao tem `MANAGE_APP_OPS_MODES`, e
+device owner nao concede appop a outro aplicativo.
+
+**Como fica:** abrir o app "Suporte Remoto" no tablet -> "Abrir Exibir sobre outros apps"
+-> ativar. Uma vez por aparelho, como a acessibilidade. A v1.6 traz o botao, mostra o
+estado ao lado e avisa no log do painel quando a permissao falta -- antes de tentar abrir
+a tela, para que "nao funcionou" vire "falta conceder a permissao neste aparelho".
+
+Confirmado no aparelho R9XT106VP1E: as 09:41 o aviso aparecia e a sessao morria; apos a
+concessao, as 09:43, `Pedindo consentimento` -> `Discando o relay` -> `Transmitindo
+464x800`.
+
+### O limite que continua de pe
+
+O aceite da captura e' obrigatorio e nao ha privilegio que o dispense -- nem device owner.
+No Android 14 (o destes tablets) o token e' de **uso unico**, entao cada sessao pergunta de
+novo. Acesso desassistido de verdade exigiria licenca Knox da Samsung (paga) ou ROM
+propria.
+
+O que da' para reduzir: manter a `MediaProjection` viva entre sessoes faria o aceite ser
+uma vez por boot em vez de um por atendimento -- e, como nenhuma activity seria aberta nas
+sessoes seguintes, o problema de segundo plano tambem deixaria de existir para elas. O
+preco e' a notificacao de compartilhamento permanente e o aparelho capturavel enquanto
+ligado. Decisao de quem opera; nao implementado.
+
 ## Pendencia: assinatura do launcher instalado
 
 Os tablets tem `com.hmdm.launcher` 6.36 instalado com **assinatura diferente** da do

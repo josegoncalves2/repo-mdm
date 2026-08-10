@@ -20,6 +20,20 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
+    <!--
+      Sobreposicao de tela. Nao e' para desenhar nada: e' o que isenta este aplicativo da
+      restricao de iniciar activity em segundo plano (Android 10+).
+
+      Sem ela, quando o chamado do suporte chega e o app nao esteve em primeiro plano
+      recentemente, o sistema DESCARTA em silencio o startActivity da tela de
+      consentimento: sem excecao, sem log, sem nada na tela do tablet. Era por isso que
+      o atendimento so' funcionava depois de alguem abrir o aplicativo na mao, e por isso
+      que funcionava de forma intermitente.
+
+      E' concedida uma vez por aparelho, pelo proprio usuario, em Configuracoes.
+    -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <!-- O launcher expoe o PluginApiService com este pacote; sem <queries> o Android 11+
          esconderia o pacote e o bind falharia em silencio. -->
     <queries>

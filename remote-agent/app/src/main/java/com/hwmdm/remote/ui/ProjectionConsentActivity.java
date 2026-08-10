@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.media.projection.MediaProjectionManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 
+import com.hwmdm.remote.mdm.RemoteLog;
 import com.hwmdm.remote.service.ScreenStreamService;
 
 /**
@@ -38,7 +40,25 @@ public class ProjectionConsentActivity extends Activity {
         Intent consent = new Intent(context, ProjectionConsentActivity.class);
         consent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         putExtras(consent, url, token, format, fps, bitrate, maxWidth);
-        context.startActivity(consent);
+
+        /*
+         * Sem a permissao de sobreposicao, o Android 10+ descarta este startActivity quando
+         * o aplicativo nao esteve em primeiro plano recentemente -- e descarta em silencio,
+         * sem lancar excecao. O sintoma no tablet e' nada acontecer.
+         *
+         * Avisar antes de tentar e' o que transforma "nao funcionou" em "falta conceder a
+         * permissao neste aparelho", que e' uma frase acionavel.
+         */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(context)) {
+            RemoteLog.w(context, "Consentimento pode nao aparecer: falta a permissao de "
+                    + "sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)");
+        }
+        try {
+            context.startActivity(consent);
+            RemoteLog.i(context, "Pedindo consentimento de captura ao usuario");
+        } catch (Throwable t) {
+            RemoteLog.e(context, "Nao foi possivel exibir o pedido de consentimento: " + t);
+        }
     }
 
     @Override
@@ -71,7 +91,10 @@ public class ProjectionConsentActivity extends Activity {
                     source.getIntExtra(ScreenStreamService.EXTRA_BITRATE, 2000000),
                     source.getIntExtra(ScreenStreamService.EXTRA_MAX_WIDTH, 800)));
         } else {
-            Log.w(TAG, "Sessao recusada: consentimento negado no aparelho");
+            // No servidor, e nao so' no logcat: quem esta' no painel precisa distinguir
+            // "o usuario recusou" de "nada apareceu na tela", que ate agora eram a mesma
+            // coisa vista de fora.
+            RemoteLog.w(this, "Sessao recusada: consentimento negado pelo usuario no aparelho");
         }
         finish();
     }
