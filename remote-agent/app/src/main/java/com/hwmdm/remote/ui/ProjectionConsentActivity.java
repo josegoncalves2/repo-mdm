@@ -10,6 +10,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.hwmdm.remote.mdm.RemoteLog;
+import com.hwmdm.remote.service.ProtectionGuard;
 import com.hwmdm.remote.service.ScreenStreamService;
 
 /**
@@ -53,6 +54,9 @@ public class ProjectionConsentActivity extends Activity {
             RemoteLog.w(context, "Consentimento pode nao aparecer: falta a permissao de "
                     + "sobreposicao de tela neste aparelho (Configuracoes > Exibir sobre outros apps)");
         }
+        // A janela de autorizacao da captura pertence as Configuracoes neste aparelho, e a
+        // protecao fecha as Configuracoes. Sem suspende-la, um recurso derruba o outro.
+        ProtectionGuard.suspend(90_000L);
         try {
             context.startActivity(consent);
             RemoteLog.i(context, "Pedindo consentimento de captura ao usuario");
@@ -96,6 +100,8 @@ public class ProjectionConsentActivity extends Activity {
             // coisa vista de fora.
             RemoteLog.w(this, "Sessao recusada: consentimento negado pelo usuario no aparelho");
         }
+        // Respondido: a protecao volta imediatamente, sem esperar o prazo da suspensao.
+        ProtectionGuard.resume();
         finish();
     }
 

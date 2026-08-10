@@ -2,6 +2,7 @@ package com.hwmdm.remote.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 
 import com.hwmdm.remote.mdm.RemoteLog;
 
@@ -89,8 +90,83 @@ public final class ProtectionGuard {
         if (pacote == null || !isActive(context)) {
             return false;
         }
-        return BLOQUEADOS.contains(pacote.toString());
+        if (System.currentTimeMillis() < suspensaAte) {
+            return false;
+        }
+        String p = pacote.toString();
+        return BLOQUEADOS.contains(p) || resolvidos(context).contains(p);
     }
+
+    /**
+     * <p>Suspende a protecao por um instante.</p>
+     *
+     * <p>Existe porque a protecao derrubava o proprio pedido de captura de tela: neste
+     * aparelho a janela de autorizacao da MediaProjection pertence a
+     * {@code com.android.settings}, o mesmo pacote que a protecao fecha. O resultado era o
+     * atendimento parar de abrir sozinho assim que a protecao era ligada -- um recurso
+     * quebrando o outro, e por um motivo que nao aparece em lugar nenhum ate se cruzar os
+     * dois registros.</p>
+     *
+     * <p>A janela e' curta e tem prazo proprio: se o consentimento nunca vier -- ninguem
+     * respondeu, a tela ficou aberta e esquecida -- a protecao volta sozinha, em vez de
+     * depender de alguem lembrar de reativa-la.</p>
+     */
+    public static void suspend(long millis) {
+        suspensaAte = System.currentTimeMillis() + Math.max(0, millis);
+    }
+
+    public static void resume() {
+        suspensaAte = 0L;
+    }
+
+    private static volatile long suspensaAte;
+
+    /**
+     * <p>Os pacotes que o proprio sistema declara como donos das telas de configuracao.</p>
+     *
+     * <p>A lista fixa acima cobre os nomes conhecidos, mas depender so' dela e' apostar que
+     * eu adivinhei o nome usado por cada fabricante -- e uma tela de permissao que escape da
+     * lista e' uma porta aberta com aparencia de porta fechada. Perguntar ao
+     * {@link PackageManager} quem atende as intencoes de configuracao devolve o nome real
+     * deste aparelho, seja ele qual for.</p>
+     *
+     * <p>Resolvido uma vez e guardado: sao consultas ao sistema, e isto roda a cada troca de
+     * janela.</p>
+     */
+    private static Set<String> resolvidos(Context context) {
+        Set<String> atual = resolvidosCache;
+        if (atual != null) {
+            return atual;
+        }
+        Set<String> encontrados = new HashSet<>();
+        String[] acoes = {
+                android.provider.Settings.ACTION_SETTINGS,
+                android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS,
+                android.provider.Settings.ACTION_APPLICATION_SETTINGS,
+                android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS,
+                android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                android.provider.Settings.ACTION_DEVICE_INFO_SETTINGS
+        };
+        try {
+            PackageManager pm = context.getPackageManager();
+            for (String acao : acoes) {
+                try {
+                    android.content.pm.ResolveInfo r =
+                            pm.resolveActivity(new android.content.Intent(acao), 0);
+                    if (r != null && r.activityInfo != null && r.activityInfo.packageName != null) {
+                        encontrados.add(r.activityInfo.packageName);
+                    }
+                } catch (Throwable ignored) {
+                    // Uma acao inexistente neste aparelho nao invalida as demais.
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+        resolvidosCache = encontrados;
+        return encontrados;
+    }
+
+    private static volatile Set<String> resolvidosCache;
 
     /**
      * Registra a tentativa no log do painel, com intervalo minimo entre avisos.
