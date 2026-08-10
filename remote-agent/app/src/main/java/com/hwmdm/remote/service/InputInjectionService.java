@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+
+import com.hwmdm.remote.mdm.RemoteLog;
 import android.view.accessibility.AccessibilityNodeInfo;
 
 /**
@@ -48,11 +50,70 @@ public class InputInjectionService extends AccessibilityService {
         return instance != null;
     }
 
+    /**
+     * <p>Se ESTE servico esta marcado nas Configuracoes do aparelho.</p>
+     *
+     * <p>Nao e' a mesma pergunta que {@link #isAvailable()}, e a diferenca entre as duas e'
+     * justamente o que vinha faltando para diagnosticar. {@code isAvailable()} responde se o
+     * Android ligou o servico; esta responde se alguem o marcou. Combinadas, separam tres
+     * situacoes que ate agora produziam identicamente "somente visualizacao":</p>
+     *
+     * <ul>
+     *   <li>nao marcado: ninguem ativou -- ou ativou <b>outro</b> servico. O launcher
+     *       Headwind tem um servico de acessibilidade proprio
+     *       ({@code CheckForegroundAppAccessibilityService}), entao a lista do aparelho tem
+     *       duas entradas parecidas e marcar a errada nao produz nenhum aviso;</li>
+     *   <li>marcado mas nao ligado: o Android nao vinculou o servico -- acontece depois de
+     *       atualizar o aplicativo, e se resolve desmarcando e marcando de novo;</li>
+     *   <li>marcado e ligado: funcionando.</li>
+     * </ul>
+     */
+    public static boolean isEnabledInSettings(android.content.Context context) {
+        try {
+            String ativos = android.provider.Settings.Secure.getString(
+                    context.getContentResolver(),
+                    android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (ativos == null || ativos.isEmpty()) {
+                return false;
+            }
+            String alvo = context.getPackageName() + "/" + InputInjectionService.class.getName();
+            String alvoCurto = context.getPackageName() + "/."
+                    + InputInjectionService.class.getSimpleName();
+            for (String entrada : ativos.split(":")) {
+                String e = entrada.trim();
+                if (e.equalsIgnoreCase(alvo) || e.equalsIgnoreCase(alvoCurto)
+                        || e.startsWith(context.getPackageName() + "/")) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
+    /*
+     * Estes dois eventos vao para o log do servidor, e nao so' para o logcat.
+     *
+     * Sem isso nao ha como distinguir, do painel, "o usuario nao ativou a acessibilidade"
+     * de "ativou e o Android desativou de novo" -- e o Android desativa sozinho em varias
+     * situacoes, entre elas a atualizacao do proprio aplicativo. Os dois casos produzem
+     * exatamente a mesma sessao 'somente visualizacao', e sem saber qual e' deles nao ha o
+     * que corrigir.
+     */
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
         instance = this;
         Log.i(TAG, "Injecao de toque disponivel");
+        RemoteLog.i(this, "Acessibilidade CONECTADA: toque e digitacao remotos disponiveis");
+    }
+
+    @Override
+    public boolean onUnbind(android.content.Intent intent) {
+        instance = null;
+        RemoteLog.w(this, "Acessibilidade DESCONECTADA: a partir de agora a sessao e' so' visualizacao");
+        return super.onUnbind(intent);
     }
 
     @Override

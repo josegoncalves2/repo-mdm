@@ -16,6 +16,8 @@
     <string name="perm_overlay_hint">Sem ela o Android descarta em silêncio a tela de autorização quando o chamado chega, e o atendimento só funciona se alguém abrir este aplicativo antes.</string>
     <string name="perm_overlay_open">Abrir "Exibir sobre outros apps"</string>
 
+    <string name="perm_accessibility_stale">Marcada, mas o Android não vinculou o serviço. Desmarque e marque de novo.</string>
+    <string name="perm_accessibility_wrong">Não está marcada para o Suporte Remoto. Atenção: o app do MDM tem um serviço parecido na mesma lista — confira se você ativou este.</string>
     <string name="perm_granted">Concedida</string>
     <string name="perm_missing">Pendente</string>
 

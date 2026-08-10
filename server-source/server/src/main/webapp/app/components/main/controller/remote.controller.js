@@ -126,10 +126,23 @@ angular.module('headwind-kiosk')
         };
 
         var reportedDeviceIp = function (device) {
-            if (!device || !device.info) {
+            if (!device) {
                 return null;
             }
-            var ip = device.info.deviceIp || device.info.ip || device.info.localIp || null;
+            /*
+             * publicIp e' a fonte, e nao um recurso de ultimo caso.
+             *
+             * O nome vem do Headwind original, onde o campo guarda o endereco observado pelo
+             * servidor. Aqui ele passou a guardar o endereco que o proprio aparelho informa,
+             * porque atras de proxy e NAT o observado e' identico para todos os aparelhos e
+             * nao identifica nenhum -- o servidor agora recusa gravar endereco de
+             * infraestrutura, entao o que estiver aqui veio do agente.
+             *
+             * Os campos de info continuam sendo consultados antes por compatibilidade com
+             * agentes que os enviem; o launcher 6.36 nao envia nenhum deles.
+             */
+            var info = device.info || {};
+            var ip = info.deviceIp || info.ip || info.localIp || device.publicIp || null;
             return isInfrastructureIp(ip) ? null : ip;
         };
 

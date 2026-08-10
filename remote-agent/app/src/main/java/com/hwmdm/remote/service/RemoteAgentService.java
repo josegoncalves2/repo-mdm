@@ -85,6 +85,13 @@ public class RemoteAgentService extends Service {
     /** De quanto em quanto tempo o aparelho reconfirma o proprio endereco. */
     private static final long ADDRESS_REPORT_INTERVAL_MS = 5 * 60 * 1000L;
 
+    /**
+     * Espera curta antes do primeiro relatorio: o servico de acessibilidade e' vinculado
+     * pelo sistema logo apos o processo subir, e relatar no mesmo instante o daria como
+     * desligado sempre -- um diagnostico errado e' pior que nenhum.
+     */
+    private static final long STARTUP_REPORT_DELAY_MS = 15 * 1000L;
+
     /*
      * Momento do ultimo chamado aceito.
      *
@@ -284,6 +291,57 @@ public class RemoteAgentService extends Service {
         }
     }
 
+    /**
+     * <p>Publica no log do painel o estado das permissoes deste aparelho, e so' quando ele
+     * muda.</p>
+     *
+     * <p>Ate aqui, saber se a acessibilidade estava ativa exigia abrir uma sessao de tela e
+     * ler se a linha dizia "com toque" ou "somente visualizacao" -- ou seja, era preciso
+     * tentar atender para descobrir que nao dava para atender. Pior: quando alguem ativava a
+     * permissao e o Android a desativava depois (a atualizacao do proprio aplicativo faz
+     * isso), nada registrava a queda, e o sintoma reaparecia como se a ativacao nunca
+     * tivesse acontecido.</p>
+     *
+     * <p>So' na mudanca, e nao a cada ciclo, porque um estado que nao mudou repetido a cada
+     * cinco minutos vira ruido e afoga justamente a linha que interessa.</p>
+     */
+    private void reportPermissionState() {
+        final boolean acessibilidade = InputInjectionService.isAvailable();
+        final boolean marcado = InputInjectionService.isEnabledInSettings(this);
+        final boolean sobreposicao = Build.VERSION.SDK_INT < Build.VERSION_CODES.M
+                || android.provider.Settings.canDrawOverlays(this);
+        final boolean protecao = ProtectionGuard.isActive(this);
+
+        String estado = "a=" + acessibilidade + ";m=" + marcado + ";s=" + sobreposicao + ";p=" + protecao;
+        if (estado.equals(ultimoEstadoPermissoes)) {
+            return;
+        }
+        ultimoEstadoPermissoes = estado;
+
+        // O diagnostico da acessibilidade nomeia a causa em vez de so' dizer que nao esta
+        // funcionando -- as tres causas exigem acoes diferentes de quem esta com o aparelho.
+        final String diagnostico;
+        if (acessibilidade) {
+            diagnostico = "ATIVA";
+        } else if (marcado) {
+            diagnostico = "MARCADA MAS NAO VINCULADA pelo Android (desmarque e marque de novo)";
+        } else {
+            diagnostico = "NAO MARCADA para o Suporte Remoto "
+                    + "(o launcher Headwind tem um servico proprio na mesma lista; confira qual foi ativado)";
+        }
+
+        String texto = "Permissoes neste aparelho: acessibilidade=" + diagnostico
+                + ", sobreposicao=" + (sobreposicao ? "ATIVA" : "DESLIGADA")
+                + ", protecao=" + (protecao ? "LIGADA" : "desligada");
+        if (acessibilidade && sobreposicao) {
+            RemoteLog.i(this, texto);
+        } else {
+            RemoteLog.w(this, texto);
+        }
+    }
+
+    private volatile String ultimoEstadoPermissoes;
+
     private void refreshConfig() {
         MdmLink.Config c = MdmLink.query(this);
         config = c;
@@ -303,6 +361,23 @@ public class RemoteAgentService extends Service {
      */
     private void startAddressReporting() {
         addressReporter = new Thread(() -> {
+            /*
+             * Primeiro relatorio logo na partida, e nao depois do primeiro intervalo.
+             *
+             * Dormir antes de relatar significa que, depois de instalar uma versao nova, o
+             * estado das permissoes so' aparece no painel cinco minutos adiante -- e e'
+             * exatamente nesse intervalo que alguem esta com o aparelho na mao tentando
+             * descobrir por que o atendimento nao funciona. O diagnostico tem de estar
+             * disponivel quando ele e' procurado.
+             */
+            try {
+                Thread.sleep(STARTUP_REPORT_DELAY_MS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+            reportPermissionState();
+
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     Thread.sleep(ADDRESS_REPORT_INTERVAL_MS);
@@ -316,6 +391,7 @@ public class RemoteAgentService extends Service {
                     config = current;
                 }
                 NetworkReporter.report(this, current);
+                reportPermissionState();
             }
         }, "hwmdm-remote-ip");
         addressReporter.setDaemon(true);

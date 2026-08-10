@@ -1,2 +1,2 @@
-/opt/projetos/hwmdm/server-source/common/src/test/java/com/hmdm/util/ApplicationUtilTests.java
-/opt/projetos/hwmdm/server-source/common/src/test/java/com/hmdm/util/IPFilterTests.java
+/src/common/src/test/java/com/hmdm/util/IPFilterTests.java
+/src/common/src/test/java/com/hmdm/util/ApplicationUtilTests.java

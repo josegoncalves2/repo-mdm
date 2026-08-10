@@ -96,6 +96,12 @@ public class ScreenStreamService extends Service {
     /** Segura a tela acesa durante a sessao; ver {@link #acquireScreenLock()}. */
     private PowerManager.WakeLock screenLock;
 
+    /** Janela 1x1 invisivel que carrega FLAG_KEEP_SCREEN_ON; ver attachKeepScreenOnWindow(). */
+    private android.view.View keepScreenOnView;
+
+    /** Observa ACTION_SCREEN_OFF durante a sessao; ver watchScreenOff(). */
+    private android.content.BroadcastReceiver screenOffWatcher;
+
     /** Teto de seguranca: uma sessao interrompida nao pode manter a tela acesa para sempre. */
     private static final long SCREEN_LOCK_TIMEOUT_MS = 2 * 60 * 60 * 1000L;
 
@@ -415,7 +421,15 @@ public class ScreenStreamService extends Service {
             }
 
             streaming = true;
+            // Os dois juntos: a janela e' o mecanismo recomendado mas depende da
+            // sobreposicao; o wake lock funciona sem ela e esta' obsoleto. Nenhum dos dois
+            // sozinho cobre todos os aparelhos, e segurar a tela duas vezes nao custa nada.
+            final boolean janela = attachKeepScreenOnWindow();
             acquireScreenLock();
+            watchScreenOff();
+            final boolean lock = screenLock != null && screenLock.isHeld();
+            RemoteLog.i(this, "Tela mantida acesa: janela=" + (janela ? "sim" : "nao")
+                    + " wakelock=" + (lock ? "sim" : "nao"));
             announce();
             RemoteLog.i(this, "Transmitindo " + width + "x" + height
                     + (InputInjectionService.isAvailable() ? " com toque" : " somente visualizacao"));
@@ -623,6 +637,109 @@ public class ScreenStreamService extends Service {
      * de mau jeito -- rede caindo no meio, processo morto pelo sistema -- deixe a tela de
      * um tablet acesa ate a bateria acabar.</p>
      */
+    /**
+     * <p>Segura a tela por uma janela invisivel com {@code FLAG_KEEP_SCREEN_ON}.</p>
+     *
+     * <p>E' o mecanismo que o Android recomenda, e o unico que nao depende de uma API
+     * obsoleta. Exige a permissao de sobreposicao -- a mesma que ja e' necessaria para a
+     * tela de consentimento aparecer -- entao onde o atendimento funciona sem intervencao,
+     * isto tambem funciona. Onde ela falta, sobra o wake lock.</p>
+     *
+     * <p>A janela tem 1x1 pixel e nada desenha: existe so' para carregar a flag.</p>
+     */
+    private boolean attachKeepScreenOnWindow() {
+        if (keepScreenOnView != null) {
+            return true;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && !android.provider.Settings.canDrawOverlays(this)) {
+            return false;
+        }
+        try {
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            if (wm == null) {
+                return false;
+            }
+            int tipo = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
+                    ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+                    : WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
+                    1, 1, tipo,
+                    WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                            | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                            | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                            | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
+                    android.graphics.PixelFormat.TRANSLUCENT);
+            keepScreenOnView = new android.view.View(this);
+            wm.addView(keepScreenOnView, lp);
+            return true;
+        } catch (Throwable t) {
+            keepScreenOnView = null;
+            return false;
+        }
+    }
+
+    private void detachKeepScreenOnWindow() {
+        if (keepScreenOnView == null) {
+            return;
+        }
+        try {
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            if (wm != null) {
+                wm.removeView(keepScreenOnView);
+            }
+        } catch (Throwable ignored) {
+        }
+        keepScreenOnView = null;
+    }
+
+    /**
+     * <p>Vigia o apagamento da tela durante a sessao.</p>
+     *
+     * <p>Existe porque as duas defesas anteriores reportaram estar em vigor -- janela com
+     * {@code FLAG_KEEP_SCREEN_ON} e wake lock, ambas confirmadas no log -- e a tela apagou
+     * assim mesmo. Quando o que deveria impedir um evento diz estar funcionando e o evento
+     * acontece, a unica saida e' observar o evento diretamente em vez de confiar no que as
+     * defesas relatam.</p>
+     *
+     * <p>Ao ver a tela apagar com sessao ativa, registra o fato e reage: solta e readquire o
+     * wake lock com {@code ACQUIRE_CAUSES_WAKEUP}, que acende de volta. Nao e' elegante --
+     * e' o que funciona quando o fabricante ignora o pedido de manter acesa.</p>
+     */
+    private void watchScreenOff() {
+        if (screenOffWatcher != null) {
+            return;
+        }
+        screenOffWatcher = new android.content.BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (!streaming) {
+                    return;
+                }
+                RemoteLog.w(ScreenStreamService.this,
+                        "A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo");
+                releaseScreenLock();
+                acquireScreenLock();
+            }
+        };
+        try {
+            registerReceiver(screenOffWatcher, new android.content.IntentFilter(Intent.ACTION_SCREEN_OFF));
+        } catch (Throwable t) {
+            screenOffWatcher = null;
+        }
+    }
+
+    private void unwatchScreenOff() {
+        if (screenOffWatcher == null) {
+            return;
+        }
+        try {
+            unregisterReceiver(screenOffWatcher);
+        } catch (Throwable ignored) {
+        }
+        screenOffWatcher = null;
+    }
+
     private void acquireScreenLock() {
         if (screenLock != null) {
             return;
@@ -658,6 +775,8 @@ public class ScreenStreamService extends Service {
     }
 
     private void cleanup() {
+        unwatchScreenOff();
+        detachKeepScreenOnWindow();
         releaseScreenLock();
         if (virtualDisplay != null) {
             try { virtualDisplay.release(); } catch (Throwable ignored) { }

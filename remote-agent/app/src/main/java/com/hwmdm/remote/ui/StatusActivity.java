@@ -109,9 +109,20 @@ public class StatusActivity extends Activity {
         sessionView.setText(sharing ? R.string.status_sharing : R.string.status_waiting);
         sessionView.setTextColor(sharing ? Color.parseColor("#C62828") : Color.parseColor("#2E7D32"));
 
+        // Tres estados, nao dois: "marcada mas nao vinculada" e' indistinguivel de
+        // "nao marcada" para quem olha, e as duas pedem acoes diferentes.
         boolean input = InputInjectionService.isAvailable();
-        inputView.setText(input ? R.string.perm_granted : R.string.perm_missing);
-        inputView.setTextColor(input ? Color.parseColor("#2E7D32") : Color.parseColor("#EF6C00"));
+        boolean marcada = InputInjectionService.isEnabledInSettings(this);
+        if (input) {
+            inputView.setText(R.string.perm_granted);
+            inputView.setTextColor(Color.parseColor("#2E7D32"));
+        } else if (marcada) {
+            inputView.setText(R.string.perm_accessibility_stale);
+            inputView.setTextColor(Color.parseColor("#EF6C00"));
+        } else {
+            inputView.setText(R.string.perm_accessibility_wrong);
+            inputView.setTextColor(Color.parseColor("#C62828"));
+        }
 
         boolean overlay = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this);
         overlayView.setText(overlay ? R.string.perm_granted : R.string.perm_missing);
