@@ -8,6 +8,14 @@
 # O arquivo continua em producao normalmente -- so nao viaja pelo git.
 source/volumes/work/files/WhatsApp.apk
 
+# Mesmo motivo, adicionados em 11/08: os dois APKs do Collabora Office (290 MB e
+# 278 MB) e o do Nextcloud (92 MB) entraram versionados por engano num commit que
+# nunca chegou a sair da maquina -- o push travava (HTTP 408) por causa do volume,
+# e os dois maiores seriam recusados pelo GitHub de qualquer jeito.
+source/volumes/work/files/collabora-office-mobile-25-04-release-x86_64-2026-03-03.apk
+source/volumes/work/files/collabora-office-mobile-25-04-release-arm64-v8a-2026-03-03.apk
+source/volumes/work/files/nextcloud-340010090.apk
+
 # Mesmo limite, mesmo motivo: o modules image do JDK vendorizado tem 135 MB.
 # Removido do historico via git filter-branch em 2026-08-07. Continua em
 # disco normalmente (necessario para o toolchain funcionar), so nao versiona.
