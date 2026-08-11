@@ -1,2 +1,2 @@
-/src/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/XtraPluginConfigurationImpl.java
-/src/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/guice/module/XtraLiquibaseModule.java
+/opt/projetos/hwmdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/XtraPluginConfigurationImpl.java
+/opt/projetos/hwmdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/guice/module/XtraLiquibaseModule.java

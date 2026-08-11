@@ -414,7 +414,7 @@
         DISTINCT devices.id AS id,
         devices.number AS number,
         devices.infojson -&gt;&gt; 'model' AS model,
-        devices.infojson -&gt;&gt; 'deviceIp' AS deviceIp,
+        devices.publicIp AS deviceIp,
         (devices.infojson -&gt; 'location' -&gt;&gt; 'lat')::DOUBLE PRECISION AS lat,
         (devices.infojson -&gt; 'location' -&gt;&gt; 'lon')::DOUBLE PRECISION AS lon,
         (devices.infojson -&gt; 'location' -&gt;&gt; 'ts')::BIGINT AS locationTs,
