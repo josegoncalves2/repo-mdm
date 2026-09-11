@@ -27,7 +27,7 @@ services:
       POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
       POSTGRES_DB: ${SQL_BASE:-hmdm}
     volumes:
-      - ./volumes/db:/var/lib/postgresql/data
+      - postgresql-data:/var/lib/postgresql/data
       # O Postgres executa o que estiver aqui na PRIMEIRA inicializacao do cluster,
       # e aceita .sql.gz nativamente. Sem isto o banco sobe vazio, sem usuario
       # nenhum, e nao ha como entrar no painel. O provision.sh restaura o mesmo
@@ -90,3 +90,6 @@ services:
       FORCE_RECONFIGURE: ${FORCE_RECONFIGURE:-true}
       APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
       AUTO_UPDATE_WEBAPP: "false"
+
+volumes:
+  postgresql-data:

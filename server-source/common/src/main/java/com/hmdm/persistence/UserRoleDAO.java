@@ -76,9 +76,7 @@ public class UserRoleDAO {
 
     public List<UserRole> findAll() {
         checkAccess();
-        List<UserRole> roles = mapper.findAll();
-        roles.removeIf(role -> (role.getId() == orgAdminRoleId));   // Admin cannot edit admin permissions!
-        return roles;
+        return mapper.findAll();
     }
 
     public UserRole findByName(String name) {

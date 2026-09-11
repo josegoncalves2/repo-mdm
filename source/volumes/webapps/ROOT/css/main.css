@@ -171,7 +171,8 @@ body {
 }
 
 .width-1000 {
-    max-width: 1000px;
+    max-width: none;
+    width: 100%;
     margin: 0px auto;
 }
 
@@ -2221,7 +2222,7 @@ td.no-right-padding {
 td.deviceActions {
     min-width: 190px;
     width: 1%;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 td.deviceActions > button,

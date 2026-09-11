@@ -9,6 +9,8 @@ SELECT setval('userrolesettings_id_seq', COALESCE((SELECT MAX(id) FROM userroles
 
 WITH required_permissions(name, description) AS (
     VALUES
+        ('device.profile.view', 'View the device profile and configuration metadata'),
+        ('device.profile.edit', 'Edit the device profile and configuration metadata'),
         ('device.remote_access.view', 'View remote access module and device remote status'),
         ('device.remote_access.control', 'Control devices remotely and send remote support actions'),
         ('device.gps.view', 'View GPS map and device locations'),
