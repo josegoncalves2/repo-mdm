@@ -1,0 +1,8 @@
+com/hmdm/plugins/webfilter/resolver/ResolverConfigTriggerTest.class
+com/hmdm/plugins/webfilter/catalog/AppCatalogTest.class
+com/hmdm/plugins/webfilter/sync/WebFilterSyncResponseHookTest.class
+com/hmdm/plugins/webfilter/catalog/CategoryCatalogTest.class
+com/hmdm/plugins/webfilter/rest/WebFilterResourceTest.class
+com/hmdm/plugins/webfilter/WebFilterChangelogTest.class
+com/hmdm/plugins/webfilter/resolver/ResolverConfigWriterTest.class
+com/hmdm/plugins/webfilter/service/WebFilterPushTest.class

@@ -61,9 +61,24 @@ angular.module('headwind-kiosk')
             }
         }
         $scope.permissionList = permissions.map(function (permission) {
+            var translationKey = 'permission.' + permission.name;
+            var label = localization.localize(translationKey);
+
+            if (label === translationKey) {
+                if (permission.description) {
+                    label = permission.description;
+                } else {
+                    label = permission.name
+                        .replace(/[._/-]+/g, ' ')
+                        .replace(/\b\w/g, function (char) {
+                            return char.toUpperCase();
+                        });
+                }
+            }
+
             return {
                 id: permission.id,
-                label: localization.localize('permission.' + permission.name)
+                label: label
             };
         });
 

@@ -3,8 +3,8 @@ com/hmdm/plugins/deviceinfo/persistence/domain/DeviceDynamicInfo.class
 com/hmdm/plugins/deviceinfo/persistence/domain/DeviceInfoPluginSettings.class
 com/hmdm/plugins/deviceinfo/DeviceInfoPluginConfigurationImpl.class
 com/hmdm/plugins/deviceinfo/rest/json/DeviceInfoApplication.class
-com/hmdm/plugins/deviceinfo/service/DeviceInfoExportServiceException.class
 com/hmdm/plugins/deviceinfo/persistence/domain/WifiData.class
+com/hmdm/plugins/deviceinfo/service/DeviceInfoExportServiceException.class
 com/hmdm/plugins/deviceinfo/persistence/mapper/DeviceInfoMapper.class
 com/hmdm/plugins/deviceinfo/rest/json/DynamicInfoExportFilter.class
 com/hmdm/plugins/deviceinfo/guice/module/DeviceInfoLiquibaseModule.class

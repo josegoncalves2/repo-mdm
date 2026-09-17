@@ -243,7 +243,8 @@
         <service android:name=".pro.service.CheckForegroundApplicationService"
             android:exported="true"/>
 
-        <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true">
+        <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <intent-filter>
                 <action android:name="com.hmdm.action.Connect" />
             </intent-filter>

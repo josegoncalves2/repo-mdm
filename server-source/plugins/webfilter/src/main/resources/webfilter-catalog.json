@@ -1,0 +1,26 @@
+{
+  "categories": [
+    {"id": "adult", "name": "Adult content", "required": false},
+    {"id": "social_media", "name": "Social media", "required": false},
+    {"id": "gambling", "name": "Gambling", "required": false},
+    {"id": "violence", "name": "Violence", "required": false},
+    {"id": "doh", "name": "DNS over HTTPS", "required": true},
+    {"id": "phishing", "name": "Phishing", "required": false},
+    {"id": "malware", "name": "Malware", "required": false},
+    {"id": "ransomware", "name": "Ransomware", "required": false},
+    {"id": "spyware", "name": "Spyware", "required": false},
+    {"id": "adware", "name": "Adware", "required": false},
+    {"id": "cryptomining", "name": "Cryptomining", "required": false},
+    {"id": "fraud", "name": "Fraud", "required": false},
+    {"id": "scam", "name": "Scam", "required": false}
+  ],
+  "siteSources": {
+    "dbl": ["https://dbl.ipfire.org/lists/dbl/domains.txt"],
+    "blocklist": ["https://blocklistproject.github.io/Lists/alt-version/blocklist.txt"],
+    "ut1": ["https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_media/domains"]
+  },
+  "appSources": {
+    "google_play": ["https://play.google.com/store/apps/details?id=com.social"],
+    "amazon": ["https://www.amazon.com/dp/B08N5WRWNW"]
+  }
+}

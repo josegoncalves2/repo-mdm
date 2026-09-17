@@ -6,5 +6,5 @@ com/hmdm/plugins/messaging/rest/MessagingResource.class
 com/hmdm/plugins/messaging/rest/json/MessageFilter.class
 com/hmdm/plugins/messaging/persistence/MessagingDAO.class
 com/hmdm/plugins/messaging/guice/module/MessagingPersistenceModule.class
-com/hmdm/plugins/messaging/persistence/domain/Message.class
 com/hmdm/plugins/messaging/guice/module/MessagingRestModule.class
+com/hmdm/plugins/messaging/persistence/domain/Message.class

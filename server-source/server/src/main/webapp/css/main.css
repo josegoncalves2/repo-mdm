@@ -3816,8 +3816,7 @@ body {
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
     background: var(--hwmdm-surface);
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: auto;
 }
 
 .hwmdm-main .table {
@@ -5741,6 +5740,22 @@ body {
         -webkit-overflow-scrolling: touch;
     }
 
+    /* Override Bootstrap 3 nowrap so columns can shrink naturally.
+       Only the wrapper scrolls when the table is genuinely wider than
+       the viewport; individual cells are allowed to wrap. */
+    .table-responsive > .table > thead > tr > th,
+    .table-responsive > .table > tbody > tr > th,
+    .table-responsive > .table > tfoot > tr > th,
+    .table-responsive > .table > thead > tr > td,
+    .table-responsive > .table > tbody > tr > td,
+    .table-responsive > .table > tfoot > tr > td {
+        white-space: normal;
+    }
+
+    .hwmdm-main .table {
+        width: 100%;
+    }
+
     .hwmdm-section-card,
     .hwmdm-form-section,
     .ext-hub-section,
@@ -5835,6 +5850,31 @@ body {
 
     .gov-backup-actions {
         white-space: nowrap;
+    }
+}
+
+/* --- 400 and below: phone portrait ------------------------------------------- */
+@media (max-width: 400px) {
+    /* Action buttons in the devices table: shrink icons-only buttons so the
+       whole column fits without forcing the table wider than the viewport. */
+    .hwmdm-main .table .deviceActions .btn {
+        padding: 4px 5px;
+        margin: 1px;
+        font-size: 11px;
+    }
+
+    .hwmdm-main .table .deviceActions .btn .glyphicon {
+        font-size: 11px;
+    }
+
+    .hwmdm-main .table .deviceActions .dropdown-toggle .caret {
+        display: none;
+    }
+
+    /* Let the table wrapper scroll horizontally only when genuinely needed,
+       but keep the page itself from scrolling sideways. */
+    .hwmdm-main .table-responsive {
+        max-width: 100%;
     }
 }
 
