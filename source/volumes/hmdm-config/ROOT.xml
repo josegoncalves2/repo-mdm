@@ -4,7 +4,7 @@
     <Parameter name="JDBC.driver"   value="org.postgresql.Driver"/>
     <Parameter name="JDBC.url"      value="jdbc:postgresql://postgresql:5432/hmdm"/>
     <Parameter name="JDBC.username" value="hmdm"/>
-    <Parameter name="JDBC.password" value="Gg18Yj47YT820ZZEZIaWWUPj"/>
+    <Parameter name="JDBC.password" value="hmdm"/>
 
     <!-- This directory is used to as a base directory to store app data -->
     <Parameter name="base.directory" value="/usr/local/tomcat/work"/>
@@ -13,7 +13,7 @@
     <Parameter name="files.directory" value="/usr/local/tomcat/work/files"/>
 
     <!-- URL used to open Headwind MDM control panel -->
-    <Parameter name="base.url" value="http://192.168.1.75:8080"/>
+    <Parameter name="base.url" value="http://mdm.local"/>
 
     <!-- private / shared; shared can be used only in Enterprise solution -->
     <Parameter name="usage.scenario" value="private" />
@@ -23,7 +23,7 @@
     <Parameter name="secure.enrollment" value="0"/>
     <!-- A shared secret between mobile app and control panel. 
          Don't change this unless you know what you're doing -->
-    <Parameter name="hash.secret" value="58ac494a140de4b6c2d89f911fba1a8c44bb155c28156b92"/>
+    <Parameter name="hash.secret" value="hwmdm-dev-secret-2026"/>
 
     <!-- This directory is used to store files by plugins, must be accessible for tomcat user -->
     <Parameter name="plugins.files.directory" value="/usr/local/tomcat/work/plugins"/>
@@ -56,7 +56,7 @@
 
     <!-- If you have any reverse proxies, specify them here (IP addresses,
     comma-separated) for correct logging of IP addresses -->
-    <Parameter name="proxy.addresses" value="192.168.1.254,192.168.250.254"/>
+    <Parameter name="proxy.addresses" value="127.0.0.1"/>
 
     <!-- Name of the HTTP header containing the device IP address.
     Defaults to X-Real-IP -->

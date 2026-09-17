@@ -3,7 +3,7 @@ UPDATE userroles SET name='Admin', description='Full access to the control panel
 UPDATE userroles SET name='User', description='Limited access to the control panel' WHERE id=3;
 UPDATE userroles SET name='Observer', description='Read-only access to the control panel' WHERE id=100;
 
-UPDATE users SET email='admin@olimpia.sp.gov.br', passwordReset=true, passwordResetToken=md5(random()::text) WHERE id=1;
+UPDATE users SET email='admin@localhost', passwordReset=true, passwordResetToken=md5(random()::text) WHERE id=1;
 
 UPDATE groups SET name='General' WHERE id=1;
 
@@ -148,11 +148,11 @@ INSERT INTO applicationversions (id, applicationid, version, url) VALUES
     (10040, 41, '0', NULL),
     (10041, 42, '0', NULL),
     (10042, 43, '0', NULL),
-    (10045, 46, '6.36', 'http://192.168.1.75:8080/files/hmdm-6.36-os.apk'),
+    (10045, 46, '6.36', 'http://mdm.local/files/hmdm-6.36-os.apk'),
     (10046, 47, '0', NULL),
-    (10047, 48, '1.02', 'http://192.168.1.75:8080/files/pager-1.02.apk'),
-    (10048, 49, '1.02', 'http://192.168.1.75:8080/files/phoneproxy-1.02.apk'),
-    (10049, 50, '1.04', 'http://192.168.1.75:8080/files/LauncherRestarter-1.04.apk'),
+    (10047, 48, '1.02', 'http://mdm.local/files/pager-1.02.apk'),
+    (10048, 49, '1.02', 'http://mdm.local/files/phoneproxy-1.02.apk'),
+    (10049, 50, '1.04', 'http://mdm.local/files/LauncherRestarter-1.04.apk'),
     (10050, 51, '0', NULL),
     (10051, 52, '0', NULL),
     (10052, 53, '0', NULL),

@@ -231,8 +231,37 @@
         </div>
     </div>
 
-    <div ng-if='devices && devices.length > 0' class="table-responsive">
-    <table class='table'>
+    <div ng-if='devices && devices.length > 0' class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+    <table class='table' style="min-width: 900px;">
+        <colgroup>
+            <col ng-if="hasPermission('edit_devices')" style="width: 30px;">
+            <col ng-if="settings.columnDisplayedDeviceStatus" style="width: 30px;">
+            <col ng-if="settings.columnDisplayedDeviceDate" style="width: 120px;">
+            <col ng-if="settings.columnDisplayedDeviceNumber" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedDeviceImei" style="width: 110px;">
+            <col ng-if="settings.columnDisplayedDevicePhone" style="width: 110px;">
+            <col ng-if="settings.columnDisplayedDeviceModel" style="min-width: 80px;">
+            <col ng-if="settings.columnDisplayedDevicePermissionsStatus" style="width: 30px;">
+            <col ng-if="settings.columnDisplayedDeviceAppInstallStatus" style="width: 30px;">
+            <col ng-if="settings.columnDisplayedDeviceFilesStatus" style="width: 30px;">
+            <col ng-if="settings.columnDisplayedDeviceConfiguration" style="min-width: 100px;">
+            <col ng-if="settings.columnDisplayedDeviceDesc" style="min-width: 80px;">
+            <col ng-if="settings.columnDisplayedDeviceGroup" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedLauncherVersion" style="width: 110px;">
+            <col ng-if="settings.columnDisplayedBatteryLevel" style="width: 90px;">
+            <col ng-if="settings.columnDisplayedStorageAvailable" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedDefaultLauncher" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedMdmMode" style="width: 80px;">
+            <col ng-if="settings.columnDisplayedKioskMode" style="width: 80px;">
+            <col ng-if="settings.columnDisplayedAndroidVersion" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedEnrollmentDate" style="width: 120px;">
+            <col ng-if="settings.columnDisplayedSerial" style="width: 110px;">
+            <col ng-if="settings.columnDisplayedPublicIp" style="width: 110px;">
+            <col ng-if="settings.columnDisplayedCustom1" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedCustom2" style="width: 100px;">
+            <col ng-if="settings.columnDisplayedCustom3" style="width: 100px;">
+            <col style="width: 60px;">
+        </colgroup>
         <thead>
         <tr>
             <th ng-if="hasPermission('edit_devices')">

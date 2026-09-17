@@ -1,0 +1,4 @@
+pytest>=7.4.0
+requests>=2.32.0
+pyyaml>=6.0
+dnspython>=2.6.0

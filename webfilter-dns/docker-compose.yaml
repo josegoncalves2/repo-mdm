@@ -1,0 +1,23 @@
+services:
+  webfilter-dns:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webfilter-dns
+    restart: unless-stopped
+    ports:
+      - "853:853/tcp"
+    volumes:
+      - ../source/volumes/work/plugins/webfilter/dns:/app/dns:ro
+      - ./profiles:/app/profiles:ro
+      - ./certs:/app/certs:ro
+    environment:
+      - BLOCKY_CONFIG=/app/config.yml
+    entrypoint: /app/entrypoint.sh
+    healthcheck:
+      test: ["CMD-SHELL", "blocky version && ss -tln | grep -q ':853'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    mem_limit: 1536m

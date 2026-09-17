@@ -1,0 +1,4 @@
+*.doubleclick.net
+*.googleadservices.com
+*.ads.google.com
+*.facebook.com

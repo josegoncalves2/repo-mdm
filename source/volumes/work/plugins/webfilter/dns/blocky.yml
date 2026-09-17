@@ -1,0 +1,10 @@
+ports:
+  dns: 53
+
+log:
+  level: info
+
+upstreams:
+  groups:
+    default:
+      - https://dns.google/dns-query

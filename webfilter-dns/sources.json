@@ -1,0 +1,25 @@
+{
+  "ipfire": {
+    "urls": [
+      "https://dbl.ipfire.org/lists/malware/domains.txt",
+      "https://dbl.ipfire.org/lists/phishing/domains.txt"
+    ],
+    "interval": 3600,
+    "license": "CC BY-SA 4.0"
+  },
+  "blocklistproject": {
+    "urls": [
+      "https://blocklistproject.github.io/Lists/alt-version/malware-nl.txt",
+      "https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt"
+    ],
+    "interval": 86400,
+    "license": "Unlicense"
+  },
+  "ut1": {
+    "urls": [
+      "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains"
+    ],
+    "interval": 86400,
+    "license": "CC BY-SA 4.0"
+  }
+}

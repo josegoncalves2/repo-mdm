@@ -46,9 +46,9 @@
 
     <select id="getPermissionsList" resultMap="permissionLite">
         SELECT id AS permission_id,
-               name AS permission_name
+               name AS permission_name,
+               superadmin AS permission_super_admin
         FROM permissions
-        WHERE superAdmin = FALSE
     </select>
 
     <select id="findAll" resultMap="userRoleFull">
