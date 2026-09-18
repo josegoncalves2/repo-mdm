@@ -14,8 +14,8 @@ com/hmdm/plugins/audit/rest/filter/ServletRequestAuditWrapper.class
 com/hmdm/plugins/audit/rest/filter/ResourceAuditInfo.class
 com/hmdm/plugins/audit/rest/json/AuditLogFilter.class
 com/hmdm/plugins/audit/rest/filter/ResourceAuditor.class
-com/hmdm/plugins/audit/guice/module/AuditConfigureModule.class
 com/hmdm/plugins/audit/persistence/mapper/AuditMapper.class
+com/hmdm/plugins/audit/guice/module/AuditConfigureModule.class
 com/hmdm/plugins/audit/guice/module/AuditRestModule.class
 com/hmdm/plugins/audit/rest/filter/ResourceAuditor$1.class
 com/hmdm/plugins/audit/rest/filter/ServletResponseAuditWrapper.class

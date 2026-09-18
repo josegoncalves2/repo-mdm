@@ -11,11 +11,11 @@ com/hmdm/notification/guice/module/NotificationEngineSelectorModule.class
 com/hmdm/notification/guice/module/NotificationPersistenceModule.class
 com/hmdm/notification/MqttEnvelope.class
 com/hmdm/notification/rest/json/PlainPushMessage.class
-com/hmdm/notification/guice/module/NotificationTaskModule.class
 com/hmdm/notification/persistence/domain/PendingPush.class
 com/hmdm/notification/persistence/domain/PushMessage.class
-com/hmdm/notification/guice/module/NotificationLiquibaseModule.class
+com/hmdm/notification/guice/module/NotificationTaskModule.class
 com/hmdm/notification/PushSenderMqtt.class
+com/hmdm/notification/guice/module/NotificationLiquibaseModule.class
 com/hmdm/notification/guice/module/NotificationTaskModule$MessagePurgeWorker.class
 com/hmdm/notification/PushSenderPolling.class
 com/hmdm/notification/MqttThrottledSender.class

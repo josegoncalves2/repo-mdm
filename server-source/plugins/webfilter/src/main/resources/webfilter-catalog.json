@@ -1,26 +1,149 @@
 {
-  "categories": [
-    {"id": "adult", "name": "Adult content", "required": false},
-    {"id": "social_media", "name": "Social media", "required": false},
-    {"id": "gambling", "name": "Gambling", "required": false},
-    {"id": "violence", "name": "Violence", "required": false},
-    {"id": "doh", "name": "DNS over HTTPS", "required": true},
-    {"id": "phishing", "name": "Phishing", "required": false},
-    {"id": "malware", "name": "Malware", "required": false},
-    {"id": "ransomware", "name": "Ransomware", "required": false},
-    {"id": "spyware", "name": "Spyware", "required": false},
-    {"id": "adware", "name": "Adware", "required": false},
-    {"id": "cryptomining", "name": "Cryptomining", "required": false},
-    {"id": "fraud", "name": "Fraud", "required": false},
-    {"id": "scam", "name": "Scam", "required": false}
+  "_comment": "Catalogo fixo de categorias (design D5). Fontes: IPFire DBL (CC BY-SA 4.0), Block List Project (Unlicense), UT1 Universite Toulouse Capitole (CC BY-SA 4.0).",
+  "attribution": [
+    {
+      "name": "IPFire DBL",
+      "license": "CC BY-SA 4.0",
+      "url": "https://www.ipfire.org/dbl"
+    },
+    {
+      "name": "The Block List Project",
+      "license": "Unlicense",
+      "url": "https://blocklistproject.github.io/Lists/"
+    },
+    {
+      "name": "UT1 - Universite Toulouse Capitole",
+      "license": "CC BY-SA 4.0",
+      "url": "https://dsi.ut-capitole.fr/blacklists/"
+    }
   ],
-  "siteSources": {
-    "dbl": ["https://dbl.ipfire.org/lists/dbl/domains.txt"],
-    "blocklist": ["https://blocklistproject.github.io/Lists/alt-version/blocklist.txt"],
-    "ut1": ["https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_media/domains"]
-  },
-  "appSources": {
-    "google_play": ["https://play.google.com/store/apps/details?id=com.social"],
-    "amazon": ["https://www.amazon.com/dp/B08N5WRWNW"]
-  }
+  "categories": [
+    {
+      "id": "adult",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/porn/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/porn-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains.0",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains.1",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/adult/domains.2"
+      ]
+    },
+    {
+      "id": "gambling",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/gambling/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/gambling-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/gambling/domains"
+      ]
+    },
+    {
+      "id": "games",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/games/domains.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/games/domains"
+      ]
+    },
+    {
+      "id": "social_media",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/social/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/facebook-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/twitter-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_networks/domains"
+      ]
+    },
+    {
+      "id": "streaming",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/streaming/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/youtube-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/audio-video/domains"
+      ]
+    },
+    {
+      "id": "shopping",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/shopping/domains.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/shopping/domains"
+      ]
+    },
+    {
+      "id": "dating",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/dating/domains.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/dating/domains"
+      ]
+    },
+    {
+      "id": "violence",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/violence/domains.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/agressif/domains"
+      ]
+    },
+    {
+      "id": "drugs",
+      "required": false,
+      "sources": [
+        "https://blocklistproject.github.io/Lists/alt-version/drugs-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/drogue/domains"
+      ]
+    },
+    {
+      "id": "piracy",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/piracy/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/piracy-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/torrent-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/warez/domains"
+      ]
+    },
+    {
+      "id": "malware",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/malware/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/malware-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/malware/domains"
+      ]
+    },
+    {
+      "id": "phishing",
+      "required": false,
+      "sources": [
+        "https://dbl.ipfire.org/lists/phishing/domains.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt",
+        "https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/phishing/domains"
+      ]
+    },
+    {
+      "id": "vpn_proxy",
+      "required": false,
+      "sources": [
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/vpn/domains",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/redirector/domains"
+      ]
+    },
+    {
+      "id": "doh",
+      "required": true,
+      "sources": [
+        "https://dbl.ipfire.org/lists/doh/domains.txt",
+        "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/doh/domains"
+      ]
+    }
+  ]
 }

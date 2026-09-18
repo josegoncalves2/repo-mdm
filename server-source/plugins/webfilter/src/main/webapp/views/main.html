@@ -1,0 +1,239 @@
+<div class="webfilter-page" ng-controller="PluginWebFilterController">
+    <style>
+        .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 14px; }
+        .wf-cat { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hwmdm-border); border-radius: 8px;
+                  padding: 8px 10px; background: var(--hwmdm-surface); margin: 0; font-weight: 600; cursor: pointer; }
+        .wf-cat input { margin: 0; }
+        .wf-cat-required { opacity: .75; cursor: not-allowed; }
+        .wf-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        .wf-lists textarea { width: 100%; min-height: 120px; font-family: monospace; }
+        .wf-field-error { color: #c62828; font-size: 12px; margin-top: 4px; }
+        .wf-muted { color: var(--hwmdm-muted); font-size: 12px; overflow-wrap: anywhere; }
+        .wf-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .wf-add-app { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .wf-add-app input, .wf-add-app select { flex: 1 1 200px; min-width: 0; }
+        .wf-code { font-family: monospace; overflow-wrap: anywhere; }
+    </style>
+
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>plugin.webfilter.localization.key.name</h3>
+            <p localized>plugin.webfilter.subtitle</p>
+        </div>
+    </div>
+
+    <div ng-show="errorMessage" class="error" data-testid="wf-error"><span>{{errorMessage}}</span></div>
+    <div ng-show="successMessage" class="success" data-testid="wf-success"><span>{{successMessage}}</span></div>
+
+    <div class="kiosk-status-strip">
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.profiles</span>
+            <strong>{{policies.length}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.active</span>
+            <strong>{{activePolicies()}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.dns</span>
+            <strong>{{settings.dnsDomain || ('plugin.webfilter.status.dns.none' | localize)}}</strong>
+        </div>
+    </div>
+
+    <div class="kiosk-tabs" role="tablist">
+        <button type="button" role="tab" class="kiosk-tab" ng-repeat="tab in tabs"
+                ng-class="{'kiosk-tab-active': activeWfTab === tab.id}"
+                data-testid="wf-tab-{{tab.id}}"
+                ng-click="selectWfTab(tab.id)">{{tab.key | localize}}</button>
+    </div>
+
+    <!-- ======================================================================== Policies: list -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'policies' && !editing">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.policies.title</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.profile</th>
+                    <th localized>plugin.webfilter.col.status</th>
+                    <th localized>plugin.webfilter.col.categories</th>
+                    <th localized>plugin.webfilter.col.entries</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="p in policies" data-testid="wf-policy-row">
+                    <td><strong>{{p.configurationName}}</strong></td>
+                    <td>
+                        <span class="label" ng-class="{'label-success': p.enabled, 'label-default': !p.enabled}">
+                            {{(p.enabled ? 'plugin.webfilter.enabled' : 'plugin.webfilter.disabled') | localize}}
+                        </span>
+                    </td>
+                    <td>{{p.enabled ? p.categories.length + 1 : '-'}}</td>
+                    <td>{{p.domainAllow.length + p.domainBlock.length + p.appAllow.length + p.appBlock.length}}</td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="edit(p)"
+                                data-testid="wf-edit" localized>plugin.webfilter.edit</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!loading && policies.length === 0" localized>plugin.webfilter.policies.empty</div>
+        </div>
+    </section>
+
+    <!-- ======================================================================== Policies: edit -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'policies' && editing" data-testid="wf-editor">
+        <div class="kiosk-panel-head">
+            <h4>{{'plugin.webfilter.policy.of' | localize}} {{editing.configurationName}}</h4>
+            <button type="button" class="btn btn-default btn-sm" ng-click="back()" data-testid="wf-back">
+                <span class="glyphicon glyphicon-menu-left"></span> <span localized>plugin.webfilter.back</span>
+            </button>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="editing.enabled" data-testid="wf-enabled">
+                <strong localized>plugin.webfilter.policy.enabled</strong>
+            </label>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.categories</strong></h5>
+        <p class="wf-muted" localized>plugin.webfilter.categories.hint</p>
+        <div class="wf-grid">
+            <label class="wf-cat" ng-repeat="c in catalog.categories" ng-class="{'wf-cat-required': c.required}"
+                   data-testid="wf-cat-{{c.id}}">
+                <input type="checkbox" ng-if="!c.required" ng-model="editing.categories[c.id]">
+                <input type="checkbox" ng-if="c.required" checked disabled>
+                <span>{{categoryName(c.id)}}</span>
+            </label>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.categories">{{m}}</div>
+
+        <div class="wf-lists">
+            <div>
+                <label localized>plugin.webfilter.domain.allow</label>
+                <textarea class="form-control" ng-model="editing.domainAllow" data-testid="wf-domain-allow"
+                          placeholder="exemplo.com.br"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.domainAllow">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.domain.block</label>
+                <textarea class="form-control" ng-model="editing.domainBlock" data-testid="wf-domain-block"
+                          placeholder="noticias.exemplo.com"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.domainBlock">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.app.allow</label>
+                <textarea class="form-control" ng-model="editing.appAllow" data-testid="wf-app-allow"
+                          placeholder="com.linkedin.android"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.appAllow">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.app.block</label>
+                <textarea class="form-control" ng-model="editing.appBlock" data-testid="wf-app-block"
+                          placeholder="com.king.candycrushsaga"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.appBlock">{{m}}</div>
+            </div>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.lists.hint</p>
+
+        <div class="kiosk-status-strip" ng-if="editing.enabled">
+            <div class="kiosk-status-cell">
+                <span localized>plugin.webfilter.dns.host</span>
+                <strong class="wf-code">{{editing.dnsHost || ('plugin.webfilter.dns.host.none' | localize)}}</strong>
+            </div>
+            <div class="kiosk-status-cell">
+                <span localized>plugin.webfilter.blocked.apps</span>
+                <strong class="wf-code" data-testid="wf-blocked-apps">{{editing.blockedApps.length ? editing.blockedApps.join(', ') : '-'}}</strong>
+            </div>
+        </div>
+
+        <div class="wf-actions">
+            <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="saving"
+                    data-testid="wf-save" localized>plugin.webfilter.save</button>
+            <button type="button" class="btn btn-default" ng-click="back()" localized>plugin.webfilter.back</button>
+        </div>
+    </section>
+
+    <!-- ======================================================================== Apps -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'apps'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.apps.title</h4>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.apps.hint</p>
+        <div class="wf-add-app">
+            <input type="text" class="form-control" ng-model="newApp.packageName" placeholder="br.com.empresa.jogo"
+                   data-testid="wf-new-app-package">
+            <select class="form-control" ng-model="newApp.category" data-testid="wf-new-app-category"
+                    ng-options="c.id as categoryName(c.id) for c in catalog.categories | filter:{required:false}">
+                <option value="">{{'plugin.webfilter.choose.category' | localize}}</option>
+            </select>
+            <button type="button" class="btn btn-primary" ng-click="addApp()" data-testid="wf-add-app"
+                    localized>plugin.webfilter.add</button>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.packageName">{{m}}</div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.category">{{m}}</div>
+
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.package</th>
+                    <th localized>plugin.webfilter.col.category</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="a in appCategories" data-testid="wf-app-row">
+                    <td class="wf-code">{{a.packageName}}</td>
+                    <td>{{categoryName(a.category)}}</td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="removeApp(a)"
+                                localized>plugin.webfilter.remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="appCategories.length === 0" localized>plugin.webfilter.apps.empty</div>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.apps.catalog</strong></h5>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <tbody>
+                <tr ng-repeat="c in catalog.categories" ng-if="c.apps.length">
+                    <td><strong>{{categoryName(c.id)}}</strong></td>
+                    <td class="wf-code">{{c.apps.join(', ')}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="wf-muted">{{'plugin.webfilter.protected' | localize}} <span class="wf-code">{{catalog.protectedPackages.join(', ')}}</span></p>
+    </section>
+
+    <!-- ======================================================================== Settings -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'settings'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.settings.title</h4>
+        </div>
+        <label localized>plugin.webfilter.dns.domain</label>
+        <div class="wf-add-app">
+            <input type="text" class="form-control" ng-model="settings.dnsDomain" placeholder="filtro.exemplo.com.br"
+                   data-testid="wf-dns-domain">
+            <button type="button" class="btn btn-primary" ng-click="saveSettings()" data-testid="wf-save-settings"
+                    localized>plugin.webfilter.save</button>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.dnsDomain">{{m}}</div>
+        <p class="wf-muted" localized>plugin.webfilter.dns.domain.hint</p>
+
+        <h5><strong localized>plugin.webfilter.sources</strong></h5>
+        <ul>
+            <li ng-repeat="s in catalog.attribution">
+                <a ng-href="{{s.url}}" target="_blank" rel="noopener">{{s.name}}</a> <span class="wf-muted">({{s.license}})</span>
+            </li>
+        </ul>
+    </section>
+</div>

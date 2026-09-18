@@ -1,3 +1,0 @@
-*.wikipedia.org
-*.stackoverflow.com
-*.github.com

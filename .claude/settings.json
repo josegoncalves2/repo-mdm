@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|WebFetch",
+        "hooks": [
+          { "type": "command", "command": "/opt/projetos/hwmdm/repo-mdm/.claude/hooks/bloquear-producao.sh" }
+        ]
+      }
+    ]
+  }
+}

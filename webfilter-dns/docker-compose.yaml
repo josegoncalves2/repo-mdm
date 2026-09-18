@@ -1,23 +1,30 @@
+# Resolvedor do Web Filter. Separado do compose do MDM de proposito (design D8): o MDM so escreve
+# arquivos em source/volumes/work/plugins/webfilter/dns e nao tem acesso a este container.
+#   docker compose -f webfilter-dns/docker-compose.yaml up -d --build
+# Certificado: WEBFILTER_CERTS_DIR deve conter cert.pem e key.pem validos para *.<dominio DNS do filtro>.
+name: hwmdm-webfilter
 services:
   webfilter-dns:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
+    image: hwmdm/webfilter-dns:0.34.0
     container_name: webfilter-dns
     restart: unless-stopped
     ports:
-      - "853:853/tcp"
+      - "853:853/tcp"          # somente DoT; a 53 fica apenas em 127.0.0.1 dentro do container
     volumes:
       - ../source/volumes/work/plugins/webfilter/dns:/app/dns:ro
-      - ./profiles:/app/profiles:ro
-      - ./certs:/app/certs:ro
+      - ${WEBFILTER_CERTS_DIR:-./certs}:/app/certs:ro
+      - webfilter-lists:/app/lists
+      - webfilter-state:/app/state
     environment:
-      - BLOCKY_CONFIG=/app/config.yml
-    entrypoint: /app/entrypoint.sh
+      TZ: America/Sao_Paulo
     healthcheck:
-      test: ["CMD-SHELL", "blocky version && ss -tln | grep -q ':853'"]
+      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '/app'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 30s
+      start_period: 300s
     mem_limit: 1536m
+volumes:
+  webfilter-lists:
+  webfilter-state:

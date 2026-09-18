@@ -1,10 +1,49 @@
-ports:
-  dns: 53
-
-log:
-  level: info
-
+# Gerado pelo plugin Web Filter do HWMDM. Nao edite: o arquivo e regenerado a cada alteracao.
 upstreams:
   groups:
     default:
-      - https://dns.google/dns-query
+      - tcp-tls:1.1.1.1:853
+      - tcp-tls:8.8.8.8:853
+  strategy: parallel_best
+ports:
+  dns: 127.0.0.1:53
+  tls: 853
+  http: 127.0.0.1:4000
+certFile: /app/certs/cert.pem
+keyFile: /app/certs/key.pem
+log:
+  level: info
+queryLog:
+  type: none
+blocking:
+  blockType: nxDomain
+  blockTTL: 1m
+  loading:
+    refreshPeriod: 0
+    strategy: failOnError
+  denylists:
+    p-c1-p1:
+      - /app/dns/profiles/c1-p1-deny.txt
+    p-c1-p11:
+      - /app/dns/profiles/c1-p11-deny.txt
+    cat-doh:
+      - /app/lists/doh.txt
+    cat-games:
+      - /app/lists/games.txt
+    cat-social_media:
+      - /app/lists/social_media.txt
+  allowlists:
+    p-c1-p1:
+      - /app/dns/profiles/c1-p1-allow.txt
+    p-c1-p11:
+      - /app/dns/profiles/c1-p11-allow.txt
+  clientGroupsBlock:
+    c1-p1:
+      - p-c1-p1
+      - cat-doh
+      - cat-games
+      - cat-social_media
+    c1-p11:
+      - p-c1-p11
+      - cat-doh
+      - cat-games

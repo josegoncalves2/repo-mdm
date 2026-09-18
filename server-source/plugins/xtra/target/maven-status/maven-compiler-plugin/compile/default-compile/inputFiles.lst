@@ -1,2 +1,2 @@
-/mnt/c/Users/40446686808/projetos/MDM/repo-mdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/XtraPluginConfigurationImpl.java
-/mnt/c/Users/40446686808/projetos/MDM/repo-mdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/guice/module/XtraLiquibaseModule.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/guice/module/XtraLiquibaseModule.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/xtra/src/main/java/com/hmdm/plugins/xtra/XtraPluginConfigurationImpl.java
