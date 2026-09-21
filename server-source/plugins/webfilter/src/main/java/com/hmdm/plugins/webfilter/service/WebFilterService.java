@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.hmdm.notification.PushService;
 import com.hmdm.persistence.ConfigurationDAO;
+import com.hmdm.persistence.UnsecureDAO;
+import com.hmdm.persistence.domain.Application;
+import com.hmdm.persistence.domain.ApplicationVersion;
 import com.hmdm.persistence.domain.Configuration;
 import com.hmdm.plugins.webfilter.catalog.WebFilterCatalog;
 import com.hmdm.plugins.webfilter.persistence.WebFilterDAO;
@@ -44,10 +47,12 @@ public class WebFilterService {
     private final ConfigurationDAO configurationDAO;
     private final ResolverConfigWriter resolverWriter;
     private final PushService pushService;
+    private final UnsecureDAO unsecureDAO;
 
     @Inject
     public WebFilterService(WebFilterDAO dao, WebFilterCatalog catalog, ConfigurationDAO configurationDAO,
-                            ResolverConfigWriter resolverWriter, PushService pushService) {
+                            ResolverConfigWriter resolverWriter, PushService pushService, UnsecureDAO unsecureDAO) {
+        this.unsecureDAO = unsecureDAO;
         this.dao = dao;
         this.catalog = catalog;
         this.configurationDAO = configurationDAO;
@@ -108,6 +113,31 @@ public class WebFilterService {
         return toView(customerId, c, dao.getPolicy(customerId, configurationId));
     }
 
+    /**
+     * <p>The package of the kiosk main app of the configuration, resolved the same way the sync does
+     * (<code>SyncResource</code>: kiosk mode on and a content app set), or <code>null</code>.</p>
+     */
+    private String kioskMainApp(Configuration c) {
+        if (c == null || !c.isKioskMode() || c.getContentAppId() == null) {
+            return null;
+        }
+        ApplicationVersion version = unsecureDAO.findApplicationVersionById(c.getContentAppId());
+        if (version == null) {
+            return null;
+        }
+        Application app = unsecureDAO.findApplicationById(version.getApplicationId());
+        return app == null ? null : app.getPkg();
+    }
+
+    private Set<String> protectedPackages(Configuration c) {
+        Set<String> result = new HashSet<>(catalog.getProtectedPackages());
+        String main = kioskMainApp(c);
+        if (main != null) {
+            result.add(main);
+        }
+        return result;
+    }
+
     private Configuration accessibleConfiguration(int configurationId) {
         if (!configurationDAO.hasConfigurationAccess(configurationId)) {
             return null;
@@ -138,7 +168,7 @@ public class WebFilterService {
             v.setDnsHost(dnsHost(customerId, c.getId()));
             v.setBlockedApps(new ArrayList<>(WebFilterDecision.blockedPackages(v.getCategories(),
                     appsByCategory(customerId), new HashSet<>(v.getAppAllow()), new HashSet<>(v.getAppBlock()),
-                    catalog.getProtectedPackages())));
+                    protectedPackages(c))));
         }
         return v;
     }
@@ -146,13 +176,13 @@ public class WebFilterService {
     /**
      * <p>Validates and saves the policy of a configuration.</p>
      *
-     * @return the validation errors; empty if the policy was saved.
-     * @throws SecurityException if the current user has no access to the configuration.
+     * @return the validation errors (empty if the policy was saved), or <code>null</code> if the configuration does
+     * not exist for the current user (another customer's profile is treated as non-existent).
      */
     public List<ValidationError> savePolicy(int configurationId, PolicyView input) {
         Configuration c = accessibleConfiguration(configurationId);
         if (c == null) {
-            throw new SecurityException("No access to configuration " + configurationId);
+            return null;
         }
         int customerId = currentCustomerId();
         List<ValidationError> errors = new ArrayList<>();
@@ -183,6 +213,10 @@ public class WebFilterService {
         Set<String> domainBlock = domains("domainBlock", input.getDomainBlock(), errors, protectedDomains);
         Set<String> appAllow = packages("appAllow", input.getAppAllow(), errors, Set.of());
         Set<String> appBlock = packages("appBlock", input.getAppBlock(), errors, catalog.getProtectedPackages());
+        String kioskApp = kioskMainApp(c);
+        if (kioskApp != null && appBlock.remove(kioskApp)) {
+            errors.add(new ValidationError("appBlock", kioskApp, "plugin.webfilter.error.package.kiosk"));
+        }
 
         for (String d : domainAllow) {
             if (domainBlock.contains(d)) {
@@ -226,23 +260,13 @@ public class WebFilterService {
             String d = WebFilterValidator.normalizeDomain(raw);
             if (d == null) {
                 errors.add(new ValidationError(field, raw, "plugin.webfilter.error.domain"));
-            } else if (refused != null && isSameOrParent(d, refused)) {
+            } else if (refused != null && refused.contains(d)) {
                 errors.add(new ValidationError(field, raw, "plugin.webfilter.error.domain.protected"));
             } else {
                 result.add(d);
             }
         }
         return result;
-    }
-
-    /** True if <code>domain</code> equals a protected domain or is a parent of one (blocking it would block the MDM). */
-    private static boolean isSameOrParent(String domain, Set<String> protectedDomains) {
-        for (String p : protectedDomains) {
-            if (p.equals(domain) || p.endsWith("." + domain)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private static Set<String> packages(String field, Collection<String> values, List<ValidationError> errors,

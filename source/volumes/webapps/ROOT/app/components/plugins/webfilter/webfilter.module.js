@@ -4,7 +4,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         try {
             $stateProvider.state('plugin-webfilter', {
                 url: '/plugin-webfilter',
-                templateUrl: 'app/components/main/view/content.html?v=had280999a0',
+                templateUrl: 'app/components/main/view/content.html?v=h1d21823701',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"plugin.webfilter.localization.key.name" | localize}}'
@@ -56,9 +56,14 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         };
         clearMessages();
 
-        var onFailure = function () {
+        // The API answers 400/403/404 with the console's JSON envelope in the body
+        var onFailure = function (httpResponse) {
             $scope.saving = false;
-            $scope.errorMessage = localization.localize('error.request.failure');
+            if (httpResponse && httpResponse.data && httpResponse.data.status) {
+                showErrors(httpResponse.data);
+            } else {
+                $scope.errorMessage = localization.localize('error.request.failure');
+            }
         };
 
         // Groups the validation errors returned by the server by field, with a readable reason for each value
@@ -76,6 +81,10 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
 
         $scope.categoryName = function (id) {
             return localization.localize('plugin.webfilter.category.' + id);
+        };
+
+        $scope.categoryDescription = function (id) {
+            return localization.localize('plugin.webfilter.category.' + id + '.desc');
         };
 
         $scope.selectWfTab = function (id) {
@@ -118,6 +127,8 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             pluginWebFilterService.getSettings(function (response) {
                 if (response.status === 'OK') {
                     $scope.settings = response.data;
+                    $scope.savedDnsDomain = response.data.dnsDomain;
+                    $scope.settingsLoaded = true;
                 }
             }, onFailure);
         };
@@ -233,6 +244,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             pluginWebFilterService.saveSettings({dnsDomain: $scope.settings.dnsDomain}, function (response) {
                 if (response.status === 'OK') {
                     $scope.settings = response.data;
+                    $scope.savedDnsDomain = response.data.dnsDomain;
                     $scope.successMessage = localization.localize('plugin.webfilter.saved');
                 } else {
                     showErrors(response);

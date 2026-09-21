@@ -1,5 +1,6 @@
 {
   "doh" : [ "https://dbl.ipfire.org/lists/doh/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/doh/domains" ],
   "games" : [ "https://dbl.ipfire.org/lists/games/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/games/domains" ],
-  "social_media" : [ "https://dbl.ipfire.org/lists/social/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/facebook-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/twitter-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_networks/domains" ]
+  "social_media" : [ "https://dbl.ipfire.org/lists/social/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/facebook-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/twitter-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_networks/domains" ],
+  "streaming" : [ "https://dbl.ipfire.org/lists/streaming/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/youtube-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/audio-video/domains" ]
 }

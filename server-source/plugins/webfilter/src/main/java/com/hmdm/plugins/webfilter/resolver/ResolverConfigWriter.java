@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.UUID;
 
 /**
  * <p>Generates the files consumed by the <code>webfilter-dns</code> resolver container (design D8):
@@ -53,6 +54,16 @@ public class ResolverConfigWriter {
     private final WebFilterCatalog catalog;
     private final Path dnsDir;
     private final String mdmHost;
+
+    /**
+     * <p>Identifies this instance as the owner of the resolver files. A hot redeploy of the web application can
+     * leave the previous instance's scheduled task alive in the old class loader; without an owner, both would keep
+     * rewriting the files with their own code and the resolver would restart on every alternation. The newest instance
+     * claims ownership on its first write; an instance that finds another owner stops writing for good.</p>
+     */
+    private final String ownerToken = UUID.randomUUID().toString();
+    private boolean claimed;
+    private boolean superseded;
 
     @Inject
     public ResolverConfigWriter(WebFilterDAO dao, WebFilterCatalog catalog,
@@ -82,6 +93,9 @@ public class ResolverConfigWriter {
     public synchronized void writeAll() {
         try {
             Files.createDirectories(dnsDir.resolve("profiles"));
+            if (!ownsFiles()) {
+                return;
+            }
             List<WebFilterPolicy> policies = dao.getAllEnabledPolicies();
 
             Set<String> usedCategories = new TreeSet<>();
@@ -141,6 +155,25 @@ public class ResolverConfigWriter {
         }
     }
 
+    private boolean ownsFiles() throws IOException {
+        if (superseded) {
+            return false;
+        }
+        Path owner = dnsDir.resolve(".owner");
+        if (!claimed) {
+            writeAtomically(owner, ownerToken + "\n");
+            claimed = true;
+            return true;
+        }
+        String current = Files.exists(owner) ? new String(Files.readAllBytes(owner), StandardCharsets.UTF_8).trim() : "";
+        if (!ownerToken.equals(current)) {
+            superseded = true;
+            log.warn("Web filter resolver files are now owned by a newer instance of the application; this instance stops writing them");
+            return false;
+        }
+        return true;
+    }
+
     /**
      * <p>Domains which are always allowed for every profile: the MDM server itself and the filter's own DNS domain
      * (design D6).</p>
@@ -193,7 +226,7 @@ public class ResolverConfigWriter {
                 "  blockType: nxDomain\n" +
                 "  blockTTL: 1m\n" +
                 "  loading:\n" +
-                "    refreshPeriod: 0\n" +
+                "    refreshPeriod: 0m\n" +
                 "    strategy: failOnError\n" +
                 "  denylists:\n" + denyGroups +
                 (allowGroups.length() > 0 ? "  allowlists:\n" + allowGroups : "") +

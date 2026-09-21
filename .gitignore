@@ -30,3 +30,8 @@ source/volumes/work/files/nextcloud-340010090.apk
 #     docker exec source-postgresql-1 pg_dump -U hmdm -d hmdm --clean --if-exists \
 #       > source/sql/hmdm-dump.sql
 source/volumes/db/
+
+# ===== 4. Chave privada do resolvedor Web Filter =====
+# Certificado e chave TLS do webfilter-dns sao do ambiente (DEV: autoassinado; producao: curinga
+# emitido por DNS-01). Chave privada nao vai para o git; o compose le de WEBFILTER_CERTS_DIR.
+webfilter-dns/certs/*.pem

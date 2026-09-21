@@ -41,6 +41,10 @@ REFRESH_MAX = 24 * 3600
 REFRESH_MIN = 3600
 LOOP_SECONDS = 5
 HEALTH_TIMEOUT = 180
+RETRY_FIRST_SECONDS = 120
+RETRY_MAX_SECONDS = 3600
+DRY_RUN_DNS_PORT = 5353
+RESTART_GOOD_SECONDS = 10
 
 log = logging.getLogger("webfilter-dns")
 LABEL = re.compile(r"^[a-z0-9_](?:[a-z0-9_-]{0,61}[a-z0-9_])?$")
@@ -153,13 +157,13 @@ def referenced_files(config_text):
     return re.findall(r"^\s*-\s+(/app/\S+\.txt)\s*$", config_text, re.M)
 
 
-def dns_ok():
+def dns_ok(port=53):
     """Consulta A de 'localhost.' no listener local; qualquer resposta DNS = Blocky servindo."""
     q = struct.pack(">HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0) + b"\x09localhost\x00" + struct.pack(">HH", 1, 1)
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
             s.settimeout(2)
-            s.sendto(q, ("127.0.0.1", 53))
+            s.sendto(q, ("127.0.0.1", port))
             data, _ = s.recvfrom(512)
             return data[:2] == q[:2]
     except OSError:
@@ -183,6 +187,11 @@ class Supervisor:
         self.running_hash = None
         self.good_config = os.path.join(STATE_DIR, "blocky.good.yml")
         self.profiles_hash = None
+        self.failed_hash = None
+        self.retry_at = 0.0
+        self.retry_delay = RETRY_FIRST_SECONDS
+        self.last_good_attempt = 0.0
+        self.started_once = False
 
     def _profiles_digest(self):
         h = hashlib.sha256()
@@ -214,10 +223,49 @@ class Supervisor:
                 log.error("Blocky terminou com codigo %s", self.proc.returncode)
                 return False
             if dns_ok():
+                self.started_once = True
                 return True
             time.sleep(1)
         log.error("Blocky nao ficou saudavel em %ss", HEALTH_TIMEOUT)
         return False
+
+    def _schedule_retry(self, config_hash):
+        if config_hash != self.failed_hash:
+            self.retry_delay = RETRY_FIRST_SECONDS
+        self.failed_hash = config_hash
+        self.retry_at = time.time() + self.retry_delay
+        log.warning("configuracao %s: nova tentativa em %ss", config_hash[:12], self.retry_delay)
+        self.retry_delay = min(self.retry_delay * 2, RETRY_MAX_SECONDS)
+
+    def _dry_run(self, config):
+        """Sobe a configuracao em portas alternativas (sem DoT) e diz se ela fica saudavel."""
+        with open(config) as f:
+            text = f.read()
+        text = re.sub(r"^  dns: .*$", f"  dns: 127.0.0.1:{DRY_RUN_DNS_PORT}", text, flags=re.M)
+        text = re.sub(r"^  tls: .*\n", "", text, flags=re.M)
+        text = re.sub(r"^  http: .*$", "  http: 127.0.0.1:4001", text, flags=re.M)
+        trial = os.path.join(STATE_DIR, "blocky.trial.yml")
+        with open(trial, "w") as f:
+            f.write(text)
+        log.info("ensaiando a configuracao em portas alternativas antes de trocar a instancia em uso")
+        proc = subprocess.Popen([BLOCKY, "--config", trial])
+        try:
+            deadline = time.time() + HEALTH_TIMEOUT
+            while time.time() < deadline:
+                if proc.poll() is not None:
+                    return False
+                if dns_ok(DRY_RUN_DNS_PORT):
+                    return True
+                time.sleep(1)
+            return False
+        finally:
+            if proc.poll() is None:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=20)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                    proc.wait()
 
     def ready(self, config_path):
         with open(config_path) as f:
@@ -230,33 +278,73 @@ class Supervisor:
         config = os.path.join(DNS_DIR, "blocky.yml")
         if not os.path.exists(config):
             return
+
+        # 1. A instancia em uso e mantida viva sempre, inclusive enquanto uma configuracao nova espera
+        #    nova tentativa: sem instancia viva, a ultima configuracao boa e reiniciada (no maximo a cada
+        #    RESTART_GOOD_SECONDS), em vez de esperar a proxima tentativa da configuracao nova.
+        if self.proc is not None and self.proc.poll() is not None:
+            log.error("Blocky caiu (codigo %s)", self.proc.returncode)
+            self.proc = None
+            self.running_hash = None
         current = sha256_file(config)
-        if current != self.running_hash:
-            if not self.ready(config):
-                return
-            staged = os.path.join(STATE_DIR, "blocky.candidate.yml")
-            shutil.copyfile(config, staged)  # o plugin pode reescrever blocky.yml durante a troca
-            if self._start(staged):
-                shutil.copyfile(staged, self.good_config)
-                self.running_hash = current
-                self.profiles_hash = self._profiles_digest()
-                log.info("Blocky pronto com a configuracao %s", current[:12])
-            elif os.path.exists(self.good_config) and self._start(self.good_config):
-                log.error("configuracao nova recusada; de volta a ultima configuracao boa")
-                self.running_hash = current  # nao tenta de novo a mesma configuracao ruim em loop
+        recovering = self.started_once or current == self.failed_hash  # no boot limpo, o passo 2 sobe a atual
+        if (self.proc is None and recovering and os.path.exists(self.good_config)
+                and time.time() - self.last_good_attempt >= RESTART_GOOD_SECONDS):
+            self.last_good_attempt = time.time()
+            profiles_at_start = self._profiles_digest()
+            if self._start(self.good_config):
+                log.info("Blocky de volta com a ultima configuracao boa")
+                self.running_hash = sha256_file(self.good_config)
+                self.profiles_hash = profiles_at_start
             else:
                 self.stop()
-                self.running_hash = None
-            return
-        if self.proc and self.proc.poll() is not None:
-            log.error("Blocky caiu; reiniciando com a ultima configuracao boa")
-            self.running_hash = None
-            return
-        profiles = self._profiles_digest()
-        if lists_changed or profiles != self.profiles_hash:
-            if api_refresh():
-                self.profiles_hash = profiles
 
+        # 2. Configuracao nova (perfil ativado/desativado, categorias): troca de instancia.
+        if current != self.running_hash and self._switch_due(current) and self.ready(config):
+            self._switch(config, current)
+            return
+
+        # 3. Listas mudaram (allow/deny de perfil ou lista de categoria): recarga sem reinicio na instancia
+        #    em uso -- tambem durante a espera de nova tentativa de uma configuracao que falhou.
+        if self.proc is not None and self.proc.poll() is None:
+            profiles = self._profiles_digest()
+            if lists_changed or profiles != self.profiles_hash:
+                if api_refresh():
+                    self.profiles_hash = profiles
+
+    def _switch_due(self, config_hash):
+        """Configuracao que ja falhou so e tentada de novo quando chega a hora agendada."""
+        return config_hash != self.failed_hash or time.time() >= self.retry_at
+
+    def _switch(self, config, current):
+        retrying = current == self.failed_hash
+        # Enquanto ha uma instancia boa servindo, a nova tentativa e ensaiada em portas alternativas,
+        # sem derrubar o DNS dos tablets; so a configuracao aprovada no ensaio substitui a boa.
+        if retrying and self.proc is not None and self.proc.poll() is None and not self._dry_run(config):
+            self._schedule_retry(current)
+            return
+        staged = os.path.join(STATE_DIR, "blocky.candidate.yml")
+        shutil.copyfile(config, staged)  # o plugin pode reescrever blocky.yml durante a troca
+        # Registrado ANTES de iniciar: uma lista de perfil alterada enquanto o Blocky carrega
+        # difere deste valor e ganha um refresh logo em seguida, em vez de ser perdida.
+        profiles_at_start = self._profiles_digest()
+        if self._start(staged):
+            shutil.copyfile(staged, self.good_config)
+            self.running_hash = current
+            self.profiles_hash = profiles_at_start
+            self.failed_hash = None
+            self.retry_delay = RETRY_FIRST_SECONDS
+            log.info("Blocky pronto com a configuracao %s", current[:12])
+            return
+        self._schedule_retry(current)
+        self.stop()
+        self.running_hash = None
+        if os.path.exists(self.good_config):
+            log.error("configuracao %s nao subiu; voltando para a ultima configuracao boa", current[:12])
+        else:
+            log.error("configuracao %s nao subiu e ainda nao ha configuracao boa; DNS fechado ate a nova tentativa",
+                      current[:12])
+        # O passo 1 do proximo ciclo sobe a configuracao boa (e insiste nela se tambem falhar).
 
 def main():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", stream=sys.stdout)

@@ -1,13 +1,24 @@
-<div class="webfilter-page" ng-controller="PluginWebFilterController">
+<div class="webfilter-page" ng-if="!hasPermission('plugin_webfilter_access')">
+    <div class="error"><span localized>plugin.webfilter.no.permission</span></div>
+</div>
+<div class="webfilter-page" ng-controller="PluginWebFilterController" ng-if="hasPermission('plugin_webfilter_access')">
     <style>
         .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 14px; }
         .wf-cat { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hwmdm-border); border-radius: 8px;
                   padding: 8px 10px; background: var(--hwmdm-surface); margin: 0; font-weight: 600; cursor: pointer; }
         .wf-cat input { margin: 0; }
-        .wf-cat-required { opacity: .75; cursor: not-allowed; }
+        .wf-cat-required { cursor: not-allowed; border-style: dashed; }
         .wf-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
         .wf-lists textarea { width: 100%; min-height: 120px; font-family: monospace; }
-        .wf-field-error { color: #c62828; font-size: 12px; margin-top: 4px; }
+        .wf-field-error { color: var(--hwmdm-danger); font-size: 12px; margin-top: 4px; font-weight: 600; }
+        .wf-badge { display: inline-block; border-radius: 10px; padding: 2px 9px; font-size: 12px; font-weight: 700; border: 1px solid; }
+        .wf-badge-on { color: #14532d; background: #dcfce7; border-color: #86efac; }
+        .wf-badge-off { color: var(--hwmdm-text-strong); background: transparent; border-color: var(--hwmdm-border); }
+        [data-theme="dark"] .wf-badge-on { color: #bbf7d0; background: #14532d; border-color: #22c55e; }
+        .wf-cat { align-items: flex-start; }
+        .wf-cat-text { display: flex; flex-direction: column; gap: 2px; }
+        .wf-cat-desc { font-weight: 400; font-size: 12px; color: var(--hwmdm-muted); }
+        .wf-warning { border: 1px solid var(--hwmdm-danger-border); background: var(--hwmdm-danger-bg); color: var(--hwmdm-text); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
         .wf-muted { color: var(--hwmdm-muted); font-size: 12px; overflow-wrap: anywhere; }
         .wf-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
         .wf-add-app { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -36,9 +47,11 @@
         </div>
         <div class="kiosk-status-cell">
             <span localized>plugin.webfilter.status.dns</span>
-            <strong>{{settings.dnsDomain || ('plugin.webfilter.status.dns.none' | localize)}}</strong>
+            <strong>{{savedDnsDomain || ('plugin.webfilter.status.dns.none' | localize)}}</strong>
         </div>
     </div>
+
+    <div class="wf-warning" ng-if="settingsLoaded && !savedDnsDomain" data-testid="wf-dns-warning" localized>plugin.webfilter.dns.missing</div>
 
     <div class="kiosk-tabs" role="tablist">
         <button type="button" role="tab" class="kiosk-tab" ng-repeat="tab in tabs"
@@ -67,7 +80,7 @@
                 <tr ng-repeat="p in policies" data-testid="wf-policy-row">
                     <td><strong>{{p.configurationName}}</strong></td>
                     <td>
-                        <span class="label" ng-class="{'label-success': p.enabled, 'label-default': !p.enabled}">
+                        <span class="wf-badge" ng-class="{'wf-badge-on': p.enabled, 'wf-badge-off': !p.enabled}">
                             {{(p.enabled ? 'plugin.webfilter.enabled' : 'plugin.webfilter.disabled') | localize}}
                         </span>
                     </td>
@@ -107,7 +120,10 @@
                    data-testid="wf-cat-{{c.id}}">
                 <input type="checkbox" ng-if="!c.required" ng-model="editing.categories[c.id]">
                 <input type="checkbox" ng-if="c.required" checked disabled>
-                <span>{{categoryName(c.id)}}</span>
+                <span class="wf-cat-text">
+                    <span>{{categoryName(c.id)}}</span>
+                    <span class="wf-cat-desc">{{categoryDescription(c.id)}}</span>
+                </span>
             </label>
         </div>
         <div class="wf-field-error" ng-repeat="m in fieldErrors.categories">{{m}}</div>

@@ -57,7 +57,7 @@
                         <span localized-change-tracking>nav.kiosk</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
-                            ng-if="(functionsPlugins | filter:{identifier:'webfilter'}:true).length > 0"
+                            ng-if="hasPermission('plugin_webfilter_access') && (functionsPlugins | filter:{identifier:'webfilter'}:true).length > 0"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'plugin-webfilter'}"
                             ng-click="openTab('plugin-webfilter')"
                             data-testid="nav-webfilter">

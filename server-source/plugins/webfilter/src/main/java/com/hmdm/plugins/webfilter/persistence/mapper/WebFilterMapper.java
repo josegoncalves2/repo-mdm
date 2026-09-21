@@ -23,10 +23,11 @@ public interface WebFilterMapper {
     @Select("SELECT * FROM plugin_webfilter_policies WHERE customerId = #{customerId} AND configurationId = #{configurationId}")
     WebFilterPolicy findPolicy(@Param("customerId") int customerId, @Param("configurationId") int configurationId);
 
-    @Select("SELECT * FROM plugin_webfilter_policies WHERE customerId = #{customerId}")
+    @Select("SELECT * FROM plugin_webfilter_policies WHERE customerId = #{customerId} ORDER BY configurationId")
     List<WebFilterPolicy> findPoliciesByCustomer(@Param("customerId") int customerId);
 
-    @Select("SELECT * FROM plugin_webfilter_policies WHERE enabled")
+    // Stable order: the generated blocky.yml must not change (and restart the resolver) when only a row moves
+    @Select("SELECT * FROM plugin_webfilter_policies WHERE enabled ORDER BY customerId, configurationId")
     List<WebFilterPolicy> findAllEnabledPolicies();
 
     @Insert("INSERT INTO plugin_webfilter_policies (customerId, configurationId, enabled, updatedAt, updatedBy) " +

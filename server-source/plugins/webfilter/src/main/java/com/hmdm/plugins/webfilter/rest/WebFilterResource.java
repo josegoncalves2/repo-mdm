@@ -12,8 +12,6 @@ import com.hmdm.plugins.webfilter.service.WebFilterService;
 import com.hmdm.rest.json.Response;
 import com.hmdm.security.SecurityContext;
 import io.swagger.annotations.Api;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -39,7 +37,6 @@ import java.util.Set;
 @Produces(MediaType.APPLICATION_JSON)
 public class WebFilterResource {
 
-    private static final Logger log = LoggerFactory.getLogger(WebFilterResource.class);
     public static final String PERMISSION = "plugin_webfilter_access";
 
     private WebFilterService service;
@@ -59,11 +56,32 @@ public class WebFilterResource {
         return !SecurityContext.get().hasPermission(PERMISSION);
     }
 
+    /** The console's JSON envelope, with the HTTP status the spec requires (403, 400, 404). */
+    private static javax.ws.rs.core.Response http(int status, Response body) {
+        return javax.ws.rs.core.Response.status(status).entity(body).type(MediaType.APPLICATION_JSON).build();
+    }
+
+    private static javax.ws.rs.core.Response ok(Response body) {
+        return http(200, body);
+    }
+
+    private static javax.ws.rs.core.Response forbidden() {
+        return http(403, Response.PERMISSION_DENIED());
+    }
+
+    private static javax.ws.rs.core.Response notFound() {
+        return http(404, Response.OBJECT_NOT_FOUND_ERROR());
+    }
+
+    private static javax.ws.rs.core.Response invalid(List<ValidationError> errors) {
+        return http(400, Response.ERROR("plugin.webfilter.error.validation", errors));
+    }
+
     @GET
     @Path("/catalog")
-    public Response getCatalog() {
+    public javax.ws.rs.core.Response getCatalog() {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode root = mapper.createObjectNode();
@@ -80,97 +98,90 @@ public class WebFilterResource {
         ArrayNode prot = root.putArray("protectedPackages");
         catalog.getProtectedPackages().forEach(prot::add);
         root.set("attribution", catalog.getAttribution());
-        return Response.OK(root);
+        return ok(Response.OK(root));
     }
 
     @GET
     @Path("/policies")
-    public Response listPolicies() {
+    public javax.ws.rs.core.Response listPolicies() {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
-        return Response.OK(service.listPolicies());
+        return ok(Response.OK(service.listPolicies()));
     }
 
     @GET
     @Path("/policies/{configurationId}")
-    public Response getPolicy(@PathParam("configurationId") int configurationId) {
+    public javax.ws.rs.core.Response getPolicy(@PathParam("configurationId") int configurationId) {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
         PolicyView view = service.getPolicy(configurationId);
-        return view == null ? Response.OBJECT_NOT_FOUND_ERROR() : Response.OK(view);
+        return view == null ? notFound() : ok(Response.OK(view));
     }
 
     @PUT
     @Path("/policies/{configurationId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response savePolicy(@PathParam("configurationId") int configurationId, PolicyView policy) {
+    public javax.ws.rs.core.Response savePolicy(@PathParam("configurationId") int configurationId, PolicyView policy) {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
-        try {
-            List<ValidationError> errors = service.savePolicy(configurationId, policy);
-            if (!errors.isEmpty()) {
-                return Response.ERROR("plugin.webfilter.error.validation", errors);
-            }
-            return Response.OK(service.getPolicy(configurationId));
-        } catch (SecurityException e) {
-            log.warn("Web filter policy save denied: {}", e.getMessage());
-            return Response.PERMISSION_DENIED();
+        List<ValidationError> errors = service.savePolicy(configurationId, policy);
+        if (errors == null) {
+            return notFound();
         }
+        return errors.isEmpty() ? ok(Response.OK(service.getPolicy(configurationId))) : invalid(errors);
     }
 
     @GET
     @Path("/apps")
-    public Response getAppCategories() {
+    public javax.ws.rs.core.Response getAppCategories() {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
-        return Response.OK(service.getAppCategories());
+        return ok(Response.OK(service.getAppCategories()));
     }
 
     @PUT
     @Path("/apps")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addAppCategory(WebFilterAppCategory item) {
+    public javax.ws.rs.core.Response addAppCategory(WebFilterAppCategory item) {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
         List<ValidationError> errors = service.addAppCategory(item.getPackageName(), item.getCategory());
-        return errors.isEmpty() ? Response.OK(service.getAppCategories())
-                : Response.ERROR("plugin.webfilter.error.validation", errors);
+        return errors.isEmpty() ? ok(Response.OK(service.getAppCategories())) : invalid(errors);
     }
 
     @DELETE
     @Path("/apps/{id}")
-    public Response removeAppCategory(@PathParam("id") int id) {
+    public javax.ws.rs.core.Response removeAppCategory(@PathParam("id") int id) {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
-        return service.removeAppCategory(id) ? Response.OK(service.getAppCategories())
-                : Response.OBJECT_NOT_FOUND_ERROR();
+        return service.removeAppCategory(id) ? ok(Response.OK(service.getAppCategories())) : notFound();
     }
 
     @GET
     @Path("/settings")
-    public Response getSettings() {
+    public javax.ws.rs.core.Response getSettings() {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
         SettingsView v = new SettingsView();
         v.setDnsDomain(service.getDnsDomain());
-        return Response.OK(v);
+        return ok(Response.OK(v));
     }
 
     @PUT
     @Path("/settings")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveSettings(SettingsView settings) {
+    public javax.ws.rs.core.Response saveSettings(SettingsView settings) {
         if (denied()) {
-            return Response.PERMISSION_DENIED();
+            return forbidden();
         }
         List<ValidationError> errors = service.saveDnsDomain(settings.getDnsDomain());
-        return errors.isEmpty() ? getSettings() : Response.ERROR("plugin.webfilter.error.validation", errors);
+        return errors.isEmpty() ? getSettings() : invalid(errors);
     }
 }

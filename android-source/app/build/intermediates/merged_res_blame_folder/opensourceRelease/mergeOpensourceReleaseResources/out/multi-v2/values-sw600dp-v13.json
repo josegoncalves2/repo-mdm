@@ -4,7 +4,7 @@
             "outputFile": "com.hmdm.launcher.app-mergeOpensourceReleaseResources-28:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/sahwmdm/.gradle/caches/8.13/transforms/928ceb5a87450803aa7bb0c2358c4f64/transformed/material-1.1.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/sahw/.gradle/caches/8.13/transforms/928ceb5a87450803aa7bb0c2358c4f64/transformed/material-1.1.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/sahwmdm/.gradle/caches/8.13/transforms/9a7e0c8362e5ed4bd43d4cbff3c6e17a/transformed/appcompat-1.1.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/sahw/.gradle/caches/8.13/transforms/9a7e0c8362e5ed4bd43d4cbff3c6e17a/transformed/appcompat-1.1.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

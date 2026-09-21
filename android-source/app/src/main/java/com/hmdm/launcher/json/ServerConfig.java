@@ -88,6 +88,8 @@ public class ServerConfig {
     private Boolean kioskLockButtons;
     private Boolean kioskScreenOn;
     private String restrictions;
+    // Web Filter: private DNS hostname of the profile (null = filter off or not configured)
+    private String webfilterDnsHost;
 
     private String description;
     private String custom1;
@@ -665,6 +667,14 @@ public class ServerConfig {
 
     public void setRestrictions(String restrictions) {
         this.restrictions = restrictions;
+    }
+
+    public String getWebfilterDnsHost() {
+        return webfilterDnsHost;
+    }
+
+    public void setWebfilterDnsHost(String webfilterDnsHost) {
+        this.webfilterDnsHost = webfilterDnsHost;
     }
 
     public String getDescription() {

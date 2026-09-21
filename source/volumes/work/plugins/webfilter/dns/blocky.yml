@@ -19,7 +19,7 @@ blocking:
   blockType: nxDomain
   blockTTL: 1m
   loading:
-    refreshPeriod: 0
+    refreshPeriod: 0m
     strategy: failOnError
   denylists:
     p-c1-p1:
@@ -32,6 +32,8 @@ blocking:
       - /app/lists/games.txt
     cat-social_media:
       - /app/lists/social_media.txt
+    cat-streaming:
+      - /app/lists/streaming.txt
   allowlists:
     p-c1-p1:
       - /app/dns/profiles/c1-p1-allow.txt
@@ -47,3 +49,4 @@ blocking:
       - p-c1-p11
       - cat-doh
       - cat-games
+      - cat-streaming
