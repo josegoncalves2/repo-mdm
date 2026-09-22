@@ -1,6 +1,6 @@
 // Localization completed
 angular.module( 'headwind-kiosk' )
-.controller( 'HeaderController', function( $scope, $rootScope, $state, $modal, $timeout, $interval, $filter, $window,
+.controller( 'HeaderController', function( $scope, $rootScope, $state, $uibModal, $timeout, $interval, $filter, $window,
                                            authService, localization, hintService, rebranding, alertService, Idle,
                                            themeService, settingsService ) {
     $scope.isControlPanel = false;
@@ -125,7 +125,7 @@ angular.module( 'headwind-kiosk' )
     };
 
     $scope.about = function () {
-        $modal.open({
+        $uibModal.open({
             templateUrl: 'app/components/about/about.html?v=h58ff4a64d1',
             controller: 'AboutController'
         });

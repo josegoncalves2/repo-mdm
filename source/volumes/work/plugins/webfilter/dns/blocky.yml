@@ -6,7 +6,7 @@ upstreams:
       - tcp-tls:8.8.8.8:853
   strategy: parallel_best
 ports:
-  dns: 127.0.0.1:53
+  dns: 0.0.0.0:53
   tls: 853
   http: 127.0.0.1:4000
 certFile: /app/certs/cert.pem
@@ -54,11 +54,15 @@ blocking:
       - /app/lists/violence.txt
     cat-vpn_proxy:
       - /app/lists/vpn_proxy.txt
+    p-default:
+      - /app/dns/profiles/default-deny.txt
   allowlists:
     p-c1-p1:
       - /app/dns/profiles/c1-p1-allow.txt
     p-c1-p11:
       - /app/dns/profiles/c1-p11-allow.txt
+    p-default:
+      - /app/dns/profiles/default-allow.txt
   clientGroupsBlock:
     c1-p1:
       - p-c1-p1
@@ -67,6 +71,22 @@ blocking:
       - cat-social_media
     c1-p11:
       - p-c1-p11
+      - cat-adult
+      - cat-dating
+      - cat-doh
+      - cat-drugs
+      - cat-gambling
+      - cat-games
+      - cat-malware
+      - cat-phishing
+      - cat-piracy
+      - cat-shopping
+      - cat-social_media
+      - cat-streaming
+      - cat-violence
+      - cat-vpn_proxy
+    default:
+      - p-default
       - cat-adult
       - cat-dating
       - cat-doh

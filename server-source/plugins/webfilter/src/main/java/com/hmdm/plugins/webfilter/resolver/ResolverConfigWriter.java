@@ -104,6 +104,10 @@ public class ResolverConfigWriter {
             StringBuilder denyGroups = new StringBuilder();
             StringBuilder allowGroups = new StringBuilder();
             StringBuilder clients = new StringBuilder();
+            // Dominios que precisam resolver para qualquer aparelho, identificado ou nao: o proprio
+            // servidor MDM e o dominio DNS do filtro. Se o aparelho nao resolve o dominio do filtro,
+            // o DNS privado do Android falha fechado e ele fica SEM REDE -- o remedio viraria o veneno.
+            Set<String> defaultAllow = new TreeSet<>();
 
             for (WebFilterPolicy policy : policies) {
                 String client = clientName(policy.getCustomerId(), policy.getConfigurationId());
@@ -111,7 +115,9 @@ public class ResolverConfigWriter {
 
                 Set<String> deny = new TreeSet<>();
                 deny.add(DENY_SENTINEL);
-                Set<String> allow = new TreeSet<>(protectedDomains(policy.getCustomerId()));
+                Set<String> protectedForCustomer = protectedDomains(policy.getCustomerId());
+                defaultAllow.addAll(protectedForCustomer);
+                Set<String> allow = new TreeSet<>(protectedForCustomer);
                 for (WebFilterEntry e : dao.getEntries(policy.getId())) {
                     if (WebFilterEntry.KIND_DOMAIN.equals(e.getKind())) {
                         (WebFilterEntry.LIST_ALLOW.equals(e.getList()) ? allow : deny).add("*." + e.getValue());
@@ -153,7 +159,20 @@ public class ResolverConfigWriter {
             // So as listas de categoria entram aqui: os grupos de perfil carregam allowlist propria e
             // liberariam, no default, dominios que pertencem a um unico perfil.
             if (!usedCategories.isEmpty()) {
-                clients.append("    default:\n");
+                // O sentinela mantem o grupo com denylist: sem ele o Blocky leria um grupo que so tem
+                // allowlist como "libere apenas estes" e derrubaria todo o resto da internet.
+                writeAtomically(dnsDir.resolve("profiles").resolve("default-deny.txt"), DENY_SENTINEL + "\n");
+                writeAtomically(dnsDir.resolve("profiles").resolve("default-allow.txt"),
+                        String.join("\n", defaultAllow) + "\n");
+                profileFiles.add("default-deny.txt");
+                profileFiles.add("default-allow.txt");
+                denyGroups.append("    p-default:\n")
+                        .append("      - ").append(CONTAINER_DNS_DIR).append("/profiles/default-deny.txt\n");
+                allowGroups.append("    p-default:\n")
+                        .append("      - ").append(CONTAINER_DNS_DIR).append("/profiles/default-allow.txt\n");
+
+                clients.append("    default:\n")
+                        .append("      - p-default\n");
                 for (String category : usedCategories) {
                     clients.append("      - cat-").append(category).append("\n");
                 }

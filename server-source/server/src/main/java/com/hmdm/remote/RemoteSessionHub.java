@@ -447,13 +447,77 @@ public final class RemoteSessionHub {
         });
     }
 
+    /** Um envio em voo por espectador; o excedente espera numa fila curta. */
+    private static final int MAX_FILA_ESPECTADOR = 8;
+
+    private static final class EscritaEspectador {
+        private final java.util.ArrayDeque<byte[]> fila = new java.util.ArrayDeque<>();
+        private boolean escrevendo;
+        private long descartados;
+    }
+
+    private static EscritaEspectador escritaDe(Session socket) {
+        // getUserProperties() e' um mapa por sessao mantido pelo proprio container.
+        synchronized (socket) {
+            Object atual = socket.getUserProperties().get("hwmdm.escrita");
+            if (atual == null) {
+                atual = new EscritaEspectador();
+                socket.getUserProperties().put("hwmdm.escrita", atual);
+            }
+            return (EscritaEspectador) atual;
+        }
+    }
+
+    /**
+     * <p>O {@code AsyncRemote} do Tomcat aceita UM envio binario em voo por socket. Chamado a cada
+     * quadro sem esperar o anterior, ele lanca {@code IllegalStateException [BINARY_FULL_WRITING]}
+     * e o quadro se perdia em silencio assim que o navegador drenava mais devagar que o aparelho
+     * transmitia. Aqui o excedente espera numa fila curta e o quadro velho e' descartado no lugar
+     * do novo, que e' o que o espectador precisa ver.</p>
+     */
     private static void sendBinary(Session socket, byte[] payload) {
+        EscritaEspectador e = escritaDe(socket);
+        synchronized (e) {
+            if (e.escrevendo) {
+                if (e.fila.size() >= MAX_FILA_ESPECTADOR) {
+                    e.fila.pollFirst();
+                    if (++e.descartados % 100 == 1) {
+                        logger.info("Espectador lento: {} quadros descartados", e.descartados);
+                    }
+                }
+                e.fila.addLast(payload);
+                return;
+            }
+            e.escrevendo = true;
+        }
+        escrever(socket, e, payload);
+    }
+
+    private static void escrever(Session socket, EscritaEspectador e, byte[] payload) {
         try {
             // Assincrono de proposito: um envio bloqueante para um espectador seguraria a
             // thread que le do agente e, com ela, todos os outros espectadores.
-            socket.getAsyncRemote().sendBinary(ByteBuffer.wrap(payload));
-        } catch (Exception e) {
-            logger.debug("Quadro descartado para um espectador que nao aceita mais dados", e);
+            // A profundidade de recursao e' limitada pela fila (MAX_FILA_ESPECTADOR).
+            socket.getAsyncRemote().sendBinary(ByteBuffer.wrap(payload), resultado -> {
+                if (!resultado.isOK()) {
+                    logger.debug("Falha ao enviar quadro a um espectador", resultado.getException());
+                }
+                byte[] proximo;
+                synchronized (e) {
+                    proximo = e.fila.pollFirst();
+                    if (proximo == null) {
+                        e.escrevendo = false;
+                        return;
+                    }
+                }
+                escrever(socket, e, proximo);
+            });
+        } catch (Exception ex) {
+            synchronized (e) {
+                e.escrevendo = false;
+                e.fila.clear();
+            }
+            logger.debug("Quadro descartado para um espectador que nao aceita mais dados", ex);
         }
     }
 

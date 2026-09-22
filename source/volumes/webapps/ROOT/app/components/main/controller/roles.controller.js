@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('RolesTabController', function ($scope, $rootScope, $state, $modal, alertService, confirmModal,
+    .controller('RolesTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal,
                                                  roleService, $window, localization) {
         $scope.init = function () {
             $rootScope.settingsTabActive = true;
@@ -20,7 +20,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editRole = function (role) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/role.html?v=h9f603a9f3c',
                 controller: 'RoleModalController',
                 resolve: {
@@ -53,7 +53,7 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('RoleModalController', function ($scope, $modalInstance, roleService, role, permissions, localization) {
+    .controller('RoleModalController', function ($scope, $uibModalInstance, roleService, role, permissions, localization) {
         $scope.role = {};
         for (var prop in role) {
             if (role.hasOwnProperty(prop)) {
@@ -109,7 +109,7 @@ angular.module('headwind-kiosk')
 
                 roleService.updateRole(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.errorMessage = localization.localize('error.duplicate.role.name');
                     }
@@ -118,6 +118,6 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     });

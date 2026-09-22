@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('DevicesTabController', function ($scope, $rootScope, $state, $modal, $interval, $cookies, $window, $filter, $timeout,
+    .controller('DevicesTabController', function ($scope, $rootScope, $state, $uibModal, $interval, $cookies, $window, $filter, $timeout,
                                                   confirmModal, deviceService, groupService, settingsService, hintService,
                                                   authService, pluginService, configurationService, alertService,
                                                   spinnerService, localization, utils, deviceFocusService) {
@@ -983,7 +983,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.openBulkUpdateModal = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/device.update.html?v=hedfaabbcba',
                 controller: 'DeviceUpdateModalController',
                 resolve: {
@@ -999,7 +999,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.openBulkGroupModal = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/device.group.html?v=hd48597816e',
                 controller: 'DeviceGroupModalController',
                 resolve: {
@@ -1032,7 +1032,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editDevice = function (device) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/device.html?v=h91de02c67b',
                 controller: 'DeviceModalController',
                 resolve: {
@@ -1132,7 +1132,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.manageApplicationSettings = function (device) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/device.applicationSettings.html?v=h944f50f39c',
                 controller: 'DeviceApplicationSettingsModalController',
                 size: 'lg',
@@ -1162,7 +1162,7 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('DeviceUpdateModalController', function ($scope, $modalInstance, configurationService, deviceService, devices) {
+    .controller('DeviceUpdateModalController', function ($scope, $uibModalInstance, configurationService, deviceService, devices) {
         $scope.device = {};
 
         configurationService.getAllConfigNames(function (response) {
@@ -1180,15 +1180,15 @@ angular.module('headwind-kiosk')
 
             var device = {'ids': ids, configurationId: $scope.device.configurationId};
             deviceService.updateDevice(device, function () {
-                $modalInstance.close();
+                $uibModalInstance.close();
             });
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
-    .controller('DeviceGroupModalController', function ($scope, $modalInstance, groupService, deviceService, devices) {
+    .controller('DeviceGroupModalController', function ($scope, $uibModalInstance, groupService, deviceService, devices) {
         $scope.device = {};
         $scope.groupAction = 'set';
 
@@ -1214,16 +1214,16 @@ angular.module('headwind-kiosk')
                 'groups': $scope.groupsSelection
             };
             deviceService.updateDeviceGroupBulk(device, function () {
-                $modalInstance.close();
+                $uibModalInstance.close();
             });
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
     .controller('DeviceModalController',
-        function ($scope, $modalInstance, deviceService, configurationService, groupService, device, settings,
+        function ($scope, $uibModalInstance, deviceService, configurationService, groupService, device, settings,
                   localization, authService, confirmModal) {
 
             $scope.canEditDevice = authService.hasPermission('device.profile.edit') || authService.hasPermission('edit_devices');
@@ -1269,7 +1269,7 @@ angular.module('headwind-kiosk')
                 targetService(pathParams, request, function (response) {
                     $scope.loading = false;
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.errorMessage = localization.localizeServerResponse(response);
                     }
@@ -1331,7 +1331,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             };
 
             configurationService.getAllConfigNames(function (response) {
@@ -1342,7 +1342,7 @@ angular.module('headwind-kiosk')
                 $scope.groups = response.data;
             });
         })
-    .controller('DeviceApplicationSettingsModalController', function ($scope, $modal, $modalInstance,
+    .controller('DeviceApplicationSettingsModalController', function ($scope, $uibModal, $uibModalInstance,
                                                                       localization, deviceService,
                                                                       applicationService, alertService,
                                                                       device) {
@@ -1411,7 +1411,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.addApplicationSetting = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
@@ -1434,7 +1434,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editApplicationSetting = function (setting) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                 controller: 'ApplicationSettingEditorController',
                 resolve: {
@@ -1483,7 +1483,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
@@ -1493,7 +1493,7 @@ angular.module('headwind-kiosk')
 
             deviceService.saveDeviceApplicationSettings({id: device.id}, allApplicationSettings, function (response) {
                 if (response.status === 'OK') {
-                    $modalInstance.close();
+                    $uibModalInstance.close();
                 } else {
                     $scope.errorMessage = localization.localize(response.message);
                 }

@@ -18,6 +18,32 @@ O Web Filter bloqueia **sites** (DNS privado do Android apontando para o resolve
 
 Sem os itens 1 a 3, o bloqueio de **aplicativos** funciona normalmente. O de sites não: o launcher registra `private DNS ... refused` no log do aparelho e tenta de novo a cada sync.
 
+### Teste em DEV sem certificado público (DNS comum na 53)
+
+O certificado de DEV em `webfilter-dns/certs/cert.pem` é **autoassinado**
+(`subject = issuer = CN=*.filtro.hwmdm.dev.local`). O DNS privado estrito do Android valida a
+cadeia contra o repositório do sistema e recusa um autoassinado, então **o caminho DoT não
+tem como funcionar em DEV** — por mais correta que esteja a configuração no console.
+
+Para validar o filtro em DEV usa-se DNS comum, que o compose publica na porta 53 do endereço
+de rede do host (`WEBFILTER_BIND_ADDR`, padrão `192.168.1.65`):
+
+1. Suba o resolvedor e espere `Blocky pronto` em `docker logs webfilter-dns`.
+2. No tablet, Wi-Fi → rede → IP estático (ou DHCP com DNS manual) → **DNS 1 = 192.168.1.65**.
+3. Confirme pelo próprio aparelho que a consulta passa pelo filtro: um site de categoria
+   bloqueada deve falhar a resolução, e o domínio do MDM deve continuar resolvendo.
+
+Limites deste caminho, que precisam estar claros antes de alguém chamar de aprovado:
+
+- é **DNS comum, sem criptografia**, adequado à rede de laboratório e não à produção;
+- o aparelho pode trocar o DNS de volta à mão. Impedir isso exige o launcher como Device
+  Owner fixando o DNS — hoje `android-source/` não tem nenhuma linha de webfilter;
+- aplicativo que fale DoH próprio ou aponte um DNS fixo (8.8.8.8) escapa. A categoria `doh`
+  é sempre aplicada e derruba a descoberta de DoH dos navegadores, mas não um IP fixo.
+
+Em produção o caminho correto continua sendo o DoT dos itens 1 a 4, com certificado curinga
+publicamente válido.
+
 ## Publicação
 
 1. **Backup:** `pg_dump` do banco, a WAR em uso e o APK do launcher em uso.

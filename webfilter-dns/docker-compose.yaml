@@ -11,8 +11,11 @@ services:
     restart: unless-stopped
     ports:
       - "853:853/tcp"          # DoT (DNS privado do Android)
-      - "53:53/udp"            # DNS comum: e' o que o operador digita no Wi-Fi do tablet
-      - "53:53/tcp"
+      # DNS comum: e' o que o operador digita no Wi-Fi do tablet. Preso a um endereco de rede
+      # de proposito -- o systemd-resolved deste host ja ocupa 127.0.0.53:53 e 127.0.0.54:53,
+      # e publicar em 0.0.0.0:53 colide com eles e derruba o "compose up" inteiro.
+      - "${WEBFILTER_BIND_ADDR:-192.168.1.65}:53:53/udp"
+      - "${WEBFILTER_BIND_ADDR:-192.168.1.65}:53:53/tcp"
     volumes:
       - ../source/volumes/work/plugins/webfilter/dns:/app/dns:ro
       - ${WEBFILTER_CERTS_DIR:-./certs}:/app/certs:ro

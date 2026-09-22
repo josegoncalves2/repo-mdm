@@ -36,7 +36,14 @@ angular.module('headwind-kiosk')
                 packed.userRole.permissions = [];
                 str = JSON.stringify(packed);
             }
-            return str.length <= 4096 ? packed : {id: u.id, login: u.login, name: u.name, userRole: {superAdmin: true}};
+            // O limite de 4096 do navegador vale para o cookie JA CODIFICADO, e $cookies.put faz
+            // percent-encoding: cada " vira %22, inflando cerca de 25%. Medir o JSON cru deixava
+            // passar um valor que o navegador descartava em silencio (visto: 5115 > 4096), e ai o
+            // console gravava achando que tinha guardado. O ramo de escape tambem afirmava
+            // superAdmin:true para qualquer usuario; agora diz a verdade.
+            var cabe = function (o) { return ('user=' + encodeURIComponent(JSON.stringify(o))).length <= 4096; };
+            return cabe(packed) ? packed : {id: u.id, login: u.login, name: u.name,
+                userRole: {superAdmin: u.userRole ? u.userRole.superAdmin : false}};
         };
 
         return {

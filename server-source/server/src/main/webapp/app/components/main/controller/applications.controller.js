@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('ApplicationsTabController', function ($scope, $rootScope, $modal, confirmModal, applicationService,
+    .controller('ApplicationsTabController', function ($scope, $rootScope, $uibModal, confirmModal, applicationService,
                                                        authService, $window, localization, alertService, $state,
                                                        fileService, storageService) {
 
@@ -100,7 +100,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editApplication = function (application) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
                 controller: 'ApplicationModalController',
                 resolve: {
@@ -124,7 +124,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editConfiguration = function (application) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hbae568bb80',
                 controller: 'ApplicationConfigurationsModalController',
                 resolve: {
@@ -150,8 +150,8 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('ApplicationModalController', function ($scope, $modalInstance, applicationService, iconService,
-                                                        application, $modal, $q, isControlPanel, localization, closeOnSave,
+    .controller('ApplicationModalController', function ($scope, $uibModalInstance, applicationService, iconService,
+                                                        application, $uibModal, $q, isControlPanel, localization, closeOnSave,
                                                         fileService) {
         $scope.isControlPanel = isControlPanel;
 
@@ -395,10 +395,10 @@ angular.module('headwind-kiosk')
                             $scope.fileSelected = false;
                             $scope.manageConfigurations(true);
                         } else {
-                            $modalInstance.close();
+                            $uibModalInstance.close();
                         }
                     } else {
-                        $modalInstance.close(response.data);
+                        $uibModalInstance.close(response.data);
                     }
                 } else {
                     $scope.errorMessage = localization.localizeServerResponse(response);
@@ -429,12 +429,12 @@ angular.module('headwind-kiosk')
                             $scope.fileSelected = false;
                             $scope.manageAppVersionConfigurations(response.data, true);
                         } else {
-                            $modalInstance.close();
+                            $uibModalInstance.close();
                         }
                     } else {
                         app.version = response.data.version;
                         app.usedVersionId = response.data.id;
-                        $modalInstance.close(app);
+                        $uibModalInstance.close(app);
                     }
                 } else {
                     if (response.message === 'error.duplicate.file') {
@@ -566,7 +566,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.addNewIcon = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/addIcon.html?v=h2cd3aa07f7',
                 controller: 'AddIconController'
             });
@@ -580,7 +580,7 @@ angular.module('headwind-kiosk')
         };
 
         var startDuplicatePkgResolutionDialog = function (request, existingAppsForPkg) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/duplicatePkgResolution.html?v=h45d48c121c',
                 controller: 'DuplicatePkgResolutionController',
                 resolve: {
@@ -616,7 +616,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.manageConfigurations = function (closeOnExit) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationConfigurations.html?v=hbae568bb80',
                 controller: 'ApplicationConfigurationsModalController',
                 resolve: {
@@ -638,7 +638,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.manageAppVersionConfigurations = function (applicationVersion, closeOnExit) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
@@ -661,11 +661,11 @@ angular.module('headwind-kiosk')
 
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
     .controller('ApplicationConfigurationsModalController',
-        function ($scope, $modalInstance, applicationService, application, localization, confirmModal, configurationService,
+        function ($scope, $uibModalInstance, applicationService, application, localization, confirmModal, configurationService,
                   alertService) {
             $scope.loading = false;
             $scope.localizeRenewVersionTitle = function (appConfigurationLink) {
@@ -767,7 +767,7 @@ angular.module('headwind-kiosk')
 
                 applicationService.updateApplicationConfigurations(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.loading = false;
                         $scope.errorMessage = localization.localizeServerResponse(response);
@@ -776,11 +776,11 @@ angular.module('headwind-kiosk')
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             }
         })
     .controller('ApplicationVersionEditor', function ($rootScope, $scope, $stateParams, applicationService,
-                                                      localization, $window, confirmModal, $modal, authService,
+                                                      localization, $window, confirmModal, $uibModal, authService,
                                                       alertService) {
         $scope.paging = {
             currentPage: 1,
@@ -836,7 +836,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.addApplicationVersion = function (applicationVersion) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationVersionAdd.html?v=hf4312134bb',
                 controller: 'ApplicationVersionModalController',
                 resolve: {
@@ -853,7 +853,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editApplicationVersion = function (applicationVersion) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationVersionEdit.html?v=h70c21cb6ba',
                 controller: 'ApplicationVersionModalController',
                 resolve: {
@@ -870,7 +870,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.manageConfigurations = function (applicationVersion) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
@@ -891,9 +891,9 @@ angular.module('headwind-kiosk')
         $scope.init();
 
     })
-    .controller('ApplicationVersionModalController', function ($scope, $modalInstance, applicationService,
+    .controller('ApplicationVersionModalController', function ($scope, $uibModalInstance, applicationService,
                                                                applicationVersion,
-                                                               $modal, isControlPanel, localization) {
+                                                               $uibModal, isControlPanel, localization) {
         $scope.isControlPanel = isControlPanel;
 
         $scope.appType = applicationVersion.type;
@@ -1030,7 +1030,7 @@ angular.module('headwind-kiosk')
                             $scope.fileSelected = false;
                             $scope.manageConfigurations(true);
                         } else {
-                            $modalInstance.close();
+                            $uibModalInstance.close();
                         }
                     } else {
                         $scope.errorMessage = localization.localizeServerResponse(response);
@@ -1040,7 +1040,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.manageConfigurations = function (closeOnExit) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/applicationVersionConfigurations.html?v=heb99e8b4f6',
                 controller: 'ApplicationVersionConfigurationsModalController',
                 resolve: {
@@ -1062,11 +1062,11 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
     .controller('ApplicationVersionConfigurationsModalController',
-        function ($scope, $modalInstance, applicationService, applicationVersion, localization, confirmModal, configurationService,
+        function ($scope, $uibModalInstance, applicationService, applicationVersion, localization, confirmModal, configurationService,
                   alertService) {
             $scope.loading = false;
             $scope.localizeRenewVersionTitle = function (appConfigurationLink) {
@@ -1173,7 +1173,7 @@ angular.module('headwind-kiosk')
 
                 applicationService.updateApplicationVersionConfigurations(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.loading = false;
                         $scope.errorMessage = localization.localizeServerResponse(response);
@@ -1182,7 +1182,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             };
 
             $scope.configurations = [];
@@ -1193,7 +1193,7 @@ angular.module('headwind-kiosk')
 
 
         })
-    .controller('DuplicatePkgResolutionController', function ($scope, $modalInstance, localization, application, existingApps) {
+    .controller('DuplicatePkgResolutionController', function ($scope, $uibModalInstance, localization, application, existingApps) {
 
         $scope.isNewApp = (application.id === null || application.id === undefined);
         $scope.application = application;
@@ -1210,7 +1210,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.newApp = function () {
-                $modalInstance.close({
+                $uibModalInstance.close({
                     newApp: true
                 });
             };
@@ -1220,7 +1220,7 @@ angular.module('headwind-kiosk')
                     return app.id === $scope.formData.targetAppId;
                 })[0];
 
-                $modalInstance.close({
+                $uibModalInstance.close({
                     newAppVersion: true,
                     targetAppId: $scope.formData.targetAppId,
                     targetApp: selectedApp
@@ -1237,17 +1237,17 @@ angular.module('headwind-kiosk')
                 .replace('${apps}', appNames);
 
             $scope.changePkg = function () {
-                $modalInstance.close({
+                $uibModalInstance.close({
                     changePkg: true
                 });
             };
         }
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
     })
-    .controller('AddIconController', function ($scope, $modalInstance, iconService, fileService, localization) {
+    .controller('AddIconController', function ($scope, $uibModalInstance, iconService, fileService, localization) {
         $scope.errorMessage = undefined;
         $scope.successMessage = undefined;
 
@@ -1292,7 +1292,7 @@ angular.module('headwind-kiosk')
                 const request = angular.copy($scope.icon, {});
                 iconService.createIcon(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close(response.data);
+                        $uibModalInstance.close(response.data);
                     } else {
                         $scope.errorMessage = localization.localizeServerResponse(response);
                     }
@@ -1303,7 +1303,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.cancel = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         const clearMessages = function () {

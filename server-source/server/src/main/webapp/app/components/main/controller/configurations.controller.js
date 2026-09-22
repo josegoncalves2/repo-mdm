@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $modal, confirmModal,
+    .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $uibModal, confirmModal,
                                                          configurationService, authService, $window, localization,
                                                          alertService, hintService, $timeout) {
         $scope.isTypical = false;
@@ -88,7 +88,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.copyConfiguration = function (configuration) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h29b640c39a',
                 controller: 'CopyConfigurationModalController',
                 resolve: {
@@ -121,7 +121,7 @@ angular.module('headwind-kiosk')
         $scope.init(false);
     })
     .controller('CopyConfigurationModalController',
-        function ($scope, $modalInstance, configurationService, configuration, localization) {
+        function ($scope, $uibModalInstance, configurationService, configuration, localization) {
 
             $scope.configuration = {"id": configuration.id, "name": "", "description": configuration.description};
 
@@ -142,7 +142,7 @@ angular.module('headwind-kiosk')
                     };
                     configurationService.copyConfiguration(request, function (response) {
                         if (response.status === 'OK') {
-                            $modalInstance.close();
+                            $uibModalInstance.close();
                         } else {
                             $scope.errorMessage = localization.localize('error.duplicate.configuration.name');
                         }
@@ -151,10 +151,10 @@ angular.module('headwind-kiosk')
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             }
         })
-    .controller('ApplicationSettingEditorController', function ($scope, $modalInstance, localization,
+    .controller('ApplicationSettingEditorController', function ($scope, $uibModalInstance, localization,
                                                                 applicationSetting, getApps) {
         var copy = {};
         for (var p in applicationSetting) {
@@ -190,7 +190,7 @@ angular.module('headwind-kiosk')
         $scope.getApps = getApps;
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
@@ -209,12 +209,12 @@ angular.module('headwind-kiosk')
                 $scope.applicationSetting.applicationId = $scope.mainApp.id;
                 $scope.applicationSetting.lastUpdate = new Date().getTime();
 
-                $modalInstance.close($scope.applicationSetting);
+                $uibModalInstance.close($scope.applicationSetting);
             }
         };
     })
     .controller('AddConfigurationAppModalController', function ($scope, localization, configurationService, authService,
-                                                                applications, configuration, $modalInstance, $modal) {
+                                                                applications, configuration, $uibModalInstance, $uibModal) {
 
         // $scope.mainAppSelected = false;
         $scope.mainApp = {id: -1, name: ""};
@@ -292,15 +292,15 @@ angular.module('headwind-kiosk')
         $scope.configuration = configuration;
 
         $scope.save = function () {
-            $modalInstance.close($scope.mainApp);
+            $uibModalInstance.close($scope.mainApp);
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.newApp = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
                 controller: 'ApplicationModalController',
                 resolve: {
@@ -325,7 +325,7 @@ angular.module('headwind-kiosk')
     })
     .controller('ConfigurationEditorController',
         function ($scope, configurationService, settingsService, $stateParams, $state, $rootScope, $window, $timeout,
-                  $transitions, localization, confirmModal, alertService, $modal, appVersionComparisonService, settingsService,
+                  $transitions, localization, confirmModal, alertService, $uibModal, appVersionComparisonService, settingsService,
                   mdmCatalog) {
 
             $scope.successMessage = null;
@@ -415,7 +415,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.uploadBackground = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
                     // Defined in files.controller.js
                     controller: 'FileModalController'
@@ -622,7 +622,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.addApp = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hc4068664a0',
                     controller: 'AddConfigurationAppModalController',
                     resolve: {
@@ -1091,7 +1091,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editFile = function (configFile) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationFile.html?v=hc0af3ddb4d',
                     controller: 'FileEditorController',
                     resolve: {
@@ -1127,7 +1127,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.addApplicationSetting = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
@@ -1162,7 +1162,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.selectVersion = function (application) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=hc48e44eed2',
                     controller: 'ConfigurationAppVersionSelectController',
                     resolve: {
@@ -1307,7 +1307,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editDetails = function (application) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h4e66e49969',
                     controller: 'ConfigurationAppDetailsController',
                     resolve: {
@@ -1359,7 +1359,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editApplicationSetting = function (setting) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
@@ -1408,7 +1408,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.removeFile = function (file) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h9ab42ea0f4',
                     controller: 'RemoveConfigurationFileModalController',
                     resolve: {
@@ -1711,7 +1711,7 @@ angular.module('headwind-kiosk')
                 allApplications = [];
             }
         })
-    .controller('ConfigurationAppVersionSelectController', function ($scope, $modalInstance, applicationService,
+    .controller('ConfigurationAppVersionSelectController', function ($scope, $uibModalInstance, applicationService,
                                                                      localization, application, applicationParameters) {
 
         $scope.errorMessage = undefined;
@@ -1747,28 +1747,28 @@ angular.module('headwind-kiosk')
         });
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
-            $modalInstance.close({
+            $uibModalInstance.close({
                 selectedVersion: $scope.usedVersion,
                 availableVersions: $scope.versions,
                 applicationParameters: $scope.applicationParameters
             });
         };
     })
-    .controller('ConfigurationAppDetailsController', function ($scope, $modalInstance, applicationService,
+    .controller('ConfigurationAppDetailsController', function ($scope, $uibModalInstance, applicationService,
                                                                      localization, application) {
 
         $scope.errorMessage = undefined;
         $scope.application = application;
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
     })
-    .controller('FileEditorController', function ($scope, $modalInstance, localization, configFile,
+    .controller('FileEditorController', function ($scope, $uibModalInstance, localization, configFile,
                                                   defaultFilePath, fileService, configFiles) {
 
         $scope.file = {};
@@ -1834,7 +1834,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
@@ -1872,7 +1872,7 @@ angular.module('headwind-kiosk')
                         $scope.file.path = response.data.devicePath;
                         $scope.file.tmpPath = response.data.tmpPath;
                         $scope.file.id = null;
-                        $modalInstance.close($scope.file);
+                        $uibModalInstance.close($scope.file);
                     } else {
                         $scope.errorMessage = localization.localize(response.message);
                     }
@@ -1883,7 +1883,7 @@ angular.module('headwind-kiosk')
                 $scope.file.fileId = $scope.file.id;
                 $scope.file.id = null;
                 $scope.file.path = $scope.file.devicePath;
-                $modalInstance.close($scope.file);
+                $uibModalInstance.close($scope.file);
             }
         };
 
@@ -1922,17 +1922,17 @@ angular.module('headwind-kiosk')
         };
     })
     .controller('RemoveConfigurationFileModalController',
-        function ($scope, $modalInstance, file) {
+        function ($scope, $uibModalInstance, file) {
 
             // By now, disable this option so the user isn't confused
             $scope.deleteOptionEnabled = false;
 
             $scope.save = function () {
-                $modalInstance.close($scope.deleteOptionEnabled && $scope.obj.deleteFileFromDisk);
+                $uibModalInstance.close($scope.deleteOptionEnabled && $scope.obj.deleteFileFromDisk);
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             }
         })
 ;
