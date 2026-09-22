@@ -10,30 +10,26 @@
     The change set IDs MUST start with "plugin-<plugin identifier>" followed by dash symbol ALWAYS.
     The database object names declared by plugin MUST always start with "plugin_<plugin identifier>" followed by underscore
     symbol.
+    Modelo de dados: design.md D7 do change add-webfilter-module.
     -->
 
-    <changeSet id="plugin-webfilter-2026-09-16-00:01" author="hmdm" context="common">
+    <changeSet id="plugin-webfilter-2026-09-18-01" author="hwmdm" context="common">
         <comment>Plugin,new: webfilter</comment>
         <sql>
             INSERT INTO plugins (
-            identifier, name, description,
-            javascriptModuleFile,
-            functionsViewTemplate,
-            settingsViewTemplate,
-            namelocalizationkey,
-            settingsPermission, functionsPermission, deviceFunctionsPermission,
-            enabledForDevice
-            )
-            VALUES (
-            'webfilter', 'Web Filter', 'Web content filtering by category, allowlist and blocklist',
-            'app/components/plugins/webfilter/webfilter.module.js',
-            'app/components/plugins/webfilter/views/policy.html',
-            'app/components/plugins/webfilter/views/settings.html',
-            'plugin.webfilter.localization.key.name',
-            'plugin_webfilter_access',
-            'plugin_webfilter_access',
-            'plugin_webfilter_access',
-            TRUE
+                identifier, name, description,
+                javascriptModuleFile, functionsViewTemplate, settingsViewTemplate,
+                namelocalizationkey,
+                settingsPermission, functionsPermission, deviceFunctionsPermission,
+                enabledForDevice
+            ) VALUES (
+                'webfilter', 'Web Filter', 'Bloqueio de sites e aplicativos por categoria, allowlist e blocklist',
+                'app/components/plugins/webfilter/webfilter.module.js',
+                'app/components/plugins/webfilter/views/main.html',
+                NULL,
+                'plugin.webfilter.localization.key.name',
+                NULL, 'plugin_webfilter_access', NULL,
+                FALSE
             );
         </sql>
         <rollback>
@@ -41,108 +37,82 @@
         </rollback>
     </changeSet>
 
-    <changeSet id="plugin-webfilter-2026-09-16-00:02" author="hmdm" context="common">
+    <!-- A permissao vai somente para quem ja administra perfis (permissao 'configurations') e para o
+         super-administrador; os demais papeis recebem pela tela de papeis. -->
+    <changeSet id="plugin-webfilter-2026-09-18-02" author="hwmdm" context="common">
         <comment>Permission,new: plugin_webfilter_access</comment>
         <sql>
-            INSERT INTO permissions (name, description) VALUES ('plugin_webfilter_access', 'Has access to web filter configuration');
+            INSERT INTO permissions (name, description, superAdmin)
+                VALUES ('plugin_webfilter_access', 'Web Filter: gerenciar bloqueio de sites e aplicativos por perfil', FALSE);
             INSERT INTO userRolePermissions (roleId, permissionId)
-                SELECT id, currval('permissions_id_seq')
-                FROM userroles;
+                SELECT DISTINCT r.id, (SELECT id FROM permissions WHERE name = 'plugin_webfilter_access')
+                FROM userroles r
+                WHERE r.superAdmin
+                   OR EXISTS (SELECT 1 FROM userRolePermissions urp
+                              JOIN permissions p ON p.id = urp.permissionId
+                              WHERE urp.roleId = r.id AND p.name = 'configurations');
         </sql>
         <rollback>
             DELETE FROM permissions WHERE name = 'plugin_webfilter_access';
         </rollback>
     </changeSet>
 
-    <changeSet id="plugin-webfilter-2026-09-16-00:03" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_policy</comment>
+    <changeSet id="plugin-webfilter-2026-09-18-03" author="hwmdm" context="common">
+        <comment>Tables,new: plugin_webfilter_*</comment>
         <sql>
-            CREATE TABLE plugin_webfilter_policy (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_policy_pr_key PRIMARY KEY,
-                configurationId INT NOT NULL UNIQUE REFERENCES configurations (id) ON DELETE CASCADE,
-                categoriesJson TEXT,
-                entriesJson TEXT
-            );
-        </sql>
-        <rollback>
-            DROP TABLE plugin_webfilter_policy;
-        </rollback>
-    </changeSet>
-
-    <changeSet id="plugin-webfilter-2026-09-16-00:04" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_category</comment>
-        <sql>
-            CREATE TABLE plugin_webfilter_category (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_category_pr_key PRIMARY KEY,
-                policyId INT NOT NULL REFERENCES plugin_webfilter_policy (id) ON DELETE CASCADE,
-                categoryId VARCHAR(50) NOT NULL,
-                CONSTRAINT plugin_webfilter_category_policy_category_unique UNIQUE (policyId, categoryId)
-            );
-        </sql>
-        <rollback>
-            DROP TABLE plugin_webfilter_category;
-        </rollback>
-    </changeSet>
-
-    <changeSet id="plugin-webfilter-2026-09-16-00:05" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_entry</comment>
-        <sql>
-            CREATE TABLE plugin_webfilter_entry (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_entry_pr_key PRIMARY KEY,
-                policyId INT NOT NULL REFERENCES plugin_webfilter_policy (id) ON DELETE CASCADE,
-                kind VARCHAR(20) NOT NULL,
-                value VARCHAR(500) NOT NULL,
-                CONSTRAINT plugin_webfilter_entry_policy_kind_value_unique UNIQUE (policyId, kind, value)
-            );
-        </sql>
-        <rollback>
-            DROP TABLE plugin_webfilter_entry;
-        </rollback>
-    </changeSet>
-
-    <changeSet id="plugin-webfilter-2026-09-16-00:06" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_locked_history</comment>
-        <sql>
-            CREATE TABLE plugin_webfilter_locked_history (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_locked_history_pr_key PRIMARY KEY,
-                deviceId INT NOT NULL REFERENCES devices (id) ON DELETE CASCADE,
-                timestamp BIGINT NOT NULL,
-                packagesJson TEXT
-            );
-        </sql>
-        <rollback>
-            DROP TABLE plugin_webfilter_locked_history;
-        </rollback>
-    </changeSet>
-
-    <changeSet id="plugin-webfilter-2026-09-16-00:07" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_settings</comment>
-        <sql>
-            CREATE TABLE plugin_webfilter_settings (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_settings_pr_key PRIMARY KEY,
+            CREATE TABLE plugin_webfilter_policies (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_policies_pr_key PRIMARY KEY,
                 customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
-                dnsDomain VARCHAR(255),
-                CONSTRAINT plugin_webfilter_settings_customer_unique UNIQUE (customerId)
+                configurationId INT NOT NULL REFERENCES configurations (id) ON DELETE CASCADE,
+                enabled BOOLEAN NOT NULL DEFAULT FALSE,
+                updatedAt BIGINT,
+                updatedBy VARCHAR(100),
+                CONSTRAINT plugin_webfilter_policies_configuration_uniq UNIQUE (configurationId)
+            );
+
+            CREATE TABLE plugin_webfilter_policy_categories (
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                category VARCHAR(50) NOT NULL,
+                CONSTRAINT plugin_webfilter_policy_categories_uniq UNIQUE (policyId, category)
+            );
+
+            CREATE TABLE plugin_webfilter_policy_entries (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_policy_entries_pr_key PRIMARY KEY,
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                kind VARCHAR(10) NOT NULL CHECK (kind IN ('DOMAIN', 'APP')),
+                list VARCHAR(10) NOT NULL CHECK (list IN ('ALLOW', 'BLOCK')),
+                value VARCHAR(255) NOT NULL,
+                CONSTRAINT plugin_webfilter_policy_entries_uniq UNIQUE (policyId, kind, value)
+            );
+
+            CREATE TABLE plugin_webfilter_app_categories (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_app_categories_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                packageName VARCHAR(255) NOT NULL,
+                category VARCHAR(50) NOT NULL,
+                CONSTRAINT plugin_webfilter_app_categories_uniq UNIQUE (customerId, packageName, category)
+            );
+
+            CREATE TABLE plugin_webfilter_locked_history (
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                packageName VARCHAR(255) NOT NULL,
+                CONSTRAINT plugin_webfilter_locked_history_uniq UNIQUE (policyId, packageName)
+            );
+
+            CREATE TABLE plugin_webfilter_settings (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_settings_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                dnsDomain VARCHAR(200),
+                CONSTRAINT plugin_webfilter_settings_customer_uniq UNIQUE (customerId)
             );
         </sql>
         <rollback>
             DROP TABLE plugin_webfilter_settings;
-        </rollback>
-    </changeSet>
-
-    <changeSet id="plugin-webfilter-2026-09-16-00:08" author="hmdm" context="common">
-        <comment>Table,new: plugin_webfilter_app_category</comment>
-        <sql>
-            CREATE TABLE plugin_webfilter_app_category (
-                id serial NOT NULL CONSTRAINT plugin_webfilter_app_category_pr_key PRIMARY KEY,
-                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
-                packageId VARCHAR(255) NOT NULL,
-                categoryId VARCHAR(50) NOT NULL,
-                CONSTRAINT plugin_webfilter_app_category_customer_package_category_unique UNIQUE (customerId, packageId, categoryId)
-            );
-        </sql>
-        <rollback>
-            DROP TABLE plugin_webfilter_app_category;
+            DROP TABLE plugin_webfilter_locked_history;
+            DROP TABLE plugin_webfilter_app_categories;
+            DROP TABLE plugin_webfilter_policy_entries;
+            DROP TABLE plugin_webfilter_policy_categories;
+            DROP TABLE plugin_webfilter_policies;
         </rollback>
     </changeSet>
 

@@ -4,7 +4,7 @@
             "outputFile": "com.hmdm.launcher.app-mergeOpensourceReleaseResources-28:/values-w400dp-v13/values-w400dp-v13.xml",
             "map": [
                 {
-                    "source": "/opt/projetos/hwmdm/android-source/app/src/main/res/values-w400dp/dimens.xml",
+                    "source": "/opt/projetos/hwmdm/repo-mdm/android-source/app/src/main/res/values-w400dp/dimens.xml",
                     "from": {
                         "startLines": "21,22,20",
                         "startColumns": "4,4,4",

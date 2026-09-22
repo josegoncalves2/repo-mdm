@@ -2559,6 +2559,37 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="2026-09-11-device-profile-permissions" author="ai" context="common">
+        <comment>Add profile visibility and edit permissions for device configuration access</comment>
+        <sql>
+            INSERT INTO permissions (name, description)
+            SELECT 'device.profile.view', 'View the device profile and configuration metadata'
+            WHERE NOT EXISTS (SELECT 1 FROM permissions WHERE name = 'device.profile.view');
+
+            INSERT INTO permissions (name, description)
+            SELECT 'device.profile.edit', 'Edit the device profile and configuration metadata'
+            WHERE NOT EXISTS (SELECT 1 FROM permissions WHERE name = 'device.profile.edit');
+
+            INSERT INTO userRolePermissions (roleId, permissionId)
+            SELECT DISTINCT ur.id, p.id
+            FROM userRoles ur
+            JOIN permissions p ON p.name IN ('device.profile.view', 'device.profile.edit')
+            WHERE ur.superAdmin = TRUE
+              AND NOT EXISTS (
+                  SELECT 1 FROM userRolePermissions urp
+                  WHERE urp.roleId = ur.id
+                    AND urp.permissionId = p.id
+              );
+        </sql>
+        <rollback>
+            DELETE FROM userRolePermissions
+            WHERE permissionId IN (
+                SELECT id FROM permissions WHERE name IN ('device.profile.view', 'device.profile.edit')
+            );
+            DELETE FROM permissions WHERE name IN ('device.profile.view', 'device.profile.edit');
+        </rollback>
+    </changeSet>
+
     <changeSet id="24.08.25-16:57" author="seva" context="common">
         <comment>Update nullable in uploadedFiles</comment>
         <sql>

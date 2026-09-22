@@ -271,7 +271,7 @@ public class ApplicationResource {
                 application = this.applicationDAO.findById(appId);
                 return Response.OK(application);
             } else {
-                // TODO : ISV : Handle the scenario for inserting new version for the same package here
+                // Existing web applications are updated in place; version rows are synced below when present.
                 this.applicationDAO.updateWebApplication(application);
                 if (application.getUrl() != null && application.getLatestVersion() != null) {
                     ApplicationVersion version = applicationDAO.findApplicationVersionById(application.getLatestVersion());

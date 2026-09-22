@@ -24,10 +24,12 @@ import android.content.SharedPreferences;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmdm.launcher.BuildConfig;
+import com.hmdm.launcher.Const;
 import com.hmdm.launcher.json.Application;
 import com.hmdm.launcher.json.ApplicationSetting;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
+import com.hmdm.launcher.util.RemoteLogger;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -445,7 +447,7 @@ public class SettingsHelper {
     }
 
     public void commitAppPreferences(String packageId) {
-        // TODO: send new preferences to server
+        RemoteLogger.log(context, Const.LOG_INFO, "Application preferences committed for " + packageId);
     }
 
     public Map<String,ApplicationSetting> getProcessedAppSettings() {

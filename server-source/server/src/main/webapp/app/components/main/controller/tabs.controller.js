@@ -169,6 +169,7 @@ angular.module('headwind-kiosk')
         userService.getCurrent(function (response) {
             if (response.data) {
                 $scope.currentUser = response.data;
+                authService.update(response.data);
             }
         });
 

@@ -97,8 +97,6 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
 
       scope.setInputActive = function() {
         scope.setActive(-1);
-
-        //TODO: Add active/selected class to input field for styling
       };
 
       scope.setActive = function(itemIndex) {
@@ -191,7 +189,6 @@ angular.module('inputDropdown', []).directive('inputDropdown', [function() {
           scope.selectItem(scope.dropdownItems[scope.activeItemIndex]);
         }
         else if (scope.allowCustomInput && scope.activeItemIndex === -1) {
-          //TODO: Select user input. Do we need to call the controller here (ie scope.itemSelectedMethod()) or is it enough to just leave the input value in the field?
         }
       };
 

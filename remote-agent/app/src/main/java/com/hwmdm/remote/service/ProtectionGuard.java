@@ -20,7 +20,7 @@ import java.util.Set;
  * lista de {@code setLockTaskPackages} -- chamada que so' o <b>device owner</b> pode fazer.
  * O device owner aqui e' o launcher, e o {@code hmdm-6.36-os.apk} nao expoe isso: o binario
  * nao contem {@code startLockTask}, {@code stopLockTask} nem {@code setLockTaskPackages}, e
- * a classe {@code ProUtils} que decidiria o quiosque e' um stub na versao livre
+ * a classe {@code ProUtils} que decidiria o quiosque devolve false na versao livre
  * ({@code kioskModeRequired()} devolve false). Modo quiosque e' recurso pago do Headwind, e
  * o perfil chamado "Kiosk Total" nunca teve efeito -- e' por isso que os aparelhos sempre
  * reportaram {@code kioskMode: false}.</p>

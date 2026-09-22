@@ -57,6 +57,14 @@
                         <span localized-change-tracking>nav.kiosk</span>
                     </button>
                     <button type="button" class="hwmdm-nav-link"
+                            ng-if="hasPermission('plugin_webfilter_access') && (functionsPlugins | filter:{identifier:'webfilter'}:true).length > 0"
+                            ng-class="{'hwmdm-nav-link-active': activeTab === 'plugin-webfilter'}"
+                            ng-click="openTab('plugin-webfilter')"
+                            data-testid="nav-webfilter">
+                        <span class="glyphicon glyphicon-filter"></span>
+                        <span>Web Filter</span>
+                    </button>
+                    <button type="button" class="hwmdm-nav-link"
                             ng-if="hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')"
                             ng-class="{'hwmdm-nav-link-active': activeTab === 'GPSMAP'}"
                             ng-click="openTab('GPSMAP')"
@@ -197,7 +205,7 @@
         <main class="hwmdm-main">
             <div class="hwmdm-main-surface">
                 <ng-include src="'app/components/main/view/summary.html?v=h0d2c630ebb'" ng-if="activeTab === 'SUMMARY'"></ng-include>
-                <ng-include src="'app/components/main/view/devices.html?v=h6730551be2'" ng-if="activeTab === 'DEVICES'"></ng-include>
+                <ng-include src="'app/components/main/view/devices.html?v=h515e11b80b'" ng-if="activeTab === 'DEVICES'"></ng-include>
                 <ng-include src="'app/components/main/view/kiosk.html?v=h6c68af7466'" ng-if="activeTab === 'KIOSK'"></ng-include>
                 <ng-include src="'app/components/main/view/remote.html?v=h5eeda1e42f'" ng-if="activeTab === 'REMOTE'"></ng-include>
                 <ng-include src="'app/components/main/view/gpsmap.html?v=h9333b97e04'" ng-if="activeTab === 'GPSMAP'"></ng-include>

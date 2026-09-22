@@ -26,6 +26,6 @@
       applicationId="com.hmdm.launcher"
       generatedSourceFolders="build/generated/ap_generated_sources/opensourceRelease/out:build/generated/aidl_source_output_dir/opensourceRelease/out:build/generated/source/buildConfig/opensource/release:build/generated/data_binding_base_class_source_out/opensourceRelease/out"
       generatedResourceFolders="build/generated/res/resValues/opensource/release"
-      desugaredMethodsFiles="/home/sahwmdm/.gradle/caches/8.13/transforms/f38194b2570ff8fd1f9853d13b97ed28/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/home/sahw/.gradle/caches/8.13/transforms/f38194b2570ff8fd1f9853d13b97ed28/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

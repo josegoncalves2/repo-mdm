@@ -10,7 +10,7 @@
     <string name="mdm_not_linked">Não foi possível falar com o agente MDM. Este aplicativo depende dele para saber o servidor e o número deste aparelho.</string>
 
     <string name="perm_accessibility_title">Permissão de acessibilidade</string>
-    <string name="perm_accessibility_hint">Necessária para que o técnico consiga tocar e digitar remotamente. Sem ela a tela é apenas visualizada.</string>
+    <string name="perm_accessibility_hint">Necessária para que o técnico consiga tocar, arrastar e digitar remotamente. Sem ela não há controle remoto, apenas transmissão de tela.</string>
     <string name="perm_accessibility_open">Abrir configurações de acessibilidade</string>
     <string name="perm_overlay_title">Permissão de sobreposição</string>
     <string name="perm_overlay_hint">Sem ela o Android descarta em silêncio a tela de autorização quando o chamado chega, e o atendimento só funciona se alguém abrir este aplicativo antes.</string>

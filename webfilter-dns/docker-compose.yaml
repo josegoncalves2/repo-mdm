@@ -10,7 +10,9 @@ services:
     container_name: webfilter-dns
     restart: unless-stopped
     ports:
-      - "853:853/tcp"          # somente DoT; a 53 fica apenas em 127.0.0.1 dentro do container
+      - "853:853/tcp"          # DoT (DNS privado do Android)
+      - "53:53/udp"            # DNS comum: e' o que o operador digita no Wi-Fi do tablet
+      - "53:53/tcp"
     volumes:
       - ../source/volumes/work/plugins/webfilter/dns:/app/dns:ro
       - ${WEBFILTER_CERTS_DIR:-./certs}:/app/certs:ro

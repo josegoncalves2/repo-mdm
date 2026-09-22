@@ -312,7 +312,7 @@ public class ScreenStreamService extends Service {
                 if (agora - ultimoAvisoEntrada > AVISO_ENTRADA_INTERVALO_MS) {
                     ultimoAvisoEntrada = agora;
                     RemoteLog.w(this, "Toque recebido do painel e descartado: a acessibilidade "
-                            + "esta desligada neste aparelho, entao a sessao e' so' visualizacao");
+                    + "esta desligada neste aparelho, entao a sessao fica sem controle remoto");
                 }
                 return;
             }
@@ -432,7 +432,7 @@ public class ScreenStreamService extends Service {
                     + " wakelock=" + (lock ? "sim" : "nao"));
             announce();
             RemoteLog.i(this, "Transmitindo " + width + "x" + height
-                    + (InputInjectionService.isAvailable() ? " com toque" : " somente visualizacao"));
+                    + (InputInjectionService.isAvailable() ? " com toque" : " sem controle remoto"));
         } catch (Throwable t) {
             fail("nao foi possivel iniciar: " + t.getMessage());
         }

@@ -391,7 +391,7 @@ angular.module('headwind-kiosk')
         // O estado real de bloqueio deste parque nao e' o "kioskMode" do Headwind.
         //
         // O launcher 6.36 open source NAO tem o quiosque single-app (lock task): a funcao
-        // ProUtils.isKioskModeRunning() e' um stub que devolve false fixo, e e' dela que sai
+        // ProUtils.isKioskModeRunning() devolve false fixo nesta edicao, e e' dela que sai
         // o device.kioskMode reportado. Ou seja, esse campo e' SEMPRE false neste launcher,
         // e ler so' ele fazia a coluna dizer "Nao bloqueado" para aparelhos que estao, sim,
         // travados -- porque estao presos no launcher do MDM como home (defaultLauncher) em

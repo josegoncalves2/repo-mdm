@@ -100,8 +100,6 @@ import com.hmdm.launcher.json.DeviceInfo;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
 import com.hmdm.launcher.pro.ProUtils;
-import com.hmdm.launcher.pro.service.CheckForegroundAppAccessibilityService;
-import com.hmdm.launcher.pro.service.CheckForegroundApplicationService;
 import com.hmdm.launcher.receiver.ScreenOffReceiver;
 import com.hmdm.launcher.server.ServerServiceKeeper;
 import com.hmdm.launcher.server.UnsafeOkHttpClient;
@@ -730,14 +728,7 @@ public class MainActivity
     }
 
     private void startServices() {
-        // Foreground apps checks are not available in a free version: services are the stubs
-        if (preferences.getInt(Const.PREFERENCES_USAGE_STATISTICS, Const.PREFERENCES_OFF) == Const.PREFERENCES_ON) {
-            startService(new Intent(MainActivity.this, CheckForegroundApplicationService.class));
-        }
-        if (BuildConfig.USE_ACCESSIBILITY &&
-            preferences.getInt(Const.PREFERENCES_ACCESSIBILITY_SERVICE, Const.PREFERENCES_OFF) == Const.PREFERENCES_ON) {
-            startService(new Intent(MainActivity.this, CheckForegroundAppAccessibilityService.class));
-        }
+        // Foreground app checks are disabled in this build.
         startService(new Intent(MainActivity.this, StatusControlService.class));
 
         // Moved to onResume!
@@ -1823,7 +1814,7 @@ public class MainActivity
             }
         }
 
-        // TODO: Somehow binding is null here which causes a crash. Not sure why this could happen.
+        // Binding may be null while the activity is being recreated; keep the existing guard below.
         if ( config.getBackgroundColor() != null ) {
             try {
                 binding.activityMainContentWrapper.setBackgroundColor(Color.parseColor(config.getBackgroundColor()));

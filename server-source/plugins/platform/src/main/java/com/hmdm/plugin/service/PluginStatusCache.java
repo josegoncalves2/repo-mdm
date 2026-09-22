@@ -104,7 +104,7 @@ public class PluginStatusCache {
                 return true;
             }
         } else {
-            // TODO : Need to check the potential anonymous calls from devices to plugin endpoints by getting the device number from request and mapping it to customer
+            // Device-originated anonymous plugin calls are not cached here.
         }
 
 

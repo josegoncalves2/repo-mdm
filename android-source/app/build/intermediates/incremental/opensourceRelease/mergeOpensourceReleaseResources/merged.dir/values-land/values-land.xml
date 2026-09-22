@@ -3,6 +3,9 @@
     <dimen name="abc_action_bar_default_height_material">48dp</dimen>
     <dimen name="abc_text_size_subtitle_material_toolbar">12dp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">14dp</dimen>
+    <dimen name="activity_horizontal_margin">12dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="app_list_item_size">80dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_bottom">24dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_end">24dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_start">24dp</dimen>
@@ -19,6 +22,7 @@
     <dimen name="mtrl_calendar_text_input_padding_top">32dp</dimen>
     <dimen name="mtrl_calendar_title_baseline_to_top">24dp</dimen>
     <dimen name="mtrl_calendar_title_baseline_to_top_fullscreen">32dp</dimen>
+    <dimen name="status_bar_height">32dp</dimen>
     <integer name="mtrl_calendar_header_orientation">0</integer>
     <integer name="mtrl_calendar_selection_text_lines">6</integer>
     <style name="Widget.Design.TabLayout" parent="Base.Widget.Design.TabLayout">

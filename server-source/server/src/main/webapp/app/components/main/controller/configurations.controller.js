@@ -216,7 +216,6 @@ angular.module('headwind-kiosk')
     .controller('AddConfigurationAppModalController', function ($scope, localization, configurationService, authService,
                                                                 applications, configuration, $modalInstance, $modal) {
 
-        // TODO : ISV : Update this controller
         // $scope.mainAppSelected = false;
         $scope.mainApp = {id: -1, name: ""};
 
@@ -636,7 +635,7 @@ angular.module('headwind-kiosk')
                     }
                 });
 
-                // TODO : ISV : need to re-caclculate mainappid, contentappid if necessary
+                // Main/content app identifiers are recalculated by the selected action below.
                 modalInstance.result.then(function (addedApp) {
                     if (addedApp) {
                         addedApp.actionChanged = true;
@@ -1926,7 +1925,6 @@ angular.module('headwind-kiosk')
         function ($scope, $modalInstance, file) {
 
             // By now, disable this option so the user isn't confused
-            // TODO: suggest permanent deletion if a file is not used in icons and configurations (except this one)
             $scope.deleteOptionEnabled = false;
 
             $scope.save = function () {

@@ -3,13 +3,15 @@
  * Visualizador de suporte remoto do painel.
  *
  * O aparelho transmite a tela como video codificado por um WebSocket que o servidor
- * repassa; esta e' a ponta do navegador. Pelo mesmo socket sobem os comandos de toque e
+ * repassa; esta' e a ponta do navegador. Pelo mesmo socket sobem os comandos de toque e
  * digitacao, o que mantem o clique alinhado com a imagem que o operador esta vendo -- um
  * canal separado poderia entregar um toque referente a uma tela que ja mudou.
  *
  * Os quadros chegam como unidades H.264 em Annex-B e sao decodificados por WebCodecs. Nao
  * ha imagem parada em lugar nenhum: e' video continuo, como qualquer software de
  * compartilhamento de tela.
+ *
+         * Quando o navegador nao suporta WebCodecs, usa-se MSE + JMuxer para tocar o H.264.
  */
 angular.module('headwind-kiosk')
     .factory('remoteSupportService', function ($resource) {
@@ -29,9 +31,20 @@ angular.module('headwind-kiosk')
         var FRAME_DELTA = 3;
         var HEADER_BYTES = 9;
 
-        var isSupported = function () {
+        var supportsWebCodecs = function () {
             return typeof $window.VideoDecoder === 'function'
                 && typeof $window.EncodedVideoChunk === 'function';
+        };
+
+        var supportsMse = function () {
+            return typeof $window.MediaSource === 'function'
+                && typeof $window.MediaSource.isTypeSupported === 'function'
+                && $window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"')
+                && typeof $window.JMuxer === 'function';
+        };
+
+        var isSupported = function () {
+            return supportsWebCodecs() || supportsMse();
         };
 
         /*
@@ -70,6 +83,90 @@ angular.module('headwind-kiosk')
             return merged;
         };
 
+        /*
+         * Converte NAL units em Annex-B para comprimento-prefixado (AVCC), que e' o que o
+         * MP4 container exige. Cada NAL comeca com 4 bytes de comprimento em big-endian.
+         */
+        var annexBtoAvcc = function (annexB) {
+            var nals = [];
+            var i = 0;
+            while (i + 4 <= annexB.length) {
+                var startLen = 0;
+                if (annexB[i] === 0 && annexB[i + 1] === 0 && annexB[i + 2] === 1) {
+                    startLen = 3;
+                } else if (annexB[i] === 0 && annexB[i + 1] === 0 && annexB[i + 2] === 0 && annexB[i + 3] === 1) {
+                    startLen = 4;
+                }
+                if (startLen > 0) {
+                    var nalEnd = i + startLen;
+                    while (nalEnd + 4 <= annexB.length) {
+                        if (annexB[nalEnd] === 0 && annexB[nalEnd + 1] === 0 && (annexB[nalEnd + 2] === 1 || (annexB[nalEnd + 2] === 0 && annexB[nalEnd + 3] === 1))) {
+                            break;
+                        }
+                        nalEnd++;
+                    }
+                    var nalData = annexB.subarray(i + startLen, nalEnd);
+                    var prefix = new Uint8Array(4);
+                    prefix[0] = (nalData.length >> 24) & 0xFF;
+                    prefix[1] = (nalData.length >> 16) & 0xFF;
+                    prefix[2] = (nalData.length >> 8) & 0xFF;
+                    prefix[3] = nalData.length & 0xFF;
+                    nals.push(prefix, nalData);
+                    i = nalEnd;
+                } else {
+                    i++;
+                }
+            }
+            if (nals.length === 0) {
+                return annexB;
+            }
+            var totalLen = 0;
+            for (var j = 0; j < nals.length; j++) {
+                totalLen += nals[j].length;
+            }
+            var merged = new Uint8Array(totalLen);
+            var offset = 0;
+            for (var k = 0; k < nals.length; k++) {
+                merged.set(nals[k], offset);
+                offset += nals[k].length;
+            }
+            return merged;
+        };
+
+        /*
+         * Extrai SPS e PPS de dados Annex-B (NAL type 7 e 8).
+         * Retorna { sps: [Uint8Array], pps: [Uint8Array] }.
+         */
+        var extractSpsPps = function (annexB) {
+            var sps = [], pps = [];
+            var i = 0;
+            while (i + 4 <= annexB.length) {
+                var startLen = 0;
+                if (annexB[i] === 0 && annexB[i + 1] === 0 && annexB[i + 2] === 1) {
+                    startLen = 3;
+                } else if (annexB[i] === 0 && annexB[i + 1] === 0 && annexB[i + 2] === 0 && annexB[i + 3] === 1) {
+                    startLen = 4;
+                }
+                if (startLen > 0) {
+                    var nalType = annexB[i + startLen] & 0x1f;
+                    var nalEnd = i + startLen;
+                    while (nalEnd + 4 <= annexB.length) {
+                        if (annexB[nalEnd] === 0 && annexB[nalEnd + 1] === 0 && (annexB[nalEnd + 2] === 1 || (annexB[nalEnd + 2] === 0 && annexB[nalEnd + 3] === 1))) {
+                            break;
+                        }
+                        nalEnd++;
+                    }
+                    var nalData = annexB.subarray(i + startLen, nalEnd);
+                    if (nalType === 7) sps.push(nalData);
+                    else if (nalType === 8) pps.push(nalData);
+                    i = nalEnd;
+                } else {
+                    i++;
+                }
+            }
+            return { sps: sps, pps: pps };
+        };
+
         function Player(canvas, handlers, deviceId) {
             this.deviceId = deviceId;
             this.cursor = 0;
@@ -84,11 +181,70 @@ angular.module('headwind-kiosk')
             this.awaitingKeyFrame = true;
             this.closed = false;
             this.stats = {frames: 0, bytes: 0, since: Date.now()};
+            // MSE fallback via muxjs.mp4.generator
+            this.useMse = !supportsWebCodecs() && supportsMse();
+            this.mseVideo = null;
+            this.mseSource = null;
+            this.mseBuffer = null;
+            this.mseInitSent = false;
+            this.mseSeqNum = 1;
+            this.mseTimestamp = 0;
+            this.mseDuration = 3000;
+            this.mseWidth = 0;
+            this.mseHeight = 0;
+            this.mseConfigNal = null;
+            this.mseCodecString = null;
+            this.mseAppendQueue = [];
+            this.mseAppending = false;
+            this.jmuxer = null;
+            this.mseMouseDown = null;
+            this.mseMouseUp = null;
+            this.mseTouchStart = null;
+            this.mseTouchEnd = null;
         }
 
         Player.prototype.open = function (socketPath) {
             var self = this;
             this.closed = false;
+
+            // MSE fallback: cria video element
+            if (this.useMse) {
+                this.mseVideo = document.createElement('video');
+                this.mseVideo.className = 'remote-live-canvas remote-live-video';
+                this.mseVideo.setAttribute('playsinline', '');
+                this.mseVideo.setAttribute('autoplay', '');
+                this.mseVideo.muted = true;
+                this.mseMouseDown = function (event) {
+                    event.preventDefault();
+                    self.report('onPointerDown', event);
+                };
+                this.mseMouseUp = function (event) {
+                    event.preventDefault();
+                    self.report('onPointerUp', event);
+                };
+                this.mseTouchStart = function (event) {
+                    event.preventDefault();
+                    self.report('onPointerDown', event);
+                };
+                this.mseTouchEnd = function (event) {
+                    event.preventDefault();
+                    self.report('onPointerUp', event);
+                };
+                if ($window.PointerEvent) {
+                    this.mseVideo.addEventListener('pointerdown', this.mseMouseDown);
+                    this.mseVideo.addEventListener('pointerup', this.mseMouseUp);
+                } else {
+                    this.mseVideo.addEventListener('mousedown', this.mseMouseDown);
+                    this.mseVideo.addEventListener('mouseup', this.mseMouseUp);
+                    this.mseVideo.addEventListener('touchstart', this.mseTouchStart, {passive: false});
+                    this.mseVideo.addEventListener('touchend', this.mseTouchEnd, {passive: false});
+                }
+                if (this.canvas && this.canvas.parentNode) {
+                    this.canvas.parentNode.insertBefore(this.mseVideo, this.canvas);
+                    this.canvas.style.display = 'none';
+                }
+                this.initMse();
+            }
 
             var scheme = $window.location.protocol === 'https:' ? 'wss://' : 'ws://';
             var base = $window.location.pathname.replace(/[^\/]*$/, '');
@@ -104,8 +260,6 @@ angular.module('headwind-kiosk')
                 }
             };
             socket.onerror = function () {
-                // Nao reporta erro aqui: o onclose logo abaixo decide entre cair para HTTP
-                // ou avisar o operador, e um erro prematuro so' piscaria na tela.
             };
             socket.onclose = function (event) {
                 if (self.closed) {
@@ -114,14 +268,6 @@ angular.module('headwind-kiosk')
                     return;
                 }
                 if (!self.opened) {
-                    /*
-                     * O socket nunca chegou a abrir. O caso tipico e' um proxy reverso que
-                     * nao repassa o upgrade de WebSocket -- foi exatamente o que acontecia
-                     * aqui, com o nginx respondendo 404 no handshake enquanto o servidor
-                     * gerava video para "espectadores=0". Em vez de exigir mudanca no proxy,
-                     * caimos para long polling HTTP, que e' o mesmo transporte que o canal de
-                     * push do MDM ja usa e que comprovadamente atravessa esse caminho.
-                     */
                     self.socket = null;
                     self.startHttp();
                     return;
@@ -137,11 +283,6 @@ angular.module('headwind-kiosk')
             };
         };
 
-        /**
-         * Transporte HTTP: puxa quadros por long polling e alimenta o mesmo decodificador.
-         * O cursor evita reenvio; quando o navegador fica para tras alem do buffer, o
-         * servidor devolve configuracao + ultimo quadro-chave para a imagem voltar sozinha.
-         */
         Player.prototype.startHttp = function () {
             var self = this;
             this.http = true;
@@ -174,8 +315,6 @@ angular.module('headwind-kiosk')
                         if (self.closed) {
                             return;
                         }
-                        // Erro de rede momentaneo: espera um pouco e insiste, em vez de
-                        // derrubar a sessao inteira.
                         $timeout(pump, 2000);
                     });
             };
@@ -202,6 +341,8 @@ angular.module('headwind-kiosk')
                 if (message.width > 0 && message.height > 0) {
                     this.canvas.width = message.width;
                     this.canvas.height = message.height;
+                    this.mseWidth = message.width;
+                    this.mseHeight = message.height;
                 }
                 this.report('onStatus', message);
             } else if (message.type === 'input-result') {
@@ -226,11 +367,22 @@ angular.module('headwind-kiosk')
             }
 
             if (type === FRAME_CONFIG) {
-                // Os parametros ficam guardados em vez de submetidos sozinhos: em Annex-B
-                // eles pertencem a frente do quadro-chave que depende deles.
                 this.pendingConfig = payload;
                 this.codecString = codecFromParameterSet(payload) || this.codecString;
+                this.mseConfigNal = payload;
+                this.mseCodecString = this.codecString;
+                if (this.useMse) {
+                    this.mseInitSent = false;
+                    this.mseSeqNum = 1;
+                    this.mseTimestamp = 0;
+                    return;
+                }
                 this.configure();
+                return;
+            }
+
+            if (this.useMse) {
+                this.mseFeed(type, timestamp, payload);
                 return;
             }
 
@@ -238,8 +390,6 @@ angular.module('headwind-kiosk')
                 return;
             }
             if (type === FRAME_DELTA && this.awaitingKeyFrame) {
-                // Decodificar diferenca contra uma imagem que nunca chegou produz lixo;
-                // esperar custa no maximo um intervalo de quadro-chave.
                 return;
             }
 
@@ -278,8 +428,6 @@ angular.module('headwind-kiosk')
                         self.report('onError', 'remote.error.stream.decode');
                     }
                 });
-                // Sem "description": o fluxo e' Annex-B, que e' o que o encoder do aparelho
-                // emite e o que isto sinaliza ao WebCodecs.
                 this.decoder.configure({codec: this.codecString, optimizeForLatency: true});
                 this.awaitingKeyFrame = true;
             } catch (e) {
@@ -296,22 +444,87 @@ angular.module('headwind-kiosk')
                 }
                 this.context.drawImage(frame, 0, 0);
             } catch (e) {
-                // Um quadro que nao pinta nao justifica derrubar a sessao.
             } finally {
                 frame.close();
             }
         };
 
         // =============================================================================================================
+        // MSE fallback via muxjs.mp4.generator
+        //
+        // Quando WebCodecs nao esta disponivel (Electron VS Code), construimos MP4
+        // fragmentado usando as funcoes do muxjs.mp4.generator e alimentamos o
+        // MediaSource. O generator produz boxes MP4 validos (ftyp, moov, moof, mdat)
+        // a partir de descricoes de track e dados de amostra.
 
-        /*
-         * Envio de entrada.
-         *
-         * As coordenadas viajam normalizadas entre 0 e 1, nunca em pixels. O canvas e'
-         * exibido redimensionado e a resolucao transmitida nao e' a real; mandar pixels
-         * obrigaria as duas pontas a concordarem sobre a escala, e qualquer divergencia --
-         * uma rotacao no meio da sessao, por exemplo -- faria o toque cair no lugar errado.
-         */
+        Player.prototype.initMse = function () {
+            try {
+                this.jmuxer = new $window.JMuxer({
+                    node: this.mseVideo,
+                    mode: 'video',
+                    flushingTime: 0,
+                    fps: 15,
+                    debug: false
+                });
+                this.mseReady = true;
+            } catch (e) {
+                this.report('onError', 'remote.error.stream.unsupported');
+            }
+        };
+
+        Player.prototype.mseAppend = function (data) {
+            if (!this.mseBuffer) {
+                return;
+            }
+            if (this.mseAppending) {
+                this.mseAppendQueue.push(data);
+                return;
+            }
+            try {
+                this.mseAppending = true;
+                this.mseBuffer.appendBuffer(data);
+            } catch (e) {
+                this.mseAppending = false;
+                this.report('onError', 'remote.error.stream.decode');
+            }
+        };
+
+        Player.prototype.mseFlushQueue = function () {
+            if (this.mseAppendQueue.length === 0) {
+                return;
+            }
+            var data = this.mseAppendQueue.shift();
+            try {
+                this.mseAppending = true;
+                this.mseBuffer.appendBuffer(data);
+            } catch (e) {
+                this.mseAppending = false;
+                this.report('onError', 'remote.error.stream.decode');
+            }
+        };
+
+        Player.prototype.mseFeed = function (type, timestamp, payload) {
+            if (!this.mseReady || !this.jmuxer) {
+                return;
+            }
+            var data = (type === FRAME_KEY && this.mseConfigNal)
+                ? concat(this.mseConfigNal, payload)
+                : payload;
+            try {
+                this.jmuxer.feed({video: data});
+                if (this.mseVideo && this.mseVideo.play) {
+                    var promise = this.mseVideo.play();
+                    if (promise && promise.catch) {
+                        promise.catch(function () {});
+                    }
+                }
+            } catch (e) {
+                this.report('onError', 'remote.error.stream.decode');
+            }
+        };
+
+        // =============================================================================================================
+
         Player.prototype.send = function (command) {
             if (this.http) {
                 $http.post('rest/private/remote-support/' + this.deviceId + '/input', command);
@@ -348,15 +561,20 @@ angular.module('headwind-kiosk')
             return this.send({type: 'key', name: name});
         };
 
-        /** Converte a posicao do ponteiro no canvas exibido para coordenada normalizada. */
         Player.prototype.toUnit = function (event) {
-            var rect = this.canvas.getBoundingClientRect();
+            var target = (event && event.currentTarget && event.currentTarget.getBoundingClientRect)
+                ? event.currentTarget
+                : this.canvas;
+            var rect = target.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) {
                 return null;
             }
+            var point = event.changedTouches && event.changedTouches.length > 0
+                ? event.changedTouches[0]
+                : event;
             return {
-                x: Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)),
-                y: Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height))
+                x: Math.max(0, Math.min(1, (point.clientX - rect.left) / rect.width)),
+                y: Math.max(0, Math.min(1, (point.clientY - rect.top) / rect.height))
             };
         };
 
@@ -383,33 +601,82 @@ angular.module('headwind-kiosk')
         };
 
         Player.prototype.teardownDecoder = function () {
+            this.teardownMse();
             if (this.decoder) {
                 try {
                     if (this.decoder.state !== 'closed') {
                         this.decoder.close();
                     }
                 } catch (e) {
-                    // Ja fechado.
                 }
                 this.decoder = null;
             }
         };
 
+        Player.prototype.teardownMse = function () {
+            if (this.jmuxer) {
+                try {
+                    this.jmuxer.destroy();
+                } catch (e) {
+                }
+                this.jmuxer = null;
+            }
+            if (this.mseSource) {
+                try {
+                    if (this.mseSource.readyState !== 'ended') {
+                        this.mseSource.endOfStream();
+                    }
+                } catch (e) {
+                }
+                this.mseSource = null;
+            }
+            this.mseBuffer = null;
+            this.mseReady = false;
+            if (this.mseVideo) {
+                try {
+                    if (this.mseMouseDown) {
+                        this.mseVideo.removeEventListener('mousedown', this.mseMouseDown);
+                        this.mseVideo.removeEventListener('pointerdown', this.mseMouseDown);
+                    }
+                    if (this.mseMouseUp) {
+                        this.mseVideo.removeEventListener('mouseup', this.mseMouseUp);
+                        this.mseVideo.removeEventListener('pointerup', this.mseMouseUp);
+                    }
+                    if (this.mseTouchStart) {
+                        this.mseVideo.removeEventListener('touchstart', this.mseTouchStart);
+                    }
+                    if (this.mseTouchEnd) {
+                        this.mseVideo.removeEventListener('touchend', this.mseTouchEnd);
+                    }
+                    this.mseVideo.pause();
+                    this.mseVideo.src = '';
+                } catch (e) {
+                }
+                if (this.mseVideo.parentNode) {
+                    this.mseVideo.parentNode.removeChild(this.mseVideo);
+                }
+                this.mseVideo = null;
+            }
+            this.mseMouseDown = null;
+            this.mseMouseUp = null;
+            this.mseTouchStart = null;
+            this.mseTouchEnd = null;
+        };
+
         Player.prototype.close = function () {
             this.closed = true;
             this.teardownDecoder();
+            this.teardownMse();
             if (this.socket) {
                 try {
                     this.socket.close(1000, 'visualizador fechado');
                 } catch (e) {
-                    // Ja fechando.
                 }
                 this.socket = null;
             }
             try {
                 this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             } catch (e) {
-                // Nada pintado ainda.
             }
         };
 

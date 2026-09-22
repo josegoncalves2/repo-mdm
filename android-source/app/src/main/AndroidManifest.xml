@@ -240,9 +240,6 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
-        <service android:name=".pro.service.CheckForegroundApplicationService"
-            android:exported="true"/>
-
         <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <intent-filter>
@@ -252,7 +249,7 @@
 
         <!-- Removido: declaracao nua de servico com "AccessibilityService" no nome era o
              gatilho classico do Play Protect no scan estatico do manifest (USE_ACCESSIBILITY
-             ja e' false em build.gradle, nada em codigo chamava este stub). O binario oficial
+             ja e' false em build.gradle, nada em codigo chamava este servico). O binario oficial
              hmdm-6.36-os.apk nao declara isso; ver scripts/verificar-apk.sh. -->
 
         <service android:name="org.eclipse.paho.android.service.MqttService"

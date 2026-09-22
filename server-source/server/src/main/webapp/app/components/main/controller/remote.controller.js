@@ -26,7 +26,7 @@ angular.module('headwind-kiosk')
             return {
                 name: 'pkg',
                 labelKey: 'remote.field.pkg',
-                placeholder: 'com.example.app',
+                placeholder: 'com.android.chrome',
                 required: true,
                 pattern: PACKAGE_PATTERN,
                 errorKey: 'remote.error.field.pkg'
@@ -236,6 +236,7 @@ angular.module('headwind-kiosk')
         $scope.commandGroups = [];
         $scope.commandCatalogLoaded = false;
         $scope.commandCatalogError = null;
+        var supportedCommandActions = {};
 
         var labelForAction = function (action, meta) {
             if (meta && meta.labelKey) {
@@ -282,6 +283,10 @@ angular.module('headwind-kiosk')
         var loadCommandCatalog = function () {
             deviceService.getSupportedCommands(function (response) {
                 if (response.status === 'OK' && angular.isArray(response.data)) {
+                    supportedCommandActions = {};
+                    response.data.forEach(function (action) {
+                        supportedCommandActions[action] = true;
+                    });
                     $scope.commandGroups = buildCommandGroups(response.data);
                     $scope.commandCatalogLoaded = true;
                     $scope.commandCatalogError = null;
@@ -299,6 +304,11 @@ angular.module('headwind-kiosk')
         // blanket edit_devices, which is exactly how the server authorises it.
         $scope.canRunCommand = function (command) {
             return hasPermission('edit_devices') || hasPermission(command.permission);
+        };
+
+        $scope.canOpenRemoteAgent = function () {
+            return !!supportedCommandActions.run_app
+                && (hasPermission('edit_devices') || hasPermission('device.remote_access.control'));
         };
 
         $scope.loadDevices = function (keepSelection) {
@@ -513,6 +523,13 @@ angular.module('headwind-kiosk')
             });
         };
 
+        $scope.openRemoteAgent = function () {
+            if (!$scope.selectedDevice || !$scope.canOpenRemoteAgent()) {
+                return;
+            }
+            dispatch($scope.selectedDevice, 'run_app', {pkg: 'com.hwmdm.remote'});
+        };
+
         // Kiosk lock has a dedicated endpoint (it re-applies the kiosk policy server-side, not
         // just a push), so it is issued through that endpoint rather than the generic command.
         $scope.forceKiosk = function (device) {
@@ -669,6 +686,12 @@ angular.module('headwind-kiosk')
                         $scope.remote.connected = false;
                         $scope.remote.streaming = false;
                     });
+                },
+                onPointerDown: function (event) {
+                    $scope.onScreenDown(event);
+                },
+                onPointerUp: function (event) {
+                    $scope.onScreenUp(event);
                 }
             }, deviceId);
             player.open(socketPath);
@@ -712,12 +735,21 @@ angular.module('headwind-kiosk')
             if (!player || !$scope.remote.streaming) {
                 return;
             }
+            if (!$scope.remote.input) {
+                $scope.remote.inputNote = localization.localize('remote.input.required');
+                return;
+            }
             pressedAt = player.toUnit(event);
             pressedTime = Date.now();
         };
 
         $scope.onScreenUp = function (event) {
             if (!player || !$scope.remote.streaming || !pressedAt) {
+                return;
+            }
+            if (!$scope.remote.input) {
+                $scope.remote.inputNote = localization.localize('remote.input.required');
+                pressedAt = null;
                 return;
             }
             var released = player.toUnit(event);
@@ -739,6 +771,10 @@ angular.module('headwind-kiosk')
         };
 
         $scope.sendRemoteKey = function (name) {
+            if (!$scope.remote.input) {
+                $scope.remote.inputNote = localization.localize('remote.input.required');
+                return;
+            }
             if (player && $scope.remote.streaming) {
                 player.key(name);
             }
@@ -753,6 +789,10 @@ angular.module('headwind-kiosk')
         $scope.sendRemoteText = function () {
             var text = ($scope.remote.typing || '').trim();
             if (!player || !$scope.remote.streaming || text.length === 0) {
+                return;
+            }
+            if (!$scope.remote.input) {
+                $scope.remote.inputNote = localization.localize('remote.input.required');
                 return;
             }
             player.type(text);

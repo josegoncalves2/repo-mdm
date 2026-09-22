@@ -155,13 +155,22 @@
                     <span class="remote-ip-note" ng-if="remote.streaming">
                         {{'remote.screen.live' | localize}} ·
                         {{remote.width}}x{{remote.height}} ·
-                        {{remote.fps}} fps · {{remote.kbps}} kbps
+                        {{remote.fps}} fps · {{remote.kbps}} kbps ·
+                        <strong ng-if="remote.input" localized>remote.input.active</strong>
+                        <strong ng-if="!remote.input" localized>remote.input.inactive</strong>
                     </span>
                 </div>
 
                 <!-- Teclas de navegacao e digitacao. So aparecem com a sessao ao vivo: fora
                      dela nao teriam para onde ir. -->
                 <div class="remote-input-bar" ng-if="remote.streaming">
+                    <div class="alert alert-warning" ng-if="!remote.input">
+                        <span localized>remote.input.unavailable</span>
+                        <button type="button" class="btn btn-warning btn-sm"
+                                ng-if="canOpenRemoteAgent()"
+                                ng-click="openRemoteAgent()"
+                                localized>remote.input.open.agent</button>
+                    </div>
                     <div class="remote-input-keys">
                         <button type="button" class="btn btn-default btn-sm"
                                 ng-click="sendRemoteKey('back')"

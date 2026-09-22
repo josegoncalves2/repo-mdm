@@ -2963,7 +2963,7 @@ COPY public.applications (id, pkg, name, showicon, customerid, system, latestver
 77	com.samsung.android.app.telephonyui	Samsung Telephony	f	1	t	10076	f	app	\N	\N	f	f	\N
 86	com.whatsapp	WhatsApp	t	1	f	10092	f	app	\N	\N	f	f	\N
 46	com.hmdm.launcher	Headwind MDM	f	1	f	10045	f	app	\N	\N	f	f	\N
-87	com.hwmdm.remote	Suporte Remoto	t	1	f	10114	t	app	\N	\N	t	f	\N
+87	com.hwmdm.remote	Suporte Remoto	t	1	f	10115	t	app	\N	\N	t	f	\N
 \.
 
 
@@ -3044,6 +3044,7 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10076	77	0	\N	\N	f	\N	\N	0
 10045	46	6.36	http://192.168.1.75:8080/files/hmdm-6.36-os.apk	aNlmR0NqQ2Dl4W7VXXuQWTSnzg40svKKpz2Ii4y433s=	f	\N	\N	0
 10114	87	1.15	http://192.168.1.75:8080/files/hwmdm-remote-1.15.apk	ejZ+YF+LbkppofUjVBSlyKNwSOL42Bb/i+ZSC49OhKk	f	\N	\N	16
+10115	87	1.17	http://192.168.1.75:8080/files/hwmdm-remote-1.17.apk	XM/cpp5JJOKzVB0NkaH9AP77X+ceH/4XMcXiTAYOveQ=	f	\N	\N	18
 10047	48	1.02	http://192.168.1.75:8080/files/pager-1.02.apk	\N	f	\N	\N	0
 10048	49	1.02	http://192.168.1.75:8080/files/phoneproxy-1.02.apk	\N	f	\N	\N	0
 10049	50	1.04	http://192.168.1.75:8080/files/LauncherRestarter-1.04.apk	\N	f	\N	\N	0
@@ -3086,7 +3087,7 @@ COPY public.configurationapplicationparameters (id, configurationid, application
 --
 
 COPY public.configurationapplications (id, configurationid, applicationid, remove, showicon, applicationversionid, action, screenorder, keycode, bottom, longtap, usekiosk) FROM stdin;
-815	11	87	f	t	10114	1	\N	\N	f	f	f
+815	11	87	f	t	10115	1	\N	\N	f	f	f
 48	2	8	f	t	10007	1	\N	\N	f	f	f
 49	2	37	f	f	10036	1	\N	\N	f	f	f
 50	2	2	f	f	10001	1	\N	\N	f	f	f
@@ -19294,72 +19295,73 @@ hint.step.4
 
 COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 1	1
+1	2
+1	3
+1	4
+1	5
+1	6
+1	100
+1	101
+1	102
+1	103
+1	104
+1	105
+1	106
+1	107
+1	108
+1	109
+1	110
+1	111
+1	112
+1	113
+1	114
+1	115
+1	116
+1	117
+1	118
+1	119
+1	120
+1	121
+1	122
+1	123
+1	124
+1	125
+1	126
+1	127
+1	128
+1	129
+1	130
+1	131
+1	132
+1	133
+1	134
+1	135
+1	136
+1	137
 2	2
 2	3
 2	4
-3	3
-3	4
-1	100
-2	100
-3	100
-100	100
-1	101
-2	101
-1	5
 2	5
-1	6
 2	6
-3	6
-1	102
+2	100
+2	101
 2	102
-3	102
-1	103
 2	103
-1	104
 2	104
-3	104
-100	104
-1	105
 2	105
-3	105
-1	106
 2	106
-3	106
-1	107
 2	107
-3	107
-100	107
-1	108
 2	108
-3	108
-1	109
 2	109
-3	109
-1	110
 2	110
-1	111
 2	111
-1	112
 2	112
-3	112
-100	112
-1	113
 2	113
-1	114
 2	114
-3	114
-100	114
-1	115
 2	115
-1	116
 2	116
-3	116
-100	116
-1	117
 2	117
-1	118
 2	118
-3	118
 2	119
 2	120
 2	121
@@ -19376,28 +19378,54 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 2	132
 2	133
 2	134
-103	114
-102	114
-101	114
-103	3
-102	3
+2	137
+3	3
+3	4
+3	6
+3	100
+3	102
+3	104
+3	105
+3	106
+3	107
+3	108
+3	109
+3	112
+3	114
+3	116
+3	118
+3	137
+100	100
+100	104
+100	107
+100	112
+100	114
+100	116
 101	3
-103	4
-102	4
 101	4
-103	119
-102	119
+101	114
 101	119
+101	123
+101	124
+101	137
+102	3
+102	4
+102	114
+102	119
+102	123
+102	124
+102	125
+102	137
+103	3
+103	4
+103	114
+103	119
 103	120
 103	123
-102	123
-101	123
 103	124
-102	124
-101	124
 103	125
-102	125
 103	126
+103	137
 \.
 
 
@@ -19454,7 +19482,7 @@ SELECT pg_catalog.setval('public.applications_id_seq', 87, true);
 -- Name: applicationversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hmdm
 --
 
-SELECT pg_catalog.setval('public.applicationversions_id_seq', 10114, true);
+SELECT pg_catalog.setval('public.applicationversions_id_seq', 10115, true);
 
 
 --
@@ -20901,4 +20929,3 @@ ALTER TABLE ONLY public.users
 --
 -- PostgreSQL database dump complete
 --
-

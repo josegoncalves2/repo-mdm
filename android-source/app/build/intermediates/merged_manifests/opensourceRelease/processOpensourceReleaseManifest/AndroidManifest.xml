@@ -77,7 +77,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
-    <!-- Necessaria a partir do Android 14 para o servico que transmite a tela no acesso remoto -->
+    <!-- Necessaria a partir do Android 14 para o servico que faz a captura de tela -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.REQUEST_PASSWORD_COMPLEXITY" />
@@ -281,12 +281,10 @@
         </provider>
 
         <service
-            android:name="com.hmdm.launcher.pro.service.CheckForegroundApplicationService"
-            android:exported="true" />
-        <service
             android:name="com.hmdm.launcher.service.PluginApiService"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
             <intent-filter>
                 <action android:name="com.hmdm.action.Connect" />
             </intent-filter>
@@ -295,7 +293,7 @@
         <!--
              Removido: declaracao nua de servico com "AccessibilityService" no nome era o
              gatilho classico do Play Protect no scan estatico do manifest (USE_ACCESSIBILITY
-             ja e' false em build.gradle, nada em codigo chamava este stub). O binario oficial
+             ja e' false em build.gradle, nada em codigo chamava este servico). O binario oficial
              hmdm-6.36-os.apk nao declara isso; ver scripts/verificar-apk.sh.
         -->
 
@@ -324,17 +322,16 @@
         </service>
 
         <!--
-             Acesso remoto ao vivo (push "remoteScreenStart"/"remoteScreenStop"): o servico
-             transmite a tela codificada em H.264 enquanto a sessao durar. A activity so existe
+             Captura de tela pedida pelo painel (push "screenshot"). A activity so existe
              para obter o consentimento de MediaProjection, que o Android exige sempre.
         -->
         <service
-            android:name="com.hmdm.launcher.service.RemoteScreenService"
+            android:name="com.hmdm.launcher.service.ScreenshotService"
             android:exported="false"
             android:foregroundServiceType="mediaProjection" />
 
         <activity
-            android:name="com.hmdm.launcher.ui.RemoteAccessConsentActivity"
+            android:name="com.hmdm.launcher.ui.ScreenshotConsentActivity"
             android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />

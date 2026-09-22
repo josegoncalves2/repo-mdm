@@ -4232,6 +4232,11 @@ body {
     background: #000;
 }
 
+.remote-live-video {
+    width: auto;
+    height: auto;
+}
+
 /* Cursor de ponteiro so' quando o clique realmente sai daqui: sem acessibilidade
    habilitada no aparelho a tela e' apenas vista, e um cursor de mao prometeria o que nao
    acontece. */

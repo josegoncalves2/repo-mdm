@@ -77,9 +77,9 @@ public class RemoteSupportResource {
      * Parametros do encoder, enviados junto com o chamado em vez de compilados no agente,
      * para que o fluxo possa ser ajustado para um link lento sem gerar um APK novo.
      */
-    private static final int DEFAULT_FPS = 15;
-    private static final int DEFAULT_BITRATE = 2_000_000;
-    private static final int DEFAULT_MAX_WIDTH = 800;
+    private static final int DEFAULT_FPS = 20;
+    private static final int DEFAULT_BITRATE = 6_000_000;
+    private static final int DEFAULT_MAX_WIDTH = 1280;
 
     /**
      * Quanto uma requisicao de quadros espera antes de voltar vazia. Longo o bastante para

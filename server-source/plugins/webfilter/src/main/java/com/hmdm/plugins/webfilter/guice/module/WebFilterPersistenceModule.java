@@ -4,6 +4,9 @@ import com.hmdm.guice.module.AbstractPersistenceModule;
 
 import javax.servlet.ServletContext;
 
+/**
+ * <p>MyBatis configuration of the web filter plugin.</p>
+ */
 public class WebFilterPersistenceModule extends AbstractPersistenceModule {
 
     public WebFilterPersistenceModule(ServletContext context) {

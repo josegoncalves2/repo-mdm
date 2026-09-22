@@ -30,7 +30,6 @@ import com.hmdm.launcher.json.Download;
 import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
-import com.hmdm.launcher.pro.worker.DetailedInfoWorker;
 import com.hmdm.launcher.server.ServerServiceKeeper;
 import com.hmdm.launcher.service.PushLongPollingService;
 import com.hmdm.launcher.task.ConfirmDeviceResetTask;
@@ -136,7 +135,6 @@ public class ConfigUpdater {
 
         Log.i(Const.LOG_TAG, "updateConfig(): set configInitializing=true");
         configInitializing = true;
-        DetailedInfoWorker.requestConfigUpdate(context);
         this.context = context;
         this.uiNotifier = uiNotifier;
         this.userInteraction = userInteraction;

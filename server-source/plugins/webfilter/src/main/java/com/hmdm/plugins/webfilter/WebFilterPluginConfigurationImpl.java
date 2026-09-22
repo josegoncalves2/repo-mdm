@@ -13,12 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * <p>Configuration of the <code>Web Filter</code> plugin: blocking of sites and applications by category, allowlist
+ * and blocklist per device configuration.</p>
+ */
 public class WebFilterPluginConfigurationImpl implements PluginConfiguration {
 
     public static final String PLUGIN_ID = "webfilter";
-
-    public WebFilterPluginConfigurationImpl() {
-    }
 
     @Override
     public String getPluginId() {

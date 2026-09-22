@@ -56,12 +56,12 @@ public class InputInjectionService extends AccessibilityService {
      * <p>Nao e' a mesma pergunta que {@link #isAvailable()}, e a diferenca entre as duas e'
      * justamente o que vinha faltando para diagnosticar. {@code isAvailable()} responde se o
      * Android ligou o servico; esta responde se alguem o marcou. Combinadas, separam tres
-     * situacoes que ate agora produziam identicamente "somente visualizacao":</p>
+     * situacoes que ate agora produziam identicamente "sem controle remoto":</p>
      *
      * <ul>
      *   <li>nao marcado: ninguem ativou -- ou ativou <b>outro</b> servico. O launcher
      *       Headwind tem um servico de acessibilidade proprio
-     *       ({@code CheckForegroundAppAccessibilityService}), entao a lista do aparelho tem
+     *       de acessibilidade do launcher, entao a lista do aparelho tem
      *       duas entradas parecidas e marcar a errada nao produz nenhum aviso;</li>
      *   <li>marcado mas nao ligado: o Android nao vinculou o servico -- acontece depois de
      *       atualizar o aplicativo, e se resolve desmarcando e marcando de novo;</li>
@@ -98,7 +98,7 @@ public class InputInjectionService extends AccessibilityService {
      * Sem isso nao ha como distinguir, do painel, "o usuario nao ativou a acessibilidade"
      * de "ativou e o Android desativou de novo" -- e o Android desativa sozinho em varias
      * situacoes, entre elas a atualizacao do proprio aplicativo. Os dois casos produzem
-     * exatamente a mesma sessao 'somente visualizacao', e sem saber qual e' deles nao ha o
+     * exatamente a mesma sessao sem controle remoto, e sem saber qual e' deles nao ha o
      * que corrigir.
      */
     @Override
@@ -127,7 +127,7 @@ public class InputInjectionService extends AccessibilityService {
     @Override
     public boolean onUnbind(android.content.Intent intent) {
         instance = null;
-        RemoteLog.w(this, "Acessibilidade DESCONECTADA: a partir de agora a sessao e' so' visualizacao");
+        RemoteLog.w(this, "Acessibilidade DESCONECTADA: a partir de agora a sessao fica sem controle remoto");
         return super.onUnbind(intent);
     }
 

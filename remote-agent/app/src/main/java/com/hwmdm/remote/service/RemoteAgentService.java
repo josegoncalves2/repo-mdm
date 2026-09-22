@@ -296,7 +296,7 @@ public class RemoteAgentService extends Service {
      * muda.</p>
      *
      * <p>Ate aqui, saber se a acessibilidade estava ativa exigia abrir uma sessao de tela e
-     * ler se a linha dizia "com toque" ou "somente visualizacao" -- ou seja, era preciso
+     * ler se a linha dizia "com toque" ou "sem controle remoto" -- ou seja, era preciso
      * tentar atender para descobrir que nao dava para atender. Pior: quando alguem ativava a
      * permissao e o Android a desativava depois (a atualizacao do proprio aplicativo faz
      * isso), nada registrava a queda, e o sintoma reaparecia como se a ativacao nunca

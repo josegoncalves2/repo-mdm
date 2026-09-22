@@ -1,12 +1,9 @@
 package com.hmdm.launcher.helper;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,9 +16,6 @@ import com.hmdm.launcher.json.DeviceInfo;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
 import com.hmdm.launcher.pro.ProUtils;
-import com.hmdm.launcher.pro.service.CheckForegroundAppAccessibilityService;
-import com.hmdm.launcher.pro.service.CheckForegroundApplicationService;
-import com.hmdm.launcher.pro.worker.DetailedInfoWorker;
 import com.hmdm.launcher.service.PushLongPollingService;
 import com.hmdm.launcher.service.StatusControlService;
 import com.hmdm.launcher.task.SendDeviceInfoTask;
@@ -68,7 +62,6 @@ public class Initializer {
             CertInstaller.installCertificatesFromAssets(context);
 
             ConnectionWaiter.waitForConnect(context, () -> {
-                DetailedInfoWorker.schedule(context);
                 if (BuildConfig.ENABLE_PUSH) {
                     PushNotificationWorker.schedule(context);
                 }
@@ -134,23 +127,7 @@ public class Initializer {
         // java.lang.IllegalStateException
         // Not allowed to start service Intent { cmp=com.hmdm.launcher/.service.StatusControlService }: app is in background
         // Let's just ignore these exceptions for now
-        SharedPreferences preferences = context.getApplicationContext().getSharedPreferences(Const.PREFERENCES, MODE_PRIVATE);
-        // Foreground apps checks are not available in a free version: services are the stubs
-        if (preferences.getInt(Const.PREFERENCES_USAGE_STATISTICS, Const.PREFERENCES_OFF) == Const.PREFERENCES_ON) {
-            try {
-                context.startService(new Intent(context, CheckForegroundApplicationService.class));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        if (BuildConfig.USE_ACCESSIBILITY &&
-            preferences.getInt(Const.PREFERENCES_ACCESSIBILITY_SERVICE, Const.PREFERENCES_OFF) == Const.PREFERENCES_ON) {
-            try {
-                context.startService(new Intent(context, CheckForegroundAppAccessibilityService.class));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        // Foreground app checks are disabled in this build.
         try {
             context.startService(new Intent(context, StatusControlService.class));
         } catch (Exception e) {
