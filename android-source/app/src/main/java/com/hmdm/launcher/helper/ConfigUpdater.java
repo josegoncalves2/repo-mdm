@@ -956,8 +956,6 @@ public class ConfigUpdater {
         Utils.lockPackages(context, lockedPackages, true);
         String unlockedPackages = settingsHelper.getAppPreference(context.getPackageName(), "unlocked_packages");
         Utils.lockPackages(context, unlockedPackages, false);
-        // Web Filter: private DNS of the profile, after the profile restrictions (design D10)
-        PrivateDnsManager.applyAsync(context, settingsHelper.getConfig());
         notifyThreads();
     }
 

@@ -4,7 +4,7 @@
             "outputFile": "com.hmdm.launcher.app-mergeOpensourceReleaseResources-28:/values-w820dp-v13/values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "/opt/projetos/hwmdm/repo-mdm/android-source/app/src/main/res/values-w820dp/dimens.xml",
+                    "source": "/opt/projetos/hwmdm/android-source/app/src/main/res/values-w820dp/dimens.xml",
                     "from": {
                         "startLines": "23",
                         "startColumns": "4",

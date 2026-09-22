@@ -1226,7 +1226,7 @@ angular.module('headwind-kiosk')
         function ($scope, $modalInstance, deviceService, configurationService, groupService, device, settings,
                   localization, authService, confirmModal) {
 
-            $scope.canEditDevice = authService.hasPermission('device.profile.edit') || authService.hasPermission('edit_devices');
+            $scope.canEditDevice = authService.hasPermission('edit_devices');
 
             $scope.migratingDevice = device.hasOwnProperty('oldNumber') && device.oldNumber !== null;
             $scope.migrationHint = $scope.migratingDevice ? localization.localize('form.device.number.locked') : null;

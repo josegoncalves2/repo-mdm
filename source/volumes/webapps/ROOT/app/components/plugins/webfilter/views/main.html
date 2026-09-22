@@ -131,26 +131,22 @@
         <div class="wf-lists">
             <div>
                 <label localized>plugin.webfilter.domain.allow</label>
-                <textarea class="form-control" ng-model="editing.domainAllow" data-testid="wf-domain-allow"
-                          placeholder="exemplo.com.br"></textarea>
+                <textarea class="form-control" ng-model="editing.domainAllow" data-testid="wf-domain-allow"></textarea>
                 <div class="wf-field-error" ng-repeat="m in fieldErrors.domainAllow">{{m}}</div>
             </div>
             <div>
                 <label localized>plugin.webfilter.domain.block</label>
-                <textarea class="form-control" ng-model="editing.domainBlock" data-testid="wf-domain-block"
-                          placeholder="noticias.exemplo.com"></textarea>
+                <textarea class="form-control" ng-model="editing.domainBlock" data-testid="wf-domain-block"></textarea>
                 <div class="wf-field-error" ng-repeat="m in fieldErrors.domainBlock">{{m}}</div>
             </div>
             <div>
                 <label localized>plugin.webfilter.app.allow</label>
-                <textarea class="form-control" ng-model="editing.appAllow" data-testid="wf-app-allow"
-                          placeholder="com.linkedin.android"></textarea>
+                <textarea class="form-control" ng-model="editing.appAllow" data-testid="wf-app-allow"></textarea>
                 <div class="wf-field-error" ng-repeat="m in fieldErrors.appAllow">{{m}}</div>
             </div>
             <div>
                 <label localized>plugin.webfilter.app.block</label>
-                <textarea class="form-control" ng-model="editing.appBlock" data-testid="wf-app-block"
-                          placeholder="com.king.candycrushsaga"></textarea>
+                <textarea class="form-control" ng-model="editing.appBlock" data-testid="wf-app-block"></textarea>
                 <div class="wf-field-error" ng-repeat="m in fieldErrors.appBlock">{{m}}</div>
             </div>
         </div>
@@ -181,8 +177,7 @@
         </div>
         <p class="wf-muted" localized>plugin.webfilter.apps.hint</p>
         <div class="wf-add-app">
-            <input type="text" class="form-control" ng-model="newApp.packageName" placeholder="br.com.empresa.jogo"
-                   data-testid="wf-new-app-package">
+            <input type="text" class="form-control" ng-model="newApp.packageName" data-testid="wf-new-app-package">
             <select class="form-control" ng-model="newApp.category" data-testid="wf-new-app-category"
                     ng-options="c.id as categoryName(c.id) for c in catalog.categories | filter:{required:false}">
                 <option value="">{{'plugin.webfilter.choose.category' | localize}}</option>
@@ -237,8 +232,7 @@
         </div>
         <label localized>plugin.webfilter.dns.domain</label>
         <div class="wf-add-app">
-            <input type="text" class="form-control" ng-model="settings.dnsDomain" placeholder="filtro.exemplo.com.br"
-                   data-testid="wf-dns-domain">
+            <input type="text" class="form-control" ng-model="settings.dnsDomain" data-testid="wf-dns-domain">
             <button type="button" class="btn btn-primary" ng-click="saveSettings()" data-testid="wf-save-settings"
                     localized>plugin.webfilter.save</button>
         </div>

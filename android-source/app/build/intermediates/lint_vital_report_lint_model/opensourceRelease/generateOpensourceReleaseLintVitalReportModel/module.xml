@@ -1,12 +1,12 @@
 <lint-module
     format="1"
-    dir="/opt/projetos/hwmdm/repo-mdm/android-source/app"
+    dir="/opt/projetos/hwmdm/android-source/app"
     name=":app"
     type="APP"
     maven="android-source:app:unspecified"
     agpVersion="8.13.2"
     buildFolder="build"
-    bootClassPath="/opt/projetos/hwmdm/repo-mdm/.android-sdk/platforms/android-34/android.jar:/opt/projetos/hwmdm/repo-mdm/.android-sdk/build-tools/35.0.0/core-lambda-stubs.jar"
+    bootClassPath="/home/sahwmdm/android-sdk/platforms/android-34/android.jar:/home/sahwmdm/android-sdk/build-tools/35.0.0/core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-34"
     neverShrinking="true">

@@ -6,9 +6,6 @@ import liquibase.resource.ResourceAccessor;
 
 import javax.servlet.ServletContext;
 
-/**
- * <p>Applies the database change log of the web filter plugin.</p>
- */
 public class WebFilterLiquibaseModule extends AbstractLiquibaseModule {
 
     public WebFilterLiquibaseModule(ServletContext context) {

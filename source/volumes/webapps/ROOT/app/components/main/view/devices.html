@@ -232,7 +232,7 @@
     </div>
 
     <div ng-if='devices && devices.length > 0' class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
-    <table class='table' style="width: 100%; table-layout: auto;">
+    <table class='table' style="min-width: 900px;">
         <colgroup>
             <col ng-if="hasPermission('edit_devices')" style="width: 30px;">
             <col ng-if="settings.columnDisplayedDeviceStatus" style="width: 30px;">
