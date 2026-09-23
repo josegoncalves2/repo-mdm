@@ -69,6 +69,7 @@ public class SettingsHelper {
     // This prefix is for the compatibility with a legacy package name
     private static String PACKAGE_NAME;
 
+    private Context context;
     private SharedPreferences sharedPreferences;
     private ServerConfig config;
     private ServerConfig oldConfig;
@@ -86,14 +87,16 @@ public class SettingsHelper {
     }
 
     public SettingsHelper(Context context) {
-        PACKAGE_NAME = context.getPackageName();
-        sharedPreferences = context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
+        this.context = context.getApplicationContext();
+        PACKAGE_NAME = this.context.getPackageName();
+        sharedPreferences = this.context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
         initConfig();
     }
 
     public void refreshConfig(Context context) {
+        this.context = context.getApplicationContext();
         if (config == null) {
-            sharedPreferences = context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
+            sharedPreferences = this.context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
             initConfig();
         }
     }

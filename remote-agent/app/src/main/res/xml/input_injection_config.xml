@@ -2,15 +2,28 @@
 <!--
   Configuracao do servico de acessibilidade usado para injetar toque e digitacao.
 
-  O escopo e' deliberadamente minimo. Nao pedimos canRetrieveWindowContent nem
-  eventos de conteudo: este servico nao le nada da tela nem observa o que o usuario faz.
-  Ele so' precisa de duas capacidades de saida — reproduzir gestos e enviar acoes globais
-  (voltar, inicio, recentes). Pedir mais do que isso e' o que faz um app de acesso remoto
-  parecer spyware num scan estatico, e aqui nao ha motivo para pedir.
+  ATUALIZADO: o comentario anterior dizia que nao pediamos canRetrieveWindowContent "para
+  nao parecer spyware", e chamava isso de deliberado. Na pratica isso era um defeito: sem
+  essa capacidade, getRootInActiveWindow() sempre devolve null, o campo em foco nunca e'
+  encontrado, e type() falha 100% das vezes; a digitacao remota nunca funcionou uma unica
+  vez. A capacidade e' inevitavel para escrever num campo de texto existente: o Android
+  so' aceita ACTION_SET_TEXT/ACTION_SET_SELECTION contra um AccessibilityNodeInfo obtido
+  da arvore da janela, e obter essa arvore e' exatamente o que canRetrieveWindowContent
+  libera.
+
+  Isso NAO transforma o servico em espiao. O codigo em InputInjectionService.type()
+  continua sem registrar, logar ou enviar a lugar nenhum o que o usuario digita ou o
+  conteudo das janelas; a arvore e' lida so' para achar o no em foco e devolvida ao
+  Android sem cache. flagRetrieveInteractiveWindows entra junto porque sem ela a busca so'
+  enxerga a janela ativa; numa janela sobreposta (um teclado flutuante, um dialogo) o campo
+  em foco pode estar numa janela interativa que nao e' a ativa, e sem essa flag o pedido de
+  digitar cai no mesmo "nenhum campo em foco" que motivou esta correcao.
 -->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:description="@string/perm_accessibility_hint"
     android:accessibilityEventTypes="typeWindowStateChanged"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:accessibilityFlags="flagRetrieveInteractiveWindows"
     android:notificationTimeout="200"/>

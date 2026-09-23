@@ -1,6 +1,7 @@
 package com.hwmdm.remote.ui;
 
 import android.app.Activity;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.projection.MediaProjectionManager;
@@ -112,6 +113,7 @@ public class ProjectionConsentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         applyScreenWakeFlags();
+        dismissKeyguardIfPossible();
         MediaProjectionManager manager =
                 (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
         if (manager == null) {
@@ -144,6 +146,75 @@ public class ProjectionConsentActivity extends Activity {
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+    }
+
+    /**
+     * <p>Pede ao Android para dispensar o bloqueio de tela, alem de so' aparecer por cima
+     * dele.</p>
+     *
+     * <p>{@code setShowWhenLocked}/{@code setTurnScreenOn} (em {@link #applyScreenWakeFlags})
+     * fazem esta janela aparecer sobre o keyguard, mas nao o dispensam -- num aparelho com
+     * bloqueio protegido por PIN/padrao/senha o Android continua exigindo a credencial por
+     * cima da janela. {@code requestDismissKeyguard} e' o unico caminho de app comum (sem
+     * ser device owner) para pedir a dispensa: quando o bloqueio NAO tem credencial (o caso
+     * usual de um tablet em quiosque, so' com "deslizar para desbloquear" ou nada), o
+     * Android dispensa sozinho e o callback chama {@code onDismissSucceeded()}. Quando HA
+     * credencial, o proprio Android mostra a tela de bloqueio para o usuario digitar --
+     * ninguem, nem device owner, contorna isso sem a senha: e' a mesma garantia que protege
+     * um aparelho perdido ou roubado, e nao existe excecao para MDM.</p>
+     *
+     * <p><b>Verificado no codigo deste projeto, nao presumido:</b> perguntei se o launcher
+     * (device owner) oferece um caminho proprio de dispensa de keyguard pelo plugin que este
+     * aplicativo ja usa ({@link com.hwmdm.remote.mdm.MdmLink}, interface
+     * {@code com.hmdm.IMdmApi}). Ele nao oferece -- o AIDL
+     * ({@code app/src/main/aidl/com/hmdm/IMdmApi.aidl}) expoe {@code queryConfig},
+     * {@code log}, {@code queryAppPreference}, {@code setAppPreference},
+     * {@code commitAppPreferences}, {@code getVersion}, {@code queryPrivilegedConfig},
+     * {@code setCustom}, {@code forceConfigUpdate} e {@code sendPush}; nenhum deles chama
+     * {@code DevicePolicyManager.setKeyguardDisabled} ou equivalente. Esse metodo do
+     * Android so' existe para quem E' device owner/profile owner -- que e' o
+     * {@code com.hmdm.launcher}, nao este aplicativo -- e {@code LauncherControl.java} (o
+     * outro ponto de contato com o launcher) so' traz {@code bringToFront}, sem nada de
+     * bloqueio de tela. Sem alterar o launcher (fora do escopo autorizado aqui), nao ha
+     * caminho de device owner disponivel para este recurso.</p>
+     */
+    private void dismissKeyguardIfPossible() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            // requestDismissKeyguard existe desde a API 26. Abaixo disso, as flags de
+            // janela aplicadas em applyScreenWakeFlags (FLAG_DISMISS_KEYGUARD, obsoleta mas
+            // funcional em aparelhos antigos) sao o unico mecanismo disponivel.
+            return;
+        }
+        try {
+            KeyguardManager keyguard = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+            if (keyguard == null || !keyguard.isKeyguardLocked()) {
+                return;
+            }
+            keyguard.requestDismissKeyguard(this, new KeyguardManager.KeyguardDismissCallback() {
+                @Override
+                public void onDismissSucceeded() {
+                    RemoteLog.i(ProjectionConsentActivity.this,
+                            "Bloqueio de tela dispensado para a sessao de suporte");
+                }
+
+                @Override
+                public void onDismissError() {
+                    // Nao e' uma falha silenciosa: registrada no log do painel, porque quem
+                    // esta' atendendo precisa saber que o toque nao vai funcionar ate
+                    // alguem desbloquear fisicamente o aparelho.
+                    RemoteLog.w(ProjectionConsentActivity.this,
+                            "Nao foi possivel dispensar o bloqueio de tela automaticamente");
+                }
+
+                @Override
+                public void onDismissCancelled() {
+                    RemoteLog.w(ProjectionConsentActivity.this,
+                            "Dispensa do bloqueio de tela cancelada");
+                }
+            });
+        } catch (Throwable t) {
+            Log.w(TAG, "requestDismissKeyguard indisponivel", t);
+        }
     }
 
     @Override

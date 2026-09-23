@@ -1,0 +1,16 @@
+{
+  "alvo": "console-war-real",
+  "versao": null,
+  "commit": "7edfabcb+sujo",
+  "data_build_utc": "2026-09-23T14:03:02Z",
+  "artefato": "dist/hmdm.war",
+  "sha256_artefato": "f3f97bdc1c1c75021911f7e4e6726ff5c30f93ef8a715848c2fdcc896c12b23c",
+  "tamanho_bytes": 44005409,
+  "nota": "WAR real atualizado com classes Java 8 para Jersey/Tomcat, jar WebFilter e UI servida.",
+  "ferramentas": {
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "maven": "Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)",
+    "gradle_wrapper_remote_agent": "8.13",
+    "gradle_wrapper_launcher": "8.13"
+  }
+}

@@ -8,8 +8,8 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "com.hmdm.launcher";
   public static final String BUILD_TYPE = "release";
   public static final String FLAVOR = "opensource";
-  public static final int VERSION_CODE = 15379;
-  public static final String VERSION_NAME = "1.0";
+  public static final int VERSION_CODE = 15380;
+  public static final String VERSION_NAME = "1.1";
   // Field from default config.
   public static final Boolean ANR_WATCHDOG = false;
   // Field from default config.

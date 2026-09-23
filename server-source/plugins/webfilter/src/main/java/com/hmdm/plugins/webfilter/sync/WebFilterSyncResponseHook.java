@@ -140,7 +140,9 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
         if (dnsHost != null) {
             tree.put(DNS_HOST_FIELD, dnsHost);
         } else {
-            tree.remove(DNS_HOST_FIELD);
+            // A policy exists for this profile but is disabled or lacks DNS settings. Send an explicit
+            // empty value so the launcher clears a Private DNS setting previously enforced by Web Filter.
+            tree.put(DNS_HOST_FIELD, "");
         }
         return new WebFilterSyncResponse(original, tree, settings);
     }

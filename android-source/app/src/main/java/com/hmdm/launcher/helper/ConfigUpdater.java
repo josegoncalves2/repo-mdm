@@ -453,6 +453,18 @@ public class ConfigUpdater {
                 Utils.setProxy(context, proxyUrl);
             }
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Utils.isDeviceOwner(context)) {
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null) {
+                Utils.setPrivateDnsPolicy(config.getWebfilterDnsHost(), context);
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Utils.isDeviceOwner(context)) {
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null) {
+                Utils.setKeyguardDisabledPolicy(config.getKioskKeyguard(), context);
+            }
+        }
 
         if (uiNotifier != null) {
             uiNotifier.onPoliciesUpdated();

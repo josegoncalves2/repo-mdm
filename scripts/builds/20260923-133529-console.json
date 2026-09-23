@@ -1,0 +1,16 @@
+{
+  "alvo": "console",
+  "versao": "5.39.2",
+  "commit": "7edfabcb+sujo",
+  "data_build_utc": "2026-09-23T13:35:26Z",
+  "artefato": "dist/hmdm.war",
+  "sha256_artefato": "3d5d19164d22602ebf63987223751cb770c57bda44c703aef12f1826d6cd5585",
+  "tamanho_bytes": 43992203,
+  "nota": "build-info.json carimbado nos fontes estaticos; NAO foi feita recompilacao Java. O sha256 abaixo e' do dist/hmdm.war ATUAL (nao alterado por este comando).",
+  "ferramentas": {
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "maven": "Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)",
+    "gradle_wrapper_remote_agent": "8.13",
+    "gradle_wrapper_launcher": "8.13"
+  }
+}

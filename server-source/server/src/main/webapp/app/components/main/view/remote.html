@@ -104,17 +104,33 @@
                              e recria-lo a cada mudanca de estado perderia o decodificador.
                              mousedown/mouseup em vez de click porque a distincao entre toque,
                              toque longo e arrasto depende de quanto tempo e quanto se moveu. -->
+                        <!-- tabindex + ng-keydown: o canvas recebe foco no clique e passa a
+                             capturar o teclado FISICO ao vivo (cada tecla vai direto ao
+                             aparelho), em vez de obrigar o campo de texto + Enter. -->
                         <canvas id="remote-screen-canvas"
                                 class="remote-live-canvas"
-                                ng-class="{'remote-live-canvas-interactive': remote.input}"
+                                tabindex="0"
+                                ng-class="{'remote-live-canvas-interactive': remote.streaming}"
                                 ng-show="remote.streaming"
                                 ng-mousedown="onScreenDown($event)"
-                                ng-mouseup="onScreenUp($event)"></canvas>
+                                ng-mouseup="onScreenUp($event)"
+                                ng-keydown="onScreenKey($event)"></canvas>
 
-                        <div ng-if="remote.connecting" class="remote-preview-state">
+                        <!-- "pending" cobre tanto o handshake normal (aparelho online, o
+                             agente ainda nao respondeu) quanto o pedido em espera de um
+                             aparelho offline (item 3): dos dois lados o operador ve "sessao
+                             pedida, sem imagem ainda", e requestedAt mostra ha' quanto tempo. -->
+                        <div ng-if="remote.pending" class="remote-preview-state">
                             <img src="images/loading.gif" alt="" class="remote-preview-spinner">
-                            <strong localized>remote.screen.connecting.title</strong>
-                            <p class="remote-preview-copy" localized>remote.screen.connecting.body</p>
+                            <strong ng-if="selectedDevice.online" localized>remote.screen.connecting.title</strong>
+                            <strong ng-if="!selectedDevice.online" localized>remote.screen.waiting.title</strong>
+                            <p class="remote-preview-copy">
+                                <span ng-if="selectedDevice.online" localized>remote.screen.connecting.body</span>
+                                <span ng-if="!selectedDevice.online" localized>remote.screen.waiting.body</span>
+                            </p>
+                            <p class="remote-ip-note" ng-if="remote.requestedAt">
+                                {{'remote.screen.requested.at' | localize}} {{remote.requestedAt | date:'HH:mm:ss'}}
+                            </p>
                         </div>
 
                         <div ng-if="remote.error && !remote.streaming"
@@ -123,11 +139,11 @@
                             <strong localized>remote.screen.failed.title</strong>
                             <p class="remote-preview-copy">{{remote.error}}</p>
                             <button class="btn btn-sm btn-warning" ng-click="startRemote()"
-                                    ng-disabled="!selectedDevice.online || remote.connecting"
+                                    ng-disabled="remote.pending"
                                     localized>remote.screen.try.again</button>
                         </div>
 
-                        <div ng-if="!remote.connecting && !remote.streaming && !remote.error"
+                        <div ng-if="!remote.pending && !remote.streaming && !remote.error"
                              class="remote-preview-state">
                             <strong localized>remote.screen.idle.title</strong>
                             <p class="remote-preview-copy">
@@ -136,7 +152,7 @@
                                 <span ng-if="selectedDevice.online && !remoteSupported" localized>remote.error.stream.unsupported</span>
                             </p>
                             <button class="btn btn-primary" ng-click="startRemote()"
-                                    ng-disabled="!selectedDevice.online || remote.connecting || !remoteSupported"
+                                    ng-disabled="remote.pending || !remoteSupported"
                                     localized>remote.screen.request.access</button>
                         </div>
                     </div>
@@ -145,12 +161,13 @@
                 <div class="remote-live-bar">
                     <button type="button" class="btn btn-primary btn-sm"
                             ng-click="startRemote()"
-                            ng-disabled="!selectedDevice.online || remote.connecting || remote.connected || !remoteSupported"
+                            ng-disabled="remote.connected || !remoteSupported"
                             localized>remote.screen.connect</button>
                     <button type="button" class="btn btn-default btn-sm"
                             ng-click="stopRemote()"
-                            ng-disabled="!remote.connected && !remote.connecting"
-                            localized>remote.screen.disconnect</button>
+                            ng-disabled="!remote.connected">
+                        {{ (remote.streaming ? 'remote.screen.disconnect' : 'remote.screen.cancel.request') | localize }}
+                    </button>
 
                     <span class="remote-ip-note" ng-if="remote.streaming">
                         {{'remote.screen.live' | localize}} ·
@@ -174,24 +191,43 @@
                     <div class="remote-input-keys">
                         <button type="button" class="btn btn-default btn-sm"
                                 ng-click="sendRemoteKey('back')"
-                                ng-disabled="!remote.input" localized>remote.key.back</button>
+                                ng-disabled="!remote.streaming" localized>remote.key.back</button>
                         <button type="button" class="btn btn-default btn-sm"
                                 ng-click="sendRemoteKey('home')"
-                                ng-disabled="!remote.input" localized>remote.key.home</button>
+                                ng-disabled="!remote.streaming" localized>remote.key.home</button>
                         <button type="button" class="btn btn-default btn-sm"
                                 ng-click="sendRemoteKey('recents')"
-                                ng-disabled="!remote.input" localized>remote.key.recents</button>
+                                ng-disabled="!remote.streaming" localized>remote.key.recents</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('backspace')"
+                                ng-disabled="!remote.streaming" localized>remote.key.backspace</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('enter')"
+                                ng-disabled="!remote.streaming" localized>remote.key.enter</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('left')"
+                                ng-disabled="!remote.streaming" localized>remote.key.left</button>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-click="sendRemoteKey('right')"
+                                ng-disabled="!remote.streaming" localized>remote.key.right</button>
                     </div>
 
                     <div class="remote-input-typing">
                         <input type="text" class="form-control" ng-model="remote.typing"
-                               ng-disabled="!remote.input"
+                               ng-disabled="!remote.streaming"
                                ng-keypress="$event.which === 13 && sendRemoteText()"
                                localized-placeholder="remote.type.placeholder"/>
                         <button class="btn btn-primary" ng-click="sendRemoteText()"
-                                ng-disabled="!remote.input || !remote.typing"
+                                ng-disabled="!remote.streaming || !remote.typing"
                                 localized>remote.type.send</button>
                     </div>
+
+                    <!-- Aviso pratico: clicar na tela do aparelho da foco ao canvas e o
+                         teclado fisico passa a digitar direto no que estiver em foco no
+                         aparelho, sem precisar do campo acima. -->
+                    <p class="remote-ip-note">
+                        Clique na tela do aparelho e digite no seu teclado: as teclas vao direto para o dispositivo.
+                    </p>
 
                     <p class="remote-ip-note" ng-if="remote.inputNote">{{remote.inputNote}}</p>
                     <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>

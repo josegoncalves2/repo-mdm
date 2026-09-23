@@ -7,9 +7,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityWindowInfo;
 
 import com.hwmdm.remote.mdm.RemoteLog;
 import android.view.accessibility.AccessibilityNodeInfo;
+
+import java.util.List;
 
 /**
  * <p>Reproduz no aparelho o toque e a digitacao que o tecnico faz no painel.</p>
@@ -20,12 +23,15 @@ import android.view.accessibility.AccessibilityNodeInfo;
  * passar por aqui. Foi por nao existir esse caminho que a versao anterior deste recurso
  * era so' visualizacao.</p>
  *
- * <p><b>O escopo e' de saida, nao de entrada.</b> O servico declara apenas
- * {@code canPerformGestures} e nao pede {@code canRetrieveWindowContent} para observar a
- * tela. Ele nao le o conteudo das janelas nem registra o que o usuario faz; a unica
- * leitura que existe e' localizar o campo em foco na hora de escrever um texto, o que e'
- * inevitavel para digitar. A imagem da tela vem da MediaProjection, que o usuario autoriza
- * explicitamente e que mostra um indicador enquanto dura.</p>
+ * <p><b>Sobre ler a janela.</b> O servico declara {@code canRetrieveWindowContent} (ver
+ * {@code res/xml/input_injection_config.xml}) porque, sem isso, {@code getRootInActiveWindow()}
+ * sempre devolve {@code null} e a digitacao nunca encontra onde escrever -- era exatamente
+ * isso que quebrava a digitacao antes desta correcao. A capacidade nao vira vigilancia: o
+ * servico nao registra, loga nem envia a lugar nenhum o conteudo das janelas; a arvore de
+ * acessibilidade e' lida so' para achar o campo em foco na hora de digitar, e descartada
+ * (via {@code recycle()}) logo em seguida. A imagem da tela em si vem da MediaProjection,
+ * que o usuario autoriza explicitamente e que mostra um indicador enquanto dura -- esse
+ * servico de acessibilidade nao participa disso.</p>
  */
 public class InputInjectionService extends AccessibilityService {
 
@@ -196,66 +202,343 @@ public class InputInjectionService extends AccessibilityService {
     }
 
     /**
-     * <p>Escreve um texto no campo que estiver em foco.</p>
+     * <p>Motivo da ultima falha de {@link #type(String)} ou {@link #key(String)}, quando
+     * distinguivel. {@code null} quando a ultima chamada teve sucesso ou quando falhou por
+     * um motivo generico (gesto recusado pelo sistema, por exemplo).</p>
+     *
+     * <p>Existe para separar, do lado do painel, "nao ha campo de texto em foco" de
+     * "a acessibilidade esta desligada" -- ate esta correcao os dois casos chegavam ao
+     * operador como o mesmo "nao aconteceu nada", e so' um dos dois se resolve pedindo para
+     * tocar num campo antes de digitar.</p>
+     *
+     * <p>Nao e' {@code ThreadLocal} de proposito: {@link ScreenStreamService} chama estes
+     * metodos sempre a partir da mesma {@code HandlerThread} de entrada, entao um campo
+     * simples basta e evita a complicacao de limpar um ThreadLocal.</p>
+     */
+    private volatile String lastFailureReason;
+
+    /**
+     * Consome (le e limpa) o motivo da ultima falha. Chamar depois de {@code type}/{@code key}
+     * terem devolvido {@code false}; antes disso ou depois de um sucesso o valor e' sempre
+     * {@code null}.
+     */
+    public String consumeLastFailureReason() {
+        String reason = lastFailureReason;
+        lastFailureReason = null;
+        return reason;
+    }
+
+    /**
+     * <p>Insere um texto na posicao do cursor do campo que estiver em foco.</p>
      *
      * <p>Vai pela acao {@code ACTION_SET_TEXT} do no em foco, e nao por eventos de tecla:
      * um aplicativo sem privilegio de sistema nao consegue injetar KeyEvent, e emular
      * teclado por gestos no teclado virtual dependeria do layout do teclado instalado --
      * o que quebra em cada aparelho diferente.</p>
      *
-     * <p>Limite conhecido: substitui o conteudo do campo em vez de acrescentar ao final.
-     * E' o que a API oferece; digitar caractere a caractere produziria uma corrida com o
-     * proprio aplicativo em foco.</p>
+     * <p>Ate esta correcao este metodo substituia o campo inteiro pelo texto novo -- o
+     * proprio javadoc chamava isso de "limite conhecido da API". Nao era: {@code ACTION_SET_TEXT}
+     * aceita qualquer {@code CharSequence}, entao nada impede montar o valor novo a partir
+     * do valor atual e da selecao antes de aplicar a acao. E' o que {@link #insertAtCursor}
+     * faz.</p>
      */
     public boolean type(String text) {
+        lastFailureReason = null;
         if (text == null) {
             return false;
         }
-        AccessibilityNodeInfo focused = null;
-        try {
-            AccessibilityNodeInfo root = getRootInActiveWindow();
-            if (root != null) {
-                focused = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
-            }
-            if (focused == null) {
-                Log.w(TAG, "Digitacao ignorada: nenhum campo de texto em foco");
-                return false;
-            }
-            Bundle args = new Bundle();
-            args.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
-            return focused.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, args);
-        } catch (Throwable t) {
-            Log.w(TAG, "Digitacao recusada", t);
+        AccessibilityNodeInfo focused = findFocusedEditable();
+        if (focused == null) {
+            lastFailureReason = "no_focused_field";
+            Log.w(TAG, "Digitacao ignorada: nenhum campo de texto em foco");
             return false;
+        }
+        try {
+            return insertAtCursor(focused, text);
         } finally {
-            if (focused != null) {
-                focused.recycle();
-            }
+            focused.recycle();
         }
     }
 
-    /** Teclas de navegacao do sistema, que nao tem coordenada na tela. */
+    /**
+     * Localiza o campo com foco de entrada na janela ativa. Devolve {@code null} tanto
+     * quando nao ha janela ativa legivel quanto quando nenhum campo esta em foco nela; os
+     * chamadores tratam os dois casos do mesmo jeito (nao ha onde digitar).
+     */
+    private AccessibilityNodeInfo findFocusedEditable() {
+        try {
+            AccessibilityNodeInfo root = getRootInActiveWindow();
+            AccessibilityNodeInfo focused = findFocusedEditable(root);
+            if (root != null) {
+                root.recycle();
+            }
+            if (focused != null) {
+                return focused;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                List<AccessibilityWindowInfo> windows = getWindows();
+                if (windows != null) {
+                    for (AccessibilityWindowInfo window : windows) {
+                        AccessibilityNodeInfo windowRoot = null;
+                        try {
+                            windowRoot = window == null ? null : window.getRoot();
+                            focused = findFocusedEditable(windowRoot);
+                            if (focused != null) {
+                                return focused;
+                            }
+                        } finally {
+                            if (windowRoot != null) {
+                                windowRoot.recycle();
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Throwable t) {
+            Log.w(TAG, "Falha ao localizar o campo em foco", t);
+        }
+        return null;
+    }
+
+    private AccessibilityNodeInfo findFocusedEditable(AccessibilityNodeInfo root) {
+        if (root == null) {
+            return null;
+        }
+        AccessibilityNodeInfo focused = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);
+        if (isEditable(focused)) {
+            return focused;
+        }
+        if (focused != null) {
+            focused.recycle();
+        }
+        return findEditableInTree(root);
+    }
+
+    private AccessibilityNodeInfo findEditableInTree(AccessibilityNodeInfo node) {
+        if (node == null) {
+            return null;
+        }
+        if (isEditable(node) && (node.isFocused() || node.isAccessibilityFocused())) {
+            return AccessibilityNodeInfo.obtain(node);
+        }
+        for (int i = 0; i < node.getChildCount(); i++) {
+            AccessibilityNodeInfo child = null;
+            try {
+                child = node.getChild(i);
+                AccessibilityNodeInfo found = findEditableInTree(child);
+                if (found != null) {
+                    return found;
+                }
+            } finally {
+                if (child != null) {
+                    child.recycle();
+                }
+            }
+        }
+        return null;
+    }
+
+    private boolean isEditable(AccessibilityNodeInfo node) {
+        if (node == null) {
+            return false;
+        }
+        return node.isEditable()
+                || "android.widget.EditText".contentEquals(node.getClassName());
+    }
+
+    /**
+     * <p>Compoe o valor novo do campo inserindo {@code insert} na posicao do cursor --
+     * substituindo a selecao quando ela nao estiver colapsada, exatamente como digitar por
+     * cima de um trecho selecionado se comporta em qualquer editor -- e aplica o resultado
+     * inteiro via {@code ACTION_SET_TEXT}, unica acao que a API oferece para mudar o texto.
+     * O cursor e' reposicionado depois com {@code ACTION_SET_SELECTION} para o fim do que
+     * acabou de ser inserido, para a proxima tecla continuar dali.</p>
+     */
+    private boolean insertAtCursor(AccessibilityNodeInfo node, String insert) {
+        try {
+            CharSequence current = node.getText();
+            String value = current == null ? "" : current.toString();
+            int start = node.getTextSelectionStart();
+            int end = node.getTextSelectionEnd();
+            if (start < 0 || end < 0 || start > value.length() || end > value.length()) {
+                // Selecao invalida, ou aparelho/campo que nao a relata: cair no fim do
+                // campo e' melhor do que recusar a digitacao inteira.
+                start = value.length();
+                end = value.length();
+            }
+            if (start > end) {
+                int tmp = start;
+                start = end;
+                end = tmp;
+            }
+            String novo = value.substring(0, start) + insert + value.substring(end);
+            return setTextAndCursor(node, novo, start + insert.length());
+        } catch (Throwable t) {
+            Log.w(TAG, "Digitacao recusada", t);
+            return false;
+        }
+    }
+
+    /** Aplica o valor novo e tenta posicionar o cursor. O cursor e' cosmetico: se o campo
+     * recusar {@code ACTION_SET_SELECTION} (alguns campos customizados recusam), o texto ja
+     * foi escrito, e isso vale mais do que a posicao exata do cursor. */
+    private boolean setTextAndCursor(AccessibilityNodeInfo node, String novo, int cursor) {
+        Bundle setArgs = new Bundle();
+        setArgs.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, novo);
+        if (!node.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, setArgs)) {
+            return false;
+        }
+        Bundle selArgs = new Bundle();
+        selArgs.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, cursor);
+        selArgs.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, cursor);
+        node.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, selArgs);
+        return true;
+    }
+
+    /** Apaga o caractere antes do cursor, ou a selecao inteira quando ela nao estiver
+     * colapsada -- o mesmo comportamento de backspace em qualquer editor de texto. */
+    private boolean backspace(AccessibilityNodeInfo node) {
+        try {
+            CharSequence current = node.getText();
+            String value = current == null ? "" : current.toString();
+            int start = node.getTextSelectionStart();
+            int end = node.getTextSelectionEnd();
+            if (start < 0 || end < 0 || start > value.length() || end > value.length()) {
+                start = value.length();
+                end = value.length();
+            }
+            if (start > end) {
+                int tmp = start;
+                start = end;
+                end = tmp;
+            }
+            if (start == end) {
+                if (start == 0) {
+                    // Nada antes do cursor: nao e' erro, so' nao ha o que apagar.
+                    return true;
+                }
+                start = start - 1;
+            }
+            String novo = value.substring(0, start) + value.substring(end);
+            return setTextAndCursor(node, novo, start);
+        } catch (Throwable t) {
+            Log.w(TAG, "Backspace recusado", t);
+            return false;
+        }
+    }
+
+    /**
+     * <p>Confirma o campo. No Android 11+ (API 30) usa {@code ACTION_IME_ENTER}, a acao que
+     * o teclado usa para a tecla de confirmar/enviar -- e' o que faz um campo de busca
+     * disparar a busca, por exemplo, em vez de so' quebrar linha. Em aparelhos mais antigos,
+     * ou quando o campo nao trata essa acao, o recuo e' inserir uma quebra de linha, que ao
+     * menos funciona em qualquer campo multi-linha.</p>
+     */
+    private boolean enter(AccessibilityNodeInfo node) {
+        if (Build.VERSION.SDK_INT >= 30) {
+            try {
+                // ACTION_IME_ENTER so' existe como AccessibilityAction (objeto), nao como
+                // constante inteira solta em AccessibilityNodeInfo; performAction(int)
+                // exige o id de dentro dele.
+                if (node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_IME_ENTER.getId())) {
+                    return true;
+                }
+            } catch (Throwable ignored) {
+                // Cai no recuo abaixo.
+            }
+        }
+        return insertAtCursor(node, "\n");
+    }
+
+    /**
+     * Move o cursor sem alterar o texto. {@code delta} negativo move para a esquerda; a
+     * posicao e' presa aos limites do campo, entao pedir para mover alem da borda so' deixa
+     * o cursor na borda -- nao e' erro.
+     */
+    private boolean moveCursor(AccessibilityNodeInfo node, int delta) {
+        try {
+            CharSequence current = node.getText();
+            int len = current == null ? 0 : current.length();
+            int start = node.getTextSelectionStart();
+            int end = node.getTextSelectionEnd();
+            int pos = end >= 0 ? end : (start >= 0 ? start : len);
+            pos = Math.max(0, Math.min(len, pos + delta));
+            Bundle selArgs = new Bundle();
+            selArgs.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, pos);
+            selArgs.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, pos);
+            return node.performAction(AccessibilityNodeInfo.ACTION_SET_SELECTION, selArgs);
+        } catch (Throwable t) {
+            Log.w(TAG, "Movimento de cursor recusado", t);
+            return false;
+        }
+    }
+
+    /**
+     * <p>Teclas que o painel manda por nome em vez de coordenada.</p>
+     *
+     * <p>Dois grupos, tratados diferente: {@code back}/{@code home}/{@code recents}/
+     * {@code notifications} sao acoes globais do sistema e nao dependem de campo nenhum em
+     * foco -- os nomes e o comportamento sao os mesmos de antes desta correcao, porque o
+     * painel ja os chama por eles. {@code backspace}/{@code enter}/{@code tab}/{@code left}/
+     * {@code right} sao novos, agem sobre o campo em foco e por isso passam pela mesma busca
+     * que {@link #type(String)} faz -- sem campo em foco, apagar/mover/confirmar nao tem
+     * onde atuar.</p>
+     */
     public boolean key(String name) {
+        lastFailureReason = null;
         if (name == null) {
             return false;
         }
-        Integer action = null;
+
+        Integer globalAction = null;
         switch (name) {
-            case "back":     action = GLOBAL_ACTION_BACK; break;
-            case "home":     action = GLOBAL_ACTION_HOME; break;
-            case "recents":  action = GLOBAL_ACTION_RECENTS; break;
-            case "notifications": action = GLOBAL_ACTION_NOTIFICATIONS; break;
+            case "back":     globalAction = GLOBAL_ACTION_BACK; break;
+            case "home":     globalAction = GLOBAL_ACTION_HOME; break;
+            case "recents":  globalAction = GLOBAL_ACTION_RECENTS; break;
+            case "notifications": globalAction = GLOBAL_ACTION_NOTIFICATIONS; break;
             default: break;
         }
-        if (action == null) {
-            Log.w(TAG, "Tecla desconhecida: " + name);
+        if (globalAction != null) {
+            try {
+                return performGlobalAction(globalAction);
+            } catch (Throwable t) {
+                Log.w(TAG, "Tecla recusada", t);
+                return false;
+            }
+        }
+
+        switch (name) {
+            case "backspace":
+            case "enter":
+            case "tab":
+            case "left":
+            case "right":
+                break;
+            default:
+                Log.w(TAG, "Tecla desconhecida: " + name);
+                return false;
+        }
+
+        AccessibilityNodeInfo focused = findFocusedEditable();
+        if (focused == null) {
+            lastFailureReason = "no_focused_field";
+            Log.w(TAG, "Tecla '" + name + "' ignorada: nenhum campo de texto em foco");
             return false;
         }
         try {
-            return performGlobalAction(action);
-        } catch (Throwable t) {
-            Log.w(TAG, "Tecla recusada", t);
-            return false;
+            switch (name) {
+                case "backspace": return backspace(focused);
+                case "enter":     return enter(focused);
+                // Tab nao tem acao padronizada de "proximo campo" na arvore de
+                // acessibilidade fora de conteudo web; inserir o caractere e' o
+                // comportamento util que sobra, e e' aceito por editores e navegadores.
+                case "tab":       return insertAtCursor(focused, "\t");
+                case "left":      return moveCursor(focused, -1);
+                case "right":     return moveCursor(focused, 1);
+                default:          return false;
+            }
+        } finally {
+            focused.recycle();
         }
     }
 }

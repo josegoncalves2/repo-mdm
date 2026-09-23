@@ -87,6 +87,17 @@ public class RemoteSupportResource {
      */
     private static final long POLL_WAIT_MS = 20_000L;
 
+    /**
+     * <p>Mesmo limiar que {@code DeviceView.getOnlineThresholdSec()} usa para pintar o status
+     * "online"/"offline" na lista de aparelhos (5 minutos, porque {@code lastUpdate} agora e'
+     * tocado a cada consulta do long polling). Duplicado aqui -- e nao chamado dali -- porque
+     * {@code DeviceView} fica fora dos arquivos que esta mudanca tem autorizacao para tocar, e
+     * {@link DeviceDAO#getDeviceById} nao preenche {@code statusCode} (a coluna so' e' calculada
+     * nas consultas de listagem). Se o limiar de "online" mudar num lugar, tem de mudar no
+     * outro -- ambos citam o mesmo numero de proposito, para o `grep` achar os dois.</p>
+     */
+    private static final long ONLINE_THRESHOLD_MS = 5 * 60_000L;
+
     private DeviceDAO deviceDAO;
     private PushService pushService;
     private String baseUrl;
@@ -109,7 +120,9 @@ public class RemoteSupportResource {
     // =================================================================================================================
     @ApiOperation(
             value = "Start a remote support session",
-            notes = "Reserves a relay slot, mints the one-time token the agent must present, and calls the device."
+            notes = "Reserves a relay slot, mints the one-time token the agent must present, and calls the device. "
+                    + "Accepted even when the device is currently offline: the call is queued as a pending push and "
+                    + "delivered whenever the device syncs again (see PENDING_OFFLINE_TIMEOUT_MS in RemoteSessionHub)."
     )
     @POST
     @Path("/{id}/start")
@@ -125,8 +138,20 @@ public class RemoteSupportResource {
                 return Response.PERMISSION_DENIED();
             }
 
+            /*
+             * Item 3 da queixa: o painel nao pode mais desistir so' porque o aparelho esta'
+             * offline agora. O pedido e' aceito de qualquer forma -- a vaga fica reservada no
+             * hub com um prazo mais longo (abaixo), e o push sai do mesmo jeito de sempre. O
+             * mecanismo de push generico (PushSenderPolling -> NotificationDAO.send) ja' grava
+             * em `pendingpushes` quando o aparelho nao esta' com uma consulta de long polling
+             * em aberto, e entrega assim que ele voltar a sincronizar -- isto nao e' codigo
+             * novo, e' o mesmo caminho que qualquer outro push deste servidor ja' usa; o que
+             * faltava era o hub nao descartar a sessao/token antes disso acontecer.
+             */
+            boolean deviceOnline = isDeviceOnline(device);
+
             RemoteSessionHub.RemoteSession session =
-                    RemoteSessionHub.getInstance().open(device.getId(), device.getNumber());
+                    RemoteSessionHub.getInstance().open(device.getId(), device.getNumber(), deviceOnline);
 
             JSONObject payload = new JSONObject();
             payload.put("url", agentSocketUrl(device.getNumber()));
@@ -146,7 +171,12 @@ public class RemoteSupportResource {
             result.put("deviceId", device.getId());
             result.put("deviceNumber", device.getNumber());
             result.put("socket", viewerSocketPath(device.getNumber()));
-            log.info("Suporte remoto chamado para o aparelho '{}'", device.getNumber());
+            // O painel usa isto para mostrar "aguardando o aparelho conectar" com o horario do
+            // pedido, em vez de nao fazer nada quando o aparelho esta' offline no clique.
+            result.put("pending", !deviceOnline);
+            result.put("requestedAt", session.getCreatedAt());
+            log.info("Suporte remoto chamado para o aparelho '{}' (online no pedido={})",
+                    device.getNumber(), deviceOnline);
             return Response.OK(result);
         } catch (Exception e) {
             log.error("Falha ao abrir suporte remoto no aparelho #{}", id, e);
@@ -214,6 +244,15 @@ public class RemoteSupportResource {
             result.put("socket", viewerSocketPath(device.getNumber()));
             result.put("open", session != null);
             result.put("streaming", session != null && session.isStreaming());
+            /*
+             * Item 4: e' assim que o painel descobre, ao carregar (F5, troca de aba, ou um
+             * navegador novo), que ja' existe uma sessao viva para este aparelho e deve
+             * REATAR em vez de abrir uma sessao nova. "pending" cobre tanto "o agente ainda
+             * nao conectou" quanto "o pedido esta' esperando o aparelho sincronizar" -- dos
+             * dois lados o painel mostra o mesmo estado de espera, com requestedAt.
+             */
+            result.put("pending", session != null && !session.isStreaming());
+            result.put("requestedAt", session == null ? null : session.getCreatedAt());
             result.put("input", session != null && session.isInputAvailable());
             result.put("width", session == null ? 0 : session.getWidth());
             result.put("height", session == null ? 0 : session.getHeight());
@@ -314,6 +353,17 @@ public class RemoteSupportResource {
 
     private boolean mayView() {
         return mayControl() || SecurityContext.get().hasPermission(PERMISSION_VIEW);
+    }
+
+    /**
+     * <p>Mesma regra que a lista de aparelhos usa para pintar "ONLINE"/"OFFLINE" (ver
+     * {@code ONLINE_THRESHOLD_MS} acima), aplicada aqui para decidir se o pedido de suporte
+     * remoto entra direto ou fica pendente esperando o aparelho sincronizar.</p>
+     */
+    private boolean isDeviceOnline(Device device) {
+        Long lastUpdate = device.getLastUpdate();
+        return lastUpdate != null && lastUpdate > 0
+                && (System.currentTimeMillis() - lastUpdate) < ONLINE_THRESHOLD_MS;
     }
 
     /**

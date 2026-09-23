@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# atalho para .trava/bin/trava — a porta única do kit
+exec python3 "$(cd "$(dirname "$0")" && pwd)/.trava/bin/trava" "$@"

@@ -1,0 +1,34 @@
+<!-- Localization completed -->
+<nav class="navbar navbar-default navbar-fixed-top header hwmdm-topbar">
+    <div class="hwmdm-topbar-brand" ng-click="mainPanel()">
+        <img ng-if="webLogoUrl" ng-src="{{webLogoUrl}}" class="hwmdm-brand-logo" alt=""/>
+        <span ng-if="!webLogoUrl" class="hwmdm-brand-mark">HW</span>
+        <span class="hwmdm-brand-text">{{appName}}</span>
+    </div>
+
+    <div class="hwmdm-topbar-meta">
+        <button type="button" class="hwmdm-theme-toggle" ng-click="toggleTheme()"
+                title="Switch light/dark theme">
+            <span class="glyphicon glyphicon-adjust"></span>
+        </button>
+        <span class="hwmdm-env-chip">{{portalHost}}</span>
+        <span ng-if="expiryWarning" id="headerExpiryWarning" class="expiry-warning" localized-change-tracking>account.expired.short</span>
+        <span id="headerDateTime" class="hide-on-small-screen">{{dateTime}}</span>
+
+        <div class="dropdown margin-right" uib-dropdown>
+            <button type="button" class="hwmdm-user-button dropdown-toggle" uib-dropdown-toggle aria-expanded="false">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="username-label">{{getUserName()}}</span>
+                <span class="caret username-caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">
+                <li><a ng-style="color" ng-click="about()" localized-change-tracking>menu.about</a></li>
+                <li><a ui-sref="profile" ng-style="color" localized-change-tracking>menu.profile</a></li>
+                <li ng-if="authService.isSuperAdmin() && !isControlPanel"><a ng-click="controlPanel()" localized-change-tracking>menu.panel.master</a></li>
+                <li ng-if="authService.isSuperAdmin() && isControlPanel"><a ng-click="mainPanel()" localized-change-tracking>menu.panel.main</a></li>
+                <li class="divider"></li>
+                <li><a ng-click="logout()" localized-change-tracking>menu.logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

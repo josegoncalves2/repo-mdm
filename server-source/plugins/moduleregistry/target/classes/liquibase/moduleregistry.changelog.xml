@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
+        logicalFilePath="moduleregistry.changelog.xml">
+
+    <!--
+    The change set IDs MUST start with "plugin-<plugin identifier>" followed by dash symbol ALWAYS.
+    The database object names declared by plugin MUST always start with "plugin_<plugin identifier>" followed by underscore
+    symbol.
+    Modelo de dados: relatorio-E.md, secao E1, do change corrigir-12-itens.
+    -->
+
+    <changeSet id="plugin-moduleregistry-2026-09-23-01" author="hwmdm" context="common">
+        <comment>Plugin,new: moduleregistry — estado de manutencao dos modulos nativos do console, por customer</comment>
+        <sql>
+            CREATE TABLE plugin_moduleregistry_state (
+                id SERIAL PRIMARY KEY,
+                customerId INTEGER NOT NULL,
+                moduleId VARCHAR(64) NOT NULL,
+                disabled BOOLEAN NOT NULL DEFAULT FALSE,
+                disabledBy VARCHAR(255),
+                disabledAt TIMESTAMP,
+                reason VARCHAR(500),
+                CONSTRAINT plugin_moduleregistry_state_customer_module UNIQUE (customerId, moduleId)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE plugin_moduleregistry_state;
+        </rollback>
+    </changeSet>
+
+    <!-- Mesma regra do Web Filter: quem ja administra perfis ('configurations') ou e'
+         super-admin ganha a permissao de ligar/desligar modulo; os demais papeis recebem
+         pela tela de papeis, se algum dia fizer sentido delegar. -->
+    <changeSet id="plugin-moduleregistry-2026-09-23-02" author="hwmdm" context="common">
+        <comment>Permission,new: modules_manage</comment>
+        <sql>
+            INSERT INTO permissions (name, description, superAdmin)
+                VALUES ('modules_manage', 'Ligar e desligar modulos do console para manutencao', FALSE);
+            INSERT INTO userRolePermissions (roleId, permissionId)
+                SELECT DISTINCT r.id, (SELECT id FROM permissions WHERE name = 'modules_manage')
+                FROM userroles r
+                WHERE r.superAdmin
+                   OR EXISTS (SELECT 1 FROM userRolePermissions urp
+                              JOIN permissions p ON p.id = urp.permissionId
+                              WHERE urp.roleId = r.id AND p.name = 'configurations');
+        </sql>
+        <rollback>
+            DELETE FROM permissions WHERE name = 'modules_manage';
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

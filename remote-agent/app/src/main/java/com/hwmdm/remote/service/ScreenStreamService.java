@@ -340,7 +340,12 @@ public class ScreenStreamService extends Service {
                     Log.w(TAG, "Comando desconhecido: " + type);
                     return;
             }
-            reportInput(type, ok, ok ? null : "rejected");
+            // "text" e "key" agora podem falhar por um motivo distinguivel ("nenhum campo
+            // em foco", distinto de acessibilidade desligada, que ja e' tratado acima e
+            // nunca chega aqui). Os demais comandos continuam so' com "rejected": um toque
+            // ou gesto recusado pelo sistema nao tem uma causa mais especifica para relatar.
+            String reason = ok ? null : input.consumeLastFailureReason();
+            reportInput(type, ok, ok ? null : (reason != null ? reason : "rejected"));
         } catch (Throwable t) {
             Log.w(TAG, "Comando ilegivel", t);
         }
@@ -749,8 +754,15 @@ public class ScreenStreamService extends Service {
             if (power == null) {
                 return;
             }
+            // ON_AFTER_RELEASE: ao soltar o wake lock (fim da sessao ou estouro do teto),
+            // o Android reinicia a contagem normal de suspensao a partir dali, em vez de a
+            // tela apagar no mesmo instante em que o lock cai. Sem essa flag o comportamento
+            // no fim de uma sessao seria "tela apaga assim que o tecnico desconecta", o que
+            // e' pior para quem esta' com o aparelho na mao do que deixar a suspensao normal
+            // agir.
             screenLock = power.newWakeLock(
-                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP
+                            | PowerManager.ON_AFTER_RELEASE,
                     "hwmdm:sessao-remota");
             screenLock.setReferenceCounted(false);
             screenLock.acquire(SCREEN_LOCK_TIMEOUT_MS);

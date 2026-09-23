@@ -35,3 +35,9 @@ source/volumes/db/
 # Certificado e chave TLS do webfilter-dns sao do ambiente (DEV: autoassinado; producao: curinga
 # emitido por DNS-01). Chave privada nao vai para o git; o compose le de WEBFILTER_CERTS_DIR.
 webfilter-dns/certs/*.pem
+.trava/chave.secreta
+.trava/selos/
+.trava/contadores/
+.trava/forense/
+.trava/bancada/
+evidencias/

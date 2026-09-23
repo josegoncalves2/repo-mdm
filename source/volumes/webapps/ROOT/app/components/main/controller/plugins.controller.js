@@ -24,6 +24,7 @@ angular.module('headwind-kiosk')
     .controller('PluginsTabController', function ($scope, $rootScope, $timeout,
                                                    localization, pluginService) {
         $scope.loading = false;
+        $scope.localization = localization;
 
         $scope.errorMessage = undefined;
         $scope.successMessage = undefined;

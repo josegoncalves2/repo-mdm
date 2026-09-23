@@ -6,7 +6,7 @@
     maven="android-source:app:unspecified"
     agpVersion="8.13.2"
     buildFolder="build"
-    bootClassPath="/opt/projetos/hwmdm/repo-mdm/.android-sdk/platforms/android-34/android.jar:/opt/projetos/hwmdm/repo-mdm/.android-sdk/build-tools/35.0.0/core-lambda-stubs.jar"
+    bootClassPath="/home/sahw/android-sdk/platforms/android-34/android.jar:/home/sahw/android-sdk/build-tools/35.0.0/core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-34"
     neverShrinking="true">

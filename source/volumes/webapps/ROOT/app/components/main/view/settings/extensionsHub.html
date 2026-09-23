@@ -1,17 +1,17 @@
 <div class="hwmdm-list-page ext-hub" ng-controller="PluginsTabController">
     <div class="hwmdm-page-toolbar">
         <div>
-            <h3>Plugins</h3>
-            <p>Optional modules that add extra per-device actions and settings on top of the core MDM features.</p>
+            <h3 localized>nav.extensions</h3>
+            <p localized>extensions.page.subtitle</p>
         </div>
     </div>
 
-    <div class="ext-hub-empty" ng-if="functionsPlugins.length === 0 && settingsPlugins.length === 0 && !hasPermission('plugins_customer_access_management')">
-        No extensions are available for your role right now.
-    </div>
+    <div class="ext-hub-empty" ng-if="functionsPlugins.length === 0 && settingsPlugins.length === 0 && !hasPermission('plugins_customer_access_management')"
+         localized>extensions.empty</div>
 
     <div class="ext-hub-section" ng-if="functionsPlugins.length > 0">
-        <h4 class="ext-hub-section-title">Consultar por dispositivo</h4>
+        <h4 class="ext-hub-section-title" localized>extensions.device.actions</h4>
+        <p class="ext-hub-section-hint" localized>extensions.device.actions.hint</p>
         <div class="ext-hub-grid">
             <button type="button" class="ext-hub-card" ng-repeat="plugin in functionsPlugins"
                     ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
@@ -23,7 +23,8 @@
     </div>
 
     <div class="ext-hub-section" ng-if="settingsPlugins.length > 0">
-        <h4 class="ext-hub-section-title">Configurações da extensão</h4>
+        <h4 class="ext-hub-section-title" localized>extensions.settings</h4>
+        <p class="ext-hub-section-hint" localized>extensions.settings.hint</p>
         <div class="ext-hub-grid">
             <button type="button" class="ext-hub-card" ng-repeat="plugin in settingsPlugins"
                     ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
@@ -35,11 +36,8 @@
     </div>
 
     <div class="ext-hub-section" ng-if="hasPermission('plugins_customer_access_management')">
-        <h4 class="ext-hub-section-title">Manage extensions</h4>
-        <p class="ext-hub-section-hint">
-            Turn extensions on or off for your organization. Disabling an extension removes it from this
-            page and from every user's sidebar until it is re-enabled here.
-        </p>
+        <h4 class="ext-hub-section-title" localized>extensions.maintenance</h4>
+        <p class="ext-hub-section-hint" localized>extensions.maintenance.hint</p>
 
         <div class='form-group' ng-if='errorMessage'><div class='error'><span>{{errorMessage}}</span></div></div>
         <div class='form-group' ng-if='successMessage'><div class='success'><span>{{successMessage}}</span></div></div>

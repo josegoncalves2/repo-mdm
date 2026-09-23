@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('RemoteAccessTabController', function ($scope, $document, deviceService,
+    .controller('RemoteAccessTabController', function ($scope, $document, $window, deviceService,
                                                        remoteSupportService, remoteSupportPlayer, confirmModal,
                                                        alertService, localization, authService, deviceFocusService) {
 
@@ -157,13 +157,20 @@ angular.module('headwind-kiosk')
         /*
          * Estado da sessao de suporte remoto.
          *
-         * "connecting" cobre o handshake inteiro: o painel pediu a sessao e o push saiu, mas
-         * nenhum video chegou ainda. Esse intervalo nao e' instantaneo -- o tablet precisa
-         * receber o chamado e, no Android 14, alguem precisa aceitar o aviso de captura --
-         * entao e' um estado proprio, e nao algo dobrado em "ligado" ou "desligado".
+         * "pending" cobre tanto o handshake normal (painel pediu a sessao, push saiu, nenhum
+         * video chegou ainda -- o tablet precisa receber o chamado e, no Android 14, alguem
+         * precisa aceitar o aviso de captura) quanto o caso novo do item 3: o aparelho estava
+         * offline no momento do pedido, o chamado ficou em espera no servidor, e so' vira
+         * video quando o aparelho sincronizar de novo. Os dois sao "sessao pedida, ainda sem
+         * imagem" do ponto de vista do operador, entao usam o mesmo estado; requestedAt e' o
+         * que diferencia "acabei de pedir" de "estou esperando ha' um tempo".
+         *
+         * "connected" e' "esta aba tem uma sessao (pendente ou ao vivo) aberta com o
+         * servidor" -- e' o que habilita o botao de desconectar/cancelar.
          */
         $scope.remote = {
-            connecting: false,
+            pending: false,
+            requestedAt: null,
             connected: false,
             streaming: false,
             input: false,
@@ -175,6 +182,54 @@ angular.module('headwind-kiosk')
             error: null,
             inputNote: null,
             typing: ''
+        };
+
+        /*
+         * ---------------------------------------------------------------------------------
+         * Persistencia da sessao no navegador (item 4 da queixa)
+         * ---------------------------------------------------------------------------------
+         *
+         * $scope e o controller morrem e renascem a cada F5 e a cada troca de aba do menu --
+         * Angular recria RemoteAccessTabController do zero toda vez que a rota volta a
+         * carregar esta tela. Sem isto, nao ha' como o painel saber, ao nascer de novo, que
+         * ja' existia uma sessao (pendente ou ao vivo) para o aparelho selecionado. Guardar o
+         * essencial em sessionStorage -- sobrevive a F5 e a troca de aba, mas nao a fechar a
+         * aba, que e' o comportamento certo para uma sessao de suporte -- e' o que permite
+         * reatar em vez de reabrir (ver tryReattach() mais abaixo).
+         *
+         * A fonte da verdade continua sendo o servidor: o que fica aqui e' so' "existia algo
+         * para este aparelho, vale a pena perguntar" -- tryReattach() sempre confirma com
+         * GET status antes de reabrir o socket do visualizador.
+         */
+        var SESSION_STORAGE_KEY = 'hwmdm.remote.sessions';
+
+        var loadStoredSessions = function () {
+            try {
+                return JSON.parse($window.sessionStorage.getItem(SESSION_STORAGE_KEY)) || {};
+            } catch (e) {
+                return {};
+            }
+        };
+
+        var saveStoredSession = function (deviceId, info) {
+            try {
+                var all = loadStoredSessions();
+                all[String(deviceId)] = info;
+                $window.sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(all));
+            } catch (e) {
+                // sessionStorage indisponivel (navegacao privada, quota, etc.): a sessao
+                // continua funcionando nesta aba, so' nao sobrevive a um F5. Degradar, nao
+                // quebrar.
+            }
+        };
+
+        var clearStoredSession = function (deviceId) {
+            try {
+                var all = loadStoredSessions();
+                delete all[String(deviceId)];
+                $window.sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(all));
+            } catch (e) {
+            }
         };
 
         $scope.remoteSupported = remoteSupportPlayer.isSupported();
@@ -353,10 +408,17 @@ angular.module('headwind-kiosk')
                         }
                     }
                     if (!$scope.selectedDevice && $scope.devices.length > 0) {
+                        // Depois de um F5 ou troca de aba, um aparelho com sessao guardada
+                        // (ver SESSION_STORAGE_KEY) ganha do "primeiro online": e' o que o
+                        // operador estava atendendo, e reatar essa tela e' o ponto do item 4.
+                        var storedSessions = loadStoredSessions();
+                        var resumeDevice = $scope.devices.find(function (device) {
+                            return !!storedSessions[String(device.id)];
+                        });
                         var firstOnlineDevice = $scope.devices.find(function (device) {
                             return device.online;
                         });
-                        $scope.selectDevice(firstOnlineDevice || $scope.devices[0]);
+                        $scope.selectDevice(resumeDevice || firstOnlineDevice || $scope.devices[0]);
                     }
                 } else {
                     $scope.devices = [];
@@ -373,11 +435,18 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return;
             }
-            // Trocar de aparelho encerra a sessao anterior, em vez de deixar o
-            // tablet transmitindo para um visualizador que ninguem esta olhando.
-            $scope.stopRemote();
+            // Trocar de aparelho fecha apenas este visualizador. A sessao no servidor e no
+            // tablet continua dentro da carencia do hub, igual ao F5 e a troca de menu, e
+            // pode ser reatada ao selecionar o aparelho de novo. O botao Desconectar e' o
+            // unico comando que encerra a sessao remota de fato.
+            closePlayer();
+            resetRemote();
             $scope.selectedDevice = device;
             $scope.cancelCommand();
+            // O aparelho que acaba de ser selecionado pode ter, ele mesmo, uma sessao guardada
+            // (pendente ou ao vivo) de uma visita anterior a esta tela -- reata em vez de
+            // deixar o operador clicar "Solicitar acesso" nao sabendo que ja' havia um pedido.
+            tryReattach(device);
         };
 
         /*
@@ -589,7 +658,8 @@ angular.module('headwind-kiosk')
         };
 
         var resetRemote = function () {
-            $scope.remote.connecting = false;
+            $scope.remote.pending = false;
+            $scope.remote.requestedAt = null;
             $scope.remote.connected = false;
             $scope.remote.streaming = false;
             $scope.remote.input = false;
@@ -601,10 +671,16 @@ angular.module('headwind-kiosk')
             $scope.remote.inputNote = null;
         };
 
+        /*
+         * Item 3 da queixa: o aparelho offline nao e' mais motivo para desistir aqui. O
+         * pedido e' sempre enviado; o servidor decide se atende na hora ou registra como
+         * pendente (RemoteSupportResource.start() olha o lastUpdate do aparelho). O painel
+         * so' precisa mostrar honestamente qual dos dois esta' acontecendo, o que a resposta
+         * do servidor (`pending`, `requestedAt`) ja' informa.
+         */
         $scope.startRemote = function () {
             var device = $scope.selectedDevice;
-            if (!device || !device.id || !device.online
-                    || $scope.remote.connecting || $scope.remote.connected) {
+            if (!device || !device.id || $scope.remote.connected) {
                 return;
             }
             if (!canvas()) {
@@ -612,27 +688,76 @@ angular.module('headwind-kiosk')
             }
             resetRemote();
             $scope.remote.error = null;
-            $scope.remote.connecting = true;
+            $scope.remote.connected = true;
+            $scope.remote.pending = true;
+            $scope.remote.requestedAt = new Date();
 
             remoteSupportService.start({id: device.id}, {}, function (response) {
                 if (response.status !== 'OK' || !response.data || !response.data.socket) {
-                    $scope.remote.connecting = false;
+                    resetRemote();
                     $scope.remote.error = localization.localize('remote.error.session.start');
                     return;
                 }
                 if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
                     // O operador mudou de aparelho enquanto a chamada estava em voo; nao
-                    // deixe o tablet transmitindo para um visualizador que nunca vai abrir.
+                    // deixe o tablet transmitindo/pendente para um visualizador que nunca
+                    // vai abrir.
                     remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+                    clearStoredSession(device.id);
                     return;
                 }
-                $scope.remote.connected = true;
+                if (response.data.requestedAt) {
+                    $scope.remote.requestedAt = new Date(response.data.requestedAt);
+                }
                 $scope.remote.startedAt = new Date();
+                saveStoredSession(device.id, {
+                    requestedAt: $scope.remote.requestedAt.getTime(),
+                    deviceNumber: response.data.deviceNumber
+                });
                 openPlayer(response.data.socket, device.id);
             }, function () {
-                $scope.remote.connecting = false;
+                resetRemote();
                 $scope.remote.error = localization.localize('remote.error.session.start');
             });
+        };
+
+        /*
+         * Item 4 da queixa: reconstroi o que este navegador tinha aberto para `device` antes
+         * de o controller morrer (F5, troca de aba). NUNCA chama /start de novo -- so' /status,
+         * seguido de reabrir o socket do visualizador para a MESMA sessao no hub. E' isto que
+         * evita pedir consentimento de captura de novo ao usuario do tablet: o servidor nunca
+         * soube que o navegador tinha ido embora, entao nao ha nada para reiniciar do lado do
+         * aparelho.
+         */
+        var tryReattach = function (device) {
+            if (!device || !device.id) {
+                return;
+            }
+            var stored = loadStoredSessions()[String(device.id)];
+            if (!stored) {
+                return;
+            }
+            if (!canvas()) {
+                return;
+            }
+            remoteSupportService.getStatus({id: device.id}, function (response) {
+                if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
+                    return; // o operador ja' saiu deste aparelho enquanto a consulta ia e voltava
+                }
+                if (response.status !== 'OK' || !response.data || !response.data.open) {
+                    // A sessao guardada no navegador ja' nao existe no servidor -- expirou
+                    // (prazos em RemoteSessionHub), foi cancelada, ou foi encerrada do outro
+                    // lado. Nao ha' nada para reatar.
+                    clearStoredSession(device.id);
+                    return;
+                }
+                resetRemote();
+                $scope.remote.error = null;
+                $scope.remote.connected = true;
+                $scope.remote.pending = !response.data.streaming;
+                $scope.remote.requestedAt = new Date(response.data.requestedAt || stored.requestedAt);
+                openPlayer(response.data.socket, device.id);
+            }, angular.noop);
         };
 
         var openPlayer = function (socketPath, deviceId) {
@@ -640,11 +765,14 @@ angular.module('headwind-kiosk')
             player = remoteSupportPlayer.create(canvas(), {
                 onStatus: function (status) {
                     $scope.$applyAsync(function () {
-                        $scope.remote.connecting = !status.streaming;
+                        $scope.remote.pending = !status.streaming;
                         $scope.remote.streaming = !!status.streaming;
                         $scope.remote.input = !!status.input;
                         $scope.remote.width = status.width || 0;
                         $scope.remote.height = status.height || 0;
+                        if (status.requestedAt) {
+                            $scope.remote.requestedAt = new Date(status.requestedAt);
+                        }
                         if (status.streaming) {
                             $scope.remote.error = null;
                             // Dizer isto antes do primeiro clique frustrado: sem
@@ -652,6 +780,11 @@ angular.module('headwind-kiosk')
                             $scope.remote.inputNote = status.input
                                 ? null
                                 : localization.localize('remote.input.unavailable');
+                            // Foca o canvas para capturar o teclado fisico de imediato.
+                            var el = canvas();
+                            if (el && el.focus) {
+                                try { el.focus(); } catch (e) {}
+                            }
                         }
                     });
                 },
@@ -682,7 +815,13 @@ angular.module('headwind-kiosk')
                 },
                 onClose: function () {
                     $scope.$applyAsync(function () {
-                        $scope.remote.connecting = false;
+                        // So' o estado local. NAO mexe em sessionStorage aqui: o socket pode
+                        // ter caido por uma instabilidade passageira do navegador, e a sessao
+                        // continua viva no servidor (dentro da carencia -- ver VIEWER_GRACE_MS
+                        // em RemoteSessionHub). Quem apaga o registro e' so' o stopRemote()
+                        // explicito ou o proprio tryReattach() quando o servidor confirma que
+                        // a sessao ja' nao existe mais.
+                        $scope.remote.pending = false;
                         $scope.remote.connected = false;
                         $scope.remote.streaming = false;
                     });
@@ -705,16 +844,19 @@ angular.module('headwind-kiosk')
         };
 
         /**
-         * Encerra nas duas pontas. Fechar so' o lado do navegador deixaria o aparelho
-         * capturando a propria tela indefinidamente.
+         * <p>Encerra nas duas pontas -- e' o UNICO caminho que faz isso. Chamado pelo botao
+         * explicito de desconectar/cancelar. Fechar so' o lado do navegador deixaria o aparelho
+         * capturando a propria tela indefinidamente -- por isto troca de aparelho e $destroy
+         * (F5, troca de aba do menu) NAO chamam mais esta funcao, so' closePlayer().</p>
          */
         $scope.stopRemote = function () {
             var device = $scope.selectedDevice;
-            var wasOpen = $scope.remote.connected || $scope.remote.connecting;
+            var wasOpen = $scope.remote.connected;
             closePlayer();
             resetRemote();
             if (wasOpen && device && device.id) {
                 remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+                clearStoredSession(device.id);
             }
         };
 
@@ -735,9 +877,10 @@ angular.module('headwind-kiosk')
             if (!player || !$scope.remote.streaming) {
                 return;
             }
-            if (!$scope.remote.input) {
-                $scope.remote.inputNote = localization.localize('remote.input.required');
-                return;
+            // Da foco ao canvas: e' o que faz o teclado FISICO ser capturado ao vivo
+            // (ver onScreenKey). Sem isto o navegador manda o keydown para outro lugar.
+            if (event && event.currentTarget && event.currentTarget.focus) {
+                event.currentTarget.focus();
             }
             pressedAt = player.toUnit(event);
             pressedTime = Date.now();
@@ -745,11 +888,6 @@ angular.module('headwind-kiosk')
 
         $scope.onScreenUp = function (event) {
             if (!player || !$scope.remote.streaming || !pressedAt) {
-                return;
-            }
-            if (!$scope.remote.input) {
-                $scope.remote.inputNote = localization.localize('remote.input.required');
-                pressedAt = null;
                 return;
             }
             var released = player.toUnit(event);
@@ -771,12 +909,49 @@ angular.module('headwind-kiosk')
         };
 
         $scope.sendRemoteKey = function (name) {
-            if (!$scope.remote.input) {
-                $scope.remote.inputNote = localization.localize('remote.input.required');
-                return;
-            }
             if (player && $scope.remote.streaming) {
                 player.key(name);
+            }
+        };
+
+        /*
+         * Captura do TECLADO FISICO ao vivo (item 2 da queixa: "digito e nao aparece").
+         * O desenho anterior nao capturava tecla nenhuma sobre o video -- so' o campo de
+         * texto + Enter enviava. Aqui cada tecla fisica pressionada sobre o canvas em foco
+         * vira um comando enviado direto ao aparelho: caractere imprimivel vira 'text', e as
+         * teclas de controle viram os nomes que o agente aceita (backspace/enter/tab/setas,
+         * e Esc como BACK do Android). Nao passa pelo gate de remote.input: o servidor
+         * repassa sempre e o aparelho injeta se a acessibilidade estiver ligada -- deixar a
+         * tecla ser enviada e' o comportamento certo; travar antes so' escondia a falha.
+         */
+        $scope.onScreenKey = function (event) {
+            if (!player || !$scope.remote.streaming) {
+                return;
+            }
+            var e = event.originalEvent || event;
+            // Combinacoes com Ctrl/Alt/Meta sao atalhos do navegador/SO; nao capturamos.
+            if (e.ctrlKey || e.altKey || e.metaKey) {
+                return;
+            }
+            var key = e.key;
+            var sent = true;
+            switch (key) {
+                case 'Backspace': player.key('backspace'); break;
+                case 'Enter':     player.key('enter'); break;
+                case 'Tab':       player.key('tab'); break;
+                case 'ArrowLeft': player.key('left'); break;
+                case 'ArrowRight':player.key('right'); break;
+                case 'Escape':    player.key('back'); break;
+                default:
+                    if (key && key.length === 1) {
+                        player.type(key);
+                    } else {
+                        sent = false;
+                    }
+            }
+            if (sent) {
+                event.preventDefault();
+                event.stopPropagation();
             }
         };
 
@@ -787,20 +962,27 @@ angular.module('headwind-kiosk')
          * campo visivel deixa o operador conferir o que vai enviar antes de enviar.
          */
         $scope.sendRemoteText = function () {
-            var text = ($scope.remote.typing || '').trim();
+            var text = ($scope.remote.typing === undefined || $scope.remote.typing === null)
+                ? ''
+                : String($scope.remote.typing);
             if (!player || !$scope.remote.streaming || text.length === 0) {
-                return;
-            }
-            if (!$scope.remote.input) {
-                $scope.remote.inputNote = localization.localize('remote.input.required');
                 return;
             }
             player.type(text);
             $scope.remote.typing = '';
         };
 
+        /*
+         * Item 4 da queixa, causa-raiz: isto costumava chamar $scope.stopRemote(), que
+         * encerra a sessao no SERVIDOR e no APARELHO. Como o controller e' destruido e
+         * recriado a cada F5 e a cada troca de aba do menu (a rota descarrega esta tela
+         * inteira), aquele stopRemote() matava a sessao de proposito toda vez -- exatamente o
+         * que a queixa descreve. So' fecha o socket deste navegador; a sessao no hub continua
+         * viva (dentro da carencia sem espectador -- VIEWER_GRACE_MS em RemoteSessionHub) e
+         * e' reatada quando o controller nasce de novo, por tryReattach().
+         */
         $scope.$on('$destroy', function () {
-            $scope.stopRemote();
+            closePlayer();
         });
 
         loadCommandCatalog();

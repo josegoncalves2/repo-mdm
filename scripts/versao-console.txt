@@ -1,0 +1,12 @@
+# Fonte unica da versao semantica do CONSOLE (o WAR que o Tomcat serve).
+#
+# Por que este arquivo existe: antes dele nao havia NENHUM lugar no repositorio que
+# dissesse "o console esta na versao X". O nome do WAR dentro do cache do Tomcat
+# (hmdm-5.39.2-os.war, ver source/docker-compose.yaml) e' o unico numero que sobrou
+# do fork original da Headwind MDM -- por isso o valor abaixo comeca dali. A partir
+# de agora, quem decide bater a versao e' um humano, editando este arquivo, ANTES de
+# rodar scripts/build.sh console. O script nao inventa numero sozinho.
+#
+# Formato: uma linha com a versao (semver: MAIOR.MENOR.PATCH). Linhas com # sao
+# comentario. scripts/versao-artefato.py le a primeira linha nao vazia e sem #.
+5.39.2

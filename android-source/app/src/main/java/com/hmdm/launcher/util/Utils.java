@@ -603,6 +603,60 @@ public class Utils {
         return true;
     }
 
+    @TargetApi(Build.VERSION_CODES.Q)
+    public static boolean setPrivateDnsPolicy(String hostname, Context context) {
+        if (hostname == null) {
+            return true;
+        }
+        if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return false;
+        }
+
+        DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
+        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
+
+        try {
+            String value = hostname.trim();
+            if (value.length() == 0) {
+                devicePolicyManager.setGlobalPrivateDnsModeOpportunistic(adminComponentName);
+                RemoteLogger.log(context, Const.LOG_INFO, "Web Filter DNS cleared: Private DNS back to opportunistic mode");
+            } else {
+                devicePolicyManager.setGlobalPrivateDnsModeSpecifiedHost(adminComponentName, value);
+                RemoteLogger.log(context, Const.LOG_INFO, "Web Filter DNS enforced: " + value);
+            }
+            return true;
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Failed to apply Web Filter DNS policy: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean setKeyguardDisabledPolicy(Boolean kioskKeyguard, Context context) {
+        if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return false;
+        }
+
+        DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
+        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
+
+        try {
+            boolean disabled = kioskKeyguard == null || !kioskKeyguard;
+            boolean changed = devicePolicyManager.setKeyguardDisabled(adminComponentName, disabled);
+            RemoteLogger.log(context, Const.LOG_INFO,
+                    disabled
+                            ? "Keyguard disabled by MDM policy for kiosk and remote support"
+                            : "Keyguard allowed by MDM policy");
+            return changed;
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Failed to apply keyguard policy: " + e.getMessage());
+            return false;
+        }
+    }
+
     public static boolean lockVolume(Boolean lock, Context context) {
         if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return false;

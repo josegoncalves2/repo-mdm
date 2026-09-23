@@ -46,6 +46,7 @@
         <module>push</module>
         <module>xtra</module>
         <module>webfilter</module>
+        <module>moduleregistry</module>
     </modules>
 
     <dependencies>

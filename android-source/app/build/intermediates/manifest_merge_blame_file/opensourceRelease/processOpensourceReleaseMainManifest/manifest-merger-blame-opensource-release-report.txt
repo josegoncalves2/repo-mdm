@@ -21,8 +21,8 @@
 21<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 22    package="com.hmdm.launcher"
 23    android:sharedUserId="com.hmdm"
-24    android:versionCode="15379"
-25    android:versionName="1.0" >
+24    android:versionCode="15380"
+25    android:versionName="1.1" >
 26
 27    <uses-sdk
 27-->/opt/projetos/hwmdm/repo-mdm/android-source/app/src/main/AndroidManifest.xml:112:5-73

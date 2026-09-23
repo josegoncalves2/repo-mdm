@@ -1,61 +1,120 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-import subprocess
-import os
-import sys
-import shutil
+"""
+Sistema de Build e Versionamento do HWMDM
+===========================================
+Uso:
+  python3 build.py                         # Build completo (WAR + APK)
+  python3 build.py --war-only              # So a WAR
+  python3 build.py --apk-only              # So o APK remoto
+  python3 build.py --version               # Mostra versao atual
+  python3 build.py --bump-version          # Incrementa versao (patch)
+  python3 build.py --set-version X.Y.Z     # Define versao especifica
+"""
+import os, sys, subprocess, hashlib, json
+from datetime import datetime
 
-repo_root = "C:\\Users\\40446686808\\projetos\\MDM\\repo-mdm"
-build_log = os.path.join(repo_root, "build.log")
+REPO = os.path.dirname(os.path.abspath(__file__))
+VERSION_FILE = os.path.join(REPO, "VERSION")
+BUILD_LOG = os.path.join(REPO, "dist", "builds.json")
+DIST_DIR = os.path.join(REPO, "dist")
+os.makedirs(DIST_DIR, exist_ok=True)
 
-def log_msg(msg):
-    print(msg)
-    with open(build_log, 'a', encoding='utf-8') as f:
-        f.write(msg + "\n")
+def read_version():
+    with open(VERSION_FILE) as f:
+        return f.read().strip()
 
-# Clear previous log
-with open(build_log, 'w', encoding='utf-8') as f:
-    f.write("")
+def write_version(v):
+    with open(VERSION_FILE, "w") as f:
+        f.write(v.strip() + "\n")
 
-log_msg("=" * 60)
-log_msg("MDM Project Build Script")
-log_msg("=" * 60)
+def bump_version(v):
+    p = v.split(".")
+    p[-1] = str(int(p[-1]) + 1)
+    return ".".join(p)
 
-# Check Maven availability
-log_msg("\n[INFO] Checking Maven...")
-mvn_path = os.path.join(repo_root, ".maven\\bin\\mvn.cmd")
-if os.path.exists(mvn_path):
-    log_msg("[OK] Maven found at: " + mvn_path)
-    log_msg("[INFO] Starting Maven build (server-source)...")
-    os.chdir(os.path.join(repo_root, "server-source"))
-    cmd = [mvn_path, "clean", "package", "-DskipTests"]
-    result = subprocess.run(cmd, shell=True, capture_output=False)
-    if result.returncode == 0:
-        log_msg("[OK] Maven build completed!")
-    else:
-        log_msg("[ERROR] Maven build failed (exit code: " + str(result.returncode) + ")")
-        log_msg("[NOTE] This may be due to EDR/security policy blocking Maven execution")
-else:
-    log_msg("[WARNING] Maven not found at: " + mvn_path)
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
-# Check Docker availability
-log_msg("\n[INFO] Checking Docker...")
-docker_path = shutil.which("docker")
-if docker_path:
-    log_msg("[OK] Docker found at: " + docker_path)
-    log_msg("[INFO] Building WebFilter Docker image...")
-    os.chdir(os.path.join(repo_root, "webfilter-dns"))
-    cmd = ["docker", "build", "-t", "webfilter-dns:latest", "-f", "Dockerfile", ".."]
-    result = subprocess.run(cmd, shell=True)
-    if result.returncode == 0:
-        log_msg("[OK] WebFilter Docker build completed!")
-    else:
-        log_msg("[ERROR] WebFilter Docker build failed (exit code: " + str(result.returncode) + ")")
-else:
-    log_msg("[WARNING] Docker not found in PATH")
-    log_msg("[INFO] WebFilter Docker image cannot be built without Docker")
+def log_build(version, artifacts):
+    builds = []
+    if os.path.exists(BUILD_LOG):
+        with open(BUILD_LOG) as f:
+            try: builds = json.load(f)
+            except: builds = []
+    builds.append({"version": version,
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "artifacts": artifacts})
+    with open(BUILD_LOG, "w") as f:
+        json.dump(builds, f, indent=2)
 
-log_msg("\n" + "=" * 60)
-log_msg("[INFO] Build script completed. Check build.log for details.")
-log_msg("=" * 60)
-print("\nLog saved to: " + build_log)
+def run_cmd(cmd, cwd, desc):
+    print("\n[BUILD] {}\n$ {}".format(desc, " ".join(cmd)))
+    r = subprocess.run(cmd, cwd=cwd)
+    if r.returncode != 0:
+        print("[ERROR] {} FALHOU (exit={})".format(desc, r.returncode))
+        sys.exit(r.returncode)
+    print("[OK] {} concluido".format(desc))
+
+def build_war(version):
+    print("\n>>> Compilando WAR v{}...".format(version))
+    run_cmd(["mvn", "clean", "package", "-DskipTests"],
+            os.path.join(REPO, "server-source"), "Build Maven")
+    src = os.path.join(REPO, "server-source", "server", "target", "launcher.war")
+    dst = os.path.join(DIST_DIR, "hmdm-v{}.war".format(version))
+    if os.path.exists(src):
+        import shutil
+        shutil.copy2(src, dst)
+        shutil.copy2(src, os.path.join(DIST_DIR, "hmdm.war"))
+        h = sha256(dst)
+        with open(dst + ".sha256", "w") as f:
+            f.write("{}  {}\n".format(h, os.path.basename(dst)))
+        print("[WAR] {} ({} KB) sha256={}...".format(dst, os.path.getsize(dst)//1024, h[:16]))
+        return dst
+    print("[ERROR] WAR nao encontrada")
+    return None
+
+def build_apk(version):
+    print("\n>>> Compilando Remote Agent APK v{}...".format(version))
+    gradlew = os.path.join(REPO, "remote-agent", "gradlew")
+    os.chmod(gradlew, 0o755)
+    run_cmd([gradlew, "assembleRelease"],
+            os.path.join(REPO, "remote-agent"), "Build Gradle")
+    src = os.path.join(REPO, "remote-agent", "app", "build", "outputs",
+                       "apk", "release", "app-release.apk")
+    dst = os.path.join(DIST_DIR, "hwmdm-remote-v{}.apk".format(version))
+    if os.path.exists(src):
+        import shutil
+        shutil.copy2(src, dst)
+        shutil.copy2(src, os.path.join(DIST_DIR, "hwmdm-remote-latest.apk"))
+        h = sha256(dst)
+        with open(dst + ".sha256", "w") as f:
+            f.write("{}  {}\n".format(h, os.path.basename(dst)))
+        print("[APK] {} ({} KB) sha256={}...".format(dst, os.path.getsize(dst)//1024, h[:16]))
+        return dst
+    print("[ERROR] APK nao encontrado")
+    return None
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    v = read_version()
+    if "--version" in args:
+        print("Versao atual: {}".format(v))
+        sys.exit(0)
+    if "--bump-version" in args:
+        v = bump_version(v)
+        write_version(v)
+        print("Versao incrementada: {}".format(v))
+        sys.exit(0)
+    artifacts = []
+    if "--apk-only" not in args:
+        w = build_war(v)
+        if w: artifacts.append({"type": "war", "path": w})
+    if "--war-only" not in args:
+        a = build_apk(v)
+        if a: artifacts.append({"type": "apk-remote", "path": a})
+    log_build(v, artifacts)
+    print("\n[BUILD] v{} COMPLETO".format(v))

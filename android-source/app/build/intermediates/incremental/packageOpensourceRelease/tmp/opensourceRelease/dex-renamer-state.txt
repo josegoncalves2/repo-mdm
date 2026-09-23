@@ -1,4 +1,4 @@
-#Mon Sep 21 10:35:35 BRT 2026
+#Wed Sep 23 10:32:34 BRT 2026
 base.0=/opt/projetos/hwmdm/repo-mdm/android-source/app/build/intermediates/dex/opensourceRelease/mergeDexOpensourceRelease/classes.dex
 base.1=/opt/projetos/hwmdm/repo-mdm/android-source/app/build/intermediates/dex/opensourceRelease/mergeDexOpensourceRelease/classes2.dex
 path.0=classes.dex
