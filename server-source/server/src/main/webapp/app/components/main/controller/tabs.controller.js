@@ -1,9 +1,10 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('TabController', function ($scope, $rootScope, $timeout, $state, userService, authService, openTab,
-                                           pluginService, localization, hintService) {
+                                           pluginService, moduleRegistry, localization, hintService) {
 
         $scope.localization = localization;
+        $scope.moduleRegistry = moduleRegistry;
 
         // Only tabs that content.html can actually render. LANG/HINTS/PLUGINS used to be
         // listed here without a matching template, so openTab() accepted them and left the
@@ -29,7 +30,21 @@ angular.module('headwind-kiosk')
             GROUPS: 'groups',
             ICONS: 'icons',
             GENERAL: 'generalSettings',
-            EXTENSIONS: 'extensions'
+            EXTENSIONS: 'extensions',
+            INTEGRATIONS: 'integrations'
+        };
+
+        // Modulos/extensoes abertos direto do menu (fora da tela Modulos) tambem ganham
+        // estado proprio, senao F5 nessas telas perde o lugar (item 9 do pedido "modulos").
+        // Qualquer plugin fora desta lista continua no comportamento antigo (troca so no
+        // cliente, sem URL propria) - nenhum dos catalogados em moduleRegistry fica de fora.
+        var PLUGIN_STATES = {
+            'plugin-webfilter': 'webfilterModule',
+            'plugin-devicelog': 'devicelogModule',
+            'plugin-audit': 'auditModule',
+            'plugin-push': 'pushModule',
+            'plugin-deviceinfo': 'deviceinfoModule',
+            'plugin-settings-messaging': 'messagingSettingsModule'
         };
 
         // Same wording as the sidebar. Shown in the narrow-viewport bar next to the menu
@@ -55,7 +70,8 @@ angular.module('headwind-kiosk')
             DESIGN: 'nav.design',
             GENERAL: 'nav.general',
             EXTENSIONS: 'nav.extensions',
-            GOVERNANCE: 'nav.governance'
+            GOVERNANCE: 'nav.governance',
+            INTEGRATIONS: 'nav.integrations'
         };
 
         var loadData = function () {
@@ -68,7 +84,7 @@ angular.module('headwind-kiosk')
                         });
                         $scope.functionsPlugins.forEach(function (plugin) {
                             let ID = 'plugin-' + plugin.identifier;
-                            routes[ID] = ID;
+                            routes[ID] = PLUGIN_STATES[ID] || ID;
                         });
 
                         // Plugins available for Settings tab
@@ -77,7 +93,7 @@ angular.module('headwind-kiosk')
                         });
                         $scope.settingsPlugins.forEach(function (plugin) {
                             let ID = 'plugin-settings-' + plugin.identifier;
-                            routes[ID] = ID;
+                            routes[ID] = PLUGIN_STATES[ID] || ID;
                         });
                     }
                 } else {
@@ -166,6 +182,44 @@ angular.module('headwind-kiosk')
         var listener = $scope.$on('aero_PLUGINS_UPDATED', loadData);
         $scope.$on('$destroy', listener);
 
+        // Menu montado de uma vez so, a partir do registro (item 12 do pedido "modulos":
+        // nada de item pulando pra dentro do menu depois que a pagina ja carregou). Ate a
+        // primeira resposta chegar, content.html mostra um esqueleto no lugar do <nav>.
+        $scope.navReady = false;
+        $scope.navSections = [];
+
+        var loadNav = function () {
+            moduleRegistry.load().then(function () {
+                $scope.navSections = moduleRegistry.visibleSections();
+                $scope.navReady = true;
+            });
+        };
+
+        // Um modulo nativo em manutencao (moduleregistry) nao carrega o template real: o
+        // controller dela nem chega a rodar (item 13 do pedido "modulos").
+        $scope.isModuleBlocked = function (id) {
+            return $scope.navReady && moduleRegistry.isInMaintenance(id) && !moduleRegistry.canManage();
+        };
+        $scope.isModuleInMaintenance = function (id) {
+            return $scope.navReady && moduleRegistry.isInMaintenance(id);
+        };
+        $scope.moduleMaintenanceInfo = function (id) {
+            return moduleRegistry.maintenanceInfo(id);
+        };
+
+        var navUpdateListener = $rootScope.$on('aero_MODULES_UPDATED', function () {
+            moduleRegistry.load(true).then(function () {
+                $scope.navSections = moduleRegistry.visibleSections();
+            });
+        });
+        var pluginsForNavListener = $rootScope.$on('aero_PLUGINS_UPDATED', function () {
+            moduleRegistry.load(true).then(function () {
+                $scope.navSections = moduleRegistry.visibleSections();
+            });
+        });
+        $scope.$on('$destroy', navUpdateListener);
+        $scope.$on('$destroy', pluginsForNavListener);
+
         userService.getCurrent(function (response) {
             if (response.data) {
                 $scope.currentUser = response.data;
@@ -179,4 +233,5 @@ angular.module('headwind-kiosk')
 //        }, 100);
 
         loadData();
+        loadNav();
     });

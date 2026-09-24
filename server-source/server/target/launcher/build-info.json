@@ -1,6 +1,32 @@
 {
-  "versao": "5.39.2",
-  "commit": "7edfabcb+sujo",
-  "data_build_utc": "2026-09-23T14:09:32Z",
-  "alvo": "console"
+  "versao": "1.0.0",
+  "build": 1,
+  "compilacao": "20260924.1",
+  "commit": "76f2734",
+  "sujo": true,
+  "data_build_utc": "2026-09-24T13:23:04Z",
+  "semver_completo": "1.0.0+build.1.20260924.76f2734.sujo",
+  "componentes": {
+    "nucleo_headwind": {
+      "versao": "5.39.2",
+      "origem": "server-source/server/src/main/webapp/app/app.js (constante APP_VERSION)"
+    },
+    "plugin_webfilter": {
+      "versao": "0.1.0",
+      "origem": "server-source/plugins/webfilter/pom.xml"
+    },
+    "plugin_moduleregistry": {
+      "versao": "0.1.0",
+      "origem": "server-source/plugins/moduleregistry/pom.xml"
+    },
+    "agente_remoto_android": {
+      "versionName": "1.20",
+      "versionCode": 21,
+      "origem": "remote-agent/app/build.gradle"
+    },
+    "resolvedor_dns_webfilter": {
+      "versao": "0.34.0",
+      "origem": "webfilter-dns/docker-compose.yaml (tag da imagem hwmdm/webfilter-dns)"
+    }
+  }
 }

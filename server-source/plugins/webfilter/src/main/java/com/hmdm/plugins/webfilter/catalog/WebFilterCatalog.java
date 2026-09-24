@@ -29,6 +29,7 @@ public class WebFilterCatalog {
 
     private final List<String> categoryIds = new ArrayList<>();
     private final Map<String, List<String>> siteSources = new LinkedHashMap<>();
+    private final Map<String, List<String>> browserDomains = new LinkedHashMap<>();
     private final Map<String, Set<String>> appsByCategory = new LinkedHashMap<>();
     private final Set<String> protectedPackages = new LinkedHashSet<>();
     private final JsonNode attribution;
@@ -44,6 +45,11 @@ public class WebFilterCatalog {
             List<String> urls = new ArrayList<>();
             c.get("sources").forEach(u -> urls.add(u.asText()));
             siteSources.put(id, Collections.unmodifiableList(urls));
+            List<String> domains = new ArrayList<>();
+            if (c.has("browserDomains")) {
+                c.get("browserDomains").forEach(d -> domains.add(d.asText()));
+            }
+            browserDomains.put(id, Collections.unmodifiableList(domains));
             appsByCategory.put(id, new LinkedHashSet<>());
         }
         attribution = sites.get("attribution");
@@ -78,6 +84,13 @@ public class WebFilterCatalog {
 
     public List<String> getSiteSources(String category) {
         return siteSources.getOrDefault(category, Collections.emptyList());
+    }
+
+    /**
+     * <p>The sites the managed browser blocks for a category (Chrome <code>URLBlocklist</code> filters).</p>
+     */
+    public List<String> getBrowserDomains(String category) {
+        return browserDomains.getOrDefault(category, Collections.emptyList());
     }
 
     public Set<String> getCatalogApps(String category) {

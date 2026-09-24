@@ -1,7 +1,9 @@
 package com.hmdm.plugins.webfilter.persistence.mapper;
 
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterDelivery;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEntry;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEvent;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import org.apache.ibatis.annotations.Delete;
@@ -86,4 +88,50 @@ public interface WebFilterMapper {
     @Insert("INSERT INTO plugin_webfilter_settings (customerId, dnsDomain) VALUES (#{customerId}, #{dnsDomain}) " +
             "ON CONFLICT (customerId) DO UPDATE SET dnsDomain = EXCLUDED.dnsDomain")
     void saveSettings(WebFilterSettings settings);
+
+    // ------------------------------------------------------------------------------------------------- delivery
+    @Insert("INSERT INTO plugin_webfilter_delivery (deviceId, customerId, configurationId, enabled, policyUpdatedAt, " +
+            "deliveredAt, browserSites, hiddenApps) VALUES (#{deviceId}, #{customerId}, #{configurationId}, #{enabled}, " +
+            "#{policyUpdatedAt}, #{deliveredAt}, #{browserSites}, #{hiddenApps}) " +
+            "ON CONFLICT (deviceId) DO UPDATE SET customerId = EXCLUDED.customerId, " +
+            "configurationId = EXCLUDED.configurationId, enabled = EXCLUDED.enabled, " +
+            "policyUpdatedAt = EXCLUDED.policyUpdatedAt, deliveredAt = EXCLUDED.deliveredAt, " +
+            "browserSites = EXCLUDED.browserSites, hiddenApps = EXCLUDED.hiddenApps")
+    void saveDelivery(WebFilterDelivery delivery);
+
+    // Every device of a profile that has a web filter policy, whether it already synced or not
+    @Select("SELECT d.id AS deviceId, d.customerId, d.configurationId, d.number AS deviceNumber, " +
+            "c.name AS configurationName, d.lastUpdate, w.enabled, w.policyUpdatedAt, w.deliveredAt, " +
+            "w.browserSites, w.hiddenApps " +
+            "FROM devices d " +
+            "JOIN configurations c ON c.id = d.configurationId " +
+            "JOIN plugin_webfilter_policies p ON p.configurationId = d.configurationId AND p.customerId = d.customerId " +
+            "LEFT JOIN plugin_webfilter_delivery w ON w.deviceId = d.id " +
+            "WHERE d.customerId = #{customerId} " +
+            "ORDER BY c.name, d.number LIMIT 1000")
+    List<WebFilterDelivery> findDeliveries(@Param("customerId") int customerId);
+
+    // ------------------------------------------------------------------------------------------------- events
+    @Insert("INSERT INTO plugin_webfilter_events (customerId, deviceId, configurationId, host, url, category, source, " +
+            "createdAt) VALUES (#{customerId}, #{deviceId}, #{configurationId}, #{host}, #{url}, #{category}, " +
+            "#{source}, #{createdAt})")
+    void insertEvent(WebFilterEvent event);
+
+    @Select("SELECT COUNT(*) FROM plugin_webfilter_events WHERE deviceId = #{deviceId} AND host = #{host} " +
+            "AND createdAt >= #{since}")
+    int countRecentEvents(@Param("deviceId") int deviceId, @Param("host") String host, @Param("since") long since);
+
+    @Select("SELECT COUNT(*) FROM plugin_webfilter_events WHERE deviceId = #{deviceId} AND createdAt >= #{since}")
+    int countDeviceEvents(@Param("deviceId") int deviceId, @Param("since") long since);
+
+    @Select("SELECT e.*, d.number AS deviceNumber FROM plugin_webfilter_events e " +
+            "JOIN devices d ON d.id = e.deviceId " +
+            "WHERE e.customerId = #{customerId} ORDER BY e.createdAt DESC LIMIT #{limit}")
+    List<WebFilterEvent> findRecentEvents(@Param("customerId") int customerId, @Param("limit") int limit);
+
+    @Select("SELECT COUNT(*) FROM plugin_webfilter_events WHERE customerId = #{customerId} AND createdAt >= #{since}")
+    int countEvents(@Param("customerId") int customerId, @Param("since") long since);
+
+    @Delete("DELETE FROM plugin_webfilter_events WHERE createdAt < #{before}")
+    int purgeEvents(@Param("before") long before);
 }

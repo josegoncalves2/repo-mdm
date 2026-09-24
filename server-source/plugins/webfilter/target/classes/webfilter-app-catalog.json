@@ -50,6 +50,26 @@
       "com.expressvpn.vpn",
       "free.vpn.unblock.proxy.turbovpn",
       "hotspotshield.android.vpn"
+    ],
+    "doh": [
+      "org.mozilla.firefox",
+      "org.mozilla.firefox_beta",
+      "org.mozilla.focus",
+      "org.mozilla.fenix",
+      "com.sec.android.app.sbrowser",
+      "com.opera.browser",
+      "com.opera.mini.native",
+      "com.opera.gx",
+      "com.duckduckgo.mobile.android",
+      "com.UCMobile.intl",
+      "org.torproject.torbrowser",
+      "com.kiwibrowser.browser",
+      "com.brave.browser",
+      "com.vivaldi.browser",
+      "com.mi.globalbrowser",
+      "com.microsoft.emmx",
+      "com.cloudflare.onedotonedotonedotone"
     ]
-  }
+  },
+  "_dohComment": "doh: navegadores que nao obedecem a politica gerenciada do Chrome e apps de DNS/VPN proprio. Ficam ocultos sempre que o filtro esta ativo, porque contornariam o bloqueio."
 }

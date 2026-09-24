@@ -1,2 +1,2 @@
 *.linkedin.com
-*.pmeto.local
+*.pmosrvad01.pmeto.local

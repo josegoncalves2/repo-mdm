@@ -3,7 +3,9 @@ package com.hmdm.plugins.webfilter.persistence;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterDelivery;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEntry;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEvent;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import com.hmdm.plugins.webfilter.persistence.mapper.WebFilterMapper;
@@ -94,6 +96,42 @@ public class WebFilterDAO {
 
     public WebFilterSettings getSettings(int customerId) {
         return mapper.findSettings(customerId);
+    }
+
+    public void saveDelivery(WebFilterDelivery delivery) {
+        mapper.saveDelivery(delivery);
+    }
+
+    public List<WebFilterDelivery> getDeliveries(int customerId) {
+        return mapper.findDeliveries(customerId);
+    }
+
+    /**
+     * <p>Stores a blocked access, unless the same device already reported the same site in the last
+     * <code>dedupMillis</code> (a page reload is not a new attempt) or it exceeded <code>maxPerHour</code>.</p>
+     *
+     * @return <code>true</code> if the event was stored.
+     */
+    public boolean addEvent(WebFilterEvent event, long dedupMillis, int maxPerHour) {
+        long now = event.getCreatedAt();
+        if (mapper.countRecentEvents(event.getDeviceId(), event.getHost(), now - dedupMillis) > 0
+                || mapper.countDeviceEvents(event.getDeviceId(), now - 3600_000L) >= maxPerHour) {
+            return false;
+        }
+        mapper.insertEvent(event);
+        return true;
+    }
+
+    public List<WebFilterEvent> getRecentEvents(int customerId, int limit) {
+        return mapper.findRecentEvents(customerId, limit);
+    }
+
+    public int countEvents(int customerId, long since) {
+        return mapper.countEvents(customerId, since);
+    }
+
+    public int purgeEvents(long before) {
+        return mapper.purgeEvents(before);
     }
 
     public void saveSettings(WebFilterSettings settings) {

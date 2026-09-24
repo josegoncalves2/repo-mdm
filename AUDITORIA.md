@@ -88,3 +88,7 @@ Verifique a integridade da cadeia com: `./trava auditoria --verificar`
 | 2026-09-23T16:02:04Z | SubagentStop | invocado |  |  |
 | 2026-09-23T16:02:04Z | SubagentStop | cedido |  | 4 tentativas; faltando=['relatorio', 'output/relatorio.md'] |
 | 2026-09-23T16:02:05Z | bancada | invalida | verificar_bancada | veredito=APROVADO falhas=12 |
+| 2026-09-24T13:15:12Z | papel | registrado | trava-executor |  |
+| 2026-09-24T13:16:05Z | papel | registrado | trava-executor |  |
+| 2026-09-24T13:16:35Z | papel | registrado | trava-executor |  |
+| 2026-09-24T13:17:18Z | papel | registrado | trava-executor |  |

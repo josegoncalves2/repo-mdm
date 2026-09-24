@@ -1,4 +1,8 @@
-* {
+/* Antes: `* { font-size: 14px; }` achatava toda a hierarquia tipografica
+   (h1..h6 todos em 14px). Substituido por uma base no corpo do texto e nos
+   controles de formulario -- css/hwmdm-ui.css (carregado por ultimo) devolve
+   a escala de titulos dentro do workspace/modais/login. */
+body, input, select, textarea, button, .btn {
     font-size: 14px;
 }
 
@@ -4178,6 +4182,7 @@ body {
 }
 
 .remote-preview-screen {
+    position: relative;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -4242,6 +4247,30 @@ body {
    acontece. */
 .remote-live-canvas-interactive {
     cursor: pointer;
+}
+
+.remote-keyboard-capture {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    opacity: 0.01;
+    border: 0;
+    padding: 0;
+    resize: none;
+    background: transparent;
+    color: transparent;
+    caret-color: transparent;
+    pointer-events: none;
+}
+
+.remote-keyboard-capture:focus {
+    outline: none;
+}
+
+.remote-keyboard-arm {
+    margin-left: 4px;
 }
 
 .remote-input-bar {

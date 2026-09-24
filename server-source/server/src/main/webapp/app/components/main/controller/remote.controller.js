@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('RemoteAccessTabController', function ($scope, $document, $window, deviceService,
+    .controller('RemoteAccessTabController', function ($scope, $document, $window, $timeout, deviceService,
                                                        remoteSupportService, remoteSupportPlayer, confirmModal,
                                                        alertService, localization, authService, deviceFocusService) {
 
@@ -181,6 +181,8 @@ angular.module('headwind-kiosk')
             startedAt: null,
             error: null,
             inputNote: null,
+            // true enquanto o teclado fisico do operador esta' sendo enviado ao aparelho
+            keyboard: false,
             typing: ''
         };
 
@@ -669,6 +671,8 @@ angular.module('headwind-kiosk')
             $scope.remote.kbps = 0;
             $scope.remote.startedAt = null;
             $scope.remote.inputNote = null;
+            $scope.remote.keyboard = false;
+            keyboardArmed = false;
         };
 
         /*
@@ -765,6 +769,7 @@ angular.module('headwind-kiosk')
             player = remoteSupportPlayer.create(canvas(), {
                 onStatus: function (status) {
                     $scope.$applyAsync(function () {
+                        var wasStreaming = $scope.remote.streaming;
                         $scope.remote.pending = !status.streaming;
                         $scope.remote.streaming = !!status.streaming;
                         $scope.remote.input = !!status.input;
@@ -780,11 +785,15 @@ angular.module('headwind-kiosk')
                             $scope.remote.inputNote = status.input
                                 ? null
                                 : localization.localize('remote.input.unavailable');
-                            // Foca o canvas para capturar o teclado fisico de imediato.
-                            var el = canvas();
-                            if (el && el.focus) {
-                                try { el.focus(); } catch (e) {}
+                            // Imagem acabou de chegar: o teclado fisico ja' vai para o
+                            // aparelho, sem exigir um clique antes. So' na transicao -- o
+                            // status se repete, e re-armar a cada um desfaria o "clicar fora
+                            // da tela libera o teclado".
+                            if (!wasStreaming) {
+                                setKeyboard(true);
                             }
+                        } else {
+                            setKeyboard(false);
                         }
                     });
                 },
@@ -877,11 +886,10 @@ angular.module('headwind-kiosk')
             if (!player || !$scope.remote.streaming) {
                 return;
             }
-            // Da foco ao canvas: e' o que faz o teclado FISICO ser capturado ao vivo
-            // (ver onScreenKey). Sem isto o navegador manda o keydown para outro lugar.
-            if (event && event.currentTarget && event.currentTarget.focus) {
-                event.currentTarget.focus();
-            }
+            // Clicar na tela do aparelho (canvas OU o <video> do caminho MSE) arma o teclado
+            // fisico. Nao depende de foco: o <video> faz preventDefault no pointerdown e
+            // nunca recebe foco -- era por isso que pelo IP nenhuma tecla chegava.
+            setKeyboard(true);
             pressedAt = player.toUnit(event);
             pressedTime = Date.now();
         };
@@ -915,45 +923,254 @@ angular.module('headwind-kiosk')
         };
 
         /*
-         * Captura do TECLADO FISICO ao vivo (item 2 da queixa: "digito e nao aparece").
-         * O desenho anterior nao capturava tecla nenhuma sobre o video -- so' o campo de
-         * texto + Enter enviava. Aqui cada tecla fisica pressionada sobre o canvas em foco
-         * vira um comando enviado direto ao aparelho: caractere imprimivel vira 'text', e as
-         * teclas de controle viram os nomes que o agente aceita (backspace/enter/tab/setas,
-         * e Esc como BACK do Android). Nao passa pelo gate de remote.input: o servidor
-         * repassa sempre e o aparelho injeta se a acessibilidade estiver ligada -- deixar a
-         * tecla ser enviada e' o comportamento certo; travar antes so' escondia a falha.
+         * ---------------------------------------------------------------------------------
+         * Teclado FISICO do operador -> aparelho (item 2 da queixa)
+         * ---------------------------------------------------------------------------------
+         *
+         * "No VS Code digita, no navegador nao": o VS Code abre o painel em localhost, que e'
+         * contexto seguro -- ha' WebCodecs e a imagem e' pintada no <canvas>. Pelo IP
+         * (http://192.168.1.65:8080) nao e' contexto seguro, nao ha' WebCodecs, e o player
+         * usa o caminho MSE: cria um <video>, ESCONDE o canvas e so' repassa ponteiros. A
+         * captura anterior dependia de o canvas ter foco (ng-keydown + tabindex), entao pelo
+         * IP nenhuma tecla era capturada.
+         *
+         * Agora a captura independe de qual elemento mostra a imagem e de foco: um listener
+         * no documento envia as teclas enquanto o teclado esta' ARMADO. Arma quando a imagem
+         * chega e ao clicar na tela do aparelho; desarma ao clicar em qualquer outro ponto da
+         * pagina. Teclas digitadas num campo editavel da propria pagina (o campo de texto, a
+         * busca de aparelhos) nunca sao desviadas.
+         *
+         * Caracteres sao juntados por alguns milissegundos e enviados num unico 'text'. Cada
+         * 'text' vira um ACTION_SET_TEXT no aparelho, que le o texto atual e grava o novo;
+         * dezenas deles em rajada competem entre si e letras se perdiam ao digitar rapido.
          */
-        $scope.onScreenKey = function (event) {
-            if (!player || !$scope.remote.streaming) {
-                return;
+        var KEY_FLUSH_MS = 60;
+        var KEY_BUFFER_MAX = 200;      // o servidor recusa 'text' acima de 500 caracteres
+        var keyBuffer = '';
+        var keyTimer = null;
+        var keyboardArmed = false;
+
+        var KEY_NAMES = {
+            'Backspace': 'backspace',
+            'Enter': 'enter',
+            'Tab': 'tab',
+            'ArrowLeft': 'left',
+            'ArrowRight': 'right',
+            'Escape': 'back'
+        };
+
+        // Envio disparado por listener nativo: no transporte HTTP o $http so' sai no
+        // proximo digest. Isto faz o digest acontecer ja'.
+        var kick = function () {
+            $scope.$evalAsync(angular.noop);
+        };
+
+        var flushKeys = function () {
+            if (keyTimer) {
+                clearTimeout(keyTimer);
+                keyTimer = null;
             }
-            var e = event.originalEvent || event;
-            // Combinacoes com Ctrl/Alt/Meta sao atalhos do navegador/SO; nao capturamos.
-            if (e.ctrlKey || e.altKey || e.metaKey) {
-                return;
+            if (keyBuffer.length > 0 && player && $scope.remote.streaming) {
+                player.type(keyBuffer);
+                kick();
             }
-            var key = e.key;
-            var sent = true;
-            switch (key) {
-                case 'Backspace': player.key('backspace'); break;
-                case 'Enter':     player.key('enter'); break;
-                case 'Tab':       player.key('tab'); break;
-                case 'ArrowLeft': player.key('left'); break;
-                case 'ArrowRight':player.key('right'); break;
-                case 'Escape':    player.key('back'); break;
-                default:
-                    if (key && key.length === 1) {
-                        player.type(key);
-                    } else {
-                        sent = false;
-                    }
+            keyBuffer = '';
+        };
+
+        var queueText = function (text) {
+            // Um trecho nunca termina em espaco: medido no omnibox do Chrome do tablet,
+            // "ido " seguido de "456789" virou "ido456789" -- o espaco final de um trecho se
+            // perde. Espaco no INICIO do trecho seguinte (" 456789") ou sozinho chega certo.
+            if (/\s/.test(text) && keyBuffer.length > 0 && !/\s$/.test(keyBuffer)) {
+                flushKeys();
             }
-            if (sent) {
-                event.preventDefault();
-                event.stopPropagation();
+            keyBuffer += text;
+            if (keyBuffer.length >= KEY_BUFFER_MAX) {
+                flushKeys();
+            } else if (!keyTimer) {
+                keyTimer = setTimeout(flushKeys, KEY_FLUSH_MS);
             }
         };
+
+        var sendKeyName = function (name) {
+            flushKeys();    // o texto pendente vai antes da tecla de controle
+            player.key(name);
+            kick();
+        };
+
+        var keyboardCapture = function () {
+            return $document[0].getElementById('remote-keyboard-capture');
+        };
+
+        var isKeyboardCapture = function (el) {
+            return !!(el && el.id === 'remote-keyboard-capture');
+        };
+
+        var focusKeyboardCapture = function () {
+            if (!keyboardArmed || !$scope.remote.streaming) {
+                return;
+            }
+            $timeout(function () {
+                var capture = keyboardCapture();
+                if (capture && $document[0].activeElement !== capture) {
+                    try {
+                        capture.value = '';
+                        capture.focus({preventScroll: true});
+                    } catch (e) {
+                        try {
+                            capture.focus();
+                        } catch (ignored) {
+                        }
+                    }
+                }
+            }, 0, false);
+        };
+
+        var isEditable = function (el) {
+            if (!el) {
+                return false;
+            }
+            if (isKeyboardCapture(el)) {
+                return true;
+            }
+            var tag = (el.tagName || '').toLowerCase();
+            return tag === 'input' || tag === 'textarea' || tag === 'select' || !!el.isContentEditable;
+        };
+
+        var isScreen = function (el) {
+            while (el && el !== $document[0]) {
+                if (el.id === 'remote-screen-canvas'
+                        || (el.classList && (el.classList.contains('remote-live-video')
+                            || el.classList.contains('remote-preview-screen')))) {
+                    return true;
+                }
+                el = el.parentNode;
+            }
+            return false;
+        };
+
+        var setKeyboard = function (armed) {
+            armed = !!armed && !!player && !!$scope.remote.streaming;
+            if (armed === keyboardArmed) {
+                return;
+            }
+            keyboardArmed = armed;
+            if (!armed) {
+                flushKeys();
+            }
+            $scope.$applyAsync(function () {
+                $scope.remote.keyboard = armed;
+            });
+            if (armed) {
+                focusKeyboardCapture();
+            }
+        };
+
+        var handleRemoteKey = function (event, allowCharacters) {
+            if (!player || !$scope.remote.streaming) {
+                return false;
+            }
+            var e = event.originalEvent || event;
+            if (e.isComposing) {
+                return false;
+            }
+            // AltGr (ABNT2: / ? ° ª º) chega com ctrlKey e altKey ligados; nao e' atalho.
+            var altGr = !!(e.getModifierState && e.getModifierState('AltGraph'));
+            if (!altGr && (e.ctrlKey || e.metaKey || e.altKey)) {
+                // Atalhos do navegador/SO ficam com eles. Ctrl+V chega pelo evento 'paste'.
+                return false;
+            }
+            var key = e.key;
+            if (KEY_NAMES.hasOwnProperty(key)) {
+                sendKeyName(KEY_NAMES[key]);
+            } else if (allowCharacters && key && key.length === 1) {
+                queueText(key);
+            } else {
+                // Shift, CapsLock, acento pendente (Dead), F1...: nada a enviar.
+                return false;
+            }
+            event.preventDefault();
+            event.stopPropagation();
+            return true;
+        };
+
+        $scope.onScreenKey = function (event) {
+            return handleRemoteKey(event, true);
+        };
+
+        $scope.onKeyboardCaptureKey = function (event) {
+            return handleRemoteKey(event, false);
+        };
+
+        $scope.onKeyboardCaptureInput = function (event) {
+            if (!keyboardArmed || !player || !$scope.remote.streaming) {
+                return false;
+            }
+            var target = event.target || (event.originalEvent && event.originalEvent.target);
+            var text = target && target.value ? String(target.value) : '';
+            if (target) {
+                target.value = '';
+            }
+            if (text.length === 0) {
+                return false;
+            }
+            queueText(text);
+            if (event.preventDefault) {
+                event.preventDefault();
+            }
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+            return true;
+        };
+
+        $scope.activateRemoteKeyboard = function () {
+            setKeyboard(true);
+        };
+
+        var onDocumentPointerDown = function (event) {
+            var inside = isScreen(event.target);
+            if (inside && $scope.remote.streaming) {
+                // Se o foco esta' num campo da pagina, as teclas iriam para ele.
+                var active = $document[0].activeElement;
+                if (isEditable(active) && active.blur) {
+                    active.blur();
+                }
+            }
+            setKeyboard(inside);
+        };
+
+        var onDocumentKeyDown = function (event) {
+            if (!keyboardArmed || isEditable(event.target)) {
+                return;
+            }
+            $scope.onScreenKey(event);
+        };
+
+        var onDocumentPaste = function (event) {
+            if (!keyboardArmed || !player || !$scope.remote.streaming || isEditable(event.target)) {
+                return;
+            }
+            var data = event.clipboardData || $window.clipboardData;
+            var text = data ? data.getData('text') : '';
+            if (!text) {
+                return;
+            }
+            event.preventDefault();
+            flushKeys();
+            for (var i = 0; i < text.length; i += 400) {
+                player.type(text.substring(i, i + 400));
+            }
+            kick();
+        };
+
+        // Fase de captura: chega antes de qualquer handler da pagina. pointerdown porque o
+        // <video> do MSE faz preventDefault nele, o que suprime o mousedown; mousedown fica
+        // para navegadores sem Pointer Events.
+        $document[0].addEventListener('pointerdown', onDocumentPointerDown, true);
+        $document[0].addEventListener('mousedown', onDocumentPointerDown, true);
+        $document[0].addEventListener('keydown', onDocumentKeyDown, true);
+        $document[0].addEventListener('paste', onDocumentPaste, true);
 
         /*
          * A digitacao vai por um campo proprio, e nao capturando teclas sobre o canvas.
@@ -982,6 +1199,11 @@ angular.module('headwind-kiosk')
          * e' reatada quando o controller nasce de novo, por tryReattach().
          */
         $scope.$on('$destroy', function () {
+            flushKeys();
+            $document[0].removeEventListener('pointerdown', onDocumentPointerDown, true);
+            $document[0].removeEventListener('mousedown', onDocumentPointerDown, true);
+            $document[0].removeEventListener('keydown', onDocumentKeyDown, true);
+            $document[0].removeEventListener('paste', onDocumentPaste, true);
             closePlayer();
         });
 

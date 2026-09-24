@@ -22,6 +22,8 @@ public class PolicyView {
     private String dnsHost;
     /** Read only: the packages this policy blocks with the current catalogs. */
     private List<String> blockedApps = new ArrayList<>();
+    /** Read only: the sites the managed browser of the devices blocks (Chrome URLBlocklist). */
+    private List<String> browserSites = new ArrayList<>();
 
     public int getConfigurationId() { return configurationId; }
     public void setConfigurationId(int configurationId) { this.configurationId = configurationId; }
@@ -47,4 +49,6 @@ public class PolicyView {
     public void setDnsHost(String dnsHost) { this.dnsHost = dnsHost; }
     public List<String> getBlockedApps() { return blockedApps; }
     public void setBlockedApps(List<String> blockedApps) { this.blockedApps = blockedApps; }
+    public List<String> getBrowserSites() { return browserSites; }
+    public void setBrowserSites(List<String> browserSites) { this.browserSites = browserSites; }
 }

@@ -167,8 +167,62 @@ angular.module('headwind-kiosk')
             return { sps: sps, pps: pps };
         };
 
+        // Fila de entrada (ver Player.prototype.send). O servidor recusa 'text' acima de 500.
+        var INPUT_ACK_TIMEOUT_MS = 400;
+        var INPUT_TEXT_MAX = 400;
+
+        // Teclas que o endpoint WebSocket EM PRODUCAO recusa com "tecla desconhecida": a
+        // classe RemoteViewerEndpoint no ar (build de 21-09) so' aceita back/home/recents/
+        // notifications. O endpoint HTTP /input (RemoteSupportResource.input) repassa ao
+        // agente sem essa lista, com a mesma permissao de controle, e o agente valida o nome
+        // por conta propria. Sem isto Backspace, Enter, Tab e setas nunca chegavam.
+        var KEYS_VIA_HTTP = {backspace: true, enter: true, tab: true, left: true, right: true};
+
+        // Configuracao do codec (SPS/PPS) por aparelho, guardada no navegador. O agente so'
+        // a envia no inicio da transmissao; ver o uso em onFrame. Nao e' dado sensivel: sao
+        // parametros do codificador de video. Guarda a resolucao junto para nunca aplicar
+        // uma configuracao de outra resolucao.
+        var CODEC_STORAGE_PREFIX = 'hwmdm.remote.codec.';
+
+        var saveCodecConfig = function (deviceId, payload, width, height) {
+            try {
+                var bin = '';
+                for (var i = 0; i < payload.length; i++) {
+                    bin += String.fromCharCode(payload[i]);
+                }
+                $window.localStorage.setItem(CODEC_STORAGE_PREFIX + deviceId,
+                    JSON.stringify({c: $window.btoa(bin), w: width || 0, h: height || 0}));
+            } catch (e) {
+                // localStorage indisponivel: so' perde a retomada apos F5.
+            }
+        };
+
+        var loadCodecConfig = function (deviceId, width, height) {
+            try {
+                var raw = JSON.parse($window.localStorage.getItem(CODEC_STORAGE_PREFIX + deviceId));
+                if (!raw || !raw.c) {
+                    return null;
+                }
+                if (width && height && raw.w && raw.h && (raw.w !== width || raw.h !== height)) {
+                    return null;
+                }
+                var bin = $window.atob(raw.c);
+                var out = new Uint8Array(bin.length);
+                for (var i = 0; i < bin.length; i++) {
+                    out[i] = bin.charCodeAt(i);
+                }
+                return out;
+            } catch (e) {
+                return null;
+            }
+        };
+
         function Player(canvas, handlers, deviceId) {
             this.deviceId = deviceId;
+            this.haveConfig = false;
+            this.outbox = [];
+            this.inputInFlight = false;
+            this.inputAckTimer = null;
             this.cursor = 0;
             this.http = false;
             this.canvas = canvas;
@@ -346,6 +400,7 @@ angular.module('headwind-kiosk')
                 }
                 this.report('onStatus', message);
             } else if (message.type === 'input-result') {
+                this.inputAcked();
                 this.report('onInputResult', message);
             }
         };
@@ -367,18 +422,28 @@ angular.module('headwind-kiosk')
             }
 
             if (type === FRAME_CONFIG) {
-                this.pendingConfig = payload;
-                this.codecString = codecFromParameterSet(payload) || this.codecString;
-                this.mseConfigNal = payload;
-                this.mseCodecString = this.codecString;
-                if (this.useMse) {
-                    this.mseInitSent = false;
-                    this.mseSeqNum = 1;
-                    this.mseTimestamp = 0;
-                    return;
-                }
-                this.configure();
+                saveCodecConfig(this.deviceId, payload, this.mseWidth, this.mseHeight);
+                this.applyConfig(payload);
                 return;
+            }
+
+            // Espectador que chegou depois do inicio (F5, troca de tela, outra aba): pelo
+            // WebSocket o hub no ar reenvia o ultimo quadro-chave mas NAO a configuracao do
+            // codec, e sem SPS/PPS nada decodifica -- a tela ficava preta. Usa a
+            // configuracao guardada neste navegador (mesma resolucao) ou busca uma vez pelo
+            // endpoint HTTP, que devolve configuracao + ultimo quadro-chave.
+            if (!this.haveConfig) {
+                if (type === FRAME_KEY) {
+                    var stored = loadCodecConfig(this.deviceId, this.mseWidth, this.mseHeight);
+                    if (stored) {
+                        this.applyConfig(stored);
+                    } else {
+                        this.fetchConfig();
+                        return;
+                    }
+                } else {
+                    return;     // delta sem configuracao nao decodifica
+                }
             }
 
             if (this.useMse) {
@@ -410,6 +475,47 @@ angular.module('headwind-kiosk')
                 this.awaitingKeyFrame = true;
                 this.report('onError', 'remote.error.stream.decode');
             }
+        };
+
+        Player.prototype.fetchConfig = function () {
+            if (this.fetchingConfig || this.http || this.closed) {
+                return;     // no transporte HTTP a propria sondagem ja' traz a configuracao
+            }
+            var self = this;
+            this.fetchingConfig = true;
+            var done = function () {
+                self.fetchingConfig = false;
+            };
+            $http.get('rest/private/remote-support/' + this.deviceId + '/frames',
+                      {params: {since: 0}, timeout: 20000})
+                .then(function (res) {
+                    done();
+                    var data = res.data && res.data.data;
+                    if (self.closed || self.haveConfig || !data) {
+                        return;
+                    }
+                    (data.frames || []).forEach(function (b64) {
+                        var bytes = base64ToBytes(b64);
+                        if (bytes[0] === FRAME_CONFIG || bytes[0] === FRAME_KEY) {
+                            self.onFrame(bytes);
+                        }
+                    });
+                }, done);
+        };
+
+        Player.prototype.applyConfig = function (payload) {
+            this.haveConfig = true;
+            this.pendingConfig = payload;
+            this.codecString = codecFromParameterSet(payload) || this.codecString;
+            this.mseConfigNal = payload;
+            this.mseCodecString = this.codecString;
+            if (this.useMse) {
+                this.mseInitSent = false;
+                this.mseSeqNum = 1;
+                this.mseTimestamp = 0;
+                return;
+            }
+            this.configure();
         };
 
         Player.prototype.configure = function () {
@@ -527,18 +633,77 @@ angular.module('headwind-kiosk')
 
         Player.prototype.send = function (command) {
             if (this.http) {
-                $http.post('rest/private/remote-support/' + this.deviceId + '/input', command);
+                // Em fila: POSTs em paralelo podem chegar fora de ordem ao servidor, e
+                // "abc", Backspace, "d" viraria outra coisa no aparelho.
+                var url = 'rest/private/remote-support/' + this.deviceId + '/input';
+                var post = function () {
+                    return $http.post(url, command);
+                };
+                var sent = this.httpInput ? this.httpInput.then(post, post) : post();
+                this.httpInput = sent.then(angular.noop, angular.noop);
                 return true;
             }
             if (!this.socket || this.socket.readyState !== 1) {
                 return false;
             }
-            try {
-                this.socket.send(JSON.stringify(command));
-                return true;
-            } catch (e) {
-                return false;
+            /*
+             * Um comando em voo por vez. O servidor repassa cada comando ao agente com um
+             * envio assincrono que NAO aceita dois envios sobrepostos no mesmo socket: o
+             * segundo estoura IllegalStateException (TEXT_FULL_WRITING) e e' descartado --
+             * era assim que teclas sumiam ao digitar. O agente responde 'input-result' a
+             * todo comando; o proximo so' sai depois dessa resposta (ou do prazo abaixo).
+             * Texto digitado enquanto espera e' juntado num unico comando, entao a
+             * velocidade de digitacao nao fica presa ao tempo de ida e volta.
+             */
+            var last = this.outbox[this.outbox.length - 1];
+            // Juntar so' se o resultado nao terminar em espaco: o espaco final de um trecho se
+            // perde em campos como o omnibox do Chrome (ver queueText no controller).
+            if (command.type === 'text' && last && last.type === 'text'
+                    && (last.text.length + command.text.length) <= INPUT_TEXT_MAX
+                    && !/\s$/.test(last.text + command.text)) {
+                last.text += command.text;
+            } else {
+                this.outbox.push(command);
             }
+            this.pumpInput();
+            return true;
+        };
+
+        Player.prototype.pumpInput = function () {
+            if (this.inputInFlight || this.outbox.length === 0) {
+                return;
+            }
+            if (!this.socket || this.socket.readyState !== 1) {
+                this.outbox = [];
+                return;
+            }
+            var command = this.outbox.shift();
+            if (command.type === 'key' && KEYS_VIA_HTTP[command.name] === true) {
+                // A resposta do agente ('input-result') volta pelo socket do espectador e
+                // libera a fila do mesmo jeito.
+                $http.post('rest/private/remote-support/' + this.deviceId + '/input', command);
+            } else {
+                try {
+                    this.socket.send(JSON.stringify(command));
+                } catch (e) {
+                    this.outbox = [];
+                    return;
+                }
+            }
+            var self = this;
+            this.inputInFlight = true;
+            this.inputAckTimer = $timeout(function () {
+                self.inputAcked();
+            }, INPUT_ACK_TIMEOUT_MS, false);
+        };
+
+        Player.prototype.inputAcked = function () {
+            if (this.inputAckTimer) {
+                $timeout.cancel(this.inputAckTimer);
+                this.inputAckTimer = null;
+            }
+            this.inputInFlight = false;
+            this.pumpInput();
         };
 
         Player.prototype.tap = function (x, y) {
@@ -665,6 +830,12 @@ angular.module('headwind-kiosk')
 
         Player.prototype.close = function () {
             this.closed = true;
+            this.outbox = [];
+            if (this.inputAckTimer) {
+                $timeout.cancel(this.inputAckTimer);
+                this.inputAckTimer = null;
+            }
+            this.inputInFlight = false;
             this.teardownDecoder();
             this.teardownMse();
             if (this.socket) {

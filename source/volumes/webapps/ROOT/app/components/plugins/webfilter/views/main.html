@@ -20,6 +20,10 @@
         .wf-cat-desc { font-weight: 400; font-size: 12px; color: var(--hwmdm-muted); }
         .wf-warning { border: 1px solid var(--hwmdm-danger-border); background: var(--hwmdm-danger-bg); color: var(--hwmdm-text); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
         .wf-muted { color: var(--hwmdm-muted); font-size: 12px; overflow-wrap: anywhere; }
+        .wf-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+        .wf-dashboard-card { border: 1px solid var(--hwmdm-border); border-radius: 8px; padding: 12px; background: var(--hwmdm-surface); }
+        .wf-dashboard-card span { display: block; color: var(--hwmdm-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .wf-dashboard-card strong { display: block; margin-top: 6px; font-size: 24px; color: var(--hwmdm-text-strong); }
         .wf-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
         .wf-add-app { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .wf-add-app input, .wf-add-app select { flex: 1 1 200px; min-width: 0; }
@@ -59,6 +63,92 @@
                 data-testid="wf-tab-{{tab.id}}"
                 ng-click="selectWfTab(tab.id)">{{tab.key | localize}}</button>
     </div>
+
+    <!-- ======================================================================== Dashboard -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'dashboard'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.dashboard.title</h4>
+            <button type="button" class="btn btn-default btn-sm" ng-click="selectWfTab('dashboard')"
+                    ng-disabled="dashboardLoading" localized>plugin.webfilter.dashboard.refresh</button>
+        </div>
+
+        <div class="wf-dashboard-grid">
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.active.policies</span>
+                <strong>{{dashboard.policies.length || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.devices</span>
+                <strong>{{dashboard.devices.length || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.events24h</span>
+                <strong>{{dashboard.events24h || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.events7d</span>
+                <strong>{{dashboard.events7d || 0}}</strong>
+            </div>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.dashboard.delivery</strong></h5>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.device</th>
+                    <th localized>plugin.webfilter.col.profile</th>
+                    <th localized>plugin.webfilter.col.status</th>
+                    <th localized>plugin.webfilter.col.last.delivery</th>
+                    <th localized>plugin.webfilter.col.browser.sites</th>
+                    <th localized>plugin.webfilter.col.hidden.apps</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="d in dashboard.devices">
+                    <td><strong>{{d.deviceNumber}}</strong></td>
+                    <td>{{d.configurationName}}</td>
+                    <td>
+                        <span class="wf-badge" ng-class="{'wf-badge-on': d.enabled, 'wf-badge-off': !d.enabled}">
+                            {{d.deliveredAt ? ((d.enabled ? 'plugin.webfilter.enabled' : 'plugin.webfilter.disabled') | localize) : ('plugin.webfilter.dashboard.not.delivered' | localize)}}
+                        </span>
+                    </td>
+                    <td>{{d.deliveredAt ? (d.deliveredAt | date:'short') : '-'}}</td>
+                    <td>{{d.browserSites || 0}}</td>
+                    <td>{{d.hiddenApps || 0}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!dashboard.devices || dashboard.devices.length === 0"
+                 localized>plugin.webfilter.dashboard.delivery.empty</div>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.dashboard.events</strong></h5>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.when</th>
+                    <th localized>plugin.webfilter.col.device</th>
+                    <th localized>plugin.webfilter.col.host</th>
+                    <th localized>plugin.webfilter.col.category</th>
+                    <th localized>plugin.webfilter.col.source</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="e in dashboard.events">
+                    <td>{{e.createdAt | date:'short'}}</td>
+                    <td>{{e.deviceNumber}}</td>
+                    <td class="wf-code">{{e.host}}</td>
+                    <td>{{e.category || '-'}}</td>
+                    <td>{{e.source}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!dashboard.events || dashboard.events.length === 0"
+                 localized>plugin.webfilter.dashboard.events.empty</div>
+        </div>
+    </section>
 
     <!-- ======================================================================== Policies: list -->
     <section class="kiosk-panel" ng-if="activeWfTab === 'policies' && !editing">

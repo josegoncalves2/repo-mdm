@@ -8,15 +8,19 @@ import com.hmdm.persistence.UnsecureDAO;
 import com.hmdm.persistence.domain.Application;
 import com.hmdm.persistence.domain.ApplicationVersion;
 import com.hmdm.persistence.domain.Configuration;
+import com.hmdm.persistence.domain.Device;
 import com.hmdm.plugins.webfilter.catalog.WebFilterCatalog;
 import com.hmdm.plugins.webfilter.persistence.WebFilterDAO;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterDelivery;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEntry;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEvent;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import com.hmdm.plugins.webfilter.resolver.ResolverConfigWriter;
 import com.hmdm.plugins.webfilter.rest.json.PolicyView;
 import com.hmdm.plugins.webfilter.rest.json.ValidationError;
+import com.hmdm.plugins.webfilter.sync.BrowserPolicy;
 import com.hmdm.security.SecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -165,12 +169,142 @@ public class WebFilterService {
             }
         }
         if (policy.isEnabled()) {
+            // The required category is enforced while enabled, exactly as the sync does
+            Set<String> enforced = new TreeSet<>(v.getCategories());
+            enforced.add(WebFilterCatalog.REQUIRED_CATEGORY);
             v.setDnsHost(dnsHost(customerId, c.getId()));
-            v.setBlockedApps(new ArrayList<>(WebFilterDecision.blockedPackages(v.getCategories(),
+            v.setBlockedApps(new ArrayList<>(WebFilterDecision.blockedPackages(enforced,
                     appsByCategory(customerId), new HashSet<>(v.getAppAllow()), new HashSet<>(v.getAppBlock()),
                     protectedPackages(c))));
+            List<String> sites = new ArrayList<>();
+            BrowserPolicy.enabled(enforced, catalog, v.getDomainAllow(), v.getDomainBlock())
+                    .path(BrowserPolicy.BLOCKLIST).forEach(n -> sites.add(n.asText()));
+            v.setBrowserSites(sites);
         }
         return v;
+    }
+
+    // ================================================================================================= dashboard
+    /** Blocked accesses are kept for this long. */
+    private static final long EVENT_RETENTION_MILLIS = 30L * 24 * 3600_000L;
+    /** A reload of the same blocked page within this window is not a new attempt. */
+    private static final long EVENT_DEDUP_MILLIS = 60_000L;
+    private static final int EVENT_MAX_PER_DEVICE_HOUR = 120;
+
+    /**
+     * <p>Everything the dashboard shows for the current customer: the profiles and what they enforce, whether each
+     * device already received its policy, and the most recent blocked accesses.</p>
+     */
+    public Map<String, Object> dashboard() {
+        int customerId = currentCustomerId();
+        long now = System.currentTimeMillis();
+        Map<String, Object> result = new LinkedHashMap<>();
+        List<PolicyView> policies = new ArrayList<>();
+        for (PolicyView p : listPolicies()) {
+            if (p.getUpdatedAt() != null) {
+                policies.add(p); // profiles that never had a web filter policy are left out
+            }
+        }
+        List<WebFilterDelivery> devices = new ArrayList<>();
+        for (WebFilterDelivery d : dao.getDeliveries(customerId)) {
+            if (configurationDAO.hasConfigurationAccess(d.getConfigurationId())) {
+                devices.add(d);
+            }
+        }
+        result.put("generatedAt", now);
+        result.put("policies", policies);
+        result.put("devices", devices);
+        result.put("events", dao.getRecentEvents(customerId, 100));
+        result.put("events24h", dao.countEvents(customerId, now - 24 * 3600_000L));
+        result.put("events7d", dao.countEvents(customerId, now - 7 * 24 * 3600_000L));
+        return result;
+    }
+
+    /**
+     * <p>Records a blocked access reported by a device. Called by the device itself, so everything comes from the
+     * database, never from the caller: the customer, the profile and the category.</p>
+     *
+     * @return <code>false</code> if the device does not exist or the report is not a valid address.
+     */
+    public boolean reportBlocked(String deviceNumber, String url) {
+        Device device = deviceNumber == null ? null : unsecureDAO.getDeviceByNumber(deviceNumber);
+        if (device == null) {
+            return false;
+        }
+        String host = hostOf(url);
+        if (host == null) {
+            return false;
+        }
+        WebFilterEvent e = new WebFilterEvent();
+        e.setCustomerId(device.getCustomerId());
+        e.setDeviceId(device.getId());
+        e.setConfigurationId(device.getConfigurationId());
+        e.setHost(host);
+        e.setUrl(url.length() > 1000 ? url.substring(0, 1000) : url);
+        e.setSource(WebFilterEvent.SOURCE_BROWSER);
+        e.setCreatedAt(System.currentTimeMillis());
+        WebFilterPolicy policy = device.getConfigurationId() == null ? null
+                : dao.getPolicy(device.getCustomerId(), device.getConfigurationId());
+        e.setCategory(policy == null ? null : classify(policy, host));
+        if (dao.addEvent(e, EVENT_DEDUP_MILLIS, EVENT_MAX_PER_DEVICE_HOUR)) {
+            dao.purgeEvents(e.getCreatedAt() - EVENT_RETENTION_MILLIS);
+        }
+        return true;
+    }
+
+    /**
+     * <p>Why the policy blocks a host: <code>list</code> when the administrator listed it, else the first blocked
+     * category whose sites cover it, else <code>null</code>.</p>
+     */
+    private String classify(WebFilterPolicy policy, String host) {
+        for (WebFilterEntry entry : dao.getEntries(policy.getId())) {
+            if (WebFilterEntry.KIND_DOMAIN.equals(entry.getKind()) && WebFilterEntry.LIST_BLOCK.equals(entry.getList())
+                    && covers(entry.getValue(), host)) {
+                return "list";
+            }
+        }
+        Set<String> categories = new TreeSet<>(dao.getCategories(policy.getId()));
+        categories.add(WebFilterCatalog.REQUIRED_CATEGORY);
+        for (String category : categories) {
+            for (String site : catalog.getBrowserDomains(category)) {
+                if (covers(site, host)) {
+                    return category;
+                }
+            }
+        }
+        return null;
+    }
+
+    /** Chrome URL filter semantics for a host entry: the domain itself and all its subdomains. */
+    static boolean covers(String entry, String host) {
+        String e = entry.toLowerCase();
+        return host.equals(e) || host.endsWith("." + e);
+    }
+
+    static String hostOf(String url) {
+        if (url == null) {
+            return null;
+        }
+        String u = url.trim();
+        if (u.isEmpty() || u.length() > 4000) {
+            return null;
+        }
+        if (!u.contains("://")) {
+            u = "http://" + u;
+        }
+        try {
+            String host = new java.net.URI(u.replace(" ", "%20")).getHost();
+            if (host == null) {
+                return null;
+            }
+            host = host.toLowerCase();
+            if (host.startsWith("www.")) {
+                host = host.substring(4);
+            }
+            return host.length() > 255 ? null : host;
+        } catch (java.net.URISyntaxException ex) {
+            return null;
+        }
     }
 
     /**

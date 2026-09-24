@@ -1,11 +1,14 @@
 com/hmdm/plugins/webfilter/service/WebFilterValidator.class
+com/hmdm/plugins/webfilter/persistence/domain/WebFilterEvent.class
 com/hmdm/plugins/webfilter/catalog/WebFilterCatalog.class
 com/hmdm/plugins/webfilter/sync/WebFilterSyncResponse.class
 com/hmdm/plugins/webfilter/service/WebFilterService.class
 com/hmdm/plugins/webfilter/persistence/mapper/WebFilterMapper.class
+com/hmdm/plugins/webfilter/sync/BrowserPolicy.class
 com/hmdm/plugins/webfilter/rest/WebFilterResource.class
 com/hmdm/plugins/webfilter/persistence/domain/WebFilterEntry.class
 com/hmdm/plugins/webfilter/rest/json/ValidationError.class
+com/hmdm/plugins/webfilter/persistence/domain/WebFilterDelivery.class
 com/hmdm/plugins/webfilter/sync/WebFilterSyncResponseHook.class
 com/hmdm/plugins/webfilter/guice/module/WebFilterPersistenceModule.class
 com/hmdm/plugins/webfilter/persistence/domain/WebFilterAppCategory.class
@@ -18,6 +21,7 @@ com/hmdm/plugins/webfilter/WebFilterPluginConfigurationImpl.class
 com/hmdm/plugins/webfilter/persistence/WebFilterDAO.class
 com/hmdm/plugins/webfilter/service/WebFilterDecision.class
 com/hmdm/plugins/webfilter/rest/json/PolicyView.class
+com/hmdm/plugins/webfilter/rest/WebFilterPublicResource.class
 com/hmdm/plugins/webfilter/sync/WebFilterAppSetting.class
 com/hmdm/plugins/webfilter/guice/module/WebFilterRestModule.class
 com/hmdm/plugins/webfilter/rest/json/SettingsView.class

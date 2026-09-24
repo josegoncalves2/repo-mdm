@@ -22,6 +22,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
     .factory('pluginWebFilterService', function ($resource) {
         var base = 'rest/plugins/webfilter/private';
         return $resource('', {}, {
+            getDashboard: {url: base + '/dashboard', method: 'GET'},
             getCatalog: {url: base + '/catalog', method: 'GET'},
             getPolicies: {url: base + '/policies', method: 'GET'},
             getPolicy: {url: base + '/policies/:configurationId', method: 'GET'},
@@ -36,12 +37,14 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
     .controller('PluginWebFilterController', function ($scope, pluginWebFilterService, localization) {
         var LISTS = ['domainAllow', 'domainBlock', 'appAllow', 'appBlock'];
 
-        $scope.activeWfTab = 'policies';
+        $scope.activeWfTab = 'dashboard';
         $scope.tabs = [
+            {id: 'dashboard', key: 'plugin.webfilter.tab.dashboard'},
             {id: 'policies', key: 'plugin.webfilter.tab.policies'},
             {id: 'apps', key: 'plugin.webfilter.tab.apps'},
             {id: 'settings', key: 'plugin.webfilter.tab.settings'}
         ];
+        $scope.dashboard = {policies: [], devices: [], events: [], events24h: 0, events7d: 0};
         $scope.catalog = {categories: [], protectedPackages: [], attribution: []};
         $scope.policies = [];
         $scope.appCategories = [];
@@ -91,6 +94,24 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             clearMessages();
             $scope.editing = null;
             $scope.activeWfTab = id;
+            if (id === 'dashboard') {
+                loadDashboard();
+            }
+        };
+
+        var loadDashboard = function () {
+            $scope.dashboardLoading = true;
+            pluginWebFilterService.getDashboard(function (response) {
+                $scope.dashboardLoading = false;
+                if (response.status === 'OK') {
+                    $scope.dashboard = response.data || $scope.dashboard;
+                } else {
+                    showErrors(response);
+                }
+            }, function (response) {
+                $scope.dashboardLoading = false;
+                onFailure(response);
+            });
         };
 
         var loadCatalog = function () {
@@ -204,6 +225,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
                     e.dnsHost = p.dnsHost;
                     e.blockedApps = p.blockedApps;
                     $scope.successMessage = localization.localize('plugin.webfilter.saved');
+                    loadDashboard();
                 } else {
                     showErrors(response);
                 }
@@ -246,12 +268,14 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
                     $scope.settings = response.data;
                     $scope.savedDnsDomain = response.data.dnsDomain;
                     $scope.successMessage = localization.localize('plugin.webfilter.saved');
+                    loadDashboard();
                 } else {
                     showErrors(response);
                 }
             }, onFailure);
         };
 
+        loadDashboard();
         loadCatalog();
         loadPolicies();
         loadApps();

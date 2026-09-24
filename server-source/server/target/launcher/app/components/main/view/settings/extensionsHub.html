@@ -1,57 +1,74 @@
-<div class="hwmdm-list-page ext-hub" ng-controller="PluginsTabController">
+<div class="hwmdm-list-page ext-hub" ng-controller="ModulesTabController">
     <div class="hwmdm-page-toolbar">
         <div>
             <h3 localized>nav.extensions</h3>
-            <p localized>extensions.page.subtitle</p>
+            <p localized>modules.page.subtitle</p>
         </div>
     </div>
 
-    <div class="ext-hub-empty" ng-if="functionsPlugins.length === 0 && settingsPlugins.length === 0 && !hasPermission('plugins_customer_access_management')"
-         localized>extensions.empty</div>
-
-    <div class="ext-hub-section" ng-if="functionsPlugins.length > 0">
-        <h4 class="ext-hub-section-title" localized>extensions.device.actions</h4>
-        <p class="ext-hub-section-hint" localized>extensions.device.actions.hint</p>
-        <div class="ext-hub-grid">
-            <button type="button" class="ext-hub-card" ng-repeat="plugin in functionsPlugins"
-                    ng-if="!plugin.functionsPermission || hasPermission(plugin.functionsPermission)"
-                    ng-click="openTab('plugin-' + plugin.identifier)">
-                <span class="glyphicon glyphicon-flash ext-hub-card-icon"></span>
-                <span class="ext-hub-card-label">{{localization.localize(plugin.nameLocalizationKey)}}</span>
-            </button>
+    <div class="form-group" ng-if="!loading && !nativeStateAvailable">
+        <div class="error">
+            <span class="hw-icon hw-icon-alert-triangle"></span>
+            <span localized>modules.native.unavailable</span>
         </div>
     </div>
 
-    <div class="ext-hub-section" ng-if="settingsPlugins.length > 0">
-        <h4 class="ext-hub-section-title" localized>extensions.settings</h4>
-        <p class="ext-hub-section-hint" localized>extensions.settings.hint</p>
-        <div class="ext-hub-grid">
-            <button type="button" class="ext-hub-card" ng-repeat="plugin in settingsPlugins"
-                    ng-if="!plugin.settingsPermission || hasPermission(plugin.settingsPermission)"
-                    ng-click="openTab('plugin-settings-' + plugin.identifier)">
-                <span class="glyphicon glyphicon-wrench ext-hub-card-icon"></span>
-                <span class="ext-hub-card-label">{{localization.localize(plugin.nameLocalizationKey)}}</span>
-            </button>
+    <div ng-if="loading" class="ext-hub-loading" localized>remote.loading</div>
+
+    <div ng-if="!loading" class="ext-hub-modules">
+        <div class="ext-hub-section" ng-repeat="section in sections">
+            <h4 class="ext-hub-section-title">{{section.labelKey | localize}}</h4>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th localized>modules.col.name</th>
+                    <th localized>modules.col.type</th>
+                    <th localized>modules.col.state</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="m in section.modules">
+                    <td class="ext-hub-row-icon"><span class="hw-icon hw-icon-{{m.icon}}"></span></td>
+                    <td>
+                        <div class="ext-hub-row-name">{{m.labelKey | localize}}</div>
+                        <div class="ext-hub-row-desc">{{m.descKey | localize}}</div>
+                    </td>
+                    <td>{{typeLabel(m) | localize}}</td>
+                    <td>
+                        <span ng-if="!isInMaintenance(m.id)" class="label label-success" localized>modules.state.active</span>
+                        <span ng-if="isInMaintenance(m.id)" class="label label-warning">
+                            <span localized>modules.state.maintenance</span>
+                            <span ng-if="maintenanceInfo(m.id).disabledAt">
+                                {{maintenanceInfo(m.id).disabledAt | date:'dd/MM/yyyy HH:mm'}}
+                            </span>
+                            <span ng-if="maintenanceInfo(m.id).disabledBy"> — {{maintenanceInfo(m.id).disabledBy}}</span>
+                            <span ng-if="maintenanceInfo(m.id).reason"> — {{maintenanceInfo(m.id).reason}}</span>
+                        </span>
+                    </td>
+                    <td class="ext-hub-row-actions">
+                        <button type="button" class="btn btn-default btn-xs"
+                                ng-if="settingsTarget(m.id)"
+                                ng-click="openTab(settingsTarget(m.id))"
+                                localized>modules.action.configure</button>
+
+                        <label class="dtv-toggle ext-hub-row-toggle" ng-if="m.manageVia"
+                               title="{{isEssential(m.id) ? ('modules.essential.hint' | localize) : (!canToggle(m.id) ? ('modules.no.permission.hint' | localize) : '')}}">
+                            <input type="checkbox"
+                                   ng-checked="!isInMaintenance(m.id)"
+                                   ng-disabled="!canToggle(m.id) || loading"
+                                   ng-click="toggle(m)"/>
+                            <span class="dtv-toggle-track"><span class="dtv-toggle-thumb"></span></span>
+                        </label>
+                        <span class="ext-hub-row-locked" ng-if="!m.manageVia" localized>modules.notmanageable.hint</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
 
-    <div class="ext-hub-section" ng-if="hasPermission('plugins_customer_access_management')">
-        <h4 class="ext-hub-section-title" localized>extensions.maintenance</h4>
-        <p class="ext-hub-section-hint" localized>extensions.maintenance.hint</p>
-
-        <div class='form-group' ng-if='errorMessage'><div class='error'><span>{{errorMessage}}</span></div></div>
-        <div class='form-group' ng-if='successMessage'><div class='success'><span>{{successMessage}}</span></div></div>
-
-        <div class="dtv-toggle-grid" ng-if="plugins && pluginSelection">
-            <label class="dtv-toggle" ng-repeat="plugin in plugins">
-                <input type="checkbox" ng-model="pluginSelection[plugin.id]" ng-disabled="loading"/>
-                <span class="dtv-toggle-track"><span class="dtv-toggle-thumb"></span></span>
-                <span class="dtv-toggle-label">{{plugin.localizedName}}</span>
-            </label>
-        </div>
-
-        <div class="dtv-save-bar">
-            <button type="button" class="btn btn-primary" ng-disabled="loading" ng-click="save()" localized>button.save</button>
-        </div>
+        <div class="ext-hub-empty" ng-if="sections.length === 0" localized>extensions.empty</div>
     </div>
 </div>

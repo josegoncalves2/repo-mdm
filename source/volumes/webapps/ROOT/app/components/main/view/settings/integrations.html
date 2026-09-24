@@ -1,0 +1,86 @@
+<div class="hwmdm-list-page ext-hub" ng-controller="IntegrationsTabController">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.integrations</h3>
+            <p localized>integrations.page.subtitle</p>
+        </div>
+    </div>
+
+    <div ng-if="loading" class="ext-hub-loading" localized>remote.loading</div>
+
+    <div ng-if="!loading">
+        <!-- a) Extensoes instaladas: o que o nucleo deste servidor carregou de verdade -->
+        <div class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>integrations.installed.title</h4>
+            <p class="ext-hub-section-hint" localized>integrations.installed.hint</p>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th localized>modules.col.name</th>
+                    <th localized>integrations.col.identifier</th>
+                    <th localized>modules.col.state</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="plugin in installedPlugins">
+                    <td>{{plugin.nameLocalizationKey | localize}}</td>
+                    <td><code>{{plugin.identifier}}</code></td>
+                    <td>
+                        <span ng-if="isPluginActive(plugin.identifier)" class="label label-success" localized>modules.state.active</span>
+                        <span ng-if="!isPluginActive(plugin.identifier)" class="label label-warning" localized>modules.state.maintenance</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="ext-hub-empty" ng-if="installedPlugins.length === 0" localized>integrations.installed.empty</div>
+        </div>
+
+        <!-- b) Pontos de integracao que existem de verdade neste servidor -->
+        <div class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>integrations.points.title</h4>
+            <p class="ext-hub-section-hint" localized>integrations.points.hint</p>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th localized>integrations.col.point</th>
+                    <th localized>integrations.col.address</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="point in integrationPoints">
+                    <td class="ext-hub-row-icon"><span class="hw-icon hw-icon-{{point.icon}}"></span></td>
+                    <td>
+                        <div class="ext-hub-row-name">{{point.titleKey | localize}}</div>
+                        <div class="ext-hub-row-desc">{{point.descKey | localize}}</div>
+                    </td>
+                    <td><code>{{point.address}}</code></td>
+                    <td>
+                        <button type="button" class="btn btn-default btn-xs" ng-click="copy(point)">
+                            <span class="hw-icon hw-icon-copy"></span>
+                            <span ng-if="copiedId !== point.id" localized>integrations.copy</span>
+                            <span ng-if="copiedId === point.id" localized>integrations.copied</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- c) Como acrescentar um modulo novo neste servidor -->
+        <div class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>integrations.addmodule.title</h4>
+            <p class="ext-hub-section-hint" localized>integrations.addmodule.hint</p>
+            <ol class="ext-hub-steps">
+                <li localized>integrations.addmodule.step1</li>
+                <li localized>integrations.addmodule.step2</li>
+                <li localized>integrations.addmodule.step3</li>
+                <li localized>integrations.addmodule.step4</li>
+            </ol>
+            <p class="ext-hub-section-hint" localized>integrations.addmodule.docs</p>
+        </div>
+    </div>
+</div>

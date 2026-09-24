@@ -1,120 +1,91 @@
 /*
+ * HWMDM 1.0 - tela "Integracoes e extensoes" (pacote de trabalho "modulos", item 16 do
+ * pedido). Substitui "More plugins..." (o plugin xtra, que nunca fez nada e nao aparece em
+ * lugar nenhum agora) por uma secao com proposito: o que este servidor tem instalado, os
+ * pontos de integracao que EXISTEM de verdade neste servidor (cada um conferido abrindo o
+ * endpoint ou lendo o codigo-fonte antes de entrar nesta lista) e o procedimento real para
+ * acrescentar um modulo novo.
  *
- * Headwind MDM: Open Source Android MDM Software
- * https://github.com/h-mdm/hmdm-server
- *
- * Copyright (C) 2019 Headwind MDM Solutions LLC (http://h-sms.com)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
+ * Este arquivo reaproveita o nome de arquivo "plugins.controller.js" (estava dedicado ao
+ * antigo PluginsTabController, hoje redistribuido entre TabController/ModulesTabController) -
+ * nenhuma outra tela referenciava PluginsTabController pelo nome, entao a troca e segura.
  */
-
-// Localization completed
 angular.module('headwind-kiosk')
-    .controller('PluginsTabController', function ($scope, $rootScope, $timeout,
-                                                   localization, pluginService) {
-        $scope.loading = false;
+    .controller('IntegrationsTabController', function ($scope, $window, moduleRegistry, localization) {
+
         $scope.localization = localization;
+        $scope.loading = true;
+        $scope.installedPlugins = [];
 
-        $scope.errorMessage = undefined;
-        $scope.successMessage = undefined;
+        moduleRegistry.load().then(function () {
+            $scope.loading = false;
+            $scope.installedPlugins = moduleRegistry.installedPlugins();
+            $scope.isPluginActive = moduleRegistry.isPluginActiveForCustomer;
+        });
 
-        var clearMessages = function () {
-            $scope.errorMessage = undefined;
-            $scope.successMessage = undefined;
-        };
-
-        var loadData = function () {
-            clearMessages();
-
-            $scope.loading = true;
-            pluginService.getActivePlugins(function (response) {
-                if (response.status === 'OK') {
-                    var plugins = response.data;
-                    var pluginSelection = {};
-
-                    plugins.forEach(function (plugin) {
-                        plugin.localizedName = localization.localize(plugin.nameLocalizationKey);
-                        pluginSelection[plugin.id] = false;
-                    });
-
-                    plugins.sort(function (a, b) {
-                        var t1 = a.localizedName;
-                        var t2 = b.localizedName;
-
-                        if (t1 === t2) {
-                            return 0;
-                        } else if (t1 < t2) {
-                            return -1;
-                        } else {
-                            return 1;
-                        }
-                    });
-
-                    pluginService.getAvailablePlugins(function (response) {
-                        $scope.loading = false;
-
-                        if (response.status === 'OK') {
-                            response.data.forEach(function (plugin) {
-                                pluginSelection[plugin.id] = true;
-                            });
-
-                            $scope.plugins = plugins;
-                            $scope.pluginSelection = pluginSelection;
-
-                        } else {
-                            $scope.errorMessage = localization.localizeServerResponse(response);
-                        }
-                    }, function () {
-                        $scope.loading = false;
-                        $scope.errorMessage = localization.localize("error.request.failure");
-                    });
-                } else {
-                    $scope.loading = false;
-                    $scope.errorMessage = localization.localizeServerResponse(response);
-                }
-            }, function () {
-                $scope.loading = false;
-                $scope.errorMessage = localization.localize("error.request.failure");
-            });
-        };
-
-        $scope.save = function () {
-            clearMessages();
-
-            var request = [];
-            for (var p in $scope.pluginSelection) {
-                if ($scope.pluginSelection.hasOwnProperty(p)) {
-                    if ($scope.pluginSelection[p] === false) {
-                        request.push(p);
-                    }
-                }
+        // Cada endereco abaixo foi conferido lendo o codigo-fonte deste servidor (rest/swagger.json
+        // gerado a partir das proprias classes JAX-RS, plugins/push, plugins/moduleregistry,
+        // com.hmdm.rest.SyncResource e com.hmdm.rest.QRResource) antes de entrar nesta lista -
+        // nenhum item aqui e' suposicao.
+        $scope.integrationPoints = [
+            {
+                id: 'rest-api',
+                icon: 'file-text',
+                titleKey: 'integrations.point.restapi.title',
+                descKey: 'integrations.point.restapi.desc',
+                address: 'rest/swagger.json'
+            },
+            {
+                id: 'push-api',
+                icon: 'send',
+                titleKey: 'integrations.point.push.title',
+                descKey: 'integrations.point.push.desc',
+                address: 'POST rest/private/push'
+            },
+            {
+                id: 'webfilter-dns',
+                icon: 'filter',
+                titleKey: 'integrations.point.dns.title',
+                descKey: 'integrations.point.dns.desc',
+                address: '192.168.1.65:53'
+            },
+            {
+                id: 'qr-enroll',
+                icon: 'qr-code',
+                titleKey: 'integrations.point.qr.title',
+                descKey: 'integrations.point.qr.desc',
+                address: 'rest/public/qr/{id}'
+            },
+            {
+                id: 'device-sync',
+                icon: 'refresh-cw',
+                titleKey: 'integrations.point.sync.title',
+                descKey: 'integrations.point.sync.desc',
+                address: 'rest/public/sync/info'
             }
+        ];
 
-            $scope.loading = true;
-            pluginService.disablePlugins(request, function (response) {
-                $scope.loading = false;
-                if (response.status === 'OK') {
-                    $scope.successMessage = localization.localize('success.plugins.disabled');
-                    $rootScope.$broadcast('aero_PLUGINS_UPDATED');
+        $scope.copiedId = null;
+        $scope.copy = function (point) {
+            var text = point.address;
+            var ok = false;
+            try {
+                if ($window.navigator.clipboard && $window.navigator.clipboard.writeText) {
+                    $window.navigator.clipboard.writeText(text);
+                    ok = true;
                 } else {
-                    $scope.errorMessage = localization.localizeServerResponse(response);
+                    var el = $window.document.createElement('textarea');
+                    el.value = text;
+                    el.style.position = 'fixed';
+                    el.style.opacity = '0';
+                    $window.document.body.appendChild(el);
+                    el.select();
+                    ok = $window.document.execCommand('copy');
+                    $window.document.body.removeChild(el);
                 }
-            }, function () {
-                $scope.loading = false;
-                $scope.errorMessage = localization.localize("error.request.failure");
-            });
+            } catch (e) {
+                ok = false;
+            }
+            $scope.copiedId = ok ? point.id : null;
         };
-
-        loadData();
     });

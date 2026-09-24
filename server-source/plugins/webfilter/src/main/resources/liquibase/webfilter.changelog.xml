@@ -116,4 +116,38 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="plugin-webfilter-2026-09-24-01" author="hwmdm" context="common">
+        <comment>Tables,new: plugin_webfilter_delivery, plugin_webfilter_events (dashboard)</comment>
+        <sql>
+            CREATE TABLE plugin_webfilter_delivery (
+                deviceId INT NOT NULL CONSTRAINT plugin_webfilter_delivery_pr_key PRIMARY KEY
+                    REFERENCES devices (id) ON DELETE CASCADE,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                configurationId INT NOT NULL,
+                enabled BOOLEAN NOT NULL,
+                policyUpdatedAt BIGINT,
+                deliveredAt BIGINT NOT NULL,
+                browserSites INT NOT NULL DEFAULT 0,
+                hiddenApps INT NOT NULL DEFAULT 0
+            );
+
+            CREATE TABLE plugin_webfilter_events (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_events_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                deviceId INT NOT NULL REFERENCES devices (id) ON DELETE CASCADE,
+                configurationId INT,
+                host VARCHAR(255) NOT NULL,
+                url VARCHAR(1000),
+                category VARCHAR(50),
+                source VARCHAR(20) NOT NULL,
+                createdAt BIGINT NOT NULL
+            );
+            CREATE INDEX plugin_webfilter_events_customer_time ON plugin_webfilter_events (customerId, createdAt DESC);
+        </sql>
+        <rollback>
+            DROP TABLE plugin_webfilter_events;
+            DROP TABLE plugin_webfilter_delivery;
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>

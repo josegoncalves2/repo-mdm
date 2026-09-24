@@ -53,4 +53,33 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="plugin-moduleregistry-2026-09-24-03" author="hwmdm" context="common">
+        <comment>Plugin,new: moduleregistry — REST privado para manutencao modular</comment>
+        <sql>
+            INSERT INTO plugins (
+                identifier, name, description,
+                javascriptModuleFile, functionsViewTemplate, settingsViewTemplate,
+                namelocalizationkey,
+                settingsPermission, functionsPermission, deviceFunctionsPermission,
+                enabledForDevice
+            )
+            SELECT
+                'moduleregistry',
+                'Module Registry',
+                'Controle de manutencao dos modulos nativos do console',
+                NULL,
+                NULL,
+                NULL,
+                'nav.extensions',
+                'modules_manage',
+                NULL,
+                NULL,
+                FALSE
+            WHERE NOT EXISTS (SELECT 1 FROM plugins WHERE identifier = 'moduleregistry');
+        </sql>
+        <rollback>
+            DELETE FROM plugins WHERE identifier = 'moduleregistry';
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>

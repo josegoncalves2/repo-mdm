@@ -356,8 +356,7 @@ public class InputInjectionService extends AccessibilityService {
      */
     private boolean insertAtCursor(AccessibilityNodeInfo node, String insert) {
         try {
-            CharSequence current = node.getText();
-            String value = current == null ? "" : current.toString();
+            String value = fieldText(node);
             int start = node.getTextSelectionStart();
             int end = node.getTextSelectionEnd();
             if (start < 0 || end < 0 || start > value.length() || end > value.length()) {
@@ -377,6 +376,32 @@ public class InputInjectionService extends AccessibilityService {
             Log.w(TAG, "Digitacao recusada", t);
             return false;
         }
+    }
+
+    /**
+     * <p>O texto que o usuario de fato escreveu no campo. Campo vazio relata a dica
+     * ("Pesquise no Google ou digite um URL") como texto do no -- o Android faz isso de
+     * proposito para leitores de tela --, e usar esse valor gravava a dica dentro do campo
+     * junto com o que foi digitado. Nesse caso o valor real e' vazio.</p>
+     */
+    private static String fieldText(AccessibilityNodeInfo node) {
+        CharSequence current = node.getText();
+        if (current == null) {
+            return "";
+        }
+        if (Build.VERSION.SDK_INT >= 26) {
+            if (node.isShowingHintText()) {
+                return "";
+            }
+            CharSequence hint = node.getHintText();
+            if (hint != null && hint.length() > 0 && hint.toString().contentEquals(current)
+                    && node.getTextSelectionStart() <= 0 && node.getTextSelectionEnd() <= 0) {
+                // Campo customizado que nao marca isShowingHintText, mas relata a dica como
+                // texto com o cursor no inicio: e' a dica, nao conteudo.
+                return "";
+            }
+        }
+        return current.toString();
     }
 
     /** Aplica o valor novo e tenta posicionar o cursor. O cursor e' cosmetico: se o campo
@@ -399,8 +424,7 @@ public class InputInjectionService extends AccessibilityService {
      * colapsada -- o mesmo comportamento de backspace em qualquer editor de texto. */
     private boolean backspace(AccessibilityNodeInfo node) {
         try {
-            CharSequence current = node.getText();
-            String value = current == null ? "" : current.toString();
+            String value = fieldText(node);
             int start = node.getTextSelectionStart();
             int end = node.getTextSelectionEnd();
             if (start < 0 || end < 0 || start > value.length() || end > value.length()) {
@@ -457,8 +481,7 @@ public class InputInjectionService extends AccessibilityService {
      */
     private boolean moveCursor(AccessibilityNodeInfo node, int delta) {
         try {
-            CharSequence current = node.getText();
-            int len = current == null ? 0 : current.length();
+            int len = fieldText(node).length();
             int start = node.getTextSelectionStart();
             int end = node.getTextSelectionEnd();
             int pos = end >= 0 ? end : (start >= 0 ? start : len);

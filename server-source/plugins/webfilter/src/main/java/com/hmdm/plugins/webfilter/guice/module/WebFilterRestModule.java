@@ -2,6 +2,7 @@ package com.hmdm.plugins.webfilter.guice.module;
 
 import com.google.inject.servlet.ServletModule;
 import com.hmdm.plugin.rest.PluginAccessFilter;
+import com.hmdm.plugins.webfilter.rest.WebFilterPublicResource;
 import com.hmdm.plugins.webfilter.rest.WebFilterResource;
 import com.hmdm.plugins.webfilter.sync.WebFilterSyncResponseHook;
 import com.hmdm.rest.filter.AuthFilter;
@@ -28,6 +29,7 @@ public class WebFilterRestModule extends ServletModule {
         this.filter(protectedResources).through(PluginAccessFilter.class);
         this.filter(protectedResources).through(PrivateIPFilter.class);
         this.bind(WebFilterResource.class);
+        this.bind(WebFilterPublicResource.class);
         this.bind(WebFilterSyncResponseHook.class);
     }
 }

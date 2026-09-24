@@ -102,6 +102,15 @@ public class WebFilterResource {
     }
 
     @GET
+    @Path("/dashboard")
+    public javax.ws.rs.core.Response dashboard() {
+        if (denied()) {
+            return forbidden();
+        }
+        return ok(Response.OK(service.dashboard()));
+    }
+
+    @GET
     @Path("/policies")
     public javax.ws.rs.core.Response listPolicies() {
         if (denied()) {
