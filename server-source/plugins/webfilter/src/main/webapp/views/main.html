@@ -332,17 +332,17 @@
         <div class="wf-src" data-testid="wf-sources">
             <style>
                 .wf-src { margin: 16px 0; }
-                .wf-src-cat { border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); margin-bottom: 6px; }
-                .wf-src-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 10px; border: 0; background: transparent;
+                .wf-src-cat { border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); margin-bottom: 4px; }
+                .wf-src-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 5px 10px; border: 0; background: transparent;
                                text-align: left; color: var(--hwmdm-text-strong); cursor: pointer; }
-                .wf-src-head .glyphicon { font-size: 11px; color: var(--hwmdm-muted); }
+                .wf-src-head .hw-icon { width: 14px; height: 14px; color: var(--hwmdm-muted); }
                 .wf-src-name { font-weight: 600; }
                 .wf-src-count { margin-left: auto; color: var(--hwmdm-muted); font-size: 12px; white-space: nowrap; }
                 .wf-src-dirty { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; white-space: nowrap; }
                 .wf-src-body { padding: 0 10px 10px; }
                 .wf-src-table { width: 100%; table-layout: fixed; margin: 0 0 8px; }
                 .wf-src-table th, .wf-src-table td { padding: 4px 6px !important; vertical-align: middle !important; }
-                .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); }
+                .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); text-transform: none !important; letter-spacing: normal !important; }
                 .wf-src-table .wf-src-col-active { width: 56px; text-align: center; }
                 .wf-src-table .wf-src-col-actions { width: 100px; text-align: right; }
                 .wf-src-table .wf-src-col-active input { margin: 0; }
@@ -360,7 +360,7 @@
             <div class="wf-src-cat" ng-repeat="category in catalog.categories" data-testid="wf-src-{{category.id}}">
                 <button type="button" class="wf-src-head" ng-click="toggleSources(category)" aria-expanded="{{!!category.open}}"
                         data-testid="wf-src-toggle-{{category.id}}">
-                    <span class="glyphicon" ng-class="category.open ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'"></span>
+                    <span class="hw-icon" ng-class="category.open ? 'hw-icon-chevron-down' : 'hw-icon-chevron-right'"></span>
                     <span class="wf-src-name">{{categoryName(category.id)}}</span>
                     <span class="wf-src-dirty" ng-if="category.dirty">não salvo</span>
                     <span class="wf-src-count">{{activeSources(category)}} de {{category.sources.length}} ativas</span>
