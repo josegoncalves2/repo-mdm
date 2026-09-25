@@ -1,0 +1,540 @@
+{
+  "results": [
+    {
+      "step": "login pela tela",
+      "pass": true,
+      "detail": "#/"
+    },
+    {
+      "step": "Web Filter pelo menu: URL virou #/webfilter",
+      "pass": true,
+      "detail": "#/webfilter"
+    },
+    {
+      "step": "Web Filter depois do F5 continua em Web Filter",
+      "pass": true,
+      "detail": {
+        "hash": "#/webfilter",
+        "telaWebFilter": true,
+        "menuAtivo": "Web Filter"
+      }
+    },
+    {
+      "step": "Configuração: listas recolhidas, sem rolagem horizontal, resto da aba intacto",
+      "pass": true,
+      "detail": {
+        "alturaListasRecolhidas": 570,
+        "categorias": 14,
+        "rolagemHorizontal": false,
+        "dominioDns": true,
+        "fontesDasListas": [
+          "Listas de DNS",
+          "Fontes das listas de sites"
+        ]
+      }
+    },
+    {
+      "step": "Remover tira a linha da tela",
+      "pass": true,
+      "detail": [
+        "https://dbl.ipfire.org/lists/games/domains.txt",
+        "https://example.org/hwmdm-teste-editada-r2.txt",
+        "https://example.org/hwmdm-teste-nova.txt",
+        "https://example.org/hwmdm-teste-nova-r2.txt"
+      ]
+    },
+    {
+      "step": "Salvar listas: mensagem de sucesso visível",
+      "pass": true,
+      "detail": "Listas salvas. O filtro DNS vai recarregá-las."
+    },
+    {
+      "step": "sources.json (revisão): desativada saiu, editada e nova entraram",
+      "pass": true,
+      "detail": {
+        "games": [
+          "https://example.org/hwmdm-teste-editada-r2.txt",
+          "https://example.org/hwmdm-teste-nova.txt",
+          "https://example.org/hwmdm-teste-nova-r2.txt"
+        ]
+      }
+    },
+    {
+      "step": "Banco (revisão): lista desativada continua cadastrada",
+      "pass": true,
+      "detail": "games|https://dbl.ipfire.org/lists/games/domains.txt | https://example.org/hwmdm-teste-editada-r2.txt | https://example.org/hwmdm-teste-nova.txt | https://example.org/hwmdm-teste-nova-r2.txt|[inativas] https://dbl.ipfire.org/lists/games/domains.txt"
+    },
+    {
+      "step": "Depois do F5: 1a desmarcada e visível, 2a editada, nova presente, removida ausente",
+      "pass": true,
+      "detail": {
+        "hash": "#/webfilter",
+        "depois": [
+          {
+            "url": "https://dbl.ipfire.org/lists/games/domains.txt",
+            "ativa": false
+          },
+          {
+            "url": "https://example.org/hwmdm-teste-editada-r2.txt",
+            "ativa": true
+          },
+          {
+            "url": "https://example.org/hwmdm-teste-nova.txt",
+            "ativa": true
+          },
+          {
+            "url": "https://example.org/hwmdm-teste-nova-r2.txt",
+            "ativa": true
+          }
+        ]
+      }
+    },
+    {
+      "step": "Marcar de novo e salvar: a lista volta ao sources.json",
+      "pass": true,
+      "detail": {
+        "games": [
+          "https://dbl.ipfire.org/lists/games/domains.txt",
+          "https://example.org/hwmdm-teste-editada-r2.txt",
+          "https://example.org/hwmdm-teste-nova.txt",
+          "https://example.org/hwmdm-teste-nova-r2.txt"
+        ]
+      }
+    },
+    {
+      "step": "URL sem https: mensagem de erro visível e nada salvo",
+      "pass": true,
+      "detail": "Use endereços que comecem com https://"
+    },
+    {
+      "step": "devicelog: menu → #/logs, F5 continua na tela",
+      "pass": true,
+      "detail": {
+        "antes": "#/logs",
+        "depois": "#/logs",
+        "menuAtivo": "Logs",
+        "inicioConteudo": "Voltar aos módulos\nLogs\n\n\n\nBusca de Level do Log...\nNONE\nERROR\nWARNING\nINFO\nDEBUG\nVERBOSE\nBuscar Exportar\n\n\n\n\n«\n‹\n1\n2\n3\n"
+      }
+    },
+    {
+      "step": "deviceinfo: menu → #/informacao-detalhada, F5 continua na tela",
+      "pass": true,
+      "detail": {
+        "antes": "#/informacao-detalhada",
+        "depois": "#/informacao-detalhada",
+        "menuAtivo": "Informação Detalhada",
+        "inicioConteudo": "Voltar aos módulos\nInformação detalhada\nBuscar"
+      }
+    },
+    {
+      "step": "entrada direta #/webfilter + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nWeb Filter\n\nBloqueio de sites e aplicativ"
+      }
+    },
+    {
+      "step": "entrada direta #/logs + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nLogs\n\n\n\nBusca de Level do Log...\nNONE\nERR"
+      }
+    },
+    {
+      "step": "entrada direta #/acessos + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nplugin.audit.tab.title\nplugin.audit.all.i"
+      }
+    },
+    {
+      "step": "entrada direta #/push + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nMensagens push\nTarefas agendadas\n \n\n\n\nBus"
+      }
+    },
+    {
+      "step": "entrada direta #/informacao-detalhada + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nInformação detalhada\nBuscar"
+      }
+    },
+    {
+      "step": "entrada direta #/mensagens-config + 3x F5: tela do plugin aberta, sem erro de console",
+      "pass": true,
+      "detail": {
+        "visivel": [
+          true,
+          true,
+          true
+        ],
+        "erros": [],
+        "titulo": "Voltar aos módulos\nConfigurações do plugin de \"Notificações\""
+      }
+    },
+    {
+      "step": "Backup e restauração: lista carrega sem \"permissão negada\"",
+      "pass": true,
+      "detail": {
+        "api": [
+          {
+            "step": "backup",
+            "url": "/rest/private/backup/schedule",
+            "method": "GET",
+            "http": 200,
+            "status": "ERROR",
+            "message": null
+          },
+          {
+            "step": "backup",
+            "url": "/rest/private/backup/list",
+            "method": "GET",
+            "http": 200,
+            "status": "OK",
+            "message": null
+          }
+        ],
+        "hash": "#/governance"
+      }
+    },
+    {
+      "step": "dispositivos abre sem erro de console",
+      "pass": true,
+      "detail": {
+        "hash": "#/",
+        "errosNovos": []
+      }
+    },
+    {
+      "step": "quiosque abre sem erro de console",
+      "pass": true,
+      "detail": {
+        "hash": "#/kiosk",
+        "errosNovos": []
+      }
+    },
+    {
+      "step": "modulos abre sem erro de console",
+      "pass": true,
+      "detail": {
+        "hash": "#/extensions",
+        "errosNovos": []
+      }
+    },
+    {
+      "step": "integracoes abre sem erro de console",
+      "pass": true,
+      "detail": {
+        "hash": "#/integrations",
+        "errosNovos": []
+      }
+    }
+  ],
+  "errors": [],
+  "api": [
+    {
+      "step": "webfilter-menu",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-menu",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-menu",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-menu",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-menu",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-f5",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-f5",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-f5",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-f5",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "webfilter-f5",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-salvar",
+      "url": "/rest/plugins/webfilter/private/sources/games",
+      "method": "PUT",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-f5-conferir",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-f5-conferir",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-f5-conferir",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-f5-conferir",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-f5-conferir",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "wf-remarcar",
+      "url": "/rest/plugins/webfilter/private/sources/games",
+      "method": "PUT",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/apps",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/settings",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/policies",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/catalog",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "direto-#/webfilter",
+      "url": "/rest/plugins/webfilter/private/dashboard",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    },
+    {
+      "step": "backup",
+      "url": "/rest/private/backup/schedule",
+      "method": "GET",
+      "http": 200,
+      "status": "ERROR",
+      "message": null
+    },
+    {
+      "step": "backup",
+      "url": "/rest/private/backup/list",
+      "method": "GET",
+      "http": 200,
+      "status": "OK",
+      "message": null
+    }
+  ]
+}

@@ -234,6 +234,49 @@ angular.module('headwind-kiosk',
                 ncyBreadcrumb: {label: '{{"nav.integrations" | localize}}'},
                 resolve: {openTab: function () { return 'INTEGRATIONS'; }}
             })
+            // Telas de plugin abertas pelo menu (PLUGIN_STATES em tabs.controller.js): URL propria, para F5 e Voltar
+            .state('webfilterModule', {
+                url: '/webfilter',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.webfilter.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-webfilter'; }}
+            })
+            .state('devicelogModule', {
+                url: '/logs',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.devicelog.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-devicelog'; }}
+            })
+            .state('auditModule', {
+                url: '/acessos',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.audit.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-audit'; }}
+            })
+            .state('pushModule', {
+                url: '/push',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.push.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-push'; }}
+            })
+            .state('deviceinfoModule', {
+                url: '/informacao-detalhada',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.deviceinfo.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-deviceinfo'; }}
+            })
+            .state('messagingSettingsModule', {
+                url: '/mensagens-config',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                controller: 'TabController',
+                ncyBreadcrumb: {label: '{{"plugin.messaging.localization.key.name" | localize}}'},
+                resolve: {openTab: function () { return 'plugin-settings-messaging'; }}
+            })
             .state('applications', {
                 url: '/applications',
                 templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',

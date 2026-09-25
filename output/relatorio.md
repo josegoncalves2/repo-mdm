@@ -741,3 +741,801 @@ Capturas em `output/botoes-ext-hub/`:
 - **A tela real logada no navegador.** É o teste humano: Configurações → Módulos e Integrações.
 - Recomendo Ctrl+Shift+R na primeira abertura.
 - Os dados da renderização são fixos. Na tela real, quais linhas mostram "Configurar" depende dos plugins instalados e das permissões.
+
+---
+
+# Listas DNS, backup e F5 (25/09/2026, 16:35–17:02)
+
+Papel: `trava-executor` (16:35:16). Não criei, alterei nem atribuí papel ou usuário em nenhum banco. No banco do DEV só rodei SELECT; a coluna nova entrou pelo Liquibase no boot. Não toquei no `hwmdm-postgresql-1`, no `webfilter-dns` nem em 192.168.1.75. Não rodei git de escrita.
+
+**Resultado: o DEV está no ar com as três correções.**
+- Parada: `docker stop hwmdm-hmdm-1` das 17:00:03 às 17:00:19.
+- Subida: `docker start` às 17:00:45 (StartedAt 20:00:46Z), overlay refeito às 17:00:51 e **Tomcat no ar às 17:01:22**.
+
+Antes disso, as correções passaram na cópia isolada com o usuário `review_20260925`, de papel **Admin** (userroleid 2), que **não** é super admin naquele banco.
+- 1ª rodada: 18 verificações, 18 SIM.
+- 2ª rodada: 24 verificações, 24 SIM.
+- Nenhum erro de console nas duas rodadas.
+
+## 1. Web Filter › Configuração: gestão das listas de DNS
+
+**O que mudou**
+- **Tela.** O bloco `<div class="kiosk-panel" ng-repeat="category in catalog.categories">`, com as URLs travadas, foi trocado por "Listas de DNS". Só esse bloco mudou; o resto da aba ficou igual: Domínio DNS do filtro, a dica e "Fontes das listas de sites".
+  - Uma faixa recolhível por categoria mostra nome, "N de M ativas" e "não salvo" quando há alteração pendente.
+  - Aberta, a categoria mostra uma tabela compacta. Em cada linha: checkbox **Ativa**, **URL** editável e botão **Remover**.
+  - Embaixo da tabela ficam **Adicionar lista** e **Salvar listas**. Salvar só habilita quando há alteração. A mensagem de sucesso ou de erro aparece ao lado do botão.
+  - Uma URL que não começa com `https://` fica com a borda vermelha e não é enviada.
+  - Um recarregamento do catálogo (por exemplo, depois de categorizar um app) mantém o que estava aberto e as edições ainda não salvas.
+- **Duas cópias da tela** (`plugins/webfilter/src/main/webapp` e `server/src/main/webapp/app/components/plugins/webfilter`): `cmp` confirma que `views/main.html` e `webfilter.module.js` estão idênticos.
+  - Para isso, o token `content.html?v=` da cópia do plugin passou de `h1d21823701` para `h3bb6f5eba8`, o mesmo da cópia do overlay.
+- **Persistência.** Criei o changeSet NOVO `plugin-webfilter-2026-09-25-sources-inactive`, que roda `ALTER TABLE plugin_webfilter_sources ADD COLUMN inactiveUrls TEXT NOT NULL DEFAULT ''`.
+  - Nenhum changeSet existente foi alterado e nada foi apagado.
+  - A lista desativada continua em `urls`, cadastrada e visível. `inactiveUrls` guarda, uma por linha, as que ficam fora do filtro.
+- **Quem gera o resolvedor ignora as inativas.** `WebFilterCatalog.getSiteSources()` agora devolve só as ativas. `ResolverConfigWriter.sourcesJson()` já usava esse método, então o `sources.json` sai sem as listas desativadas.
+- **Permissão.** O `PUT /sources/{category}` usa só `denied()`, que é `!hasPermission("plugin_webfilter_access")`: a mesma verificação do `PUT /settings`, que salva o domínio DNS.
+  - `canManageSources` passou a ser `!denied()`.
+  - Não sobrou nenhum `isSuperAdmin()` no plugin: `grep` → 0.
+- **Ao salvar:**
+  1. grava no banco;
+  2. roda `sourceWriter.writeAll()`, o mesmo `ResolverConfigWriter.writeAll()` que salvar uma política chama via `applyChanges`;
+  3. devolve a categoria como ficou salva.
+
+  O `resolver.py` do `webfilter-dns` lê o `sources.json` a cada 5 s. Quando a impressão das URLs de uma categoria muda, ele baixa a lista e pede `POST /api/lists/refresh` ao Blocky. Não mexi nele.
+
+**Build do plugin**
+- Comando: `cd server-source && JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 ../.maven/bin/mvn -o -q -pl plugins/webfilter package -DskipTests`, das 16:44:41 às 16:46:01, rc=0.
+- Resultado, contra o jar anterior (`44342f4f…`):
+  - mudaram só `WebFilterCatalog`, `WebFilterMapper`, `WebFilterResource` e `liquibase/webfilter.changelog.xml`;
+  - entrou uma classe nova, `rest/json/SourceView.class`;
+  - todas as classes têm `major version: 52`;
+  - o MANIFEST é o mesmo (`Maven JAR Plugin 3.4.1`).
+- Jar novo: `dc38668a0b5e7b3c0709894e1c3730335554d014b869b34d187db6dc881b0ca2`.
+
+**Diffs do backend (webfilter)**
+```diff
+--- a/server-source/plugins/webfilter/src/main/resources/liquibase/webfilter.changelog.xml
++++ b/server-source/plugins/webfilter/src/main/resources/liquibase/webfilter.changelog.xml
+@@ -158,4 +158,13 @@
+             CREATE TABLE plugin_webfilter_sources (category VARCHAR(50) PRIMARY KEY, urls TEXT NOT NULL);
+         </sql>
+     </changeSet>
++
++    <!-- Listas desativadas continuam em "urls" (cadastradas e visiveis na tela); esta coluna guarda,
++         uma por linha, as que ficam fora do filtro. Vazia = todas ativas. -->
++    <changeSet id="plugin-webfilter-2026-09-25-sources-inactive" author="hwmdm" context="common">
++        <comment>Column,new: plugin_webfilter_sources.inactiveUrls</comment>
++        <sql>
++            ALTER TABLE plugin_webfilter_sources ADD COLUMN inactiveUrls TEXT NOT NULL DEFAULT '';
++        </sql>
++    </changeSet>
+ </databaseChangeLog>
+--- a/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/mapper/WebFilterMapper.java
++++ b/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/mapper/WebFilterMapper.java
+@@ -120,8 +120,13 @@
+ 
+     @Select("SELECT urls FROM plugin_webfilter_sources WHERE category = #{category}")
+     String sourceUrls(@Param("category") String category);
+-    @Insert("INSERT INTO plugin_webfilter_sources(category,urls) VALUES(#{category},#{urls}) ON CONFLICT(category) DO UPDATE SET urls = EXCLUDED.urls")
+-    void saveSourceUrls(@Param("category") String category, @Param("urls") String urls);
++    // Subset of "urls" kept registered but left out of the filter, one per line
++    @Select("SELECT inactiveUrls FROM plugin_webfilter_sources WHERE category = #{category}")
++    String inactiveSourceUrls(@Param("category") String category);
++    @Insert("INSERT INTO plugin_webfilter_sources(category,urls,inactiveUrls) VALUES(#{category},#{urls},#{inactiveUrls}) " +
++            "ON CONFLICT(category) DO UPDATE SET urls = EXCLUDED.urls, inactiveUrls = EXCLUDED.inactiveUrls")
++    void saveSourceUrls(@Param("category") String category, @Param("urls") String urls,
++                        @Param("inactiveUrls") String inactiveUrls);
+ 
+     // ------------------------------------------------------------------------------------------------- events
+     @Insert("INSERT INTO plugin_webfilter_events (customerId, deviceId, configurationId, host, url, category, source, " +
+--- a/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/catalog/WebFilterCatalog.java
++++ b/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/catalog/WebFilterCatalog.java
+@@ -3,11 +3,14 @@
+ import com.fasterxml.jackson.databind.JsonNode;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.google.inject.Singleton;
++import com.hmdm.plugins.webfilter.rest.json.SourceView;
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
+ import java.util.ArrayList;
++import java.util.Arrays;
+ import java.util.Collections;
++import java.util.HashSet;
+ import java.util.LinkedHashMap;
+ import java.util.LinkedHashSet;
+ import java.util.List;
+@@ -84,12 +87,42 @@
+         return siteSources.containsKey(id);
+     }
+ 
++    /**
++     * <p>The lists of a category that go to the resolver: the active ones only.</p>
++     */
+     public List<String> getSiteSources(String category) {
++        List<String> result = new ArrayList<>();
++        for (SourceView source : getSourceEntries(category)) {
++            if (source.isActive()) {
++                result.add(source.getUrl());
++            }
++        }
++        return result;
++    }
++
++    /**
++     * <p>Every registered list of a category, active or not, in the saved order. While a category was never saved,
++     * its lists are the ones of the catalog, all active.</p>
++     */
++    public List<SourceView> getSourceEntries(String category) {
++        List<String> urls = siteSources.getOrDefault(category, Collections.emptyList());
++        Set<String> inactive = Collections.emptySet();
+         if (sourceMapper != null) {
+             String saved = sourceMapper.sourceUrls(category);
+-            if (saved != null) { return saved.isEmpty() ? Collections.emptyList() : java.util.Arrays.asList(saved.split("\\n")); }
++            if (saved != null) {
++                urls = lines(saved);
++                inactive = new HashSet<>(lines(sourceMapper.inactiveSourceUrls(category)));
++            }
+         }
+-        return siteSources.getOrDefault(category, Collections.emptyList());
++        List<SourceView> result = new ArrayList<>();
++        for (String url : urls) {
++            result.add(new SourceView(url, !inactive.contains(url)));
++        }
++        return result;
++    }
++
++    private static List<String> lines(String value) {
++        return value == null || value.isEmpty() ? Collections.<String>emptyList() : Arrays.asList(value.split("\\n"));
+     }
+ 
+     /**
+@@ -107,17 +140,36 @@
+         return Collections.unmodifiableSet(protectedPackages);
+     }
+ 
+-    public void saveSources(String category, List<String> urls) {
+-        if (!isCategory(category) || urls == null || urls.size() > 30) { throw new IllegalArgumentException("Categoria ou lista inválida"); }
+-        Set<String> normalized = new LinkedHashSet<>();
+-        for (String value : urls) {
+-            java.net.URI uri = java.net.URI.create(value.trim());
++    /**
++     * <p>Replaces the lists of a category. Blank rows are ignored; a URL repeated in the request is kept once and
++     * stays active if any of its rows is active.</p>
++     */
++    public void saveSources(String category, List<SourceView> sources) {
++        if (!isCategory(category) || sources == null || sources.size() > 30) { throw new IllegalArgumentException("Categoria ou lista inválida"); }
++        Map<String, Boolean> normalized = new LinkedHashMap<>();
++        for (SourceView source : sources) {
++            String value = source == null || source.getUrl() == null ? "" : source.getUrl().trim();
++            if (value.isEmpty()) {
++                continue;
++            }
++            java.net.URI uri;
++            try {
++                uri = java.net.URI.create(value);
++            } catch (IllegalArgumentException e) {
++                throw new IllegalArgumentException("Endereço inválido: " + value);
++            }
+             if (!"https".equalsIgnoreCase(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null || value.length() > 2000) {
+-                throw new IllegalArgumentException("Use um endereço HTTPS válido para cada fonte");
++                throw new IllegalArgumentException("Use um endereço https:// válido: " + value);
+             }
+-            normalized.add(uri.toString());
++            normalized.merge(uri.toString(), source.isActive(), Boolean::logicalOr);
+         }
+-        sourceMapper.saveSourceUrls(category, String.join("\n", normalized));
++        List<String> inactive = new ArrayList<>();
++        normalized.forEach((url, active) -> {
++            if (!active) {
++                inactive.add(url);
++            }
++        });
++        sourceMapper.saveSourceUrls(category, String.join("\n", normalized.keySet()), String.join("\n", inactive));
+     }
+ 
+     public JsonNode getAttribution() {
+--- a/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/WebFilterResource.java
++++ b/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/WebFilterResource.java
+@@ -7,6 +7,7 @@
+ import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
+ import com.hmdm.plugins.webfilter.rest.json.PolicyView;
+ import com.hmdm.plugins.webfilter.rest.json.SettingsView;
++import com.hmdm.plugins.webfilter.rest.json.SourceView;
+ import com.hmdm.plugins.webfilter.rest.json.ValidationError;
+ import com.hmdm.plugins.webfilter.service.WebFilterService;
+ import com.hmdm.rest.json.Response;
+@@ -92,19 +93,30 @@
+             ObjectNode c = categories.addObject();
+             c.put("id", id);
+             c.put("required", WebFilterCatalog.REQUIRED_CATEGORY.equals(id));
+-            c.put("sourceCount", catalog.getSiteSources(id).size());
+-            ArrayNode sources = c.putArray("sources");
+-            catalog.getSiteSources(id).forEach(sources::add);
++            putSources(c, id);
+             ArrayNode a = c.putArray("apps");
+             apps.getOrDefault(id, java.util.Collections.<String>emptySet()).forEach(a::add);
+         }
+         ArrayNode prot = root.putArray("protectedPackages");
+         catalog.getProtectedPackages().forEach(prot::add);
+         root.set("attribution", catalog.getAttribution());
+-        root.put("canManageSources", SecurityContext.get().isSuperAdmin());
++        // Same check as saving the settings (DNS domain): whoever reaches this point may manage the lists
++        root.put("canManageSources", !denied());
+         return ok(Response.OK(root));
+     }
+ 
++    /** Every list of the category (active or not) and how many of them go to the resolver. */
++    private void putSources(ObjectNode node, String category) {
++        List<SourceView> entries = catalog.getSourceEntries(category);
++        node.put("sourceCount", (int) entries.stream().filter(SourceView::isActive).count());
++        ArrayNode sources = node.putArray("sources");
++        for (SourceView s : entries) {
++            ObjectNode item = sources.addObject();
++            item.put("url", s.getUrl());
++            item.put("active", s.isActive());
++        }
++    }
++
+     @GET
+     @Path("/dashboard")
+     public javax.ws.rs.core.Response dashboard() {
+@@ -200,12 +212,17 @@
+     @PUT
+     @Path("/sources/{category}")
+     @Consumes(MediaType.APPLICATION_JSON)
+-    public javax.ws.rs.core.Response saveSources(@PathParam("category") String category, java.util.List<String> urls) {
+-        if (denied() || !SecurityContext.get().isSuperAdmin()) { return forbidden(); }
++    public javax.ws.rs.core.Response saveSources(@PathParam("category") String category, java.util.List<SourceView> sources) {
++        // Same check as saving the settings (DNS domain)
++        if (denied()) { return forbidden(); }
+         try {
+-            catalog.saveSources(category, urls);
++            catalog.saveSources(category, sources);
++            // Rewrites sources.json/blocky.yml; the resolver downloads the changed lists and reloads Blocky
+             sourceWriter.writeAll();
+-            return ok(Response.OK());
++            ObjectNode saved = new ObjectMapper().createObjectNode();
++            saved.put("id", category);
++            putSources(saved, category);
++            return ok(Response.OK(saved));
+         } catch (IllegalArgumentException e) { return http(400, Response.ERROR(e.getMessage())); }
+     }
+ 
+```
+Arquivo novo `server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/json/SourceView.java` (sha256 `fd8107cd…`): POJO com `url` e `active` (padrão `true`), getters e setters, construtor vazio e `(url, active)`.
+
+## 2. Backup e restauração: permissão
+- **Diff:** as 9 ocorrências voltaram de `isSuperAdmin()` para `hasPermission("settings")`. Isso inclui `schedule`, `saveSchedule`, `upload` e `inspect`. Nenhuma outra linha mudou (`git diff --stat`: 9 inserções, 9 remoções).
+- **Compilação:** `javac -source 8 -target 8 -implicit:none` contra o `WEB-INF/classes` e o `WEB-INF/lib` extraídos do `dist/hmdm.war` do DEV, mais `/tmp/hwmdm-fixes-20260925/tomcat-lib/*.jar`, com rc=0.
+  - Saiu um único `BackupResource.class`, com `major version: 52` e sha256 `1517ffaf88c60188a8debd064f2e80e87d454961afcebbdbf6aecc48296023b9`.
+  - Não recompilei nenhuma outra classe do core. `BackupArchiveService` continua a do WAR.
+- **Bytecode contra a classe do WAR (`javap -c -p`, índices normalizados):** as únicas trocas são 9× `invokevirtual SecurityContext.isSuperAdmin:()Z` → `ldc "settings"` + `invokevirtual SecurityContext.hasPermission:(Ljava/lang/String;)Z`. O resto são deslocamentos de offset.
+
+## 3. F5 nas telas de plugin
+- **`app/app.js`:** criei 6 estados depois de `integrations`, no mesmo padrão:
+  - template `content.html?v=h3bb6f5eba8`;
+  - controller `TabController`;
+  - `ncyBreadcrumb` com a chave de nome do plugin;
+  - `resolve.openTab` com o id da aba.
+
+  | estado | URL | openTab |
+  |---|---|---|
+  | `webfilterModule` | `/webfilter` | `plugin-webfilter` |
+  | `devicelogModule` | `/logs` | `plugin-devicelog` |
+  | `auditModule` | `/acessos` | `plugin-audit` |
+  | `pushModule` | `/push` | `plugin-push` |
+  | `deviceinfoModule` | `/informacao-detalhada` | `plugin-deviceinfo` |
+  | `messagingSettingsModule` | `/mensagens-config` | `plugin-settings-messaging` |
+- **`tabs.controller.js`:** o `openTab` resolvido já vira `activeTab` na inicialização (`$scope.activeTab = openTab`). O `content.html` mostra a tela do plugin quando `functionsPlugins` ou `settingsPlugins` chegam.
+  - O risco numa entrada direta estava em outro lugar. O módulo JS do plugin é carregado em paralelo pelo `app.js`, por `$ocLazyLoad`. Se a lista de plugins chegasse antes dele, o `ng-controller` do template ainda não existiria.
+  - Mudança mínima: `getAvailablePlugins` agora passa por `waitForPluginModules`, que espera `$ocLazyLoad.load(javascriptModuleFile)` de cada plugin antes de preencher as listas.
+    - O ocLazyLoad compartilha a promessa do arquivo que já está carregando e resolve na hora o que já foi carregado.
+    - Uma falha de carga é ignorada, e a lista é entregue do mesmo jeito.
+  - Injetei `$q` e `$ocLazyLoad`. O resto do arquivo não mudou.
+- **`index.html`:** mudaram só os dois tokens trocados pelo `stamp-assets.py`.
+
+**Diffs (backup, F5, index e tela do Web Filter)**
+
+A cópia do overlay de `webfilter.module.js` recebeu o mesmo diff, exceto a linha 7 do token, que ali já era `h3bb6f5eba8`. A cópia do overlay de `views/main.html` recebeu diff idêntico.
+```diff
+--- a/server-source/server/src/main/java/com/hmdm/rest/resource/BackupResource.java
++++ b/server-source/server/src/main/java/com/hmdm/rest/resource/BackupResource.java
+@@ -89,7 +89,7 @@
+     @Path("/list")
+     @Produces(MediaType.APPLICATION_JSON)
+     public Response list() {
+-        if (!SecurityContext.get().isSuperAdmin()) {
++        if (!SecurityContext.get().hasPermission("settings")) {
+             return Response.PERMISSION_DENIED();
+         }
+         try {
+@@ -118,7 +118,7 @@
+     @Path("/create")
+     @Produces(MediaType.APPLICATION_JSON)
+     public Response create(@javax.ws.rs.QueryParam("scope") @javax.ws.rs.DefaultValue("full") String scope) {
+-        if (!SecurityContext.get().isSuperAdmin()) {
++        if (!SecurityContext.get().hasPermission("settings")) {
+             return Response.PERMISSION_DENIED();
+         }
+         try {
+@@ -139,7 +139,7 @@
+     @Path("/{filename}")
+     @Produces(MediaType.APPLICATION_JSON)
+     public Response remove(@PathParam("filename") String filename) {
+-        if (!SecurityContext.get().isSuperAdmin()) {
++        if (!SecurityContext.get().hasPermission("settings")) {
+             return Response.PERMISSION_DENIED();
+         }
+         File file = resolve(filename);
+@@ -162,7 +162,7 @@
+     @Path("/{filename}/download")
+     @Produces(MediaType.APPLICATION_OCTET_STREAM)
+     public javax.ws.rs.core.Response download(@PathParam("filename") @ApiParam("The backup file name") String filename) {
+-        if (!SecurityContext.get().isSuperAdmin()) {
++        if (!SecurityContext.get().hasPermission("settings")) {
+             return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
+         }
+         File file = resolve(filename);
+@@ -190,7 +190,7 @@
+     @Produces(MediaType.APPLICATION_JSON)
+     @Path("/{filename}/restore")
+     public Response restore(@PathParam("filename") String filename) {
+-        if (!SecurityContext.get().isSuperAdmin()) {
++        if (!SecurityContext.get().hasPermission("settings")) {
+             return Response.PERMISSION_DENIED();
+         }
+         File target = resolve(filename);
+@@ -304,22 +304,22 @@
+     }
+     @GET @Path("/schedule") @Produces(MediaType.APPLICATION_JSON)
+     public Response schedule() {
+-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
++        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
+         try { return Response.OK(archives.getSchedule()); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
+     }
+     @javax.ws.rs.PUT @Path("/schedule") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
+     public Response saveSchedule(com.fasterxml.jackson.databind.node.ObjectNode value) {
+-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
++        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
+         try { return Response.OK(archives.saveSchedule(value)); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
+     }
+     @POST @Path("/upload") @Consumes(MediaType.APPLICATION_OCTET_STREAM) @Produces(MediaType.APPLICATION_JSON)
+     public Response upload(InputStream data) {
+-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
++        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
+         try { return Response.OK(toBackupInfo(archives.upload(data))); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
+     }
+     @GET @Path("/{filename}/inspect") @Produces(MediaType.APPLICATION_JSON)
+     public Response inspect(@PathParam("filename") String filename) {
+-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
++        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
+         File file = resolve(filename);
+         if (file == null || !file.isFile()) { return Response.ERROR("Backup não encontrado"); }
+         try { return Response.OK(archives.inspect(file)); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
+--- a/server-source/server/src/main/webapp/app/app.js
++++ b/server-source/server/src/main/webapp/app/app.js
+@@ -234,6 +234,49 @@
+                 ncyBreadcrumb: {label: '{{"nav.integrations" | localize}}'},
+                 resolve: {openTab: function () { return 'INTEGRATIONS'; }}
+             })
++            // Telas de plugin abertas pelo menu (PLUGIN_STATES em tabs.controller.js): URL propria, para F5 e Voltar
++            .state('webfilterModule', {
++                url: '/webfilter',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.webfilter.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-webfilter'; }}
++            })
++            .state('devicelogModule', {
++                url: '/logs',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.devicelog.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-devicelog'; }}
++            })
++            .state('auditModule', {
++                url: '/acessos',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.audit.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-audit'; }}
++            })
++            .state('pushModule', {
++                url: '/push',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.push.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-push'; }}
++            })
++            .state('deviceinfoModule', {
++                url: '/informacao-detalhada',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.deviceinfo.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-deviceinfo'; }}
++            })
++            .state('messagingSettingsModule', {
++                url: '/mensagens-config',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
++                controller: 'TabController',
++                ncyBreadcrumb: {label: '{{"plugin.messaging.localization.key.name" | localize}}'},
++                resolve: {openTab: function () { return 'plugin-settings-messaging'; }}
++            })
+             .state('applications', {
+                 url: '/applications',
+                 templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+--- a/server-source/server/src/main/webapp/app/components/main/controller/tabs.controller.js
++++ b/server-source/server/src/main/webapp/app/components/main/controller/tabs.controller.js
+@@ -1,7 +1,7 @@
+ // Localization completed
+ angular.module('headwind-kiosk')
+     .controller('TabController', function ($scope, $rootScope, $timeout, $state, userService, authService, openTab,
+-                                           pluginService, moduleRegistry, localization, hintService) {
++                                           pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
+ 
+         $scope.localization = localization;
+         $scope.moduleRegistry = moduleRegistry;
+@@ -74,8 +74,24 @@
+             INTEGRATIONS: 'nav.integrations'
+         };
+ 
++        // Entrada direta pela URL (F5) numa tela de plugin: o app.js carrega o modulo JS do plugin em
++        // paralelo, e o template da tela nao pode ser montado antes dele (o ng-controller ainda nao
++        // existiria). Espera esses modulos antes de entregar a lista; os ja carregados resolvem na hora.
++        var waitForPluginModules = function (callback) {
++            return function (response) {
++                var plugins = response.status === 'OK' && response.data ? response.data.filter(function (plugin) {
++                    return plugin.javascriptModuleFile;
++                }) : [];
++                $q.all(plugins.map(function (plugin) {
++                    return $ocLazyLoad.load(plugin.javascriptModuleFile).catch(angular.noop);
++                })).then(function () {
++                    callback(response);
++                });
++            };
++        };
++
+         var loadData = function () {
+-            pluginService.getAvailablePlugins(function (response) {
++            pluginService.getAvailablePlugins(waitForPluginModules(function (response) {
+                 if (response.status === 'OK') {
+                     if (response.data) {
+                         // Plugins available for Functions tab
+@@ -100,7 +116,7 @@
+                     $scope.functionsPlugins = [];
+                     $scope.settingsPlugins = [];
+                 }
+-            });
++            }));
+         };
+ 
+         $scope.currentUser = {};
+--- a/server-source/server/src/main/webapp/index.html
++++ b/server-source/server/src/main/webapp/index.html
+@@ -52,7 +52,7 @@
+     <script src='lib/angular-intro.js/build/angular-intro.min.js'></script>
+ -->
+ 
+-    <script src='app/app.js?v=h18540773f1'></script>
++    <script src='app/app.js?v=h92744cc72a'></script>
+     <script src='app/spinner.js?v=h3c932d6e43'></script>
+ 
+     <script src='app/components/header/header.controller.js?v=h813fe68a73'></script>
+@@ -78,7 +78,7 @@
+     <script src='app/components/main/controller/users.controller.js?v=ha7187881c3'></script>
+     <script src='app/components/main/controller/roles.controller.js?v=h029004ddc0'></script>
+     <script src='app/components/main/controller/icons.controller.js?v=h6fe24063f2'></script>
+-    <script src='app/components/main/controller/tabs.controller.js?v=h9043c0047c'></script>
++    <script src='app/components/main/controller/tabs.controller.js?v=hfa7ab21d97'></script>
+     <script src='app/components/main/controller/passwordreset.controller.js?v=h01e84d8e8f'></script>
+     <script src='app/components/main/controller/passwordrecovery.controller.js?v=h7034d8629c'></script>
+     <script src='app/components/main/controller/twofactorauth.controller.js?v=hd765939de8'></script>
+--- a/server-source/plugins/webfilter/src/main/webapp/views/main.html
++++ b/server-source/plugins/webfilter/src/main/webapp/views/main.html
+@@ -329,16 +329,79 @@
+         <div class="wf-field-error" ng-repeat="m in fieldErrors.dnsDomain">{{m}}</div>
+         <p class="wf-muted" localized>plugin.webfilter.dns.domain.hint</p>
+ 
+-        <div class="kiosk-panel" ng-repeat="category in catalog.categories">
+-            <h5>{{categoryName(category.id)}}</h5>
+-            <p class="wf-muted">Fontes DNS compartilhadas pelo servidor. Uma URL de lista de domínios por campo.</p>
+-            <div class="wf-add-app" ng-repeat="source in category.sources track by $index">
+-                <input class="form-control" type="url" ng-model="category.sources[$index]" aria-label="URL da lista" ng-disabled="!catalog.canManageSources">
+-                <button class="btn btn-default" ng-if="catalog.canManageSources" ng-click="removeSource(category, $index)" title="Retira esta fonte da categoria; use Salvar listas para aplicar.">Remover</button>
+-            </div>
+-            <div class="kiosk-action-row" ng-if="catalog.canManageSources">
+-                <button class="btn btn-default" ng-click="addSource(category)" title="Adiciona uma fonte de domínios a esta categoria.">Adicionar lista</button>
+-                <button class="btn btn-primary" ng-click="saveSources(category)" ng-disabled="saving" title="Salva as fontes e solicita a atualização do resolvedor DNS.">Salvar listas</button>
++        <div class="wf-src" data-testid="wf-sources">
++            <style>
++                .wf-src { margin: 16px 0; }
++                .wf-src-cat { border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); margin-bottom: 4px; }
++                .wf-src-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 5px 10px; border: 0; background: transparent;
++                               text-align: left; color: var(--hwmdm-text-strong); cursor: pointer; }
++                .wf-src-head .hw-icon { width: 14px; height: 14px; color: var(--hwmdm-muted); }
++                .wf-src-name { font-weight: 600; }
++                .wf-src-count { margin-left: auto; color: var(--hwmdm-muted); font-size: 12px; white-space: nowrap; }
++                .wf-src-dirty { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; white-space: nowrap; }
++                .wf-src-body { padding: 0 10px 10px; }
++                .wf-src-table { width: 100%; table-layout: fixed; margin: 0 0 8px; }
++                .wf-src-table th, .wf-src-table td { padding: 4px 6px !important; vertical-align: middle !important; }
++                .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); text-transform: none !important; letter-spacing: normal !important; }
++                .wf-src-table .wf-src-col-active { width: 56px; text-align: center; }
++                .wf-src-table .wf-src-col-actions { width: 100px; text-align: right; }
++                .wf-src-table .wf-src-col-active input { margin: 0; }
++                .wf-src-table .form-control { height: 30px; padding: 0 8px; font-family: monospace; font-size: 12px; }
++                .wf-src-table .btn { width: auto; min-width: 0; height: 30px; padding: 0 10px; white-space: nowrap; }
++                .wf-src-off .form-control { opacity: .55; }
++                .wf-src-bad .form-control { border-color: var(--hwmdm-danger); }
++                .wf-src-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
++                .wf-src-ok { color: #15803d; font-size: 12px; font-weight: 600; }
++                [data-theme="dark"] .wf-src-ok { color: #86efac; }
++                .wf-src-err { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; }
++            </style>
++            <h5><strong>Listas de DNS</strong></h5>
++            <p class="wf-muted">Lista desmarcada fica cadastrada, mas fora do filtro.</p>
++            <div class="wf-src-cat" ng-repeat="category in catalog.categories" data-testid="wf-src-{{category.id}}">
++                <button type="button" class="wf-src-head" ng-click="toggleSources(category)" aria-expanded="{{!!category.open}}"
++                        data-testid="wf-src-toggle-{{category.id}}">
++                    <span class="hw-icon" ng-class="category.open ? 'hw-icon-chevron-down' : 'hw-icon-chevron-right'"></span>
++                    <span class="wf-src-name">{{categoryName(category.id)}}</span>
++                    <span class="wf-src-dirty" ng-if="category.dirty">não salvo</span>
++                    <span class="wf-src-count">{{activeSources(category)}} de {{category.sources.length}} ativas</span>
++                </button>
++                <div class="wf-src-body" ng-if="category.open">
++                    <table class="table wf-src-table" ng-if="category.sources.length">
++                        <thead>
++                        <tr>
++                            <th class="wf-src-col-active">Ativa</th>
++                            <th>URL</th>
++                            <th class="wf-src-col-actions"></th>
++                        </tr>
++                        </thead>
++                        <tbody>
++                        <tr ng-repeat="source in category.sources" data-testid="wf-src-row"
++                            ng-class="{'wf-src-off': !source.active, 'wf-src-bad': invalidSource(source)}">
++                            <td class="wf-src-col-active">
++                                <input type="checkbox" ng-model="source.active" ng-change="markSourcesDirty(category)"
++                                       aria-label="Ativa" data-testid="wf-src-active">
++                            </td>
++                            <td>
++                                <input type="text" class="form-control" ng-model="source.url" ng-change="markSourcesDirty(category)"
++                                       placeholder="https://" aria-label="URL da lista" spellcheck="false" data-testid="wf-src-url">
++                            </td>
++                            <td class="wf-src-col-actions">
++                                <button type="button" class="btn btn-default btn-sm" ng-click="removeSource(category, $index)"
++                                        data-testid="wf-src-remove">Remover</button>
++                            </td>
++                        </tr>
++                        </tbody>
++                    </table>
++                    <p class="wf-muted" ng-if="!category.sources.length">Nenhuma lista nesta categoria.</p>
++                    <div class="wf-src-actions">
++                        <button type="button" class="btn btn-default btn-sm" ng-click="addSource(category)"
++                                data-testid="wf-src-add">Adicionar lista</button>
++                        <button type="button" class="btn btn-primary btn-sm" ng-click="saveSources(category)"
++                                ng-disabled="category.saving || !category.dirty" data-testid="wf-src-save">Salvar listas</button>
++                        <span class="wf-src-ok" ng-if="category.sourceMessage" data-testid="wf-src-ok">{{category.sourceMessage}}</span>
++                        <span class="wf-src-err" ng-if="category.sourceError" data-testid="wf-src-err">{{category.sourceError}}</span>
++                    </div>
++                </div>
+             </div>
+         </div>
+         <h5><strong localized>plugin.webfilter.sources</strong></h5>
+--- a/server-source/plugins/webfilter/src/main/webapp/webfilter.module.js
++++ b/server-source/plugins/webfilter/src/main/webapp/webfilter.module.js
+@@ -4,7 +4,7 @@
+         try {
+             $stateProvider.state('plugin-webfilter', {
+                 url: '/plugin-webfilter',
+-                templateUrl: 'app/components/main/view/content.html?v=h1d21823701',
++                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
+                 controller: 'TabController',
+                 ncyBreadcrumb: {
+                     label: '{{"plugin.webfilter.localization.key.name" | localize}}'
+@@ -120,20 +120,77 @@
+             if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); }
+         }, 10000);
+         $scope.$on('$destroy', function () { $interval.cancel(refreshTimer); });
+-        $scope.addSource = function (category) { category.sources.push(''); };
+-        $scope.removeSource = function (category, index) { category.sources.splice(index, 1); };
++        // ------------------------------------------------------------------------------------------------ DNS lists
++        // Each category carries its rows ({url, active}) plus, only here, whether it is expanded and has unsaved edits.
++        var HTTPS_URL = /^https:\/\/[^\s\/?#]+\S*$/i;
++        $scope.activeSources = function (category) {
++            return (category.sources || []).filter(function (s) { return s.active; }).length;
++        };
++        $scope.toggleSources = function (category) { category.open = !category.open; };
++        $scope.markSourcesDirty = function (category) {
++            category.dirty = true;
++            category.sourceMessage = undefined;
++            category.sourceError = undefined;
++        };
++        $scope.addSource = function (category) {
++            category.sources.push({url: '', active: true});
++            category.open = true;
++            $scope.markSourcesDirty(category);
++        };
++        $scope.removeSource = function (category, index) {
++            category.sources.splice(index, 1);
++            $scope.markSourcesDirty(category);
++        };
++        $scope.invalidSource = function (source) {
++            var url = (source.url || '').trim();
++            return url.length > 0 && !HTTPS_URL.test(url);
++        };
++        var sourceErrorText = function (body) {
++            return body && body.message ? localization.localize(body.message) : localization.localize('error.request.failure');
++        };
+         $scope.saveSources = function (category) {
+-            clearMessages();
+-            $scope.saving = true;
+-            pluginWebFilterService.saveSources({category: category.id}, category.sources, function (response) {
+-                $scope.saving = false;
+-                if (response.status === 'OK') { $scope.successMessage = localization.localize('plugin.webfilter.saved'); loadCatalog(); }
+-                else { showErrors(response); }
+-            }, onFailure);
++            // Blank rows are simply dropped
++            var rows = category.sources.filter(function (s) { return (s.url || '').trim().length > 0; });
++            category.sourceMessage = undefined;
++            category.sourceError = undefined;
++            if (rows.some($scope.invalidSource)) {
++                category.sourceError = 'Use endereços que comecem com https://';
++                return;
++            }
++            category.saving = true;
++            pluginWebFilterService.saveSources({category: category.id}, rows.map(function (s) {
++                return {url: s.url.trim(), active: !!s.active};
++            }), function (response) {
++                category.saving = false;
++                if (response.status === 'OK') {
++                    category.sources = response.data.sources;
++                    category.sourceCount = response.data.sourceCount;
++                    category.dirty = false;
++                    category.sourceMessage = 'Listas salvas. O filtro DNS vai recarregá-las.';
++                } else {
++                    category.sourceError = sourceErrorText(response);
++                }
++            }, function (httpResponse) {
++                category.saving = false;
++                category.sourceError = sourceErrorText(httpResponse && httpResponse.data);
++            });
+         };
+         var loadCatalog = function () {
+             pluginWebFilterService.getCatalog(function (response) {
+                 if (response.status === 'OK') {
++                    // A reload (e.g. after categorizing an app) keeps what is expanded and any list edit not saved yet
++                    var previous = {};
++                    ($scope.catalog.categories || []).forEach(function (c) { previous[c.id] = c; });
++                    (response.data.categories || []).forEach(function (c) {
++                        var old = previous[c.id];
++                        if (old) {
++                            c.open = old.open;
++                            if (old.dirty) {
++                                c.sources = old.sources;
++                                c.dirty = true;
++                            }
++                        }
++                    });
+                     $scope.catalog = response.data;
+                 } else {
+                     showErrors(response);
+```
+
+## Teste na cópia isolada (sem tocar no DEV)
+
+**Preparação**
+- Só o contêiner de revisão foi parado e iniciado: `docker stop hwmdm-review-app-20260925` das 16:49:31 às 16:50:31 e `docker start` às 16:50:54. O Tomcat subiu às 16:52:26.
+- O ROOT explodido da revisão (`/tmp/hwmdm-fixes-20260925/review/webapps/ROOT`), que era das 09:5x, foi atualizado com o estado servido hoje pelo DEV (`source/volumes/webapps/ROOT`) e, por cima, com os arquivos novos:
+  - o webapp do overlay;
+  - a UI dos plugins webfilter e deviceinfo;
+  - o jar novo do webfilter;
+  - o `BackupResource.class` novo.
+- `diff -rq` contra o ROOT servido pelo DEV mostrou exatamente 7 diferenças:
+  - `app.js`, `tabs.controller.js` e `index.html`;
+  - `webfilter/views/main.html` e `webfilter/webfilter.module.js`;
+  - `BackupResource.class` e `webfilter-0.1.0.jar`.
+- No boot da revisão, o Liquibase aplicou `plugin-webfilter-2026-09-25-dns-events` (que faltava naquele banco) e `plugin-webfilter-2026-09-25-sources-inactive`.
+  - Única linha SEVERE: o conector HTTPS 8443 sem `hmdm.jks`. Ela já aparece no boot das 12:54 da revisão.
+- **Usuário:** `review_20260925`, papel "Admin" (userroleid 2, `superadmin=false` no banco da revisão). Não criei usuário e não mexi em papéis.
+- **Roteiro:** fora do repositório, em `/tmp/claude-1002/-opt-projetos-hwmdm/5eef6554-fd12-4c0c-a71d-4f279183552c/scratchpad/teste-revisao.js`.
+  - Usa o Playwright pedido, com Chromium headless em 1366×768 e locale pt-BR.
+  - Gestos: login digitado na tela, cliques no menu lateral, cliques em checkbox e botões, digitação na URL.
+  - Resultado bruto em `output/listas-dns-backup-f5/r{1,2}-resultado.json`.
+
+**Rodadas**
+- **Rodada 1 (16:54):**
+  - A primeira execução parou na medição de rolagem, por um erro do **roteiro** (`document.scrollingElement` nulo), e não da tela. Corrigi o roteiro e repeti: 18 de 18 SIM.
+  - Pelas capturas, ajustei só a aparência do bloco novo, nas duas cópias:
+    - a seta `glyphicon-chevron-right` aparecia como um quadrado cinza e virou `hw-icon-chevron-right/down`;
+    - o cabeçalho "ATIVA / URL" vinha em caixa-alta do CSS global e agora sai "Ativa / URL";
+    - as faixas ficaram mais baixas.
+- **Rodada 2 (16:57), já com a versão publicada:** 24 de 24 SIM. Os passos, com as capturas `r2-*`, estão na tabela abaixo.
+
+| # | Passo (Admin, gestos de pessoa) | Resultado | Captura / evidência |
+|---|---|---|---|
+| 1a | Web Filter › Configuração: 14 categorias recolhidas; o bloco inteiro ocupa 570 px de altura; sem rolagem horizontal; domínio DNS e "Fontes das listas de sites" presentes | **SIM** | `r2-03-configuracao-listas-recolhidas.png` |
+| 1b | Abrir "Jogos", desmarcar a 1ª lista, editar a URL da 2ª, adicionar uma lista, adicionar outra e **Remover** | **SIM** (a linha removida sai da tela) | `r2-04-jogos-aberta-antes.png`, `r2-05-jogos-editada-antes-de-salvar.png` |
+| 1c | **Salvar listas** → "Listas salvas. O filtro DNS vai recarregá-las." | **SIM** | `r2-06-jogos-salva.png` |
+| 1d | `sources.json` da revisão (`/usr/local/tomcat/work/plugins/webfilter/dns/sources.json`): a desativada saiu, a editada e a nova entraram, a antiga 2ª saiu | **SIM**: `games` = [`…editada-r2.txt`, `…nova.txt`, `…nova-r2.txt`] | r2-resultado.json |
+| 1e | Banco da revisão: a desativada continua em `urls` e aparece em `inactiveurls` | **SIM** | r2-resultado.json |
+| 1f | **F5** na página → continua em `#/webfilter`; em Configuração › Jogos: 1ª desmarcada e visível, 2ª editada, nova presente, removida ausente | **SIM** | `r2-07-jogos-depois-f5.png` |
+| 1g | **Marcar** de novo a 1ª e salvar → ela volta ao `sources.json` | **SIM** | `r2-08-jogos-remarcada.png` |
+| 1h | Erro visível: URL `http://…` → "Use endereços que comecem com https://", nada salvo | **SIM** | `r2-09-jogos-erro-http.png` |
+| 2 | Backup e restauração: `GET /rest/private/backup/list` → HTTP 200, `status: OK`; nenhum "permissão negada" na tela | **SIM** | `r2-12-backup.png` |
+| 3a | Clicar Web Filter no menu → `#/webfilter`; F5 → continua em Web Filter (tela e item ativo no menu) | **SIM** | `r2-01-webfilter-menu.png`, `r2-02-webfilter-depois-f5.png` |
+| 3b | Logs pelo menu → `#/logs`; F5 → continua em Logs | **SIM** | `r2-10-devicelog-menu.png`, `r2-11-devicelog-depois-f5.png` |
+| 3c | Informação detalhada pelo menu → `#/informacao-detalhada`; F5 → continua | **SIM** | `r2-10-deviceinfo-menu.png`, `r2-11-deviceinfo-depois-f5.png` |
+| 3d | (extra) Entrada direta pela URL + 3× F5 em `#/webfilter`, `#/logs`, `#/acessos`, `#/push`, `#/informacao-detalhada`, `#/mensagens-config`: a tela do plugin abre nas 18 recargas, sem erro de console | **SIM** | `r2-11b-mensagens-config-direto.png` |
+| 4 | Dispositivos, Quiosque, Módulos e Integrações abrem sem erro de console | **SIM** (0 erros em cada uma) | `r2-13-dispositivos.png`, `r2-13-quiosque.png`, `r2-13-modulos.png`, `r2-13-integracoes.png` |
+
+**Erros de console do navegador:** nenhum, nem `pageerror` nem `console.error`, nas rodadas 1 e 2. No log da revisão depois dos testes só apareceu um `ClientAbortException: Broken pipe`, que é o navegador cancelando uma requisição durante o F5.
+
+**Observação fora do escopo, não corrigida.** Na tela de Backup, `GET /rest/private/backup/schedule` responde HTTP 200 com `{"status":"ERROR","message":null}`. Não é permissão: a mensagem de permissão negada seria outra.
+- Hipótese: `BackupResource` recebe `BackupArchiveService` por `@com.google.inject.Inject` num campo. Os resources são criados pelo HK2 (`GuiceIntoHK2Bridge` em `HMDMApplication`), que só honra `@javax.inject.Inject`. O campo fica nulo e a chamada cai em `NullPointerException`, que no Java 11 não tem mensagem.
+- Se a hipótese estiver certa, também falhariam agendamento, "Create backup now" (zip), importação, inspeção e restauração de `.zip`.
+- A tarefa mandava não mudar mais nada no arquivo, por isso não corrigi.
+
+## Publicação no DEV
+- **Concorrência (16:59:35):** o `docker ps` mostrou `hwmdm-hmdm-1` com StartedAt 19:06:34Z (16:06:34), que é o último reinício esperado. Não havia reinício mais recente. Postgres 17:31:18Z e webfilter-dns 17:48:29Z, sem mudança. Processos vivos: `codex`, desde 14:23, e duas sessões `claude`.
+- **Commits do usuário durante a tarefa:** `35055a13` (16:53:27) e `46b6146e` (16:58:05), ambos "fim do dia 25-09-26", de Jose Carlos. Eles levaram os meus arquivos-fonte e as capturas `r1/r2` como estavam. Não rodei git de escrita. O fonte de agora é igual ao do HEAD e ao que foi publicado.
+- **Cópias `.antes` (17:00, `cp -p`):**
+
+  | Cópia | sha256 (= arquivo substituído) |
+  |---|---|
+  | `dist/hmdm.war.antes-20260925-1700` | f429811fa4f43965778789b7245fb9bd8be3f9c2ecc8fd20c5ae7bf395d627af |
+  | `dist/ROOT.war.antes-20260925-1700` (cópia de `source/volumes/webapps/ROOT.war`; fica em `dist/` para o Tomcat não a ver) | 660205b9307fafc990ece4976296ffc39f4bf6d46c4374ef216e9b2858abc6b1 |
+  | `dist/overlay-webfilter-0.1.0.jar.antes-20260925-1700` | 44342f4f5dfd42a65e493e6ded1ecc7a69a7bf23f1c43927357eecc2d95dfef1 |
+  | `output/listas-dns-backup-f5-antes/…/*.antes-20260925-1645`, os 14 arquivos-fonte e webapp de antes da edição | ver a pasta |
+- **Remendo dos WARs:** feito com `jar uf` numa cópia no scratchpad, com 4 entradas:
+  - `WEB-INF/lib/webfilter-0.1.0.jar`;
+  - `WEB-INF/classes/com/hmdm/rest/resource/BackupResource.class`;
+  - `app/components/plugins/webfilter/views/main.html`;
+  - `app/components/plugins/webfilter/webfilter.module.js`.
+
+  Conferência com Python `zipfile`:
+  - `dist/hmdm.war` foi de 698 para 698 entradas e `ROOT.war` de 701 para 701;
+  - só essas 4 entradas mudaram de CRC;
+  - o MANIFEST é o mesmo e o `testzip` passou.
+
+  Com o app parado, conferi cada alvo com `sha256sum -c` antes de copiar:
+  - `cp` sobre `dist/hmdm.war`, mantendo o inode 917524, que é bind mount de arquivo;
+  - `cp` e depois `mv` sobre `source/volumes/webapps/ROOT.war`;
+  - `cp` do jar novo sobre `server-source/server/src/main/webapp/WEB-INF/lib/webfilter-0.1.0.jar`.
+- **`stamp-assets.py`:**
+  - Às 16:49:14, antes do teste, a 1ª passada reescreveu só `index.html`, com 2 tokens:
+    - `app/app.js`: `h18540773f1` → `h92744cc72a`;
+    - `tabs.controller.js`: `h9043c0047c` → `hfa7ab21d97`.
+
+    A 2ª passada não reescreveu nada.
+  - Às 17:00:37, com o app parado, as duas passadas deram "Arquivos reescritos: 0".
+- **Reinício:**
+  - `docker stop` das 17:00:03 às 17:00:19;
+  - `docker start` às 17:00:45 (StartedAt 2026-09-25T20:00:46Z, RestartCount 0);
+  - `Usando WAR existente: hmdm-5.39.2-os.war` e `Custom webapp overlay rebuilt … (stale files removed)`;
+  - **`Server startup in [18908] milliseconds` às 17:01:22**.
+
+  O entrypoint regravou o `ROOT.war` às 17:00:51 (sha256 `5af32c1a…`).
+
+## Verificação por máquina no DEV (17:01:41–17:01:49)
+| Verificação | Resultado | Evidência |
+|---|---|---|
+| HTTP 200 | **sim** | `GET http://192.168.1.65:8080/` → 200, 9385 B; `login.html` → 200 |
+| Nenhuma exceção nova no boot | **sim** | Log desde 20:00:40Z (41.078 linhas), sem nenhum `Caused by` ou stack. Sobraram 2 linhas de erro ou aviso:<br>• `[ERROR] LongPollingServlet : Empty constructor called!`, que aparece em todos os boots de hoje;<br>• `[WARN] RemoteSessionHub : Fluxo recusado para 'R9XT200AMYY': nenhuma sessao foi pedida`, que é o tablet empurrando vídeo remoto sem sessão depois do reinício. Não é exceção, e a mesma classe já avisou às 15:16 e às 15:17. |
+| changeSet novo aplicado (SELECT) | **sim** | `plugin-webfilter-2026-09-25-sources-inactive`, `dateexecuted 2026-09-25 17:01:14.854994`, md5 `8:e4ad2613…`. Coluna `inactiveurls text NOT NULL DEFAULT ''`. `plugin_webfilter_sources` com 0 linhas: nada foi gravado à mão, e o DEV continua com as listas padrão do catálogo. |
+| sha256 servido = disco | **sim** | Disco, `curl` e ROOT explodido iguais:<br>• `index.html` 72735bec…;<br>• `app/app.js` 92744cc7…;<br>• `tabs.controller.js` fa7ab21d…;<br>• `webfilter/views/main.html` 84bb1f7f…, igual às duas cópias-fonte;<br>• `webfilter/webfilter.module.js` 9de8c23a…, igual às duas cópias-fonte.<br>`webfilter-0.1.0.jar` = dc38668a… em `target/`, no ROOT explodido e em `/opt/custom-webapp`. `BackupResource.class` = 1517ffaf… no ROOT explodido. |
+| `index.html` com os tokens novos | **sim** | Linha 55 `app/app.js?v=h92744cc72a`; linha 81 `tabs.controller.js?v=hfa7ab21d97` |
+| Resolvedor sem mudança indevida | **sim** | O boot regenerou `2 active profile(s), categories [doh, games, social_media]`. O `sources.json` do DEV continua com mtime 08:28:07 e o mesmo conteúdo lido às 16:3x. |
+| Contêineres | **sim** | Só o `hwmdm-hmdm-1` mudou de StartedAt. Postgres 17:31:18Z e webfilter-dns 17:48:29Z seguem iguais. |
+
+## O que NÃO foi verificado
+- **A tela no DEV com o `admin` real, num navegador.** Não tenho a senha do DEV; esse é o teste humano. Desde as 16:40 o papel Admin do DEV tem `superadmin=true`, alterado pelo orquestrador. Por isso o teste que prova que nada exige super admin é o da revisão, onde o Admin tem `superadmin=false`.
+- **O caminho completo no DEV** (adicionar ou desativar uma URL e ver o `sources.json` do DEV e o Blocky recarregar).
+  - Não salvei listas no DEV, para não mudar o filtro real.
+  - Na revisão, o `sources.json` saiu certo, mas lá não existe `webfilter-dns`. Portanto o download e o `POST /api/lists/refresh` do Blocky não foram observados.
+  - O mecanismo está descrito no item 1.
+- **Cache do navegador.** O `webfilter.module.js` e o `views/main.html` do plugin são pedidos sem `?v=`, porque os caminhos vêm da tabela `plugins`. Um navegador com a versão antiga em cache pode mostrar a tela velha. Recomendo **Ctrl+Shift+R** na primeira abertura.
+- **Backup além da lista:** agendamento, criação de `.zip`, importação e restauração não foram testados. Veja a observação da NPE acima: não é a permissão, mas pode afetar o uso.
+- Não atualizei `dist/hmdm.war.sha256` nem `source/volumes/webapps/ROOT.war.sha256`, que ficaram defasados. O `dist/hmdm.war` novo tem `72806349358ac9f38ba8b637fc5b565918abb2172bfaba0f3197b96df8bfae57`.
+- Testei só o Chromium headless em 1366×768. Não testei Firefox, tela estreita de celular nem tema escuro.
+- Na entrada direta em `#/acessos`, um instante logo depois de montar a tela mostrou a chave `plugin.audit.tab.title` sem tradução. 4 s depois, a mesma tela no F5 estava traduzida ("Registro de Acesso"). Isso vem do carregamento do pacote de idioma do plugin, que não mexi.

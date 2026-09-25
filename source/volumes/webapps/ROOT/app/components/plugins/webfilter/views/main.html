@@ -329,16 +329,79 @@
         <div class="wf-field-error" ng-repeat="m in fieldErrors.dnsDomain">{{m}}</div>
         <p class="wf-muted" localized>plugin.webfilter.dns.domain.hint</p>
 
-        <div class="kiosk-panel" ng-repeat="category in catalog.categories">
-            <h5>{{categoryName(category.id)}}</h5>
-            <p class="wf-muted">Fontes DNS compartilhadas pelo servidor. Uma URL de lista de domínios por campo.</p>
-            <div class="wf-add-app" ng-repeat="source in category.sources track by $index">
-                <input class="form-control" type="url" ng-model="category.sources[$index]" aria-label="URL da lista" ng-disabled="!catalog.canManageSources">
-                <button class="btn btn-default" ng-if="catalog.canManageSources" ng-click="removeSource(category, $index)" title="Retira esta fonte da categoria; use Salvar listas para aplicar.">Remover</button>
-            </div>
-            <div class="kiosk-action-row" ng-if="catalog.canManageSources">
-                <button class="btn btn-default" ng-click="addSource(category)" title="Adiciona uma fonte de domínios a esta categoria.">Adicionar lista</button>
-                <button class="btn btn-primary" ng-click="saveSources(category)" ng-disabled="saving" title="Salva as fontes e solicita a atualização do resolvedor DNS.">Salvar listas</button>
+        <div class="wf-src" data-testid="wf-sources">
+            <style>
+                .wf-src { margin: 16px 0; }
+                .wf-src-cat { border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); margin-bottom: 4px; }
+                .wf-src-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 5px 10px; border: 0; background: transparent;
+                               text-align: left; color: var(--hwmdm-text-strong); cursor: pointer; }
+                .wf-src-head .hw-icon { width: 14px; height: 14px; color: var(--hwmdm-muted); }
+                .wf-src-name { font-weight: 600; }
+                .wf-src-count { margin-left: auto; color: var(--hwmdm-muted); font-size: 12px; white-space: nowrap; }
+                .wf-src-dirty { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; white-space: nowrap; }
+                .wf-src-body { padding: 0 10px 10px; }
+                .wf-src-table { width: 100%; table-layout: fixed; margin: 0 0 8px; }
+                .wf-src-table th, .wf-src-table td { padding: 4px 6px !important; vertical-align: middle !important; }
+                .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); text-transform: none !important; letter-spacing: normal !important; }
+                .wf-src-table .wf-src-col-active { width: 56px; text-align: center; }
+                .wf-src-table .wf-src-col-actions { width: 100px; text-align: right; }
+                .wf-src-table .wf-src-col-active input { margin: 0; }
+                .wf-src-table .form-control { height: 30px; padding: 0 8px; font-family: monospace; font-size: 12px; }
+                .wf-src-table .btn { width: auto; min-width: 0; height: 30px; padding: 0 10px; white-space: nowrap; }
+                .wf-src-off .form-control { opacity: .55; }
+                .wf-src-bad .form-control { border-color: var(--hwmdm-danger); }
+                .wf-src-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+                .wf-src-ok { color: #15803d; font-size: 12px; font-weight: 600; }
+                [data-theme="dark"] .wf-src-ok { color: #86efac; }
+                .wf-src-err { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; }
+            </style>
+            <h5><strong>Listas de DNS</strong></h5>
+            <p class="wf-muted">Lista desmarcada fica cadastrada, mas fora do filtro.</p>
+            <div class="wf-src-cat" ng-repeat="category in catalog.categories" data-testid="wf-src-{{category.id}}">
+                <button type="button" class="wf-src-head" ng-click="toggleSources(category)" aria-expanded="{{!!category.open}}"
+                        data-testid="wf-src-toggle-{{category.id}}">
+                    <span class="hw-icon" ng-class="category.open ? 'hw-icon-chevron-down' : 'hw-icon-chevron-right'"></span>
+                    <span class="wf-src-name">{{categoryName(category.id)}}</span>
+                    <span class="wf-src-dirty" ng-if="category.dirty">não salvo</span>
+                    <span class="wf-src-count">{{activeSources(category)}} de {{category.sources.length}} ativas</span>
+                </button>
+                <div class="wf-src-body" ng-if="category.open">
+                    <table class="table wf-src-table" ng-if="category.sources.length">
+                        <thead>
+                        <tr>
+                            <th class="wf-src-col-active">Ativa</th>
+                            <th>URL</th>
+                            <th class="wf-src-col-actions"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="source in category.sources" data-testid="wf-src-row"
+                            ng-class="{'wf-src-off': !source.active, 'wf-src-bad': invalidSource(source)}">
+                            <td class="wf-src-col-active">
+                                <input type="checkbox" ng-model="source.active" ng-change="markSourcesDirty(category)"
+                                       aria-label="Ativa" data-testid="wf-src-active">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="source.url" ng-change="markSourcesDirty(category)"
+                                       placeholder="https://" aria-label="URL da lista" spellcheck="false" data-testid="wf-src-url">
+                            </td>
+                            <td class="wf-src-col-actions">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="removeSource(category, $index)"
+                                        data-testid="wf-src-remove">Remover</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="wf-muted" ng-if="!category.sources.length">Nenhuma lista nesta categoria.</p>
+                    <div class="wf-src-actions">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="addSource(category)"
+                                data-testid="wf-src-add">Adicionar lista</button>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="saveSources(category)"
+                                ng-disabled="category.saving || !category.dirty" data-testid="wf-src-save">Salvar listas</button>
+                        <span class="wf-src-ok" ng-if="category.sourceMessage" data-testid="wf-src-ok">{{category.sourceMessage}}</span>
+                        <span class="wf-src-err" ng-if="category.sourceError" data-testid="wf-src-err">{{category.sourceError}}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <h5><strong localized>plugin.webfilter.sources</strong></h5>
