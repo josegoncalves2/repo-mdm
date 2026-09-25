@@ -107,3 +107,4 @@ Verifique a integridade da cadeia com: `./trava auditoria --verificar`
 | 2026-09-25T19:08:54Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
 | 2026-09-25T19:35:16Z | papel | registrado | trava-executor |  |
 | 2026-09-25T20:04:45Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T20:06:05Z | papel | registrado | trava-executor |  |
