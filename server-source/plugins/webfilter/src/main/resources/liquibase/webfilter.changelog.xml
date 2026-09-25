@@ -158,4 +158,13 @@
             CREATE TABLE plugin_webfilter_sources (category VARCHAR(50) PRIMARY KEY, urls TEXT NOT NULL);
         </sql>
     </changeSet>
+
+    <!-- Listas desativadas continuam em "urls" (cadastradas e visiveis na tela); esta coluna guarda,
+         uma por linha, as que ficam fora do filtro. Vazia = todas ativas. -->
+    <changeSet id="plugin-webfilter-2026-09-25-sources-inactive" author="hwmdm" context="common">
+        <comment>Column,new: plugin_webfilter_sources.inactiveUrls</comment>
+        <sql>
+            ALTER TABLE plugin_webfilter_sources ADD COLUMN inactiveUrls TEXT NOT NULL DEFAULT '';
+        </sql>
+    </changeSet>
 </databaseChangeLog>

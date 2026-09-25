@@ -4,7 +4,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         try {
             $stateProvider.state('plugin-webfilter', {
                 url: '/plugin-webfilter',
-                templateUrl: 'app/components/main/view/content.html?v=h1d21823701',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"plugin.webfilter.localization.key.name" | localize}}'
@@ -120,20 +120,77 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); }
         }, 10000);
         $scope.$on('$destroy', function () { $interval.cancel(refreshTimer); });
-        $scope.addSource = function (category) { category.sources.push(''); };
-        $scope.removeSource = function (category, index) { category.sources.splice(index, 1); };
+        // ------------------------------------------------------------------------------------------------ DNS lists
+        // Each category carries its rows ({url, active}) plus, only here, whether it is expanded and has unsaved edits.
+        var HTTPS_URL = /^https:\/\/[^\s\/?#]+\S*$/i;
+        $scope.activeSources = function (category) {
+            return (category.sources || []).filter(function (s) { return s.active; }).length;
+        };
+        $scope.toggleSources = function (category) { category.open = !category.open; };
+        $scope.markSourcesDirty = function (category) {
+            category.dirty = true;
+            category.sourceMessage = undefined;
+            category.sourceError = undefined;
+        };
+        $scope.addSource = function (category) {
+            category.sources.push({url: '', active: true});
+            category.open = true;
+            $scope.markSourcesDirty(category);
+        };
+        $scope.removeSource = function (category, index) {
+            category.sources.splice(index, 1);
+            $scope.markSourcesDirty(category);
+        };
+        $scope.invalidSource = function (source) {
+            var url = (source.url || '').trim();
+            return url.length > 0 && !HTTPS_URL.test(url);
+        };
+        var sourceErrorText = function (body) {
+            return body && body.message ? localization.localize(body.message) : localization.localize('error.request.failure');
+        };
         $scope.saveSources = function (category) {
-            clearMessages();
-            $scope.saving = true;
-            pluginWebFilterService.saveSources({category: category.id}, category.sources, function (response) {
-                $scope.saving = false;
-                if (response.status === 'OK') { $scope.successMessage = localization.localize('plugin.webfilter.saved'); loadCatalog(); }
-                else { showErrors(response); }
-            }, onFailure);
+            // Blank rows are simply dropped
+            var rows = category.sources.filter(function (s) { return (s.url || '').trim().length > 0; });
+            category.sourceMessage = undefined;
+            category.sourceError = undefined;
+            if (rows.some($scope.invalidSource)) {
+                category.sourceError = 'Use endereços que comecem com https://';
+                return;
+            }
+            category.saving = true;
+            pluginWebFilterService.saveSources({category: category.id}, rows.map(function (s) {
+                return {url: s.url.trim(), active: !!s.active};
+            }), function (response) {
+                category.saving = false;
+                if (response.status === 'OK') {
+                    category.sources = response.data.sources;
+                    category.sourceCount = response.data.sourceCount;
+                    category.dirty = false;
+                    category.sourceMessage = 'Listas salvas. O filtro DNS vai recarregá-las.';
+                } else {
+                    category.sourceError = sourceErrorText(response);
+                }
+            }, function (httpResponse) {
+                category.saving = false;
+                category.sourceError = sourceErrorText(httpResponse && httpResponse.data);
+            });
         };
         var loadCatalog = function () {
             pluginWebFilterService.getCatalog(function (response) {
                 if (response.status === 'OK') {
+                    // A reload (e.g. after categorizing an app) keeps what is expanded and any list edit not saved yet
+                    var previous = {};
+                    ($scope.catalog.categories || []).forEach(function (c) { previous[c.id] = c; });
+                    (response.data.categories || []).forEach(function (c) {
+                        var old = previous[c.id];
+                        if (old) {
+                            c.open = old.open;
+                            if (old.dirty) {
+                                c.sources = old.sources;
+                                c.dirty = true;
+                            }
+                        }
+                    });
                     $scope.catalog = response.data;
                 } else {
                     showErrors(response);

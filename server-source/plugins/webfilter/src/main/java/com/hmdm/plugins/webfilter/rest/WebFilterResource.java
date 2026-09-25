@@ -7,6 +7,7 @@ import com.hmdm.plugins.webfilter.catalog.WebFilterCatalog;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
 import com.hmdm.plugins.webfilter.rest.json.PolicyView;
 import com.hmdm.plugins.webfilter.rest.json.SettingsView;
+import com.hmdm.plugins.webfilter.rest.json.SourceView;
 import com.hmdm.plugins.webfilter.rest.json.ValidationError;
 import com.hmdm.plugins.webfilter.service.WebFilterService;
 import com.hmdm.rest.json.Response;
@@ -92,17 +93,28 @@ public class WebFilterResource {
             ObjectNode c = categories.addObject();
             c.put("id", id);
             c.put("required", WebFilterCatalog.REQUIRED_CATEGORY.equals(id));
-            c.put("sourceCount", catalog.getSiteSources(id).size());
-            ArrayNode sources = c.putArray("sources");
-            catalog.getSiteSources(id).forEach(sources::add);
+            putSources(c, id);
             ArrayNode a = c.putArray("apps");
             apps.getOrDefault(id, java.util.Collections.<String>emptySet()).forEach(a::add);
         }
         ArrayNode prot = root.putArray("protectedPackages");
         catalog.getProtectedPackages().forEach(prot::add);
         root.set("attribution", catalog.getAttribution());
-        root.put("canManageSources", SecurityContext.get().isSuperAdmin());
+        // Same check as saving the settings (DNS domain): whoever reaches this point may manage the lists
+        root.put("canManageSources", !denied());
         return ok(Response.OK(root));
+    }
+
+    /** Every list of the category (active or not) and how many of them go to the resolver. */
+    private void putSources(ObjectNode node, String category) {
+        List<SourceView> entries = catalog.getSourceEntries(category);
+        node.put("sourceCount", (int) entries.stream().filter(SourceView::isActive).count());
+        ArrayNode sources = node.putArray("sources");
+        for (SourceView s : entries) {
+            ObjectNode item = sources.addObject();
+            item.put("url", s.getUrl());
+            item.put("active", s.isActive());
+        }
     }
 
     @GET
@@ -200,12 +212,17 @@ public class WebFilterResource {
     @PUT
     @Path("/sources/{category}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public javax.ws.rs.core.Response saveSources(@PathParam("category") String category, java.util.List<String> urls) {
-        if (denied() || !SecurityContext.get().isSuperAdmin()) { return forbidden(); }
+    public javax.ws.rs.core.Response saveSources(@PathParam("category") String category, java.util.List<SourceView> sources) {
+        // Same check as saving the settings (DNS domain)
+        if (denied()) { return forbidden(); }
         try {
-            catalog.saveSources(category, urls);
+            catalog.saveSources(category, sources);
+            // Rewrites sources.json/blocky.yml; the resolver downloads the changed lists and reloads Blocky
             sourceWriter.writeAll();
-            return ok(Response.OK());
+            ObjectNode saved = new ObjectMapper().createObjectNode();
+            saved.put("id", category);
+            putSources(saved, category);
+            return ok(Response.OK(saved));
         } catch (IllegalArgumentException e) { return http(400, Response.ERROR(e.getMessage())); }
     }
 

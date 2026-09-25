@@ -1,0 +1,537 @@
+{
+  "variante": "literal",
+  "cssModules": "/tmp/claude-1002/-opt-projetos-hwmdm/5eef6554-fd12-4c0c-a71d-4f279183552c/scratchpad/botoes-ext-hub/literal-hwmdm-modules.css",
+  "chromium": "149.0.7827.55",
+  "telas": {
+    "modulos-1366": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Mensagens",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Filtro Web",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Logs de dispositivos",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Auditoria",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Mensagens push",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Informações detalhadas",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rolagemHorizontalPagina": 0,
+      "erros": []
+    },
+    "modulos-1920": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Mensagens",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Filtro Web",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Logs de dispositivos",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Auditoria",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Mensagens push",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": true,
+          "linha": "Informações detalhadas",
+          "texto": "Configurar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 170,
+          "cabeNaCelula": true,
+          "interruptor": {
+            "sobrepoe": false,
+            "mesmaLinha": true,
+            "aDireita": true
+          },
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rolagemHorizontalPagina": 0,
+      "erros": []
+    },
+    "integracoes-1366": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "API REST",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Comandos aos dispositivos",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Resolvedor Web Filter",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Inscrição por QR code",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Sincronização",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        0
+      ],
+      "rolagemHorizontalPagina": 0,
+      "erros": []
+    },
+    "integracoes-1366-copiado": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "API REST",
+          "texto": "Copiado",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Comandos aos dispositivos",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Resolvedor Web Filter",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Inscrição por QR code",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Sincronização",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        1
+      ],
+      "rolagemHorizontalPagina": 0
+    },
+    "integracoes-1920": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "API REST",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Comandos aos dispositivos",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Resolvedor Web Filter",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Inscrição por QR code",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Sincronização",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        0
+      ],
+      "rolagemHorizontalPagina": 0,
+      "erros": []
+    },
+    "integracoes-1920-copiado": {
+      "botoes": [
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "API REST",
+          "texto": "Copiado",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Comandos aos dispositivos",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Resolvedor Web Filter",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Inscrição por QR code",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        },
+        {
+          "textoDentroDoBotao": false,
+          "textoSobreInterruptor": false,
+          "linha": "Sincronização",
+          "texto": "Copiar",
+          "linhasTexto": 1,
+          "alturaBotao": 30,
+          "larguraBotao": 30,
+          "larguraCelula": 62,
+          "cabeNaCelula": true,
+          "interruptor": null,
+          "whiteSpace": "nowrap"
+        }
+      ],
+      "rolagemHorizontalTabelas": [
+        0,
+        1
+      ],
+      "rolagemHorizontalPagina": 0
+    }
+  }
+}

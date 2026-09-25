@@ -120,8 +120,13 @@ public interface WebFilterMapper {
 
     @Select("SELECT urls FROM plugin_webfilter_sources WHERE category = #{category}")
     String sourceUrls(@Param("category") String category);
-    @Insert("INSERT INTO plugin_webfilter_sources(category,urls) VALUES(#{category},#{urls}) ON CONFLICT(category) DO UPDATE SET urls = EXCLUDED.urls")
-    void saveSourceUrls(@Param("category") String category, @Param("urls") String urls);
+    // Subset of "urls" kept registered but left out of the filter, one per line
+    @Select("SELECT inactiveUrls FROM plugin_webfilter_sources WHERE category = #{category}")
+    String inactiveSourceUrls(@Param("category") String category);
+    @Insert("INSERT INTO plugin_webfilter_sources(category,urls,inactiveUrls) VALUES(#{category},#{urls},#{inactiveUrls}) " +
+            "ON CONFLICT(category) DO UPDATE SET urls = EXCLUDED.urls, inactiveUrls = EXCLUDED.inactiveUrls")
+    void saveSourceUrls(@Param("category") String category, @Param("urls") String urls,
+                        @Param("inactiveUrls") String inactiveUrls);
 
     // ------------------------------------------------------------------------------------------------- events
     @Insert("INSERT INTO plugin_webfilter_events (customerId, deviceId, configurationId, host, url, category, source, " +

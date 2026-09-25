@@ -642,3 +642,102 @@ Isso é compatível com o sintoma "dezenas de cliques" na versão de hoje: o sta
   - o teclado físico digita;
   - o Backspace apaga, sem duplicar.
 - Recomendo Ctrl+Shift+R na primeira abertura, porque o `index.html` depende de ETag/Last-Modified.
+
+## Botões Módulos/Integrações (16:00–16:08, 25/09/2026)
+
+### Defeito
+Nas telas Módulos e Integrações, "Configurar" e "Copiar" apareciam com uma letra por linha.
+
+A renderização com o CSS de antes reproduz o defeito: 6 linhas de texto por botão, e 7 em "Copiado".
+
+A medição mostrou uma causa um pouco diferente da descrita no pedido:
+- A célula **não** encolhia até um caractere. A célula de ações dos Módulos media de 170 a 316 px, e o Chromium respeita o `min-width: 170px` nela. A última célula das Integrações media de 94 a 121 px.
+- O que prendia o texto era o **botão**. `hwmdm-ui.css:473-480` fixa `.table .btn { width: 30px; height: 30px; padding: 0 }`, o quadrado do botão só-ícone. Com `white-space: normal; overflow-wrap: anywhere` da regra global `.btn`, o texto quebra dentro de uns 12 px úteis. Por isso sai uma letra por linha, vazando para cima e para baixo do botão.
+
+### Alteração (só `css/hwmdm-modules.css`, só acréscimo, regras restritas a `.ext-hub`)
+- Antes: 27 linhas. Depois: 36 linhas.
+- As linhas 1–27 estão intactas.
+- Acrescentei as linhas 28–36: um comentário (28–33) e três regras:
+```
++.ext-hub .table .btn { width: auto; white-space: nowrap; overflow-wrap: normal; word-break: normal; max-width: none; }
++.ext-hub .table td.ext-hub-row-actions { width: 1%; white-space: nowrap; }
++.ext-hub .table td:last-child:has(> .btn) { width: 1%; white-space: nowrap; }
+```
+
+**Desvio da lista literal: `width: auto`.**
+- Sem ele, o texto fica numa linha, mas o botão continua com 30 px. "Configurar" vaza por baixo do interruptor, nas 6 linhas com botão.
+- Evidência em `output/botoes-ext-hub/modulos-1366-sem-width-auto-tabela.png` e em `medidas-sem-width-auto.json`: `textoVazaBotao=6` e `textoSobreInterr=6`.
+- A regra continua restrita a `.ext-hub .table`. Não alterei `.btn` nem `.table .btn` de `hwmdm-ui.css`.
+
+**A última célula das Integrações** não tem classe, e não mexi no HTML. Por isso o seletor é `td:last-child:has(> .btn)`.
+- Assim a coluna "Estado" da tabela "Extensões instaladas", que também é a última célula, não é afetada.
+- `.ext-hub` só existe em `extensionsHub.html` e `integrations.html`, conferido com grep.
+- O painel já usa `:has()` em `hwmdm-ui.css`.
+
+Nenhuma regra, botão, coluna ou texto foi removido.
+
+### Publicação
+- **Cópias de antes** em `output/botoes-ext-hub-antes/`:
+  - `css/hwmdm-modules.css`: sha256 cddf9294…, 27 linhas.
+  - `index.html`: sha256 9cc80bb7….
+- **`stamp-assets.py`, 1ª execução (16:06:10):** 1 token defasado. Reescreveu só `index.html`, linha 124:
+  - antes: `css/hwmdm-modules.css?v=hcddf9294b3`
+  - depois: `css/hwmdm-modules.css?v=hdebc1f4a64`
+- **2ª execução:** "Todos os tokens ja batem", 0 arquivos reescritos.
+- **`docker ps` (16:06:15):**
+  - `hwmdm-hmdm-1` StartedAt 18:21:25Z (15:21:25). É o esperado, sem reinício mais recente.
+  - postgres 17:31:18Z, webfilter-dns 17:48:29Z.
+  - Havia um processo `codex` (extensão do VS Code) vivo desde 14:23. Não interagi com ele.
+- **`docker restart hwmdm-hmdm-1`:**
+  - início 16:06:22, retorno 16:06:36 (StartedAt 19:06:34Z);
+  - overlay do webapp reconstruído pelo entrypoint às 16:06:47;
+  - **Tomcat no ar às 16:07:22** ("Server startup in [19669] milliseconds").
+- Não troquei o ROOT.war. O entrypoint o regravou às 16:06:46, como em todo boot.
+- Não toquei no postgres nem no webfilter-dns, cujos StartedAt não mudaram.
+
+### Verificação por máquina (16:07:37–16:08:21)
+- `http://192.168.1.65:8080/` → **HTTP 200**, conferido duas vezes.
+- **Boot desde 19:06:30Z:** nenhuma exceção nova.
+  - Única linha de erro: `[ERROR] LongPollingServlet : Empty constructor called!` às 16:07:32. Ela aparece em todos os boots de hoje (17:32, 17:50, 17:53, 18:11 e 18:24Z).
+  - As 7 linhas com "Exception" são DEBUG de carga de classe do liquibase e do swagger.
+  - Não houve nenhum stack.
+- **`css/hwmdm-modules.css` servido = disco:**
+  - sha256 debc1f4a… nos três lugares: disco, curl e ROOT explodido no contêiner;
+  - `cmp`: idêntico;
+  - HTTP 200, 2720 bytes.
+- **`index.html` servido:**
+  - linha 124 = `css/hwmdm-modules.css?v=hdebc1f4a64`;
+  - sha256 a8b20fbd…, igual ao do disco.
+
+### Renderização headless
+Usei o Chromium 149 do Playwright, com o HTML e o CSS reais lidos do disco, sem login e sem tocar no servidor.
+- A página de teste foi montada fora do repositório, no scratchpad. O script ficou copiado em `output/botoes-ext-hub/render.js`.
+- Os templates reais (`extensionsHub.html` e `integrations.html`) foram compilados por AngularJS local, com controllers de mentira.
+- Catálogo real de módulos (25) e pontos de integração reais (5).
+- Uma linha foi posta em manutenção para forçar a coluna Estado.
+- As folhas de estilo seguem a ordem do `index.html`.
+
+| variante | tela/largura | linhas por botão | largura do botão | texto vaza do botão | texto sobre o interruptor |
+|---|---|---|---|---|---|
+| antes | Módulos 1366/1920 | 6 | 30 px | 6 de 6 | 0 |
+| antes | Integrações 1366/1920 | 6 (Copiado: 7) | 30 px | 5 de 5 | – |
+| só a lista literal | Módulos 1366/1920 | 1 | 30 px | 6 de 6 | **6 de 6** |
+| só a lista literal | Integrações 1366/1920 | 1 | 30 px | 5 de 5 | – |
+| **depois** | Módulos 1366/1920 | **1** | 81 px | **0** | **0** |
+| **depois** | Integrações 1366/1920 | **1** (Copiado: 1) | 73/82 px | **0** | – |
+
+No "depois":
+- botão e interruptor lado a lado (mesma linha, interruptor à direita, sem interseção);
+- botão dentro da célula;
+- 0 rolagem horizontal na página e nas tabelas;
+- 0 erro de página.
+
+Capturas em `output/botoes-ext-hub/`:
+- `{modulos,integracoes}-{1366,1920}-{antes,depois}.png` (página inteira);
+- `...-tabela.png` (recorte da tabela);
+- `medidas-*.json`.
+
+### O que NÃO foi verificado
+- **A tela real logada no navegador.** É o teste humano: Configurações → Módulos e Integrações.
+- Recomendo Ctrl+Shift+R na primeira abertura.
+- Os dados da renderização são fixos. Na tela real, quais linhas mostram "Configurar" depende dos plugins instalados e das permissões.

@@ -1,0 +1,134 @@
+<html ng-app='headwind-kiosk'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Headwind MDM</title>
+
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel='stylesheet' type='text/css' href='lib/ng-tags-input/ng-tags-input.css?v=h75b71a372b'>
+    <link rel='stylesheet' type='text/css' href='lib/angular-bootstrap-colorpicker/colorpicker.css?v=hd9ae678f98'>
+    <link rel='stylesheet' type='text/css' href='lib/angular-input-dropdown/inputDropdownStyles.css?v=h3f3a0267e1'>
+    <link rel='stylesheet' type='text/css' href='lib/intro.js/introjs.css?v=h3985c64b99'>
+
+    <script src='localization/ar_AE.js?v=haae678e06b'></script>
+    <script src='localization/en_US.js?v=heed06c4500'></script>
+    <script src='localization/pt_PT.js?v=hd6b23a3290'></script>
+    <script src='localization/fr_FR.js?v=hdf13156ae2'></script>
+    <script src='localization/ru_RU.js?v=hfe83026123'></script>
+    <script src='localization/es_ES.js?v=h76447b1e36'></script>
+    <script src='localization/de_DE.js?v=h0e49eeefb6'></script>
+    <script src='localization/zh_CN.js?v=h507cfd77c8'></script>
+    <script src='localization/zh_TW.js?v=hf1966d5d85'></script>
+    <script src='localization/ja_JP.js?v=h0ff5fc2cc9'></script>
+    <script src='localization/tr_TR.js?v=he52a0f977a'></script>
+    <script src='localization/vi_VN.js?v=ha6d61e48b4'></script>
+    <script src='localization/it_IT.js?v=h709bdebebe'></script>
+    <script src='localization/hwmdm_modules.js?v=h35f22861cb'></script>
+
+    <script src='lib/angular/angular.js?v=hfdca889e76'></script>
+    <script src='lib/angular-resource/angular-resource.js?v=h3d732e6e83'></script>
+    <script src='lib/angular-cookies/angular-cookies.js?v=hf3291c5520'></script>
+    <script src='lib/angular-bootstrap/ui-bootstrap-tpls.js?v=h3094a3f539'></script>
+    <script src='lib/angular-ui-router/angular-ui-router.js?v=h78098e8c28'></script>
+    <script src='lib/angular-bootstrap-colorpicker/bootstrap-colorpicker-module.js?v=h22832a4e8d'></script>
+    <script src='lib/angular-ui-mask/mask.js?v=h4bb5c98065'></script>
+    <script src='lib/angular-breadcrumb/angular-breadcrumb.js?v=he81f68fc80'></script>
+    <script src='lib/angular-animate/angular-animate.js?v=h58e79e0e7c'></script>
+    <script src='lib/angular-sanitize/angular-sanitize.js?v=hc84c65250a'></script>
+    <script src="lib/chart.js/Chart.js?v=h394810e274"></script>
+    <script src="lib/angular-chart.js/angular-chart.js?v=hc9b77a6b58"></script>
+
+    <script src='lib/blueimp-md5/md5.js?v=hea844ce0ef'></script>
+    <script src='lib/ng-tags-input/ng-tags-input.js?v=hfb916ce942'></script>
+    <script src='lib/angular-css/angular-css.js?v=h8318d4bb6b'></script>
+    <script src='lib/oclazyload/ocLazyLoad.js?v=hc53de97185'></script>
+    <script src='lib/intro.js/intro.js?v=h48f64fff1f'></script>
+    <!-- Moved to app/shared/ to avoid exposing the source code -->
+<!--    <script src='lib/jsencrypt/bin/jsencrypt.min.js'></script> -->
+    <script src='lib/ng-idle/angular-idle.js?v=h25284aa97e'></script>
+<!--
+    <script src='lib/angular-intro.js/build/angular-intro.min.js'></script>
+-->
+
+    <script src='app/app.js?v=h18540773f1'></script>
+    <script src='app/spinner.js?v=h3c932d6e43'></script>
+
+    <script src='app/components/header/header.controller.js?v=h813fe68a73'></script>
+    <script src='app/components/about/about.controller.js?v=hbdfdeb90a3'></script>
+
+    <script src='app/components/main/controller/summary.controller.js?v=h055073b111'></script>
+    <script src='app/components/main/controller/devices.controller.js?v=ha859474276'></script>
+    <script src='app/components/main/controller/kiosk.controller.js?v=h8d195a63c1'></script>
+    <script src='app/components/main/controller/remote.controller.js?v=ha017dcffbf'></script>
+    <script src='app/components/main/controller/gpsmap.controller.js?v=hba272244f6'></script>
+    <script src='app/components/main/controller/chat.controller.js?v=h9eeceaecdb'></script>
+    <script src='app/components/main/controller/reports.controller.js?v=h5831ff690b'></script>
+    <script src='app/components/main/controller/governance.controller.js?v=hc5522da437'></script>
+    <script src='app/components/main/controller/applications.controller.js?v=h0be94d4a7d'></script>
+    <script src='app/components/main/controller/configurations.controller.js?v=h162795fdef'></script>
+    <script src='app/components/main/controller/files.controller.js?v=hebf0f462cc'></script>
+    <script src='app/components/main/controller/groups.controller.js?v=h6965c7ef34'></script>
+    <script src='app/components/main/controller/settings.controller.js?v=hd09511df7e'></script>
+    <script src='app/components/main/controller/plugins.controller.js?v=h58cc228f3d'></script>
+    <script src='app/components/main/controller/login.controller.js?v=h4528cf468f'></script>
+    <script src='app/components/main/controller/qr.controller.js?v=h6c9d267380'></script>
+    <script src='app/components/main/controller/profile.controller.js?v=h59a6ed2703'></script>
+    <script src='app/components/main/controller/users.controller.js?v=ha7187881c3'></script>
+    <script src='app/components/main/controller/roles.controller.js?v=h029004ddc0'></script>
+    <script src='app/components/main/controller/icons.controller.js?v=h6fe24063f2'></script>
+    <script src='app/components/main/controller/tabs.controller.js?v=h9043c0047c'></script>
+    <script src='app/components/main/controller/passwordreset.controller.js?v=h01e84d8e8f'></script>
+    <script src='app/components/main/controller/passwordrecovery.controller.js?v=h7034d8629c'></script>
+    <script src='app/components/main/controller/twofactorauth.controller.js?v=hd765939de8'></script>
+    <script src='app/components/main/controller/signup.controller.js?v=h4e60a48025'></script>
+    <script src='app/components/main/controller/signupcomplete.controller.js?v=hf5abbf88ff'></script>
+    <script src='app/components/control-panel/controller/panel.controller.js?v=h3c94bb0d6f'></script>
+
+    <script src='app/components/main/service/mdmCatalog.service.js?v=h287aa7e988'></script>
+    <script src='app/components/main/directive/mdmOptionPicker.directive.js?v=hd954aaac65'></script>
+    <script src='app/components/main/directive/mdmExtrasEditor.directive.js?v=h8f940adc1f'></script>
+    <script src='app/components/main/service/main.service.js?v=ha60375649e'></script>
+    <script src='app/components/main/service/remoteSupport.service.js?v=h658beb74c3'></script>
+    <script src='app/shared/service/auth.service.js?v=h17ae1afef7'></script>
+    <script src='app/shared/service/user.service.js?v=h971e148e2e'></script>
+    <script src='app/shared/service/confirm.service.js?v=h4baca1d74f'></script>
+    <script src='app/shared/service/alert.service.js?v=hfab8f48423'></script>
+    <script src='app/shared/service/progress.service.js?v=h591fe4a291'></script>
+    <script src='app/shared/service/pagination.service.js?v=h155b0e822d'></script>
+    <script src='app/shared/service/locale.service.js?v=h2ba5cd4ae5'></script>
+    <script src='app/shared/service/hint.service.js?v=hfeb075a05c'></script>
+    <script src='app/shared/service/map.service.js?v=he5b9690984'></script>
+    <script src='app/shared/service/rebranding.service.js?v=h97a50fe22f'></script>
+    <script src='app/shared/service/password.service.js?v=h3a80e800d1'></script>
+    <script src='app/shared/service/utils.service.js?v=h4f2d278d54'></script>
+    <script src='app/shared/service/theme.service.js?v=h47870ad6db'></script>
+    <script src='app/shared/service/deviceFocus.service.js?v=hf9c2d3fbea'></script>
+
+    <script src='app/shared/angularjs-dropdown-multiselect.js?v=hce2fc44bd9'></script>
+    <script src='app/shared/filters.js?v=hba2b9536b6'></script>
+    <script src='app/shared/directives.js?v=h60fdee601e'></script>
+    <script src='app/shared/angular-upload.js?v=h758468a7f0'></script>
+    <script src='app/shared/inputDropdown.js?v=h4369fd288b'></script>
+    <script src='app/shared/jsencrypt.min.js?v=h53f2831ab8'></script>
+
+    <!-- HWMDM 1.0: registro de modulos, telas Modulos/Integracoes e versao no rodape -->
+    <script src='app/shared/service/moduleRegistry.service.js?v=hac17aeebf1'></script>
+    <script src='app/components/main/controller/modules.controller.js?v=h81a961a280'></script>
+    <script src='app/shared/directive/hwmdmVersion.directive.js?v=he0fe28ebe7'></script>
+
+    <link rel='stylesheet' type='text/css' href='lib/bootstrap-css-only/css/bootstrap.css?v=h7e630d90c7'>
+    <link rel='stylesheet' type='text/css' href='css/main.css?v=h8d60225f20'>
+    <link rel='stylesheet' type='text/css' href='css/mdm-picker.css?v=hc7120a3336'>
+    <link rel='stylesheet' type='text/css' href='css/hwmdm-modules.css?v=hcddf9294b3'>
+    <link rel='stylesheet' type='text/css' href='css/hwmdm-version.css?v=ha2df6060fd'>
+    <!-- Sistema visual HWMDM 1.0: carregado por ultimo para prevalecer sobre bootstrap e main.css -->
+    <link rel='stylesheet' type='text/css' href='css/hwmdm-ui.css?v=ha10015c8e2'>
+<script src="lib/mux.min.js?v=h431ed1bb60"></script>
+<script src="lib/jmuxer.js?v=h7c9ca071f2"></script>
+</head>
+<body>
+    <div ng-include='"app/components/main/view/main.html?v=h1ec82c58b1"'></div>
+</body>
+</html>

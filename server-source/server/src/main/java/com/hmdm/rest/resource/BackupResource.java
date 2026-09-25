@@ -89,7 +89,7 @@ public class BackupResource {
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         try {
@@ -118,7 +118,7 @@ public class BackupResource {
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(@javax.ws.rs.QueryParam("scope") @javax.ws.rs.DefaultValue("full") String scope) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         try {
@@ -139,7 +139,7 @@ public class BackupResource {
     @Path("/{filename}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response remove(@PathParam("filename") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         File file = resolve(filename);
@@ -162,7 +162,7 @@ public class BackupResource {
     @Path("/{filename}/download")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public javax.ws.rs.core.Response download(@PathParam("filename") @ApiParam("The backup file name") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.FORBIDDEN).build();
         }
         File file = resolve(filename);
@@ -190,7 +190,7 @@ public class BackupResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{filename}/restore")
     public Response restore(@PathParam("filename") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) {
+        if (!SecurityContext.get().hasPermission("settings")) {
             return Response.PERMISSION_DENIED();
         }
         File target = resolve(filename);
@@ -304,22 +304,22 @@ public class BackupResource {
     }
     @GET @Path("/schedule") @Produces(MediaType.APPLICATION_JSON)
     public Response schedule() {
-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
+        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
         try { return Response.OK(archives.getSchedule()); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
     }
     @javax.ws.rs.PUT @Path("/schedule") @Consumes(MediaType.APPLICATION_JSON) @Produces(MediaType.APPLICATION_JSON)
     public Response saveSchedule(com.fasterxml.jackson.databind.node.ObjectNode value) {
-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
+        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
         try { return Response.OK(archives.saveSchedule(value)); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
     }
     @POST @Path("/upload") @Consumes(MediaType.APPLICATION_OCTET_STREAM) @Produces(MediaType.APPLICATION_JSON)
     public Response upload(InputStream data) {
-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
+        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
         try { return Response.OK(toBackupInfo(archives.upload(data))); } catch (Exception e) { return Response.ERROR(e.getMessage()); }
     }
     @GET @Path("/{filename}/inspect") @Produces(MediaType.APPLICATION_JSON)
     public Response inspect(@PathParam("filename") String filename) {
-        if (!SecurityContext.get().isSuperAdmin()) { return Response.PERMISSION_DENIED(); }
+        if (!SecurityContext.get().hasPermission("settings")) { return Response.PERMISSION_DENIED(); }
         File file = resolve(filename);
         if (file == null || !file.isFile()) { return Response.ERROR("Backup não encontrado"); }
         try { return Response.OK(archives.inspect(file)); } catch (Exception e) { return Response.ERROR(e.getMessage()); }

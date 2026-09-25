@@ -18,12 +18,16 @@
   enxerga a janela ativa; numa janela sobreposta (um teclado flutuante, um dialogo) o campo
   em foco pode estar numa janela interativa que nao e' a ativa, e sem essa flag o pedido de
   digitar cai no mesmo "nenhum campo em foco" que motivou esta correcao.
+
+  Web Filter: typeWindowContentChanged e flagReportViewIds servem so' para reconhecer a
+  pagina de site bloqueado do Chrome e ler a barra de endereco dela
+  (mdm/BlockedPageReporter). Eventos de outros aplicativos sao descartados na chegada.
 -->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:description="@string/perm_accessibility_hint"
-    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:canPerformGestures="true"
     android:canRetrieveWindowContent="true"
-    android:accessibilityFlags="flagRetrieveInteractiveWindows"
+    android:accessibilityFlags="flagRetrieveInteractiveWindows|flagReportViewIds"
     android:notificationTimeout="200"/>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityWindowInfo;
 
+import com.hwmdm.remote.mdm.BlockedPageReporter;
 import com.hwmdm.remote.mdm.RemoteLog;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -152,7 +153,14 @@ public class InputInjectionService extends AccessibilityService {
      */
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (event == null || event.getEventType() != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+        if (event == null) {
+            return;
+        }
+        // Unica excecao a "nao ha leitura de conteudo": a pagina de site bloqueado do Chrome.
+        if (BlockedPageReporter.isBrowser(event.getPackageName())) {
+            BlockedPageReporter.onBrowserEvent(this);
+        }
+        if (event.getEventType() != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             return;
         }
         if (ProtectionGuard.shouldBlock(this, event.getPackageName())) {

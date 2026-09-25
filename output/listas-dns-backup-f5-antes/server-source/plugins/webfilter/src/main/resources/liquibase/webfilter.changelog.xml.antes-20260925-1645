@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
+        logicalFilePath="webfilter.changelog.xml">
+
+    <!--
+    The change set IDs MUST start with "plugin-<plugin identifier>" followed by dash symbol ALWAYS.
+    The database object names declared by plugin MUST always start with "plugin_<plugin identifier>" followed by underscore
+    symbol.
+    Modelo de dados: design.md D7 do change add-webfilter-module.
+    -->
+
+    <changeSet id="plugin-webfilter-2026-09-18-01" author="hwmdm" context="common">
+        <comment>Plugin,new: webfilter</comment>
+        <sql>
+            INSERT INTO plugins (
+                identifier, name, description,
+                javascriptModuleFile, functionsViewTemplate, settingsViewTemplate,
+                namelocalizationkey,
+                settingsPermission, functionsPermission, deviceFunctionsPermission,
+                enabledForDevice
+            ) VALUES (
+                'webfilter', 'Web Filter', 'Bloqueio de sites e aplicativos por categoria, allowlist e blocklist',
+                'app/components/plugins/webfilter/webfilter.module.js',
+                'app/components/plugins/webfilter/views/main.html',
+                NULL,
+                'plugin.webfilter.localization.key.name',
+                NULL, 'plugin_webfilter_access', NULL,
+                FALSE
+            );
+        </sql>
+        <rollback>
+            DELETE FROM plugins WHERE identifier = 'webfilter';
+        </rollback>
+    </changeSet>
+
+    <!-- A permissao vai somente para quem ja administra perfis (permissao 'configurations') e para o
+         super-administrador; os demais papeis recebem pela tela de papeis. -->
+    <changeSet id="plugin-webfilter-2026-09-18-02" author="hwmdm" context="common">
+        <comment>Permission,new: plugin_webfilter_access</comment>
+        <sql>
+            INSERT INTO permissions (name, description, superAdmin)
+                VALUES ('plugin_webfilter_access', 'Web Filter: gerenciar bloqueio de sites e aplicativos por perfil', FALSE);
+            INSERT INTO userRolePermissions (roleId, permissionId)
+                SELECT DISTINCT r.id, (SELECT id FROM permissions WHERE name = 'plugin_webfilter_access')
+                FROM userroles r
+                WHERE r.superAdmin
+                   OR EXISTS (SELECT 1 FROM userRolePermissions urp
+                              JOIN permissions p ON p.id = urp.permissionId
+                              WHERE urp.roleId = r.id AND p.name = 'configurations');
+        </sql>
+        <rollback>
+            DELETE FROM permissions WHERE name = 'plugin_webfilter_access';
+        </rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-18-03" author="hwmdm" context="common">
+        <comment>Tables,new: plugin_webfilter_*</comment>
+        <sql>
+            CREATE TABLE plugin_webfilter_policies (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_policies_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                configurationId INT NOT NULL REFERENCES configurations (id) ON DELETE CASCADE,
+                enabled BOOLEAN NOT NULL DEFAULT FALSE,
+                updatedAt BIGINT,
+                updatedBy VARCHAR(100),
+                CONSTRAINT plugin_webfilter_policies_configuration_uniq UNIQUE (configurationId)
+            );
+
+            CREATE TABLE plugin_webfilter_policy_categories (
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                category VARCHAR(50) NOT NULL,
+                CONSTRAINT plugin_webfilter_policy_categories_uniq UNIQUE (policyId, category)
+            );
+
+            CREATE TABLE plugin_webfilter_policy_entries (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_policy_entries_pr_key PRIMARY KEY,
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                kind VARCHAR(10) NOT NULL CHECK (kind IN ('DOMAIN', 'APP')),
+                list VARCHAR(10) NOT NULL CHECK (list IN ('ALLOW', 'BLOCK')),
+                value VARCHAR(255) NOT NULL,
+                CONSTRAINT plugin_webfilter_policy_entries_uniq UNIQUE (policyId, kind, value)
+            );
+
+            CREATE TABLE plugin_webfilter_app_categories (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_app_categories_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                packageName VARCHAR(255) NOT NULL,
+                category VARCHAR(50) NOT NULL,
+                CONSTRAINT plugin_webfilter_app_categories_uniq UNIQUE (customerId, packageName, category)
+            );
+
+            CREATE TABLE plugin_webfilter_locked_history (
+                policyId INT NOT NULL REFERENCES plugin_webfilter_policies (id) ON DELETE CASCADE,
+                packageName VARCHAR(255) NOT NULL,
+                CONSTRAINT plugin_webfilter_locked_history_uniq UNIQUE (policyId, packageName)
+            );
+
+            CREATE TABLE plugin_webfilter_settings (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_settings_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                dnsDomain VARCHAR(200),
+                CONSTRAINT plugin_webfilter_settings_customer_uniq UNIQUE (customerId)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE plugin_webfilter_settings;
+            DROP TABLE plugin_webfilter_locked_history;
+            DROP TABLE plugin_webfilter_app_categories;
+            DROP TABLE plugin_webfilter_policy_entries;
+            DROP TABLE plugin_webfilter_policy_categories;
+            DROP TABLE plugin_webfilter_policies;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-24-01" author="hwmdm" context="common">
+        <comment>Tables,new: plugin_webfilter_delivery, plugin_webfilter_events (dashboard)</comment>
+        <sql>
+            CREATE TABLE plugin_webfilter_delivery (
+                deviceId INT NOT NULL CONSTRAINT plugin_webfilter_delivery_pr_key PRIMARY KEY
+                    REFERENCES devices (id) ON DELETE CASCADE,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                configurationId INT NOT NULL,
+                enabled BOOLEAN NOT NULL,
+                policyUpdatedAt BIGINT,
+                deliveredAt BIGINT NOT NULL,
+                browserSites INT NOT NULL DEFAULT 0,
+                hiddenApps INT NOT NULL DEFAULT 0
+            );
+
+            CREATE TABLE plugin_webfilter_events (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_events_pr_key PRIMARY KEY,
+                customerId INT NOT NULL REFERENCES customers (id) ON DELETE CASCADE,
+                deviceId INT NOT NULL REFERENCES devices (id) ON DELETE CASCADE,
+                configurationId INT,
+                host VARCHAR(255) NOT NULL,
+                url VARCHAR(1000),
+                category VARCHAR(50),
+                source VARCHAR(20) NOT NULL,
+                createdAt BIGINT NOT NULL
+            );
+            CREATE INDEX plugin_webfilter_events_customer_time ON plugin_webfilter_events (customerId, createdAt DESC);
+        </sql>
+        <rollback>
+            DROP TABLE plugin_webfilter_events;
+            DROP TABLE plugin_webfilter_delivery;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-25-dns-events" author="hwmdm" context="common">
+        <sql>
+            ALTER TABLE plugin_webfilter_events ALTER COLUMN deviceId DROP NOT NULL;
+            ALTER TABLE plugin_webfilter_events ADD COLUMN clientIp VARCHAR(100);
+            ALTER TABLE plugin_webfilter_events ADD COLUMN sourceKey VARCHAR(128) UNIQUE;
+            CREATE TABLE plugin_webfilter_sources (category VARCHAR(50) PRIMARY KEY, urls TEXT NOT NULL);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

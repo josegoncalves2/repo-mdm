@@ -1,7 +1,7 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('TabController', function ($scope, $rootScope, $timeout, $state, userService, authService, openTab,
-                                           pluginService, moduleRegistry, localization, hintService) {
+                                           pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
 
         $scope.localization = localization;
         $scope.moduleRegistry = moduleRegistry;
@@ -74,8 +74,24 @@ angular.module('headwind-kiosk')
             INTEGRATIONS: 'nav.integrations'
         };
 
+        // Entrada direta pela URL (F5) numa tela de plugin: o app.js carrega o modulo JS do plugin em
+        // paralelo, e o template da tela nao pode ser montado antes dele (o ng-controller ainda nao
+        // existiria). Espera esses modulos antes de entregar a lista; os ja carregados resolvem na hora.
+        var waitForPluginModules = function (callback) {
+            return function (response) {
+                var plugins = response.status === 'OK' && response.data ? response.data.filter(function (plugin) {
+                    return plugin.javascriptModuleFile;
+                }) : [];
+                $q.all(plugins.map(function (plugin) {
+                    return $ocLazyLoad.load(plugin.javascriptModuleFile).catch(angular.noop);
+                })).then(function () {
+                    callback(response);
+                });
+            };
+        };
+
         var loadData = function () {
-            pluginService.getAvailablePlugins(function (response) {
+            pluginService.getAvailablePlugins(waitForPluginModules(function (response) {
                 if (response.status === 'OK') {
                     if (response.data) {
                         // Plugins available for Functions tab
@@ -100,7 +116,7 @@ angular.module('headwind-kiosk')
                     $scope.functionsPlugins = [];
                     $scope.settingsPlugins = [];
                 }
-            });
+            }));
         };
 
         $scope.currentUser = {};

@@ -1,0 +1,16 @@
+{
+  "alvo": "agente-remoto",
+  "versao": "1.22",
+  "commit": "e9a5fb21+sujo",
+  "data_build_utc": "2026-09-25T19:40:31Z",
+  "artefato": "dist/hwmdm-remote-1.22.apk",
+  "sha256_artefato": "eaef63d5a1b10a208afe19d1035eaf8a33af022408b30681c9b16a4ea9c40e82",
+  "tamanho_bytes": 1964216,
+  "nota": "versionName/versionCode ja vinham definidos em remote-agent/app/build.gradle; este comando nao os alterou.",
+  "ferramentas": {
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "maven": "Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)",
+    "gradle_wrapper_remote_agent": "8.13",
+    "gradle_wrapper_launcher": "8.13"
+  }
+}
