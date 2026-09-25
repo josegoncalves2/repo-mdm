@@ -29,6 +29,7 @@
     18. Tela de login
     19. Acessibilidade (foco, alvos de clique)
     20. Responsivo (drawer < 992px)
+    21. Tabela de Dispositivos (so' devices.html)
    ========================================================================== */
 
 
@@ -365,13 +366,18 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     align-items: center;
     justify-content: center;
     gap: 6px;
-    height: 36px;
-    padding: 0 14px;
+    min-height: 36px;
+    height: auto;
+    padding: 8px 14px;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    flex-shrink: 0;
     border-radius: var(--hwmdm-radius-sm);
     border-width: 1px;
     font-size: 13.5px;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.35;
     box-shadow: none;
     transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
 }
@@ -379,9 +385,9 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .btn .glyphicon,
 .btn .hw-icon { width: 15px; height: 15px; }
 
-.btn-lg { height: 42px; padding: 0 18px; font-size: 15px; border-radius: var(--hwmdm-radius-md); }
-.btn-sm { height: 30px; padding: 0 10px; font-size: 12.5px; border-radius: var(--hwmdm-radius-sm); }
-.btn-xs { height: 26px; padding: 0 8px; font-size: 12px; border-radius: 5px; gap: 4px; }
+.btn-lg { min-height: 42px; height: auto; padding: 9px 18px; font-size: 15px; border-radius: var(--hwmdm-radius-md); }
+.btn-sm { min-height: 30px; height: auto; padding: 5px 10px; font-size: 12.5px; border-radius: var(--hwmdm-radius-sm); }
+.btn-xs { min-height: 26px; height: auto; padding: 4px 8px; font-size: 12px; border-radius: 5px; gap: 4px; }
 .btn-xs .glyphicon, .btn-xs .hw-icon { width: 13px; height: 13px; }
 
 .btn-default {
@@ -1013,3 +1019,128 @@ button:focus-visible,
     .login { width: 100%; }
     .login .panel-body { padding: 24px 18px !important; }
 }
+
+
+/* --------------------------------------------------------------------------
+   21. Tabela de Dispositivos (app/components/main/view/devices.html)
+   Escopo: SO' as classes proprias desta tela -- .devices-page,
+   .devices-table, .devices-th-dot, .devices-actions. Nenhuma outra tabela
+   do console muda.
+
+   Antes (1366px de tela, menu aberto): a tabela media ~2480px num quadro de
+   ~1050px -- cabecalho em uma linha so' (nowrap, caixa-alta, 14px de
+   padding), <colgroup> com ~1230px de larguras fixas, nota do IP em nowrap
+   e Acoes com min-width de 190px no fim da rolagem horizontal.
+   -------------------------------------------------------------------------- */
+
+/* 21.1 Largura: esta tela usa toda a coluna de conteudo. .hwmdm-list-page
+   (max 1500px) e .hwmdm-workspace (max 1680px, centralizado) so' limitam
+   acima de ~1680px de tela; aqui saem apenas enquanto Dispositivos esta
+   aberta (sem suporte a :has(), o navegador ignora a 2a regra e nada quebra). */
+.hwmdm-list-page.devices-page { max-width: none; }
+.hwmdm-workspace:has(.devices-page) { max-width: none; }
+
+/* 21.2 Fonte um pouco menor, padding de 8px/5px e cabecalho que quebra
+   linha (sem caixa-alta: em maiusculas cada palavra ocupava ~25% a mais). */
+.hwmdm-main .devices-table { font-size: 12px; }
+
+.hwmdm-main .devices-table > thead > tr > th {
+    padding: 8px 5px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.3;
+    white-space: normal;
+    vertical-align: bottom;
+}
+
+.hwmdm-main .devices-table > tbody > tr > td {
+    padding: 8px 5px;
+    line-height: 1.35;
+    white-space: normal;
+}
+
+/* 21.3 Colunas estreitas: selecao e bolinhas de status (Status, Status de
+   permissao/instalacao/arquivos). width:1px = "so' o minimo que o conteudo
+   pede"; a sobra vai para as colunas de dados. O rotulo dessas quatro fica
+   na vertical (2 linhas): na horizontal a palavra mais longa ("permissao",
+   "instalacao") ja' pedia ~65px por coluna so' para uma bolinha de 15px. */
+.devices-table col.devices-col-check,
+.devices-table col.devices-col-dot { width: 1px; }
+
+.hwmdm-main .devices-table > thead > tr > th.devices-th-dot {
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+}
+.hwmdm-main .devices-table > thead > tr > th.devices-th-dot > span:first-child {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    max-height: 6em;            /* quebra em 2 linhas ...                     */
+    min-height: min-content;    /* ... sem cortar palavra longa (ex.: de_DE) */
+    text-align: left;
+}
+.hwmdm-main .devices-table > tbody > tr > td:has(> img.device-indicator) { text-align: center; }
+.hwmdm-main .devices-table .device-indicator { margin-top: 0; }
+
+/* 21.4 Datas quebram no espaco (dd/MM/yy | HH:mm) pelo white-space:normal
+   acima. O IP fica inteiro numa linha (quebrado em ponto arbitrario virava
+   "192.168.1.1 / 00", que se le como outro endereco); quem alargava a
+   coluna era a nota abaixo dele, que era nowrap e agora quebra entre
+   palavras. */
+.hwmdm-main .devices-table .device-address-secondary {
+    white-space: normal;
+    font-size: 11px !important;   /* main.css fixa 12px !important */
+    line-height: 1.3;
+}
+
+/* 21.5 Acoes sempre visivel: fixa a direita (sticky) dentro do quadro que
+   rola, fundo opaco do tema e sombra discreta a esquerda. Sem o min-width
+   de 190px: a largura vem da grade de botoes. */
+.hwmdm-main .devices-table > thead > tr > th.actions-column,
+.hwmdm-main .devices-table > tbody > tr > td.deviceActions {
+    position: sticky;
+    right: 0;
+    z-index: 2;
+    width: 1%;
+    min-width: 0;
+    box-shadow: inset 1px 0 0 var(--hwmdm-border), -8px 0 10px -8px rgba(16, 24, 40, .28);
+}
+.hwmdm-main .devices-table > thead > tr > th.actions-column {
+    z-index: 3;
+    background: var(--hwmdm-surface-subtle);
+}
+.hwmdm-main .devices-table > tbody > tr > td.deviceActions {
+    background: var(--hwmdm-surface);
+}
+.hwmdm-main .devices-table > tbody > tr:hover > td.deviceActions {
+    background: var(--hwmdm-surface-hover);
+}
+[data-theme="dark"] .hwmdm-main .devices-table > thead > tr > th.actions-column,
+[data-theme="dark"] .hwmdm-main .devices-table > tbody > tr > td.deviceActions {
+    box-shadow: inset 1px 0 0 var(--hwmdm-border), -8px 0 10px -8px rgba(0, 0, 0, .6);
+}
+
+/* 21.6 Botoes de Acoes: 26x26, grade de 4 por linha, dentro da celula. */
+.devices-table .devices-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 26px);
+    gap: 3px;
+    justify-content: start;
+    align-items: center;
+}
+.hwmdm-main .devices-table > tbody > tr > td.deviceActions .btn {
+    width: 26px;
+    height: 26px;
+    min-height: 26px;
+    margin: 0;
+    padding: 0;
+    gap: 1px;
+}
+.hwmdm-main .devices-table > tbody > tr > td.deviceActions .btn-group {
+    display: block;
+    margin: 0;
+}
+.hwmdm-main .devices-table > tbody > tr > td.deviceActions .dropdown-toggle .caret { margin-left: 0; }

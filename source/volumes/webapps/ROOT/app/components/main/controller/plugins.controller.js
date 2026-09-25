@@ -11,7 +11,7 @@
  * nenhuma outra tela referenciava PluginsTabController pelo nome, entao a troca e segura.
  */
 angular.module('headwind-kiosk')
-    .controller('IntegrationsTabController', function ($scope, $window, moduleRegistry, localization) {
+    .controller('IntegrationsTabController', function ($scope, $window, $q, moduleRegistry, localization) {
 
         $scope.localization = localization;
         $scope.loading = true;
@@ -71,8 +71,13 @@ angular.module('headwind-kiosk')
             var ok = false;
             try {
                 if ($window.navigator.clipboard && $window.navigator.clipboard.writeText) {
-                    $window.navigator.clipboard.writeText(text);
-                    ok = true;
+                    $q.when($window.navigator.clipboard.writeText(text)).then(function () {
+                        $scope.copiedId = point.id;
+                    }, function () {
+                        $scope.copiedId = null;
+                        $scope.copyError = localization.localize('error.request.failure');
+                    });
+                    return;
                 } else {
                     var el = $window.document.createElement('textarea');
                     el.value = text;

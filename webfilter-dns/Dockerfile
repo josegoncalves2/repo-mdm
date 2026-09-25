@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certifi
     && echo "${BLOCKY_SHA256}  /tmp/blocky.tar.gz" | sha256sum -c - \
     && tar -xzf /tmp/blocky.tar.gz -C /usr/local/bin blocky \
     && rm /tmp/blocky.tar.gz \
-    && mkdir -p /app/dns /app/lists /app/state /app/certs
+    && mkdir -p /app/dns /app/lists /app/state /app/certs /app/queries
 
 COPY app/resolver.py /app/resolver.py
 WORKDIR /app

@@ -20,9 +20,6 @@ angular.module('headwind-kiosk')
             'no_config_vpn',
             'no_config_wifi',
             'no_debugging_features',
-            'no_status_bar',
-            'no_recent_apps',
-            'no_notifications',
             'no_usb_file_transfer',
             'no_outgoing_beam'
         ];
@@ -283,7 +280,7 @@ angular.module('headwind-kiosk')
             $scope.configuration.kioskScreenOn = true;
             $scope.configuration.permissive = false;
             $scope.configuration.lockSafeSettings = true;
-            $scope.configuration.pushOptions = 'polling';
+            // Preserve the configured delivery transport.
             $scope.enableGps();
             strictRestrictions.forEach(function (restriction) {
                 $scope.setRestriction(restriction, true);
@@ -315,6 +312,7 @@ angular.module('headwind-kiosk')
         $scope.toggleAppInstall = function (app) {
             if (app.action == 1) {
                 app.action = 0;
+                app.actionChanged = true;
                 app.useKiosk = false;
             } else {
                 ensureApplicationInstall(app, false);
@@ -474,7 +472,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.saveProfile = function () {
-            if (!$scope.configuration) {
+            if (!$scope.configuration || $scope.saving) {
                 return;
             }
             if (!$scope.configuration.password) {
@@ -494,7 +492,7 @@ angular.module('headwind-kiosk')
                         $scope.configuration = response.data;
                         normalizeConfigurationCollections();
                     }
-                    $timeout(function () { $scope.feedback = null; }, 3500);
+                    $timeout(function () { $scope.feedback = null; }, 10000);
                     loadDevices();
                     selectConfiguration($scope.selectedConfigurationId);
                 } else {

@@ -75,18 +75,8 @@ public final class RemoteSessionHub {
      */
     private static final long PENDING_OFFLINE_TIMEOUT_MS = 30 * 60_000L;
 
-    /**
-     * <p>Quanto uma sessao com o agente transmitindo sobrevive sem NENHUM espectador antes de
-     * ser encerrada (item 4 da queixa: F5 e troca de aba nao podem mais derrubar a sessao no
-     * servidor, mas um tablet nao pode ficar transmitindo para sempre so' porque ninguem nunca
-     * mais voltou a olhar).</p>
-     *
-     * <p>Tres minutos cobre confortavelmente um F5, uma troca de aba do menu e ate' uma queda
-     * breve de rede do navegador do operador -- tudo isso agora reata em vez de reabrir sessao
-     * nova. Alem disso, presume-se que o atendimento acabou: manter o encoder do aparelho ligado
-     * gasta bateria e dados do tablet sem ninguem observando.</p>
-     */
-    private static final long VIEWER_GRACE_MS = 3 * 60_000L;
+    // Viewer navigation does not revoke an administrator's active support session.
+    // Explicit stop, agent disconnect and pending-request expiry own that lifecycle.
 
     /** Quadros guardados para o transporte HTTP: ~2s de video a 15 fps. */
     private static final int MAX_BUFFERED_FRAMES = 30;
@@ -174,6 +164,7 @@ public final class RemoteSessionHub {
          * o agente conecte e nenhum navegador jamais apareca para assistir.
          */
         private volatile long viewerlessSince;
+        private volatile long agentDisconnectedAt;
 
         /*
          * Buffer circular dos quadros recentes, para o transporte HTTP.
@@ -296,6 +287,7 @@ public final class RemoteSessionHub {
             return;
         }
         session.agent = null;
+        session.agentDisconnectedAt = System.currentTimeMillis();
         logger.info("Agente desconectado de '{}'", deviceNumber);
         notifyViewers(session);
     }
@@ -435,7 +427,7 @@ public final class RemoteSessionHub {
                 // Quando o cliente ficou para tras alem do buffer, recomecamos do que existe:
                 // reenviar a configuracao e o ultimo quadro-chave e' o que permite decodificar.
                 long behind = session.sequence - since;
-                if (behind > session.recent.size()) {
+                if (since == 0 || behind > session.recent.size()) {
                     if (session.codecConfig != null) {
                         out.add(session.codecConfig);
                     }
@@ -534,7 +526,7 @@ public final class RemoteSessionHub {
     /**
      * <p>Varredura unica que cobre os dois prazos da sessao: o agente que nunca aparece (o
      * pedido em si expira) e o espectador que some de uma sessao ja' viva (a carencia do item
-     * 4 -- ver {@link #VIEWER_GRACE_MS}). Chamada tanto por {@link #open(int, String, boolean)}
+     * 4 -- ver politica de encerramento explicito). Chamada tanto por {@link #open(int, String, boolean)}
      * quanto pelo thread periodico registrado no bloco {@code static} da classe.</p>
      */
     private void reapStale() {
@@ -543,21 +535,7 @@ public final class RemoteSessionHub {
             RemoteSession session = entry.getValue();
 
             if (session.isStreaming()) {
-                // Sessao viva: so' cai se ficou tempo demais sem NENHUM espectador. Isto e' o
-                // que evita o tablet transmitir para sempre depois que todo mundo fechou a
-                // aba -- mas da' tempo de um F5 ou uma troca de aba reatar primeiro.
-                boolean abandoned = session.viewers.isEmpty()
-                        && session.viewerlessSince > 0
-                        && now - session.viewerlessSince > VIEWER_GRACE_MS;
-                if (abandoned) {
-                    logger.info("Encerrando sessao de '{}': sem espectador ha' mais de {} ms",
-                            entry.getKey(), VIEWER_GRACE_MS);
-                    closeQuietly(session.agent, "sem espectador ha' tempo demais");
-                    for (Session viewer : session.viewers) {
-                        closeQuietly(viewer, "sem espectador ha' tempo demais");
-                    }
-                }
-                return abandoned;
+                return false;
             }
 
             // Sem agente conectado: o pedido ainda esta' esperando o aparelho atender. Qual
@@ -565,7 +543,7 @@ public final class RemoteSessionHub {
             // (PENDING_OFFLINE_TIMEOUT_MS, bem mais longo) ou de ele estar supostamente
             // alcancavel e simplesmente nao ter respondido ainda (PENDING_TIMEOUT_MS).
             long timeout = session.pendingOffline ? PENDING_OFFLINE_TIMEOUT_MS : PENDING_TIMEOUT_MS;
-            boolean stale = now - session.createdAt > timeout;
+            boolean stale = now - (session.agentDisconnectedAt > 0 ? session.agentDisconnectedAt : session.createdAt) > timeout;
             if (stale) {
                 logger.info("Descartando pedido pendente de '{}' apos {} ms (prazo {} ms, offline_no_pedido={})",
                         entry.getKey(), now - session.createdAt, timeout, session.pendingOffline);

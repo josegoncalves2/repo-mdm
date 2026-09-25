@@ -41,6 +41,7 @@ public class WebFilterResource {
 
     private WebFilterService service;
     private WebFilterCatalog catalog;
+    @Inject private com.hmdm.plugins.webfilter.resolver.ResolverConfigWriter sourceWriter;
 
     /** A constructor required by Swagger. */
     public WebFilterResource() {
@@ -92,12 +93,15 @@ public class WebFilterResource {
             c.put("id", id);
             c.put("required", WebFilterCatalog.REQUIRED_CATEGORY.equals(id));
             c.put("sourceCount", catalog.getSiteSources(id).size());
+            ArrayNode sources = c.putArray("sources");
+            catalog.getSiteSources(id).forEach(sources::add);
             ArrayNode a = c.putArray("apps");
             apps.getOrDefault(id, java.util.Collections.<String>emptySet()).forEach(a::add);
         }
         ArrayNode prot = root.putArray("protectedPackages");
         catalog.getProtectedPackages().forEach(prot::add);
         root.set("attribution", catalog.getAttribution());
+        root.put("canManageSources", SecurityContext.get().isSuperAdmin());
         return ok(Response.OK(root));
     }
 
@@ -193,4 +197,16 @@ public class WebFilterResource {
         List<ValidationError> errors = service.saveDnsDomain(settings.getDnsDomain());
         return errors.isEmpty() ? getSettings() : invalid(errors);
     }
+    @PUT
+    @Path("/sources/{category}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public javax.ws.rs.core.Response saveSources(@PathParam("category") String category, java.util.List<String> urls) {
+        if (denied() || !SecurityContext.get().isSuperAdmin()) { return forbidden(); }
+        try {
+            catalog.saveSources(category, urls);
+            sourceWriter.writeAll();
+            return ok(Response.OK());
+        } catch (IllegalArgumentException e) { return http(400, Response.ERROR(e.getMessage())); }
+    }
+
 }

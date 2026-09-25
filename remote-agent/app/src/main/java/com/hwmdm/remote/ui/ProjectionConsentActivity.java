@@ -121,7 +121,10 @@ public class ProjectionConsentActivity extends Activity {
             finish();
             return;
         }
-        startActivityForResult(manager.createScreenCaptureIntent(), REQUEST_CODE);
+        Intent captureIntent = Build.VERSION.SDK_INT >= 34
+                ? manager.createScreenCaptureIntent(android.media.projection.MediaProjectionConfig.createConfigForDefaultDisplay())
+                : manager.createScreenCaptureIntent();
+        startActivityForResult(captureIntent, REQUEST_CODE);
     }
 
     /**

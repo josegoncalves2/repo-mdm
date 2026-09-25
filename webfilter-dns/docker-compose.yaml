@@ -21,6 +21,7 @@ services:
       - ${WEBFILTER_CERTS_DIR:-./certs}:/app/certs:ro
       - webfilter-lists:/app/lists
       - webfilter-state:/app/state
+      - ../source/volumes/work/plugins/webfilter/queries:/app/queries
     environment:
       TZ: America/Sao_Paulo
     healthcheck:

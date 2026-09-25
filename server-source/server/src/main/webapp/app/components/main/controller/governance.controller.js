@@ -1,11 +1,36 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('GovernanceTabController', function ($scope, $window, $timeout, backupService, settingsService,
+    .controller('GovernanceTabController', function ($scope, $window, $timeout, $http, backupService, settingsService,
                                                      confirmModal, localization) {
         $scope.loading = false;
         $scope.errorMessage = null;
         $scope.successMessage = null;
         $scope.backups = [];
+        $scope.backupScope = 'full';
+        $scope.backupSchedule = {enabled: false, scope: 'full', time: '02:00', timezone: 'America/Sao_Paulo', days: [1,2,3,4,5,6,7]};
+        $scope.weekDays = [{id:1,name:'Segunda'}, {id:2,name:'Terça'}, {id:3,name:'Quarta'}, {id:4,name:'Quinta'}, {id:5,name:'Sexta'}, {id:6,name:'Sábado'}, {id:7,name:'Domingo'}];
+        $scope.toggleBackupDay = function (id) {
+            var days = $scope.backupSchedule.days, index = days.indexOf(id);
+            if (index < 0) { days.push(id); } else { days.splice(index, 1); }
+        };
+        $scope.saveBackupSchedule = function () {
+            $scope.loading = true;
+            backupService.saveSchedule($scope.backupSchedule, function (response) {
+                $scope.loading = false;
+                if (response.status === 'OK') { $scope.backupSchedule = response.data; showSuccess('Agendamento salvo.'); }
+                else { $scope.errorMessage = localization.localizeServerResponse(response); }
+            }, function () { $scope.loading = false; $scope.errorMessage = 'Falha ao salvar o agendamento.'; });
+        };
+        $scope.uploadBackup = function (files) {
+            if (!files || !files[0]) { return; }
+            $scope.loading = true;
+            $http.post('rest/private/backup/upload', files[0], {headers: {'Content-Type': 'application/octet-stream'}, transformRequest: angular.identity}).then(function (response) {
+                if (response.data.status === 'OK') { showSuccess('Arquivo importado. Revise e escolha Restaurar para aplicar.'); $scope.loadBackups(); }
+                else { $scope.errorMessage = localization.localizeServerResponse(response.data); }
+            }, function () { $scope.errorMessage = 'Falha ao importar o backup.'; }).finally(function () { $scope.loading = false; });
+        };
+        backupService.getSchedule(function (response) { if (response.status === 'OK') { $scope.backupSchedule = response.data; } }, angular.noop);
+
 
         $scope.exportedSettings = null;
         $scope.importFileName = null;
@@ -183,7 +208,7 @@ angular.module('headwind-kiosk')
         $scope.createBackup = function () {
             clearMessages();
             $scope.loading = true;
-            backupService.create({}, function (response) {
+            backupService.create({scope: $scope.backupScope}, {}, function (response) {
                 $scope.loading = false;
                 if (response.status === 'OK') {
                     showSuccess('Backup created: ' + response.data.name);

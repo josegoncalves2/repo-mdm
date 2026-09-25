@@ -1,5 +1,5 @@
 <!-- Localization completed -->
-<div ng-controller="DevicesTabController" class="hwmdm-list-page" style="position:relative">
+<div ng-controller="DevicesTabController" class="hwmdm-list-page devices-page" style="position:relative">
 
     <sarsha-spinner name="spinner2">
         <div class="spinner">
@@ -231,36 +231,38 @@
         </div>
     </div>
 
-    <div ng-if='devices && devices.length > 0' class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
-    <table class='table' style="width: 100%; table-layout: auto;">
+    <div ng-if='devices && devices.length > 0' class="table-responsive devices-table-wrap" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+    <table class='table devices-table' style="width: 100%; table-layout: auto;">
+        <!-- Sem larguras fixas: antes somavam ~1230px e empurravam a tabela para fora da tela.
+             Larguras da tabela: css/hwmdm-ui.css, secao 21. -->
         <colgroup>
-            <col ng-if="hasPermission('edit_devices')" style="width: 30px;">
-            <col ng-if="settings.columnDisplayedDeviceStatus" style="width: 30px;">
-            <col ng-if="settings.columnDisplayedDeviceDate" style="width: 120px;">
-            <col ng-if="settings.columnDisplayedDeviceNumber" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedDeviceImei" style="width: 110px;">
-            <col ng-if="settings.columnDisplayedDevicePhone" style="width: 110px;">
-            <col ng-if="settings.columnDisplayedDeviceModel" style="min-width: 80px;">
-            <col ng-if="settings.columnDisplayedDevicePermissionsStatus" style="width: 30px;">
-            <col ng-if="settings.columnDisplayedDeviceAppInstallStatus" style="width: 30px;">
-            <col ng-if="settings.columnDisplayedDeviceFilesStatus" style="width: 30px;">
-            <col ng-if="settings.columnDisplayedDeviceConfiguration" style="min-width: 100px;">
-            <col ng-if="settings.columnDisplayedDeviceDesc" style="min-width: 80px;">
-            <col ng-if="settings.columnDisplayedDeviceGroup" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedLauncherVersion" style="width: 110px;">
-            <col ng-if="settings.columnDisplayedBatteryLevel" style="width: 90px;">
-            <col ng-if="settings.columnDisplayedStorageAvailable" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedDefaultLauncher" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedMdmMode" style="width: 80px;">
-            <col ng-if="settings.columnDisplayedKioskMode" style="width: 80px;">
-            <col ng-if="settings.columnDisplayedAndroidVersion" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedEnrollmentDate" style="width: 120px;">
-            <col ng-if="settings.columnDisplayedSerial" style="width: 110px;">
-            <col ng-if="settings.columnDisplayedPublicIp" style="width: 110px;">
-            <col ng-if="settings.columnDisplayedCustom1" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedCustom2" style="width: 100px;">
-            <col ng-if="settings.columnDisplayedCustom3" style="width: 100px;">
-            <col style="width: 60px;">
+            <col ng-if="hasPermission('edit_devices')" class="devices-col-check">
+            <col ng-if="settings.columnDisplayedDeviceStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceDate">
+            <col ng-if="settings.columnDisplayedDeviceNumber">
+            <col ng-if="settings.columnDisplayedDeviceImei">
+            <col ng-if="settings.columnDisplayedDevicePhone">
+            <col ng-if="settings.columnDisplayedDeviceModel">
+            <col ng-if="settings.columnDisplayedDevicePermissionsStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceAppInstallStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceFilesStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceConfiguration">
+            <col ng-if="settings.columnDisplayedDeviceDesc">
+            <col ng-if="settings.columnDisplayedDeviceGroup">
+            <col ng-if="settings.columnDisplayedLauncherVersion">
+            <col ng-if="settings.columnDisplayedBatteryLevel">
+            <col ng-if="settings.columnDisplayedStorageAvailable">
+            <col ng-if="settings.columnDisplayedDefaultLauncher">
+            <col ng-if="settings.columnDisplayedMdmMode">
+            <col ng-if="settings.columnDisplayedKioskMode">
+            <col ng-if="settings.columnDisplayedAndroidVersion">
+            <col ng-if="settings.columnDisplayedEnrollmentDate">
+            <col ng-if="settings.columnDisplayedSerial">
+            <col ng-if="settings.columnDisplayedPublicIp">
+            <col ng-if="settings.columnDisplayedCustom1">
+            <col ng-if="settings.columnDisplayedCustom2">
+            <col ng-if="settings.columnDisplayedCustom3">
+            <col>
         </colgroup>
         <thead>
         <tr>
@@ -270,7 +272,7 @@
                        type='checkbox'
                        class='pointer'/>
             </th>
-            <th ng-if="settings.columnDisplayedDeviceStatus" ng-click="sortData('STATUS')" class="pointer">
+            <th ng-if="settings.columnDisplayedDeviceStatus" ng-click="sortData('STATUS')" class="pointer devices-th-dot">
                 <span localized>table.heading.device.status</span>
                 <span ng-if='paging.sortBy === "STATUS"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
@@ -300,17 +302,17 @@
                 <span ng-if='paging.sortBy === "MODEL"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>
-            <th ng-if="settings.columnDisplayedDevicePermissionsStatus" ng-click="sortData('PERMISSIONS')" class="pointer">
+            <th ng-if="settings.columnDisplayedDevicePermissionsStatus" ng-click="sortData('PERMISSIONS')" class="pointer devices-th-dot">
                 <span localized>table.heading.device.status.permissions</span>
                 <span ng-if='paging.sortBy === "PERMISSIONS"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>
-            <th ng-if="settings.columnDisplayedDeviceAppInstallStatus" ng-click="sortData('INSTALLATIONS')" class="pointer">
+            <th ng-if="settings.columnDisplayedDeviceAppInstallStatus" ng-click="sortData('INSTALLATIONS')" class="pointer devices-th-dot">
                 <span localized>table.heading.device.status.installation</span>
                 <span ng-if='paging.sortBy === "INSTALLATIONS"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>
-            <th ng-if="settings.columnDisplayedDeviceFilesStatus" ng-click="sortData('FILES')" class="pointer">
+            <th ng-if="settings.columnDisplayedDeviceFilesStatus" ng-click="sortData('FILES')" class="pointer devices-th-dot">
                 <span localized>table.heading.device.status.files</span>
                 <span ng-if='paging.sortBy === "FILES"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
@@ -489,6 +491,8 @@
             </td>
 
             <td class="deviceActions" ng-if="hasDeviceActions()">
+                <!-- Grade compacta (4 por linha): so' layout; botoes, ng-if e ng-click intocados. -->
+                <div class="devices-actions">
                 <button type='button' class='btn btn-default' ng-click='editDevice( device )'
                         localized-title="button.change" ng-if="hasPermission('edit_devices') || hasPermission('edit_device_desc')">
                     <span class='glyphicon glyphicon-pencil'></span>
@@ -552,6 +556,7 @@
                         </li>
                     </ul>
                     </span>
+                </div>
             </td>
         </tr>
         </tbody>

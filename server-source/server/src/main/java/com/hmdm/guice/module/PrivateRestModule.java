@@ -49,6 +49,7 @@ public class PrivateRestModule extends ServletModule {
         this.bind(HintResource.class);
         this.bind(UserRoleResource.class);
         this.bind(BackupResource.class);
+        this.bind(com.hmdm.service.backup.BackupArchiveService.class).asEagerSingleton();
         this.bind(RemoteSupportResource.class);
     }
 }

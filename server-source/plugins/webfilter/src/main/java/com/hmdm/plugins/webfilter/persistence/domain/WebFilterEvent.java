@@ -14,7 +14,9 @@ public class WebFilterEvent implements Serializable {
 
     private Integer id;
     private int customerId;
-    private int deviceId;
+    private Integer deviceId;
+    private String clientIp;
+    private String sourceKey;
     private Integer configurationId;
     private String host;
     private String url;
@@ -24,12 +26,16 @@ public class WebFilterEvent implements Serializable {
     /** Read only, joined from the devices table. */
     private String deviceNumber;
 
+    public String getClientIp() { return clientIp; }
+    public void setClientIp(String value) { clientIp = value; }
+    public String getSourceKey() { return sourceKey; }
+    public void setSourceKey(String value) { sourceKey = value; }
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public int getCustomerId() { return customerId; }
     public void setCustomerId(int customerId) { this.customerId = customerId; }
-    public int getDeviceId() { return deviceId; }
-    public void setDeviceId(int deviceId) { this.deviceId = deviceId; }
+    public Integer getDeviceId() { return deviceId; }
+    public void setDeviceId(Integer deviceId) { this.deviceId = deviceId; }
     public Integer getConfigurationId() { return configurationId; }
     public void setConfigurationId(Integer configurationId) { this.configurationId = configurationId; }
     public String getHost() { return host; }

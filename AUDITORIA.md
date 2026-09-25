@@ -92,3 +92,14 @@ Verifique a integridade da cadeia com: `./trava auditoria --verificar`
 | 2026-09-24T13:16:05Z | papel | registrado | trava-executor |  |
 | 2026-09-24T13:16:35Z | papel | registrado | trava-executor |  |
 | 2026-09-24T13:17:18Z | papel | registrado | trava-executor |  |
+| 2026-09-25T17:31:12Z | papel | registrado | trava-executor |  |
+| 2026-09-25T17:34:20Z | papel | registrado | trava-executor |  |
+| 2026-09-25T17:55:44Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T17:56:47Z | papel | registrado | trava-executor |  |
+| 2026-09-25T18:02:12Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T18:05:57Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T18:06:39Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T18:08:01Z | papel | registrado | trava-executor |  |
+| 2026-09-25T18:14:33Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |
+| 2026-09-25T18:19:55Z | papel | registrado | trava-executor |  |
+| 2026-09-25T18:24:06Z | selo | emitido | relatorio | rc=0 cmd=test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ] |

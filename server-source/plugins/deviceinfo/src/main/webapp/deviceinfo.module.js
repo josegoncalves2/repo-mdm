@@ -320,39 +320,40 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
             return undefined;
         };
 
-        var deviceLookupFormatter = function (v) {
-            if (v) {
-                var pos = v.indexOf('/');
-                if (pos > -1) {
-                    return v.substr(0, pos).trim();
-                }
-            }
-            return v;
+        var deviceLookupFormatter = function (value) {
+            return value && typeof value === 'object' ? value.number : value;
         };
-
         $scope.deviceLookupFormatter = deviceLookupFormatter;
-
-        $scope.searchDevices = function (val) {
-            return $http.get('rest/plugins/deviceinfo/deviceinfo/private/search/device?limit=10&filter=' + val)
-                .then(function (response) {
-                    if (response.data.status === 'OK') {
-                        return response.data.data.map(function (device) {
-                            var deviceInfo = getDeviceInfo(device);
-                            var serverIMEI = device.imei || '';
-                            var deviceInfoIMEI = deviceInfo ? (deviceInfo.imei || '') : '';
-                            var resolvedIMEI = resolveDeviceField(serverIMEI, deviceInfoIMEI);
-
-                            return device.name + (resolvedIMEI.length > 0 ? " / " + resolvedIMEI : "");
-                        });
-                    } else {
-                        return [];
-                    }
-                });
+        $scope.searchMatches = [];
+        $scope.searchDevices = function (value) {
+            return $http.post('rest/private/devices/search', {
+                value: value || '', pageNum: 1, pageSize: 25, sortBy: 'number', sortDir: 'ASC'
+            }).then(function (response) {
+                var data = response.data && response.data.data;
+                return data && data.devices ? data.devices.items : [];
+            });
         };
-
-        $scope.search = function () {
+        $scope.chooseDevice = function (device) {
+            $scope.formData.deviceNumber = device;
+            $scope.searchMatches = [];
             clearMessages();
             loadData();
+        };
+        $scope.search = function () {
+            clearMessages();
+            var value = $scope.formData.deviceNumber;
+            if (value && typeof value === 'object') { loadData(); return; }
+            if (!value || !value.trim()) { return; }
+            $scope.searchDevices(value).then(function (devices) {
+                var exact = devices.filter(function (d) { return d.number === value; });
+                if (exact.length === 1 || devices.length === 1) {
+                    $scope.chooseDevice(exact[0] || devices[0]);
+                } else {
+                    $scope.searchMatches = devices;
+                    $scope.deviceInfo = null;
+                    $scope.errorMessage = devices.length ? null : localization.localize('notfound.devices');
+                }
+            }, function () { $scope.errorMessage = localization.localize('error.request.failure'); });
         };
 
         $scope.viewDynamicData = function () {
@@ -372,7 +373,7 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
         }
 
         const updateInterval = $interval(function () {
-            if ($scope.formData.deviceNumber) {
+            if ($scope.deviceInfo) {
                 loadData();
             }
         }, 60 * 1000);

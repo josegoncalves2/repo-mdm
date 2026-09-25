@@ -1,15 +1,16 @@
 <!-- Localization completed -->
-<div style="text-align: center" ng-if="showQR">
+<div class="qr-enrollment">
+<div class="qr-enrollment-preview" ng-if="showQR">
     <img ng-src="{{qrCodeUrl}}" width="{{size}}" height="{{size}}"
          localized-alt="form.qr.code.image.alt"/>
 </div>
 
 <form class='form-horizontal' name="qrForm">
-<div class="text-center width-1000">
+<div class="text-center">
     <div class="form-group">
-        <label class="col-sm-6 control-label" localized>form.qr.device.number</label>
-        <div class="col-sm-3" style="text-align: left">
-            <input type="text" maxlength="100" name="qrdevice" style="width: auto;display: inline-block"
+        <label class="col-sm-5 control-label" localized>form.qr.device.number</label>
+        <div class="col-sm-7" style="text-align: left">
+            <input type="text" maxlength="100" name="qrdevice" 
                    ng-enter='renew()'
                    ng-change="renew()"
                    ng-model="formData.deviceIdNew"
@@ -20,8 +21,8 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-6 control-label" localized>form.qr.number.use</label>
-        <div class="col-sm-3" style="padding-right: 45px">
+        <label class="col-sm-5 control-label" localized>form.qr.number.use</label>
+        <div class="col-sm-7">
             <select class='form-control' id="useId-c" name="useId" ng-change="renew()"
                     ng-model='formData.useId' ng-disabled="formData.deviceIdNew != ''">
                 <option ng-value="''" ng-selected="!formData.useId && formData.deviceIdNew == ''" localized>form.qr.number.use.request</option>
@@ -29,12 +30,12 @@
                 <option ng-value="'serial'" ng-selected="formData.useId === 'serial'" localized>form.qr.number.use.serial</option>
             </select>
         </div>
-        <div class="col-sm-3">&nbsp;</div>
-        <div class="col-sm-4 col-sm-offset-6" style="color: #888; font-size: 13px; margin-top: 5px; text-align: left" localized>form.qr.number.hint</div>
+        
+        <div class="col-sm-7 col-sm-offset-5" style="color: #888; font-size: 13px; margin-top: 5px; text-align: left" localized>form.qr.number.hint</div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-6 control-label" localized>form.qr.auto.create</label>
+        <label class="col-sm-5 control-label" localized>form.qr.auto.create</label>
         <div class="col-sm-1">
             <input type="checkbox" name="qrcreate"
                    ng-model="formData.create"
@@ -44,10 +45,10 @@
         </div>
     </div>
 
-    <style type="text/css">.dropdown-multiselect button { min-width: 198px; }</style>
+    
     <div class="form-group" ng-if="formData.create">
-        <label class="col-sm-6 control-label" localized>form.qr.groups</label>
-        <div class="col-sm-3" style="text-align: left">
+        <label class="col-sm-5 control-label" localized>form.qr.groups</label>
+        <div class="col-sm-7" style="text-align: left">
                     <div ng-dropdown-multiselect
                          options='groupsList'
                          translation-texts='tableFilteringTexts'
@@ -75,6 +76,7 @@
 
 </div>
 </form>
+</div>
 
 <br/>
 

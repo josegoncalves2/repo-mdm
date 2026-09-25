@@ -128,6 +128,7 @@
                     data-testid="kiosk-page-strict-preset"
                     ng-click="applyStrictKiosk()" localized>kiosk.apply.strict</button>
         </div>
+        <p class="help-block">Altere as opções e use <strong>Salvar perfil de quiosque</strong>. A aplicação no dispositivo requer o launcher HWMDM 1.2 como Device Owner; o launcher oficial 6.36 não executa estas opções de quiosque.</p>
         <div class="kiosk-switch-grid">
             <label class="kiosk-switch">
                 <input type="checkbox" ng-model="configuration.kioskMode">
@@ -163,7 +164,7 @@
             </label>
         </div>
         <div class="kiosk-restriction-grid">
-            <label class="kiosk-check" ng-repeat="restriction in ['no_factory_reset','no_safe_boot','no_add_user','no_modify_accounts','no_control_apps','no_config_wifi','no_config_vpn','no_usb_file_transfer','no_status_bar','no_recent_apps','no_notifications','no_debugging_features']">
+            <label class="kiosk-check" ng-repeat="restriction in ['no_factory_reset','no_safe_boot','no_add_user','no_modify_accounts','no_control_apps','no_config_wifi','no_config_vpn','no_usb_file_transfer','no_debugging_features']">
                 <input type="checkbox"
                        ng-checked="hasRestriction(restriction)"
                        ng-click="setRestriction(restriction, !hasRestriction(restriction))">

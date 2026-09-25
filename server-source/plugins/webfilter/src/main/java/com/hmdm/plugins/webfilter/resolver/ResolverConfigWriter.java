@@ -258,7 +258,9 @@ public class ResolverConfigWriter {
                 "log:\n" +
                 "  level: info\n" +
                 "queryLog:\n" +
-                "  type: none\n" +
+                "  type: csv\n" +
+                "  target: /app/queries\n" +
+                "  logRetentionDays: 0\n" +
                 "blocking:\n" +
                 "  blockType: nxDomain\n" +
                 "  blockTTL: 1m\n" +

@@ -74,3 +74,45 @@ angular.module('headwind-kiosk')
             }
         };
     });
+// Shared, accessible help for native buttons and links used as actions.
+angular.module('headwind-kiosk').factory('actionHelpDirective', function ($timeout, localization) {
+    var descriptions = {
+        saveProfile: 'Salva as alterações do perfil e envia a política aos dispositivos vinculados.',
+        applyStrictKiosk: 'Preenche uma política restritiva. Use Salvar para aplicá-la aos dispositivos.',
+        forceKiosk: 'Envia ao dispositivo o comando para entrar no modo quiosque.',
+        pushConfig: 'Solicita ao dispositivo a sincronização do perfil salvo.',
+        toggleAppInstall: 'Inclui ou retira o aplicativo da instalação gerenciada deste perfil.',
+        toggleAppKiosk: 'Permite ou bloqueia o uso deste aplicativo no quiosque.',
+        selectContentApp: 'Define o aplicativo que abrirá inicialmente neste perfil.',
+        startRemote: 'Inicia ou retoma o atendimento remoto do dispositivo selecionado.',
+        stopRemote: 'Encerra o atendimento remoto deste dispositivo.',
+        generateJson: 'Exibe os parâmetros usados para matricular o dispositivo pelo QR code.',
+        copy: 'Copia o endereço da integração para a área de transferência.',
+        search: 'Pesquisa os registros usando os termos informados.',
+        createBackup: 'Cria uma cópia no servidor com o escopo selecionado.',
+        downloadBackup: 'Baixa o arquivo de backup selecionado.',
+        beginRestore: 'Abre a revisão dos dados que serão restaurados.',
+        deleteBackup: 'Solicita confirmação para excluir somente este arquivo de backup.'
+    };
+    return function () {
+        return {restrict: 'E', link: function (scope, element, attrs) {
+            if (element[0].tagName === 'A' && !attrs.ngClick && !attrs.role && !element.hasClass('btn')) { return; }
+            if (attrs.title || attrs.localizedTitle || attrs.uibTooltip) { return; }
+            var update = function () {
+                var text = (element[0].innerText || element.text() || '').replace(/\s+/g, ' ').trim();
+                if (!text || text.indexOf('{{') !== -1) { return; }
+                var match = (attrs.ngClick || '').match(/^\s*(\w+)\s*\(/);
+                var help = match && descriptions[match[1]];
+                element.attr('title', help || text);
+                if (!attrs.ariaLabel) { element.attr('aria-label', text); }
+            };
+            var timer = $timeout(update, 0, false);
+            element.on('mouseenter focus', update);
+            scope.$on('$destroy', function () {
+                $timeout.cancel(timer);
+                element.off('mouseenter focus', update);
+            });
+        }};
+    };
+}).directive('button', function (actionHelpDirective) { return actionHelpDirective(); })
+  .directive('a', function (actionHelpDirective) { return actionHelpDirective(); });

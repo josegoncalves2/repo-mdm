@@ -20,6 +20,7 @@
 package com.hmdm.launcher.pro;
 
 import android.app.Activity;
+import com.hmdm.launcher.kiosk.KioskPolicy;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -40,7 +41,7 @@ public class ProUtils {
     }
 
     public static boolean kioskModeRequired(Context context) {
-        return false;
+        return KioskPolicy.required(context);
     }
 
     public static void initCrashlytics(Context context) {
@@ -74,31 +75,34 @@ public class ProUtils {
     }
 
     public static boolean isKioskAppInstalled(Context context) {
-        return false;
+        return KioskPolicy.config(context) != null && KioskPolicy.intent(KioskPolicy.config(context).getMainApp(), context) != null;
     }
 
     public static boolean isKioskModeRunning(Context context) {
-        return false;
+        return KioskPolicy.running(context);
     }
 
     public static Intent getKioskAppIntent(String kioskApp, Activity activity) {
-        return null;
+        return KioskPolicy.intent(kioskApp, activity);
     }
 
     // Start COSU kiosk mode
     public static boolean startCosuKioskMode(String kioskApp, Activity activity, boolean enableSettings) {
-        return false;
+        return KioskPolicy.start(kioskApp, activity, enableSettings);
     }
 
     // Set/update kiosk mode options (lock tack features)
     public static void updateKioskOptions(Activity activity) {
+        KioskPolicy.options(activity);
     }
 
     // Update app list in the kiosk mode
     public static void updateKioskAllowedApps(String kioskApp, Activity activity, boolean enableSettings) {
+        KioskPolicy.packages(kioskApp, activity, enableSettings);
     }
 
     public static void unlockKiosk(Activity activity) {
+        KioskPolicy.stop(activity);
     }
 
     public static void processConfig(Context context, ServerConfig config) {

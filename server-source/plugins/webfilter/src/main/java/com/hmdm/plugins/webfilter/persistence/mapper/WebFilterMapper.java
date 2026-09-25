@@ -111,6 +111,18 @@ public interface WebFilterMapper {
             "ORDER BY c.name, d.number LIMIT 1000")
     List<WebFilterDelivery> findDeliveries(@Param("customerId") int customerId);
 
+    @Select("SELECT id, customerId, configurationId, number, publicIp FROM devices WHERE publicIp = #{ip}")
+    java.util.List<java.util.Map<String, Object>> findDnsDevices(@Param("ip") String ip);
+
+    @Insert("INSERT INTO plugin_webfilter_events (customerId,deviceId,configurationId,host,category,source,createdAt,clientIp,sourceKey) " +
+            "VALUES (#{customerId},#{deviceId},#{configurationId},#{host},#{category},'dns',#{createdAt},#{clientIp},#{sourceKey}) ON CONFLICT (sourceKey) DO NOTHING")
+    void insertDnsEvent(WebFilterEvent event);
+
+    @Select("SELECT urls FROM plugin_webfilter_sources WHERE category = #{category}")
+    String sourceUrls(@Param("category") String category);
+    @Insert("INSERT INTO plugin_webfilter_sources(category,urls) VALUES(#{category},#{urls}) ON CONFLICT(category) DO UPDATE SET urls = EXCLUDED.urls")
+    void saveSourceUrls(@Param("category") String category, @Param("urls") String urls);
+
     // ------------------------------------------------------------------------------------------------- events
     @Insert("INSERT INTO plugin_webfilter_events (customerId, deviceId, configurationId, host, url, category, source, " +
             "createdAt) VALUES (#{customerId}, #{deviceId}, #{configurationId}, #{host}, #{url}, #{category}, " +
@@ -125,7 +137,7 @@ public interface WebFilterMapper {
     int countDeviceEvents(@Param("deviceId") int deviceId, @Param("since") long since);
 
     @Select("SELECT e.*, d.number AS deviceNumber FROM plugin_webfilter_events e " +
-            "JOIN devices d ON d.id = e.deviceId " +
+            "LEFT JOIN devices d ON d.id = e.deviceId " +
             "WHERE e.customerId = #{customerId} ORDER BY e.createdAt DESC LIMIT #{limit}")
     List<WebFilterEvent> findRecentEvents(@Param("customerId") int customerId, @Param("limit") int limit);
 

@@ -12,10 +12,11 @@
             <input type="text"
                    ng-model="formData.deviceNumber"
                    ng-enter='search()'
-                   localized-placeholder="search.placeholder.device"
+                   placeholder="Número, descrição, IMEI, serial, telefone, modelo ou IP"
                    autocomplete="off"
                    class="form-control"
-                   typeahead="address for address in searchDevices($viewValue)"
+                   typeahead="device as device.number for device in searchDevices($viewValue)"
+                   typeahead-on-select="chooseDevice($item)"
                    typeahead-loading="loadingDevices"
                    typeahead-wait-ms="300"
                    typeahead-focus-first="false"
@@ -30,6 +31,11 @@
         </div>
     </form>
 
+    <div class="list-group" ng-if="searchMatches.length">
+        <button type="button" class="list-group-item" ng-repeat="device in searchMatches" ng-click="chooseDevice(device)">
+            <strong>{{device.number}}</strong> — {{device.description || device.serial || device.imei}}
+        </button>
+    </div>
     <div ng-if="deviceInfo" class="row margin-top-40">
         <div ng-class="{'col-sm-5': latestDynamicData, 'col-sm-12': !latestDynamicData}">
             <table class='table'>

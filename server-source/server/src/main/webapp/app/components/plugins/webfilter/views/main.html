@@ -138,7 +138,7 @@
                 <tbody>
                 <tr ng-repeat="e in dashboard.events">
                     <td>{{e.createdAt | date:'short'}}</td>
-                    <td>{{e.deviceNumber}}</td>
+                    <td>{{e.deviceNumber || e.clientIp || "Dispositivo não identificado"}}</td>
                     <td class="wf-code">{{e.host}}</td>
                     <td>{{e.category || '-'}}</td>
                     <td>{{e.source}}</td>
@@ -329,6 +329,18 @@
         <div class="wf-field-error" ng-repeat="m in fieldErrors.dnsDomain">{{m}}</div>
         <p class="wf-muted" localized>plugin.webfilter.dns.domain.hint</p>
 
+        <div class="kiosk-panel" ng-repeat="category in catalog.categories">
+            <h5>{{categoryName(category.id)}}</h5>
+            <p class="wf-muted">Fontes DNS compartilhadas pelo servidor. Uma URL de lista de domínios por campo.</p>
+            <div class="wf-add-app" ng-repeat="source in category.sources track by $index">
+                <input class="form-control" type="url" ng-model="category.sources[$index]" aria-label="URL da lista" ng-disabled="!catalog.canManageSources">
+                <button class="btn btn-default" ng-if="catalog.canManageSources" ng-click="removeSource(category, $index)" title="Retira esta fonte da categoria; use Salvar listas para aplicar.">Remover</button>
+            </div>
+            <div class="kiosk-action-row" ng-if="catalog.canManageSources">
+                <button class="btn btn-default" ng-click="addSource(category)" title="Adiciona uma fonte de domínios a esta categoria.">Adicionar lista</button>
+                <button class="btn btn-primary" ng-click="saveSources(category)" ng-disabled="saving" title="Salva as fontes e solicita a atualização do resolvedor DNS.">Salvar listas</button>
+            </div>
+        </div>
         <h5><strong localized>plugin.webfilter.sources</strong></h5>
         <ul>
             <li ng-repeat="s in catalog.attribution">

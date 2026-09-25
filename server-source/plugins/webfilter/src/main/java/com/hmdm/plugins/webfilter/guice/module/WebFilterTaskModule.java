@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class WebFilterTaskModule implements PluginTaskModule {
 
     private final ResolverConfigWriter resolverWriter;
+    @Inject private com.hmdm.plugins.webfilter.resolver.DnsEventImporter dnsEvents;
     private final BackgroundTaskRunnerService taskRunner;
 
     @Inject
@@ -24,6 +25,7 @@ public class WebFilterTaskModule implements PluginTaskModule {
 
     @Override
     public void init() {
+        taskRunner.submitRepeatableTask(dnsEvents, 5, 5, TimeUnit.SECONDS);
         taskRunner.submitRepeatableTask(resolverWriter::writeAll, 0, 10, TimeUnit.MINUTES);
     }
 }

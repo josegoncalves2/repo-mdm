@@ -53,7 +53,20 @@
     </section>
 
     <section class="ext-hub-section">
-        <h4 class="ext-hub-section-title">Database backups</h4>
+        <h4 class="ext-hub-section-title">Backups e importação</h4>
+        <div class="form-group">
+            <label for="backup-scope">Conteúdo do backup</label>
+            <select id="backup-scope" class="form-control" ng-model="backupScope">
+                <option value="full">Completo — banco de dados, configurações e arquivos</option>
+                <option value="configuration">Configurações — perfis, políticas, acessos, catálogos e arquivos</option>
+                <option value="data">Todos os dados cadastrados — banco de dados completo</option>
+            </select>
+            <p class="help-block">Configurações são importadas por atualização e inclusão, preservando outros cadastros. Dados e backup completo restauram o banco inteiro. Toda restauração cria antes uma cópia de segurança completa.</p>
+            <label class="btn btn-default" title="Importa um arquivo ZIP de backup HWMDM para revisão antes de restaurar.">
+                Importar backup
+                <input type="file" accept=".zip" style="display:none" onchange="angular.element(this).scope().$applyAsync(function(){angular.element(this).scope().uploadBackup(this.files);}.bind(this))">
+            </label>
+        </div>
         <p class="ext-hub-section-hint">
             Backups are full PostgreSQL dumps stored on the server (<code>/opt/hmdm/backups</code>, outside the
             application container's own filesystem). Restoring automatically snapshots the current state first,
@@ -125,5 +138,23 @@
                         ng-click="confirmRestore()">Restore now</button>
             </div>
         </div>
+    </section>
+
+    <section class="ext-hub-section" aria-label="Backup automático">
+        <h4 class="ext-hub-section-title">Backup automático</h4>
+        <label><input type="checkbox" ng-model="backupSchedule.enabled"> Ativar agendamento</label>
+        <div class="kiosk-form-grid">
+            <label>Conteúdo <select class="form-control" ng-model="backupSchedule.scope"><option value="full">Completo</option><option value="configuration">Configurações</option><option value="data">Todos os dados</option></select></label>
+            <label>Horário (HH:mm) <input class="form-control" ng-model="backupSchedule.time" placeholder="02:00" pattern="[0-2][0-9]:[0-5][0-9]"></label>
+            <label>Fuso horário <input class="form-control" ng-model="backupSchedule.timezone" placeholder="America/Sao_Paulo"></label>
+        </div>
+        <div class="kiosk-action-row">
+            <label ng-repeat="day in weekDays"><input type="checkbox" ng-checked="backupSchedule.days.indexOf(day.id) >= 0" ng-click="toggleBackupDay(day.id)"> {{day.name}}</label>
+        </div>
+        <p class="help-block">Os arquivos ficam preservados no servidor. O agendamento funciona mesmo com o console fechado.</p>
+        <button class="btn btn-primary" ng-click="saveBackupSchedule()" ng-disabled="loading || !backupApiAvailable" title="Salva dias, horário, fuso e conteúdo do backup automático.">Salvar agendamento</button>
+        <p ng-if="backupSchedule.enabled && backupSchedule.nextRun">Próxima execução: {{backupSchedule.nextRun | date:'medium'}}</p>
+        <p ng-if="backupSchedule.lastRun">Última execução: {{backupSchedule.lastRun | date:'medium'}} — {{backupSchedule.lastBackup}}</p>
+        <p class="error" ng-if="backupSchedule.lastError">{{backupSchedule.lastError}}</p>
     </section>
 </div>

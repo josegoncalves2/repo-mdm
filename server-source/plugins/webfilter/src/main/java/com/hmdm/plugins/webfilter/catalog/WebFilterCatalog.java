@@ -27,6 +27,8 @@ public class WebFilterCatalog {
      */
     public static final String REQUIRED_CATEGORY = "doh";
 
+    @com.google.inject.Inject private com.hmdm.plugins.webfilter.persistence.mapper.WebFilterMapper sourceMapper;
+
     private final List<String> categoryIds = new ArrayList<>();
     private final Map<String, List<String>> siteSources = new LinkedHashMap<>();
     private final Map<String, List<String>> browserDomains = new LinkedHashMap<>();
@@ -83,6 +85,10 @@ public class WebFilterCatalog {
     }
 
     public List<String> getSiteSources(String category) {
+        if (sourceMapper != null) {
+            String saved = sourceMapper.sourceUrls(category);
+            if (saved != null) { return saved.isEmpty() ? Collections.emptyList() : java.util.Arrays.asList(saved.split("\\n")); }
+        }
         return siteSources.getOrDefault(category, Collections.emptyList());
     }
 
@@ -99,6 +105,19 @@ public class WebFilterCatalog {
 
     public Set<String> getProtectedPackages() {
         return Collections.unmodifiableSet(protectedPackages);
+    }
+
+    public void saveSources(String category, List<String> urls) {
+        if (!isCategory(category) || urls == null || urls.size() > 30) { throw new IllegalArgumentException("Categoria ou lista inválida"); }
+        Set<String> normalized = new LinkedHashSet<>();
+        for (String value : urls) {
+            java.net.URI uri = java.net.URI.create(value.trim());
+            if (!"https".equalsIgnoreCase(uri.getScheme()) || uri.getHost() == null || uri.getUserInfo() != null || value.length() > 2000) {
+                throw new IllegalArgumentException("Use um endereço HTTPS válido para cada fonte");
+            }
+            normalized.add(uri.toString());
+        }
+        sourceMapper.saveSourceUrls(category, String.join("\n", normalized));
     }
 
     public JsonNode getAttribution() {

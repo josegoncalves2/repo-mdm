@@ -143,7 +143,10 @@ public class ScreenStreamService extends Service {
     private VirtualDisplay virtualDisplay;
     private MediaCodec encoder;
     private Surface encoderSurface;
-    private WebSocket socket;
+    private volatile WebSocket socket;
+    private byte[] codecConfig;
+    private int reconnectAttempt;
+    private boolean reconnectScheduled;
     private HandlerThread worker;
     private Handler handler;
 
@@ -249,7 +252,7 @@ public class ScreenStreamService extends Service {
         String target = url + (url.contains("?") ? "&" : "?") + "token=" + android.net.Uri.encode(token);
         Request request = new Request.Builder().url(target).build();
 
-        RemoteLog.i(this, "Discando o relay: " + target);
+        RemoteLog.i(this, "Conectando ao relay de suporte");
         socket = client.newWebSocket(request, new WebSocketListener() {
             @Override
             public void onOpen(WebSocket webSocket, Response response) {
@@ -259,26 +262,66 @@ public class ScreenStreamService extends Service {
                     return;
                 }
                 RemoteLog.i(ScreenStreamService.this, "Relay aceitou a conexao; iniciando captura");
-                handler.post(() -> startCapture(session));
+                handler.post(() -> {
+                    if (session != generation || stopping) { return; }
+                    reconnectAttempt = 0;
+                    reconnectScheduled = false;
+                    if (streaming && projection != null) {
+                        announce();
+                        if (codecConfig != null) { sendFrame(FRAME_CONFIG, 0, codecConfig); }
+                        requestKeyFrame();
+                    } else { startCapture(session); }
+                });
             }
 
             @Override
             public void onMessage(WebSocket webSocket, String text) {
-                handler.post(() -> onCommand(text));
+                Handler current = handler;
+                if (current != null) { current.post(() -> {
+                    if (session == generation && !stopping) { onCommand(text); }
+                }); }
             }
 
             @Override
             public void onClosing(WebSocket webSocket, int code, String reason) {
-                Log.i(TAG, "Sessao encerrada pelo servidor: " + reason);
-                shutdown(null);
+                if (session != generation || stopping) { return; }
+                webSocket.close(code, reason);
+                if (code == 1000 || code == 1008) { shutdown(null); }
+                else { reconnect(session, webSocket); }
             }
 
             @Override
             public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-                RemoteLog.e(ScreenStreamService.this, "Uplink falhou: " + t);
-                shutdown(null);
+                if (session != generation || stopping) { return; }
+                RemoteLog.w(ScreenStreamService.this, "Conexão de vídeo interrompida; tentando retomar");
+                if (response != null && (response.code() == 401 || response.code() == 403 || response.code() == 404)) { shutdown("sessão não está mais autorizada no servidor"); }
+                else { reconnect(session, webSocket); }
             }
         });
+    }
+
+    private void reconnect(final int session, WebSocket failed) {
+        Handler current = handler;
+        if (current == null) { return; }
+        current.post(() -> {
+            if (session != generation || stopping || reconnectScheduled) { return; }
+            if (socket == failed) { socket = null; }
+            reconnectScheduled = true;
+            long delay = Math.min(30000L, 1000L << Math.min(reconnectAttempt++, 5));
+            current.postDelayed(() -> {
+                reconnectScheduled = false;
+                if (session == generation && !stopping) { connect(session); }
+            }, delay);
+        });
+    }
+
+    private void requestKeyFrame() {
+        if (encoder == null) { return; }
+        try {
+            android.os.Bundle params = new android.os.Bundle();
+            params.putInt(MediaCodec.PARAMETER_KEY_REQUEST_SYNC_FRAME, 0);
+            encoder.setParameters(params);
+        } catch (RuntimeException e) { Log.w(TAG, "Não foi possível solicitar quadro-chave", e); }
     }
 
     /**
@@ -563,6 +606,7 @@ public class ScreenStreamService extends Service {
      * inteiro em vez de um quadro.</p>
      */
     private void sendFrame(byte type, long presentationTimeUs, byte[] payload) {
+        if (type == FRAME_CONFIG && payload != null) { codecConfig = payload.clone(); }
         WebSocket ws = socket;
         if (ws == null || stopping || payload == null || payload.length == 0) {
             return;
@@ -725,6 +769,8 @@ public class ScreenStreamService extends Service {
                         "A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo");
                 releaseScreenLock();
                 acquireScreenLock();
+                Handler current = handler;
+                if (current != null) { current.postDelayed(() -> requestKeyFrame(), 500); }
             }
         };
         try {
@@ -787,6 +833,9 @@ public class ScreenStreamService extends Service {
     }
 
     private void cleanup() {
+        reconnectScheduled = false;
+        reconnectAttempt = 0;
+        codecConfig = null;
         unwatchScreenOff();
         detachKeepScreenOnWindow();
         releaseScreenLock();

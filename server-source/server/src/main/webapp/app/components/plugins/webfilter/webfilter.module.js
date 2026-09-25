@@ -4,7 +4,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         try {
             $stateProvider.state('plugin-webfilter', {
                 url: '/plugin-webfilter',
-                templateUrl: 'app/components/main/view/content.html?v=h1d21823701',
+                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"plugin.webfilter.localization.key.name" | localize}}'
@@ -31,10 +31,11 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             addApp: {url: base + '/apps', method: 'PUT'},
             removeApp: {url: base + '/apps/:id', method: 'DELETE'},
             getSettings: {url: base + '/settings', method: 'GET'},
-            saveSettings: {url: base + '/settings', method: 'PUT'}
+            saveSettings: {url: base + '/settings', method: 'PUT'},
+            saveSources: {url: base + '/sources/:category', method: 'PUT'}
         });
     })
-    .controller('PluginWebFilterController', function ($scope, pluginWebFilterService, localization) {
+    .controller('PluginWebFilterController', function ($scope, $interval, pluginWebFilterService, localization) {
         var LISTS = ['domainAllow', 'domainBlock', 'appAllow', 'appBlock'];
 
         $scope.activeWfTab = 'dashboard';
@@ -114,6 +115,22 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             });
         };
 
+        $scope.reloadDashboard = function () { loadDashboard(); };
+        var refreshTimer = $interval(function () {
+            if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); }
+        }, 10000);
+        $scope.$on('$destroy', function () { $interval.cancel(refreshTimer); });
+        $scope.addSource = function (category) { category.sources.push(''); };
+        $scope.removeSource = function (category, index) { category.sources.splice(index, 1); };
+        $scope.saveSources = function (category) {
+            clearMessages();
+            $scope.saving = true;
+            pluginWebFilterService.saveSources({category: category.id}, category.sources, function (response) {
+                $scope.saving = false;
+                if (response.status === 'OK') { $scope.successMessage = localization.localize('plugin.webfilter.saved'); loadCatalog(); }
+                else { showErrors(response); }
+            }, onFailure);
+        };
         var loadCatalog = function () {
             pluginWebFilterService.getCatalog(function (response) {
                 if (response.status === 'OK') {

@@ -19,7 +19,7 @@
         <div class="ext-hub-section" ng-repeat="section in sections">
             <h4 class="ext-hub-section-title">{{section.labelKey | localize}}</h4>
 
-            <table class="table">
+            <div class="table-responsive"><table class="table">
                 <thead>
                 <tr>
                     <th></th>
@@ -66,7 +66,7 @@
                     </td>
                 </tr>
                 </tbody>
-            </table>
+            </table></div>
         </div>
 
         <div class="ext-hub-empty" ng-if="sections.length === 0" localized>extensions.empty</div>

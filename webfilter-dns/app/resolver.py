@@ -88,8 +88,10 @@ def update_category(category, urls):
             n = normalize(line)
             if n:
                 entries.add(n)
-    if not entries:
+    if not entries and urls:
         raise ValueError("nenhum dominio nas fontes")
+    if not urls:
+        entries.add("*.webfilter-sentinel.invalid")
     content = "\n".join(sorted(entries)) + "\n"
     target = os.path.join(LISTS_DIR, category + ".txt")
     if os.path.exists(target) and sha256_file(target) == hashlib.sha256(content.encode()).hexdigest():
@@ -131,9 +133,12 @@ class Updater:
             exists = os.path.exists(os.path.join(LISTS_DIR, category + ".txt"))
             age_ok = now - st.get("ok", 0) < REFRESH_MAX
             recent_try = now - st.get("try", 0) < REFRESH_MIN
-            if (exists and age_ok) or recent_try:
+            fingerprint = hashlib.sha256(json.dumps(urls, sort_keys=True).encode()).hexdigest()
+            same_sources = st.get("sources") == fingerprint
+            if same_sources and ((exists and age_ok) or recent_try):
                 continue
             st["try"] = now
+            st["sources"] = fingerprint
             try:
                 changed |= update_category(category, urls)
                 st["ok"] = now
