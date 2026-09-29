@@ -239,7 +239,16 @@ public final class BlockedPageReporter {
     private static String fetch(AccessibilityService service, String page) {
         HttpURLConnection connection = null;
         try {
-            connection = (HttpURLConnection) new URL(page).openConnection();
+            // Pelo mesmo endereco com que o agente ja fala com o MDM: o dominio publico da
+            // pagina (mdm.pmeto.local) nao resolve em todo aparelho -- depende do DNS da rede.
+            String address = page;
+            MdmLink.Config c = config;
+            Uri u = Uri.parse(page);
+            if (c != null && u.getEncodedPath() != null) {
+                address = c.httpUrl(u.getEncodedPath()
+                        + (u.getEncodedQuery() == null ? "" : "?" + u.getEncodedQuery()));
+            }
+            connection = (HttpURLConnection) new URL(address).openConnection();
             connection.setConnectTimeout(CONNECT_TIMEOUT_MS);
             connection.setReadTimeout(READ_TIMEOUT_MS);
             int status = connection.getResponseCode();
