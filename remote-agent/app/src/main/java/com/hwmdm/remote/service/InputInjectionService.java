@@ -172,8 +172,12 @@ public class InputInjectionService extends AccessibilityService {
             BlockedPageReporter.newNavigation();
         }
         // Outro aplicativo assumiu a tela: a pagina de bloqueio pertence ao Chrome e sai junto.
-        if (!BlockedPageReporter.isBrowser(event.getPackageName()) && BlockOverlay.isShown()
-                && !"com.android.systemui".contentEquals(event.getPackageName() == null ? "" : event.getPackageName())) {
+        // A propria janela de bloqueio dispara este evento com o pacote deste app ao abrir; sem
+        // excluir o proprio pacote ela se fechava no mesmo instante e sobrava a tela do Chrome.
+        CharSequence ownerPkg = event.getPackageName() == null ? "" : event.getPackageName();
+        if (!BlockedPageReporter.isBrowser(ownerPkg) && BlockOverlay.isShown()
+                && !getPackageName().contentEquals(ownerPkg)
+                && !"com.android.systemui".contentEquals(ownerPkg)) {
             BlockOverlay.hide(this);
         }
         if (ProtectionGuard.shouldBlock(this, event.getPackageName())) {

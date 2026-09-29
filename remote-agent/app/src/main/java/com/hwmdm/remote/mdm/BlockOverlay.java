@@ -55,7 +55,10 @@ public final class BlockOverlay {
                         WindowManager.LayoutParams.MATCH_PARENT,
                         WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY,
                         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                                | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                                | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+                                // Janela criada por um servico nao nasce acelerada, e sem
+                                // aceleracao a WebView nao desenha nada (tela branca).
+                                | WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                         PixelFormat.OPAQUE);
                 lp.gravity = Gravity.TOP | Gravity.START;
                 lp.y = Math.max(0, top);

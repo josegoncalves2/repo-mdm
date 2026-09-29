@@ -71,10 +71,13 @@
             android:exported="false"/>
 
         <!-- Invisivel. So existe para obter o consentimento de MediaProjection, que o
-             Android exige sempre e que nenhum privilegio de device owner dispensa. -->
+             Android exige sempre e que nenhum privilegio de device owner dispensa.
+             taskAffinity propria: na tarefa do app ela trazia junto a StatusActivity
+             ("Aguardando chamado do suporte"), e o usuario via uma tela branca atras do popup. -->
         <activity android:name=".ui.ProjectionConsentActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:excludeFromRecents="true"
+            android:taskAffinity="com.hwmdm.remote.consent"
             android:exported="false"/>
 
         <!-- Servico residente: mantem o vinculo com o launcher e o receiver do gatilho
