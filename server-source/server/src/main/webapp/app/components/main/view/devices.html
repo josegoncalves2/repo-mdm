@@ -1,6 +1,29 @@
 <!-- Localization completed -->
 <div ng-controller="DevicesTabController" class="hwmdm-list-page devices-page" style="position:relative">
 
+    <!-- C1 (fiscal 2026-09-29): estilos dos alertas da lista. Ficam aqui porque o overlay do boot cobre app/**. -->
+    <style>
+        .devices-page .devices-params-arrow { display: inline-block; width: 1em; margin-right: 4px; }
+        /* .alert global (main.css/hwmdm-ui.css) e' toast fixo no canto; aqui e' faixa no fluxo da pagina. */
+        .devices-page .devices-offline-alert { position: static; width: auto; max-width: none; margin: 10px 0; left: auto; bottom: auto; z-index: auto; box-shadow: none; }
+        .devices-page .devices-offline-alert a { margin-left: 8px; font-weight: 600; }
+        .devices-page .device-report-badge { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+        .devices-page .device-report-recent { background: #2e9e4f; }
+        .devices-page .device-report-week { background: #e0a800; }
+        .devices-page .device-report-old { background: #d9342b; }
+        .devices-page .device-stale-icon { color: #d9342b; margin-left: 4px; }
+        .devices-page tr.device-row-stale > td { background-color: rgba(217, 52, 43, 0.07); }
+        .devices-page .device-battery-warn { color: #b8860b; font-weight: 600; }
+        .devices-page .device-battery-critical { color: #d9342b; font-weight: 700; }
+        .devices-page .device-outdated-apps { margin-top: 4px; font-size: 12px; color: #a86400; white-space: normal; min-width: 170px; }
+        /* ".table .btn" (hwmdm-ui.css) fixa botao de tabela em 30px -> texto empilhado letra a letra. */
+        .devices-page .table .device-outdated-apps .btn { display: inline-flex; width: auto; min-width: 0; max-width: none; height: auto; margin: 4px 0 0 0; padding: 2px 8px; white-space: nowrap; word-break: normal; overflow-wrap: normal; }
+        .devices-page .device-outdated-apps > span { white-space: nowrap; }
+        .devices-page .devices-page-size { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 0 12px; font-weight: normal; }
+        .devices-page .devices-page-size select { width: auto; }
+        .devices-page #group-actions-button .badge { margin-left: 4px; }
+    </style>
+
     <sarsha-spinner name="spinner2">
         <div class="spinner">
             <div class="rect1"></div>
@@ -40,14 +63,13 @@
             </select>
         </div>
         <div class="col-sm-3 margin-bottom">
+            <!-- m16: seta de estado (fechado / aberto) antes do texto. -->
+            <span class='pointer devices-params-arrow' ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint"
+                  aria-hidden="true">{{additionalParams.enabled ? '&#9662;' : '&#9656;'}}</span>
             <h5 class='pointer collapse-control' ng-if="!additionalParams.enabled" style="display: inline"
-                ng-click="toggleAdditionalParams()" localized>form.devices.label.params.more</h5>
+                ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint" localized>form.devices.label.params.more</h5>
             <h5 class='pointer collapse-control' ng-if="additionalParams.enabled" style="display: inline"
-                ng-click="toggleAdditionalParams()" localized>form.devices.label.params.less</h5>
-            <span class='pointer glyphicon'
-                      ng-class="{'glyphicon-chevron-down': !additionalParams.enabled, 'glyphicon-chevron-up': additionalParams.enabled}"
-                      ng-click="toggleAdditionalParams()">
-            </span>
+                ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint" localized>form.devices.label.params.less</h5>
         </div>
     </div>
 
@@ -58,7 +80,7 @@
             </div>
             <div class='col-sm-2  margin-bottom'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{dateFormat}}'
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
                            localized-placeholder="search.placeholder.from"
                            ng-enter='initSearch()'
                            ng-model='additionalParams.dateFrom' is-open='openDatePickers.dateFrom' show-button-bar='false'
@@ -72,7 +94,7 @@
             </div>
             <div class='col-sm-2  margin-bottom'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{dateFormat}}'
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
                            localized-placeholder="search.placeholder.to"
                            ng-enter='initSearch()'
                            ng-model='additionalParams.dateTo' is-open='openDatePickers.dateTo' show-button-bar='false'
@@ -187,15 +209,17 @@
 
             <button type='button' class='btn btn-default' ng-click='initSearch()' localized>button.search</button>
 
-            <label class="devices-fast-search">
+            <label class="devices-fast-search" localized-title="form.devices.fast.search.hint">
                 <input type="checkbox" ng-model='searchParams.fastSearch'>
                 <span localized>form.devices.fast.search</span>
             </label>
 
             <div class="btn-group dropdown devices-search-actions" uib-dropdown ng-if="hasPermission('edit_devices')">
                 <button id="group-actions-button" type="button"
-                        class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled='isNotSelected()'>
+                        class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled='isNotSelected()'
+                        localized-title="button.group.action.hint">
                     <span localized>button.group.action</span>
+                    <span class="badge" ng-if="!isNotSelected()">{{selectedCount()}}</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right dropdown-menu-devices" uib-dropdown-menu role="menu">
@@ -213,21 +237,34 @@
     </form>
     </div>
 
+    <!-- C2: aparelhos sem reportar ha mais de N dias (N = Configuracoes > Geral > Alertas). -->
+    <div class="alert alert-warning devices-offline-alert" ng-if="offlineAlert">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <span>{{offlineAlert.text}}</span>
+        <a class="pointer" ng-click="showStaleDevices()" localized>devices.alert.offline.show</a>
+    </div>
+
     <div class="custom-pagination-wrapper">
         <div class="custom-pagination" ng-if="paging.totalItems > 0">
             <div class='pagination-label'>
                 <span>{{firstRecord()}}</span>-<span>{{lastRecord()}}</span>/<span>{{paging.totalItems}}</span>
             </div>
 
-            <pagination
+            <!-- m18: primeira / anterior / numeros / proxima / ultima + tamanho de pagina. -->
+            <uib-pagination
                     ng-if="paging.totalItems > paging.pageSize && !accountExpired"
-                    boundary-links='true' class='pagination-sm'
-                    max-size='3'
+                    boundary-links='true' direction-links='true' class='pagination-sm'
+                    max-size='7' rotate='true'
                     ng-model='paging.pageNum'
                     total-items='paging.totalItems'
                     items-per-page='paging.pageSize'
-                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                    last-text='&raquo;'></pagination>
+                    first-text='&laquo; {{pagingText.first}}' previous-text='&lsaquo; {{pagingText.previous}}'
+                    next-text='{{pagingText.next}} &rsaquo;' last-text='{{pagingText.last}} &raquo;'></uib-pagination>
+            <label class="devices-page-size">
+                <span localized>devices.paging.size</span>
+                <select class="form-control input-sm" ng-model="paging.pageSize" ng-change="changePageSize()"
+                        ng-options="size for size in pageSizeOptions"></select>
+            </label>
         </div>
     </div>
 
@@ -247,7 +284,7 @@
             <col ng-if="settings.columnDisplayedDeviceAppInstallStatus" class="devices-col-dot">
             <col ng-if="settings.columnDisplayedDeviceFilesStatus" class="devices-col-dot">
             <col ng-if="settings.columnDisplayedDeviceConfiguration">
-            <col ng-if="settings.columnDisplayedDeviceDesc">
+            <col ng-if="settings.columnDisplayedDeviceDesc && anyDescription">
             <col ng-if="settings.columnDisplayedDeviceGroup">
             <col ng-if="settings.columnDisplayedLauncherVersion">
             <col ng-if="settings.columnDisplayedBatteryLevel">
@@ -322,7 +359,7 @@
                 <span ng-if='paging.sortBy === "CONFIGURATION"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>
-            <th ng-if="settings.columnDisplayedDeviceDesc" ng-click="sortData('DESCRIPTION')" class="pointer">
+            <th ng-if="settings.columnDisplayedDeviceDesc && anyDescription" ng-click="sortData('DESCRIPTION')" class="pointer">
                 <span localized>table.heading.device.desc</span>
                 <span ng-if='paging.sortBy === "DESCRIPTION"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
@@ -403,7 +440,7 @@
         </thead>
         <tbody>
         <!--<tr ng-repeat='device in devices | limitTo:paging.pageSize:paging.pageSize * (paging.currentPage - 1)'>-->
-        <tr ng-repeat='device in devices' class="{{device.class}}">
+        <tr ng-repeat='device in devices' class="{{device.class}}" ng-class="{'device-row-stale': isDeviceStale(device)}">
             <td ng-if="hasPermission('edit_devices')">
                 <input ng-model='device.selected'
                        type='checkbox'
@@ -414,9 +451,23 @@
                      ng-src='{{getDeviceIndicatorImage(device)}}'
                      title='{{calculateStatusText(device)}}'>
             </td>
-            <td ng-if='(device.lastUpdateDate > 0) && settings.columnDisplayedDeviceDate'>{{device.lastUpdateDate|date:dateFormat}}</td>
-            <td ng-if='(device.lastUpdateDate <= 0 || !device.lastUpdateDate) && settings.columnDisplayedDeviceDate' localized>devices.date.unknown</td>
-            <td ng-if="settings.columnDisplayedDeviceNumber"><span>{{device.number}}</span></td>
+            <td ng-if='settings.columnDisplayedDeviceDate'>
+                <span class="device-report-badge {{getReportBadge(device).cls}}" title="{{getReportBadge(device).title}}"></span>
+                <span ng-if='device.lastUpdateDate > 0'>{{device.lastUpdateDate|date:dateFormat}}</span>
+                <span ng-if='device.lastUpdateDate <= 0 || !device.lastUpdateDate' localized>devices.date.unknown</span>
+                <span ng-if="isDeviceStale(device)" class="glyphicon glyphicon-warning-sign device-stale-icon" title="{{staleTitle()}}"></span>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceNumber">
+                <span>{{device.number}}</span>
+                <!-- C3: versao instalada < versao da configuracao; "Atualizar agora" envia configUpdated (set_config). -->
+                <div class="device-outdated-apps" ng-if="device.outdatedApps.length > 0" title="{{outdatedAppsTitle(device)}}">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <span>{{outdatedAppsLabel(device)}}</span>
+                    <button type="button" class="btn btn-warning btn-xs" ng-click="updateNow(device)"
+                            ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.control')"
+                            localized>button.update.now</button>
+                </div>
+            </td>
             <td ng-if="settings.columnDisplayedDeviceImei">
                 <span title="{{device.imeiTooltip}}" class="{{device.imeiTooltipClass}}">{{device.displayedIMEI}}</span>
             </td>
@@ -444,7 +495,7 @@
             </td>
             <td ng-if="settings.columnDisplayedDeviceConfiguration && (!hasPermission('configurations') || !configAvailable(device.configuration))">{{device.configuration.name}}
             </td>
-            <td ng-if="settings.columnDisplayedDeviceDesc">
+            <td ng-if="settings.columnDisplayedDeviceDesc && anyDescription">
                 <span ng-bind-html="formatMultiLine(device.description)"></span>
             </td>
             <td ng-if="settings.columnDisplayedDeviceGroup">
@@ -454,7 +505,9 @@
                 <span ng-style="{color: getDeviceLauncherVersionColor(device)}">{{getDeviceLauncherVersion(device)}}</span>
             </td>
             <td ng-if="settings.columnDisplayedBatteryLevel">
-                <span>{{getDeviceBatteryLevel(device)}}</span>
+                <span ng-class="getBatteryAlert(device).cls" title="{{getBatteryAlert(device).title}}">
+                    <span ng-if="getBatteryAlert(device)" class="glyphicon glyphicon-flash"></span>{{getDeviceBatteryLevel(device)}}
+                </span>
             </td>
             <td ng-if="settings.columnDisplayedStorageAvailable">
                 <span>{{getDeviceStorageAvailable(device)}}</span>
@@ -504,31 +557,25 @@
                         ng-click='showQrCode(device)'>
                     <span class='glyphicon glyphicon-qrcode'></span>
                 </button>
-                <button type='button' class='btn btn-default' ng-click='forceKiosk( device )'
-                        localized-title="button.force.kiosk" ng-if="hasPermission('edit_devices')">
-                    <span class='glyphicon glyphicon-lock'></span>
-                </button>
                 <button type='button' class='btn btn-default' ng-click='openRemoteAccess( device )'
                         title="Remote access"
                         ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.view') || hasPermission('device.remote_access.control')">
                     <span class='glyphicon glyphicon-facetime-video'></span>
                 </button>
-                <button type='button' class='btn btn-default' ng-click='openGpsMap( device )'
-                        title="GPS location"
-                        ng-if="hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')">
-                    <span class='glyphicon glyphicon-map-marker'></span>
-                </button>
-                <button type='button' class='btn btn-default' ng-click='removeDevice( device )'
-                        localized-title="button.delete" ng-if="hasPermission('edit_devices')">
-                    <span class='glyphicon glyphicon-trash'></span>
-                </button>
                 <span class="btn-group dropdown" uib-dropdown dropdown-append-to-body="true"
-                      ng-if="plugins && plugins.length > 0 || hasPermission('edit_device_app_settings') || hasPermission('edit_devices')">
+                      ng-if="plugins && plugins.length > 0 || hasPermission('edit_device_app_settings') || hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')">
                     <button id="single-button-{{device.id}}" uib-dropdown-toggle type="button" localized-title="button.more"
                             class="btn btn-default dropdown-toggle">
                         <span class='glyphicon glyphicon-option-horizontal'></span> <span style="padding-bottom: 3px" class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-devices-row" uib-dropdown-menu role="menu" aria-labelledby="single-button-{{device.id}}">
+                        <!-- m11: Forcar kiosk, GPS e Excluir sairam dos botoes da linha para este menu. -->
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="forceKiosk(device)"><span class='glyphicon glyphicon-lock'></span> <span localized>button.force.kiosk</span></a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')">
+                            <a ng-click="openGpsMap(device)"><span class='glyphicon glyphicon-map-marker'></span> <span localized>tab.gpsmap</span></a>
+                        </li>
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
                             <a ng-click="sendRemoteCommand(device, 'unlock_screen')" localized>button.remote.unlock</a>
                         </li>
@@ -554,6 +601,10 @@
                         <li role="menuitem" ng-repeat="plugin in plugins" ng-if="plugins && plugins.length > 0">
                             <a ng-click="notifyPluginOnDevice(plugin, device)">{{plugin.nameLocalizationKey | localize}}</a>
                         </li>
+                        <li class="divider" ng-if="hasPermission('edit_devices')"></li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="removeDevice(device)" class="text-danger"><span class='glyphicon glyphicon-trash'></span> <span localized>button.delete</span></a>
+                        </li>
                     </ul>
                     </span>
                 </div>
@@ -573,15 +624,21 @@
                 <span>{{firstRecord()}}</span>-<span>{{lastRecord()}}</span>/<span>{{paging.totalItems}}</span>
             </div>
 
-           <pagination
-                ng-if="paging.totalItems > paging.pageSize && !accountExpired"
-                boundary-links='true' class='pagination-sm'
-                max-size='3'
-                ng-model='paging.pageNum'
-                total-items='paging.totalItems'
-                items-per-page='paging.pageSize'
-                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                last-text='&raquo;'></pagination>
+            <!-- m18: primeira / anterior / numeros / proxima / ultima + tamanho de pagina. -->
+            <uib-pagination
+                    ng-if="paging.totalItems > paging.pageSize && !accountExpired"
+                    boundary-links='true' direction-links='true' class='pagination-sm'
+                    max-size='7' rotate='true'
+                    ng-model='paging.pageNum'
+                    total-items='paging.totalItems'
+                    items-per-page='paging.pageSize'
+                    first-text='&laquo; {{pagingText.first}}' previous-text='&lsaquo; {{pagingText.previous}}'
+                    next-text='{{pagingText.next}} &rsaquo;' last-text='{{pagingText.last}} &raquo;'></uib-pagination>
+            <label class="devices-page-size">
+                <span localized>devices.paging.size</span>
+                <select class="form-control input-sm" ng-model="paging.pageSize" ng-change="changePageSize()"
+                        ng-options="size for size in pageSizeOptions"></select>
+            </label>
         </div>
     </div>
 

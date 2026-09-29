@@ -247,11 +247,6 @@
             </intent-filter>
         </service>
 
-        <!-- Removido: declaracao nua de servico com "AccessibilityService" no nome era o
-             gatilho classico do Play Protect no scan estatico do manifest (USE_ACCESSIBILITY
-             ja e' false em build.gradle, nada em codigo chamava este servico). O binario oficial
-             hmdm-6.36-os.apk nao declara isso; ver scripts/verificar-apk.sh. -->
-
         <service android:name="org.eclipse.paho.android.service.MqttService"
             android:foregroundServiceType="specialUse|systemExempted"
             android:exported="false">

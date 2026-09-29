@@ -1,20 +1,10 @@
 // Web Filter plugin: blocking of sites and applications per device configuration (profile).
-angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-breadcrumb'])
+angular.module('plugin-webfilter', ['ngResource', 'ngSanitize', 'ui.router', 'ncy-angular-breadcrumb'])
     .config(function ($stateProvider) {
         try {
-            $stateProvider.state('plugin-webfilter', {
-                url: '/plugin-webfilter',
-                templateUrl: 'app/components/main/view/content.html?v=h3bb6f5eba8',
-                controller: 'TabController',
-                ncyBreadcrumb: {
-                    label: '{{"plugin.webfilter.localization.key.name" | localize}}'
-                },
-                resolve: {
-                    openTab: function () {
-                        return 'plugin-webfilter';
-                    }
-                }
-            });
+            // The application shell owns the routable state (/webfilter?wfTab).
+            // Registering a second plugin-only route here made refresh/bookmark behavior
+            // depend on which script loaded first.
         } catch (e) {
             console.log('An error when adding state plugin-webfilter', e);
         }
@@ -23,6 +13,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         var base = 'rest/plugins/webfilter/private';
         return $resource('', {}, {
             getDashboard: {url: base + '/dashboard', method: 'GET'},
+            searchEvents: {url: base + '/events', method: 'GET'},
             getCatalog: {url: base + '/catalog', method: 'GET'},
             getPolicies: {url: base + '/policies', method: 'GET'},
             getPolicy: {url: base + '/policies/:configurationId', method: 'GET'},
@@ -32,24 +23,45 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             removeApp: {url: base + '/apps/:id', method: 'DELETE'},
             getSettings: {url: base + '/settings', method: 'GET'},
             saveSettings: {url: base + '/settings', method: 'PUT'},
-            saveSources: {url: base + '/sources/:category', method: 'PUT'}
+            saveSources: {url: base + '/sources/:category', method: 'PUT'},
+            saveAttribution: {url: base + '/attribution', method: 'PUT', isArray: false}
         });
     })
-    .controller('PluginWebFilterController', function ($scope, $interval, pluginWebFilterService, localization) {
+    .controller('PluginWebFilterController', function ($scope, $interval, $state, $stateParams, pluginWebFilterService, localization) {
         var LISTS = ['domainAllow', 'domainBlock', 'appAllow', 'appBlock'];
 
-        $scope.activeWfTab = 'dashboard';
         $scope.tabs = [
             {id: 'dashboard', key: 'plugin.webfilter.tab.dashboard'},
             {id: 'policies', key: 'plugin.webfilter.tab.policies'},
             {id: 'apps', key: 'plugin.webfilter.tab.apps'},
+            {id: 'blockpage', key: 'plugin.webfilter.tab.blockpage'},
             {id: 'settings', key: 'plugin.webfilter.tab.settings'}
         ];
+        var validTabs = {};
+        $scope.tabs.forEach(function (tab) { validTabs[tab.id] = true; });
+        var initialTab = validTabs[$stateParams.wfTab] ? $stateParams.wfTab : 'dashboard';
+        $scope.activeWfTab = initialTab;
         $scope.dashboard = {policies: [], devices: [], events: [], events24h: 0, events7d: 0};
         $scope.catalog = {categories: [], protectedPackages: [], attribution: []};
         $scope.policies = [];
         $scope.appCategories = [];
-        $scope.settings = {dnsDomain: ''};
+        $scope.settings = {
+            dnsDomain: '',
+            blockPageTitle: '',
+            blockPageMessage: '',
+            blockPageLogoUrl: '',
+            blockPageSupportText: '',
+            blockPageCustomHtml: '',
+            blockPageCustomCss: ''
+        };
+        var defaultBlockPage = {
+            blockPageTitle: 'Acesso bloqueado',
+            blockPageMessage: 'Esta página não está disponível neste dispositivo por política de segurança.',
+            blockPageSupportText: 'Em caso de necessidade, solicite liberação ao administrador.',
+            blockPageLogoUrl: '',
+            blockPageCustomHtml: '',
+            blockPageCustomCss: ''
+        };
         $scope.editing = null;
         $scope.newApp = {packageName: '', category: ''};
 
@@ -92,9 +104,15 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         };
 
         $scope.selectWfTab = function (id) {
+            if (!validTabs[id]) {
+                id = 'dashboard';
+            }
             clearMessages();
             $scope.editing = null;
             $scope.activeWfTab = id;
+            if ($state.current && $state.current.name) {
+                $state.go($state.current.name, {wfTab: id}, {notify: false, location: 'replace'});
+            }
             if (id === 'dashboard') {
                 loadDashboard();
             }
@@ -116,6 +134,37 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         };
 
         $scope.reloadDashboard = function () { loadDashboard(); };
+
+        // Busca de eventos: IP, dispositivo e site, combinados. Sem criterio volta para os recentes.
+        $scope.eventFilter = {ip: '', device: '', site: ''};
+        $scope.eventResults = null;
+        $scope.searchEvents = function () {
+            var f = $scope.eventFilter;
+            var params = {};
+            ['ip', 'device', 'site'].forEach(function (k) {
+                if (f[k] && f[k].trim()) { params[k] = f[k].trim(); }
+            });
+            if (!Object.keys(params).length) {
+                $scope.eventResults = null;
+                return;
+            }
+            $scope.eventsLoading = true;
+            pluginWebFilterService.searchEvents(params, function (response) {
+                $scope.eventsLoading = false;
+                if (response.status === 'OK') {
+                    $scope.eventResults = response.data || [];
+                } else {
+                    showErrors(response);
+                }
+            }, function (response) {
+                $scope.eventsLoading = false;
+                onFailure(response);
+            });
+        };
+        $scope.clearEventFilter = function () {
+            $scope.eventFilter = {ip: '', device: '', site: ''};
+            $scope.eventResults = null;
+        };
         var refreshTimer = $interval(function () {
             if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); }
         }, 10000);
@@ -123,6 +172,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         // ------------------------------------------------------------------------------------------------ DNS lists
         // Each category carries its rows ({url, active}) plus, only here, whether it is expanded and has unsaved edits.
         var HTTPS_URL = /^https:\/\/[^\s\/?#]+\S*$/i;
+        var HTTP_URL = /^https?:\/\/[^\s\/?#]+\S*$/i;
         $scope.activeSources = function (category) {
             return (category.sources || []).filter(function (s) { return s.active; }).length;
         };
@@ -144,6 +194,10 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         $scope.invalidSource = function (source) {
             var url = (source.url || '').trim();
             return url.length > 0 && !HTTPS_URL.test(url);
+        };
+        $scope.invalidAttribution = function (source) {
+            var url = (source.url || '').trim();
+            return url.length > 0 && !HTTP_URL.test(url);
         };
         var sourceErrorText = function (body) {
             return body && body.message ? localization.localize(body.message) : localization.localize('error.request.failure');
@@ -173,6 +227,45 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
             }, function (httpResponse) {
                 category.saving = false;
                 category.sourceError = sourceErrorText(httpResponse && httpResponse.data);
+            });
+        };
+        $scope.addAttribution = function () {
+            $scope.catalog.attribution = $scope.catalog.attribution || [];
+            $scope.catalog.attribution.push({name: '', license: '', url: ''});
+            $scope.attributionDirty = true;
+        };
+        $scope.removeAttribution = function (index) {
+            $scope.catalog.attribution.splice(index, 1);
+            $scope.attributionDirty = true;
+        };
+        $scope.markAttributionDirty = function () {
+            $scope.attributionDirty = true;
+            $scope.attributionMessage = undefined;
+            $scope.attributionError = undefined;
+        };
+        $scope.saveAttribution = function () {
+            $scope.attributionMessage = undefined;
+            $scope.attributionError = undefined;
+            var rows = ($scope.catalog.attribution || []).filter(function (s) {
+                return (s.name || s.license || s.url);
+            });
+            if (rows.some($scope.invalidAttribution)) {
+                $scope.attributionError = 'Use URLs que comecem com http:// ou https://';
+                return;
+            }
+            $scope.attributionSaving = true;
+            pluginWebFilterService.saveAttribution(rows, function (response) {
+                $scope.attributionSaving = false;
+                if (response.status === 'OK') {
+                    $scope.catalog.attribution = response.data || [];
+                    $scope.attributionDirty = false;
+                    $scope.attributionMessage = 'Fontes salvas.';
+                } else {
+                    $scope.attributionError = sourceErrorText(response);
+                }
+            }, function (httpResponse) {
+                $scope.attributionSaving = false;
+                $scope.attributionError = sourceErrorText(httpResponse && httpResponse.data);
             });
         };
         var loadCatalog = function () {
@@ -221,7 +314,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         var loadSettings = function () {
             pluginWebFilterService.getSettings(function (response) {
                 if (response.status === 'OK') {
-                    $scope.settings = response.data;
+                    $scope.settings = angular.extend({}, defaultBlockPage, response.data || {});
                     $scope.savedDnsDomain = response.data.dnsDomain;
                     $scope.settingsLoaded = true;
                 }
@@ -337,9 +430,9 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
         // ------------------------------------------------------------------------------------------------ settings
         $scope.saveSettings = function () {
             clearMessages();
-            pluginWebFilterService.saveSettings({dnsDomain: $scope.settings.dnsDomain}, function (response) {
+            pluginWebFilterService.saveSettings($scope.settings, function (response) {
                 if (response.status === 'OK') {
-                    $scope.settings = response.data;
+                    $scope.settings = angular.extend({}, defaultBlockPage, response.data || {});
                     $scope.savedDnsDomain = response.data.dnsDomain;
                     $scope.successMessage = localization.localize('plugin.webfilter.saved');
                     loadDashboard();
@@ -347,6 +440,10 @@ angular.module('plugin-webfilter', ['ngResource', 'ui.router', 'ncy-angular-brea
                     showErrors(response);
                 }
             }, onFailure);
+        };
+
+        $scope.resetBlockPage = function () {
+            angular.extend($scope.settings, defaultBlockPage);
         };
 
         loadDashboard();

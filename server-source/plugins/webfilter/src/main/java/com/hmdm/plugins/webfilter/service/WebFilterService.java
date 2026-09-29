@@ -87,7 +87,75 @@ public class WebFilterService {
     public String dnsHost(int customerId, int configurationId) {
         WebFilterSettings settings = dao.getSettings(customerId);
         String domain = settings == null ? null : WebFilterValidator.normalizeDomain(settings.getDnsDomain());
-        return domain == null ? null : "id-" + ResolverConfigWriter.clientName(customerId, configurationId) + "." + domain;
+        // So o dominio: nomes por perfil (id-cX-pY) nao existem no DNS da rede. O aparelho e'
+        // identificado pelo IP (devices.publicIp) no resolvedor e na importacao de eventos.
+        return domain;
+    }
+
+    public String blockPageHtmlForDevice(String number) {
+        Device device = unsecureDAO.getDeviceByNumber(number);
+        if (device == null) {
+            return null;
+        }
+        return blockPageHtml(dao.getSettings(device.getCustomerId()));
+    }
+
+    public String blockPageHtml(WebFilterSettings settings) {
+        WebFilterSettings s = fillDefaults(settings == null ? new WebFilterSettings() : settings);
+        String customHtml = text(s.getBlockPageCustomHtml());
+        String css = text(s.getBlockPageCustomCss());
+        StringBuilder html = new StringBuilder();
+        html.append("<!doctype html><html lang=\"pt-BR\"><head><meta charset=\"utf-8\">")
+                .append("<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">")
+                .append("<title>").append(escapeHtml(s.getBlockPageTitle())).append("</title>")
+                .append("<style>")
+                // Reset + body
+                .append("*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}")
+                .append("html,body{height:100%}")
+                .append("body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;")
+                .append("background:linear-gradient(135deg,#e8f0fe 0%,#d4e4f7 50%,#c7daf0 100%);")
+                .append("color:#1e293b;display:flex;align-items:center;justify-content:center;padding:20px;min-height:100vh}")
+                // Card
+                .append(".wf-block-card{width:100%;max-width:440px;background:#fff;border-radius:16px;padding:32px;")
+                .append("box-shadow:0 4px 6px -1px rgba(0,0,0,.07),0 20px 50px -12px rgba(0,0,0,.15);")
+                .append("text-align:center;animation:wf-fade-in .4s ease-out}")
+                .append("@keyframes wf-fade-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}")
+                // Shield icon
+                .append(".wf-block-icon{width:64px;height:64px;margin:0 auto 20px;border-radius:50%;")
+                .append("background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);display:flex;align-items:center;justify-content:center;")
+                .append("box-shadow:0 8px 24px rgba(239,68,68,.25)}")
+                .append(".wf-block-icon svg{width:32px;height:32px;fill:#fff}")
+                // Logo
+                .append(".wf-block-logo{max-width:180px;max-height:64px;object-fit:contain;margin:0 auto 20px;display:block}")
+                // Pill
+                .append(".wf-block-pill{display:inline-block;border-radius:999px;background:#fef2f2;color:#991b1b;")
+                .append("padding:5px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px}")
+                // Title
+                .append(".wf-block-title{font-size:22px;line-height:1.3;font-weight:700;color:#0f172a;margin-bottom:12px}")
+                // Message
+                .append(".wf-block-message{font-size:15px;color:#475569;line-height:1.6;margin-bottom:20px}")
+                // Divider + note
+                .append(".wf-block-divider{height:1px;background:linear-gradient(90deg,transparent,#e2e8f0 50%,transparent);margin:0 auto;width:80%}")
+                .append(".wf-block-note{color:#64748b;font-size:13px;line-height:1.5;padding-top:16px}")
+                // Custom CSS override
+                .append(css == null ? "" : css)
+                .append("</style></head><body><main class=\"wf-block-card\">");
+        if (!isBlank(s.getBlockPageLogoUrl())) {
+            html.append("<img class=\"wf-block-logo\" src=\"").append(escapeHtml(s.getBlockPageLogoUrl())).append("\" alt=\"\">");
+        }
+        // Shield icon (inline SVG — no external dependency)
+        html.append("<div class=\"wf-block-icon\"><svg viewBox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z\"/></svg></div>");
+        html.append("<span class=\"wf-block-pill\">").append(escapeHtml(s.getBlockPageTitle())).append("</span>");
+        if (!isBlank(customHtml)) {
+            html.append(customHtml);
+        } else {
+            html.append("<h1 class=\"wf-block-title\">").append(escapeHtml(s.getBlockPageTitle())).append("</h1>")
+                    .append("<div class=\"wf-block-message\">").append(escapeHtml(s.getBlockPageMessage())).append("</div>")
+                    .append("<div class=\"wf-block-divider\"></div>")
+                    .append("<div class=\"wf-block-note\">").append(escapeHtml(s.getBlockPageSupportText())).append("</div>");
+        }
+        html.append("</main></body></html>");
+        return html.toString();
     }
 
     // ================================================================================================= policies
@@ -195,6 +263,10 @@ public class WebFilterService {
      * <p>Everything the dashboard shows for the current customer: the profiles and what they enforce, whether each
      * device already received its policy, and the most recent blocked accesses.</p>
      */
+    public List<WebFilterEvent> searchEvents(String ip, String device, String site) {
+        return dao.searchEvents(currentCustomerId(), ip, device, site, 500);
+    }
+
     public Map<String, Object> dashboard() {
         int customerId = currentCustomerId();
         long now = System.currentTimeMillis();
@@ -226,6 +298,71 @@ public class WebFilterService {
      *
      * @return <code>false</code> if the device does not exist or the report is not a valid address.
      */
+    @com.google.inject.Inject(optional = true) @com.google.inject.name.Named("base.url")
+    private String baseUrl = "";
+
+    /**
+     * Endereco do servidor como o usuario deve ver: o dominio do filtro (aba Settings) com o
+     * esquema e a porta do base.url. Sem dominio configurado, o proprio base.url.
+     */
+    public static String serverAddress(String baseUrl, String dnsDomain) {
+        String base = baseUrl == null ? "" : baseUrl.replaceFirst("/+$", "");
+        String domain = WebFilterValidator.normalizeDomain(dnsDomain);
+        if (domain == null) {
+            return base;
+        }
+        try {
+            java.net.URI uri = java.net.URI.create(base);
+            return uri.getScheme() + "://" + domain + (uri.getPort() > 0 ? ":" + uri.getPort() : "");
+        } catch (RuntimeException e) {
+            return base;
+        }
+    }
+
+    /**
+     * Endereco publico da pagina de bloqueio: o esquema do base.url com o dominio do filtro, na
+     * porta padrao do esquema (http://mdm.pmeto.local no DEV, https://mdm.olimpia.sp.gov.br em
+     * producao). O :8080 do Tomcat nao aparece para o usuario. Sem dominio, o proprio base.url.
+     */
+    public static String publicAddress(String baseUrl, String dnsDomain) {
+        String base = baseUrl == null ? "" : baseUrl.replaceFirst("/+$", "");
+        String domain = WebFilterValidator.normalizeDomain(dnsDomain);
+        if (domain == null) {
+            return base;
+        }
+        // PUBLIC_PROTOCOL (compose) e' o esquema que o usuario ve; atras do proxy de producao o
+        // base.url interno pode ser http enquanto o publico e' https.
+        String scheme = System.getenv("PUBLIC_PROTOCOL");
+        try {
+            if (scheme == null || scheme.trim().isEmpty()) {
+                scheme = java.net.URI.create(base).getScheme();
+            }
+            return scheme.trim() + "://" + domain;
+        } catch (RuntimeException e) {
+            return base;
+        }
+    }
+
+    public static String blockPagePath(String deviceNumber, String host) {
+        try {
+            return "/rest/plugins/webfilter/public/block-page/" + java.net.URLEncoder.encode(deviceNumber, "UTF-8")
+                    + (host == null ? "" : "?host=" + java.net.URLEncoder.encode(host, "UTF-8"));
+        } catch (java.io.UnsupportedEncodingException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /** URL da pagina de bloqueio web para o aparelho, ou null se ele nao existe. */
+    public String blockPageUrl(String deviceNumber, String url) {
+        Device device = deviceNumber == null ? null : unsecureDAO.getDeviceByNumber(deviceNumber);
+        if (device == null) {
+            return null;
+        }
+        WebFilterSettings settings = dao.getSettings(device.getCustomerId());
+        return publicAddress(baseUrl, settings == null ? null : settings.getDnsDomain())
+                + blockPagePath(deviceNumber, url == null ? null : hostOf(url));
+    }
+
     public boolean reportBlocked(String deviceNumber, String url) {
         Device device = deviceNumber == null ? null : unsecureDAO.getDeviceByNumber(deviceNumber);
         if (device == null) {
@@ -245,6 +382,9 @@ public class WebFilterService {
         e.setCreatedAt(System.currentTimeMillis());
         WebFilterPolicy policy = device.getConfigurationId() == null ? null
                 : dao.getPolicy(device.getCustomerId(), device.getConfigurationId());
+        if (policy == null || !policy.isEnabled()) {
+            return false;
+        }
         e.setCategory(policy == null ? null : classify(policy, host));
         if (dao.addEvent(e, EVENT_DEDUP_MILLIS, EVENT_MAX_PER_DEVICE_HOUR)) {
             dao.purgeEvents(e.getCreatedAt() - EVENT_RETENTION_MILLIS);
@@ -470,9 +610,21 @@ public class WebFilterService {
         return s == null ? null : s.getDnsDomain();
     }
 
+    public WebFilterSettings getSettings() {
+        WebFilterSettings s = dao.getSettings(currentCustomerId());
+        return s == null ? defaultSettings() : fillDefaults(s);
+    }
+
     public List<ValidationError> saveDnsDomain(String dnsDomain) {
+        WebFilterSettings current = getSettings();
+        current.setDnsDomain(dnsDomain);
+        return saveSettings(current);
+    }
+
+    public List<ValidationError> saveSettings(WebFilterSettings settings) {
         List<ValidationError> errors = new ArrayList<>();
         String value = null;
+        String dnsDomain = settings == null ? null : settings.getDnsDomain();
         if (dnsDomain != null && !dnsDomain.trim().isEmpty()) {
             value = WebFilterValidator.normalizeDomain(dnsDomain);
             if (value == null) {
@@ -483,9 +635,59 @@ public class WebFilterService {
         WebFilterSettings s = new WebFilterSettings();
         s.setCustomerId(currentCustomerId());
         s.setDnsDomain(value);
+        s.setBlockPageTitle(limit(text(settings == null ? null : settings.getBlockPageTitle()), 120));
+        s.setBlockPageMessage(limit(text(settings == null ? null : settings.getBlockPageMessage()), 500));
+        s.setBlockPageLogoUrl(limit(text(settings == null ? null : settings.getBlockPageLogoUrl()), 500));
+        s.setBlockPageSupportText(limit(text(settings == null ? null : settings.getBlockPageSupportText()), 240));
+        s.setBlockPageCustomHtml(limit(text(settings == null ? null : settings.getBlockPageCustomHtml()), 6000));
+        s.setBlockPageCustomCss(limit(text(settings == null ? null : settings.getBlockPageCustomCss()), 6000));
+        fillDefaults(s);
         dao.saveSettings(s);
         applyChanges(enabledConfigurations(s.getCustomerId()));
         return errors;
+    }
+
+    private WebFilterSettings defaultSettings() {
+        WebFilterSettings s = new WebFilterSettings();
+        s.setCustomerId(currentCustomerId());
+        return fillDefaults(s);
+    }
+
+    private WebFilterSettings fillDefaults(WebFilterSettings s) {
+        if (isBlank(s.getBlockPageTitle())) {
+            s.setBlockPageTitle("Acesso bloqueado");
+        }
+        if (isBlank(s.getBlockPageMessage())) {
+            s.setBlockPageMessage("Esta página não está disponível neste dispositivo por política de segurança.");
+        }
+        if (isBlank(s.getBlockPageSupportText())) {
+            s.setBlockPageSupportText("Em caso de necessidade, solicite liberação ao administrador.");
+        }
+        if (isBlank(s.getBlockPageCustomCss())) {
+            s.setBlockPageCustomCss(".wf-block-card{border-top:4px solid #1998d5}.wf-block-title{color:#102a43}.wf-block-note{color:#5f6b7a}");
+        }
+        return s;
+    }
+
+    private static boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
+    }
+
+    private static String text(String value) {
+        return value == null ? null : value.trim();
+    }
+
+    private static String limit(String value, int max) {
+        return value != null && value.length() > max ? value.substring(0, max) : value;
+    }
+
+    private static String escapeHtml(String value) {
+        return value == null ? "" : value
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
     }
 
     // ================================================================================================= propagation

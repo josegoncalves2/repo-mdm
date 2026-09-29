@@ -6,6 +6,7 @@ com/hmdm/plugins/webfilter/service/WebFilterService.class
 com/hmdm/plugins/webfilter/persistence/mapper/WebFilterMapper.class
 com/hmdm/plugins/webfilter/sync/BrowserPolicy.class
 com/hmdm/plugins/webfilter/rest/json/SourceView.class
+com/hmdm/plugins/webfilter/rest/json/AttributionView.class
 com/hmdm/plugins/webfilter/rest/WebFilterResource.class
 com/hmdm/plugins/webfilter/persistence/domain/WebFilterEntry.class
 com/hmdm/plugins/webfilter/rest/json/ValidationError.class

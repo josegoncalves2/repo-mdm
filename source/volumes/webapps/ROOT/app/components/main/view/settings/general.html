@@ -170,6 +170,34 @@
         </form>
     </div>
 
+    <!-- C1 (fiscal 2026-09-29): limiares usados pela lista de Dispositivos (colunas da tabela settings). 0 desliga o alerta. -->
+    <div class="dtv-group">
+        <div class="dtv-group-header"><h4 localized-change-tracking>settings.general.device.alerts</h4></div>
+        <form class="form-horizontal">
+            <div class='form-group'>
+                <label class='col-sm-6 control-label' for="offlineAlertDays" localized-change-tracking>form.settings.misc.offline.alert.days</label>
+                <div class="col-sm-2">
+                    <input id="offlineAlertDays" type="number" min="0" max="365" step="1" ng-model="settings.offlineAlertDays" class="form-control"/>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-sm-6 control-label' for="batteryWarnLevel" localized-change-tracking>form.settings.misc.battery.warn.level</label>
+                <div class="col-sm-2">
+                    <input id="batteryWarnLevel" type="number" min="0" max="100" step="1" ng-model="settings.batteryWarnLevel" class="form-control"/>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-sm-6 control-label' for="batteryCriticalLevel" localized-change-tracking>form.settings.misc.battery.critical.level</label>
+                <div class="col-sm-2">
+                    <input id="batteryCriticalLevel" type="number" min="0" max="100" step="1" ng-model="settings.batteryCriticalLevel" class="form-control"/>
+                </div>
+            </div>
+            <div class='form-group'>
+                <div class="col-sm-offset-6 col-sm-6"><small class="text-muted" localized-change-tracking>form.settings.misc.device.alerts.hint</small></div>
+            </div>
+        </form>
+    </div>
+
     <div class="dtv-group" ng-if="settings.singleCustomer">
         <div class="dtv-group-header"><h4 localized-change-tracking>settings.general.new.device.defaults</h4></div>
         <form class="form-horizontal">

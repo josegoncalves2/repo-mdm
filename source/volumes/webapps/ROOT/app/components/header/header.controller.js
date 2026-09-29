@@ -12,11 +12,31 @@ angular.module( 'headwind-kiosk' )
         themeService.toggle();
     };
 
+    var body = angular.element($window.document.body);
+    try {
+        if ($window.localStorage.getItem('hwmdm.nav.collapsed') === '1') body.addClass('hwmdm-nav-collapsed');
+    } catch (e) {}
+    // Abaixo de 1025px o menu ja e' um drawer; acima, recolhe a coluna inteira.
+    $scope.toggleMenu = function () {
+        if ($window.innerWidth <= 1024) {
+            $rootScope.$broadcast('HWMDM_TOGGLE_NAV');
+            return;
+        }
+        body.toggleClass('hwmdm-nav-collapsed');
+        try {
+            $window.localStorage.setItem('hwmdm.nav.collapsed', body.hasClass('hwmdm-nav-collapsed') ? '1' : '0');
+        } catch (e) {}
+    };
+
     var loadWebBranding = function () {
         settingsService.getSettings(function (response) {
             if (response.status === 'OK' && response.data) {
                 themeService.applyBrandColors(response.data);
-                $scope.webLogoUrl = response.data.webLogoUrl;
+                // Logos stored before the path became relative still carry the host they were
+                // uploaded from; serve any /files/ logo from the origin the console is on now.
+                var logo = response.data.webLogoUrl;
+                var filesIdx = logo ? logo.indexOf('/files/') : -1;
+                $scope.webLogoUrl = filesIdx > -1 && !/h-mdm\.com\//i.test(logo) ? logo.substring(filesIdx) : logo;
             }
         });
     };

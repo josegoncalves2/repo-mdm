@@ -95,6 +95,15 @@
             "timeout": 30
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /opt/projetos/hwmdm/repo-mdm/.claude/hooks/verificar_afirmacao.py",
+            "timeout": 60
+          }
+        ]
       }
     ],
     "SessionEnd": [

@@ -69,7 +69,23 @@ angular.module('headwind-kiosk')
         }
 
         $scope.localization = localization;
+        // M5: exibicao em dd/MM/yyyy HH:mm (chave devices.date.format); o seletor de data usa so' a data,
+        // senao o datepicker exigiria a hora ao digitar.
         $scope.dateFormat = localization.localize('devices.date.format');
+        $scope.datePickerFormat = localization.localize('devices.datepicker.format');
+
+        // m18: tamanho de pagina escolhido pelo operador (fica no cookie deviceSearch junto com o resto da paginacao).
+        $scope.pageSizeOptions = [10, 25, 50, 100, 200];
+        $scope.pagingText = {
+            first: localization.localize('devices.paging.first'),
+            previous: localization.localize('devices.paging.previous'),
+            next: localization.localize('devices.paging.next'),
+            last: localization.localize('devices.paging.last')
+        };
+        $scope.changePageSize = function () {
+            $scope.paging.pageNum = 1;
+            $scope.search();
+        };
 
         $scope.toggleAdditionalParams = function () {
             $scope.additionalParams.enabled = !$scope.additionalParams.enabled;
@@ -228,6 +244,7 @@ angular.module('headwind-kiosk')
                 if (response.data) {
                     // Common settings
                     $scope.commonSettings = response.data;
+                    loadOfflineAlert();
                     if (completion) {
                         completion();
                     }
@@ -388,6 +405,17 @@ angular.module('headwind-kiosk')
                 }
             }
 
+            // C4: a lista e' recarregada a cada 60s; guardar os ids marcados para nao perder a selecao
+            // (antes a recarga zerava tudo e o botao "Acao de grupo" voltava a ficar desabilitado).
+            var selectedIds = {};
+            if ($scope.devices) {
+                $scope.devices.forEach(function (d) {
+                    if (d.selected) {
+                        selectedIds[d.id] = true;
+                    }
+                });
+            }
+
             deviceService.getAllDevices(request, function (response) {
                 $scope.selection.all = false;
                 searchIsRunning = false;
@@ -434,7 +462,15 @@ angular.module('headwind-kiosk')
                     $scope.devices = response.data.devices.items;
                     for (var i = 0; i < $scope.devices.length; i++) {
                         $scope.devices[i].lastUpdateDate = new Date($scope.devices[i].lastUpdate);
+                        $scope.devices[i].selected = !!selectedIds[$scope.devices[i].id];
+                        $scope.devices[i].outdatedApps = computeOutdatedApps($scope.devices[i]);
                     }
+                    $scope.selection.all = $scope.devices.length > 0 && $scope.selectedCount() === $scope.devices.length;
+                    // M6: coluna Descricao so' aparece se algum dispositivo da pagina tiver descricao.
+                    $scope.anyDescription = $scope.devices.some(function (d) {
+                        return d.description && String(d.description).trim().length > 0;
+                    });
+                    loadOfflineAlert();
 
                     $scope.paging.totalItems = response.data.devices.totalItemsCount;
 
@@ -471,6 +507,18 @@ angular.module('headwind-kiosk')
                     $scope.devices[i].selected = $scope.selection.all;
                 }
             }
+        };
+
+        $scope.selectedCount = function () {
+            var n = 0;
+            if ($scope.devices) {
+                for (var i = 0; i < $scope.devices.length; i++) {
+                    if ($scope.devices[i].selected) {
+                        n++;
+                    }
+                }
+            }
+            return n;
         };
 
         $scope.isNotSelected = function () {
@@ -521,7 +569,7 @@ angular.module('headwind-kiosk')
                 res = Math.round(offlineDelay / 525600) + " " + localization.localize('form.devices.status.years');
             }
             res += ' ' + localization.localize('form.devices.status.ago') + "\n" +
-                $filter('date')(device.lastUpdateDate, 'yyyy/MM/dd HH:mm:ss');
+                $filter('date')(device.lastUpdateDate, $scope.dateFormat);
             return res;
         };
 
@@ -709,6 +757,159 @@ angular.module('headwind-kiosk')
             return null;
         };
 
+        // m14: limiares vem de settings.batteryWarnLevel / batteryCriticalLevel (Configuracoes > Geral). 0/null desliga.
+        var batteryLevelOf = function (device) {
+            var info = $scope.getDeviceInfo(device);
+            if (info && info.batteryLevel !== undefined && info.batteryLevel !== null && info.batteryLevel !== '') {
+                var level = Number(info.batteryLevel);
+                return isNaN(level) ? null : level;
+            }
+            return null;
+        };
+
+        $scope.getBatteryAlert = function (device) {
+            var level = batteryLevelOf(device);
+            var cs = $scope.commonSettings;
+            if (level === null || !cs) {
+                return null;
+            }
+            if (cs.batteryCriticalLevel > 0 && level <= cs.batteryCriticalLevel) {
+                return {cls: 'device-battery-critical',
+                    title: localization.localize('devices.battery.critical').replace('${level}', cs.batteryCriticalLevel)};
+            }
+            if (cs.batteryWarnLevel > 0 && level <= cs.batteryWarnLevel) {
+                return {cls: 'device-battery-warn',
+                    title: localization.localize('devices.battery.warn').replace('${level}', cs.batteryWarnLevel)};
+            }
+            return null;
+        };
+
+        // m15: selo do ultimo reporte - verde < 1 dia, amarelo 1-7 dias, vermelho > 7 dias.
+        var DAY_MS = 86400000;
+        $scope.getReportBadge = function (device) {
+            if (!device.lastUpdate || device.lastUpdate <= 0) {
+                return {cls: 'device-report-old', title: localization.localize('devices.report.badge.unknown')};
+            }
+            var age = Date.now() - device.lastUpdate;
+            if (age < DAY_MS) {
+                return {cls: 'device-report-recent', title: localization.localize('devices.report.badge.recent')};
+            } else if (age <= 7 * DAY_MS) {
+                return {cls: 'device-report-week', title: localization.localize('devices.report.badge.week')};
+            }
+            return {cls: 'device-report-old', title: localization.localize('devices.report.badge.old')};
+        };
+
+        // C2: dispositivo sem reportar ha mais de N dias (settings.offlineAlertDays; 0/null desliga).
+        $scope.offlineAlertDays = function () {
+            var days = $scope.commonSettings ? Number($scope.commonSettings.offlineAlertDays) : 0;
+            return days > 0 ? days : 0;
+        };
+
+        $scope.isDeviceStale = function (device) {
+            var days = $scope.offlineAlertDays();
+            if (!days) {
+                return false;
+            }
+            return !device.lastUpdate || device.lastUpdate <= 0 || (Date.now() - device.lastUpdate) > days * DAY_MS;
+        };
+
+        $scope.staleTitle = function () {
+            return localization.localize('devices.alert.offline.row').replace('${days}', $scope.offlineAlertDays());
+        };
+
+        // Conta no servidor (todas as paginas, todos os grupos visiveis ao usuario) quantos aparelhos passaram do limite.
+        $scope.offlineAlert = null;
+        var offlineAlertNotifiedKey = 'hwmdm-offline-alert-notified';
+        var loadOfflineAlert = function () {
+            var days = $scope.offlineAlertDays();
+            if (!days) {
+                $scope.offlineAlert = null;
+                return;
+            }
+            deviceService.getAllDevices({
+                groupId: -1,
+                configurationId: -1,
+                pageNum: 1,
+                pageSize: 1,
+                onlineEarlierMillis: days * DAY_MS
+            }, function (response) {
+                if (response.data && response.data.devices) {
+                    var count = response.data.devices.totalItemsCount || 0;
+                    $scope.offlineAlert = count > 0 ? {
+                        count: count,
+                        text: localization.localize('devices.alert.offline.summary')
+                            .replace('${count}', count).replace('${days}', days)
+                    } : null;
+                    // Sem toast: o .alert global e' fixo no canto e cobria o menu. O aviso e' so a faixa da pagina.
+                }
+            });
+        };
+
+        $scope.showStaleDevices = function () {
+            $scope.additionalParams.enabled = true;
+            $scope.additionalParams.onlineOrOffline = '2';
+            $scope.additionalParams.onlineTimeSelect = '1';
+            $scope.additionalParams.onlineTimeEnter = String($scope.offlineAlertDays() * 1440);
+            $scope.initSearch();
+        };
+
+        // C3: apps da configuracao com versao instalada menor que a disponivel. Calculo proprio (nao
+        // reaproveita getDeviceApplicationsStatus, que grava status nos objetos compartilhados da configuracao).
+        var computeOutdatedApps = function (device) {
+            var info = $scope.getDeviceInfo(device);
+            var configApps = device.configuration && device.configuration.applications;
+            if (!info || !info.applications || !configApps) {
+                return [];
+            }
+            var result = [];
+            configApps.forEach(function (app) {
+                if (!app.selected || !app.url || app.action == '2' || !app.version || app.version === '0' || app.skipVersion) {
+                    return;
+                }
+                var installed = info.applications.find(function (d) {
+                    return d.pkg === app.pkg;
+                });
+                if (installed && installed.version && !isVersionUpToDate(installed.version, app.version)) {
+                    result.push({name: app.name, pkg: app.pkg, installed: installed.version, available: app.version});
+                }
+            });
+            return result;
+        };
+
+        $scope.outdatedAppsTitle = function (device) {
+            var lines = [localization.localize('devices.app.outdated.title')];
+            (device.outdatedApps || []).forEach(function (a) {
+                lines.push(localization.localize('devices.app.outdated.item')
+                    .replace('${applicationName}', a.name)
+                    .replace('${applicationInstalledVersion}', a.installed)
+                    .replace('${applicationVersionAvailable}', a.available));
+            });
+            return lines.join('\n');
+        };
+
+        $scope.outdatedAppsLabel = function (device) {
+            return localization.localize('devices.app.outdated.count').replace('${count}', (device.outdatedApps || []).length);
+        };
+
+        // "Atualizar agora": manda configUpdated (comando set_config) - o agente rebaixa a configuracao
+        // e instala as versoes novas das apps. Mesmo endpoint do item "Atualizar configuracao" do menu.
+        $scope.updateNow = function (device) {
+            var apps = (device.outdatedApps || []).map(function (a) {
+                return a.name + ' ' + a.available;
+            }).join(', ');
+            var text = localization.localize('question.update.now')
+                .replace('${deviceNumber}', device.number).replace('${apps}', apps);
+            confirmModal.getUserConfirmation(text, function () {
+                deviceService.sendCommand({id: device.id}, {action: 'set_config', params: {}}, function (response) {
+                    if (response.status === 'OK') {
+                        alertService.showAlertMessage(localization.localize('success.update.now'));
+                    } else {
+                        alertService.showAlertMessage(localization.localizeServerResponse(response));
+                    }
+                }, alertService.onRequestFailure);
+            });
+        };
+
         var formatBytes = function (bytes) {
             if (bytes === undefined || bytes === null || bytes < 0) {
                 return null;
@@ -777,10 +978,13 @@ angular.module('headwind-kiosk')
             if (info) {
                 if (info.kioskMode === true) {
                     return localization.localize('yes');
+                } else if (info.kioskMode === false) {
+                    return localization.localize('no');
                 }
             }
 
-            return null;
+            // M7: aparelho que nao informou o modo kiosk mostra N/A em vez de celula vazia.
+            return localization.localize('devices.na');
         };
 
         $scope.isBackgroundMode = function (device) {

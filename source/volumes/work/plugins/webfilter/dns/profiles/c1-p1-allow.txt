@@ -1,2 +1,0 @@
-*.linkedin.com
-*.mdm.pmeto.local

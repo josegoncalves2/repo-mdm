@@ -24,7 +24,6 @@ package com.hmdm.plugins.audit.rest.filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import java.awt.image.ImagingOpException;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -70,7 +69,45 @@ public enum ResourceAuditInfo {
     // O curinga no meio da URI cobre o id do dispositivo.
     DEVICE_REMOTE_COMMAND("POST", "/rest/private/devices/*/command", true, "plugin.audit.action.device.remote.command", true, true),
     // O corpo do force kiosk e' sempre vazio, entao nao ha' o que registrar dele.
-    DEVICE_FORCE_KIOSK("POST", "/rest/private/devices/*/lock", true, "plugin.audit.action.device.force.kiosk", false, true);
+    DEVICE_FORCE_KIOSK("POST", "/rest/private/devices/*/lock", true, "plugin.audit.action.device.force.kiosk", false, true),
+
+    // Acoes administrativas do console que nao eram registradas (item m20 do FISCAL 2026-09-29).
+    // A ordem importa: findAuditInfo devolve a PRIMEIRA regra que casa, entao as exatas vem
+    // antes das de prefixo que as cobririam (ex.: /users/current antes de /users/).
+    DEVICE_DESCRIPTION("POST", "/rest/private/devices/*/description", true, "plugin.audit.action.update.device", true, true),
+    DEVICE_APP_SETTINGS("POST", "/rest/private/devices/*/applicationSettings", true, "plugin.audit.action.device.app.settings", true, true),
+    DEVICE_DELETE_BULK("POST", "/rest/private/devices/deleteBulk", true, "plugin.audit.action.remove.device", true, true),
+    DEVICE_GROUP_BULK("POST", "/rest/private/devices/groupBulk", true, "plugin.audit.action.update.device", true, true),
+    CONFIG_APP_UPGRADE("PUT", "/rest/private/configurations/*/application/*/upgrade", true, "plugin.audit.action.update.configuration", true, true),
+    UPDATE_ROLE("PUT", "/rest/private/roles", true, "plugin.audit.action.update.role", true, true),
+    REMOVE_ROLE("DELETE", "/rest/private/roles/", false, "plugin.audit.action.remove.role", true, true),
+    UPDATE_ICON("PUT", "/rest/private/icons", true, "plugin.audit.action.update.icon", true, true),
+    REMOVE_ICON("DELETE", "/rest/private/icons/", false, "plugin.audit.action.remove.icon", true, true),
+    SUPERADMIN_PASSWORD("PUT", "/rest/private/users/superadmin/password", true, "plugin.audit.action.password.changed", false, true),
+    UPDATE_USER_OTHER("PUT", "/rest/private/users/", false, "plugin.audit.action.update.user", true, true),
+    UPDATE_CUSTOMER("PUT", "/rest/private/customers", true, "plugin.audit.action.update.customer", true, true),
+    REMOVE_CUSTOMER("DELETE", "/rest/private/customers/", false, "plugin.audit.action.remove.customer", true, true),
+    UPDATE_MISC_SETTINGS("POST", "/rest/private/settings/misc", true, "plugin.audit.action.update.settings", true, true),
+    IMPORT_SETTINGS("POST", "/rest/private/settings/import", true, "plugin.audit.action.import.settings", false, true),
+    BACKUP_CREATE("POST", "/rest/private/backup/create", true, "plugin.audit.action.backup.create", true, true),
+    BACKUP_RESTORE("POST", "/rest/private/backup/*/restore", true, "plugin.audit.action.backup.restore", true, true),
+    BACKUP_SCHEDULE("PUT", "/rest/private/backup/schedule", true, "plugin.audit.action.backup.schedule", true, true),
+    BACKUP_REMOVE("DELETE", "/rest/private/backup/", false, "plugin.audit.action.backup.remove", true, true),
+    UPLOAD_FILE("POST", "/rest/private/web-ui-files/update", true, "plugin.audit.action.update.file", true, true),
+    REMOTE_SUPPORT_START("POST", "/rest/private/remote-support/*/start", true, "plugin.audit.action.remote.start", true, true),
+    REMOTE_SUPPORT_STOP("POST", "/rest/private/remote-support/*/stop", true, "plugin.audit.action.remote.stop", true, true),
+    LOGOUT("POST", "/rest/public/auth/logout", true, "plugin.audit.action.user.logout", false, false),
+    MODULE_TOGGLE("POST", "/rest/plugins/moduleregistry/private/toggle", true, "plugin.audit.action.update.plugins", true, true),
+    MESSAGE_SEND("POST", "/rest/plugins/messaging/private/send", true, "plugin.audit.action.message.send", true, true),
+    MESSAGE_REMOVE("DELETE", "/rest/plugins/messaging/", false, "plugin.audit.action.message.remove", true, true),
+    PUSH_SEND("POST", "/rest/plugins/push/private/send", true, "plugin.audit.action.push.send", true, true),
+    PUSH_TASK("PUT", "/rest/plugins/push/private/task", true, "plugin.audit.action.push.task", true, true),
+    PUSH_REMOVE("DELETE", "/rest/plugins/push/private/", false, "plugin.audit.action.push.remove", true, true),
+    DEVICEINFO_SETTINGS("PUT", "/rest/plugins/deviceinfo/deviceinfo-plugin-settings/private", true, "plugin.audit.action.update.plugin.settings", true, true),
+    DEVICELOG_SETTINGS("PUT", "/rest/plugins/devicelog/devicelog-plugin-settings/private", false, "plugin.audit.action.update.plugin.settings", true, true),
+    DEVICELOG_RULE_REMOVE("DELETE", "/rest/plugins/devicelog/devicelog-plugin-settings/private/rule/", false, "plugin.audit.action.update.plugin.settings", true, true),
+    WEBFILTER_UPDATE("PUT", "/rest/plugins/webfilter/private/", false, "plugin.audit.action.webfilter.update", true, false),
+    WEBFILTER_REMOVE("DELETE", "/rest/plugins/webfilter/private/", false, "plugin.audit.action.webfilter.update", true, false);
 
     /**
      * <p>Method for the REST resource to track audit log for.</p>
@@ -138,6 +175,22 @@ public enum ResourceAuditInfo {
         if (!this.method.equalsIgnoreCase(requestMethod)) {
             return false;
         }
+        if (this.uri.indexOf('*') >= 0) {
+            // "*" casa exatamente um segmento de caminho (ex.: o id do dispositivo). Antes a
+            // regra era comparada com equals() literal, entao nenhum comando remoto nem o
+            // force-kiosk era registrado desde que as regras com curinga foram criadas.
+            final String[] pattern = this.uri.split("/", -1);
+            final String[] actual = requestUri.split("/", -1);
+            if (this.uriExactMatch ? actual.length != pattern.length : actual.length < pattern.length) {
+                return false;
+            }
+            for (int i = 0; i < pattern.length; i++) {
+                if (pattern[i].equals("*") ? actual[i].isEmpty() : !pattern[i].equals(actual[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
         if (this.uriExactMatch) {
             return this.uri.equals(requestUri);
         } else {
@@ -154,6 +207,6 @@ public enum ResourceAuditInfo {
     public static Optional<ResourceAuditInfo> findAuditInfo(String requestMethod, String requestUri) {
         return Stream.of(ResourceAuditInfo.values())
                 .filter(info -> info.matches(requestMethod, requestUri))
-                .findAny();
+                .findFirst();
     }
 }

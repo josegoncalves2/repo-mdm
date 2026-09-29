@@ -120,6 +120,9 @@ public interface CommonMapper {
                     "passwordLength, " +
                     "passwordStrength, " +
                     "idleLogout, " +
+                    "offlineAlertDays, " +
+                    "batteryWarnLevel, " +
+                    "batteryCriticalLevel, " +
                     "customerId" +
                     ") VALUES (" +
                     "#{createNewDevices}, " +
@@ -140,6 +143,9 @@ public interface CommonMapper {
                     "#{passwordLength}, " +
                     "#{passwordStrength}, " +
                     "#{idleLogout}, " +
+                    "#{offlineAlertDays}, " +
+                    "#{batteryWarnLevel}, " +
+                    "#{batteryCriticalLevel}, " +
                     "#{customerId}" +
                     ") " +
                     "ON CONFLICT ON CONSTRAINT settings_customer_unique DO " +
@@ -161,7 +167,11 @@ public interface CommonMapper {
                     "passwordReset = EXCLUDED.passwordReset, " +
                     "passwordLength = EXCLUDED.passwordLength, " +
                     "passwordStrength = EXCLUDED.passwordStrength, " +
-                    "idleLogout = EXCLUDED.idleLogout "
+                    "idleLogout = EXCLUDED.idleLogout, " +
+                    // Clientes que nao enviam os campos de alerta (payload antigo) nao os apagam.
+                    "offlineAlertDays = COALESCE(EXCLUDED.offlineAlertDays, settings.offlineAlertDays), " +
+                    "batteryWarnLevel = COALESCE(EXCLUDED.batteryWarnLevel, settings.batteryWarnLevel), " +
+                    "batteryCriticalLevel = COALESCE(EXCLUDED.batteryCriticalLevel, settings.batteryCriticalLevel) "
     })
     void saveMiscSettings(Settings settings);
 

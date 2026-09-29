@@ -193,6 +193,6 @@ else
 fi
 echo
 echo "  E' o MESMO arquivo do QR de matricula: o agente le os extras dele e grava"
-echo "  a URL do servidor. Alternativa manual: digitar ${PUBLIC_PROTOCOL:-http}://${BASE_DOMAIN:-192.168.1.75:8080}"
+echo "  a URL do servidor. Alternativa manual: digitar ${PUBLIC_PROTOCOL:-http}://${BASE_DOMAIN:?defina BASE_DOMAIN no source/.env}"
 echo
 echo "  Depois confira o tablet aparecendo no painel."

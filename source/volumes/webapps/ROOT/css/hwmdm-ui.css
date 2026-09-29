@@ -1040,6 +1040,27 @@ button:focus-visible,
 .hwmdm-list-page.devices-page { max-width: none; }
 .hwmdm-workspace:has(.devices-page) { max-width: none; }
 
+/* Layout unico: menu sempre colado a esquerda, conteudo ocupa o resto. O botao
+   hamburguer do topo recolhe a coluna (estado salvo no navegador). */
+.hwmdm-menu-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; margin-left: 10px; padding: 0;
+    border: 0; border-radius: 8px; background: transparent; color: #fff; font-size: 18px;
+}
+/* O clearfix do .navbar do Bootstrap vira item de flex e centraliza o topo. */
+.header.hwmdm-topbar::before, .header.hwmdm-topbar::after { display: none; }
+.header.hwmdm-topbar .hwmdm-topbar-brand { margin-right: auto; }
+.hwmdm-menu-toggle:hover, .hwmdm-menu-toggle:focus-visible { background: rgba(255, 255, 255, .18); }
+@media (min-width: 1025px) {
+    .hwmdm-workspace { max-width: none; }
+    .hwmdm-sidebar { left: var(--hwmdm-workspace-pad); }
+    body.hwmdm-nav-collapsed .hwmdm-workspace { grid-template-columns: minmax(0, 1fr); }
+    body.hwmdm-nav-collapsed .hwmdm-sidebar { display: none; }
+    body.hwmdm-nav-collapsed .hwmdm-main { grid-column: 1; }
+}
+/* No drawer (<=1024) a barra "Menu" da pagina ja faz o papel. */
+@media (max-width: 1024px) { .hwmdm-menu-toggle { display: none; } }
+
 /* 21.2 Fonte um pouco menor, padding de 8px/5px e cabecalho que quebra
    linha (sem caixa-alta: em maiusculas cada palavra ocupava ~25% a mais). */
 .hwmdm-main .devices-table { font-size: 12px; }

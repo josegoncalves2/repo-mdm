@@ -32,7 +32,7 @@
  * A configuracao dele (purga) e' alcancada pelo botao "Configurar" da linha Mensagens.
  */
 angular.module('headwind-kiosk')
-    .factory('moduleRegistry', function ($resource, $q, $rootScope, authService, pluginService, localization) {
+    .factory('moduleRegistry', function ($resource, $q, $rootScope, $timeout, authService, pluginService, localization) {
 
         var moduleRegistryApi = $resource('', {}, {
             getState: {url: 'rest/plugins/moduleregistry/private/state', method: 'GET'},
@@ -308,11 +308,20 @@ angular.module('headwind-kiosk')
             if (loadPromise && !force) {
                 return loadPromise;
             }
-            loadPromise = $q.all([loadNativeState(), loadPlugins()]).then(function () {
+            // O interceptor de 403 devolve uma promise que nunca resolve; sem o limite o menu
+            // ficaria no esqueleto ate um Ctrl+F5.
+            var timeout = $timeout(angular.noop, 8000);
+            var real = $q.all([loadNativeState(), loadPlugins()]);
+            real.then(function () { $rootScope.$emit('aero_MODULES_LOADED'); });
+            loadPromise = $q.race([real, timeout]).then(function () {
+                $timeout.cancel(timeout);
                 loaded = true;
             });
             return loadPromise;
         };
+
+        $rootScope.$on('aero_USER_AUTHENTICATED', function () { loadPromise = null; });
+        $rootScope.$on('aero_USER_LOGOUT', function () { loadPromise = null; });
 
         var isPluginInstalled = function (identifier) {
             return !!pluginsById[identifier];

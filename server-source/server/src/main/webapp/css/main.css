@@ -3604,20 +3604,26 @@ body {
 }
 
 .hwmdm-workspace {
+    --hwmdm-sidebar-width: 300px;
+    --hwmdm-workspace-pad: 18px;
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-columns: var(--hwmdm-sidebar-width) minmax(0, 1fr);
     gap: 18px;
     width: 100%;
     max-width: 1680px;
     margin: 0 auto;
-    padding: 18px;
+    padding: var(--hwmdm-workspace-pad);
 }
 
 .hwmdm-sidebar {
-    position: sticky;
+    position: fixed;
     top: 74px;
+    bottom: var(--hwmdm-workspace-pad);
+    left: max(var(--hwmdm-workspace-pad), calc((100vw - 1680px) / 2 + var(--hwmdm-workspace-pad)));
     align-self: start;
-    max-height: calc(100vh - 92px);
+    width: var(--hwmdm-sidebar-width);
+    max-height: calc(100vh - 74px - var(--hwmdm-workspace-pad));
     overflow-y: auto;
     background: var(--hwmdm-sidebar-bg);
     color: var(--hwmdm-sidebar-text);
@@ -3749,6 +3755,7 @@ body {
 }
 
 .hwmdm-main {
+    grid-column: 2;
     min-width: 0;
 }
 
@@ -4452,10 +4459,20 @@ body {
 
 .kiosk-table {
     margin-bottom: 0;
+    table-layout: auto;
 }
 
 .kiosk-table td {
     vertical-align: middle !important;
+}
+
+.kiosk-table .btn {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    padding: 4px 10px;
 }
 
 .kiosk-muted {
@@ -5561,17 +5578,17 @@ body {
 /* --- 1440 and below: give the content column back some room ---------------- */
 @media (max-width: 1440px) {
     .hwmdm-workspace {
-        grid-template-columns: 264px minmax(0, 1fr);
+        --hwmdm-sidebar-width: 264px;
+        --hwmdm-workspace-pad: 16px;
         gap: 16px;
-        padding: 16px;
     }
 }
 
 @media (max-width: 1200px) {
     .hwmdm-workspace {
-        grid-template-columns: 240px minmax(0, 1fr);
+        --hwmdm-sidebar-width: 240px;
+        --hwmdm-workspace-pad: 14px;
         gap: 14px;
-        padding: 14px;
     }
 
     .gps-layout,
@@ -5711,6 +5728,24 @@ body {
 
     .remote-device-list {
         max-height: 300px;
+    }
+}
+
+/* Desktop/zoomed-out browsers must keep the fixed sidebar and the grid column
+   in the same coordinate system. This rule intentionally lives after the
+   drawer rules so a leaked media block or cached ordering cannot let the main
+   content slide underneath the menu. */
+@media (min-width: 1025px) {
+    .hwmdm-workspace {
+        box-sizing: border-box;
+        display: grid;
+        max-width: 1680px;
+        padding: var(--hwmdm-workspace-pad);
+    }
+
+    .hwmdm-main {
+        grid-column: 2;
+        padding: 0;
     }
 }
 

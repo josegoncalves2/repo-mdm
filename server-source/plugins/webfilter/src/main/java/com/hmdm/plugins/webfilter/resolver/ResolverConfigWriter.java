@@ -108,6 +108,10 @@ public class ResolverConfigWriter {
             // servidor MDM e o dominio DNS do filtro. Se o aparelho nao resolve o dominio do filtro,
             // o DNS privado do Android falha fechado e ele fica SEM REDE -- o remedio viraria o veneno.
             Set<String> defaultAllow = new TreeSet<>();
+            // Aparelho identificado pelo IP cai no grupo default: ele precisa levar tambem os
+            // dominios "sempre bloqueados" dos perfis, nao so as categorias.
+            Set<String> defaultDeny = new TreeSet<>();
+            defaultDeny.add(DENY_SENTINEL);
 
             for (WebFilterPolicy policy : policies) {
                 String client = clientName(policy.getCustomerId(), policy.getConfigurationId());
@@ -121,6 +125,9 @@ public class ResolverConfigWriter {
                 for (WebFilterEntry e : dao.getEntries(policy.getId())) {
                     if (WebFilterEntry.KIND_DOMAIN.equals(e.getKind())) {
                         (WebFilterEntry.LIST_ALLOW.equals(e.getList()) ? allow : deny).add("*." + e.getValue());
+                        if (!WebFilterEntry.LIST_ALLOW.equals(e.getList())) {
+                            defaultDeny.add("*." + e.getValue());
+                        }
                     }
                 }
                 String denyFile = client + "-deny.txt";
@@ -161,7 +168,7 @@ public class ResolverConfigWriter {
             if (!usedCategories.isEmpty()) {
                 // O sentinela mantem o grupo com denylist: sem ele o Blocky leria um grupo que so tem
                 // allowlist como "libere apenas estes" e derrubaria todo o resto da internet.
-                writeAtomically(dnsDir.resolve("profiles").resolve("default-deny.txt"), DENY_SENTINEL + "\n");
+                writeAtomically(dnsDir.resolve("profiles").resolve("default-deny.txt"), String.join("\n", defaultDeny) + "\n");
                 writeAtomically(dnsDir.resolve("profiles").resolve("default-allow.txt"),
                         String.join("\n", defaultAllow) + "\n");
                 profileFiles.add("default-deny.txt");
@@ -239,37 +246,40 @@ public class ResolverConfigWriter {
     }
 
     private static String blockyYaml(CharSequence denyGroups, CharSequence allowGroups, CharSequence clients) {
-        return "# Gerado pelo plugin Web Filter do HWMDM. Nao edite: o arquivo e regenerado a cada alteracao.\n" +
-                "upstreams:\n" +
-                "  groups:\n" +
-                "    default:\n" +
-                "      - tcp-tls:1.1.1.1:853\n" +
-                "      - tcp-tls:8.8.8.8:853\n" +
-                "  strategy: parallel_best\n" +
-                "ports:\n" +
-                // A 53 atende a rede, e nao so' o loopback do container: o DNS comum digitado a mao no
-                // Wi-Fi do tablet e' o caminho que o operador realmente usa. Preso ao 127.0.0.1 ele nunca
-                // chegava ao filtro e a consulta seguia pelo DNS da operadora, sem bloqueio algum.
-                "  dns: 0.0.0.0:53\n" +
-                "  tls: 853\n" +
-                "  http: 127.0.0.1:4000\n" +
-                "certFile: /app/certs/cert.pem\n" +
-                "keyFile: /app/certs/key.pem\n" +
-                "log:\n" +
-                "  level: info\n" +
-                "queryLog:\n" +
-                "  type: csv\n" +
-                "  target: /app/queries\n" +
-                "  logRetentionDays: 0\n" +
-                "blocking:\n" +
-                "  blockType: nxDomain\n" +
-                "  blockTTL: 1m\n" +
-                "  loading:\n" +
-                "    refreshPeriod: 0m\n" +
-                "    strategy: failOnError\n" +
-                "  denylists:\n" + denyGroups +
-                (allowGroups.length() > 0 ? "  allowlists:\n" + allowGroups : "") +
-                (clients.length() > 0 ? "  clientGroupsBlock:\n" + clients : "");
+        StringBuilder yaml = new StringBuilder();
+        yaml.append("# Gerado pelo plugin Web Filter do HWMDM. Nao edite: o arquivo e regenerado a cada alteracao.\n");
+        yaml.append("upstreams:\n");
+        yaml.append("  groups:\n");
+        yaml.append("    default:\n");
+        yaml.append("      - tcp-tls:1.1.1.1:853\n");
+        yaml.append("      - tcp-tls:8.8.8.8:853\n");
+        yaml.append("  strategy: parallel_best\n");
+        yaml.append("ports:\n");
+        yaml.append("  dns: 0.0.0.0:53\n");
+        yaml.append("  tls: 853\n");
+        yaml.append("  http: 127.0.0.1:4000\n");
+        yaml.append("certFile: /app/certs/cert.pem\n");
+        yaml.append("keyFile: /app/certs/key.pem\n");
+        yaml.append("log:\n");
+        yaml.append("  level: info\n");
+        yaml.append("queryLog:\n");
+        yaml.append("  type: csv\n");
+        yaml.append("  target: /app/queries\n");
+        yaml.append("  logRetentionDays: 0\n");
+        yaml.append("blocking:\n");
+        yaml.append("  blockType: nxDomain\n");
+        yaml.append("  blockTTL: 1m\n");
+        yaml.append("  loading:\n");
+        yaml.append("    refreshPeriod: 0m\n");
+        yaml.append("    strategy: failOnError\n");
+        yaml.append("  denylists:\n").append(denyGroups);
+        if (allowGroups.length() > 0) {
+            yaml.append("  allowlists:\n").append(allowGroups);
+        }
+        if (clients.length() > 0) {
+            yaml.append("  clientGroupsBlock:\n").append(clients);
+        }
+        return yaml.toString();
     }
 
     private void removeStaleProfiles(Set<String> keep) throws IOException {

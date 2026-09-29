@@ -13,6 +13,7 @@ import com.hmdm.plugins.webfilter.persistence.WebFilterDAO;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterDelivery;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEntry;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import com.hmdm.plugins.webfilter.service.WebFilterDecision;
 import com.hmdm.plugins.webfilter.service.WebFilterService;
 import com.hmdm.rest.json.SyncApplicationSettingInt;
@@ -36,9 +37,8 @@ import java.util.stream.Collectors;
  *     customer has a DNS domain configured;</li>
  *     <li><code>locked_packages</code> / <code>unlocked_packages</code> settings of the launcher, merged with any values
  *     the administrator set by hand (design D2). The launcher in production already applies them.</li>
- *     <li><code>managedConfig</code> of the Chrome packages ({@link BrowserPolicy}): the launcher, as device owner,
- *     turns it into Chrome enterprise policies, so blocked sites are blocked on the device itself. When the filter
- *     is off the value falls back to what the administrator set by hand, or <code>{}</code>, which clears it.</li>
+ *     <li><code>managedConfig</code> of the Chrome packages carries the URLBlocklist / URLAllowlist built from
+ *     the policy's blocked categories, domain lists and the catalog. Chrome enforces the block page natively.</li>
  * </ul>
  * <p>A device whose profile has no web filter policy is returned untouched. Any failure keeps the original
  * response, so the filter can never break the device sync.</p>
@@ -96,8 +96,8 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
         Set<String> adminLocked = packagesOf(settings, LOCKED);
         Set<String> adminUnlocked = packagesOf(settings, UNLOCKED);
 
+        ObjectNode browserPolicyNode = null;
         Set<String> blocked = new TreeSet<>();
-        ObjectNode browserPolicy = null;
         if (policy.isEnabled()) {
             Set<String> allow = new HashSet<>();
             Set<String> block = new HashSet<>();
@@ -121,7 +121,8 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
             blocked.addAll(WebFilterDecision.blockedPackages(categories,
                     service.appsByCategory(customerId), allow, block, protectedPackages));
             dao.addLockedHistory(policy.getId(), blocked);
-            browserPolicy = BrowserPolicy.enabled(categories, catalog, allowDomains, blockDomains);
+
+            browserPolicyNode = BrowserPolicy.enabled(categories, catalog, allowDomains, blockDomains);
         }
 
         Set<String> locked = new TreeSet<>(adminLocked);
@@ -140,13 +141,16 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
             settings.add(new WebFilterAppSetting(LAUNCHER_PACKAGE, UNLOCKED, String.join(",", unlocked), now));
         }
         for (String browser : BrowserPolicy.PACKAGES) {
-            String adminValue = settings.stream()
-                    .filter(s -> browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName()))
-                    .map(SyncApplicationSettingInt::getValue)
-                    .findFirst().orElse(null);
+            String adminBrowserValue = null;
+            for (SyncApplicationSettingInt s : settings) {
+                if (browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName())) {
+                    adminBrowserValue = s.getValue();
+                    break;
+                }
+            }
             settings.removeIf(s -> browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName()));
             settings.add(new WebFilterAppSetting(browser, BrowserPolicy.SETTING,
-                    BrowserPolicy.merge(adminValue, browserPolicy), now));
+                    BrowserPolicy.merge(adminBrowserValue, browserPolicyNode), now));
         }
 
         ObjectNode tree = mapper.valueToTree(original);
@@ -156,7 +160,7 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
         }
         tree.set("applicationSettings", settingsJson);
 
-        recordDelivery(device, policy, browserPolicy, blocked.size(), now);
+        recordDelivery(device, policy, browserPolicyNode, blocked.size(), now);
 
         String dnsHost = policy.isEnabled() ? service.dnsHost(customerId, policy.getConfigurationId()) : null;
         if (dnsHost != null) {
@@ -172,8 +176,7 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
     /**
      * <p>Remembers what this device received, for the dashboard. Never breaks the sync.</p>
      */
-    private void recordDelivery(Device device, WebFilterPolicy policy, ObjectNode browserPolicy, int hiddenApps,
-                                long now) {
+    private void recordDelivery(Device device, WebFilterPolicy policy, ObjectNode browserPolicyNode, int hiddenApps, long now) {
         try {
             WebFilterDelivery d = new WebFilterDelivery();
             d.setDeviceId(device.getId());
@@ -182,7 +185,7 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
             d.setEnabled(policy.isEnabled());
             d.setPolicyUpdatedAt(policy.getUpdatedAt());
             d.setDeliveredAt(now);
-            d.setBrowserSites(browserPolicy == null ? 0 : browserPolicy.path(BrowserPolicy.BLOCKLIST).size());
+            d.setBrowserSites(browserPolicyNode == null ? 0 : browserPolicyNode.path(BrowserPolicy.BLOCKLIST).size());
             d.setHiddenApps(hiddenApps);
             dao.saveDelivery(d);
         } catch (RuntimeException e) {

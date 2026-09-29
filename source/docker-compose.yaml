@@ -17,8 +17,17 @@ services:
 
   postgresql:
     image: postgres:12-alpine
+    container_name: hwmdm-postgres
+    restart: unless-stopped
+    # O hmdm so sobe depois que o banco aceita conexao (evita UnknownHostException/PSQLException no boot).
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${SQL_USER:-hmdm} -d ${SQL_BASE:-hmdm}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT:-5432}:5432
     environment:
       # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam
       # 3h adiantados em relacao ao horario local (America/Sao_Paulo).
@@ -36,9 +45,16 @@ services:
 
   hmdm:
     image: headwindmdm/hmdm:0.1.8
+    container_name: hwmdm-mdm
+    restart: unless-stopped
+    depends_on:
+      postgresql:
+        condition: service_healthy
     ports:
-      - 8080:8080
-      - 31000:31000
+      - ${MDM_HTTP_PORT:-8080}:8080
+      # Porta publica sem ":porta" na URL (pagina de bloqueio e painel pelo dominio).
+      - ${MDM_PUBLIC_PORT:-80}:8080
+      - ${MDM_PUSH_PORT:-31000}:31000
     volumes:
       - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
       - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
@@ -56,6 +72,8 @@ services:
       # que so existe dentro do proprio container que ele deveria proteger nao serve
       # de nada quando esse container e' o que precisa ser restaurado.
       - ./volumes/backups:/opt/hmdm/backups
+      # Logs do Tomcat fora do container: sobrevivem a recreate/reinicio.
+      - ./volumes/logs:/usr/local/tomcat/logs
       # A WAR versionada entra direto no cache que o docker-entrypoint.sh procura.
       # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
       # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
@@ -91,5 +109,41 @@ services:
       APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
       AUTO_UPDATE_WEBAPP: "false"
 
+  # Resolvedor DNS do Web Filter. O MDM so escreve em volumes/work/plugins/webfilter/dns;
+  # este container le dali e devolve o log de consultas em .../queries.
+  # Certificado: WEBFILTER_CERTS_DIR deve conter cert.pem e key.pem para *.<dominio DNS do filtro>.
+  webfilter-dns:
+    build: ../webfilter-dns
+    image: hwmdm/webfilter-dns:0.34.0
+    container_name: hwmdm-webfilter
+    restart: unless-stopped
+    ports:
+      - "853:853/tcp"          # DoT (DNS privado do Android)
+      # Preso a um endereco: o systemd-resolved do host ja ocupa 127.0.0.53:53.
+      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/udp"
+      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/tcp"
+    volumes:
+      - ./volumes/work/plugins/webfilter/dns:/app/dns:ro
+      - ${WEBFILTER_CERTS_DIR:-../webfilter-dns/certs}:/app/certs:ro
+      - webfilter-lists:/app/lists
+      - webfilter-state:/app/state
+      - ./volumes/work/plugins/webfilter/queries:/app/queries
+    environment:
+      TZ: America/Sao_Paulo
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '/app'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 300s
+    mem_limit: 1536m
+
 volumes:
   postgresql-data:
+  # Nomes fixos: sao os volumes que ja existiam quando o DNS tinha compose proprio.
+  webfilter-lists:
+    name: hwmdm-webfilter_webfilter-lists
+    external: true
+  webfilter-state:
+    name: hwmdm-webfilter_webfilter-state
+    external: true

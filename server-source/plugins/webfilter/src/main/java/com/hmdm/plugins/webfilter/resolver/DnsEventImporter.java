@@ -4,6 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.hmdm.notification.PushService;
+import com.hmdm.notification.persistence.domain.PushMessage;
 import com.hmdm.plugins.webfilter.persistence.mapper.WebFilterMapper;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEvent;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
@@ -27,8 +30,17 @@ public class DnsEventImporter implements Runnable {
     private final ObjectMapper json = new ObjectMapper();
     private final Map<String, Long> offsets = new HashMap<>();
     private boolean loaded;
-    @Inject public DnsEventImporter(WebFilterMapper mapper, @Named("plugins.files.directory") String directory) {
+    private final PushService push;
+    private final String baseUrl;
+    // Uma navegacao gera varias consultas; a pagina de bloqueio vai uma vez por aparelho e site.
+    private final Map<String, Long> lastBlockPage = new HashMap<>();
+    private static final long BLOCK_PAGE_INTERVAL_MS = 60_000L;
+    private static final long BLOCK_PAGE_MAX_AGE_MS = 120_000L;
+    @Inject public DnsEventImporter(WebFilterMapper mapper, @Named("plugins.files.directory") String directory,
+                                    PushService push, @Named("base.url") String baseUrl) {
         this.mapper = mapper;
+        this.push = push;
+        this.baseUrl = baseUrl == null ? "" : baseUrl.replaceFirst("/+$", "");
         this.directory = Paths.get(directory, "webfilter", "queries");
         this.checkpoint = Paths.get(directory, "webfilter", "dns-events-offsets.json");
     }
@@ -75,8 +87,10 @@ public class DnsEventImporter implements Runnable {
         if (!host.matches("[a-z0-9_.-]{1,253}")) { return; }
         WebFilterEvent event = new WebFilterEvent();
         List<Map<String,Object>> devices = mapper.findDnsDevices(fields[1]);
+        String deviceNumber = null;
         if (devices.size() == 1) {
             Map<String,Object> device = devices.get(0);
+            deviceNumber = device.get("number") == null ? null : String.valueOf(device.get("number"));
             event.setDeviceId(((Number)device.get("id")).intValue());
             event.setCustomerId(((Number)device.get("customerid")).intValue());
             if (device.get("configurationid") != null) { event.setConfigurationId(((Number)device.get("configurationid")).intValue()); }
@@ -104,5 +118,37 @@ public class DnsEventImporter implements Runnable {
         Matcher category = Pattern.compile("(?:group|groups)[ :]+\\[?([a-zA-Z0-9_-]+)").matcher(fields[4]);
         if (category.find()) { event.setCategory(category.group(1)); }
         mapper.insertDnsEvent(event);
+        if (event.getDeviceId() != null && deviceNumber != null) {
+            showBlockPage(event.getCustomerId(), event.getDeviceId(), deviceNumber, host, event.getCreatedAt());
+        }
+    }
+
+    String blockPageBase(int customerId) {
+        com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings settings = mapper.findSettings(customerId);
+        return com.hmdm.plugins.webfilter.service.WebFilterService.serverAddress(baseUrl, settings == null ? null : settings.getDnsDomain());
+    }
+
+    /** O launcher abre a URL pelo push "intent" (ACTION_VIEW): a pagina de bloqueio web do servidor. */
+    private void showBlockPage(int customerId, int deviceId, String number, String host, long createdAt) {
+        long now = System.currentTimeMillis();
+        if (now - createdAt > BLOCK_PAGE_MAX_AGE_MS) { return; }
+        String key = deviceId + "|" + host;
+        Long last = lastBlockPage.get(key);
+        if (last != null && now - last < BLOCK_PAGE_INTERVAL_MS) { return; }
+        lastBlockPage.put(key, now);
+        try {
+            ObjectNode payload = json.createObjectNode();
+            payload.put("action", "android.intent.action.VIEW");
+            payload.put("data", blockPageBase(customerId)
+                    + com.hmdm.plugins.webfilter.service.WebFilterService.blockPagePath(number, host));
+            PushMessage message = new PushMessage();
+            message.setDeviceId(deviceId);
+            message.setMessageType("intent");
+            message.setPayload(payload.toString());
+            push.send(message);
+            log.info("Web filter: pagina de bloqueio enviada ao aparelho {} ({})", number, host);
+        } catch (Exception e) {
+            log.warn("Web filter: falha ao enviar a pagina de bloqueio ao aparelho {}", number, e);
+        }
     }
 }

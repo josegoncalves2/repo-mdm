@@ -3,6 +3,7 @@ package com.hmdm.plugins.webfilter.catalog;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Singleton;
+import com.hmdm.plugins.webfilter.rest.json.AttributionView;
 import com.hmdm.plugins.webfilter.rest.json.SourceView;
 
 import java.io.IOException;
@@ -174,5 +175,61 @@ public class WebFilterCatalog {
 
     public JsonNode getAttribution() {
         return attribution;
+    }
+
+    public List<AttributionView> getAttributionEntries() {
+        if (sourceMapper != null) {
+            List<AttributionView> saved = sourceMapper.findAttributionSources();
+            if (saved != null && !saved.isEmpty()) {
+                return saved;
+            }
+        }
+        List<AttributionView> result = new ArrayList<>();
+        attribution.forEach(s -> result.add(new AttributionView(
+                s.path("name").asText(""),
+                s.path("license").asText(""),
+                s.path("url").asText(""))));
+        return result;
+    }
+
+    public void saveAttributionEntries(List<AttributionView> sources) {
+        if (sources == null || sources.size() > 50) {
+            throw new IllegalArgumentException("Fontes inválidas");
+        }
+        List<AttributionView> normalized = new ArrayList<>();
+        for (AttributionView source : sources) {
+            String name = clean(source == null ? null : source.getName(), 160);
+            String license = clean(source == null ? null : source.getLicense(), 120);
+            String url = clean(source == null ? null : source.getUrl(), 500);
+            if (name.isEmpty() && license.isEmpty() && url.isEmpty()) {
+                continue;
+            }
+            if (name.isEmpty() || url.isEmpty()) {
+                throw new IllegalArgumentException("Informe nome e URL em todas as fontes");
+            }
+            java.net.URI uri;
+            try {
+                uri = java.net.URI.create(url);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Endereço inválido: " + url);
+            }
+            if (!("https".equalsIgnoreCase(uri.getScheme()) || "http".equalsIgnoreCase(uri.getScheme()))
+                    || uri.getHost() == null || uri.getUserInfo() != null) {
+                throw new IllegalArgumentException("Use uma URL http:// ou https:// válida: " + url);
+            }
+            normalized.add(new AttributionView(name, license, uri.toString()));
+        }
+        sourceMapper.deleteAttributionSources();
+        for (int i = 0; i < normalized.size(); i++) {
+            sourceMapper.insertAttributionSource(i, normalized.get(i));
+        }
+    }
+
+    private static String clean(String value, int max) {
+        if (value == null) {
+            return "";
+        }
+        String trimmed = value.trim();
+        return trimmed.length() > max ? trimmed.substring(0, max) : trimmed;
     }
 }

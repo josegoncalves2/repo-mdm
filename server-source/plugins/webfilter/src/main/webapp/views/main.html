@@ -3,6 +3,29 @@
 </div>
 <div class="webfilter-page" ng-controller="PluginWebFilterController" ng-if="hasPermission('plugin_webfilter_access')">
     <style>
+        .webfilter-page { max-width: 100%; overflow-x: hidden; }
+        .webfilter-page .hwmdm-page-toolbar { display: block; margin-bottom: 10px; }
+        .webfilter-page .kiosk-status-strip {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .webfilter-page .kiosk-status-cell { min-width: 0; }
+        .webfilter-page .kiosk-status-cell strong {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .webfilter-page .kiosk-tabs {
+            flex-wrap: wrap;
+            gap: 0 10px;
+            overflow: visible;
+        }
+        .webfilter-page .kiosk-tab {
+            flex: 0 0 auto;
+            min-width: 0;
+            padding: 9px 8px 7px;
+            white-space: nowrap;
+        }
         .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 14px; }
         .wf-cat { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hwmdm-border); border-radius: 8px;
                   padding: 8px 10px; background: var(--hwmdm-surface); margin: 0; font-weight: 600; cursor: pointer; }
@@ -28,6 +51,26 @@
         .wf-add-app { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .wf-add-app input, .wf-add-app select { flex: 1 1 200px; min-width: 0; }
         .wf-code { font-family: monospace; overflow-wrap: anywhere; }
+        .wf-block-layout { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(260px, 420px); gap: 16px; align-items: start; }
+        .wf-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .wf-form-field { min-width: 0; }
+        .wf-form-field textarea { min-height: 92px; resize: vertical; }
+        .wf-form-field .wf-code-area { min-height: 150px; font-family: monospace; font-size: 12px; }
+        .wf-block-preview { border: 1px solid var(--hwmdm-border); border-radius: 8px; overflow: hidden; background: #f3f7fb; }
+        .wf-block-preview-body { min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .wf-block-card { width: 100%; max-width: 340px; border: 1px solid #d7e2ee; border-radius: 8px; background: #fff; padding: 22px; box-shadow: 0 10px 24px rgba(15, 23, 42, .12); }
+        .wf-block-logo { max-width: 150px; max-height: 56px; object-fit: contain; margin-bottom: 16px; }
+        .wf-block-pill { display: inline-block; border-radius: 999px; background: #e8f4fb; color: #16658a; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .wf-block-title { margin: 12px 0 8px; font-size: 22px; line-height: 1.2; font-weight: 700; color: #102a43; }
+        .wf-block-message { color: #334e68; line-height: 1.45; margin-bottom: 14px; overflow-wrap: anywhere; }
+        .wf-block-note { border-top: 1px solid #e4edf5; color: #5f6b7a; font-size: 12px; line-height: 1.4; padding-top: 12px; overflow-wrap: anywhere; }
+        .wf-block-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+        .wf-block-device-note { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface-subtle); }
+        @media (max-width: 900px) {
+            .webfilter-page .kiosk-status-strip { grid-template-columns: 1fr; }
+            .webfilter-page .kiosk-tab { white-space: normal; }
+            .wf-block-layout { grid-template-columns: 1fr; }
+        }
     </style>
 
     <div class="hwmdm-page-toolbar">
@@ -316,6 +359,71 @@
     </section>
 
     <!-- ======================================================================== Settings -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'blockpage'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.blockpage.title</h4>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.blockpage.hint</p>
+        <div class="wf-block-layout">
+            <div>
+                <div class="wf-form-grid">
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.page.title</label>
+                        <input type="text" class="form-control" ng-model="settings.blockPageTitle" data-testid="wf-block-title">
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.logo</label>
+                        <input type="text" class="form-control" ng-model="settings.blockPageLogoUrl"
+                               placeholder="https://..." data-testid="wf-block-logo">
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.message</label>
+                        <textarea class="form-control" ng-model="settings.blockPageMessage" data-testid="wf-block-message"></textarea>
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.support</label>
+                        <textarea class="form-control" ng-model="settings.blockPageSupportText" data-testid="wf-block-support"></textarea>
+                    </div>
+                </div>
+                <div class="wf-form-field">
+                    <label localized>plugin.webfilter.blockpage.html</label>
+                    <textarea class="form-control wf-code-area" ng-model="settings.blockPageCustomHtml"
+                              spellcheck="false" data-testid="wf-block-html"></textarea>
+                </div>
+                <div class="wf-form-field">
+                    <label localized>plugin.webfilter.blockpage.css</label>
+                    <textarea class="form-control wf-code-area" ng-model="settings.blockPageCustomCss"
+                              spellcheck="false" data-testid="wf-block-css"></textarea>
+                </div>
+                <div class="wf-actions">
+                    <button type="button" class="btn btn-primary" ng-click="saveSettings()" data-testid="wf-save-blockpage"
+                            localized>plugin.webfilter.save</button>
+                    <button type="button" class="btn btn-default" ng-click="resetBlockPage()" data-testid="wf-reset-blockpage"
+                            localized>plugin.webfilter.blockpage.reset</button>
+                </div>
+                <div class="wf-block-device-note">
+                    <strong localized>plugin.webfilter.blockpage.device.title</strong>
+                    <p class="wf-muted" localized>plugin.webfilter.blockpage.device.hint</p>
+                </div>
+            </div>
+            <div class="wf-block-preview" data-testid="wf-block-preview">
+                <div class="wf-block-preview-body">
+                    <div class="wf-block-card">
+                        <style>{{settings.blockPageCustomCss}}</style>
+                        <img class="wf-block-logo" ng-if="settings.blockPageLogoUrl" ng-src="{{settings.blockPageLogoUrl}}" alt="">
+                        <span class="wf-block-pill" localized>plugin.webfilter.blockpage.badge</span>
+                        <div ng-if="!settings.blockPageCustomHtml">
+                            <div class="wf-block-title">{{settings.blockPageTitle}}</div>
+                            <div class="wf-block-message">{{settings.blockPageMessage}}</div>
+                            <div class="wf-block-note">{{settings.blockPageSupportText}}</div>
+                        </div>
+                        <div ng-if="settings.blockPageCustomHtml" ng-bind-html="settings.blockPageCustomHtml"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="kiosk-panel" ng-if="activeWfTab === 'settings'">
         <div class="kiosk-panel-head">
             <h4 localized>plugin.webfilter.settings.title</h4>
@@ -345,6 +453,7 @@
                 .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); text-transform: none !important; letter-spacing: normal !important; }
                 .wf-src-table .wf-src-col-active { width: 56px; text-align: center; }
                 .wf-src-table .wf-src-col-actions { width: 100px; text-align: right; }
+                .wf-src-table .wf-src-col-license { width: 160px; }
                 .wf-src-table .wf-src-col-active input { margin: 0; }
                 .wf-src-table .form-control { height: 30px; padding: 0 8px; font-family: monospace; font-size: 12px; }
                 .wf-src-table .btn { width: auto; min-width: 0; height: 30px; padding: 0 10px; white-space: nowrap; }
@@ -405,10 +514,46 @@
             </div>
         </div>
         <h5><strong localized>plugin.webfilter.sources</strong></h5>
-        <ul>
-            <li ng-repeat="s in catalog.attribution">
-                <a ng-href="{{s.url}}" target="_blank" rel="noopener">{{s.name}}</a> <span class="wf-muted">({{s.license}})</span>
-            </li>
-        </ul>
+        <p class="wf-muted" localized>plugin.webfilter.sources.hint</p>
+        <table class="table wf-src-table" data-testid="wf-attribution">
+            <thead>
+            <tr>
+                <th localized>plugin.webfilter.source.name</th>
+                <th class="wf-src-col-license" localized>plugin.webfilter.source.license</th>
+                <th>URL</th>
+                <th class="wf-src-col-actions"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="source in catalog.attribution" ng-class="{'wf-src-bad': invalidAttribution(source)}"
+                data-testid="wf-attribution-row">
+                <td>
+                    <input type="text" class="form-control" ng-model="source.name" ng-change="markAttributionDirty()"
+                           data-testid="wf-attribution-name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="source.license" ng-change="markAttributionDirty()"
+                           data-testid="wf-attribution-license">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="source.url" ng-change="markAttributionDirty()"
+                           placeholder="https://" spellcheck="false" data-testid="wf-attribution-url">
+                </td>
+                <td class="wf-src-col-actions">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="removeAttribution($index)"
+                            data-testid="wf-attribution-remove" localized>plugin.webfilter.remove</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="wf-src-actions">
+            <button type="button" class="btn btn-default btn-sm" ng-click="addAttribution()"
+                    data-testid="wf-attribution-add" localized>plugin.webfilter.source.add</button>
+            <button type="button" class="btn btn-primary btn-sm" ng-click="saveAttribution()"
+                    ng-disabled="attributionSaving || !attributionDirty" data-testid="wf-attribution-save"
+                    localized>plugin.webfilter.source.save</button>
+            <span class="wf-src-ok" ng-if="attributionMessage">{{attributionMessage}}</span>
+            <span class="wf-src-err" ng-if="attributionError">{{attributionError}}</span>
+        </div>
     </section>
 </div>

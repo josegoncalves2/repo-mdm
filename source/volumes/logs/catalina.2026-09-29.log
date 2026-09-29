@@ -1,0 +1,1009 @@
+29-Sep-2026 11:11:43.556 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+29-Sep-2026 11:11:43.560 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+29-Sep-2026 11:11:43.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+29-Sep-2026 11:11:43.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+29-Sep-2026 11:11:43.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+29-Sep-2026 11:11:43.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+29-Sep-2026 11:11:43.562 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+29-Sep-2026 11:11:43.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+29-Sep-2026 11:11:43.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+29-Sep-2026 11:11:43.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+29-Sep-2026 11:11:43.563 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+29-Sep-2026 11:11:43.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+29-Sep-2026 11:11:43.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+29-Sep-2026 11:11:43.581 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+29-Sep-2026 11:11:43.582 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+29-Sep-2026 11:11:43.584 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+29-Sep-2026 11:11:43.584 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+29-Sep-2026 11:11:43.585 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+29-Sep-2026 11:11:43.585 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+29-Sep-2026 11:11:43.585 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+29-Sep-2026 11:11:43.585 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+29-Sep-2026 11:11:43.595 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+29-Sep-2026 11:11:43.596 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+29-Sep-2026 11:11:43.597 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+29-Sep-2026 11:11:43.601 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+29-Sep-2026 11:11:44.105 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:11:44.148 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [940] milliseconds
+29-Sep-2026 11:11:44.256 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+29-Sep-2026 11:11:44.257 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+29-Sep-2026 11:11:44.279 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+29-Sep-2026 11:11:44.313 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/usr/local/tomcat/webapps/ROOT] was found with a last modified time that did not match the associated WAR. It will be deleted.
+29-Sep-2026 11:11:49.584 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+29-Sep-2026 11:11:52.177 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.186 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.189 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.192 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.194 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.196 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.199 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.200 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.203 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.207 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.208 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:52.208 INFO [main] com.google.inject.internal.MessageProcessor.visit An exception was caught and reported. Message: java.net.UnknownHostException: postgresql
+	java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:130)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.configure(AbstractLiquibaseModule.java:70)
+		at com.google.inject.AbstractModule.configure(AbstractModule.java:61)
+		at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:344)
+		at com.google.inject.spi.Elements.getElements(Elements.java:103)
+		at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:137)
+		at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:103)
+		at com.google.inject.Guice.createInjector(Guice.java:87)
+		at com.hmdm.guice.Initializer.getInjector(Initializer.java:62)
+		at com.google.inject.servlet.GuiceServletContextListener.contextInitialized(GuiceServletContextListener.java:45)
+		at com.hmdm.guice.Initializer.contextInitialized(Initializer.java:126)
+		at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4047)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4489)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:597)
+		at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:569)
+		at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:608)
+		at org.apache.catalina.startup.HostConfig.deployDescriptor(HostConfig.java:677)
+		at org.apache.catalina.startup.HostConfig$DeployDescriptor.run(HostConfig.java:1836)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:118)
+		at org.apache.catalina.startup.HostConfig.deployDescriptors(HostConfig.java:572)
+		at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:463)
+		at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1576)
+		at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:309)
+		at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:109)
+		at org.apache.catalina.util.LifecycleBase.setStateInternal(LifecycleBase.java:389)
+		at org.apache.catalina.util.LifecycleBase.setState(LifecycleBase.java:336)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:774)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:726)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:82)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:209)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:872)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:736)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:342)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+	Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331)
+		at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+		at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:223)
+		at org.postgresql.Driver.makeConnection(Driver.java:400)
+		at org.postgresql.Driver.connect(Driver.java:259)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+		at com.hmdm.guice.module.AbstractLiquibaseModule.getConnection(AbstractLiquibaseModule.java:123)
+		... 51 more
+	Caused by: java.net.UnknownHostException: postgresql
+		at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:229)
+		at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+		at java.base/java.net.Socket.connect(Socket.java:609)
+		at org.postgresql.core.PGStream.createSocket(PGStream.java:241)
+		at org.postgresql.core.PGStream.<init>(PGStream.java:98)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:109)
+		at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235)
+		... 58 more
+29-Sep-2026 11:11:53.514 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+29-Sep-2026 11:11:53.515 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more listeners failed to start. Full details will be found in the appropriate container log file
+29-Sep-2026 11:11:53.523 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [] startup failed due to previous errors
+29-Sep-2026 11:11:53.525 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextDestroyed Servlet context destroyed -- closing any remaning open ClassGraph ScanResult instances
+29-Sep-2026 11:11:53.529 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+29-Sep-2026 11:11:53.831 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [9,551] ms
+29-Sep-2026 11:11:53.834 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:11:53.854 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [9706] milliseconds
+29-Sep-2026 11:14:55.409 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+29-Sep-2026 11:14:55.414 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+29-Sep-2026 11:14:55.415 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+29-Sep-2026 11:14:55.417 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+29-Sep-2026 11:14:55.417 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+29-Sep-2026 11:14:55.418 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+29-Sep-2026 11:14:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+29-Sep-2026 11:14:55.432 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+29-Sep-2026 11:14:55.433 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+29-Sep-2026 11:14:55.433 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+29-Sep-2026 11:14:55.434 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+29-Sep-2026 11:14:55.436 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+29-Sep-2026 11:14:55.437 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+29-Sep-2026 11:14:55.437 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+29-Sep-2026 11:14:55.437 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+29-Sep-2026 11:14:55.438 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+29-Sep-2026 11:14:55.438 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+29-Sep-2026 11:14:55.439 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+29-Sep-2026 11:14:55.439 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+29-Sep-2026 11:14:55.439 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+29-Sep-2026 11:14:55.440 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+29-Sep-2026 11:14:55.440 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+29-Sep-2026 11:14:55.441 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+29-Sep-2026 11:14:55.446 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+29-Sep-2026 11:14:55.447 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+29-Sep-2026 11:14:55.447 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+29-Sep-2026 11:14:55.452 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+29-Sep-2026 11:14:55.872 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:14:55.913 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [811] milliseconds
+29-Sep-2026 11:14:55.985 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+29-Sep-2026 11:14:55.988 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+29-Sep-2026 11:14:56.000 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+29-Sep-2026 11:14:56.059 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/usr/local/tomcat/webapps/ROOT] was found with a last modified time that did not match the associated WAR. It will be deleted.
+29-Sep-2026 11:15:00.058 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+29-Sep-2026 11:15:30.020 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+29-Sep-2026 11:15:37.061 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [41,053] ms
+29-Sep-2026 11:15:37.081 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:15:37.156 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [41241] milliseconds
+29-Sep-2026 11:16:55.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+29-Sep-2026 11:16:55.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+29-Sep-2026 11:16:55.204 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+29-Sep-2026 11:16:55.204 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+29-Sep-2026 11:16:55.204 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+29-Sep-2026 11:16:55.204 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+29-Sep-2026 11:16:55.204 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+29-Sep-2026 11:16:55.205 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+29-Sep-2026 11:16:55.205 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+29-Sep-2026 11:16:55.205 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+29-Sep-2026 11:16:55.205 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+29-Sep-2026 11:16:55.265 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+29-Sep-2026 11:16:55.268 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+29-Sep-2026 11:16:55.269 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+29-Sep-2026 11:16:55.270 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+29-Sep-2026 11:16:55.272 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+29-Sep-2026 11:16:55.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+29-Sep-2026 11:16:55.273 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+29-Sep-2026 11:16:55.274 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+29-Sep-2026 11:16:55.277 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+29-Sep-2026 11:16:55.278 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+29-Sep-2026 11:16:55.278 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+29-Sep-2026 11:16:55.292 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+29-Sep-2026 11:16:55.293 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+29-Sep-2026 11:16:55.293 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+29-Sep-2026 11:16:55.304 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+29-Sep-2026 11:16:56.347 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:16:56.444 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1995] milliseconds
+29-Sep-2026 11:16:56.630 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+29-Sep-2026 11:16:56.630 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+29-Sep-2026 11:16:56.649 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+29-Sep-2026 11:16:56.774 INFO [main] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/usr/local/tomcat/webapps/ROOT] was found with a last modified time that did not match the associated WAR. It will be deleted.
+29-Sep-2026 11:17:04.858 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+29-Sep-2026 11:17:20.394 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+29-Sep-2026 11:17:23.897 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [27,245] ms
+29-Sep-2026 11:17:23.912 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+29-Sep-2026 11:17:23.962 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [27517] milliseconds

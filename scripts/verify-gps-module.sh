@@ -92,8 +92,8 @@ PY
   echo
 
   echo "## Database GPS status"
-  docker exec hwmdm-postgresql-1 psql -U hmdm -d hmdm -c "select count(*) as devices_total from devices;"
-  docker exec hwmdm-postgresql-1 psql -U hmdm -d hmdm -c "select count(*) as devices_with_location from devices where info is not null and info::jsonb ? 'location';"
+  docker exec hwmdm-postgres psql -U hmdm -d hmdm -c "select count(*) as devices_total from devices;"
+  docker exec hwmdm-postgres psql -U hmdm -d hmdm -c "select count(*) as devices_with_location from devices where info is not null and info::jsonb ? 'location';"
   echo
 
   echo "## ADB devices"
@@ -101,7 +101,7 @@ PY
   echo
 
   echo "## Recent HWMDM server errors"
-  docker logs --since 10m hwmdm-hmdm-1 2>&1 | rg 'ERROR|SEVERE|Exception|gpsmap|summary/locations' || true
+  docker logs --since 10m hwmdm-mdm 2>&1 | rg 'ERROR|SEVERE|Exception|gpsmap|summary/locations' || true
 } 2>&1 | tee "${REPORT_FILE}"
 
 echo

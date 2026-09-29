@@ -17,8 +17,8 @@ mkdir -p "${REPORT_DIR}"
 
   for attempt in $(seq 1 "${MAX_ATTEMPTS}"); do
     device_count="$(adb devices | awk 'NR > 1 && $2 == "device" {count++} END {print count+0}' 2>/dev/null || echo 0)"
-    db_devices="$(docker exec hwmdm-postgresql-1 psql -U hmdm -d hmdm -At -c "select count(*) from devices;" 2>/dev/null || echo 0)"
-    db_locations="$(docker exec hwmdm-postgresql-1 psql -U hmdm -d hmdm -At -c "select count(*) from devices where info is not null and info::jsonb ? 'location';" 2>/dev/null || echo 0)"
+    db_devices="$(docker exec hwmdm-postgres psql -U hmdm -d hmdm -At -c "select count(*) from devices;" 2>/dev/null || echo 0)"
+    db_locations="$(docker exec hwmdm-postgres psql -U hmdm -d hmdm -At -c "select count(*) from devices where info is not null and info::jsonb ? 'location';" 2>/dev/null || echo 0)"
 
     echo "attempt=${attempt} time=$(date -Is) adb_devices=${device_count} db_devices=${db_devices} db_locations=${db_locations}"
 

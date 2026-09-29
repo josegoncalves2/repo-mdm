@@ -167,4 +167,56 @@
             ALTER TABLE plugin_webfilter_sources ADD COLUMN inactiveUrls TEXT NOT NULL DEFAULT '';
         </sql>
     </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-28-block-page" author="hwmdm" context="common">
+        <comment>Columns,new: custom browser block page settings</comment>
+        <sql>
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageTitle VARCHAR(120);
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageMessage VARCHAR(500);
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageLogoUrl VARCHAR(500);
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageSupportText VARCHAR(240);
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageCustomHtml TEXT;
+            ALTER TABLE plugin_webfilter_settings ADD COLUMN IF NOT EXISTS blockPageCustomCss TEXT;
+        </sql>
+        <rollback>
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageCustomCss;
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageCustomHtml;
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageSupportText;
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageLogoUrl;
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageMessage;
+            ALTER TABLE plugin_webfilter_settings DROP COLUMN blockPageTitle;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-28-attribution-sources" author="hwmdm" context="common">
+        <comment>Table,new: editable DNS list attribution sources</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS plugin_webfilter_attribution_sources (
+                id SERIAL NOT NULL CONSTRAINT plugin_webfilter_attribution_sources_pr_key PRIMARY KEY,
+                position INT NOT NULL DEFAULT 0,
+                name VARCHAR(160) NOT NULL,
+                license VARCHAR(120),
+                url VARCHAR(500) NOT NULL
+            );
+        </sql>
+        <rollback>
+            DROP TABLE plugin_webfilter_attribution_sources;
+        </rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-28-cache-buster" author="hwmdm" context="common">
+        <comment>Plugin,update: cache-bust Web Filter console assets</comment>
+        <sql>
+            UPDATE plugins
+               SET javascriptModuleFile = 'app/components/plugins/webfilter/webfilter.module.js?v=20260928-blockpage-2',
+                   functionsViewTemplate = 'app/components/plugins/webfilter/views/main.html?v=20260928-blockpage-2'
+             WHERE identifier = 'webfilter';
+        </sql>
+        <rollback>
+            UPDATE plugins
+               SET javascriptModuleFile = 'app/components/plugins/webfilter/webfilter.module.js',
+                   functionsViewTemplate = 'app/components/plugins/webfilter/views/main.html'
+             WHERE identifier = 'webfilter';
+        </rollback>
+    </changeSet>
 </databaseChangeLog>

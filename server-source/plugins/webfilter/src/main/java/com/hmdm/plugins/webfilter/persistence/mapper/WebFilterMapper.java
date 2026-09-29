@@ -6,6 +6,7 @@ import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEntry;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterEvent;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
+import com.hmdm.plugins.webfilter.rest.json.AttributionView;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
@@ -82,11 +83,19 @@ public interface WebFilterMapper {
     void insertLockedHistory(@Param("policyId") int policyId, @Param("packageName") String packageName);
 
     // ------------------------------------------------------------------------------------------------- settings
-    @Select("SELECT customerId, dnsDomain FROM plugin_webfilter_settings WHERE customerId = #{customerId}")
+    @Select("SELECT customerId, dnsDomain, blockPageTitle, blockPageMessage, blockPageLogoUrl, " +
+            "blockPageSupportText, blockPageCustomHtml, blockPageCustomCss " +
+            "FROM plugin_webfilter_settings WHERE customerId = #{customerId}")
     WebFilterSettings findSettings(@Param("customerId") int customerId);
 
-    @Insert("INSERT INTO plugin_webfilter_settings (customerId, dnsDomain) VALUES (#{customerId}, #{dnsDomain}) " +
-            "ON CONFLICT (customerId) DO UPDATE SET dnsDomain = EXCLUDED.dnsDomain")
+    @Insert("INSERT INTO plugin_webfilter_settings (customerId, dnsDomain, blockPageTitle, blockPageMessage, " +
+            "blockPageLogoUrl, blockPageSupportText, blockPageCustomHtml, blockPageCustomCss) VALUES " +
+            "(#{customerId}, #{dnsDomain}, #{blockPageTitle}, #{blockPageMessage}, #{blockPageLogoUrl}, " +
+            "#{blockPageSupportText}, #{blockPageCustomHtml}, #{blockPageCustomCss}) " +
+            "ON CONFLICT (customerId) DO UPDATE SET dnsDomain = EXCLUDED.dnsDomain, " +
+            "blockPageTitle = EXCLUDED.blockPageTitle, blockPageMessage = EXCLUDED.blockPageMessage, " +
+            "blockPageLogoUrl = EXCLUDED.blockPageLogoUrl, blockPageSupportText = EXCLUDED.blockPageSupportText, " +
+            "blockPageCustomHtml = EXCLUDED.blockPageCustomHtml, blockPageCustomCss = EXCLUDED.blockPageCustomCss")
     void saveSettings(WebFilterSettings settings);
 
     // ------------------------------------------------------------------------------------------------- delivery
@@ -128,6 +137,16 @@ public interface WebFilterMapper {
     void saveSourceUrls(@Param("category") String category, @Param("urls") String urls,
                         @Param("inactiveUrls") String inactiveUrls);
 
+    @Select("SELECT name, license, url FROM plugin_webfilter_attribution_sources ORDER BY position, name")
+    List<AttributionView> findAttributionSources();
+
+    @Delete("DELETE FROM plugin_webfilter_attribution_sources")
+    void deleteAttributionSources();
+
+    @Insert("INSERT INTO plugin_webfilter_attribution_sources(position, name, license, url) " +
+            "VALUES(#{position}, #{source.name}, #{source.license}, #{source.url})")
+    void insertAttributionSource(@Param("position") int position, @Param("source") AttributionView source);
+
     // ------------------------------------------------------------------------------------------------- events
     @Insert("INSERT INTO plugin_webfilter_events (customerId, deviceId, configurationId, host, url, category, source, " +
             "createdAt) VALUES (#{customerId}, #{deviceId}, #{configurationId}, #{host}, #{url}, #{category}, " +
@@ -141,12 +160,36 @@ public interface WebFilterMapper {
     @Select("SELECT COUNT(*) FROM plugin_webfilter_events WHERE deviceId = #{deviceId} AND createdAt >= #{since}")
     int countDeviceEvents(@Param("deviceId") int deviceId, @Param("since") long since);
 
-    @Select("SELECT e.*, d.number AS deviceNumber FROM plugin_webfilter_events e " +
+    @Select("SELECT COALESCE(e.clientIp, d.publicIp) AS clientIp, e.*, d.number AS deviceNumber FROM plugin_webfilter_events e " +
             "LEFT JOIN devices d ON d.id = e.deviceId " +
-            "WHERE e.customerId = #{customerId} ORDER BY e.createdAt DESC LIMIT #{limit}")
+            "LEFT JOIN plugin_webfilter_policies p ON p.customerId = e.customerId " +
+            "AND p.configurationId = e.configurationId " +
+            // Consulta DNS sem aparelho identificado nao tem perfil (configurationId nulo) e precisa aparecer.
+            "WHERE e.customerId = #{customerId} AND (e.configurationId IS NULL OR p.enabled = TRUE) " +
+            "ORDER BY e.createdAt DESC LIMIT #{limit}")
     List<WebFilterEvent> findRecentEvents(@Param("customerId") int customerId, @Param("limit") int limit);
 
-    @Select("SELECT COUNT(*) FROM plugin_webfilter_events WHERE customerId = #{customerId} AND createdAt >= #{since}")
+    // Rastreabilidade: criterios combinados (E), busca parcial, sem esconder eventos de perfil inativo
+    // ou de aparelho nao identificado. IP casa com o do DNS ou com o informado pelo aparelho.
+    // O IP calculado vem antes de e.*: com rotulo repetido, o MyBatis le a primeira coluna.
+    @Select({"<script>",
+            "SELECT COALESCE(e.clientIp, d.publicIp) AS clientIp, e.*, d.number AS deviceNumber",
+            "FROM plugin_webfilter_events e LEFT JOIN devices d ON d.id = e.deviceId",
+            "WHERE e.customerId = #{customerId}",
+            "<if test='ip != null'> AND (e.clientIp ILIKE #{ip} OR d.publicIp ILIKE #{ip})</if>",
+            "<if test='device != null'> AND (d.number ILIKE #{device} OR d.description ILIKE #{device})</if>",
+            "<if test='site != null'> AND (e.host ILIKE #{site} OR e.url ILIKE #{site})</if>",
+            "ORDER BY e.createdAt DESC LIMIT #{limit}",
+            "</script>"})
+    List<WebFilterEvent> searchEvents(@Param("customerId") int customerId, @Param("ip") String ip,
+                                      @Param("device") String device, @Param("site") String site,
+                                      @Param("limit") int limit);
+
+    @Select("SELECT COUNT(*) FROM plugin_webfilter_events e " +
+            "LEFT JOIN plugin_webfilter_policies p ON p.customerId = e.customerId " +
+            "AND p.configurationId = e.configurationId " +
+            "WHERE e.customerId = #{customerId} AND e.createdAt >= #{since} " +
+            "AND (e.configurationId IS NULL OR p.enabled = TRUE)")
     int countEvents(@Param("customerId") int customerId, @Param("since") long since);
 
     @Delete("DELETE FROM plugin_webfilter_events WHERE createdAt < #{before}")

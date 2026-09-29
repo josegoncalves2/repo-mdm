@@ -1,2 +1,0 @@
-*.noticias.example.com
-*.webfilter-sentinel.invalid

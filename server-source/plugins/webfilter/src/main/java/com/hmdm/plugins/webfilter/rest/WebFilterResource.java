@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.hmdm.plugins.webfilter.catalog.WebFilterCatalog;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterAppCategory;
+import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import com.hmdm.plugins.webfilter.rest.json.PolicyView;
+import com.hmdm.plugins.webfilter.rest.json.AttributionView;
 import com.hmdm.plugins.webfilter.rest.json.SettingsView;
 import com.hmdm.plugins.webfilter.rest.json.SourceView;
 import com.hmdm.plugins.webfilter.rest.json.ValidationError;
@@ -99,7 +101,7 @@ public class WebFilterResource {
         }
         ArrayNode prot = root.putArray("protectedPackages");
         catalog.getProtectedPackages().forEach(prot::add);
-        root.set("attribution", catalog.getAttribution());
+        root.set("attribution", mapper.valueToTree(catalog.getAttributionEntries()));
         // Same check as saving the settings (DNS domain): whoever reaches this point may manage the lists
         root.put("canManageSources", !denied());
         return ok(Response.OK(root));
@@ -124,6 +126,17 @@ public class WebFilterResource {
             return forbidden();
         }
         return ok(Response.OK(service.dashboard()));
+    }
+
+    @GET
+    @Path("/events")
+    public javax.ws.rs.core.Response searchEvents(@javax.ws.rs.QueryParam("ip") String ip,
+                                                 @javax.ws.rs.QueryParam("device") String device,
+                                                 @javax.ws.rs.QueryParam("site") String site) {
+        if (denied()) {
+            return forbidden();
+        }
+        return ok(Response.OK(service.searchEvents(ip, device, site)));
     }
 
     @GET
@@ -194,8 +207,7 @@ public class WebFilterResource {
         if (denied()) {
             return forbidden();
         }
-        SettingsView v = new SettingsView();
-        v.setDnsDomain(service.getDnsDomain());
+        SettingsView v = toSettingsView(service.getSettings());
         return ok(Response.OK(v));
     }
 
@@ -206,8 +218,31 @@ public class WebFilterResource {
         if (denied()) {
             return forbidden();
         }
-        List<ValidationError> errors = service.saveDnsDomain(settings.getDnsDomain());
+        if (settings == null) {
+            settings = new SettingsView();
+        }
+        WebFilterSettings s = new WebFilterSettings();
+        s.setDnsDomain(settings.getDnsDomain());
+        s.setBlockPageTitle(settings.getBlockPageTitle());
+        s.setBlockPageMessage(settings.getBlockPageMessage());
+        s.setBlockPageLogoUrl(settings.getBlockPageLogoUrl());
+        s.setBlockPageSupportText(settings.getBlockPageSupportText());
+        s.setBlockPageCustomHtml(settings.getBlockPageCustomHtml());
+        s.setBlockPageCustomCss(settings.getBlockPageCustomCss());
+        List<ValidationError> errors = service.saveSettings(s);
         return errors.isEmpty() ? getSettings() : invalid(errors);
+    }
+
+    private SettingsView toSettingsView(WebFilterSettings s) {
+        SettingsView v = new SettingsView();
+        v.setDnsDomain(s.getDnsDomain());
+        v.setBlockPageTitle(s.getBlockPageTitle());
+        v.setBlockPageMessage(s.getBlockPageMessage());
+        v.setBlockPageLogoUrl(s.getBlockPageLogoUrl());
+        v.setBlockPageSupportText(s.getBlockPageSupportText());
+        v.setBlockPageCustomHtml(s.getBlockPageCustomHtml());
+        v.setBlockPageCustomCss(s.getBlockPageCustomCss());
+        return v;
     }
     @PUT
     @Path("/sources/{category}")
@@ -224,6 +259,19 @@ public class WebFilterResource {
             putSources(saved, category);
             return ok(Response.OK(saved));
         } catch (IllegalArgumentException e) { return http(400, Response.ERROR(e.getMessage())); }
+    }
+
+    @PUT
+    @Path("/attribution")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public javax.ws.rs.core.Response saveAttribution(java.util.List<AttributionView> sources) {
+        if (denied()) { return forbidden(); }
+        try {
+            catalog.saveAttributionEntries(sources);
+            return ok(Response.OK(catalog.getAttributionEntries()));
+        } catch (IllegalArgumentException e) {
+            return http(400, Response.ERROR(e.getMessage()));
+        }
     }
 
 }

@@ -1,5 +1,16 @@
 {
+  "adult" : [ "https://dbl.ipfire.org/lists/porn/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/porn-nl.txt" ],
+  "dating" : [ "https://dbl.ipfire.org/lists/dating/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/dating/domains" ],
   "doh" : [ "https://dbl.ipfire.org/lists/doh/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/doh/domains" ],
+  "drugs" : [ "https://blocklistproject.github.io/Lists/alt-version/drugs-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/drogue/domains" ],
+  "gambling" : [ "https://dbl.ipfire.org/lists/gambling/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/gambling-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/gambling/domains" ],
   "games" : [ "https://dbl.ipfire.org/lists/games/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/games/domains" ],
-  "social_media" : [ "https://dbl.ipfire.org/lists/social/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/facebook-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/twitter-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_networks/domains" ]
+  "malware" : [ "https://dbl.ipfire.org/lists/malware/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/malware-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt" ],
+  "phishing" : [ "https://dbl.ipfire.org/lists/phishing/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/phishing-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/phishing/domains" ],
+  "piracy" : [ "https://dbl.ipfire.org/lists/piracy/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/piracy-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/torrent-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/warez/domains" ],
+  "shopping" : [ "https://dbl.ipfire.org/lists/shopping/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/shopping/domains" ],
+  "social_media" : [ "https://dbl.ipfire.org/lists/social/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/facebook-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/tiktok-nl.txt", "https://blocklistproject.github.io/Lists/alt-version/twitter-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/social_networks/domains" ],
+  "streaming" : [ "https://dbl.ipfire.org/lists/streaming/domains.txt", "https://blocklistproject.github.io/Lists/alt-version/youtube-nl.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/audio-video/domains" ],
+  "violence" : [ "https://dbl.ipfire.org/lists/violence/domains.txt", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/agressif/domains" ],
+  "vpn_proxy" : [ "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/vpn/domains", "https://raw.githubusercontent.com/olbat/ut1-blacklists/master/blacklists/redirector/domains" ]
 }

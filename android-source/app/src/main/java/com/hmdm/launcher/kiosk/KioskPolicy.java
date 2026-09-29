@@ -44,7 +44,6 @@ public final class KioskPolicy {
         DevicePolicyManager manager = owner(activity);
         Set<String> packages = new LinkedHashSet<>();
         packages.add(activity.getPackageName());
-        packages.add("com.hwmdm.remote");
         if (main != null) { packages.add(main); }
         if (settings) { packages.add("com.android.settings"); }
         ServerConfig config = config(activity);

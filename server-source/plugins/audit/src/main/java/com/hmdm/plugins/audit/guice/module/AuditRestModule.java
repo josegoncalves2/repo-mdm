@@ -50,6 +50,9 @@ public class AuditRestModule extends ServletModule {
         this.filter("/rest/private/*").through(AuditFilter.class);
         this.filter("/rest/public/*").through(AuditFilter.class);
         this.filter("/rest/plugins/*").through(AuditFilter.class);
+        // /rest/plugin/main/private/disabled (ligar/desligar plugins) fica fora de /rest/plugins/*;
+        // sem este mapeamento a regra UPDATE_PLUGINS nunca era avaliada.
+        this.filter("/rest/plugin/*").through(AuditFilter.class);
 //        this.filter("/rest/plugins/audit/*").through(ApiOriginFilter.class);
         this.filter("/rest/plugins/audit/private/*").through(JWTFilter.class);
         this.filter("/rest/plugins/audit/private/*").through(AuthFilter.class);

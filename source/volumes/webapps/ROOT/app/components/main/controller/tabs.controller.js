@@ -191,6 +191,7 @@ angular.module('headwind-kiosk')
         $scope.toggleNav = function () {
             $scope.navOpen = !$scope.navOpen;
         };
+        $scope.$on('HWMDM_TOGGLE_NAV', function () { $scope.toggleNav(); });
         $scope.closeNav = function () {
             $scope.navOpen = false;
         };
@@ -240,8 +241,18 @@ angular.module('headwind-kiosk')
             if (response.data) {
                 $scope.currentUser = response.data;
                 authService.update(response.data);
+                // O menu filtra por permissao; montado antes desta resposta, ficava com meia duzia de itens.
+                if ($scope.navReady) {
+                    $scope.navSections = moduleRegistry.visibleSections();
+                }
             }
         });
+        var modulesLoadedListener = $rootScope.$on('aero_MODULES_LOADED', function () {
+            if ($scope.navReady) {
+                $scope.navSections = moduleRegistry.visibleSections();
+            }
+        });
+        $scope.$on('$destroy', modulesLoadedListener);
 
         // hintService start is fired by the controllers themselves after they are loaded all required content
 //        $timeout(function () {

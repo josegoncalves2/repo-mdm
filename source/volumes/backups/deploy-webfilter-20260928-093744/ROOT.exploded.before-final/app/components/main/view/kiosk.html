@@ -1,0 +1,341 @@
+<div class="kiosk-page" ng-controller="KioskTabController">
+    <div class="hwmdm-page-toolbar kiosk-toolbar">
+        <div>
+            <h3 localized>nav.kiosk</h3>
+            <p localized>kiosk.page.subtitle</p>
+        </div>
+        <div class="kiosk-profile-picker">
+            <select class="form-control"
+                    data-testid="kiosk-profile-select"
+                    ng-model="selectedConfigurationId"
+                    ng-change="selectConfiguration()"
+                    ng-options="config.id as config.name for config in configurations">
+            </select>
+            <button type="button" class="btn btn-primary"
+                    data-testid="kiosk-save-profile"
+                    ng-click="saveProfile()"
+                    ng-disabled="saving || loading || !configuration">
+                <span localized>kiosk.save.profile</span>
+            </button>
+        </div>
+    </div>
+
+    <div ng-show="errorMessage" class="error"><span>{{errorMessage}}</span></div>
+    <div ng-show="feedback" class="success"><span>{{feedback}}</span></div>
+
+    <div class="kiosk-status-strip" data-testid="kiosk-status-strip" ng-if="configuration">
+        <div class="kiosk-status-cell">
+            <span localized>kiosk.status.profile</span>
+            <strong>{{configuration.name}}</strong>
+        </div>
+        <!--
+            This cell is the policy stored in the profile - what the server asks for.
+            The "Kiosk state" column below is what each device last reported about itself.
+            They are different facts and used to be shown as if they were the same one, so
+            a profile with kiosk on next to a device that never checked in read as a
+            contradiction ("Enabled" / "Not locked"). Both are labelled by their source now.
+        -->
+        <div class="kiosk-status-cell">
+            <span localized>kiosk.status.profile.policy</span>
+            <strong ng-class="{'text-success': configuration.kioskMode, 'text-danger': !configuration.kioskMode}">
+                {{(configuration.kioskMode ? 'kiosk.policy.enabled' : 'kiosk.policy.disabled') | localize}}
+            </strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>kiosk.status.launch.app</span>
+            <strong>{{getContentAppSummary()}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>kiosk.status.allowed.apps</span>
+            <strong>{{allowedApps().length}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>kiosk.status.devices</span>
+            <strong>{{profileDevices().length}}</strong>
+        </div>
+    </div>
+
+    <div class="kiosk-tabs" role="tablist" aria-label="Kiosk controls">
+        <button type="button"
+                ng-repeat="tab in tabs"
+                role="tab"
+                class="kiosk-tab"
+                ng-class="{'kiosk-tab-active': activeKioskTab === tab.id}"
+                ng-click="selectTab(tab.id)">
+            {{tab.label}}
+        </button>
+    </div>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'devices'" data-testid="kiosk-devices-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.devices.title</h4>
+            <button type="button" class="btn btn-default btn-sm" ng-click="openRemote()" localized>kiosk.open.remote</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>kiosk.col.device</th>
+                    <th localized>kiosk.col.status</th>
+                    <th localized>kiosk.col.android</th>
+                    <th localized>kiosk.col.ip</th>
+                    <th localized>kiosk.status.device.state</th>
+                    <th localized>kiosk.col.actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="device in profileDevices()">
+                    <td>
+                        <strong>{{device.number}}</strong>
+                        <span class="kiosk-muted">Serial: {{device.serial || '-'}}</span>
+                    </td>
+                    <td>
+                        <span class="label" ng-class="{'label-success': device.online, 'label-danger': !device.online}">
+                            {{device.online ? 'ONLINE' : 'OFFLINE'}}
+                        </span>
+                        <span class="kiosk-muted">{{device.lastUpdateAgeSec}}s since check-in</span>
+                    </td>
+                    <td>{{device.androidVersion || '-'}}</td>
+                    <td>
+                        <strong>{{getDeviceIpDisplay(device)}}</strong>
+                        <span class="kiosk-muted">{{getDeviceIpNote(device)}}</span>
+                    </td>
+                    <td>
+                        <span ng-class="kioskStateClass(device)">{{kioskStateLabel(device)}}</span>
+                        <span class="kiosk-muted" ng-if="kioskStateNote(device)">{{kioskStateNote(device)}}</span>
+                    </td>
+                    <td>
+                        <div class="kiosk-action-row">
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click="forceKiosk(device)"
+                                    ng-disabled="!device.online" localized>kiosk.action.force</button>
+                            <button type="button" class="btn btn-primary btn-sm"
+                                    ng-click="pushConfig(device)"
+                                    ng-disabled="!device.online" localized>kiosk.action.push</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="profileDevices().length === 0" localized>kiosk.devices.empty</div>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'lockdown'" data-testid="kiosk-lockdown-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.tab.lockdown</h4>
+            <button type="button" class="btn btn-primary"
+                    data-testid="kiosk-page-strict-preset"
+                    ng-click="applyStrictKiosk()" localized>kiosk.apply.strict</button>
+        </div>
+        <p class="help-block">Altere as opções e use <strong>Salvar perfil de quiosque</strong>. A aplicação no dispositivo requer o launcher HWMDM 1.2 como Device Owner; o launcher oficial 6.36 não executa estas opções de quiosque.</p>
+        <div class="kiosk-switch-grid">
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskMode">
+                <span localized>kiosk.sw.enabled</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskHome">
+                <span localized>kiosk.sw.home</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskRecents">
+                <span localized>kiosk.sw.recents</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskNotifications">
+                <span localized>kiosk.sw.notifications</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskExit">
+                <span localized>kiosk.sw.exit</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskLockButtons">
+                <span localized>kiosk.sw.buttons</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.kioskScreenOn">
+                <span localized>kiosk.sw.screenon</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.lockSafeSettings">
+                <span localized>kiosk.sw.safesettings</span>
+            </label>
+        </div>
+        <div class="kiosk-restriction-grid">
+            <label class="kiosk-check" ng-repeat="restriction in ['no_factory_reset','no_safe_boot','no_add_user','no_modify_accounts','no_control_apps','no_config_wifi','no_config_vpn','no_usb_file_transfer','no_debugging_features']">
+                <input type="checkbox"
+                       ng-checked="hasRestriction(restriction)"
+                       ng-click="setRestriction(restriction, !hasRestriction(restriction))">
+                <span>{{restriction}}</span>
+            </label>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'apps'" data-testid="kiosk-apps-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.tab.apps</h4>
+            <span class="kiosk-muted" localized>kiosk.apps.hint</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>kiosk.col.application</th>
+                    <th localized>kiosk.col.version</th>
+                    <th localized>kiosk.col.install</th>
+                    <th localized>kiosk.col.allow</th>
+                    <th localized>kiosk.col.launch</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="app in applications | filter:{type:'app'}">
+                    <td>
+                        <strong>{{app.name || app.pkg}}</strong>
+                        <span class="kiosk-muted">{{app.pkg}}</span>
+                    </td>
+                    <td>{{app.version || app.latestVersionText || '-'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm"
+                                ng-class="app.action == 1 ? 'btn-primary' : 'btn-default'"
+                                ng-click="toggleAppInstall(app)">
+                            {{(app.action == 1 ? 'kiosk.app.installed' : 'kiosk.app.not.installed') | localize}}
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-sm"
+                                ng-class="app.useKiosk ? 'btn-primary' : 'btn-default'"
+                                ng-disabled="app.action != 1"
+                                ng-click="toggleAppKiosk(app)">
+                            {{(app.useKiosk ? 'kiosk.app.allowed' : 'kiosk.app.blocked') | localize}}
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-default btn-sm"
+                                ng-disabled="app.action != 1 || !app.useKiosk"
+                                ng-click="selectContentApp(app)">
+                            <span localized>kiosk.app.use.launch</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'agent'" data-testid="kiosk-agent-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.tab.agent</h4>
+            <button type="button" class="btn btn-primary"
+                    data-testid="kiosk-use-latest-agent"
+                    ng-click="useLatestAgent()"
+                    ng-disabled="agentVersions.length === 0" localized>kiosk.agent.use.newest</button>
+        </div>
+        <div class="kiosk-agent-card">
+            <span localized>kiosk.agent.current</span>
+            <strong data-testid="kiosk-agent-summary">{{getAgentSummary()}}</strong>
+        </div>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>kiosk.col.version</th>
+                    <th localized>kiosk.col.url</th>
+                    <th localized>kiosk.col.action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="version in agentVersions">
+                    <td><strong>{{version.version}}</strong></td>
+                    <td class="kiosk-url">{{version.url || version.urlArm64 || version.urlArmeabi || '-'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm"
+                                ng-class="configuration.mainAppId === version.id ? 'btn-primary' : 'btn-default'"
+                                ng-click="selectAgentVersion(version)">
+                            {{(configuration.mainAppId === version.id ? 'kiosk.agent.selected' : 'kiosk.agent.select') | localize}}
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'location'" data-testid="kiosk-gps-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.tab.location</h4>
+            <button type="button" class="btn btn-primary"
+                    data-testid="kiosk-page-enable-gps"
+                    ng-click="enableGps()">Enable managed GPS</button>
+        </div>
+        <div class="kiosk-switch-grid">
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.gps">
+                <span localized>kiosk.sw.gps</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox" ng-model="configuration.disableLocation">
+                <span localized>kiosk.sw.disable.location</span>
+            </label>
+            <label class="kiosk-switch">
+                <input type="checkbox"
+                       ng-checked="hasRestriction('no_share_location')"
+                       ng-click="setRestriction('no_share_location', !hasRestriction('no_share_location'))">
+                <span localized>kiosk.sw.block.location</span>
+            </label>
+        </div>
+        <div class="kiosk-form-grid">
+            <label>
+                <span localized>kiosk.gps.mode</span>
+                <select class="form-control" ng-model="configuration.requestUpdates">
+                    <option value="DONOTTRACK">{{'kiosk.gps.donottrack' | localize}}</option>
+                    <option value="GPS">GPS</option>
+                    <option value="NETWORK">{{'kiosk.gps.network' | localize}}</option>
+                    <option value="GPS_AND_NETWORK">{{'kiosk.gps.both' | localize}}</option>
+                </select>
+            </label>
+            <label>
+                <span localized>kiosk.gps.permissions</span>
+                <select class="form-control" ng-model="configuration.appPermissions">
+                    <option value="GRANTALL">{{'kiosk.perm.grantall' | localize}}</option>
+                    <option value="ASK">{{'kiosk.perm.ask' | localize}}</option>
+                    <option value="DENYLOCATION">{{'kiosk.perm.denylocation' | localize}}</option>
+                </select>
+            </label>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeKioskTab === 'apply'" data-testid="kiosk-apply-tab">
+        <div class="kiosk-panel-head">
+            <h4 localized>kiosk.tab.apply</h4>
+            <button type="button" class="btn btn-primary" ng-click="saveProfile()" ng-disabled="saving" localized>kiosk.apply.save.notify</button>
+        </div>
+        <div class="kiosk-apply-grid">
+            <div>
+                <span>Profile</span>
+                <strong>{{configuration.name}}</strong>
+            </div>
+            <div>
+                <span localized>kiosk.tab.agent</span>
+                <strong>{{getAgentSummary()}}</strong>
+            </div>
+            <div>
+                <span>Launch app</span>
+                <strong>{{getContentAppSummary()}}</strong>
+            </div>
+            <div>
+                <span localized>kiosk.tab.location</span>
+                <strong>{{configuration.requestUpdates}}</strong>
+            </div>
+            <div>
+                <span>Allowed apps</span>
+                <strong>{{allowedApps().length}}</strong>
+            </div>
+            <div>
+                <span localized>kiosk.status.blocked.apps</span>
+                <strong>{{blockedApps().length}}</strong>
+            </div>
+        </div>
+    </section>
+</div>

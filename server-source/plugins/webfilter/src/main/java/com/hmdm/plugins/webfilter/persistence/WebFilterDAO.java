@@ -122,6 +122,17 @@ public class WebFilterDAO {
         return true;
     }
 
+    public List<WebFilterEvent> searchEvents(int customerId, String ip, String device, String site, int limit) {
+        return mapper.searchEvents(customerId, like(ip), like(device), like(site), limit);
+    }
+
+    private static String like(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return null;
+        }
+        return "%" + value.trim().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_") + "%";
+    }
+
     public List<WebFilterEvent> getRecentEvents(int customerId, int limit) {
         return mapper.findRecentEvents(customerId, limit);
     }

@@ -47,7 +47,9 @@ angular.module('headwind-kiosk')
                 icon: 'filter',
                 titleKey: 'integrations.point.dns.title',
                 descKey: 'integrations.point.dns.desc',
-                address: '192.168.1.65:53'
+                // The resolver runs on the MDM host itself: show the host this console was
+                // opened on, not the DEV address that used to be written here (wrong on PROD).
+                address: $window.location.hostname + ':53'
             },
             {
                 id: 'qr-enroll',

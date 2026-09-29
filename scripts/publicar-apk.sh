@@ -74,7 +74,7 @@ VCODE="$(sed -n "s/^package:.*versionCode='\([^']*\)'.*/\1/p" <<<"$BADGING" | he
 [ -n "$PKG" ] && [ -n "$VERSAO" ] || { erro "nao consegui ler package/versionName do APK"; exit 1; }
 ok "$PKG  versao $VERSAO  (versionCode $VCODE)"
 
-[ -n "$NOME" ] || NOME="hmdm-${VERSAO}-olimpia.apk"
+[ -n "$NOME" ] || NOME="hmdm-${VERSAO}${APK_SUFIXO:+-$APK_SUFIXO}.apk"
 case "$NOME" in *.apk) ;; *) NOME="${NOME}.apk" ;; esac
 
 # ---------------------------------------------------------------- 2/6 assinatura

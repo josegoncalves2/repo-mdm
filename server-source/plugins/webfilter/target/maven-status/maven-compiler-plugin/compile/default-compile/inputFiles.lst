@@ -3,6 +3,7 @@
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/domain/WebFilterSettings.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/domain/WebFilterEvent.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/sync/WebFilterSyncResponse.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/json/SourceView.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/domain/WebFilterAppCategory.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/domain/WebFilterPolicy.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/WebFilterDAO.java
@@ -23,6 +24,7 @@
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/service/WebFilterDecision.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/persistence/domain/WebFilterEntry.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/json/PolicyView.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/rest/json/AttributionView.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/sync/WebFilterSyncResponseHook.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/resolver/ResolverConfigWriter.java
 /opt/projetos/hwmdm/repo-mdm/server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/guice/module/WebFilterPersistenceModule.java

@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 
-PSQL_CONTAINER = os.environ.get("HWMDM_POSTGRES_CONTAINER", "hwmdm-postgresql-1")
+PSQL_CONTAINER = os.environ.get("HWMDM_POSTGRES_CONTAINER", "hwmdm-postgres")
 PSQL_USER = os.environ.get("HWMDM_POSTGRES_USER", "hmdm")
 PSQL_DB = os.environ.get("HWMDM_POSTGRES_DB", "hmdm")
 

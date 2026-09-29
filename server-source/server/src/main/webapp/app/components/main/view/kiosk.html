@@ -14,7 +14,8 @@
             <button type="button" class="btn btn-primary"
                     data-testid="kiosk-save-profile"
                     ng-click="saveProfile()"
-                    ng-disabled="saving || loading || !configuration">
+                    ng-disabled="saving || loading || !configuration"
+                    title="{{'kiosk.save.profile.tip' | localize}}">
                 <span localized>kiosk.save.profile</span>
             </button>
         </div>
@@ -69,7 +70,8 @@
     <section class="kiosk-panel" ng-if="activeKioskTab === 'devices'" data-testid="kiosk-devices-tab">
         <div class="kiosk-panel-head">
             <h4 localized>kiosk.devices.title</h4>
-            <button type="button" class="btn btn-default btn-sm" ng-click="openRemote()" localized>kiosk.open.remote</button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="openRemote()"
+                    title="{{'kiosk.open.remote.tip' | localize}}" localized>kiosk.open.remote</button>
         </div>
         <div class="table-responsive">
             <table class="table kiosk-table">
@@ -108,10 +110,12 @@
                         <div class="kiosk-action-row">
                             <button type="button" class="btn btn-default btn-sm"
                                     ng-click="forceKiosk(device)"
-                                    ng-disabled="!device.online" localized>kiosk.action.force</button>
+                                    ng-disabled="!device.online"
+                                    title="{{'kiosk.action.force.tip' | localize}}" localized>kiosk.action.force</button>
                             <button type="button" class="btn btn-primary btn-sm"
                                     ng-click="pushConfig(device)"
-                                    ng-disabled="!device.online" localized>kiosk.action.push</button>
+                                    ng-disabled="!device.online"
+                                    title="{{'kiosk.action.push.tip' | localize}}" localized>kiosk.action.push</button>
                         </div>
                     </td>
                 </tr>
@@ -126,7 +130,8 @@
             <h4 localized>kiosk.tab.lockdown</h4>
             <button type="button" class="btn btn-primary"
                     data-testid="kiosk-page-strict-preset"
-                    ng-click="applyStrictKiosk()" localized>kiosk.apply.strict</button>
+                    ng-click="applyStrictKiosk()"
+                    title="{{'kiosk.apply.strict.tip' | localize}}" localized>kiosk.apply.strict</button>
         </div>
         <p class="help-block">Altere as opções e use <strong>Salvar perfil de quiosque</strong>. A aplicação no dispositivo requer o launcher HWMDM 1.2 como Device Owner; o launcher oficial 6.36 não executa estas opções de quiosque.</p>
         <div class="kiosk-switch-grid">
@@ -199,7 +204,8 @@
                     <td>
                         <button type="button" class="btn btn-sm"
                                 ng-class="app.action == 1 ? 'btn-primary' : 'btn-default'"
-                                ng-click="toggleAppInstall(app)">
+                                ng-click="toggleAppInstall(app)"
+                                title="{{(app.action == 1 ? 'kiosk.app.installed.tip' : 'kiosk.app.not.installed.tip') | localize}}">
                             {{(app.action == 1 ? 'kiosk.app.installed' : 'kiosk.app.not.installed') | localize}}
                         </button>
                     </td>
@@ -207,14 +213,16 @@
                         <button type="button" class="btn btn-sm"
                                 ng-class="app.useKiosk ? 'btn-primary' : 'btn-default'"
                                 ng-disabled="app.action != 1"
-                                ng-click="toggleAppKiosk(app)">
+                                ng-click="toggleAppKiosk(app)"
+                                title="{{(app.useKiosk ? 'kiosk.app.allowed.tip' : 'kiosk.app.blocked.tip') | localize}}">
                             {{(app.useKiosk ? 'kiosk.app.allowed' : 'kiosk.app.blocked') | localize}}
                         </button>
                     </td>
                     <td>
                         <button type="button" class="btn btn-default btn-sm"
                                 ng-disabled="app.action != 1 || !app.useKiosk"
-                                ng-click="selectContentApp(app)">
+                                ng-click="selectContentApp(app)"
+                                title="{{'kiosk.app.use.launch.tip' | localize}}">
                             <span localized>kiosk.app.use.launch</span>
                         </button>
                     </td>

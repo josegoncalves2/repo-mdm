@@ -19335,9 +19335,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 1	132
 1	133
 1	134
-1	135
-1	136
-1	137
 2	2
 2	3
 2	4
@@ -19378,7 +19375,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 2	132
 2	133
 2	134
-2	137
 3	3
 3	4
 3	6
@@ -19394,7 +19390,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 3	114
 3	116
 3	118
-3	137
 100	100
 100	104
 100	107
@@ -19407,7 +19402,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 101	119
 101	123
 101	124
-101	137
 102	3
 102	4
 102	114
@@ -19415,7 +19409,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 102	123
 102	124
 102	125
-102	137
 103	3
 103	4
 103	114
@@ -19425,7 +19418,6 @@ COPY public.userrolepermissions (roleid, permissionid) FROM stdin;
 103	124
 103	125
 103	126
-103	137
 \.
 
 

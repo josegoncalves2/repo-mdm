@@ -19,8 +19,8 @@ set -euo pipefail
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$RAIZ"
 
-CONTAINER_APP="hwmdm-hmdm-1"
-CONTAINER_PG="hwmdm-postgresql-1"
+CONTAINER_APP="hwmdm-mdm"
+CONTAINER_PG="hwmdm-postgres"
 VERSAO_PY="$RAIZ/scripts/versao-artefato.py"
 
 titulo() { printf '\n\033[1;36m=== %s ===\033[0m\n' "$*"; }
