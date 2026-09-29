@@ -4,7 +4,6 @@ TEMPLATE_DIR=$HMDM_DIR/templates
 TOMCAT_DIR=/usr/local/tomcat
 BASE_DIR=$TOMCAT_DIR/work
 CACHE_DIR=$BASE_DIR/cache
-PASSWORD=123456
 PUBLIC_PROTOCOL="${PUBLIC_PROTOCOL:-$PROTOCOL}"
 CUSTOM_WEBAPP_DIR=/opt/custom-webapp
 APPLY_CUSTOM_WEBAPP_ON_BOOT="${APPLY_CUSTOM_WEBAPP_ON_BOOT:-false}"
@@ -99,6 +98,8 @@ if [ "$APPLY_CUSTOM_WEBAPP_ON_BOOT" = "true" ] && [ -d "$CUSTOM_WEBAPP_DIR" ]; t
             rm -rf ./app/components/plugins
             cp -a "$PLUGINS_KEEP/plugins" ./app/components/plugins || exit 1
         fi
+        # Configuracao de execucao lida pelo console (porta do hwmdm-admin, vinda do .env).
+        mkdir -p ./js && echo "window.HWMDM_RUNTIME = {adminPort: '${ADMIN_PORT:-}'};" > ./js/hwmdm-runtime.js || exit 1
         jar cfM "$NEW_WAR" -C "$STAGE_DIR" . || exit 1
     ) && [ -s "$NEW_WAR" ]; then
         mv "$NEW_WAR" "$TOMCAT_DIR/webapps/ROOT.war"

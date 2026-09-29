@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityWindowInfo;
 
+import com.hwmdm.remote.mdm.BlockOverlay;
 import com.hwmdm.remote.mdm.BlockedPageReporter;
 import com.hwmdm.remote.mdm.RemoteLog;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -162,6 +163,18 @@ public class InputInjectionService extends AccessibilityService {
         }
         if (event.getEventType() != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             return;
+        }
+        // A propria janela de bloqueio e a barra do sistema tambem geram este evento; so' uma
+        // troca de tela de verdade (outro app, outra atividade do Chrome) abre nova tentativa.
+        CharSequence statePkg = event.getPackageName();
+        if (statePkg != null && !getPackageName().contentEquals(statePkg)
+                && !"com.android.systemui".contentEquals(statePkg)) {
+            BlockedPageReporter.newNavigation();
+        }
+        // Outro aplicativo assumiu a tela: a pagina de bloqueio pertence ao Chrome e sai junto.
+        if (!BlockedPageReporter.isBrowser(event.getPackageName()) && BlockOverlay.isShown()
+                && !"com.android.systemui".contentEquals(event.getPackageName() == null ? "" : event.getPackageName())) {
+            BlockOverlay.hide(this);
         }
         if (ProtectionGuard.shouldBlock(this, event.getPackageName())) {
             performGlobalAction(GLOBAL_ACTION_HOME);

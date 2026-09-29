@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('TabController', function ($scope, $rootScope, $timeout, $state, userService, authService, openTab,
+    .controller('TabController', function ($scope, $sce, $rootScope, $timeout, $state, userService, authService, openTab,
                                            pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
 
         $scope.localization = localization;
@@ -31,7 +31,8 @@ angular.module('headwind-kiosk')
             ICONS: 'icons',
             GENERAL: 'generalSettings',
             EXTENSIONS: 'extensions',
-            INTEGRATIONS: 'integrations'
+            INTEGRATIONS: 'integrations',
+            SERVER: 'server'
         };
 
         // Modulos/extensoes abertos direto do menu (fora da tela Modulos) tambem ganham
@@ -71,7 +72,8 @@ angular.module('headwind-kiosk')
             GENERAL: 'nav.general',
             EXTENSIONS: 'nav.extensions',
             GOVERNANCE: 'nav.governance',
-            INTEGRATIONS: 'nav.integrations'
+            INTEGRATIONS: 'nav.integrations',
+            SERVER: 'nav.server'
         };
 
         // Entrada direta pela URL (F5) numa tela de plugin: o app.js carrega o modulo JS do plugin em
@@ -130,6 +132,12 @@ angular.module('headwind-kiosk')
         };
 
         $scope.activeTab = openTab;
+
+        // hwmdm-admin: mesma maquina do painel, porta vinda do .env (js/hwmdm-runtime.js, gerado no boot)
+        var runtime = window.HWMDM_RUNTIME || {};
+        $scope.serverAdminUrl = runtime.adminPort
+            ? $sce.trustAsResourceUrl(window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/')
+            : null;
 
         $scope.tabTitle = function () {
             if (tabTitleKeys[$scope.activeTab]) {

@@ -192,6 +192,61 @@ public interface WebFilterMapper {
             "AND (e.configurationId IS NULL OR p.enabled = TRUE)")
     int countEvents(@Param("customerId") int customerId, @Param("since") long since);
 
+    // Historico paginado de "Trafego bloqueado recentemente": mesma selecao de findRecentEvents.
+    @Select("SELECT COALESCE(e.clientIp, d.publicIp) AS clientIp, e.*, d.number AS deviceNumber FROM plugin_webfilter_events e " +
+            "LEFT JOIN devices d ON d.id = e.deviceId " +
+            "LEFT JOIN plugin_webfilter_policies p ON p.customerId = e.customerId " +
+            "AND p.configurationId = e.configurationId " +
+            "WHERE e.customerId = #{customerId} AND (e.configurationId IS NULL OR p.enabled = TRUE) " +
+            "ORDER BY e.createdAt DESC, e.id DESC LIMIT #{limit} OFFSET #{offset}")
+    List<WebFilterEvent> findEventsPage(@Param("customerId") int customerId, @Param("offset") int offset,
+                                        @Param("limit") int limit);
+
+    // Busca paginada (IP, dispositivo, site combinados), mesmos criterios de searchEvents.
+    @Select({"<script>",
+            "SELECT COALESCE(e.clientIp, d.publicIp) AS clientIp, e.*, d.number AS deviceNumber",
+            "FROM plugin_webfilter_events e LEFT JOIN devices d ON d.id = e.deviceId",
+            "WHERE e.customerId = #{customerId}",
+            "<if test='ip != null'> AND (e.clientIp ILIKE #{ip} OR d.publicIp ILIKE #{ip})</if>",
+            "<if test='device != null'> AND (d.number ILIKE #{device} OR d.description ILIKE #{device})</if>",
+            "<if test='site != null'> AND (e.host ILIKE #{site} OR e.url ILIKE #{site})</if>",
+            "ORDER BY e.createdAt DESC, e.id DESC LIMIT #{limit} OFFSET #{offset}",
+            "</script>"})
+    List<WebFilterEvent> searchEventsPage(@Param("customerId") int customerId, @Param("ip") String ip,
+                                          @Param("device") String device, @Param("site") String site,
+                                          @Param("offset") int offset, @Param("limit") int limit);
+
+    @Select({"<script>",
+            "SELECT COUNT(*) FROM plugin_webfilter_events e LEFT JOIN devices d ON d.id = e.deviceId",
+            "WHERE e.customerId = #{customerId}",
+            "<if test='ip != null'> AND (e.clientIp ILIKE #{ip} OR d.publicIp ILIKE #{ip})</if>",
+            "<if test='device != null'> AND (d.number ILIKE #{device} OR d.description ILIKE #{device})</if>",
+            "<if test='site != null'> AND (e.host ILIKE #{site} OR e.url ILIKE #{site})</if>",
+            "</script>"})
+    int countSearchEvents(@Param("customerId") int customerId, @Param("ip") String ip,
+                          @Param("device") String device, @Param("site") String site);
+
+    @Select("SELECT COUNT(*) FROM plugin_webfilter_events e " +
+            "LEFT JOIN plugin_webfilter_policies p ON p.customerId = e.customerId " +
+            "AND p.configurationId = e.configurationId " +
+            "WHERE e.customerId = #{customerId} AND (e.configurationId IS NULL OR p.enabled = TRUE)")
+    int countAllEvents(@Param("customerId") int customerId);
+
+    @Delete({"<script>",
+            "DELETE FROM plugin_webfilter_events WHERE customerId = #{customerId} AND id IN",
+            "<foreach item='id' collection='ids' open='(' separator=',' close=')'>#{id}</foreach>",
+            "</script>"})
+    int deleteEvents(@Param("customerId") int customerId, @Param("ids") List<Integer> ids);
+
+    @Delete("DELETE FROM plugin_webfilter_events WHERE customerId = #{customerId}")
+    int deleteAllEvents(@Param("customerId") int customerId);
+
+    // Servidor ativo (modo DEV/PRD) gravado pelo hwmdm-admin; null quando a tabela ainda nao existe.
+    @Select("SELECT CASE WHEN COALESCE((SELECT value FROM hwmdm_system_settings WHERE key = 'server.mode'), 'dev') = 'prd' " +
+            "THEN (SELECT value FROM hwmdm_system_settings WHERE key = 'server.prd.url') " +
+            "ELSE (SELECT value FROM hwmdm_system_settings WHERE key = 'server.dev.url') END")
+    String activeServerUrl();
+
     @Delete("DELETE FROM plugin_webfilter_events WHERE createdAt < #{before}")
     int purgeEvents(@Param("before") long before);
 }

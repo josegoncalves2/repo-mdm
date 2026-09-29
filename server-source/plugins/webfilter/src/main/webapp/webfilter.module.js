@@ -13,6 +13,9 @@ angular.module('plugin-webfilter', ['ngResource', 'ngSanitize', 'ui.router', 'nc
         var base = 'rest/plugins/webfilter/private';
         return $resource('', {}, {
             getDashboard: {url: base + '/dashboard', method: 'GET'},
+            getEventsPage: {url: base + '/events/page', method: 'GET'},
+            deleteEvents: {url: base + '/events/delete', method: 'POST'},
+            deleteAllEvents: {url: base + '/events', method: 'DELETE'},
             getCatalog: {url: base + '/catalog', method: 'GET'},
             getPolicies: {url: base + '/policies', method: 'GET'},
             getPolicy: {url: base + '/policies/:configurationId', method: 'GET'},
@@ -114,6 +117,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ngSanitize', 'ui.router', 'nc
             }
             if (id === 'dashboard') {
                 loadDashboard();
+                loadEvents();
             }
         };
 
@@ -132,9 +136,120 @@ angular.module('plugin-webfilter', ['ngResource', 'ngSanitize', 'ui.router', 'nc
             });
         };
 
-        $scope.reloadDashboard = function () { loadDashboard(); };
+        $scope.reloadDashboard = function () { loadDashboard(); loadEvents(); };
+
+        // ---------------------------------------------------------------- historico de bloqueios
+        $scope.pageSizes = [10, 25, 50, 100, 200];
+        $scope.events = {items: [], total: 0, page: 1, size: 25, selected: {}};
+        try {
+            var savedSize = parseInt(window.localStorage.getItem('hwmdm.webfilter.events.size'), 10);
+            if ($scope.pageSizes.indexOf(savedSize) >= 0) { $scope.events.size = savedSize; }
+        } catch (e) { /* sem localStorage: fica o padrao */ }
+
+        // Busca por IP, dispositivo e site, combinados (E); vazia = historico inteiro.
+        $scope.eventFilter = {ip: '', device: '', site: ''};
+        var activeFilter = {};
+        $scope.eventFilterActive = function () { return Object.keys(activeFilter).length > 0; };
+        $scope.searchEvents = function () {
+            activeFilter = {};
+            ['ip', 'device', 'site'].forEach(function (k) {
+                var v = $scope.eventFilter[k];
+                if (v && v.trim()) { activeFilter[k] = v.trim(); }
+            });
+            $scope.events.page = 1;
+            $scope.events.selected = {};
+            loadEvents();
+        };
+        $scope.clearEventFilter = function () {
+            $scope.eventFilter = {ip: '', device: '', site: ''};
+            $scope.searchEvents();
+        };
+
+        var loadEvents = function () {
+            var params = angular.extend({page: $scope.events.page, size: $scope.events.size}, activeFilter);
+            pluginWebFilterService.getEventsPage(params, function (response) {
+                if (response.status === 'OK') {
+                    var d = response.data;
+                    $scope.events.items = d.items || [];
+                    $scope.events.total = d.total || 0;
+                    // A pagina atual pode ter deixado de existir (itens apagados em outra aba)
+                    if ($scope.events.items.length === 0 && $scope.events.page > 1 && $scope.events.total > 0) {
+                        $scope.events.page = $scope.eventsPages();
+                        loadEvents();
+                    }
+                } else {
+                    showErrors(response);
+                }
+            }, onFailure);
+        };
+        $scope.eventsPages = function () {
+            return Math.max(1, Math.ceil($scope.events.total / $scope.events.size));
+        };
+        $scope.eventsPageList = function () {
+            var pages = $scope.eventsPages(), cur = $scope.events.page, from = Math.max(1, cur - 3),
+                to = Math.min(pages, from + 6), list = [];
+            from = Math.max(1, to - 6);
+            for (var i = from; i <= to; i++) { list.push(i); }
+            return list;
+        };
+        $scope.goEventsPage = function (p) {
+            p = Math.max(1, Math.min($scope.eventsPages(), p));
+            if (p !== $scope.events.page) {
+                $scope.events.page = p;
+                $scope.events.selected = {};
+                loadEvents();
+            }
+        };
+        $scope.changeEventsSize = function () {
+            try { window.localStorage.setItem('hwmdm.webfilter.events.size', String($scope.events.size)); } catch (e) { /* ignora */ }
+            $scope.events.page = 1;
+            $scope.events.selected = {};
+            loadEvents();
+        };
+        var selectedIds = function () {
+            return Object.keys($scope.events.selected).filter(function (k) { return $scope.events.selected[k]; })
+                .map(function (k) { return parseInt(k, 10); });
+        };
+        $scope.selectedEventsCount = function () { return selectedIds().length; };
+        $scope.allEventsSelected = function () {
+            return $scope.events.items.length > 0 && $scope.events.items.every(function (e) { return $scope.events.selected[e.id]; });
+        };
+        $scope.toggleAllEvents = function () {
+            var on = !$scope.allEventsSelected();
+            $scope.events.items.forEach(function (e) { $scope.events.selected[e.id] = on; });
+        };
+        $scope.deleteSelectedEvents = function () {
+            var ids = selectedIds();
+            if (!ids.length || !window.confirm(localization.localize('plugin.webfilter.events.delete.selected.confirm').replace('{n}', ids.length))) {
+                return;
+            }
+            pluginWebFilterService.deleteEvents(ids, function (response) {
+                if (response.status === 'OK') {
+                    $scope.events.selected = {};
+                    loadEvents();
+                    loadDashboard();
+                } else {
+                    showErrors(response);
+                }
+            }, onFailure);
+        };
+        $scope.deleteAllEvents = function () {
+            if (!window.confirm(localization.localize('plugin.webfilter.events.delete.all.confirm'))) {
+                return;
+            }
+            pluginWebFilterService.deleteAllEvents(function (response) {
+                if (response.status === 'OK') {
+                    $scope.events.selected = {};
+                    $scope.events.page = 1;
+                    loadEvents();
+                    loadDashboard();
+                } else {
+                    showErrors(response);
+                }
+            }, onFailure);
+        };
         var refreshTimer = $interval(function () {
-            if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); }
+            if ($scope.activeWfTab === 'dashboard' && !$scope.dashboardLoading) { loadDashboard(); loadEvents(); }
         }, 10000);
         $scope.$on('$destroy', function () { $interval.cancel(refreshTimer); });
         // ------------------------------------------------------------------------------------------------ DNS lists
@@ -415,6 +530,7 @@ angular.module('plugin-webfilter', ['ngResource', 'ngSanitize', 'ui.router', 'nc
         };
 
         loadDashboard();
+        loadEvents();
         loadCatalog();
         loadPolicies();
         loadApps();

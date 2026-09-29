@@ -66,6 +66,14 @@ public final class BlockedPageReporter {
     private BlockedPageReporter() {
     }
 
+    /**
+     * Nova navegacao (outra aba, outro app, volta ao Chrome): a proxima pagina de bloqueio,
+     * mesmo do mesmo site, e' uma nova tentativa e precisa ser registrada.
+     */
+    public static synchronized void newNavigation() {
+        shownHost = null;
+    }
+
     public static boolean isBrowser(CharSequence pkg) {
         return pkg != null && BROWSERS.contains(pkg.toString());
     }
@@ -106,10 +114,12 @@ public final class BlockedPageReporter {
                 // Omnibox em edicao: o texto ali nao e' a pagina carregada, e a proxima
                 // pagina de bloqueio, mesmo do mesmo site, e' uma nova tentativa.
                 shownHost = null;
+                BlockOverlay.hide(service);
                 return;
             }
             if (!isBlockedPage(root)) {
                 shownHost = null;
+                BlockOverlay.hide(service);
                 return;
             }
             String host = hostOf(address);
@@ -118,11 +128,18 @@ public final class BlockedPageReporter {
             }
             shownHost = host;
             final String url = address;
-            final String browser = root.getPackageName().toString();
+            AccessibilityNodeInfo bar = firstNode(root, root.getPackageName() + ":id/url_bar");
+            final int top = BlockOverlay.contentTop(bar);
+            if (bar != null) {
+                bar.recycle();
+            }
             new Thread(() -> {
                 String page = send(service, url, host);
                 if (page != null) {
-                    showBlockPage(service, browser, page);
+                    // O HTML vem pelo mesmo canal HTTP do aviso, que comprovadamente alcanca o
+                    // servidor; a janela so' desenha, nao depende da rede da WebView.
+                    String html = fetch(service, page);
+                    BlockOverlay.show(service, page, html, top);
                 }
             }, "hwmdm-remote-webfilter-send").start();
         } catch (Throwable t) {
@@ -205,75 +222,6 @@ public final class BlockedPageReporter {
         }
     }
 
-    /**
-     * Troca o erro nativo do Chrome pela pagina de bloqueio web que o servidor indicou, NA
-     * MESMA ABA: escreve o endereco na barra do Chrome e confirma, como o usuario faria. Um
-     * Intent ACTION_VIEW abria outra aba e deixava o erro generico na aba original.
-     * So' se a barra nao aceitar a edicao e' que cai no Intent, para a pagina nao sumir.
-     */
-    private static void showBlockPage(AccessibilityService service, String browser, String page) {
-        if (navigateInSameTab(service, browser, page)) {
-            return;
-        }
-        RemoteLog.w(service, "Web Filter: barra do Chrome nao aceitou a navegacao; abrindo pagina de bloqueio por Intent");
-        try {
-            android.content.Intent intent = new android.content.Intent(android.content.Intent.ACTION_VIEW, Uri.parse(page));
-            intent.setPackage(browser);
-            intent.putExtra("com.android.browser.application_id", browser);
-            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
-            service.startActivity(intent);
-        } catch (Throwable t) {
-            RemoteLog.w(service, "Web Filter: nao foi possivel abrir a pagina de bloqueio: " + t);
-        }
-    }
-
-    /** ACTION_IME_ENTER (API 30+), por id para compilar tambem contra SDKs antigos. */
-    private static final int ACTION_IME_ENTER = 0x01020054;
-
-    private static boolean navigateInSameTab(AccessibilityService service, String browser, String page) {
-        for (int attempt = 0; attempt < 3; attempt++) {
-            AccessibilityNodeInfo root = null;
-            AccessibilityNodeInfo bar = null;
-            try {
-                root = service.getRootInActiveWindow();
-                if (root == null || !browser.contentEquals(root.getPackageName())) {
-                    return false;
-                }
-                bar = firstNode(root, browser + ":id/url_bar");
-                if (bar == null) {
-                    return false;
-                }
-                bar.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-                bar.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
-                sleep(250);
-                bar.refresh();
-                android.os.Bundle args = new android.os.Bundle();
-                args.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, page);
-                if (!bar.performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, args)) {
-                    sleep(300);
-                    continue;
-                }
-                sleep(150);
-                bar.refresh();
-                if (bar.performAction(ACTION_IME_ENTER)) {
-                    RemoteLog.i(service, "Web Filter: pagina de bloqueio aberta na mesma aba");
-                    return true;
-                }
-                return false;
-            } catch (Throwable t) {
-                sleep(300);
-            } finally {
-                if (bar != null) {
-                    bar.recycle();
-                }
-                if (root != null) {
-                    root.recycle();
-                }
-            }
-        }
-        return false;
-    }
-
     private static AccessibilityNodeInfo firstNode(AccessibilityNodeInfo root, String viewId) {
         List<AccessibilityNodeInfo> nodes = root.findAccessibilityNodeInfosByViewId(viewId);
         AccessibilityNodeInfo found = null;
@@ -287,11 +235,34 @@ public final class BlockedPageReporter {
         return found;
     }
 
-    private static void sleep(long ms) {
+    /** Baixa a pagina de bloqueio; null se falhar (a janela entao carrega a URL direto). */
+    private static String fetch(AccessibilityService service, String page) {
+        HttpURLConnection connection = null;
         try {
-            Thread.sleep(ms);
-        } catch (InterruptedException ignored) {
-            Thread.currentThread().interrupt();
+            connection = (HttpURLConnection) new URL(page).openConnection();
+            connection.setConnectTimeout(CONNECT_TIMEOUT_MS);
+            connection.setReadTimeout(READ_TIMEOUT_MS);
+            int status = connection.getResponseCode();
+            if (status != 200) {
+                RemoteLog.w(service, "Web Filter: pagina de bloqueio respondeu HTTP " + status + ": " + page);
+                return null;
+            }
+            try (java.io.InputStream in = connection.getInputStream()) {
+                java.io.ByteArrayOutputStream buf = new java.io.ByteArrayOutputStream();
+                byte[] chunk = new byte[8192];
+                int n;
+                while ((n = in.read(chunk)) > 0) {
+                    buf.write(chunk, 0, n);
+                }
+                return buf.toString("UTF-8");
+            }
+        } catch (Throwable t) {
+            RemoteLog.w(service, "Web Filter: nao foi possivel baixar a pagina de bloqueio " + page + ": " + t);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
     }
 

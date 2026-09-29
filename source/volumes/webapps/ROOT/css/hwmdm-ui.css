@@ -1165,3 +1165,18 @@ button:focus-visible,
     margin: 0;
 }
 .hwmdm-main .devices-table > tbody > tr > td.deviceActions .dropdown-toggle .caret { margin-left: 0; }
+
+/* Layout unico: toda pagina do painel ocupa a largura inteira da area de trabalho e se
+   adapta a tela. Antes cada tela tinha seu proprio max-width (700, 800, 980, 1100, 1280,
+   1500, 1680px) e umas ficavam centralizadas, outras encostadas a esquerda. */
+.hwmdm-workspace,
+.administration, .settings, .reports, .profile,
+.remote-console, .hwmdm-dashboard, .hwmdm-list-page, .hwmdm-section-page,
+.hwmdm-config-page, .cfg-savebar-inner, .width-700, .hwmdm-main .width-700,
+.qr-enrollment, .width-1000, .hwmdm-settings-page {
+    max-width: none !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}

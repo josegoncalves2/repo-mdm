@@ -255,9 +255,13 @@ public class WebFilterService {
     // ================================================================================================= dashboard
     /** Blocked accesses are kept for this long. */
     private static final long EVENT_RETENTION_MILLIS = 30L * 24 * 3600_000L;
-    /** A reload of the same blocked page within this window is not a new attempt. */
-    private static final long EVENT_DEDUP_MILLIS = 60_000L;
-    private static final int EVENT_MAX_PER_DEVICE_HOUR = 120;
+    /**
+     * Toda tentativa conta: o agente ja envia uma vez por navegacao. Esta janela so' absorve o
+     * envio em dobro da MESMA carga de pagina (rajada de eventos de acessibilidade).
+     */
+    private static final long EVENT_DEDUP_MILLIS = 3_000L;
+    /** Protecao contra um aparelho em laco, nao um limite de uso normal. */
+    private static final int EVENT_MAX_PER_DEVICE_HOUR = 3_600;
 
     /**
      * <p>Everything the dashboard shows for the current customer: the profiles and what they enforce, whether each
@@ -265,6 +269,39 @@ public class WebFilterService {
      */
     public List<WebFilterEvent> searchEvents(String ip, String device, String site) {
         return dao.searchEvents(currentCustomerId(), ip, device, site, 500);
+    }
+
+    public static final int MAX_PAGE_SIZE = 500;
+
+    /** Pagina do historico de bloqueios: itens + total, para a navegacao da tela. */
+    public Map<String, Object> eventsPage(int page, int size, String ip, String device, String site) {
+        int customerId = currentCustomerId();
+        int s = Math.max(1, Math.min(MAX_PAGE_SIZE, size));
+        int p = Math.max(1, page);
+        boolean filtered = !blank(ip) || !blank(device) || !blank(site);
+        Map<String, Object> result = new LinkedHashMap<>();
+        if (filtered) {
+            result.put("items", dao.searchEventsPage(customerId, ip, device, site, (p - 1) * s, s));
+            result.put("total", dao.countSearchEvents(customerId, ip, device, site));
+        } else {
+            result.put("items", dao.getEventsPage(customerId, (p - 1) * s, s));
+            result.put("total", dao.countAllEvents(customerId));
+        }
+        result.put("page", p);
+        result.put("size", s);
+        return result;
+    }
+
+    private static boolean blank(String v) {
+        return v == null || v.trim().isEmpty();
+    }
+
+    public int deleteEvents(List<Integer> ids) {
+        return dao.deleteEvents(currentCustomerId(), ids);
+    }
+
+    public int deleteAllEvents() {
+        return dao.deleteAllEvents(currentCustomerId());
     }
 
     public Map<String, Object> dashboard() {
@@ -358,9 +395,16 @@ public class WebFilterService {
         if (device == null) {
             return null;
         }
-        WebFilterSettings settings = dao.getSettings(device.getCustomerId());
-        return publicAddress(baseUrl, settings == null ? null : settings.getDnsDomain())
-                + blockPagePath(deviceNumber, url == null ? null : hostOf(url));
+        // O servidor ativo (modo DEV/PRD, em Servidor no painel) define o endereco publico; sem ele,
+        // o dominio do filtro como antes.
+        String active = dao.activeServerUrl();
+        String address = active != null && active.trim().startsWith("http") ? active.trim().replaceFirst("/+$", "")
+                : null;
+        if (address == null) {
+            WebFilterSettings settings = dao.getSettings(device.getCustomerId());
+            address = publicAddress(baseUrl, settings == null ? null : settings.getDnsDomain());
+        }
+        return address + blockPagePath(deviceNumber, url == null ? null : hostOf(url));
     }
 
     public boolean reportBlocked(String deviceNumber, String url) {

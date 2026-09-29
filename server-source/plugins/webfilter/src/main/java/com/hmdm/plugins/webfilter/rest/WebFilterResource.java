@@ -140,6 +140,40 @@ public class WebFilterResource {
     }
 
     @GET
+    @Path("/events/page")
+    public javax.ws.rs.core.Response eventsPage(@javax.ws.rs.QueryParam("page") @javax.ws.rs.DefaultValue("1") int page,
+                                               @javax.ws.rs.QueryParam("size") @javax.ws.rs.DefaultValue("25") int size,
+                                               @javax.ws.rs.QueryParam("ip") String ip,
+                                               @javax.ws.rs.QueryParam("device") String device,
+                                               @javax.ws.rs.QueryParam("site") String site) {
+        if (denied()) {
+            return forbidden();
+        }
+        return ok(Response.OK(service.eventsPage(page, size, ip, device, site)));
+    }
+
+    /** Apaga os eventos selecionados (ids no corpo) do historico de bloqueios. */
+    @javax.ws.rs.POST
+    @Path("/events/delete")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public javax.ws.rs.core.Response deleteEvents(List<Integer> ids) {
+        if (denied()) {
+            return forbidden();
+        }
+        return ok(Response.OK(service.deleteEvents(ids)));
+    }
+
+    /** Apaga todo o historico de bloqueios do cliente. */
+    @DELETE
+    @Path("/events")
+    public javax.ws.rs.core.Response deleteAllEvents() {
+        if (denied()) {
+            return forbidden();
+        }
+        return ok(Response.OK(service.deleteAllEvents()));
+    }
+
+    @GET
     @Path("/policies")
     public javax.ws.rs.core.Response listPolicies() {
         if (denied()) {

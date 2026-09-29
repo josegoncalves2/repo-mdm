@@ -3,6 +3,29 @@
 </div>
 <div class="webfilter-page" ng-controller="PluginWebFilterController" ng-if="hasPermission('plugin_webfilter_access')">
     <style>
+        .webfilter-page { max-width: 100%; overflow-x: hidden; }
+        .webfilter-page .hwmdm-page-toolbar { display: block; margin-bottom: 10px; }
+        .webfilter-page .kiosk-status-strip {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .webfilter-page .kiosk-status-cell { min-width: 0; }
+        .webfilter-page .kiosk-status-cell strong {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .webfilter-page .kiosk-tabs {
+            flex-wrap: wrap;
+            gap: 0 10px;
+            overflow: visible;
+        }
+        .webfilter-page .kiosk-tab {
+            flex: 0 0 auto;
+            min-width: 0;
+            padding: 9px 8px 7px;
+            white-space: nowrap;
+        }
         .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 14px; }
         .wf-cat { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hwmdm-border); border-radius: 8px;
                   padding: 8px 10px; background: var(--hwmdm-surface); margin: 0; font-weight: 600; cursor: pointer; }
@@ -35,6 +58,7 @@
         .wf-form-field .wf-code-area { min-height: 150px; font-family: monospace; font-size: 12px; }
         .wf-block-preview { border: 1px solid var(--hwmdm-border); border-radius: 8px; overflow: hidden; background: #f3f7fb; }
         .wf-block-preview-body { min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        @media (max-width: 900px) { .wf-block-layout { grid-template-columns: 1fr; } }
         .wf-block-card { width: 100%; max-width: 340px; border: 1px solid #d7e2ee; border-radius: 8px; background: #fff; padding: 22px; box-shadow: 0 10px 24px rgba(15, 23, 42, .12); }
         .wf-block-logo { max-width: 150px; max-height: 56px; object-fit: contain; margin-bottom: 16px; }
         .wf-block-pill { display: inline-block; border-radius: 999px; background: #e8f4fb; color: #16658a; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
@@ -43,7 +67,11 @@
         .wf-block-note { border-top: 1px solid #e4edf5; color: #5f6b7a; font-size: 12px; line-height: 1.4; padding-top: 12px; overflow-wrap: anywhere; }
         .wf-block-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
         .wf-block-device-note { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface-subtle); }
-        @media (max-width: 900px) { .wf-block-layout { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) {
+            .webfilter-page .kiosk-status-strip { grid-template-columns: 1fr; }
+            .webfilter-page .kiosk-tab { white-space: normal; }
+            .wf-block-layout { grid-template-columns: 1fr; }
+        }
     </style>
 
     <div class="hwmdm-page-toolbar">
@@ -81,6 +109,7 @@
     </div>
 
     <!-- ======================================================================== Dashboard -->
+    <style>.wf-events-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}.wf-events-actions{display:flex;gap:6px}.wf-pager{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:8px}.wf-pager select{margin-left:6px}</style>
     <section class="kiosk-panel" ng-if="activeWfTab === 'dashboard'">
         <div class="kiosk-panel-head">
             <h4 localized>plugin.webfilter.dashboard.title</h4>
@@ -139,23 +168,36 @@
                  localized>plugin.webfilter.dashboard.delivery.empty</div>
         </div>
 
-        <h5><strong localized>plugin.webfilter.dashboard.events</strong></h5>
+        <div class="wf-events-head">
+            <h5><strong localized>plugin.webfilter.dashboard.events</strong>
+                <small class="wf-muted">({{events.total}})</small></h5>
+            <div class="wf-events-actions">
+                <button type="button" class="btn btn-default btn-sm" ng-disabled="!selectedEventsCount()"
+                        ng-click="deleteSelectedEvents()" data-testid="wf-events-delete-selected">
+                    <span localized>plugin.webfilter.events.delete.selected</span> ({{selectedEventsCount()}})
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" ng-disabled="!events.total"
+                        ng-click="deleteAllEvents()" data-testid="wf-events-delete-all"
+                        localized>plugin.webfilter.events.delete.all</button>
+            </div>
+        </div>
         <form class="wf-add-app" ng-submit="searchEvents()" data-testid="wf-events-filter">
-            <input type="text" class="form-control" ng-model="eventFilter.ip" placeholder="IP (ex.: 192.168.1.100)"
+            <input type="text" class="form-control" ng-model="eventFilter.ip" placeholder="{{'plugin.webfilter.filter.ip' | localize}}"
                    aria-label="IP" data-testid="wf-filter-ip">
-            <input type="text" class="form-control" ng-model="eventFilter.device" placeholder="Dispositivo (ex.: R9XT200AMYY)"
+            <input type="text" class="form-control" ng-model="eventFilter.device" placeholder="{{'plugin.webfilter.filter.device' | localize}}"
                    aria-label="Dispositivo" data-testid="wf-filter-device">
-            <input type="text" class="form-control" ng-model="eventFilter.site" placeholder="Site (ex.: facebook.com)"
+            <input type="text" class="form-control" ng-model="eventFilter.site" placeholder="{{'plugin.webfilter.filter.site' | localize}}"
                    aria-label="Site" data-testid="wf-filter-site">
-            <button type="submit" class="btn btn-primary" ng-disabled="eventsLoading" data-testid="wf-filter-search">Buscar</button>
-            <button type="button" class="btn btn-default" ng-click="clearEventFilter()" ng-if="eventResults"
-                    data-testid="wf-filter-clear">Limpar</button>
+            <button type="submit" class="btn btn-primary" data-testid="wf-filter-search" localized>plugin.webfilter.filter.search</button>
+            <button type="button" class="btn btn-default" ng-click="clearEventFilter()" ng-if="eventFilterActive()"
+                    data-testid="wf-filter-clear" localized>plugin.webfilter.filter.clear</button>
         </form>
-        <p class="wf-muted" ng-if="eventResults">{{eventResults.length}} registro(s) encontrado(s){{eventResults.length >= 500 ? ' — mostrando os 500 mais recentes' : ''}}.</p>
         <div class="table-responsive">
             <table class="table kiosk-table">
                 <thead>
                 <tr>
+                    <th style="width:36px"><input type="checkbox" ng-checked="allEventsSelected()" ng-click="toggleAllEvents()"
+                               title="{{'plugin.webfilter.events.select.page' | localize}}" data-testid="wf-events-select-page"></th>
                     <th localized>plugin.webfilter.col.when</th>
                     <th localized>plugin.webfilter.col.device</th>
                     <th>IP</th>
@@ -165,9 +207,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="e in (eventResults || dashboard.events)" data-testid="wf-event-row">
+                <tr ng-repeat="e in events.items track by e.id" data-testid="wf-event-row">
+                    <td><input type="checkbox" ng-model="events.selected[e.id]" data-testid="wf-event-select"></td>
                     <td>{{e.createdAt | date:'dd/MM/yyyy HH:mm:ss'}}</td>
-                    <td>{{e.deviceNumber || "Dispositivo não identificado"}}</td>
+                    <td>{{e.deviceNumber || ('plugin.webfilter.device.unknown' | localize)}}</td>
                     <td class="wf-code">{{e.clientIp || '-'}}</td>
                     <td class="wf-code">{{e.host}}</td>
                     <td>{{e.category || '-'}}</td>
@@ -175,8 +218,21 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="kiosk-empty" ng-if="(eventResults || dashboard.events || []).length === 0"
-                 localized>plugin.webfilter.dashboard.events.empty</div>
+            <div class="kiosk-empty" ng-if="!events.items.length" localized>plugin.webfilter.dashboard.events.empty</div>
+        </div>
+        <div class="wf-pager" ng-if="events.total > 0" data-testid="wf-events-pager">
+            <span class="wf-muted">{{(events.page - 1) * events.size + 1}}&ndash;{{(events.page - 1) * events.size + events.items.length}} / {{events.total}}</span>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default" ng-disabled="events.page <= 1" ng-click="goEventsPage(1)">&laquo;</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page <= 1" ng-click="goEventsPage(events.page - 1)">&lsaquo;</button>
+                <button type="button" class="btn" ng-repeat="p in eventsPageList()" ng-class="p === events.page ? 'btn-primary' : 'btn-default'"
+                        ng-click="goEventsPage(p)">{{p}}</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page >= eventsPages()" ng-click="goEventsPage(events.page + 1)">&rsaquo;</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page >= eventsPages()" ng-click="goEventsPage(eventsPages())">&raquo;</button>
+            </div>
+            <label class="wf-muted"><span localized>plugin.webfilter.events.per.page</span>
+                <select ng-model="events.size" ng-options="n for n in pageSizes" ng-change="changeEventsSize()"
+                        data-testid="wf-events-size"></select></label>
         </div>
     </section>
 

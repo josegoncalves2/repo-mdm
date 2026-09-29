@@ -1,115 +1,153 @@
 # 🔴 RELATÓRIO DE AUDITORIA QA — HEADWIND MDM
 
-**Data:** 29/09/2026 | **Versão:** HWMDM 1.0.0 build 1 · 76f2734
-**Ambiente:** mdm.pmeto.local:8080 | **4 dispositivos:** SM-T225 (Samsung Galaxy Tab)
-**Analista:** QA (modo cuzão, sem dó)
+## 🚨 CRÍTICOS — IMPEDEM O USO OU CAUSAM PERDA DE DADOS
+
+### 1. SERVIDOR INSTÁVEL — ERRO 404/EMPTY RESPONSE NO FAVICON
+
+**Onde:** Toda página carrega `http://192.168.1.75:8080/files/favicon.png` — **QUE NEM EXISTE**.  
+**Evidência:** `net::ERR_EMPTY_RESPONSE` no console.  
+**Problema:** O path do favicon está hardcoded apontando para **outro IP (192.168.1.75)** que não é o servidor atual. Isso é sintoma de configuração mal copiada de ambiente.  
+**Correção:** Usar favicon relativo ao domínio atual ou remover o hardcode.
+
+### 2. 3 DISPOSITIVOS OFFLINE HÁ 2 MESES — SEM ALERTA
+
+**Onde:** Tabela de Devices/Dashboard.  
+**Evidência:** Dispositivos `R9XT106VP1E`, `R9XT106Y5RP`, `R9XT108EM8T` — último reporte **10/08/2026** (há 50 dias).  
+**Problema:** Não há indicador visual de alerta, badge, ou notificação. O sistema trata dispositivo abandonado como se estivesse operacional. O admin só descobre se ler data por data.  
+**Correção:** Implementar alerta de "dispositivo não reporta há N dias", destacar visualmente (vermelho), e opção de disparar notificação.
+
+### 3. SUPORTE REMOTO COM VERSÃO ATRASADA — SEM ALERTA
+
+**Onde:** Coluna "Installation Status" dos dispositivos.  
+**Evidência:** 3 dispositivos mostram "Suporte Remoto: installed 1.14, available 1.27".  
+**Problema:** O sistema SABE que há atualização disponível (1.27) mas não força nem sugere a atualização. Fica só informativo. Isso é omissão.  
+**Correção:** Botão "Atualizar agora" ou trigger automático de atualização OTA quando disponível.
+
+### 4. "Group action" PERMANENTEMENTE DESABILITADO
+
+**Onde:** Barra de ferramentas da lista de devices.  
+**Evidência:** Botão `Group action` sempre com `[disabled]`.  
+**Problema:** Funcionalidade de ação em lote simplesmente não funciona. Se não há devices selecionados, deveria habilitar ao marcar checkboxes. Se a feature não existe, deveria ser removida.  
+**Correção:** Implementar ações em lote (enviar comando, atualizar config, etc.) ou remover o botão.
 
 ---
 
-## 🚨 CRÍTICOS — Requer ação imediata
+## 🟡 MÉDIOS — IMPACTAM USABILIDADE E OPERAÇÃO
 
-### 1. 3 dispositivos OFFLINE há 50 DIAS sem alerta/notificação
-| Dispositivo | Último reporte | Dias offline |
-|-------------|----------------|--------------|
-| R9XT106VP1E | 10/08/2026 | ~50 |
-| R9XT106Y5RP | 10/08/2026 | ~50 |
-| R9XT108EM8T | 10/08/2026 | ~50 |
+### 5. FORMATAÇÃO DE DATA INCONSISTENTE NA TABELA
 
-- O sistema mostra "No report for more than 7 days" mas **não dispara alerta, email, push ou ação corretiva**
-- Existe um banner "3 device(s) have not reported for more than 7 days" mas é fácil de ignorar
-- **Correção:** Implementar notificação proativa (email/push) e destacar visualmente em vermelho com badge
+**Onde:** Coluna "Date" vs "Enrolled".  
+**Evidência:** Date mostra `10/08/26 16:18`, Enrolled mostra `07/08/26 14:29`. O header "Date" tem tooltip `2026/08/10 16:18:15` (ISO). São **3 formatos diferentes no mesmo sistema**.  
+**Correção:** Padronizar formato de data em todo o sistema (ISO 8601 ou dd/mm/aaaa HH:mm).
 
-### 2. TODOS os dispositivos com app desatualizada — sem atualização automática
-| Dispositivo | Instalado | Disponível |
-|-------------|-----------|------------|
-| R9XT106VP1E | 1.14 | 1.29 |
-| R9XT106Y5RP | 1.14 | 1.29 |
-| R9XT108EM8T | 1.14 | 1.29 |
-| R9XT200AMYY | 1.28 | 1.29 |
+### 6. COLUNA "Description" VAZIA EM TODOS OS DISPOSITIVOS
 
-- Botão "Update now" existe mas **depende de ação manual do admin**
-- 100% dos devices com app desatualizada — falha sistêmica
-- **Correção:** Política de atualização automática OTA para apps críticas (Suporte Remoto)
+**Onde:** Tabela de devices.  
+**Evidência:** Todos os 4 devices têm célula `Description` vazia.  
+**Problema:** Campo disponível mas nunca preenchido. Se não é usado, polui a interface.  
+**Correção:** Ocultar coluna por padrão ou preencher automaticamente com dados relevantes.
 
-### 3. Launcher version 6.36 — configuração Kiosk Total é 6.37.3
-- Todos os devices rodando launcher **6.36**, mas a config atribuída é "Kiosk Total (6.37.3)"
-- A versão do launcher **não bate com a configuração** — ninguém percebeu
-- **Correção:** Verificar pipeline de deploy do launcher — ou força atualização OTA ou corrige a configuração
+### 7. COLUNA "Kiosk mode" VAZIA EM TODOS OS DISPOSITIVOS
 
----
+**Onde:** Tabela de devices.  
+**Evidência:** Célula vazia para todos os 4 devices.  
+**Problema:** Campo existe mas não é populado. Se o kiosk mode não é detectado, deveria mostrar "N/A" ou "unknown".  
+**Correção:** Preencher com valor default ou ocultar.
 
-## 🟡 MÉDIOS — Requer planejamento
+### 9. MENSAGENS (CHAT) — CONTEÚDO NÃO CAPTURADO PELA ACESSIBILIDADE
 
-### 4. Configuração "teste" em produção
-- Filtro de configurações ainda mostra opção `teste` ao lado de configs reais
-- Polui o seletor e pode causar confusão
-- **Correção:** Remover configuração "teste"
+**Onde:** `/chat`.  
+**Evidência:** O snapshot de acessibilidade não mostra o conteúdo do ng-view. O innerText do body não retorna o conteúdo da página.  
+**Problema:** Provável problema de renderização Angular ou lazy loading. Pode ser que a página não carregue corretamente.  
+**Correção:** Verificar se o módulo de chat está funcional e renderizando corretamente.
 
-### 5. "Group action" permanentemente desabilitado
-- Botão nunca habilita, mesmo com checkboxes marcados
-- Funcionalidade de ação em lote simplesmente não funciona
-- **Correção:** Implementar ações em lote ou remover o botão
+### 10. REPORTS — MESMO PROBLEMA DE RENDERIZAÇÃO
 
-### 6. Kiosk mode = "no" para TODOS os dispositivos
-- Coluna Kiosk mode mostra "no" em todos — se o dispositivo está em kiosk, deveria mostrar "yes"
-- Indica que o report do kiosk mode pode estar quebrado
-- **Correção:** Verificar se o campo kiosk mode está sendo populado corretamente
-
-### 7. Files status e Description sempre vazios
-- Colunas ocupam espaço na tabela mas **nenhum dispositivo tem dado**
-- Description: vazio em 4/4 devices
-- Files status: vazio em 4/4 devices
-- **Correção:** Ocultar colunas por default ou preencher automaticamente
-
-### 8. Bateria entre 44%-78% sem alerta configurável
-- R9XT106VP1E com **44%** — não crítico hoje, mas não há threshold configurável
-- **Melhoria:** Implementar alerta configurável (< 20%, < 10%)
-
-### 9. Location map — mapa sem devices visíveis
-- Nenhum dispositivo aparece no mapa GPS
-- Pode ser que GPS não esteja sendo reportado ou módulo desabilitado
-- **Correção:** Verificar se o módulo de GPS está funcionando e os devices reportando
-
-### 10. Messages (Chat) — conteúdo não acessível via snapshot
-- O Angular não expõe o conteúdo do chat no DOM acessível
-- **Correção:** Garantir acessibilidade no módulo de chat
+**Onde:** `/reports`.  
+**Evidência:** Idem ao chat — conteúdo não capturável.  
+**Problema:** Pode ser que o módulo de reports não tenha dados ou esteja quebrado.  
+**Correção:** Garantir renderização correta ou mensagem "nenhum relatório disponível".
 
 ---
 
-## 🔧 MELHORIAS — Sugestões
+## 🟡 MENORES — POLIMENTO E EXPERIÊNCIA
 
-### 11. Botões de ação inconsistentes entre dispositivos
-- Devices online mostram: Edit, QR code, Remote access, More ...
-- **Sugestão:** Padronizar ações visíveis e mover ações secundárias para dentro do "More"
+### 11. BOTÃO "More ..." COM REDUNDÂNCIA
 
-### 12. Tooltip "Fast search by number" existe mas nome confuso
-- Tooltip explica bem, mas o nome é ambíguo
-- **Sugestão:** Renomear para "Busca exata por número (final)"
+**Onde:** Ações de cada device.  
+**Evidência:** Botão `More ...` com reticências. Já existem botões individuais para Edit, QR, Force Kiosk, Remote, GPS, Delete.  
+**Problema:** UI poluída. Muitos botões na mesma linha. O "More" deveria agrupar ações secundárias.  
+**Correção:** Mover ações menos usadas (Force Kiosk, GPS, Delete) para dentro do "More".
 
-### 13. Paginação 1-4/4 sem controles de navegação
-- Mostra "1-4/4" e seletor "Per page" mas não tem botões de página anterior/próxima
-- **Sugestão:** Implementar navegação completa de paginação
+### 12. TEMA LIGHT/DARK — SWITCH EXISTE MAS NÃO SE SABE SE FUNCIONA
 
-### 14. Versão do Android fixa em 14 para todos
-- Todos SM-T225 com Android 14 — correto, mas sem destaque para versões diferentes
-- **Sugestão:** Destacar visualmente versões desatualizadas (< 13)
+**Onde:** Topo da página, botão "Switch light/dark theme".  
+**Problema:** Não testei a fundo, mas é um ponto de possível falha se o tema não persistir ou quebrar layout.  
+**Correção:** Testar e garantir persistência em localStorage.
 
-### 15. Navegação com data em formato inconsistente
-- Header da coluna mostra "10/08/2026 16:18" mas tooltip mostra "2 mon ago"
-- **Sugestão:** Padronizar formato de data em todo o sistema
+### 13. VERSÃO DO LAUNCHER DESATUALIZADA (6.36)
+
+**Onde:** Coluna "Launcher version".  
+**Evidência:** Todos os devices mostram `6.36`.  
+**Problema:** Se 6.37.3 é a config "Kiosk Total", por que os devices ainda estão em 6.36? Atualização não está sendo propagada.  
+**Correção:** Verificar pipeline de deploy do launcher.
+
+### 14. BATERIA ENTRE 44% E 78% — SEM ALERTA DE BATERIA FRACA
+
+**Onde:** Coluna "Battery level".  
+**Evidência:** Dispositivo `R9XT106VP1E` com 44%.  
+**Problema:** 44% não é crítico, mas não há threshold configurável para alerta de bateria baixa.  
+**Melhoria:** Implementar alerta configurável (< 20%, < 10%).
 
 ---
 
-## 📊 RESUMO FINAL
+## 🔧 SUGESTÕES DE MELHORIAS
 
-| Gravidade | Qtd | Prioridade |
-|-----------|-----|------------|
-| 🔴 Crítico | 3 | Imediata |
-| 🟡 Médio | 7 | Curto prazo |
-| 🔧 Melhoria | 5 | Médio prazo |
-| **Total** | **15** | |
+### 15. ADICIONAR COLUNA "ÚLTIMO REPORTE" COM DESTAQUE TEMPORAL
 
-**Veredito do QA:** O sistema funciona, mas está largado às traças. 75% dos dispositivos estão abandonados há 50 dias, apps desatualizadas em 100% dos devices, configuração "teste" em produção, launcher com versão errada, kiosk mode reportando "no" em kiosks. Isso não é MDM de produção — é um sistema que ninguém está monitorando. Precisa de correções urgentes antes de qualquer rollout.
+**Sugestão:** Em vez de mostrar "2 mon ago" no tooltip, ter uma coluna ou badge colorido:
+
+- Verde: < 1 dia
+- Amarelo: 1-7 dias
+- Vermelho: > 7 dias
+
+### 16. FILTRO "More parameters" EXPANSÍVEL — SEM FEEDBACK
+
+**Onde:** Botão "More parameters" na listagem.  
+**Problema:** Não há indicador se está expandido ou colapsado.  
+**Correção:** Adicionar ícone de seta (▸/▾) para indicar estado.
+
+### 17. CHECKBOX "Fast search by number" — DESCRIÇÃO CONFUSA
+
+**Onde:** Ao lado do campo de busca.  
+**Problema:** O que é "fast search by number"? Número do dispositivo? IMEI? Serial? Precisa de tooltip explicativo.  
+**Correção:** Adicionar tooltip: "Busca pelo número do dispositivo (Device Number)".
+
+### 18. PAGINAÇÃO "1-4/4" — INFORMAÇÃO INCOMPLETA
+
+**Onde:** Acima da tabela.  
+**Problema:** Mostra "1-4/4" mas não há controles de página (anterior/próximo). Se tiver mais de 4 devices no futuro, não tem como navegar.  
+**Correção:** Implementar paginação completa ou aumentar o limite padrão.
+
+
+### 20. NENHUM LOG DE AUDITORIA VISÍVEL
+
+**Onde:** Módulo Audit.  
+**Problema:** Não consegui capturar conteúdo. Se está vazio, o sistema não está logando ações dos admins.  
+**Correção:** Garantir que toda ação administrativa seja registrada no audit log.
+
+---
+
+## 📊 RESUMO
+
+|Gravidade|Quantidade|
+|---|---|
+|🔴 Crítico|4|
+|🟡 Médio|6|
+|🔧 Melhoria|10|
+|**Total**|**20**|
+
+**Veredito do QA:** O sistema funciona, mas está **largado às traças**. Dispositivos offline há 2 meses sem alerta, favicon quebrado apontando IP errado, configuração "teste" em produção, versão de launcher desatualizada, group action morto, data em 3 formatos diferentes. Isso não é MDM de produção — é um protótipo que foi parar no ar. Precisa de **correções urgentes** antes de qualquer rollout.
 
 ---
 

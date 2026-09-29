@@ -25,7 +25,7 @@ angular.module('plugin-audit', ['ngResource', 'ui.bootstrap', 'ui.router', 'ngTa
         try {
             $stateProvider.state('plugin-audit', {
                 url: "/" + 'plugin-audit',
-                templateUrl: 'app/components/main/view/content.html?v=h30f96613ac',
+                templateUrl: 'app/components/main/view/content.html',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.plugin.audit.main" | localize}}', //label to show in breadcrumbs
@@ -167,7 +167,7 @@ angular.module('plugin-audit', ['ngResource', 'ui.bootstrap', 'ui.router', 'ngTa
 
         $scope.viewLog = function (log) {
             var modalInstance = $modal.open({
-                templateUrl: 'app/components/plugins/audit/views/audit.modal.html?v=h7eafefe651',
+                templateUrl: 'app/components/plugins/audit/views/audit.modal.html',
                 controller: 'PluginAuditModalController',
                 resolve: {
                     log: function () {

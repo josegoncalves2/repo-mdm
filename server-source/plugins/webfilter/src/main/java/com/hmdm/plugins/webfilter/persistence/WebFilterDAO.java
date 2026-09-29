@@ -141,6 +141,39 @@ public class WebFilterDAO {
         return mapper.countEvents(customerId, since);
     }
 
+    public List<WebFilterEvent> getEventsPage(int customerId, int offset, int limit) {
+        return mapper.findEventsPage(customerId, offset, limit);
+    }
+
+    public List<WebFilterEvent> searchEventsPage(int customerId, String ip, String device, String site,
+                                                 int offset, int limit) {
+        return mapper.searchEventsPage(customerId, like(ip), like(device), like(site), offset, limit);
+    }
+
+    public int countSearchEvents(int customerId, String ip, String device, String site) {
+        return mapper.countSearchEvents(customerId, like(ip), like(device), like(site));
+    }
+
+    public int countAllEvents(int customerId) {
+        return mapper.countAllEvents(customerId);
+    }
+
+    public int deleteEvents(int customerId, List<Integer> ids) {
+        return ids == null || ids.isEmpty() ? 0 : mapper.deleteEvents(customerId, ids);
+    }
+
+    public int deleteAllEvents(int customerId) {
+        return mapper.deleteAllEvents(customerId);
+    }
+
+    public String activeServerUrl() {
+        try {
+            return mapper.activeServerUrl();
+        } catch (RuntimeException e) {
+            return null;
+        }
+    }
+
     public int purgeEvents(long before) {
         return mapper.purgeEvents(before);
     }

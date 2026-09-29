@@ -123,5 +123,17 @@
   "plugin.webfilter.category.malware.desc": "Sites que distribuem vírus e ransomware.",
   "plugin.webfilter.category.phishing.desc": "Páginas falsas, golpes e fraudes.",
   "plugin.webfilter.category.vpn_proxy.desc": "VPNs, proxies e redirecionadores que contornam o filtro.",
-  "plugin.webfilter.category.doh.desc": "Servidores DNS externos que contornariam o filtro. Sempre bloqueada."
+  "plugin.webfilter.category.doh.desc": "Servidores DNS externos que contornariam o filtro. Sempre bloqueada.",
+  "plugin.webfilter.events.delete.selected": "Apagar selecionados",
+  "plugin.webfilter.events.delete.all": "Apagar histórico",
+  "plugin.webfilter.events.delete.selected.confirm": "Apagar os {n} registros selecionados?",
+  "plugin.webfilter.events.delete.all.confirm": "Apagar TODO o histórico de tráfego bloqueado? Não é possível desfazer.",
+  "plugin.webfilter.events.per.page": "Por página",
+  "plugin.webfilter.events.select.page": "Selecionar todos desta página",
+  "plugin.webfilter.device.unknown": "Dispositivo não identificado",
+  "plugin.webfilter.filter.ip": "IP (ex.: 192.168.1.100)",
+  "plugin.webfilter.filter.device": "Dispositivo (ex.: R9XT200AMYY)",
+  "plugin.webfilter.filter.site": "Site (ex.: facebook.com)",
+  "plugin.webfilter.filter.search": "Buscar",
+  "plugin.webfilter.filter.clear": "Limpar"
 }

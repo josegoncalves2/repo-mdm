@@ -42,7 +42,7 @@ angular.module('headwind-kiosk')
         // Ids essenciais no proprio moduleregistry do servidor (DEVICES, USERS, GENERAL) mais
         // as duas telas de administracao da plataforma, que nao tem id la (nunca desligaveis
         // por definicao: sem elas ninguem liga mais nada de volta).
-        var ESSENTIAL_IDS = {DEVICES: true, USERS: true, GENERAL: true, EXTENSIONS: true, INTEGRATIONS: true};
+        var ESSENTIAL_IDS = {DEVICES: true, USERS: true, GENERAL: true, EXTENSIONS: true, INTEGRATIONS: true, SERVER: true};
 
         var canUseThemeLayout = function () {
             return authService.hasPermission('settings') || authService.hasPermission('device.branding.edit');
@@ -230,6 +230,13 @@ angular.module('headwind-kiosk')
                 labelKey: 'nav.governance', descKey: 'modules.desc.GOVERNANCE',
                 type: 'native', manageVia: 'native', essential: false,
                 visible: function () { return true; }
+            },
+
+            {
+                id: 'SERVER', section: 'admin', icon: 'settings', testId: 'server',
+                labelKey: 'nav.server', descKey: 'modules.desc.SERVER',
+                type: 'native', manageVia: 'native', essential: true,
+                visible: function (a) { return a.hasPermission('settings'); }
             },
 
             // --- Plataforma: manutencao dos proprios modulos e integracoes ---------------

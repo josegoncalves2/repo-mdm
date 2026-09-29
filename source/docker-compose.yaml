@@ -31,7 +31,7 @@ services:
     environment:
       # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam
       # 3h adiantados em relacao ao horario local (America/Sao_Paulo).
-      TZ: America/Sao_Paulo
+      TZ: ${TZ:-America/Sao_Paulo}
       POSTGRES_USER: ${SQL_USER:-hmdm}
       POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
       POSTGRES_DB: ${SQL_BASE:-hmdm}
@@ -80,7 +80,7 @@ services:
       - ../dist/hmdm.war:/usr/local/tomcat/work/cache/hmdm-5.39.2-os.war:ro
     environment:
       # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga 3h adiantado.
-      TZ: America/Sao_Paulo
+      TZ: ${TZ:-America/Sao_Paulo}
       # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
       # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
       # dono root:root (o processo roda como root dentro do container, sem userns-remap).
@@ -107,13 +107,16 @@ services:
       CLIENT_VERSION: ${CLIENT_VERSION:-6.36}
       FORCE_RECONFIGURE: ${FORCE_RECONFIGURE:-true}
       APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
+      ADMIN_PORT: ${ADMIN_PORT:-8090}
       AUTO_UPDATE_WEBAPP: "false"
 
   # Resolvedor DNS do Web Filter. O MDM so escreve em volumes/work/plugins/webfilter/dns;
   # este container le dali e devolve o log de consultas em .../queries.
   # Certificado: WEBFILTER_CERTS_DIR deve conter cert.pem e key.pem para *.<dominio DNS do filtro>.
   webfilter-dns:
-    build: ../webfilter-dns
+    build:
+      context: .
+      target: webfilter
     image: hwmdm/webfilter-dns:0.34.0
     container_name: hwmdm-webfilter
     restart: unless-stopped
@@ -124,12 +127,12 @@ services:
       - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/tcp"
     volumes:
       - ./volumes/work/plugins/webfilter/dns:/app/dns:ro
-      - ${WEBFILTER_CERTS_DIR:-../webfilter-dns/certs}:/app/certs:ro
+      - ${WEBFILTER_CERTS_DIR:-./webfilter/certs}:/app/certs:ro
       - webfilter-lists:/app/lists
       - webfilter-state:/app/state
       - ./volumes/work/plugins/webfilter/queries:/app/queries
     environment:
-      TZ: America/Sao_Paulo
+      TZ: ${TZ:-America/Sao_Paulo}
     healthcheck:
       test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '/app'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
       interval: 30s
@@ -138,12 +141,43 @@ services:
       start_period: 300s
     mem_limit: 1536m
 
+  # Gestao do servidor (configuracao, containers, aplicar mudancas). Container proprio para
+  # sobreviver ao restart/recreate/build dos outros, que ele mesmo comanda. Mesmo banco e
+  # mesmo login do MDM. O socket do Docker e' o unico meio de um container comandar os
+  # outros; ele e' montado SO' aqui. A pasta do projeto entra no MESMO caminho do host,
+  # porque o compose resolve os volumes relativos (./volumes, ../dist) pelo caminho real.
+  admin:
+    build:
+      context: .
+      target: admin
+    image: hwmdm/admin:1.0.0
+    container_name: hwmdm-admin
+    restart: unless-stopped
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    ports:
+      - ${ADMIN_PORT:-8090}:${ADMIN_PORT:-8090}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HWMDM_ROOT:?defina HWMDM_ROOT no source/.env}:${HWMDM_ROOT}
+      # Historico das execucoes (restart, aplicar, build) sobrevive ao restart deste container.
+      - ./volumes/admin:/data
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+      HWMDM_ROOT: ${HWMDM_ROOT}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-hwmdm}
+      ADMIN_PORT: ${ADMIN_PORT:-8090}
+      SQL_HOST: postgresql
+      SQL_USER: ${SQL_USER:-hmdm}
+      SQL_BASE: ${SQL_BASE:-hmdm}
+      SQL_PASS: ${SQL_PASS:-hmdm}
+
 volumes:
   postgresql-data:
   # Nomes fixos: sao os volumes que ja existiam quando o DNS tinha compose proprio.
+  # Sem "external": numa maquina nova o compose cria; onde ja existem, reaproveita pelo nome.
   webfilter-lists:
     name: hwmdm-webfilter_webfilter-lists
-    external: true
   webfilter-state:
     name: hwmdm-webfilter_webfilter-state
-    external: true
