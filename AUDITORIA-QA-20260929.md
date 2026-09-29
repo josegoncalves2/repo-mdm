@@ -110,3 +110,117 @@
 | **Total** | **15** | |
 
 **Veredito do QA:** O sistema funciona, mas está largado às traças. 75% dos dispositivos estão abandonados há 50 dias, apps desatualizadas em 100% dos devices, configuração "teste" em produção, launcher com versão errada, kiosk mode reportando "no" em kiosks. Isso não é MDM de produção — é um sistema que ninguém está monitorando. Precisa de correções urgentes antes de qualquer rollout.
+
+---
+
+## 📊 COMPARATIVO: Upstream (h-mdm) vs Nosso MDM (hwmdm/repo-mdm)
+
+### Repositórios do Upstream (h-mdm)
+
+| Repositório | Descrição | Versão |
+|-------------|-----------|--------|
+| `hmdm-server` | Server v5 (Java/JS, Tomcat 9) | v5.41.1 |
+| `hmdm-server-v7` | Server v7 (Java/Angular, Tomcat 11, JDK21) | v7.02.4 |
+| `hmdm-android` | Agente/Launcher Android | - |
+| `hmdm-docker` | Imagem Docker oficial | - |
+| `hmdm-plugin-wifimanager` | Gerenciamento WiFi | - |
+| `hmdm-android-plugin-pager` | Push notifications | - |
+| `launcherrestarter` | Monitor/restart do launcher | - |
+| `hmdm-plugin-apn` | Configuração APN | - |
+| `hmdm-openvpn` | VPN (fork) | - |
+| `AospProvision` | Provisionamento AOSP | - |
+| `AospProvisionStudio` | Provisionamento AOSP (Studio) | - |
+| `AospHmdm` | Makefile para preinstalar em AOSP | - |
+| `grapheneos-setup-wizard` | Provisionamento GrapheneOS | - |
+
+### Nossos Plugins (repo-mdm/server-source/plugins)
+
+| Plugin | Função |
+|--------|--------|
+| `audit` | Auditoria de ações dos usuários |
+| `deviceinfo` | Informações detalhadas dos devices |
+| `devicelog` | Coleta de logs dos devices |
+| `messaging` | Mensagens para dispositivos |
+| `moduleregistry` | Registro de módulos |
+| `platform` | Funcionalidades de plataforma |
+| `push` | Push messages autônomo |
+| `webfilter` | Filtro de URL / bloqueio de sites |
+| `xtra` | Funcionalidades extras |
+
+### Features: Upstream vs Nosso MDM
+
+| Feature | Upstream v5 CE | Upstream v7 CE | Nosso MDM |
+|---------|:---:|:---:|:---:|
+| **QR-code provisioning** | ✅ | ✅ | ✅ |
+| **Silent app install/update** | ✅ | ✅ | ✅ |
+| **Device groups/configs** | ✅ | ✅ | ✅ |
+| **Device status monitoring** | ✅ | ✅ | ✅ |
+| **GPS, Wi-Fi, Bluetooth policies** | ✅ | ✅ | ✅ |
+| **App logs collection** | ✅ | ✅ | ✅ |
+| **Plugin system** | ✅ | ✅ | ✅ |
+| **REST API** | ✅ | ✅ | ✅ |
+| **Kiosk mode (COSU)** | ❌ (Enterprise) | ❌ (Enterprise) | ✅ |
+| **Web Filter (URL blocking)** | ❌ | ❌ | ✅ |
+| **Remote access/screen mirroring** | ❌ | ❌ | ✅ |
+| **Audit logging** | ❌ | ❌ | ✅ |
+| **Push messaging** | ❌ | ❌ | ✅ |
+| **Device info plugin** | ❌ | ❌ | ✅ |
+| **Device log plugin** | ❌ | ❌ | ✅ |
+| **Messaging (chat)** | ❌ | ❌ | ✅ |
+| **Files management** | ❌ | ❌ | ✅ |
+| **Launcher icons** | ❌ | ❌ | ✅ |
+| **Backup & restore** | ❌ | ❌ | ✅ |
+| **Appearance & branding** | ❌ | ❌ | ✅ |
+| **Location map (GPS tracking)** | ❌ | ❌ | ✅ |
+| **Reports** | ❌ | ❌ | ✅ |
+| **Two-factor auth** | ❌ | ❌ | ✅ |
+| **Multi-tenant** | ❌ | ❌ | ✅ |
+| **LDAP auth** | ❌ | ❌ | ✅ |
+| **Self-signup** | ❌ | ❌ | ✅ |
+| **Angular frontend (v7)** | ❌ | ✅ | ❌ (AngularJS) |
+| **Java 21 + Tomcat 11** | ❌ | ✅ | ❌ (Java 11 + Tomcat 9) |
+| **WebSocket alerts** | ❌ | ✅ | ❌ |
+| **Plugin as standalone WAR** | ❌ | ✅ | ❌ |
+| **WiFi Manager plugin** | ❌ | ❌ | ❌ |
+| **APN setup plugin** | ❌ | ❌ | ❌ |
+| **OpenVPN integration** | ❌ | ❌ | ❌ |
+| **Launcher restarter** | ❌ | ❌ | ❌ |
+
+### 🟢 O que NÓS TEMOS que o upstream NÃO TEM
+
+1. **Web Filter** — Bloqueio de URLs por dispositivo/grupo
+2. **Remote Access** — Acesso remoto com espelhamento de tela
+3. **Audit Logging** — Registro de todas as ações dos admins
+4. **Push Messages** — Sistema de push autônomo (não depende de Firebase)
+5. **Device Info** — Informações detalhadas do dispositivo
+6. **Device Log** — Coleta de logs dos devices
+7. **Messaging (Chat)** — Comunicação bidirecional com devices
+8. **Files Management** — Upload/download de arquivos
+9. **Launcher Icons** — Gerenciamento de ícones do launcher
+10. **Backup & Restore** — Backup integrado via interface
+11. **Appearance & Branding** — Customização visual do painel
+12. **Location Map** — Mapa de localização GPS
+13. **Reports** — Relatórios gerenciais
+14. **Two-factor auth** — Autenticação de dois fatores
+15. **Multi-tenant** — Operação multi-cliente
+16. **LDAP auth** — Autenticação via LDAP
+17. **Self-signup** — Auto-cadastro de usuários
+
+### 🔴 O que o UPSTREAM v7 TEM que NÓS NÃO TEMOS
+
+1. **Angular moderno** (nós temos AngularJS 1.x — obsoleto)
+2. **Java 21 + Tomcat 11** (nós temos Java 11 + Tomcat 9)
+3. **WebSocket alerts** — Notificações em tempo real no painel
+4. **Plugin como WAR standalone** — Plugins independentes sem rebuild total
+5. **WiFi Manager plugin** — Gerenciamento de redes WiFi
+6. **APN setup plugin** — Configuração de Access Point Name
+7. **OpenVPN integration** — VPN integrada
+8. **Launcher restarter** — Monitor que reinicia o launcher se cair
+
+### 💡 Resumo
+
+**Nosso MDM tem MUITO mais features que o upstream Community** — basicamente pegamos o que era Enterprise no upstream e transformamos em Community, além de adicionar plugins próprios (webfilter, audit, push, deviceinfo, devicelog, messaging, xtra).
+
+**Mas estamos rodando uma stack técnica legada** — AngularJS 1.x (fim da vida), Java 11 (fim da vida), Tomcat 9. O upstream v7 já migrou para Angular, Java 21 e Tomcat 11.
+
+**Plugins que não temos e seriam úteis:** WiFi Manager, APN setup, OpenVPN, Launcher restarter.
