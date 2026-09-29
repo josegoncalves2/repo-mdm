@@ -115,6 +115,9 @@
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
+    <permission android:name="com.hmdm.launcher.permission.PLUGIN_API"
+        android:protectionLevel="signature"/>
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/white_app_name"
@@ -240,8 +243,12 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        <!-- Protegido por permissao de ASSINATURA: so' apps assinados com a mesma chave do
+             launcher (os agentes da prefeitura, ex.: Suporte Remoto) conectam. BIND_DEVICE_ADMIN,
+             usada antes, e' reservada ao sistema: nenhum plugin conseguia se ligar, e o Suporte
+             Remoto ficava sem vinculo, sem log e sem receber o chamado de acesso remoto. -->
         <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            android:permission="com.hmdm.launcher.permission.PLUGIN_API">
             <intent-filter>
                 <action android:name="com.hmdm.action.Connect" />
             </intent-filter>

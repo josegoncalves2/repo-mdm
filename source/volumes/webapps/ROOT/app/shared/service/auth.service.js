@@ -89,6 +89,12 @@ angular.module('headwind-kiosk')
             },
 
             update: function (newUser) {
+                // /users/current nao traz singleCustomer (so' o login traz). Sem preservar, a
+                // atualizacao do usuario ao abrir o painel zerava o campo e o menu escondia o
+                // que depende dele, como Permissoes (canManageRoles).
+                if (newUser && newUser.singleCustomer === undefined && user && user.singleCustomer !== undefined) {
+                    newUser.singleCustomer = user.singleCustomer;
+                }
                 user = newUser;
                 $cookies.put('user', JSON.stringify(packUser(newUser)));
             },

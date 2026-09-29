@@ -17,6 +17,9 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- Conectar ao launcher proprio (1.2+), que protege o servico de plugins por assinatura.
+         Com o launcher oficial 6.36 a permissao nao existe e e' ignorada. -->
+    <uses-permission android:name="com.hmdm.launcher.permission.PLUGIN_API"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
 

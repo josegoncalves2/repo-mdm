@@ -193,6 +193,10 @@ To wipe all data, remove all entries in the `volumes` subdirectory:
 (we recommend to keep the `volumes/letsencrypt` subdirectory to avoid problems
 with exceeding the LetsEncrypt certificate generation threshold).
 
+There is also an interactive script removing the data:
+
+    ./remove-all.sh
+
 As an alternative, you can set the parameter in the .env file:
 
     FORCE_RECONFIGURE=true
