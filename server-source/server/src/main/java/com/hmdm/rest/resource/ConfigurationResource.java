@@ -80,6 +80,12 @@ public class ConfigurationResource {
         this.baseUrl = baseUrl;
     }
     // =================================================================================================================
+    /** Editar quiosque le o perfil que vai editar; o acesso completo continua sendo "configurations". */
+    private static boolean canReadConfigurations() {
+        return SecurityContext.get().hasPermission("configurations")
+                || SecurityContext.get().hasPermission("device.kiosk.edit");
+    }
+
     @ApiOperation(
             value = "Get configurations",
             notes = "Gets the list of available configurations",
@@ -90,7 +96,7 @@ public class ConfigurationResource {
     @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllConfigurations() {
-        if (!SecurityContext.get().hasPermission("configurations")) {
+        if (!canReadConfigurations()) {
             log.error("Unauthorized attempt to access configurations");
             return Response.PERMISSION_DENIED();
         }
@@ -129,7 +135,7 @@ public class ConfigurationResource {
     @Path("/search/{value}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response searchConfigurations(@PathParam("value") String value) {
-        if (!SecurityContext.get().hasPermission("configurations")) {
+        if (!canReadConfigurations()) {
             log.error("Unauthorized attempt to access configurations");
             return Response.PERMISSION_DENIED();
         }
@@ -172,6 +178,49 @@ public class ConfigurationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateConfiguration(Configuration configuration) {
+        // Editar quiosque: salva perfil existente, mas so' os campos de quiosque sao aplicados sobre
+        // o que esta no banco; o resto do que veio no pedido e' ignorado.
+        if (!SecurityContext.get().hasPermission("configurations")
+                && SecurityContext.get().hasPermission("device.kiosk.edit")
+                && configuration != null && configuration.getId() != null) {
+            if (!configurationDAO.hasConfigurationAccess(configuration.getId())) {
+                return Response.PERMISSION_DENIED();
+            }
+            Configuration db = this.configurationDAO.getConfigurationByIdFull(configuration.getId());
+            if (db == null) {
+                return Response.ERROR("error.notfound.configuration");
+            }
+            db.setKioskMode(configuration.isKioskMode());
+            db.setMainAppId(configuration.getMainAppId());
+            db.setContentAppId(configuration.getContentAppId());
+            db.setKioskHome(configuration.getKioskHome());
+            db.setKioskRecents(configuration.getKioskRecents());
+            db.setKioskNotifications(configuration.getKioskNotifications());
+            db.setKioskSystemInfo(configuration.getKioskSystemInfo());
+            db.setKioskKeyguard(configuration.getKioskKeyguard());
+            db.setKioskLockButtons(configuration.getKioskLockButtons());
+            db.setKioskScreenOn(configuration.getKioskScreenOn());
+            db.setKioskExit(configuration.getKioskExit());
+            db.setBlockStatusBar(configuration.isBlockStatusBar());
+            if (configuration.getApplications() != null && db.getApplications() != null) {
+                java.util.Map<Integer, Boolean> useKiosk = new java.util.HashMap<>();
+                for (com.hmdm.persistence.domain.Application a : configuration.getApplications()) {
+                    if (a.getId() != null) {
+                        useKiosk.put(a.getId(), a.getUseKiosk());
+                    }
+                }
+                for (com.hmdm.persistence.domain.Application a : db.getApplications()) {
+                    if (useKiosk.containsKey(a.getId())) {
+                        a.setUseKiosk(useKiosk.get(a.getId()));
+                    }
+                }
+            }
+            log.info("Kiosk settings of configuration " + db.getName() + " updated by user "
+                    + SecurityContext.get().getCurrentUserName());
+            this.configurationDAO.updateConfiguration(db);
+            this.pushService.notifyDevicesOnUpdate(db.getId());
+            return Response.OK(getConfiguration(db.getId()));
+        }
         if (!SecurityContext.get().hasPermission("configurations")) {
             log.error("Unauthorized attempt to update the configuration " + configuration.getId() +
             ", user " + SecurityContext.get().getCurrentUserName());
@@ -327,7 +376,7 @@ public class ConfigurationResource {
     @Path("/applications/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getConfigurationApplications(@PathParam("id") @ApiParam("Configuration ID") Integer id) {
-        if (!SecurityContext.get().hasPermission("configurations") ||
+        if (!canReadConfigurations() ||
                 !configurationDAO.hasConfigurationAccess(id)) {
             log.error("Unauthorized attempt to access configuration applications");
             return Response.PERMISSION_DENIED();
@@ -345,7 +394,7 @@ public class ConfigurationResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getConfigurationById(@PathParam("id") Integer id) {
-        if (!SecurityContext.get().hasPermission("configurations") ||
+        if (!canReadConfigurations() ||
                 !configurationDAO.hasConfigurationAccess(id)) {
             log.error("Unauthorized attempt to access the configuration " + id);
             return Response.PERMISSION_DENIED();

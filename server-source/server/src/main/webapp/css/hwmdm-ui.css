@@ -1180,3 +1180,31 @@ button:focus-visible,
     margin-right: 0 !important;
     box-sizing: border-box;
 }
+
+/* Coluna de acoes das listas (Permissoes, Usuarios, Grupos, ...): botoes na mesma linha,
+   coluna so' da largura deles. Com a pagina em largura total ela encolhia e empilhava
+   editar/excluir, dobrando a altura de cada linha. */
+.table td:last-child > div,
+.table .actions-column { white-space: nowrap; }
+.table th.actions-column,
+.width-1000 .table td:last-child { width: 1%; white-space: nowrap; }
+
+/* Editor de papeis: permissoes segregadas por area */
+.role-perms { margin-top: 8px; }
+.role-perms-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+.role-perms-bar input[type=search] { flex: 1 1 220px; max-width: 360px; }
+.role-perms-count { color: var(--hw-muted, #64748b); margin-right: auto; }
+.role-perms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;
+    max-height: 60vh; overflow: auto; padding-right: 4px; }
+.role-perm-group { border: 1px solid var(--hw-border, #d9e2ec); border-radius: 8px; padding: 8px 12px 10px; margin: 0; min-width: 0; }
+.role-perm-group legend { display: flex; align-items: center; gap: 8px; width: auto; border: 0; margin: 0 0 4px;
+    padding: 0 4px; font-size: 14px; font-weight: 600; }
+.role-perm-group legend small { color: var(--hw-muted, #64748b); font-weight: 400; }
+.role-perm { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; margin: 6px 0; cursor: pointer; }
+.role-perm input { margin-top: 3px; }
+.role-perm b { display: block; font-weight: 500; }
+.role-perm small { display: block; color: var(--hw-muted, #64748b); line-height: 1.3; }
+
+/* Menu "..." da linha de dispositivo: anexado ao body e alinhado a direita do botao (ultima
+   coluna); antes abria para a direita e ficava fora da tela. Altura limitada com rolagem. */
+.dropdown-menu-devices-row { overflow-y: auto; }

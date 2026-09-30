@@ -125,7 +125,7 @@ angular.module('headwind-kiosk')
                 type: 'native', manageVia: 'native', essential: false,
                 visible: function (a) {
                     return a.hasPermission('configurations') || a.hasPermission('edit_devices') ||
-                        a.hasPermission('device.remote_access.control');
+                        a.hasPermission('device.remote_access.control') || a.hasPermission('device.kiosk.edit');
                 }
             },
             {

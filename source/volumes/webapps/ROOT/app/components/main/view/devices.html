@@ -568,7 +568,7 @@
                             class="btn btn-default dropdown-toggle">
                         <span class='glyphicon glyphicon-option-horizontal'></span> <span style="padding-bottom: 3px" class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-devices-row" uib-dropdown-menu role="menu" aria-labelledby="single-button-{{device.id}}">
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-menu-devices-row" uib-dropdown-menu role="menu" aria-labelledby="single-button-{{device.id}}">
                         <!-- m11: Forcar kiosk, GPS e Excluir sairam dos botoes da linha para este menu. -->
                         <li role="menuitem" ng-if="hasPermission('edit_devices')">
                             <a ng-click="forceKiosk(device)"><span class='glyphicon glyphicon-lock'></span> <span localized>button.force.kiosk</span></a>

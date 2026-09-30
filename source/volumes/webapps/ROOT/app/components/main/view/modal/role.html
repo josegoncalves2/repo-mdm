@@ -12,19 +12,36 @@
             </div>
         </div>
 
-        <div class='form-group'>
-            <label class='col-sm-3 control-label' localized>form.role.permissions</label>
-            <div class='col-sm-9'>
-                <div ng-dropdown-multiselect
-                     options='permissionList'
-                     translation-texts='tablePermissionTexts'
-                     selected-model='permissionSelection'
-                     class='left margin-right-half custom-multi-select limited-multi-select'></div>
+        <div class='role-perms'>
+            <div class='role-perms-bar'>
+                <strong localized>form.role.permissions</strong>
+                <span class='role-perms-count'>{{totalSelected()}} / {{totalVisible()}} <span localized>rolegrp.selected</span></span>
+                <input type='search' class='form-control input-sm' ng-model='filter.text'
+                       localized-placeholder='rolegrp.search' data-testid='role-perm-search'>
+                <button type='button' class='btn btn-default btn-sm' ng-click='setAll(true)' localized>rolegrp.all</button>
+                <button type='button' class='btn btn-default btn-sm' ng-click='setAll(false)' localized>rolegrp.none</button>
             </div>
+            <div class='role-perms-grid'>
+                <fieldset class='role-perm-group' ng-repeat='g in groups' ng-show='(g.items | filter:matches).length'
+                          data-testid='role-perm-group'>
+                    <legend>
+                        <span>{{g.title}}</span>
+                        <small>{{countIn(g)}}/{{g.items.length}}</small>
+                        <button type='button' class='btn btn-link btn-xs' ng-click='toggleGroup(g)'>
+                            {{countIn(g) < g.items.length ? ('rolegrp.all' | localize) : ('rolegrp.none' | localize)}}
+                        </button>
+                    </legend>
+                    <label class='role-perm' ng-repeat='i in g.items | filter:matches' title='{{i.name}}'>
+                        <input type='checkbox' ng-model='selected[i.id]' data-testid='role-perm-{{i.name}}'>
+                        <span><b>{{i.label}}</b><small ng-if='i.desc'>{{i.desc}}</small></span>
+                    </label>
+                </fieldset>
+            </div>
+            <p class='help-block' localized>rolegrp.hidden</p>
         </div>
 
         <div class='form-group'>
-            <div class='col-sm-offset-2 col-sm-10'>
+            <div class='col-sm-12'>
                 <button type='submit' class='btn btn-default' ng-click='save()' localized>button.save</button>
                 <button type='button' class='btn btn-default' ng-click='closeModal()' localized>button.cancel</button>
             </div>

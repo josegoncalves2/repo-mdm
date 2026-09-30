@@ -209,12 +209,15 @@ public class DeviceResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateDevice(Device device) {
         try {
+            // Matricular dispositivos permite cadastrar aparelho NOVO (sem id); editar um existente
+            // continua exigindo a permissao de edicao.
             final boolean canEditDevices = SecurityContext.get().hasPermission("device.profile.edit")
-                || SecurityContext.get().hasPermission("edit_devices");
+                || SecurityContext.get().hasPermission("edit_devices")
+                || (device.getId() == null && SecurityContext.get().hasPermission("enroll_devices"));
 
             if (!canEditDevices) {
                 log.error("Unauthorized attempt to create or edit device",
-                        SecurityException.onCustomerDataAccessViolation(device.getId(), "device"));
+                        SecurityException.onCustomerDataAccessViolation(device.getId() == null ? 0 : device.getId(), "device"));
                 return Response.PERMISSION_DENIED();
             }
 

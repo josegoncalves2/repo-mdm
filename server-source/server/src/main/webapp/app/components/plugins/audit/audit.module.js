@@ -25,7 +25,7 @@ angular.module('plugin-audit', ['ngResource', 'ui.bootstrap', 'ui.router', 'ngTa
         try {
             $stateProvider.state('plugin-audit', {
                 url: "/" + 'plugin-audit',
-                templateUrl: 'app/components/main/view/content.html?v=h357a60ba08',
+                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
                 controller: 'TabController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.plugin.audit.main" | localize}}', //label to show in breadcrumbs
