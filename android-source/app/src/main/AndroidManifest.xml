@@ -65,7 +65,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <!-- Necessaria a partir do Android 14 para o servico que faz a captura de tela -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.REQUEST_PASSWORD_COMPLEXITY" />
     <uses-permission android:name="android.permission.MASTER_CLEAR"
@@ -275,16 +274,7 @@
                 android:value="Push notification service"/>
         </service>
 
-        <!-- Captura de tela pedida pelo painel (push "screenshot"). A activity so existe
-             para obter o consentimento de MediaProjection, que o Android exige sempre. -->
-        <service android:name=".service.ScreenshotService"
-            android:foregroundServiceType="mediaProjection"
-            android:exported="false"/>
 
-        <activity android:name=".ui.ScreenshotConsentActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:excludeFromRecents="true"
-            android:exported="false"/>
 
     </application>
 

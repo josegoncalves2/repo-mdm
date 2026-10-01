@@ -26,8 +26,6 @@ blocking:
   denylists:
     p-c1-p11:
       - /app/dns/profiles/c1-p11-deny.txt
-    p-c1-p46:
-      - /app/dns/profiles/c1-p46-deny.txt
     p-c1-p56:
       - /app/dns/profiles/c1-p56-deny.txt
     cat-adult:
@@ -63,8 +61,6 @@ blocking:
   allowlists:
     p-c1-p11:
       - /app/dns/profiles/c1-p11-allow.txt
-    p-c1-p46:
-      - /app/dns/profiles/c1-p46-allow.txt
     p-c1-p56:
       - /app/dns/profiles/c1-p56-allow.txt
     p-default:
@@ -72,22 +68,6 @@ blocking:
   clientGroupsBlock:
     c1-p11:
       - p-c1-p11
-      - cat-adult
-      - cat-dating
-      - cat-doh
-      - cat-drugs
-      - cat-gambling
-      - cat-games
-      - cat-malware
-      - cat-phishing
-      - cat-piracy
-      - cat-shopping
-      - cat-social_media
-      - cat-streaming
-      - cat-violence
-      - cat-vpn_proxy
-    c1-p46:
-      - p-c1-p46
       - cat-adult
       - cat-dating
       - cat-doh

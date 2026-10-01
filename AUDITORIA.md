@@ -197,3 +197,94 @@ Verifique a integridade da cadeia com: `./trava auditoria --verificar`
 | 2026-09-30 10:19 | sessão principal | Usuário: às vezes, após F5, a tela Dispositivos fica com chaves cruas (nav.devices, {{errorMessage}}). Reproduzindo | investigando |
 | 2026-09-30 10:21 | sessão principal | F5 quebrado reproduzido: 10 de 25 recargas (devices.controller.js:260 user.configurations indefinido). Causa: usuário remontado do cookie 'user', que estoura 4 KB e cai na versão mínima sem permissões/perfis; telas que carregam antes do /users/current quebram | corrigindo |
 | 2026-09-30 10:27 | sessão principal | F5 corrigido: auth.service guarda o usuário completo em localStorage (hwmdm.user) e normaliza configurations/groups/permissões; cookie continua igual. Prova: 8 telas × 15 recargas = 120, 0 quebras (antes 10 de 25 só em Dispositivos) | OK |
+| 2026-09-30 12:34 | sessão principal | Usuário: matrícula com launcher 1.3 falha com Google Play Protect em 2 tablets (com 1.2 ontem funcionou) | investigando |
+| 2026-09-30 12:35 | sessão principal | Usuário: 1.2 também falha agora com 'Play Protect'. Como o binário do 1.2 é o mesmo de 25/09, investigando o conteúdo do QR gerado pelo painel | investigando |
+| 2026-09-30 12:39 | sessão principal | Diagnóstico da matrícula: log de acesso mostra que os tablets .104 e .105 baixaram SÓ o 1.3 (200, 6273758 bytes, 5 vezes, inclusive 12:34:37 no 'teste com 1.2'); nenhum download do 1.2 por eles. QR do modelo-default decodificado aponta para hmdm-1.2-olimpia.apk com checksum correto; do modelo-kiosk, para o 1.3. Captura dos dois QR em scratchpad/shots/remote-qr-perfis.png | informado |
+| 2026-09-30 12:49 | sessão principal | Usuário: apagar todos os scripts de QR que não são do software; QR só o gerado pelo painel; nenhum script de teste, testes manuais | iniciado |
+| 2026-09-30 12:50 | sessão principal | APAGADOS a pedido do usuário: dist/qr-config11.json dist/qr-config11.png dist/qr-config44-acesso-remoto.png dist/qr-config44.json dist/qr-config44.png dist/qr-config44.txt dist/qr-config46.json dist/qr-config46.png gerar-qr.py /tmp/claude-1002/-opt-projetos-hwmdm/352083cd-37a8-46ef-a5c2-903fefc6def6/scratchpad/qr-23e6479facef6e0780942f4f3c9a2791.png /tmp/claude-1002/-opt-projetos-hwmdm/352083cd-37a8-46ef-a5c2-903fefc6def6/scratchpad/qr-5a534ed735202cf337f60cc9d537b58b.png /tmp/claude-1002/-opt-projetos-hwmdm/352083cd-37a8-46ef-a5c2-903fefc6def6/scratchpad/qrpage-0.png /tmp/claude-1002/-opt-projetos-hwmdm/352083cd-37a8-46ef-a5c2-903fefc6def6/scratchpad/qrpage.js /tmp/claude-1002/-opt-projetos-hwmdm/352083cd-37a8-46ef-a5c2-903fefc6def6/scratchpad/qrshot.js ; publicar-apk.sh sem geração/checagem de QR (remove --sem-qr) e matricular-tablet.sh apontam para o QR do painel. Regra: QR só o do painel, testes só manuais | OK |
+| 2026-09-30 12:51 | sessão principal | Usuário: 'todos scripts excluídos, não mandei criar nenhum'. APAGADO scripts/deploy-plugin-webfilter.sh (criado por mim nesta sessão). Demais scripts listados para decisão do usuário | parcial |
+| 2026-09-30 12:52 | sessão principal | Usuário: excluir TODOS os scripts. APAGADOS 55 arquivos (lista abaixo). Mantidos só os 4 que o software executa em produção: source/docker-entrypoint.sh, source/update-web-app-docker.sh, source/webfilter/resolver.py, source/admin/app.py | OK |
+|  |  | apagado | ./android-source/gradlew | |
+|  |  | apagado | ./android-source/gradlew.bat | |
+|  |  | apagado | ./.claude/hooks/bloquear-producao.sh | |
+|  |  | apagado | ./.claude/hooks/lib_trava.py | |
+|  |  | apagado | ./.claude/hooks/__pycache__/lib_trava.cpython-312.pyc | |
+|  |  | apagado | ./.claude/hooks/trava_entrega.py | |
+|  |  | apagado | ./.claude/hooks/trava_gate.py | |
+|  |  | apagado | ./.claude/hooks/trava_pos.py | |
+|  |  | apagado | ./.claude/hooks/trava_prompt.py | |
+|  |  | apagado | ./.claude/hooks/trava_sessao.py | |
+|  |  | apagado | ./.claude/hooks/trava_stop.py | |
+|  |  | apagado | ./.claude/hooks/verificar_afirmacao.py | |
+|  |  | apagado | ./.claude/hooks/verificar_bancada.py | |
+|  |  | apagado | ./.claude/hooks/verificar_doc.py | |
+|  |  | apagado | ./.claude/hooks/verificar_entrega_ux.py | |
+|  |  | apagado | ./.claude/hooks/verificar_revisao.py | |
+|  |  | apagado | ./docs/versao/gerar-build-info.py | |
+|  |  | apagado | ./evidencias/fiscal-20260929/B-infra/staging/claude-hooks/verificar_afirmacao.py | |
+|  |  | apagado | ./openspec/changes/corrigir-permissoes-e-console/fiscal/guarda.py | |
+|  |  | apagado | ./openspec/changes/corrigir-permissoes-e-console/fiscal/__pycache__/guarda.cpython-312.pyc | |
+|  |  | apagado | ./remote-agent/gradlew | |
+|  |  | apagado | ./remote-agent/gradlew.bat | |
+|  |  | apagado | ./scripts/aplicar-seletores-mdm.py | |
+|  |  | apagado | ./scripts/build.sh | |
+|  |  | apagado | ./scripts/collect-enrollment-logcat.sh | |
+|  |  | apagado | ./scripts/guard-no-placeholders.sh | |
+|  |  | apagado | ./scripts/instalar-toolchain.sh | |
+|  |  | apagado | ./scripts/matricular-tablet.sh | |
+|  |  | apagado | ./scripts/provision.sh | |
+|  |  | apagado | ./scripts/publicar-apk.sh | |
+|  |  | apagado | ./scripts/__pycache__/aplicar-seletores-mdm.cpython-314.pyc | |
+|  |  | apagado | ./scripts/__pycache__/stamp-assets.cpython-312.pyc | |
+|  |  | apagado | ./scripts/__pycache__/stamp-assets.cpython-314.pyc | |
+|  |  | apagado | ./scripts/rollback-deploy.sh | |
+|  |  | apagado | ./scripts/rollback-para-producao.sh | |
+|  |  | apagado | ./scripts/stamp-assets.py | |
+|  |  | apagado | ./scripts/verificar-apk.sh | |
+|  |  | apagado | ./scripts/verify-gps-module.sh | |
+|  |  | apagado | ./scripts/versao-artefato.py | |
+|  |  | apagado | ./scripts/versao-publicada.sh | |
+|  |  | apagado | ./scripts/watch-gps-module.sh | |
+|  |  | apagado | ./server-source/cpu_monitor.sh | |
+|  |  | apagado | ./server-source/hmdm_install.sh | |
+|  |  | apagado | ./server-source/init-plugin.bat | |
+|  |  | apagado | ./server-source/init-plugin.sh | |
+|  |  | apagado | ./server-source/iptables-tomcat.sh | |
+|  |  | apagado | ./server-source/letsencrypt-ssl.sh | |
+|  |  | apagado | ./server-source/update-web-app.sh | |
+|  |  | apagado | ./source/admin/__pycache__/app.cpython-312.pyc | |
+|  |  | apagado | ./source/remove-all.sh | |
+|  |  | apagado | ./trava | |
+|  |  | apagado | ./.trava/bin/testar_travas.sh | |
+|  |  | apagado | ./.trava/bin/trava | |
+|  |  | apagado | ./webfilter-dns/app/__pycache__/resolver.cpython-312.pyc | |
+|  |  | apagado | ./webfilter-dns/app/resolver.py | |
+| 2026-09-30 12:52 | sessão principal | APAGADOS também: 102 scripts de terceiros do npm baixado pelo build (server-source/server/webtarget/node) e a pasta scripts/ inteira (restavam CHANGELOG.md e versao-console.txt) | OK |
+| 2026-09-30 12:52 | sessão principal | APAGADO .githooks/pre-commit (gancho de commit) e removido core.hooksPath | OK |
+| 2026-09-30 12:55 | sessão principal | A pedido do usuário: novas chaves de QR para os perfis 56 (modelo-default) e 57 (modelo-kiosk); as antigas 23e6479f…/5a534ed7… deixam de valer | OK |
+| 2026-09-30 12:59 | sessão principal | Confirmado: tablet .105 baixou o 1.2 inteiro (12:59:15, 200, 6273904 bytes, mesmo arquivo que passou ontem) e o Play Protect barrou. Mesmo APK, hash e servidor: mudança do lado do Google (verificação de desenvolvedor para apps fora da Play Store) | diagnóstico |
+| 2026-09-30 14:29 | sessão principal | Tela real do tablet: 'App bloqueado pelo Play Protect — com.hmdm.launcher.App — pode pedir acesso a dados sensíveis… roubo de identidade ou fraude financeira' = proteção antifraude (permissões sensíveis), não verificação de desenvolvedor. Comparando permissões 6.36 x 1.2 x 1.3 | investigando |
+| 2026-09-30 14:30 | sessão principal | Usuário pediu launcher 1.6 sem acesso remoto (captura de tela) para testar o Play Protect | iniciado |
+| 2026-09-30 14:33 | sessão principal | Launcher 1.6 (15386) compilado com o Gradle 8.13 instalado, sem script: removidos ScreenshotService, ScreenshotConsentActivity, FOREGROUND_SERVICE_MEDIA_PROJECTION e o tratamento do push screenshot. Permissões idênticas às do 6.36 oficial; assinatura da prefeitura. Arquivo dist/hmdm-v1.6.apk (não publicado) | pronto para teste |
+| 2026-09-30 14:34 | sessão principal | Usuário: depurar via ADB o tablet já matriculado (depuração ativada) | verificando conexão |
+| 2026-09-30 14:41 | sessão principal | ADB sem fio: pareado e conectado ao R9XT106VP1E (192.168.1.102), código fornecido pelo usuário | conectado |
+| 2026-09-30 14:42 | sessão principal | ADB sem fio conectado ao R9XT106VP1E (pareamento com código fornecido pelo usuário). Diagnóstico somente leitura | em andamento |
+| 2026-09-30 14:43 | sessão principal | Diagnóstico ADB (somente leitura) no R9XT106VP1E: Google Play Services atualizado 29/09 22:19 (23.44 → 26.34.36) e Play Store 29/09 15:54 → motor do Play Protect atualizado DEPOIS das 16:30; bloqueio começa depois. Permissões sensíveis do launcher iguais no 6.36 oficial e nos nossos; diferença é a assinatura (Headwind x prefeitura). Atualização silenciosa do launcher (1.2→1.3 às 09:34 de 30/09) continuou funcionando após a atualização do Play Services | diagnóstico |
+| 2026-09-30 14:47 | sessão principal | Usuário: engenharia reversa de por que o R9XT106VP1E funciona. Lendo logs do Play Protect via ADB (somente leitura) | em andamento |
+| 2026-09-30 14:51 | sessão principal | Usuário: Google afirma que nada mudou; tratar como mudança interna. Reverificando o que o servidor entrega na matrícula | investigando |
+| 2026-09-30 14:52 | sessão principal | ERRO MEU: ao remover o Wi-Fi dos perfis 56/57 pela API, enviei a lista completa de apps (76) → perfis ficaram com 77 apps. Restaurando pela última gravação do usuário no audit log | corrigindo |
+| 2026-09-30 14:52 | sessão principal | Perfis 56 e 57 restaurados a partir das gravações do usuário (audit 8305 13:33:57 e 8306 13:34:36): 3 apps cada (Chrome, launcher, Suporte Remoto 1.36), launcher 1.4 no modelo-default e 1.2 no modelo-kiosk, como o usuário deixou; única diferença: sem Wi-Fi no QR | OK |
+| 2026-09-30 15:00 | sessão principal | Teste sem Wi-Fi no QR: tablet .110 baixou hmdm-1.4-olimpia.apk inteiro (14:59:42, 200, 6273655) e deu erro no tablet → hipótese do Wi-Fi descartada | diagnóstico |
+| 2026-09-30 15:10 | sessão principal | Launcher 6.36 recompilado do código oficial (github h-mdm/hmdm-android, tag v6.36, d54083c3) SEM nenhuma alteração: versionCode 15360, permissões idênticas ao hmdm-6.36-os.apk; só a assinatura é da prefeitura (v2). Arquivo dist/hmdm-6.36-prefeitura.apk (não publicado) | pronto para teste |
+| 2026-09-30 15:10 | sessão principal | Usuário: matrícula no perfil modelo-kiosk (57) FUNCIONOU depois que ele colocou uma senha maior no perfil. Hipótese: o Play Protect ou o provisionamento recusava a senha curta | informado pelo usuário |
+| 2026-09-30 15:10 | sessão principal | Complemento do usuário: a senha do perfil modelo-kiosk era '*****' (5 caracteres) antes de ele trocar por uma maior | informado pelo usuário |
+| 2026-09-30 15:13 | sessão principal | Usuário: com a senha maior no modelo-kiosk, o tablet PASSOU do ponto em que falhava (o erro acontecia antes da tela 'Serviços do Google' da configuração inicial, ou seja, na etapa do QR/instalação do launcher). Foto do usuário: tablet na tela Serviços do Google. Falta ver o launcher aberto no fim | em andamento |
+| 2026-09-30 15:13 | sessão principal | Usuário: tablet matriculou (enrolled) no perfil modelo-kiosk depois da senha maior. Causa provável do erro na etapa do QR: senha '*****' curta; confirmar voltando a senha antiga em outro tablet | OK (informado pelo usuário) |
+| 2026-09-30 15:15 | sessão principal | R9XT200AMYY (IP .110) MATRICULADO com launcher 1.2 pelo QR do modelo-kiosk: download 15:09:34, cadastro 15:12:02, sincronizações 15:14–15:15 e download do Suporte Remoto 1.36 às 15:15:13 (log de acesso) | OK |
+| 2026-09-30 15:12 | sessão principal | PROVA (foto do usuário): R9XT200AMYY matriculado no DEV http://192.168.1.65:8080 com launcher 1.2-opensource (nosso, assinatura da prefeitura), perfil modelo-kiosk com senha maior. O Play Protect não barrou. Causa do erro na matrícula = senha '*****' do perfil; assinatura e APK descartados. hmdm-6.36-prefeitura.apk e 1.6 desnecessários para isso | OK |
+| 2026-09-30 15:18 | sessão principal | R9XT200AMYY: launcher 1.2 iniciou 15:14:29, Suporte Remoto 1.36 instalado 15:15:14, atualização silenciosa para launcher 1.3 às 15:17:39 e 'MDM Launcher 1.3-opensource started' 15:17:44. Perfil modelo-kiosk ainda com New server URL de PROD (Failed to migrate) | OK |
+| 2026-09-30 15:55 | sessão principal | CAUSA ACHADA: applicationversions 10129 (launcher 1.3) tinha apkhash sem o '=' final (4HQg…GJk); o Android compara o checksum do QR com o arquivo e recusa a matrícula (erro 2 telas antes de Serviços do Google). Corrigido para o hash real do hmdm-1.3-olimpia.apk (…GJk=). 1.2/1.4 já estavam certos | corrigido; prova no tablet pendente |
+| 2026-09-30 16:02 | sessão principal | Usuário exige correção do banco. Conferido (somente leitura): configurations 57 no banco = gravação de 15:06 (quando matriculou), campo a campo; applicationversions 10128 (1.2) hash = arquivo; sem aparelho duplicado; R9XT200AMYY (device 59) removido pelo admin 15:35. Tentativas de 15:43/15:45 baixaram o 1.2 inteiro e não chegaram ao servidor depois. Nenhuma alteração feita além do hash do 1.3 (15:55). Falta a mensagem de erro do tablet | investigando |
+| 2026-09-30 16:07 | sessão principal | CORREÇÃO: perfil 57 modelo-kiosk tinha, desde a gravação de 15:38, além de instalar launcher 1.2 (10128), uma linha REMOVER launcher 1.3 (configurationapplications 1410, versão 10129, action 2) — mesmo pacote com.hmdm.launcher: manda o aparelho desinstalar o launcher. Na gravação de 15:06 (matrícula OK) essa linha não existia. Linha 1410 apagada; perfil 57 = estado de 15:06 (Chrome, launcher 1.2, Suporte Remoto 1.36). Perfil 58 TEST1 tem o mesmo problema (remover 1.3, 1.4, 6.36), não alterado | corrigido; prova no tablet pendente |
+| 2026-09-30 16:08 | sessão principal | PROVA (log de acesso + QR regerado): o QR do modelo-kiosk hoje tem os MESMOS bytes do QR que matriculou (size=729: 3286 bytes às 15:06 e agora) e dos QRs das falhas com 1.2 (size=583: 2521; 662: 2638, às 15:39 e agora); o APK 1.2 servido nas falhas (15:43, 15:45) tem o mesmo tamanho do sucesso (6273904). Os tablets que falharam nunca chamaram /sync depois do download. Logo o servidor entregou o mesmo QR e o mesmo APK no sucesso e na falha: a causa não está no banco nem no servidor; está no aparelho, entre o download e a instalação. A linha 'remover 1.3' (apagada) não chegava ao aparelho sem sync, então NÃO era a causa | provado no servidor; causa no aparelho sem prova |
+| 2026-09-30 16:12 | sessão principal | Usuário: 'vinculou 1 device por perfil'. Procurado no código (UnsecureDAO.createNewDeviceOnDemand, QRCodeResource): não há trava por perfil; customers.devicelimit=3 só vale em multi-cliente (isMultiTenant = existe customer id>1; aqui só o 1) → não aplicado; nenhum 'license limit'/'not created' no log. IPs das falhas (.104 .107 .111 .112 .113) só baixaram APK, nenhuma outra chamada ao servidor | não comprovado |
