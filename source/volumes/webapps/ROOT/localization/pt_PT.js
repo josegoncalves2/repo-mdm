@@ -1296,6 +1296,11 @@ document.localization ['pt_PT'] = {
     'gpsmap.history.empty': 'Sem dados de histórico',
     'gpsmap.history.start': 'Início',
     'gpsmap.history.end': 'Fim',
+    'remote.status.online': 'ONLINE',
+    'remote.status.offline': 'OFFLINE',
+    'remote.keyboard.active': 'Teclado físico: ATIVO',
+    'remote.keyboard.activate': 'Teclado físico: ativar',
+    'remote.keyboard.hint': 'Teclado físico: com a borda verde na tela do aparelho, o que você digita vai direto para o campo em foco no dispositivo (Backspace, Enter, Tab, setas; Esc = Voltar; Ctrl+V cola). Clique fora da tela para usar o teclado na página; clique na tela para voltar a enviar.',
 
     'yes': 'sim',
     'no': 'não'

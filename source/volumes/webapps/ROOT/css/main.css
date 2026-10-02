@@ -3616,19 +3616,21 @@ body {
     padding: var(--hwmdm-workspace-pad);
 }
 
+/* Sidebar sticky dentro da propria coluna do grid: nao depende mais de 100vw,
+   entao nao desliza quando a largura da pagina muda ou quando aparece scroll
+   horizontal. Fica fixa verticalmente ao rolar o conteudo principal. */
 .hwmdm-sidebar {
-    position: fixed;
+    position: sticky;
     top: 74px;
-    bottom: var(--hwmdm-workspace-pad);
-    left: max(var(--hwmdm-workspace-pad), calc((100vw - 1680px) / 2 + var(--hwmdm-workspace-pad)));
     align-self: start;
-    width: var(--hwmdm-sidebar-width);
+    width: 100%;
     max-height: calc(100vh - 74px - var(--hwmdm-workspace-pad));
     overflow-y: auto;
     background: var(--hwmdm-sidebar-bg);
     color: var(--hwmdm-sidebar-text);
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
+    scrollbar-gutter: stable;
 }
 
 .hwmdm-sidebar-brand {

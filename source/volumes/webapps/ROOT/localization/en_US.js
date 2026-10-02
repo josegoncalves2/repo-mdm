@@ -1296,6 +1296,11 @@ document.localization ['en_US'] = {
     'gpsmap.history.empty': 'No history data',
     'gpsmap.history.start': 'Start',
     'gpsmap.history.end': 'End',
+    'remote.status.online': 'ONLINE',
+    'remote.status.offline': 'OFFLINE',
+    'remote.keyboard.active': 'Physical keyboard: ACTIVE',
+    'remote.keyboard.activate': 'Physical keyboard: activate',
+    'remote.keyboard.hint': 'Physical keyboard: with the green border on the device screen, what you type goes directly to the focused field on the device (Backspace, Enter, Tab, arrows; Esc = Back; Ctrl+V pastes). Click outside the screen to use the keyboard on the page; click on the screen to resume sending.',
 
     'yes': 'yes',
     'no': 'no'
