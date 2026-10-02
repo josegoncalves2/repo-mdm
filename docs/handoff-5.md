@@ -79,6 +79,8 @@ pass web: admin ou admin123
 
 - garanta e persista todas alterações (nota: eu exclui o entrypoint porque ele rebuildava e destruia tudo. /opt/projetos/hwmdm/repo-mdm/source/docker-entrypoint.sh.bak-20261002-095114)
 
+- DOCKER ENTRYPOINT ESTÁ DESCONSTRUINDO, DESTRUINDO, DETURPANDO, QUEBRANDO, FUDENDO COM TODA A STACK! O CSS utilitário foi destruído pelo overlay de novo.
+
 - NENHUMA PASTA POSSUI PERMISSAO ADEQUADA, DEPLOY FOI FEITO POR UMA CALCULADORA RETARDADA MENTAL, ESSA É A UNICA EXPLICAÇÃO.
 
 OBS: NADA foi entregue, apenas iniciado e deixado de lado.

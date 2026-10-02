@@ -1061,6 +1061,90 @@ button:focus-visible,
 /* No drawer (<=1024) a barra "Menu" da pagina ja faz o papel. */
 @media (max-width: 1024px) { .hwmdm-menu-toggle { display: none; } }
 
+
+/* --------------------------------------------------------------------------
+   22. Utilitarios de layout (section-card, nav-list, empty-state, etc.)
+   -------------------------------------------------------------------------- */
+.hwmdm-section-card {
+    background: var(--hwmdm-surface, #ffffff);
+    border: 1px solid var(--hwmdm-border, #d0d5dd);
+    border-radius: var(--hwmdm-radius-md, 9px);
+    overflow: hidden;
+}
+.hwmdm-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--hwmdm-border, #d0d5dd);
+}
+.hwmdm-section-head h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+.hwmdm-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 32px 16px;
+    border: 1px dashed var(--hwmdm-border-input, #d0d5dd);
+    border-radius: var(--hwmdm-radius-md, 9px);
+    background: var(--hwmdm-surface, #fcfcfd);
+    color: var(--hwmdm-muted, #667085);
+    text-align: center;
+    font-size: 13px;
+}
+.hwmdm-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 0;
+}
+.hwmdm-nav-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--hwmdm-sidebar-text, #344054);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .12s ease;
+}
+.hwmdm-nav-list-item:hover {
+    background: var(--hwmdm-accent-soft-bg, #eef4ff);
+}
+.hwmdm-nav-list-item-active {
+    background: var(--hwmdm-accent-soft-bg, #eef4ff);
+    box-shadow: inset 2px 0 0 var(--hwmdm-accent, #0a7cbb);
+}
+.hwmdm-nav-list-item-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.hwmdm-nav-list-item-meta {
+    font-size: 12px;
+    color: var(--hwmdm-muted, #667085);
+}
+.hwmdm-action-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+[data-apk="com.hwmdm.remote"],
+tr.remote-apk-row,
+.remote-apk-item { display: none !important; }
+
 /* 21.2 Fonte um pouco menor, padding de 8px/5px e cabecalho que quebra
    linha (sem caixa-alta: em maiusculas cada palavra ocupava ~25% a mais). */
 .hwmdm-main .devices-table { font-size: 12px; }
