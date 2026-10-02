@@ -1,4 +1,6 @@
 <!-- Localization completed -->
+<!-- Menu permissoes refatorado: layout estilo Microsoft 365 com barra lateral
+     de navegacao a esquerda e conteudo a direita. -->
 <div class="hwmdm-page-toolbar">
     <div>
         <h3 localized>nav.roles</h3>
@@ -10,38 +12,52 @@
 </div>
 
 <div class="hwmdm-split-layout">
-    <div class="remote-device-panel">
-        <div class="hwmdm-nav-heading" localized>roles.list.title</div>
-        <a href="" class="list-group-item remote-device-item"
-           ng-repeat="role in roles"
-           ng-click="editRole(role)"
-           ng-class="{'remote-device-item-active': selectedRoleId === role.id}">
-            <div class="remote-device-item-head">
-                <div>
+    <section class="remote-device-panel hwmdm-section-card">
+        <div class="hwmdm-section-head">
+            <h4 localized>roles.list.title</h4>
+            <span class="text-muted" ng-if="roles.length">{{roles.length}} {{'roles.count' | localize}}</span>
+        </div>
+        <div class="hwmdm-nav-list">
+            <a href="" class="hwmdm-nav-list-item"
+               ng-repeat="role in roles"
+               ng-click="editRole(role)"
+               ng-class="{'hwmdm-nav-list-item-active': selectedRoleId === role.id}">
+                <div class="hwmdm-nav-list-item-head">
+                    <span class="hw-icon hw-icon-users"></span>
                     <strong>{{role.name}}</strong>
                 </div>
-            </div>
-        </a>
-        <div ng-if='!roles || roles.length === 0' class="text-muted" style="padding:12px;text-align:center" localized>notfound.roles</div>
-    </div>
-    <div>
+                <div class="hwmdm-nav-list-item-meta" ng-if="role.description">
+                    {{role.description}}
+                </div>
+            </a>
+        </div>
+        <div ng-if='!roles || roles.length === 0' class="hwmdm-empty-state" localized>notfound.roles</div>
+    </section>
+    <section class="hwmdm-section-card">
+        <div class="hwmdm-section-head">
+            <h4 localized>table.heading.role.manage</h4>
+        </div>
         <div ng-if='roles && roles.length > 0' class="table-responsive">
             <table class='table'>
                 <thead>
                 <tr>
                     <th localized>table.heading.role.name</th>
+                    <th localized>table.heading.role.description</th>
                     <th class='actions-column' localized>table.heading.role.actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat='role in roles'>
-                    <td>{{role.name}}</td>
+                    <td><strong>{{role.name}}</strong></td>
+                    <td class="text-muted">{{role.description || '-'}}</td>
                     <td>
-                        <div>
-                            <button type='button' class='btn btn-default' ng-click='editRole(role)'>
+                        <div class="hwmdm-action-row">
+                            <button type='button' class='btn btn-default btn-sm' ng-click='editRole(role)'
+                                    title="{{"button.edit" | localize}}">
                                 <span class='glyphicon glyphicon-pencil'></span>
                             </button>
-                            <button type='button' class='btn btn-default' ng-click='removeRole(role)'>
+                            <button type='button' class='btn btn-danger btn-sm' ng-click='removeRole(role)'
+                                    title="{{"button.remove" | localize}}">
                                 <span class='glyphicon glyphicon-trash'></span>
                             </button>
                         </div>
@@ -50,5 +66,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 </div>

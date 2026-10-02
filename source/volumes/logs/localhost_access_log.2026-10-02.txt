@@ -23043,3 +23043,11 @@
 192.168.1.254 - - [02/Oct/2026:12:16:31 -0300] "GET /app/components/plugins/webfilter/i18n/pt_PT.json HTTP/1.1" 200 10068
 192.168.1.116 - - [02/Oct/2026:12:16:55 -0300] "POST /rest/plugins/devicelog/log/list/R9XT200AMYY HTTP/1.1" 200 42
 192.168.1.116 - - [02/Oct/2026:12:16:56 -0300] "POST /rest/plugins/devicelog/log/list/R9XT200AMYY HTTP/1.1" 200 42
+192.168.1.65 - - [02/Oct/2026:12:17:34 -0300] "GET /app/components/main/view/settings/server.html HTTP/1.1" 200 801
+192.168.1.65 - - [02/Oct/2026:12:17:34 -0300] "GET /app/components/main/view/settings/roles.html HTTP/1.1" 200 3151
+192.168.1.65 - - [02/Oct/2026:12:17:54 -0300] "GET /app/components/main/view/settings/server.html HTTP/1.1" 200 801
+192.168.1.65 - - [02/Oct/2026:12:17:54 -0300] "GET /app/components/main/view/settings/roles.html HTTP/1.1" 200 3151
+192.168.1.65 - - [02/Oct/2026:12:17:54 -0300] "GET /css/hwmdm-ui.css HTTP/1.1" 200 55736
+192.168.1.65 - - [02/Oct/2026:12:17:54 -0300] "GET /css/hwmdm-ui.css HTTP/1.1" 200 55736
+192.168.1.116 - - [02/Oct/2026:12:18:01 -0300] "GET /rest/notification/polling/R9XT200AMYY HTTP/1.1" 200 51
+192.168.1.116 - - [02/Oct/2026:12:18:13 -0300] "POST /rest/plugins/devicelog/log/list/R9XT200AMYY HTTP/1.1" 200 42
