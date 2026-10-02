@@ -1009,6 +1009,10 @@ document.localization ['en_US'] = {
     'table.heading.group.actions': 'Actions',
 
     'table.heading.role.name': 'Name',
+    'table.heading.role.description': 'Description',
+    'table.heading.role.manage': 'Manage Roles',
+    'roles.count': 'roles',
+    'roles.list.title': 'Roles',
     'table.heading.role.actions': 'Actions',
 
     'table.heading.file.name': 'File name',

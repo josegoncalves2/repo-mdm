@@ -4,27 +4,27 @@
 
 [ ] basta apenas 1 item, caracteristica, bug, ou implementação não entregue ou nao concluida que toda a entrega é classificada como incompleta, inoperante, ineficaz e 100% reprovada, sem chance para negociação. Persista até 100% dos handoffs serem cumpridos com excelencia e totalidade.
 
-[ ] proibido mentir: "/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - MENTIR.md"
+[ ] proibido mentir: `/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - MENTIR.md`
 
-[ ] (/opt/projetos/hwmdm/repo-mdm/docs/handoff-5-verdadeiro.md = 100%) ou (turno inteiro = descumprimento, não entrega, falta de compromisso, reprovado por completo)
+[ ] (`/opt/projetos/hwmdm/repo-mdm/docs/handoff-5-verdadeiro.md` = 100%) ou (turno inteiro = descumprimento, não entrega, falta de compromisso, reprovado por completo)
 
 ---
 
 ### explicação para um agente assistente de IA burro pra caralho do o que é um especialista UX e UI (designers de tela)
 
-"/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - O QUE É UXUI.md"
+`/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - O QUE É UXUI.md`
 
 ---
 
 # seguindo a sequencia de handoffs ANTERIORES:
 
-/opt/projetos/hwmdm/repo-mdm/docs/handoff-1.md
+`/opt/projetos/hwmdm/repo-mdm/docs/handoff-1.md`
 
-/opt/projetos/hwmdm/repo-mdm/docs/handoff-2.md
+`/opt/projetos/hwmdm/repo-mdm/docs/handoff-2.md`
 
-/opt/projetos/hwmdm/repo-mdm/docs/handoff-3.md
+`/opt/projetos/hwmdm/repo-mdm/docs/handoff-3.md`
 
-/opt/projetos/hwmdm/repo-mdm/docs/handoff-4.md
+`/opt/projetos/hwmdm/repo-mdm/docs/handoff-4.md`
 
 ## ESTE HANDOFF - handoff-5.md
 
@@ -45,7 +45,7 @@ pass web: admin ou admin123
 
 - a tela que fica piscando o seguinte: pode ser que esta fazendo o que deve, mas entao a interface web que nao esta reconectando na sessao, saca? pq na interfaceweb está para pedir o acesso, mas quando eu clico pra pedir o acesso, meio que já conecta no device sem pedir autorização, entaão acho que a interface web é que se perde quando a gente navega por ela, saca? sincronizar a interface web pra nao se perder. o tablet mesmo sem ter o acesso remoto, ninguem conectado neele, ele fica bipando a tela, acendendo... ta errado... a tela pode desligar, só enquanto há o acesso remoto ativo, por alguem do suporte via interface web é que o device nao pode apagar a tela pra nao derrubar o analista de suporte..
 
-- "/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - TELA GPS.md"
+- `/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - TELA GPS.md`
 
 - GPS: listar à ESQUERDA     (hwmdm-split-layout, lista antes do mapa) (layout estilo microsfot 365, barra lateral com sub menus aninhados da esquerda para direita)
 
@@ -63,7 +63,7 @@ pass web: admin ou admin123
 
 - Esconder APK Suporte Remoto: abre sozinho no device, explode na tela sem necessidade.
 
-- "/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - TELA ACESSO REMOTO.md"
+- `/opt/projetos/hwmdm/repo-mdm/docs/prompt - 02-10-26 - TELA ACESSO REMOTO.md`
 
 - Refinar Remote Access:    CSS polido, strings traduzidas (layout estilo microsfot 365, barra lateral com sub menus aninhados da esquerda para direita)
 
@@ -77,7 +77,7 @@ pass web: admin ou admin123
 
 - Menu Server nao segue o padrao do layout do resto da interface web - corrigir. http://192.168.1.65:8080/#/server
 
-- garanta e persista todas alterações (nota: eu exclui o entrypoint porque ele rebuildava e destruia tudo. /opt/projetos/hwmdm/repo-mdm/source/docker-entrypoint.sh.bak-20261002-095114)
+- garanta e persista todas alterações (nota: eu exclui o entrypoint porque ele rebuildava e destruia tudo. `/opt/projetos/hwmdm/repo-mdm/source/docker-entrypoint.sh.bak-20261002-095114`)
 
 - DOCKER ENTRYPOINT ESTÁ DESCONSTRUINDO, DESTRUINDO, DETURPANDO, QUEBRANDO, FUDENDO COM TODA A STACK! O CSS utilitário foi destruído pelo overlay de novo.
 
