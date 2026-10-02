@@ -1,0 +1,602 @@
+<div class="webfilter-page" ng-if="!hasPermission('plugin_webfilter_access')">
+    <div class="error"><span localized>plugin.webfilter.no.permission</span></div>
+</div>
+<div class="webfilter-page" ng-controller="PluginWebFilterController" ng-if="hasPermission('plugin_webfilter_access')">
+    <style>
+        .webfilter-page { max-width: 100%; overflow-x: hidden; }
+        .webfilter-page .hwmdm-page-toolbar { display: block; margin-bottom: 10px; }
+        .webfilter-page .kiosk-status-strip {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .webfilter-page .kiosk-status-cell { min-width: 0; }
+        .webfilter-page .kiosk-status-cell strong {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+        .webfilter-page .kiosk-tabs {
+            flex-wrap: wrap;
+            gap: 0 10px;
+            overflow: visible;
+        }
+        .webfilter-page .kiosk-tab {
+            flex: 0 0 auto;
+            min-width: 0;
+            padding: 9px 8px 7px;
+            white-space: nowrap;
+        }
+        .wf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 14px; }
+        .wf-cat { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hwmdm-border); border-radius: 8px;
+                  padding: 8px 10px; background: var(--hwmdm-surface); margin: 0; font-weight: 600; cursor: pointer; }
+        .wf-cat input { margin: 0; }
+        .wf-cat-required { cursor: not-allowed; border-style: dashed; }
+        .wf-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        .wf-lists textarea { width: 100%; min-height: 120px; font-family: monospace; }
+        .wf-field-error { color: var(--hwmdm-danger); font-size: 12px; margin-top: 4px; font-weight: 600; }
+        .wf-badge { display: inline-block; border-radius: 10px; padding: 2px 9px; font-size: 12px; font-weight: 700; border: 1px solid; }
+        .wf-badge-on { color: #14532d; background: #dcfce7; border-color: #86efac; }
+        .wf-badge-off { color: var(--hwmdm-text-strong); background: transparent; border-color: var(--hwmdm-border); }
+        [data-theme="dark"] .wf-badge-on { color: #bbf7d0; background: #14532d; border-color: #22c55e; }
+        .wf-cat { align-items: flex-start; }
+        .wf-cat-text { display: flex; flex-direction: column; gap: 2px; }
+        .wf-cat-desc { font-weight: 400; font-size: 12px; color: var(--hwmdm-muted); }
+        .wf-warning { border: 1px solid var(--hwmdm-danger-border); background: var(--hwmdm-danger-bg); color: var(--hwmdm-text); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+        .wf-muted { color: var(--hwmdm-muted); font-size: 12px; overflow-wrap: anywhere; }
+        .wf-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+        .wf-dashboard-card { border: 1px solid var(--hwmdm-border); border-radius: 8px; padding: 12px; background: var(--hwmdm-surface); }
+        .wf-dashboard-card span { display: block; color: var(--hwmdm-muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .wf-dashboard-card strong { display: block; margin-top: 6px; font-size: 24px; color: var(--hwmdm-text-strong); }
+        .wf-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .wf-add-app { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .wf-add-app input, .wf-add-app select { flex: 1 1 200px; min-width: 0; }
+        .wf-code { font-family: monospace; overflow-wrap: anywhere; }
+        .wf-block-layout { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(260px, 420px); gap: 16px; align-items: start; }
+        .wf-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .wf-form-field { min-width: 0; }
+        .wf-form-field textarea { min-height: 92px; resize: vertical; }
+        .wf-form-field .wf-code-area { min-height: 150px; font-family: monospace; font-size: 12px; }
+        .wf-block-preview { border: 1px solid var(--hwmdm-border); border-radius: 8px; overflow: hidden; background: #f3f7fb; }
+        .wf-block-preview-body { min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        @media (max-width: 900px) { .wf-block-layout { grid-template-columns: 1fr; } }
+        .wf-block-card { width: 100%; max-width: 340px; border: 1px solid #d7e2ee; border-radius: 8px; background: #fff; padding: 22px; box-shadow: 0 10px 24px rgba(15, 23, 42, .12); }
+        .wf-block-logo { max-width: 150px; max-height: 56px; object-fit: contain; margin-bottom: 16px; }
+        .wf-block-pill { display: inline-block; border-radius: 999px; background: #e8f4fb; color: #16658a; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .wf-block-title { margin: 12px 0 8px; font-size: 22px; line-height: 1.2; font-weight: 700; color: #102a43; }
+        .wf-block-message { color: #334e68; line-height: 1.45; margin-bottom: 14px; overflow-wrap: anywhere; }
+        .wf-block-note { border-top: 1px solid #e4edf5; color: #5f6b7a; font-size: 12px; line-height: 1.4; padding-top: 12px; overflow-wrap: anywhere; }
+        .wf-block-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+        .wf-block-device-note { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface-subtle); }
+        @media (max-width: 900px) {
+            .webfilter-page .kiosk-status-strip { grid-template-columns: 1fr; }
+            .webfilter-page .kiosk-tab { white-space: normal; }
+            .wf-block-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>plugin.webfilter.localization.key.name</h3>
+            <p localized>plugin.webfilter.subtitle</p>
+        </div>
+    </div>
+
+    <div ng-show="errorMessage" class="error" data-testid="wf-error"><span>{{errorMessage}}</span></div>
+    <div ng-show="successMessage" class="success" data-testid="wf-success"><span>{{successMessage}}</span></div>
+
+    <div class="kiosk-status-strip">
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.profiles</span>
+            <strong>{{policies.length}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.active</span>
+            <strong>{{activePolicies()}}</strong>
+        </div>
+        <div class="kiosk-status-cell">
+            <span localized>plugin.webfilter.status.dns</span>
+            <strong>{{savedDnsDomain || ('plugin.webfilter.status.dns.none' | localize)}}</strong>
+        </div>
+    </div>
+
+    <div class="wf-warning" ng-if="settingsLoaded && !savedDnsDomain" data-testid="wf-dns-warning" localized>plugin.webfilter.dns.missing</div>
+
+    <div class="kiosk-tabs" role="tablist">
+        <button type="button" role="tab" class="kiosk-tab" ng-repeat="tab in tabs"
+                ng-class="{'kiosk-tab-active': activeWfTab === tab.id}"
+                data-testid="wf-tab-{{tab.id}}"
+                ng-click="selectWfTab(tab.id)">{{tab.key | localize}}</button>
+    </div>
+
+    <!-- ======================================================================== Dashboard -->
+    <style>.wf-events-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}.wf-events-actions{display:flex;gap:6px}.wf-pager{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:8px}.wf-pager select{margin-left:6px}</style>
+    <section class="kiosk-panel" ng-if="activeWfTab === 'dashboard'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.dashboard.title</h4>
+            <button type="button" class="btn btn-default btn-sm" ng-click="selectWfTab('dashboard')"
+                    ng-disabled="dashboardLoading" localized>plugin.webfilter.dashboard.refresh</button>
+        </div>
+
+        <div class="wf-dashboard-grid">
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.active.policies</span>
+                <strong>{{dashboard.policies.length || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.devices</span>
+                <strong>{{dashboard.devices.length || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.events24h</span>
+                <strong>{{dashboard.events24h || 0}}</strong>
+            </div>
+            <div class="wf-dashboard-card">
+                <span localized>plugin.webfilter.dashboard.events7d</span>
+                <strong>{{dashboard.events7d || 0}}</strong>
+            </div>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.dashboard.delivery</strong></h5>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.device</th>
+                    <th localized>plugin.webfilter.col.profile</th>
+                    <th localized>plugin.webfilter.col.status</th>
+                    <th localized>plugin.webfilter.col.last.delivery</th>
+                    <th localized>plugin.webfilter.col.browser.sites</th>
+                    <th localized>plugin.webfilter.col.hidden.apps</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="d in dashboard.devices">
+                    <td><strong>{{d.deviceNumber}}</strong></td>
+                    <td>{{d.configurationName}}</td>
+                    <td>
+                        <span class="wf-badge" ng-class="{'wf-badge-on': d.enabled, 'wf-badge-off': !d.enabled}">
+                            {{d.deliveredAt ? ((d.enabled ? 'plugin.webfilter.enabled' : 'plugin.webfilter.disabled') | localize) : ('plugin.webfilter.dashboard.not.delivered' | localize)}}
+                        </span>
+                    </td>
+                    <td>{{d.deliveredAt ? (d.deliveredAt | date:'short') : '-'}}</td>
+                    <td>{{d.browserSites || 0}}</td>
+                    <td>{{d.hiddenApps || 0}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!dashboard.devices || dashboard.devices.length === 0"
+                 localized>plugin.webfilter.dashboard.delivery.empty</div>
+        </div>
+
+        <div class="wf-events-head">
+            <h5><strong localized>plugin.webfilter.dashboard.events</strong>
+                <small class="wf-muted">({{events.total}})</small></h5>
+            <div class="wf-events-actions">
+                <button type="button" class="btn btn-default btn-sm" ng-disabled="!selectedEventsCount()"
+                        ng-click="deleteSelectedEvents()" data-testid="wf-events-delete-selected">
+                    <span localized>plugin.webfilter.events.delete.selected</span> ({{selectedEventsCount()}})
+                </button>
+                <button type="button" class="btn btn-danger btn-sm" ng-disabled="!events.total"
+                        ng-click="deleteAllEvents()" data-testid="wf-events-delete-all"
+                        localized>plugin.webfilter.events.delete.all</button>
+            </div>
+        </div>
+        <form class="wf-add-app" ng-submit="searchEvents()" data-testid="wf-events-filter">
+            <input type="text" class="form-control" ng-model="eventFilter.ip" placeholder="{{'plugin.webfilter.filter.ip' | localize}}"
+                   aria-label="IP" data-testid="wf-filter-ip">
+            <input type="text" class="form-control" ng-model="eventFilter.device" placeholder="{{'plugin.webfilter.filter.device' | localize}}"
+                   aria-label="Dispositivo" data-testid="wf-filter-device">
+            <input type="text" class="form-control" ng-model="eventFilter.site" placeholder="{{'plugin.webfilter.filter.site' | localize}}"
+                   aria-label="Site" data-testid="wf-filter-site">
+            <button type="submit" class="btn btn-primary" data-testid="wf-filter-search" localized>plugin.webfilter.filter.search</button>
+            <button type="button" class="btn btn-default" ng-click="clearEventFilter()" ng-if="eventFilterActive()"
+                    data-testid="wf-filter-clear" localized>plugin.webfilter.filter.clear</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th style="width:36px"><input type="checkbox" ng-checked="allEventsSelected()" ng-click="toggleAllEvents()"
+                               title="{{'plugin.webfilter.events.select.page' | localize}}" data-testid="wf-events-select-page"></th>
+                    <th localized>plugin.webfilter.col.when</th>
+                    <th localized>plugin.webfilter.col.device</th>
+                    <th>IP</th>
+                    <th localized>plugin.webfilter.col.host</th>
+                    <th localized>plugin.webfilter.col.category</th>
+                    <th localized>plugin.webfilter.col.source</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="e in events.items track by e.id" data-testid="wf-event-row">
+                    <td><input type="checkbox" ng-model="events.selected[e.id]" data-testid="wf-event-select"></td>
+                    <td>{{e.createdAt | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                    <td>{{e.deviceNumber || ('plugin.webfilter.device.unknown' | localize)}}</td>
+                    <td class="wf-code">{{e.clientIp || '-'}}</td>
+                    <td class="wf-code">{{e.host}}</td>
+                    <td>{{e.category || '-'}}</td>
+                    <td>{{e.source}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!events.items.length" localized>plugin.webfilter.dashboard.events.empty</div>
+        </div>
+        <div class="wf-pager" ng-if="events.total > 0" data-testid="wf-events-pager">
+            <span class="wf-muted">{{(events.page - 1) * events.size + 1}}&ndash;{{(events.page - 1) * events.size + events.items.length}} / {{events.total}}</span>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default" ng-disabled="events.page <= 1" ng-click="goEventsPage(1)">&laquo;</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page <= 1" ng-click="goEventsPage(events.page - 1)">&lsaquo;</button>
+                <button type="button" class="btn" ng-repeat="p in eventsPageList()" ng-class="p === events.page ? 'btn-primary' : 'btn-default'"
+                        ng-click="goEventsPage(p)">{{p}}</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page >= eventsPages()" ng-click="goEventsPage(events.page + 1)">&rsaquo;</button>
+                <button type="button" class="btn btn-default" ng-disabled="events.page >= eventsPages()" ng-click="goEventsPage(eventsPages())">&raquo;</button>
+            </div>
+            <label class="wf-muted"><span localized>plugin.webfilter.events.per.page</span>
+                <select ng-model="events.size" ng-options="n for n in pageSizes" ng-change="changeEventsSize()"
+                        data-testid="wf-events-size"></select></label>
+        </div>
+    </section>
+
+    <!-- ======================================================================== Policies: list -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'policies' && !editing">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.policies.title</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.profile</th>
+                    <th localized>plugin.webfilter.col.status</th>
+                    <th localized>plugin.webfilter.col.categories</th>
+                    <th localized>plugin.webfilter.col.entries</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="p in policies" data-testid="wf-policy-row">
+                    <td><strong>{{p.configurationName}}</strong></td>
+                    <td>
+                        <span class="wf-badge" ng-class="{'wf-badge-on': p.enabled, 'wf-badge-off': !p.enabled}">
+                            {{(p.enabled ? 'plugin.webfilter.enabled' : 'plugin.webfilter.disabled') | localize}}
+                        </span>
+                    </td>
+                    <td>{{p.enabled ? p.categories.length + 1 : '-'}}</td>
+                    <td>{{p.domainAllow.length + p.domainBlock.length + p.appAllow.length + p.appBlock.length}}</td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="edit(p)"
+                                data-testid="wf-edit" localized>plugin.webfilter.edit</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="!loading && policies.length === 0" localized>plugin.webfilter.policies.empty</div>
+        </div>
+    </section>
+
+    <!-- ======================================================================== Policies: edit -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'policies' && editing" data-testid="wf-editor">
+        <div class="kiosk-panel-head">
+            <h4>{{'plugin.webfilter.policy.of' | localize}} {{editing.configurationName}}</h4>
+            <button type="button" class="btn btn-default btn-sm" ng-click="back()" data-testid="wf-back">
+                <span class="glyphicon glyphicon-menu-left"></span> <span localized>plugin.webfilter.back</span>
+            </button>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="editing.enabled" data-testid="wf-enabled">
+                <strong localized>plugin.webfilter.policy.enabled</strong>
+            </label>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.categories</strong></h5>
+        <p class="wf-muted" localized>plugin.webfilter.categories.hint</p>
+        <div class="wf-grid">
+            <label class="wf-cat" ng-repeat="c in catalog.categories" ng-class="{'wf-cat-required': c.required}"
+                   data-testid="wf-cat-{{c.id}}">
+                <input type="checkbox" ng-if="!c.required" ng-model="editing.categories[c.id]">
+                <input type="checkbox" ng-if="c.required" checked disabled>
+                <span class="wf-cat-text">
+                    <span>{{categoryName(c.id)}}</span>
+                    <span class="wf-cat-desc">{{categoryDescription(c.id)}}</span>
+                </span>
+            </label>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.categories">{{m}}</div>
+
+        <div class="wf-lists">
+            <div>
+                <label localized>plugin.webfilter.domain.allow</label>
+                <textarea class="form-control" ng-model="editing.domainAllow" data-testid="wf-domain-allow"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.domainAllow">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.domain.block</label>
+                <textarea class="form-control" ng-model="editing.domainBlock" data-testid="wf-domain-block"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.domainBlock">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.app.allow</label>
+                <textarea class="form-control" ng-model="editing.appAllow" data-testid="wf-app-allow"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.appAllow">{{m}}</div>
+            </div>
+            <div>
+                <label localized>plugin.webfilter.app.block</label>
+                <textarea class="form-control" ng-model="editing.appBlock" data-testid="wf-app-block"></textarea>
+                <div class="wf-field-error" ng-repeat="m in fieldErrors.appBlock">{{m}}</div>
+            </div>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.lists.hint</p>
+
+        <div class="kiosk-status-strip" ng-if="editing.enabled">
+            <div class="kiosk-status-cell">
+                <span localized>plugin.webfilter.dns.host</span>
+                <strong class="wf-code">{{editing.dnsHost || ('plugin.webfilter.dns.host.none' | localize)}}</strong>
+            </div>
+            <div class="kiosk-status-cell">
+                <span localized>plugin.webfilter.blocked.apps</span>
+                <strong class="wf-code" data-testid="wf-blocked-apps">{{editing.blockedApps.length ? editing.blockedApps.join(', ') : '-'}}</strong>
+            </div>
+        </div>
+
+        <div class="wf-actions">
+            <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="saving"
+                    data-testid="wf-save" localized>plugin.webfilter.save</button>
+            <button type="button" class="btn btn-default" ng-click="back()" localized>plugin.webfilter.back</button>
+        </div>
+    </section>
+
+    <!-- ======================================================================== Apps -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'apps'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.apps.title</h4>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.apps.hint</p>
+        <div class="wf-add-app">
+            <input type="text" class="form-control" ng-model="newApp.packageName" data-testid="wf-new-app-package">
+            <select class="form-control" ng-model="newApp.category" data-testid="wf-new-app-category"
+                    ng-options="c.id as categoryName(c.id) for c in catalog.categories | filter:{required:false}">
+                <option value="">{{'plugin.webfilter.choose.category' | localize}}</option>
+            </select>
+            <button type="button" class="btn btn-primary" ng-click="addApp()" data-testid="wf-add-app"
+                    localized>plugin.webfilter.add</button>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.packageName">{{m}}</div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.category">{{m}}</div>
+
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <thead>
+                <tr>
+                    <th localized>plugin.webfilter.col.package</th>
+                    <th localized>plugin.webfilter.col.category</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="a in appCategories" data-testid="wf-app-row">
+                    <td class="wf-code">{{a.packageName}}</td>
+                    <td>{{categoryName(a.category)}}</td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="removeApp(a)"
+                                localized>plugin.webfilter.remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="kiosk-empty" ng-if="appCategories.length === 0" localized>plugin.webfilter.apps.empty</div>
+        </div>
+
+        <h5><strong localized>plugin.webfilter.apps.catalog</strong></h5>
+        <div class="table-responsive">
+            <table class="table kiosk-table">
+                <tbody>
+                <tr ng-repeat="c in catalog.categories" ng-if="c.apps.length">
+                    <td><strong>{{categoryName(c.id)}}</strong></td>
+                    <td class="wf-code">{{c.apps.join(', ')}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="wf-muted">{{'plugin.webfilter.protected' | localize}} <span class="wf-code">{{catalog.protectedPackages.join(', ')}}</span></p>
+    </section>
+
+    <!-- ======================================================================== Settings -->
+    <section class="kiosk-panel" ng-if="activeWfTab === 'blockpage'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.blockpage.title</h4>
+        </div>
+        <p class="wf-muted" localized>plugin.webfilter.blockpage.hint</p>
+        <div class="wf-block-layout">
+            <div>
+                <div class="wf-form-grid">
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.page.title</label>
+                        <input type="text" class="form-control" ng-model="settings.blockPageTitle" data-testid="wf-block-title">
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.logo</label>
+                        <input type="text" class="form-control" ng-model="settings.blockPageLogoUrl"
+                               placeholder="https://..." data-testid="wf-block-logo">
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.message</label>
+                        <textarea class="form-control" ng-model="settings.blockPageMessage" data-testid="wf-block-message"></textarea>
+                    </div>
+                    <div class="wf-form-field">
+                        <label localized>plugin.webfilter.blockpage.support</label>
+                        <textarea class="form-control" ng-model="settings.blockPageSupportText" data-testid="wf-block-support"></textarea>
+                    </div>
+                </div>
+                <div class="wf-form-field">
+                    <label localized>plugin.webfilter.blockpage.html</label>
+                    <textarea class="form-control wf-code-area" ng-model="settings.blockPageCustomHtml"
+                              spellcheck="false" data-testid="wf-block-html"></textarea>
+                </div>
+                <div class="wf-form-field">
+                    <label localized>plugin.webfilter.blockpage.css</label>
+                    <textarea class="form-control wf-code-area" ng-model="settings.blockPageCustomCss"
+                              spellcheck="false" data-testid="wf-block-css"></textarea>
+                </div>
+                <div class="wf-actions">
+                    <button type="button" class="btn btn-primary" ng-click="saveSettings()" data-testid="wf-save-blockpage"
+                            localized>plugin.webfilter.save</button>
+                    <button type="button" class="btn btn-default" ng-click="resetBlockPage()" data-testid="wf-reset-blockpage"
+                            localized>plugin.webfilter.blockpage.reset</button>
+                </div>
+                <div class="wf-block-device-note">
+                    <strong localized>plugin.webfilter.blockpage.device.title</strong>
+                    <p class="wf-muted" localized>plugin.webfilter.blockpage.device.hint</p>
+                </div>
+            </div>
+            <div class="wf-block-preview" data-testid="wf-block-preview">
+                <div class="wf-block-preview-body">
+                    <div class="wf-block-card">
+                        <style>{{settings.blockPageCustomCss}}</style>
+                        <img class="wf-block-logo" ng-if="settings.blockPageLogoUrl" ng-src="{{settings.blockPageLogoUrl}}" alt="">
+                        <span class="wf-block-pill" localized>plugin.webfilter.blockpage.badge</span>
+                        <div ng-if="!settings.blockPageCustomHtml">
+                            <div class="wf-block-title">{{settings.blockPageTitle}}</div>
+                            <div class="wf-block-message">{{settings.blockPageMessage}}</div>
+                            <div class="wf-block-note">{{settings.blockPageSupportText}}</div>
+                        </div>
+                        <div ng-if="settings.blockPageCustomHtml" ng-bind-html="settings.blockPageCustomHtml"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="kiosk-panel" ng-if="activeWfTab === 'settings'">
+        <div class="kiosk-panel-head">
+            <h4 localized>plugin.webfilter.settings.title</h4>
+        </div>
+        <label localized>plugin.webfilter.dns.domain</label>
+        <div class="wf-add-app">
+            <input type="text" class="form-control" ng-model="settings.dnsDomain" data-testid="wf-dns-domain">
+            <button type="button" class="btn btn-primary" ng-click="saveSettings()" data-testid="wf-save-settings"
+                    localized>plugin.webfilter.save</button>
+        </div>
+        <div class="wf-field-error" ng-repeat="m in fieldErrors.dnsDomain">{{m}}</div>
+        <p class="wf-muted" localized>plugin.webfilter.dns.domain.hint</p>
+
+        <div class="wf-src" data-testid="wf-sources">
+            <style>
+                .wf-src { margin: 16px 0; }
+                .wf-src-cat { border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); margin-bottom: 4px; }
+                .wf-src-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 5px 10px; border: 0; background: transparent;
+                               text-align: left; color: var(--hwmdm-text-strong); cursor: pointer; }
+                .wf-src-head .hw-icon { width: 14px; height: 14px; color: var(--hwmdm-muted); }
+                .wf-src-name { font-weight: 600; }
+                .wf-src-count { margin-left: auto; color: var(--hwmdm-muted); font-size: 12px; white-space: nowrap; }
+                .wf-src-dirty { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; white-space: nowrap; }
+                .wf-src-body { padding: 0 10px 10px; }
+                .wf-src-table { width: 100%; table-layout: fixed; margin: 0 0 8px; }
+                .wf-src-table th, .wf-src-table td { padding: 4px 6px !important; vertical-align: middle !important; }
+                .wf-src-table th { font-size: 12px; font-weight: 600; color: var(--hwmdm-muted); text-transform: none !important; letter-spacing: normal !important; }
+                .wf-src-table .wf-src-col-active { width: 56px; text-align: center; }
+                .wf-src-table .wf-src-col-actions { width: 100px; text-align: right; }
+                .wf-src-table .wf-src-col-license { width: 160px; }
+                .wf-src-table .wf-src-col-active input { margin: 0; }
+                .wf-src-table .form-control { height: 30px; padding: 0 8px; font-family: monospace; font-size: 12px; }
+                .wf-src-table .btn { width: auto; min-width: 0; height: 30px; padding: 0 10px; white-space: nowrap; }
+                .wf-src-off .form-control { opacity: .55; }
+                .wf-src-bad .form-control { border-color: var(--hwmdm-danger); }
+                .wf-src-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+                .wf-src-ok { color: #15803d; font-size: 12px; font-weight: 600; }
+                [data-theme="dark"] .wf-src-ok { color: #86efac; }
+                .wf-src-err { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; }
+            </style>
+            <h5><strong>Listas de DNS</strong></h5>
+            <p class="wf-muted">Lista desmarcada fica cadastrada, mas fora do filtro.</p>
+            <div class="wf-src-cat" ng-repeat="category in catalog.categories" data-testid="wf-src-{{category.id}}">
+                <button type="button" class="wf-src-head" ng-click="toggleSources(category)" aria-expanded="{{!!category.open}}"
+                        data-testid="wf-src-toggle-{{category.id}}">
+                    <span class="hw-icon" ng-class="category.open ? 'hw-icon-chevron-down' : 'hw-icon-chevron-right'"></span>
+                    <span class="wf-src-name">{{categoryName(category.id)}}</span>
+                    <span class="wf-src-dirty" ng-if="category.dirty">não salvo</span>
+                    <span class="wf-src-count">{{activeSources(category)}} de {{category.sources.length}} ativas</span>
+                </button>
+                <div class="wf-src-body" ng-if="category.open">
+                    <table class="table wf-src-table" ng-if="category.sources.length">
+                        <thead>
+                        <tr>
+                            <th class="wf-src-col-active">Ativa</th>
+                            <th>URL</th>
+                            <th class="wf-src-col-actions"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="source in category.sources" data-testid="wf-src-row"
+                            ng-class="{'wf-src-off': !source.active, 'wf-src-bad': invalidSource(source)}">
+                            <td class="wf-src-col-active">
+                                <input type="checkbox" ng-model="source.active" ng-change="markSourcesDirty(category)"
+                                       aria-label="Ativa" data-testid="wf-src-active">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" ng-model="source.url" ng-change="markSourcesDirty(category)"
+                                       placeholder="https://" aria-label="URL da lista" spellcheck="false" data-testid="wf-src-url">
+                            </td>
+                            <td class="wf-src-col-actions">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="removeSource(category, $index)"
+                                        data-testid="wf-src-remove">Remover</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="wf-muted" ng-if="!category.sources.length">Nenhuma lista nesta categoria.</p>
+                    <div class="wf-src-actions">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="addSource(category)"
+                                data-testid="wf-src-add">Adicionar lista</button>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="saveSources(category)"
+                                ng-disabled="category.saving || !category.dirty" data-testid="wf-src-save">Salvar listas</button>
+                        <span class="wf-src-ok" ng-if="category.sourceMessage" data-testid="wf-src-ok">{{category.sourceMessage}}</span>
+                        <span class="wf-src-err" ng-if="category.sourceError" data-testid="wf-src-err">{{category.sourceError}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h5><strong localized>plugin.webfilter.sources</strong></h5>
+        <p class="wf-muted" localized>plugin.webfilter.sources.hint</p>
+        <table class="table wf-src-table" data-testid="wf-attribution">
+            <thead>
+            <tr>
+                <th localized>plugin.webfilter.source.name</th>
+                <th class="wf-src-col-license" localized>plugin.webfilter.source.license</th>
+                <th>URL</th>
+                <th class="wf-src-col-actions"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="source in catalog.attribution" ng-class="{'wf-src-bad': invalidAttribution(source)}"
+                data-testid="wf-attribution-row">
+                <td>
+                    <input type="text" class="form-control" ng-model="source.name" ng-change="markAttributionDirty()"
+                           data-testid="wf-attribution-name">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="source.license" ng-change="markAttributionDirty()"
+                           data-testid="wf-attribution-license">
+                </td>
+                <td>
+                    <input type="text" class="form-control" ng-model="source.url" ng-change="markAttributionDirty()"
+                           placeholder="https://" spellcheck="false" data-testid="wf-attribution-url">
+                </td>
+                <td class="wf-src-col-actions">
+                    <button type="button" class="btn btn-default btn-sm" ng-click="removeAttribution($index)"
+                            data-testid="wf-attribution-remove" localized>plugin.webfilter.remove</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="wf-src-actions">
+            <button type="button" class="btn btn-default btn-sm" ng-click="addAttribution()"
+                    data-testid="wf-attribution-add" localized>plugin.webfilter.source.add</button>
+            <button type="button" class="btn btn-primary btn-sm" ng-click="saveAttribution()"
+                    ng-disabled="attributionSaving || !attributionDirty" data-testid="wf-attribution-save"
+                    localized>plugin.webfilter.source.save</button>
+            <span class="wf-src-ok" ng-if="attributionMessage">{{attributionMessage}}</span>
+            <span class="wf-src-err" ng-if="attributionError">{{attributionError}}</span>
+        </div>
+    </section>
+</div>

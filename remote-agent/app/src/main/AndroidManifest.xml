@@ -57,12 +57,8 @@
         <!-- Tela unica: mostra o estado da sessao e leva o operador as duas permissoes que
              o Android exige que o proprio usuario conceda. -->
         <activity android:name=".ui.StatusActivity"
-            android:exported="true"
+            android:exported="false"
             android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <!-- Janela da mensagem enviada pelo painel (push textMessage). singleTask para que

@@ -26,8 +26,11 @@ public final class BrowserPolicy {
     /**
      * <p>Browsers that read Chrome enterprise policies from their application restrictions.</p>
      */
-    public static final List<String> PACKAGES = Collections.unmodifiableList(Arrays.asList(
+    public static final List<String> CHROME_PACKAGES = Collections.unmodifiableList(Arrays.asList(
             "com.android.chrome", "com.chrome.beta", "com.chrome.dev", "com.chrome.canary"));
+    public static final String EDGE_PACKAGE = "com.microsoft.emmx";
+    public static final List<String> PACKAGES = Collections.unmodifiableList(Arrays.asList(
+            "com.android.chrome", "com.chrome.beta", "com.chrome.dev", "com.chrome.canary", EDGE_PACKAGE));
 
     public static final String SETTING = "managedConfig";
 
@@ -104,6 +107,43 @@ public final class BrowserPolicy {
                 }
             });
         }
+        return result.toString();
+    }
+
+    /** Microsoft Edge for Android uses its own managed-configuration names and pipe format. */
+    public static String mergeForBrowser(String browser, String adminValue, ObjectNode filter) {
+        if (!EDGE_PACKAGE.equals(browser)) return merge(adminValue, filter);
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode result = parse(mapper, adminValue);
+        if (filter == null) return result.toString();
+
+        Set<String> urls = new LinkedHashSet<>();
+        JsonNode adminBlock = result.get("com.microsoft.intune.mam.managedbrowser.BlockListURLs");
+        if (adminBlock != null && adminBlock.isTextual()) {
+            for (String value : adminBlock.asText().split("\\|")) {
+                if (!value.trim().isEmpty()) urls.add(value.trim());
+            }
+        }
+        JsonNode filterBlock = filter.path(BLOCKLIST);
+        if (filterBlock.isArray()) {
+            for (JsonNode node : filterBlock) {
+                String domain = node.asText().trim();
+                while (domain.startsWith("*.")) domain = domain.substring(2);
+                if (domain.isEmpty()) continue;
+                urls.add("http://" + domain + "/*");
+                urls.add("https://" + domain + "/*");
+                urls.add("http://*." + domain + "/*");
+                urls.add("https://*." + domain + "/*");
+            }
+        }
+        List<String> limited = new java.util.ArrayList<>();
+        for (String url : urls) {
+            if (limited.size() == MAX_URLS) break;
+            limited.add(url);
+        }
+        result.put("com.microsoft.intune.mam.managedbrowser.BlockListURLs", String.join("|", limited));
+        result.put("com.microsoft.intune.mam.managedbrowser.AllowTransitionOnBlock", false);
+        result.put("com.microsoft.intune.mam.managedbrowser.openInPrivateIfBlocked", false);
         return result.toString();
     }
 

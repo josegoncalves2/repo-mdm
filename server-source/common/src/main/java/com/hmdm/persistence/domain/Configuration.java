@@ -91,7 +91,7 @@ public class Configuration implements CustomerData, Serializable {
     @ApiModelProperty("Strategy of app permission auto-granting")
     private AppPermissionsType appPermissions = AppPermissionsType.GRANTALL;
     @ApiModelProperty("Push notification options")
-    private String pushOptions;
+    private String pushOptions = "mqttWorker";
     @ApiModelProperty("Keep-Alive time for MQTT connection")
     private Integer keepaliveTime;
     @ApiModelProperty("Brightness management flag. null: not managed, false: manual, true: auto")
@@ -681,7 +681,9 @@ public class Configuration implements CustomerData, Serializable {
     }
 
     public void setPushOptions(String pushOptions) {
-        this.pushOptions = pushOptions;
+        this.pushOptions = pushOptions == null || pushOptions.trim().isEmpty()
+                ? "mqttWorker"
+                : pushOptions;
     }
 
     public Integer getKeepaliveTime() {

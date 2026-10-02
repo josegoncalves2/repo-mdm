@@ -67,13 +67,16 @@ public class CryptoUtil {
     }
 
     /**
-     * <p>Encodes the specified content into Base-64 URL-safe format according to RFC 3548.</p>
+     * <p>Encodes the specified content into standard Base-64 format with padding.</p>
+     * <p>Android QR provisioning expects standard Base64 with '=' padding. The
+     * URL-safe variant (base64Url) omits padding, which causes Android to reject
+     * the APK checksum during enrollment.</p>
      *
      * @param digest a content to encode.
      * @return a base-64 encoded string representing the specified content.
      */
     public static String getBase64String(byte[] digest) {
-        String hashString = BaseEncoding.base64Url().encode(digest);
+        String hashString = BaseEncoding.base64().encode(digest);
         return hashString;
     }
 

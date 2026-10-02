@@ -1,0 +1,10 @@
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/MessagingResource.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingLiquibaseModule.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/MessagingDAO.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingPersistenceModule.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/json/SendRequest.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/MessagingPluginConfigurationImpl.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/guice/module/MessagingRestModule.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/rest/json/MessageFilter.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/domain/Message.java
+/opt/projetos/hwmdm/repo-mdm/server-source/plugins/messaging/src/main/java/com/hmdm/plugins/messaging/persistence/mapper/MessageMapper.java

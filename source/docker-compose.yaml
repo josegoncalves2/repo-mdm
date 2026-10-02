@@ -139,7 +139,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 300s
-    mem_limit: 1536m
+    mem_limit: 3g
 
   # Gestao do servidor (configuracao, containers, aplicar mudancas). Container proprio para
   # sobreviver ao restart/recreate/build dos outros, que ele mesmo comanda. Mesmo banco e

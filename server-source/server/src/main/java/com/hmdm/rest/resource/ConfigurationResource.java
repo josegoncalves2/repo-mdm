@@ -239,6 +239,9 @@ public class ConfigurationResource {
                         return Response.PERMISSION_DENIED();
                     }
                     configuration.setDisableLocation(false);        // Not used but shouldn't be NULL
+                    if (configuration.getPushOptions() == null) {
+                        configuration.setPushOptions("mqttWorker");
+                    }
                     this.configurationDAO.insertConfiguration(configuration);
                     User user = SecurityContext.get().getCurrentUser().get();
                     if (!user.isAllConfigAvailable()) {
@@ -251,6 +254,11 @@ public class ConfigurationResource {
                         log.error("Unauthorized attempt to update the configuration " + configuration.getId() +
                                 "by user " + SecurityContext.get().getCurrentUserName());
                         return Response.PERMISSION_DENIED();
+                    }
+                    if (configuration.getPushOptions() == null) {
+                        Configuration current = this.configurationDAO.getConfigurationByIdFull(id);
+                        configuration.setPushOptions(current != null && current.getPushOptions() != null
+                                ? current.getPushOptions() : "mqttWorker");
                     }
                     log.info("Configuration " + configuration.getName() + " updated by user "  + SecurityContext.get().getCurrentUserName());
                     this.configurationDAO.updateConfiguration(configuration);

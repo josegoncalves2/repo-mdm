@@ -72,6 +72,9 @@ public class ApplicationVersion implements Serializable {
     private String apkHash;
 
     @ApiModelProperty(hidden = true)
+    private String signatureHash;
+
+    @ApiModelProperty(hidden = true)
     private String arch;
 
     /**
@@ -207,6 +210,14 @@ public class ApplicationVersion implements Serializable {
 
     public void setApkHash(String apkHash) {
         this.apkHash = apkHash;
+    }
+
+    public String getSignatureHash() {
+        return signatureHash;
+    }
+
+    public void setSignatureHash(String signatureHash) {
+        this.signatureHash = signatureHash;
     }
 
     public ApplicationType getType() {

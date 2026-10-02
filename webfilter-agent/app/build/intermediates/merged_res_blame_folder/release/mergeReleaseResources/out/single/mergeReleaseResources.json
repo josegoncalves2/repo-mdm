@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.hwmdm.webfilter.app-release-10:/xml_network_security_config.xml.flat",
+        "source": "com.hwmdm.webfilter.app-main-11:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "com.hwmdm.webfilter.app-release-10:/xml_webfilter_accessibility_config.xml.flat",
+        "source": "com.hwmdm.webfilter.app-main-11:/xml/webfilter_accessibility_config.xml"
+    }
+]

@@ -1,0 +1,107 @@
+<!-- Localization completed -->
+<div class="chat-page" ng-controller="ChatTabController">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.chat</h3>
+            <p localized>chat.page.subtitle</p>
+        </div>
+    </div>
+
+    <div class='form-group' ng-show='errorMessage'>
+        <div class='error'><span>{{errorMessage}}</span></div>
+    </div>
+    <div class='form-group' ng-show='successMessage'>
+        <div class='success'><span>{{successMessage}}</span></div>
+    </div>
+
+    <div class="summary-panel" ng-if="!canViewChat">
+        <div class="summary-empty-list" localized>chat.no.permission</div>
+    </div>
+
+    <div class="chat-layout" ng-if="canViewChat">
+        <section class="summary-panel chat-compose-panel">
+            <div class="summary-panel-header">
+                <h3 localized>chat.title</h3>
+            </div>
+            <!--
+                A plain select, not a free-text autocomplete. The autocomplete only showed
+                anything once the operator had already typed a prefix of a device number they
+                had to know by heart, so there was no way to just pick a device from a list.
+            -->
+            <div class="form-group">
+                <label for="chat-device-select" localized>plugin.messaging.label.device</label>
+                <select id="chat-device-select"
+                        class="form-control"
+                        data-testid="chat-device-select"
+                        ng-model="chat.deviceNumber"
+                        ng-disabled="loadingDevices || devices.length === 0"
+                        ng-options="device.number as deviceLabel(device) for device in devices">
+                    <option value="" localized>chat.device.select.placeholder</option>
+                </select>
+                <div class="field-hint" ng-if="loadingDevices" localized>remote.loading</div>
+                <div class="field-hint" ng-if="!loadingDevices && devices.length === 0"
+                     localized>chat.device.select.empty</div>
+            </div>
+            <div class="form-group">
+                <label localized>plugin.messaging.label.message</label>
+                <textarea class="form-control chat-compose-text"
+                          rows="7"
+                          ng-model="chat.text"
+                          maxlength="5000"></textarea>
+            </div>
+            <button type="button" class="btn btn-default" ng-click="send()" ng-disabled="sending || !canSendChat">
+                <span class="glyphicon glyphicon-send"></span>
+                <span localized>plugin.messaging.button.send</span>
+            </button>
+        </section>
+
+        <section class="summary-panel chat-history-panel">
+            <div class="summary-panel-header">
+                <h3 localized>chat.history.title</h3>
+                <span ng-if="loading" localized>remote.loading</span>
+            </div>
+
+            <div class="chat-filter-row">
+                <input type="text"
+                       class="form-control"
+                       ng-model="paging.deviceFilter"
+                       ng-enter="search()"
+                       localized-placeholder="search.placeholder.device">
+                <input type="text"
+                       class="form-control"
+                       ng-model="paging.messageFilter"
+                       ng-enter="search()"
+                       localized-placeholder="search.placeholder.message">
+                <button type="button" class="btn btn-default" ng-click="search()" localized>button.search</button>
+            </div>
+
+            <div class="chat-message-list" ng-if="messages.length > 0">
+                <div class="chat-message"
+                     ng-class="{'chat-message-from-device': message.direction === 1, 'chat-message-from-admin': message.direction !== 1}"
+                     ng-repeat="message in messages">
+                    <div class="chat-message-head">
+                        <span class="label" ng-class="message.direction === 1 ? 'label-info' : 'label-default'">
+                            {{(message.direction === 1 ? 'chat.direction.device' : 'chat.direction.admin') | localize}}
+                        </span>
+                        <strong>{{message.deviceNumber}}</strong>
+                        <span>{{message.ts | date:dateFormat}}</span>
+                    </div>
+                    <div class="chat-message-body">{{message.message}}</div>
+                    <div class="chat-message-status" ng-if="message.direction !== 1">{{statusLabel(message.status)}}</div>
+                </div>
+            </div>
+            <div class="summary-empty-list" ng-if="!loading && messages.length === 0" localized>notfound.common.plugin.messaging.messages</div>
+
+            <div class="text-center" ng-if="paging.totalItems > paging.pageSize">
+                <pagination
+                        boundary-links='true' class='pagination-sm'
+                        max-size='3'
+                        ng-model='paging.pageNum'
+                        total-items='paging.totalItems'
+                        items-per-page='paging.pageSize'
+                        previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                        last-text='&raquo;'></pagination>
+            </div>
+        </section>
+    </div>
+</div>

@@ -45,6 +45,8 @@ RETRY_FIRST_SECONDS = 120
 RETRY_MAX_SECONDS = 3600
 DRY_RUN_DNS_PORT = 5353
 RESTART_GOOD_SECONDS = 10
+API_REFRESH_ATTEMPTS = 3
+API_REFRESH_BACKOFF = 1
 
 log = logging.getLogger("webfilter-dns")
 LABEL = re.compile(r"^[a-z0-9_](?:[a-z0-9_-]{0,61}[a-z0-9_])?$")
@@ -176,14 +178,19 @@ def dns_ok(port=53):
 
 
 def api_refresh():
-    try:
-        req = urllib.request.Request(API + "/api/lists/refresh", method="POST")
-        urllib.request.urlopen(req, timeout=120).read()
-        log.info("listas recarregadas sem reinicio")
-        return True
-    except Exception as e:  # noqa: BLE001
-        log.warning("refresh falhou: %s", e)
-        return False
+    req = urllib.request.Request(API + "/api/lists/refresh", method="POST")
+    for attempt in range(API_REFRESH_ATTEMPTS):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as response:
+                response.read()
+            log.info("listas recarregadas sem reinicio")
+            return True
+        except Exception as e:  # noqa: BLE001 - Blocky pode fechar a conexao durante uma troca
+            if attempt + 1 == API_REFRESH_ATTEMPTS:
+                log.warning("refresh falhou apos %s tentativas: %s", API_REFRESH_ATTEMPTS, e)
+                return False
+            time.sleep(API_REFRESH_BACKOFF * (2 ** attempt))
+    return False
 
 
 class Supervisor:

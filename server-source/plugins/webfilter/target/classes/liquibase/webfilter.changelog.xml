@@ -219,4 +219,37 @@
              WHERE identifier = 'webfilter';
         </rollback>
     </changeSet>
+    <changeSet id="plugin-webfilter-2026-09-29-system-settings" author="hwmdm" context="common">
+        <comment>Servidor ativo (modo DEV/PRD) gravado pelo hwmdm-admin e lido pela pagina de bloqueio</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS hwmdm_system_settings (
+                key VARCHAR(100) PRIMARY KEY,
+                value TEXT,
+                updated TIMESTAMP DEFAULT now()
+            );
+        </sql>
+        <rollback>SELECT 1;</rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-29-cache-buster" author="hwmdm" context="common">
+        <comment>Plugin,update: cache-bust Web Filter console assets (historico paginado)</comment>
+        <sql>
+            UPDATE plugins
+               SET javascriptModuleFile = 'app/components/plugins/webfilter/webfilter.module.js?v=20260929-historico',
+                   functionsViewTemplate = 'app/components/plugins/webfilter/views/main.html?v=20260929-historico'
+             WHERE identifier = 'webfilter';
+        </sql>
+        <rollback>SELECT 1;</rollback>
+    </changeSet>
+
+    <changeSet id="plugin-webfilter-2026-09-29-cache-buster-2" author="hwmdm" context="common">
+        <comment>Plugin,update: cache-bust Web Filter console assets (filtros no historico paginado)</comment>
+        <sql>
+            UPDATE plugins
+               SET javascriptModuleFile = 'app/components/plugins/webfilter/webfilter.module.js?v=20260929-historico-filtros',
+                   functionsViewTemplate = 'app/components/plugins/webfilter/views/main.html?v=20260929-historico-filtros'
+             WHERE identifier = 'webfilter';
+        </sql>
+        <rollback>SELECT 1;</rollback>
+    </changeSet>
 </databaseChangeLog>

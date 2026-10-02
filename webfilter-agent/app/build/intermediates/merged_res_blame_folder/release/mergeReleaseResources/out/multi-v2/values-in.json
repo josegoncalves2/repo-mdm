@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.hwmdm.webfilter.app-mergeReleaseResources-8:/values-in/values-in.xml",
+            "map": [
+                {
+                    "source": "/home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/res/values-in/values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,150,252,349,446,552,670,785",
+                        "endColumns": "94,101,96,96,105,117,114,100",
+                        "endOffsets": "145,247,344,441,547,665,780,881"
+                    }
+                }
+            ]
+        }
+    ]
+}

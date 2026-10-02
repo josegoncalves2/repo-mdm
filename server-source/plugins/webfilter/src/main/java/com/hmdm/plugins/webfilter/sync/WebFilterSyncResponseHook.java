@@ -16,6 +16,7 @@ import com.hmdm.plugins.webfilter.persistence.domain.WebFilterPolicy;
 import com.hmdm.plugins.webfilter.persistence.domain.WebFilterSettings;
 import com.hmdm.plugins.webfilter.service.WebFilterDecision;
 import com.hmdm.plugins.webfilter.service.WebFilterService;
+import com.hmdm.rest.json.SyncApplicationInt;
 import com.hmdm.rest.json.SyncApplicationSettingInt;
 import com.hmdm.rest.json.SyncResponseHook;
 import com.hmdm.rest.json.SyncResponseInt;
@@ -33,15 +34,13 @@ import java.util.stream.Collectors;
 /**
  * <p>Delivers the web filter policy of the device's profile in the configuration sync (design D9):</p>
  * <ul>
- *     <li><code>webfilterDnsHost</code>: the private DNS hostname of the profile, when the policy is enabled and the
- *     customer has a DNS domain configured;</li>
- *     <li><code>locked_packages</code> / <code>unlocked_packages</code> settings of the launcher, merged with any values
- *     the administrator set by hand (design D2). The launcher in production already applies them.</li>
- *     <li><code>managedConfig</code> of the Chrome packages carries the URLBlocklist / URLAllowlist built from
- *     the policy's blocked categories, domain lists and the catalog. Chrome enforces the block page natively.</li>
+ *     <li>application category restrictions remain in the launcher's <code>locked_packages</code> and
+ *     <code>unlocked_packages</code> settings;</li>
+ *     <li>when the Web Filter companion is selected, merged browser-native policies are added under
+ *     <code>webfilterBrowserPolicies</code> in the signed response and removed from launcher application settings;</li>
+ *     <li>profiles without the companion retain the existing launcher-delivery behavior.</li>
  * </ul>
- * <p>A device whose profile has no web filter policy is returned untouched. Any failure keeps the original
- * response, so the filter can never break the device sync.</p>
+ * <p>Any failure keeps the original response, so the filter cannot break device sync.</p>
  */
 @Singleton
 public class WebFilterSyncResponseHook implements SyncResponseHook {
@@ -52,6 +51,8 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
     static final String LOCKED = "locked_packages";
     static final String UNLOCKED = "unlocked_packages";
     static final String DNS_HOST_FIELD = "webfilterDnsHost";
+    static final String BROWSER_POLICIES_FIELD = "webfilterBrowserPolicies";
+    static final String BROWSER_AGENT_PACKAGE = "com.hwmdm.webfilter";
 
     private final WebFilterDAO dao;
     private final WebFilterService service;
@@ -85,10 +86,9 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
         }
         int customerId = device.getCustomerId();
         WebFilterPolicy policy = dao.getPolicy(customerId, device.getConfigurationId());
-        if (policy == null) {
-            return original;
-        }
-        List<String> history = dao.getLockedHistory(policy.getId());
+        List<String> history = policy == null ? new ArrayList<>() : dao.getLockedHistory(policy.getId());
+        boolean browserAgentSelected = original.getApplications() != null && original.getApplications().stream()
+                .anyMatch(a -> BROWSER_AGENT_PACKAGE.equals(a.getPkg()) && !Boolean.TRUE.equals(a.isRemove()));
 
         // What the administrator configured by hand in the profile is preserved (design D2)
         List<SyncApplicationSettingInt> settings = original.getApplicationSettings() == null
@@ -98,7 +98,7 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
 
         ObjectNode browserPolicyNode = null;
         Set<String> blocked = new TreeSet<>();
-        if (policy.isEnabled()) {
+        if (policy != null && policy.isEnabled()) {
             Set<String> allow = new HashSet<>();
             Set<String> block = new HashSet<>();
             Set<String> allowDomains = new TreeSet<>();
@@ -125,21 +125,28 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
             browserPolicyNode = BrowserPolicy.enabled(categories, catalog, allowDomains, blockDomains);
         }
 
-        Set<String> locked = new TreeSet<>(adminLocked);
-        locked.addAll(blocked);
-        Set<String> unlocked = new TreeSet<>(history);
-        unlocked.addAll(adminUnlocked);
-        unlocked.removeAll(locked);
-
         long now = System.currentTimeMillis();
-        settings.removeIf(s -> LAUNCHER_PACKAGE.equals(s.getPackageId())
-                && (LOCKED.equals(s.getName()) || UNLOCKED.equals(s.getName())));
-        if (!locked.isEmpty()) {
-            settings.add(new WebFilterAppSetting(LAUNCHER_PACKAGE, LOCKED, String.join(",", locked), now));
+        if (policy != null) {
+            Set<String> locked = new TreeSet<>(adminLocked);
+            locked.addAll(blocked);
+            Set<String> unlocked = new TreeSet<>(history);
+            unlocked.addAll(adminUnlocked);
+            unlocked.removeAll(locked);
+
+            settings.removeIf(s -> LAUNCHER_PACKAGE.equals(s.getPackageId())
+                    && (LOCKED.equals(s.getName()) || UNLOCKED.equals(s.getName())));
+            if (!locked.isEmpty()) {
+                settings.add(new WebFilterAppSetting(LAUNCHER_PACKAGE, LOCKED, String.join(",", locked), now));
+            }
+            if (!unlocked.isEmpty()) {
+                settings.add(new WebFilterAppSetting(LAUNCHER_PACKAGE, UNLOCKED, String.join(",", unlocked), now));
+            }
         }
-        if (!unlocked.isEmpty()) {
-            settings.add(new WebFilterAppSetting(LAUNCHER_PACKAGE, UNLOCKED, String.join(",", unlocked), now));
-        }
+
+        // When the separate Web Filter APK is selected in the profile, it owns browser
+        // restrictions through its narrow delegated scope. Before it is selected, preserve
+        // the legacy launcher-delivery path so existing profiles keep working.
+        ObjectNode browserPolicies = mapper.createObjectNode();
         for (String browser : BrowserPolicy.PACKAGES) {
             String adminBrowserValue = null;
             for (SyncApplicationSettingInt s : settings) {
@@ -148,9 +155,18 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
                     break;
                 }
             }
-            settings.removeIf(s -> browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName()));
-            settings.add(new WebFilterAppSetting(browser, BrowserPolicy.SETTING,
-                    BrowserPolicy.merge(adminBrowserValue, browserPolicyNode), now));
+            try {
+                String merged = BrowserPolicy.mergeForBrowser(browser, adminBrowserValue, browserPolicyNode);
+                if (browserAgentSelected) {
+                    browserPolicies.set(browser, mapper.readTree(merged));
+                    settings.removeIf(s -> browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName()));
+                } else if (browserPolicyNode != null) {
+                    settings.removeIf(s -> browser.equals(s.getPackageId()) && BrowserPolicy.SETTING.equals(s.getName()));
+                    settings.add(new WebFilterAppSetting(browser, BrowserPolicy.SETTING, merged, now));
+                }
+            } catch (java.io.IOException e) {
+                throw new IllegalStateException("Could not serialize browser policy", e);
+            }
         }
 
         ObjectNode tree = mapper.valueToTree(original);
@@ -159,16 +175,18 @@ public class WebFilterSyncResponseHook implements SyncResponseHook {
             settingsJson.add(settingJson(s));
         }
         tree.set("applicationSettings", settingsJson);
+        if (browserAgentSelected) tree.set(BROWSER_POLICIES_FIELD, browserPolicies);
 
-        recordDelivery(device, policy, browserPolicyNode, blocked.size(), now);
-
-        String dnsHost = policy.isEnabled() ? service.dnsHost(customerId, policy.getConfigurationId()) : null;
-        if (dnsHost != null) {
-            tree.put(DNS_HOST_FIELD, dnsHost);
-        } else {
-            // A policy exists for this profile but is disabled or lacks DNS settings. Send an explicit
-            // empty value so the launcher clears a Private DNS setting previously enforced by Web Filter.
-            tree.put(DNS_HOST_FIELD, "");
+        if (policy != null) {
+            recordDelivery(device, policy, browserPolicyNode, blocked.size(), now);
+        }
+        // Site filtering is applied by the companion through browser managed settings, not
+        // by the launcher's Device Owner Private DNS policy.
+        if (browserAgentSelected) {
+            tree.remove(DNS_HOST_FIELD);
+        } else if (policy != null) {
+            String dnsHost = policy.isEnabled() ? service.dnsHost(customerId, policy.getConfigurationId()) : null;
+            tree.put(DNS_HOST_FIELD, dnsHost == null ? "" : dnsHost);
         }
         return new WebFilterSyncResponse(original, tree, settings);
     }

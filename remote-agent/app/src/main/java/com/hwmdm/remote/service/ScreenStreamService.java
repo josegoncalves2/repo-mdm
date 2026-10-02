@@ -145,6 +145,7 @@ public class ScreenStreamService extends Service {
     private Surface encoderSurface;
     private volatile WebSocket socket;
     private byte[] codecConfig;
+    private static final int MAX_RECONNECT_ATTEMPTS = 10;
     private int reconnectAttempt;
     private boolean reconnectScheduled;
     private HandlerThread worker;
@@ -305,6 +306,11 @@ public class ScreenStreamService extends Service {
         if (current == null) { return; }
         current.post(() -> {
             if (session != generation || stopping || reconnectScheduled) { return; }
+            if (reconnectAttempt >= MAX_RECONNECT_ATTEMPTS) {
+                RemoteLog.w(this, "Reconexao esgotada apos " + reconnectAttempt + " tentativas; encerrando sessao");
+                shutdown("reconexao esgotada");
+                return;
+            }
             if (socket == failed) { socket = null; }
             reconnectScheduled = true;
             long delay = Math.min(30000L, 1000L << Math.min(reconnectAttempt++, 5));

@@ -14539,7 +14539,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79328	1790106762771	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79341	1790107268942	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79344	1790107472370	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
-79355	1790108010265	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
+79355	1790192.168.1.65	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
 79365	1790108390190	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 79380	1790111770098	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393498, lon=-48.9137386
 79395	1790113875282	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry

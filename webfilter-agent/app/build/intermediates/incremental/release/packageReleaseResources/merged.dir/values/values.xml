@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HWMDM Web Filter</string>
+    <string name="perm_accessibility_hint">Detecta quando o Chrome mostra uma página bloqueada pelo filtro e exibe a página de bloqueio customizada do painel.</string>
+</resources>

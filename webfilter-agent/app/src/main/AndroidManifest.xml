@@ -1,0 +1,66 @@
+<!--
+  Agente Web Filter do HWMDM.
+
+  Este APK recebe DELEGATION_APP_RESTRICTIONS do launcher 6.36 (Device Owner) e aplica
+  as políticas de navegador (URLBlocklist/URLAllowlist) diretamente ao Chrome via
+  DevicePolicyManager.setApplicationRestrictions(). Também detecta quando o Chrome mostra
+  a página de bloqueio e reporta ao painel, exibindo uma página de bloqueio customizada.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <permission android:name="com.hwmdm.webfilter.permission.POLICY_UPDATE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.hwmdm.webfilter.permission.POLICY_UPDATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <package android:name="com.hmdm.launcher" />
+        <intent><action android:name="com.hmdm.action.Connect" /></intent>
+    </queries>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@android:drawable/ic_menu_search"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
+        <activity android:name=".ui.MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".sync.PolicySyncJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+
+        <service android:name=".browser.WebFilterAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/webfilter_accessibility_config" />
+        </service>
+
+        <receiver android:name=".sync.BootReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".sync.PolicyUpdateReceiver"
+            android:permission="com.hwmdm.webfilter.permission.POLICY_UPDATE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.hwmdm.webfilter.action.POLICY_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

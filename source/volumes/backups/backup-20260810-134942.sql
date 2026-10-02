@@ -9583,7 +9583,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 63786	1786106980603	1	46	46	192.168.1.254	INFO	3	Got Push Message, type screenshot
 63787	1786106985614	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 63788	1786106994564	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.7393646, lon=-48.9137251
-63789	1786107040665	1	46	46	192.168.1.254	INFO	3	Got Push Message, type screenshot
+63789	1786192.168.1.65	1	46	46	192.168.1.254	INFO	3	Got Push Message, type screenshot
 63790	1786107061570	1	46	46	192.168.1.254	VERBOSE	5	Network location update: lat=-20.739355, lon=-48.9137338
 63791	1786107116439	1	46	46	192.168.1.254	VERBOSE	5	Push long polling inquiry
 63792	1786107116797	1	46	46	192.168.1.254	INFO	3	Got Push Message, type screenshot

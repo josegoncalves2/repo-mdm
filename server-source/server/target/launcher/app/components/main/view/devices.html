@@ -1,0 +1,645 @@
+<!-- Localization completed -->
+<div ng-controller="DevicesTabController" class="hwmdm-list-page devices-page" style="position:relative">
+
+    <!-- C1 (fiscal 2026-09-29): estilos dos alertas da lista. Ficam aqui porque o overlay do boot cobre app/**. -->
+    <style>
+        .devices-page .devices-params-arrow { display: inline-block; width: 1em; margin-right: 4px; }
+        /* .alert global (main.css/hwmdm-ui.css) e' toast fixo no canto; aqui e' faixa no fluxo da pagina. */
+        .devices-page .devices-offline-alert { position: static; width: auto; max-width: none; margin: 10px 0; left: auto; bottom: auto; z-index: auto; box-shadow: none; }
+        .devices-page .devices-offline-alert a { margin-left: 8px; font-weight: 600; }
+        .devices-page .device-report-badge { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+        .devices-page .device-report-recent { background: #2e9e4f; }
+        .devices-page .device-report-week { background: #e0a800; }
+        .devices-page .device-report-old { background: #d9342b; }
+        .devices-page .device-stale-icon { color: #d9342b; margin-left: 4px; }
+        .devices-page tr.device-row-stale > td { background-color: rgba(217, 52, 43, 0.07); }
+        .devices-page .device-battery-warn { color: #b8860b; font-weight: 600; }
+        .devices-page .device-battery-critical { color: #d9342b; font-weight: 700; }
+        .devices-page .device-outdated-apps { margin-top: 4px; font-size: 12px; color: #a86400; white-space: normal; min-width: 170px; }
+        /* ".table .btn" (hwmdm-ui.css) fixa botao de tabela em 30px -> texto empilhado letra a letra. */
+        .devices-page .table .device-outdated-apps .btn { display: inline-flex; width: auto; min-width: 0; max-width: none; height: auto; margin: 4px 0 0 0; padding: 2px 8px; white-space: nowrap; word-break: normal; overflow-wrap: normal; }
+        .devices-page .device-outdated-apps > span { white-space: nowrap; }
+        .devices-page .devices-page-size { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 0 12px; font-weight: normal; }
+        .devices-page .devices-page-size select { width: auto; }
+        .devices-page #group-actions-button .badge { margin-left: 4px; }
+    </style>
+
+    <sarsha-spinner name="spinner2">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </sarsha-spinner>
+
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.devices</h3>
+            <p localized>devices.page.subtitle</p>
+        </div>
+    </div>
+
+    <div class="hwmdm-section-card">
+    <form class="form-horizontal">
+    <div class='form-group' ng-show='errorMessage'>
+        <div class='error'><span>{{errorMessage}}</span></div>
+    </div>
+
+    <div class='form-group'>
+        <div class="col-sm-5 margin-bottom">
+            <select class='form-control'
+                    ng-model='selection.groupId'
+                    ng-change='initSearch()'
+                    ng-options="group.id as group.name for group in groups">
+            </select>
+        </div>
+        <div class="col-sm-4 margin-bottom">
+            <select class='form-control'
+                    ng-model='selection.configurationId'
+                    ng-change='initSearch()'
+                    ng-options="config.id as config.name for config in configurations">
+            </select>
+        </div>
+        <div class="col-sm-3 margin-bottom">
+            <!-- m16: seta de estado (fechado / aberto) antes do texto. -->
+            <span class='pointer devices-params-arrow' ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint"
+                  aria-hidden="true">{{additionalParams.enabled ? '&#9662;' : '&#9656;'}}</span>
+            <h5 class='pointer collapse-control' ng-if="!additionalParams.enabled" style="display: inline"
+                ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint" localized>form.devices.label.params.more</h5>
+            <h5 class='pointer collapse-control' ng-if="additionalParams.enabled" style="display: inline"
+                ng-click="toggleAdditionalParams()" localized-title="form.devices.params.toggle.hint" localized>form.devices.label.params.less</h5>
+        </div>
+    </div>
+
+
+        <div  class="form-group" ng-if="additionalParams.enabled">
+            <div class='col-sm-1  margin-bottom' style="margin-top: 5px">
+                <span localized>form.settings.common.enrollment.date</span>
+            </div>
+            <div class='col-sm-2  margin-bottom'>
+                <div class='min-padding date-picker date-picker-input'>
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
+                           localized-placeholder="search.placeholder.from"
+                           ng-enter='initSearch()'
+                           ng-model='additionalParams.dateFrom' is-open='openDatePickers.dateFrom' show-button-bar='false'
+                           datepicker-options='datePickerOptions'/>
+                </div>
+                <div class='min-padding date-picker date-picker-button'>
+                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, true )'>
+                        <span class='glyphicon glyphicon-calendar'></span>
+                    </button>
+                </div>
+            </div>
+            <div class='col-sm-2  margin-bottom'>
+                <div class='min-padding date-picker date-picker-input'>
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
+                           localized-placeholder="search.placeholder.to"
+                           ng-enter='initSearch()'
+                           ng-model='additionalParams.dateTo' is-open='openDatePickers.dateTo' show-button-bar='false'
+                           datepicker-options='datePickerOptions'/>
+                </div>
+                <div class='min-padding date-picker date-picker-button'>
+                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, false )'>
+                        <span class='glyphicon glyphicon-calendar'></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-sm-2  margin-bottom" style="margin-top: 5px">
+                <input type="checkbox" id="addParamsImeiChanged"
+                       ng-model='additionalParams.imeiChanged'> <span localized>form.devices.selection.imei.changed</span>
+            </div>
+
+            <div class="col-sm-2  margin-bottom">
+                <select class='form-control' id="kweiufwieu"
+                        ng-model='additionalParams.installationStatus'
+                        ng-options="opt.id as opt.name for opt in installStatusOptions">
+                    <option value="" localized>form.devices.selection.install.status.default</option>
+                </select>
+            </div>
+
+            <div class="col-sm-3  text-right margin-bottom">
+                <input type='text'
+                       ng-enter='initSearch()'
+                       ng-model='additionalParams.launcherVersion'
+                       localized-placeholder='search.placeholder.launcher.version'
+                       class='form-control'>
+            </div>
+        </div>
+
+        <div  class="form-group" ng-if="additionalParams.enabled">
+            <div class='col-sm-1  margin-bottom'>
+                <select class='form-control' id="onlineOrOffline"
+                        ng-model='additionalParams.onlineOrOffline'>
+                    <option value="" localized>form.devices.selection.status</option>
+                    <option value="1" localized>form.devices.selection.online</option>
+                    <option value="2" localized>form.devices.selection.offline</option>
+                </select>
+            </div>
+            <div class='col-sm-2  margin-bottom'>
+                <select class='form-control' id="onlineTimeSelect"
+                        ng-model='additionalParams.onlineTimeSelect'>
+                    <option value="15" localized>form.devices.selection.online.status.1</option>
+                    <option value="30" localized>form.devices.selection.online.status.2</option>
+                    <option value="60" localized>form.devices.selection.online.status.3</option>
+                    <option value="120" localized>form.devices.selection.online.status.4</option>
+                    <option value="360" localized>form.devices.selection.online.status.5</option>
+                    <option value="1440" localized>form.devices.selection.online.status.6</option>
+                    <option value="2880" localized>form.devices.selection.online.status.7</option>
+                    <option value="4320" localized>form.devices.selection.online.status.8</option>
+                    <option value="10080" localized>form.devices.selection.online.status.9</option>
+                    <option value="43200" localized>form.devices.selection.online.status.10</option>
+                    <option value="1" localized>form.devices.selection.online.status.custom</option>
+                </select>
+            </div>
+            <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
+                <input type='number'
+                       ng-enter='initSearch()'
+                       ng-model='additionalParams.onlineTimeEnter'
+                       localized-placeholder='form.devices.selection.number'
+                       class='form-control'>
+            </div>
+            <div class='col-sm-1  margin-bottom' style="margin-top: 5px" ng-if='additionalParams.onlineTimeSelect == 1'>
+                <span localized>form.devices.selection.online.status.label</span>
+            </div>
+            <div class='col-sm-2  margin-bottom' ng-if='additionalParams.onlineTimeSelect != 1'>&nbsp;</div>
+
+            <div class='col-sm-2  margin-bottom'>
+                <select class='form-control' id="mdmMode"
+                        ng-model='additionalParams.mdmMode'>
+                    <option value="" localized>form.settings.common.mdm.mode</option>
+                    <option value="1" localized>form.selection.status.yes</option>
+                    <option value="0" localized>form.selection.status.no</option>
+                </select>
+            </div>
+
+            <div class='col-sm-2  margin-bottom'>
+                <select class='form-control' id="kioskMode"
+                        ng-model='additionalParams.kioskMode'>
+                    <option value="" localized>form.settings.common.kiosk.mode</option>
+                    <option value="1" localized>form.selection.status.yes</option>
+                    <option value="0" localized>form.selection.status.no</option>
+                </select>
+            </div>
+
+            <div class='col-sm-3  margin-bottom'>
+                <input type='text'
+                       ng-enter='initSearch()'
+                       ng-model='additionalParams.androidVersion'
+                       localized-placeholder='form.settings.common.android.version'
+                       class='form-control'>
+            </div>
+        </div>
+
+    <!--
+        Esta linha era a unica das telas de lista ainda montada com o grid do Bootstrap e
+        float: left nos controles. O float tira botao, checkbox e dropdown do fluxo, entao
+        abaixo de ~1000px eles se empilhavam desalinhados e o menu "Acao de grupo" saia do
+        lugar. Passa a usar o mesmo container flexivel das demais telas.
+    -->
+    <div class="form-group">
+        <div class="devices-search-row">
+            <input type='text'
+                   ng-model='searchParams.searchValue'
+                   ng-enter='initSearch()'
+                   localized-placeholder='search.placeholder.device'
+                   class='form-control devices-search-field'>
+
+            <button type='button' class='btn btn-default' ng-click='initSearch()' localized>button.search</button>
+
+            <label class="devices-fast-search" localized-title="form.devices.fast.search.hint">
+                <input type="checkbox" ng-model='searchParams.fastSearch'>
+                <span localized>form.devices.fast.search</span>
+            </label>
+
+            <div class="btn-group dropdown devices-search-actions" uib-dropdown ng-if="hasPermission('edit_devices')">
+                <button id="group-actions-button" type="button"
+                        class="btn btn-default dropdown-toggle" uib-dropdown-toggle ng-disabled='isNotSelected()'
+                        localized-title="button.group.action.hint">
+                    <span localized>button.group.action</span>
+                    <span class="badge" ng-if="!isNotSelected()">{{selectedCount()}}</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-menu-devices" uib-dropdown-menu role="menu">
+                    <li role="menuitem"><a ng-click="openBulkUpdateModal()" localized>button.set.configuration</a></li>
+                    <li role="menuitem"><a ng-click="openBulkGroupModal()" localized>button.set.group</a></li>
+                    <li role="menuitem"><a ng-click="confirmBulkDelete()" localized>button.delete</a></li>
+                </ul>
+            </div>
+            <button type='button' ng-if="hasPermission('edit_devices')"
+                    ng-disabled='commonSettings.deviceLimit > 0 && commonSettings.deviceCount >= commonSettings.deviceLimit'
+                    class='btn btn-default' ng-click='editDevice( {} )' localized>button.add</button>
+        </div>
+    </div>
+
+    </form>
+    </div>
+
+    <!-- C2: aparelhos sem reportar ha mais de N dias (N = Configuracoes > Geral > Alertas). -->
+    <div class="alert alert-warning devices-offline-alert" ng-if="offlineAlert">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <span>{{offlineAlert.text}}</span>
+        <a class="pointer" ng-click="showStaleDevices()" localized>devices.alert.offline.show</a>
+    </div>
+
+    <div class="custom-pagination-wrapper">
+        <div class="custom-pagination" ng-if="paging.totalItems > 0">
+            <div class='pagination-label'>
+                <span>{{firstRecord()}}</span>-<span>{{lastRecord()}}</span>/<span>{{paging.totalItems}}</span>
+            </div>
+
+            <!-- m18: primeira / anterior / numeros / proxima / ultima + tamanho de pagina. -->
+            <uib-pagination
+                    ng-if="paging.totalItems > paging.pageSize && !accountExpired"
+                    boundary-links='true' direction-links='true' class='pagination-sm'
+                    max-size='7' rotate='true'
+                    ng-model='paging.pageNum'
+                    total-items='paging.totalItems'
+                    items-per-page='paging.pageSize'
+                    first-text='&laquo; {{pagingText.first}}' previous-text='&lsaquo; {{pagingText.previous}}'
+                    next-text='{{pagingText.next}} &rsaquo;' last-text='{{pagingText.last}} &raquo;'></uib-pagination>
+            <label class="devices-page-size">
+                <span localized>devices.paging.size</span>
+                <select class="form-control input-sm" ng-model="paging.pageSize" ng-change="changePageSize()"
+                        ng-options="size for size in pageSizeOptions"></select>
+            </label>
+        </div>
+    </div>
+
+    <div ng-if='devices && devices.length > 0' class="table-responsive devices-table-wrap" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+    <table class='table devices-table' style="width: 100%; table-layout: auto;">
+        <!-- Sem larguras fixas: antes somavam ~1230px e empurravam a tabela para fora da tela.
+             Larguras da tabela: css/hwmdm-ui.css, secao 21. -->
+        <colgroup>
+            <col ng-if="hasPermission('edit_devices')" class="devices-col-check">
+            <col ng-if="settings.columnDisplayedDeviceStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceDate">
+            <col ng-if="settings.columnDisplayedDeviceNumber">
+            <col ng-if="settings.columnDisplayedDeviceImei">
+            <col ng-if="settings.columnDisplayedDevicePhone">
+            <col ng-if="settings.columnDisplayedDeviceModel">
+            <col ng-if="settings.columnDisplayedDevicePermissionsStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceAppInstallStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceFilesStatus" class="devices-col-dot">
+            <col ng-if="settings.columnDisplayedDeviceConfiguration">
+            <col ng-if="settings.columnDisplayedDeviceDesc && anyDescription">
+            <col ng-if="settings.columnDisplayedDeviceGroup">
+            <col ng-if="settings.columnDisplayedLauncherVersion">
+            <col ng-if="settings.columnDisplayedBatteryLevel">
+            <col ng-if="settings.columnDisplayedStorageAvailable">
+            <col ng-if="settings.columnDisplayedDefaultLauncher">
+            <col ng-if="settings.columnDisplayedMdmMode">
+            <col ng-if="settings.columnDisplayedKioskMode">
+            <col ng-if="settings.columnDisplayedAndroidVersion">
+            <col ng-if="settings.columnDisplayedEnrollmentDate">
+            <col ng-if="settings.columnDisplayedSerial">
+            <col ng-if="settings.columnDisplayedPublicIp">
+            <col ng-if="settings.columnDisplayedCustom1">
+            <col ng-if="settings.columnDisplayedCustom2">
+            <col ng-if="settings.columnDisplayedCustom3">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th ng-if="hasPermission('edit_devices')">
+                <input ng-model='selection.all'
+                       ng-change='selectAll()'
+                       type='checkbox'
+                       class='pointer'/>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceStatus" ng-click="sortData('STATUS')" class="pointer devices-th-dot">
+                <span localized>table.heading.device.status</span>
+                <span ng-if='paging.sortBy === "STATUS"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceDate" ng-click="sortData('LAST_UPDATE')" class="pointer">
+                <span localized>table.heading.device.date</span>
+                <span ng-if='paging.sortBy === "LAST_UPDATE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceNumber" ng-click="sortData('NUMBER')" class="pointer">
+                <span localized>table.heading.device.device.number</span>
+                <span ng-if='paging.sortBy === "NUMBER"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceImei" ng-click="sortData('IMEI')" class="pointer">
+                <span localized>table.heading.device.imei</span>
+                <span ng-if='paging.sortBy === "IMEI"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDevicePhone" ng-click="sortData('PHONE')" class="pointer">
+                <span localized>table.heading.device.phone.number</span>
+                <span ng-if='paging.sortBy === "PHONE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceModel" ng-click="sortData('MODEL')" class="pointer">
+                <span localized>table.heading.device.phone.model</span>
+                <span ng-if='paging.sortBy === "MODEL"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDevicePermissionsStatus" ng-click="sortData('PERMISSIONS')" class="pointer devices-th-dot">
+                <span localized>table.heading.device.status.permissions</span>
+                <span ng-if='paging.sortBy === "PERMISSIONS"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceAppInstallStatus" ng-click="sortData('INSTALLATIONS')" class="pointer devices-th-dot">
+                <span localized>table.heading.device.status.installation</span>
+                <span ng-if='paging.sortBy === "INSTALLATIONS"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceFilesStatus" ng-click="sortData('FILES')" class="pointer devices-th-dot">
+                <span localized>table.heading.device.status.files</span>
+                <span ng-if='paging.sortBy === "FILES"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceConfiguration" ng-click="sortData('CONFIGURATION')" class="pointer">
+                <span localized>table.heading.device.configuration</span>
+                <span ng-if='paging.sortBy === "CONFIGURATION"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceDesc && anyDescription" ng-click="sortData('DESCRIPTION')" class="pointer">
+                <span localized>table.heading.device.desc</span>
+                <span ng-if='paging.sortBy === "DESCRIPTION"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDeviceGroup" ng-click="sortData('GROUP')" class="pointer">
+                <span localized>table.heading.device.group</span>
+                <span ng-if='paging.sortBy === "GROUP"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedLauncherVersion" ng-click="sortData('LAUNCHER_VERSION')" class="pointer">
+                <span localized>table.heading.device.launcher.version</span>
+                <span ng-if='paging.sortBy === "LAUNCHER_VERSION"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedBatteryLevel" ng-click="sortData('BATTERY_LEVEL')" class="pointer">
+                <span localized>table.heading.device.battery.level</span>
+                <span ng-if='paging.sortBy === "BATTERY_LEVEL"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedStorageAvailable" ng-click="sortData('STORAGE_AVAILABLE')" class="pointer">
+                <span localized>table.heading.device.storage.available</span>
+                <span ng-if='paging.sortBy === "STORAGE_AVAILABLE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedDefaultLauncher" ng-click="sortData('DEFAULT_LAUNCHER')" class="pointer">
+                <span localized>table.heading.device.default.launcher</span>
+                <span ng-if='paging.sortBy === "DEFAULT_LAUNCHER"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedMdmMode" ng-click="sortData('MDM_MODE')" class="pointer">
+                <span localized>table.heading.device.mdm.mode</span>
+                <span ng-if='paging.sortBy === "MDM_MODE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedKioskMode" ng-click="sortData('KIOSK_MODE')" class="pointer">
+                <span localized>table.heading.device.kiosk.mode</span>
+                <span ng-if='paging.sortBy === "KIOSK_MODE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedAndroidVersion" ng-click="sortData('ANDROID_VERSION')" class="pointer">
+                <span localized>table.heading.device.android.version</span>
+                <span ng-if='paging.sortBy === "ANDROID_VERSION"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedEnrollmentDate" ng-click="sortData('ENROLLMENT_DATE')" class="pointer">
+                <span localized>table.heading.device.enrollment.date</span>
+                <span ng-if='paging.sortBy === "ENROLLMENT_DATE"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedSerial" ng-click="sortData('SERIAL')" class="pointer">
+                <span localized>table.heading.device.serial</span>
+                <span ng-if='paging.sortBy === "SERIAL"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedPublicIp" ng-click="sortData('PUBLICIP')" class="pointer">
+                <span>Device IP</span>
+                <span ng-if='paging.sortBy === "PUBLICIP"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedCustom1 && commonSettings.customPropertyName1" ng-click="sortData('CUSTOM1')" class="pointer">
+                <span>{{commonSettings.customPropertyName1}}</span>
+                <span ng-if='paging.sortBy === "CUSTOM1"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedCustom2 && commonSettings.customPropertyName2" ng-click="sortData('CUSTOM2')" class="pointer">
+                <span>{{commonSettings.customPropertyName2}}</span>
+                <span ng-if='paging.sortBy === "CUSTOM2"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+            <th ng-if="settings.columnDisplayedCustom3 && commonSettings.customPropertyName3" ng-click="sortData('CUSTOM3')" class="pointer">
+                <span>{{commonSettings.customPropertyName3}}</span>
+                <span ng-if='paging.sortBy === "CUSTOM3"' class="glyphicon"
+                      ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
+            </th>
+
+            <th ng-if="hasDeviceActions()" class='actions-column' localized>table.heading.device.actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr ng-repeat='device in devices | limitTo:paging.pageSize:paging.pageSize * (paging.currentPage - 1)'>-->
+        <tr ng-repeat='device in devices' class="{{device.class}}" ng-class="{'device-row-stale': isDeviceStale(device)}">
+            <td ng-if="hasPermission('edit_devices')">
+                <input ng-model='device.selected'
+                       type='checkbox'
+                       class='pointer'>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceStatus">
+                <img class='device-indicator'
+                     ng-src='{{getDeviceIndicatorImage(device)}}'
+                     title='{{calculateStatusText(device)}}'>
+            </td>
+            <td ng-if='settings.columnDisplayedDeviceDate'>
+                <span class="device-report-badge {{getReportBadge(device).cls}}" title="{{getReportBadge(device).title}}"></span>
+                <span ng-if='device.lastUpdateDate > 0'>{{device.lastUpdateDate|date:dateFormat}}</span>
+                <span ng-if='device.lastUpdateDate <= 0 || !device.lastUpdateDate' localized>devices.date.unknown</span>
+                <span ng-if="isDeviceStale(device)" class="glyphicon glyphicon-warning-sign device-stale-icon" title="{{staleTitle()}}"></span>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceNumber">
+                <span>{{device.number}}</span>
+                <!-- C3: versao instalada < versao da configuracao; "Atualizar agora" envia configUpdated (set_config). -->
+                <div class="device-outdated-apps" ng-if="device.outdatedApps.length > 0" title="{{outdatedAppsTitle(device)}}">
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <span>{{outdatedAppsLabel(device)}}</span>
+                    <button type="button" class="btn btn-warning btn-xs" ng-click="updateNow(device)"
+                            ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.control')"
+                            localized>button.update.now</button>
+                </div>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceImei">
+                <span title="{{device.imeiTooltip}}" class="{{device.imeiTooltipClass}}">{{device.displayedIMEI}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedDevicePhone">
+                <span title="{{device.phoneTooltip}}" class="{{device.phoneTooltipClass}}">{{device.displayedPhone}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceModel"><span>{{getDeviceModel(device)}}</span></td>
+            <td ng-if="settings.columnDisplayedDevicePermissionsStatus">
+                <img class='device-indicator'
+                     ng-src='{{getDevicePermissionIndicatorImage(device)}}'
+                     title='{{getDevicePermissionTitle(device)}}'>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceAppInstallStatus">
+                <img class='device-indicator'
+                     ng-src='{{getDeviceApplicationsIndicatorImage(device)}}'
+                     title='{{getDeviceApplicationsTitle(device)}}'>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceFilesStatus">
+                <img class='device-indicator'
+                     ng-src='{{getDeviceFilesIndicatorImage(device)}}'
+                     title='{{getDeviceFilesTitle(device)}}'>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceConfiguration && hasPermission('configurations') && configAvailable(device.configuration)">
+                <a class="action-link" ng-click="editConfiguration(device.configuration)">{{device.configuration.name}}</a>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceConfiguration && (!hasPermission('configurations') || !configAvailable(device.configuration))">{{device.configuration.name}}
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceDesc && anyDescription">
+                <span ng-bind-html="formatMultiLine(device.description)"></span>
+            </td>
+            <td ng-if="settings.columnDisplayedDeviceGroup">
+                <span ng-repeat="group in device.groups">{{group.name}}<br/></span>
+            </td>
+            <td ng-if="settings.columnDisplayedLauncherVersion">
+                <span ng-style="{color: getDeviceLauncherVersionColor(device)}">{{getDeviceLauncherVersion(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedBatteryLevel">
+                <span ng-class="getBatteryAlert(device).cls" title="{{getBatteryAlert(device).title}}">
+                    <span ng-if="getBatteryAlert(device)" class="glyphicon glyphicon-flash"></span>{{getDeviceBatteryLevel(device)}}
+                </span>
+            </td>
+            <td ng-if="settings.columnDisplayedStorageAvailable">
+                <span>{{getDeviceStorageAvailable(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedDefaultLauncher">
+                <span>{{isBackgroundMode(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedMdmMode">
+                <span ng-class="{'device-data-mismatch': device.info.mdmMode === false}">{{getIsMdmMode(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedKioskMode">
+                <span>{{isKioskMode(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedAndroidVersion">
+                {{getAndroidVersion(device)}}
+            </td>
+            <td ng-if='(device.enrollTime > 0) && settings.columnDisplayedEnrollmentDate'>{{device.enrollTime|date:dateFormat}}</td>
+            <td ng-if='(device.enrollTime <= 0 || !device.enrollTime) && settings.columnDisplayedEnrollmentDate' localized>devices.date.unknown</td>
+            <td ng-if="settings.columnDisplayedSerial">
+                <span>{{getSerial(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedPublicIp">
+                <span>{{getDeviceIpDisplay(device)}}</span>
+                <span class="device-address-secondary">{{getDeviceIpNote(device)}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedCustom1 && commonSettings.customPropertyName1">
+                <span>{{device.custom1}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedCustom2 && commonSettings.customPropertyName2">
+                <span>{{device.custom2}}</span>
+            </td>
+            <td ng-if="settings.columnDisplayedCustom3 && commonSettings.customPropertyName3">
+                <span>{{device.custom3}}</span>
+            </td>
+
+            <td class="deviceActions" ng-if="hasDeviceActions()">
+                <!-- Grade compacta (4 por linha): so' layout; botoes, ng-if e ng-click intocados. -->
+                <div class="devices-actions">
+                <button type='button' class='btn btn-default' ng-click='editDevice( device )'
+                        localized-title="button.change" ng-if="hasPermission('edit_devices') || hasPermission('edit_device_desc')">
+                    <span class='glyphicon glyphicon-pencil'></span>
+                </button>
+                <button type='button' class='btn btn-default' localized-title="button.qrcode"
+                        ng-if="hasPermission('enroll_devices')"
+                        ng-disabled="device.configuration.qrCodeKey == null"
+                        data-hint-key="hint.step.1"
+                        ng-click='showQrCode(device)'>
+                    <span class='glyphicon glyphicon-qrcode'></span>
+                </button>
+                <button type='button' class='btn btn-default' ng-click='openRemoteAccess( device )'
+                        title="Remote access"
+                        ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.view') || hasPermission('device.remote_access.control')">
+                    <span class='glyphicon glyphicon-facetime-video'></span>
+                </button>
+                <span class="btn-group dropdown" uib-dropdown dropdown-append-to-body="true"
+                      ng-if="plugins && plugins.length > 0 || hasPermission('edit_device_app_settings') || hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')">
+                    <button id="single-button-{{device.id}}" uib-dropdown-toggle type="button" localized-title="button.more"
+                            class="btn btn-default dropdown-toggle">
+                        <span class='glyphicon glyphicon-option-horizontal'></span> <span style="padding-bottom: 3px" class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-menu-devices-row" uib-dropdown-menu role="menu" aria-labelledby="single-button-{{device.id}}">
+                        <!-- m11: Forcar kiosk, GPS e Excluir sairam dos botoes da linha para este menu. -->
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="forceKiosk(device)"><span class='glyphicon glyphicon-lock'></span> <span localized>button.force.kiosk</span></a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices') || hasPermission('device.gps.view') || hasPermission('plugin_devicelocations_access')">
+                            <a ng-click="openGpsMap(device)"><span class='glyphicon glyphicon-map-marker'></span> <span localized>tab.gpsmap</span></a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="sendRemoteCommand(device, 'unlock_screen')" localized>button.remote.unlock</a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="sendRemoteCommand(device, 'set_config')" localized>button.remote.config</a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="sendRemoteMessage(device)" localized>button.remote.message</a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="openRemoteAccess(device)" localized>button.remote.liveview.open</a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="sendRemoteCommand(device, 'reboot')" localized>button.remote.reboot</a>
+                        </li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="sendRemoteCommand(device, 'wipe')" localized>button.remote.wipe</a>
+                        </li>
+                        <li class="divider" ng-if="hasPermission('edit_devices') && (hasPermission('edit_device_app_settings') || plugins && plugins.length > 0)"></li>
+                        <li role="menuitem" ng-if="hasPermission('edit_device_app_settings')">
+                            <a ng-click="manageApplicationSettings(device)" localized>button.app.settings</a>
+                        </li>
+                        <li role="menuitem" ng-repeat="plugin in plugins" ng-if="plugins && plugins.length > 0">
+                            <a ng-click="notifyPluginOnDevice(plugin, device)">{{plugin.nameLocalizationKey | localize}}</a>
+                        </li>
+                        <li class="divider" ng-if="hasPermission('edit_devices')"></li>
+                        <li role="menuitem" ng-if="hasPermission('edit_devices')">
+                            <a ng-click="removeDevice(device)" class="text-danger"><span class='glyphicon glyphicon-trash'></span> <span localized>button.delete</span></a>
+                        </li>
+                    </ul>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div ng-if='!devices' class='center' localized>success.loading.devices</div>
+
+    <div ng-if='devices && devices.length === 0' class='center' localized>notfound.devices</div>
+
+    <div class="custom-pagination-wrapper">
+        <div class="custom-pagination" ng-if="paging.totalItems > 0">
+            <div class='pagination-label'>
+                <span>{{firstRecord()}}</span>-<span>{{lastRecord()}}</span>/<span>{{paging.totalItems}}</span>
+            </div>
+
+            <!-- m18: primeira / anterior / numeros / proxima / ultima + tamanho de pagina. -->
+            <uib-pagination
+                    ng-if="paging.totalItems > paging.pageSize && !accountExpired"
+                    boundary-links='true' direction-links='true' class='pagination-sm'
+                    max-size='7' rotate='true'
+                    ng-model='paging.pageNum'
+                    total-items='paging.totalItems'
+                    items-per-page='paging.pageSize'
+                    first-text='&laquo; {{pagingText.first}}' previous-text='&lsaquo; {{pagingText.previous}}'
+                    next-text='{{pagingText.next}} &rsaquo;' last-text='{{pagingText.last}} &raquo;'></uib-pagination>
+            <label class="devices-page-size">
+                <span localized>devices.paging.size</span>
+                <select class="form-control input-sm" ng-model="paging.pageSize" ng-change="changePageSize()"
+                        ng-options="size for size in pageSizeOptions"></select>
+            </label>
+        </div>
+    </div>
+
+</div>

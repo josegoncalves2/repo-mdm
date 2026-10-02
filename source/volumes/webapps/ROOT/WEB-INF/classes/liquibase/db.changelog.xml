@@ -1974,7 +1974,7 @@
         <sql>
             ALTER TABLE customers ADD COLUMN accountType INT NOT NULL DEFAULT 0;
             ALTER TABLE customers ADD COLUMN expiryTime BIGINT;
-            ALTER TABLE customers ADD COLUMN deviceLimit INT NOT NULL DEFAULT 3;
+            ALTER TABLE customers ADD COLUMN deviceLimit INT NOT NULL DEFAULT 0;
         </sql>
         <rollback>
             ALTER TABLE customers DROP COLUMN accountType;

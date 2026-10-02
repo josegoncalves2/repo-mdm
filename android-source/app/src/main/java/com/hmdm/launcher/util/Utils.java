@@ -70,6 +70,48 @@ import java.util.List;
 import java.util.Set;
 
 public class Utils {
+    private static final String WEBFILTER_PACKAGE = "com.hwmdm.webfilter";
+
+    /**
+     * Give the separately installed Web Filter app only authority to manage Android
+     * application restrictions (used for native browser policies). The owner remains
+     * this launcher; no VPN or second device owner is involved.
+     */
+    @TargetApi(Build.VERSION_CODES.O)
+    public static void delegateWebFilterApplicationRestrictions(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || !isDeviceOwner(context)) {
+            return;
+        }
+        try {
+            PackageManager pm = context.getPackageManager();
+            pm.getPackageInfo(WEBFILTER_PACKAGE, 0);
+            if (pm.checkSignatures(context.getPackageName(), WEBFILTER_PACKAGE)
+                    != PackageManager.SIGNATURE_MATCH) {
+                return;
+            }
+            DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(
+                    Context.DEVICE_POLICY_SERVICE);
+            if (dpm != null) {
+                dpm.setDelegatedScopes(LegacyUtils.getAdminComponentName(context), WEBFILTER_PACKAGE,
+                        java.util.Collections.singletonList(DevicePolicyManager.DELEGATION_APP_RESTRICTIONS));
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+            // The MDM installs the companion as a managed application; grant on the next sync.
+        } catch (Exception e) {
+            Log.w(Const.LOG_TAG, "Could not delegate browser policy management to Web Filter", e);
+        }
+    }
+
+    public static void requestWebFilterPolicyRefresh(Context context) {
+        try {
+            Intent intent = new Intent("com.hwmdm.webfilter.action.POLICY_UPDATE");
+            intent.setPackage(WEBFILTER_PACKAGE);
+            context.sendBroadcast(intent);
+        } catch (Exception e) {
+            Log.w(Const.LOG_TAG, "Could not notify Web Filter after MDM sync", e);
+        }
+    }
+
     public static boolean isDeviceOwner(Context context) {
         DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
         return dpm != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && dpm.isDeviceOwnerApp(context.getPackageName());
