@@ -415,7 +415,7 @@
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>
             <th ng-if="settings.columnDisplayedPublicIp" ng-click="sortData('PUBLICIP')" class="pointer">
-                <span>{{"devices.ip" | localize}}</span>
+                <span>Device IP</span>
                 <span ng-if='paging.sortBy === "PUBLICIP"' class="glyphicon"
                       ng-class="{'glyphicon-sort-by-alphabet': paging.sortAsc, 'glyphicon-sort-by-alphabet-alt': !paging.sortAsc}"></span>
             </th>

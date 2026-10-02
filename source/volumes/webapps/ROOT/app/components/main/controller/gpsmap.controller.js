@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('GpsMapTabController', function ($scope, $timeout, $window, $http, localization, summaryService, groupService,
+    .controller('GpsMapTabController', function ($scope, $timeout, $window, localization, summaryService, groupService,
                                                  externalLibLoader, HWMDMMap, alertService, deviceFocusService) {
         var mapInstance = null;
         var tileServerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -238,90 +238,6 @@ angular.module('headwind-kiosk')
         $scope.onRefreshIntervalChanged = function () {
             $window.localStorage.setItem(REFRESH_INTERVAL_STORAGE_KEY, String($scope.refreshIntervalMs || 0));
             scheduleRefresh();
-        };
-
-        $scope.historyMode = false;
-        $scope.historyPeriod = '24';
-        $scope.historyPoints = [];
-        $scope.historyLoading = false;
-
-        $scope.toggleHistory = function () {
-            $scope.historyMode = !$scope.historyMode;
-            if ($scope.historyMode) {
-                $scope.loadHistory();
-            } else {
-                $scope.clearHistory();
-            }
-        };
-
-        $scope.loadHistory = function () {
-            if (!$scope.selectedDeviceId) return;
-            $scope.historyLoading = true;
-            $scope.historyPoints = [];
-            var now = Date.now();
-            var hours = parseInt($scope.historyPeriod, 10) || 24;
-            var from = now - hours * 3600000;
-            $http.get('/api-location-history.jsp', {
-                params: { deviceId: $scope.selectedDeviceId, from: from, to: now, limit: 5000 }
-            }).then(function (resp) {
-                $scope.historyLoading = false;
-                $scope.historyPoints = resp.data || [];
-                $scope.drawHistory();
-            }, function () {
-                $scope.historyLoading = false;
-                $scope.historyPoints = [];
-            });
-        };
-
-        $scope.drawHistory = function () {
-            if (!mapInstance || !$scope.historyPoints.length) return;
-            mapInstance.removePolyline('history-track');
-            mapInstance.removeMarker('history-start');
-            mapInstance.removeMarker('history-end');
-            var coords = $scope.historyPoints.map(function (p) { return [p.lat, p.lon]; });
-            mapInstance.addPolyline('history-track', coords, { color: '#0ea5b7', weight: 3, opacity: 0.8 });
-            var first = $scope.historyPoints[0];
-            var last = $scope.historyPoints[$scope.historyPoints.length - 1];
-            mapInstance.addMarker('history-start', first.lat, first.lon,
-                { iconUrl: 'images/circle-green.png', iconSize: [14, 14], iconAnchor: [7, 7] },
-                localization.localize('gpsmap.history') + ' - ' + localization.localize('gpsmap.history.start'));
-            mapInstance.addMarker('history-end', last.lat, last.lon,
-                { iconUrl: 'images/circle-red.png', iconSize: [14, 14], iconAnchor: [7, 7] },
-                localization.localize('gpsmap.history') + ' - ' + localization.localize('gpsmap.history.end'));
-        };
-
-        $scope.clearHistory = function () {
-            $scope.historyPoints = [];
-            if (mapInstance) {
-                mapInstance.removePolyline('history-track');
-                mapInstance.removeMarker('history-start');
-                mapInstance.removeMarker('history-end');
-            }
-        };
-
-        $scope.exportHistory = function (format) {
-            if (!$scope.historyPoints.length) return;
-            var blob, filename;
-            if (format === 'csv') {
-                var lines = ['lat,lon,alt,speed,timestamp'];
-                $scope.historyPoints.forEach(function (p) {
-                    lines.push([p.lat, p.lon, p.alt || 0, p.speed || 0, p.ts].join(','));
-                });
-                blob = new Blob([lines.join('\n')], { type: 'text/csv' });
-                filename = 'gps-history-' + $scope.selectedDeviceId + '.csv';
-            } else {
-                var kml = '<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>GPS History</name><Placemark><LineString><coordinates>\n';
-                $scope.historyPoints.forEach(function (p) {
-                    kml += p.lon + ',' + p.lat + ',' + (p.alt || 0) + '\n';
-                });
-                kml += '</coordinates></LineString></Placemark></Document></kml>';
-                blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
-                filename = 'gps-history-' + $scope.selectedDeviceId + '.kml';
-            }
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url; a.download = filename; a.click();
-            URL.revokeObjectURL(url);
         };
 
         var loadGroups = function () {

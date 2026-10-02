@@ -1,1 +1,1 @@
-window.HWMDM_RUNTIME = {adminPort: '8090'};
+window.HWMDM_RUNTIME = {adminPort: ''};

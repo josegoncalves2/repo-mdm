@@ -36,7 +36,7 @@
                     </div>
                     <div class="remote-device-item-status">
                         <span class="label" ng-class="{'label-success': device.online, 'label-danger': !device.online}">
-                            {{device.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
+                            {{device.online ? 'ONLINE' : 'OFFLINE'}}
                         </span>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <h4>
                         {{selectedDevice.number}}
                         <span class="label" ng-class="{'label-success': selectedDevice.online, 'label-danger': !selectedDevice.online}">
-                            {{selectedDevice.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
+                            {{selectedDevice.online ? 'ONLINE' : 'OFFLINE'}}
                         </span>
                     </h4>
                     <div class="remote-device-header-grid">
@@ -191,12 +191,12 @@
                         <strong ng-if="remote.input" localized>remote.input.active</strong>
                         <strong ng-if="!remote.input" localized>remote.input.inactive</strong>
                         ·
-                        <strong ng-if="remote.keyboard" style="color: #1ab394;">{{"remote.keyboard.active" | localize}}</strong>
+                        <strong ng-if="remote.keyboard" style="color: #1ab394;">Teclado f&iacute;sico: ATIVO</strong>
                         <button type="button"
                                 class="btn btn-xs btn-success remote-keyboard-arm"
                                 ng-if="!remote.keyboard"
                                 ng-click="activateRemoteKeyboard()">
-                            {{"remote.keyboard.activate" | localize}}
+                            Teclado f&iacute;sico: ativar
                         </button>
                     </span>
                 </div>
@@ -245,7 +245,11 @@
                                 localized>remote.type.send</button>
                     </div>
 
-                    <p class="remote-ip-note" localized>remote.keyboard.hint</p>
+                    <p class="remote-ip-note">
+                        Teclado f&iacute;sico: com a borda verde na tela do aparelho, o que voc&ecirc; digita vai direto para o
+                        campo em foco no dispositivo (Backspace, Enter, Tab, setas; Esc = Voltar; Ctrl+V cola).
+                        Clique fora da tela para usar o teclado na p&aacute;gina; clique na tela para voltar a enviar.
+                    </p>
 
                     <p class="remote-ip-note" ng-if="remote.inputNote">{{remote.inputNote}}</p>
                     <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>
