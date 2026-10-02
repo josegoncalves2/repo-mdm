@@ -15,10 +15,6 @@ for DIR in cache files plugins logs; do
    [ -d "$BASE_DIR/$DIR" ] || mkdir "$BASE_DIR/$DIR"
 done
 
-# hwmdm-runtime.js: necessario para o iframe do Servidor (adminPort)
-mkdir -p "$TOMCAT_DIR/webapps/ROOT/js"
-echo "window.HWMDM_RUNTIME = {adminPort: '${ADMIN_PORT:-}'};" > "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js"
-
 # Aguarda o banco ficar pronto
 until PGPASSWORD=$SQL_PASS psql -h "$SQL_HOST" -U "$SQL_USER" -d "$SQL_BASE" -c '\q' 2>/dev/null; do
   echo "Waiting for PostgreSQL..."
@@ -41,15 +37,14 @@ cp /opt/java/openjdk/conf/security/java.security /tmp/java.security
 sed "s|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g" /tmp/java.security > /opt/java/openjdk/conf/security/java.security
 rm /tmp/java.security
 
-# Fix permissões: Tomcat explode o WAR como root, mas o usuario do host (UID 1000)
-# precisa poder editar os arquivos. Roda em background enquanto o Tomcat sobe.
+# Fix runtime.js + permissões do runtime.js: Tomcat explode o WAR como root
+# e sobrescreve o runtime.js. Só mexe no runtime.js, não no ROOT inteiro.
 (
-  sleep 15
-  if [ -d "$TOMCAT_DIR/webapps/ROOT" ]; then
-    chown -R 1000:1000 "$TOMCAT_DIR/webapps/ROOT" 2>/dev/null
-    chmod -R u+w "$TOMCAT_DIR/webapps/ROOT" 2>/dev/null
+  sleep 20
+  if [ -d "$TOMCAT_DIR/webapps/ROOT/js" ]; then
+    echo "window.HWMDM_RUNTIME = {adminPort: '${ADMIN_PORT:-}'};" > "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js"
+    chown 1000:1000 "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js" 2>/dev/null
   fi
-  chown 1000:1000 "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js" 2>/dev/null
 ) &
 
 catalina.sh run
