@@ -475,20 +475,13 @@ angular.module('headwind-kiosk')
             if (!$scope.configuration || $scope.saving) {
                 return;
             }
-            // Se nao tem senha, usa a senha padrao do perfil (a configuracao ja existe,
-            // entao tem senha no banco -- so nao veio no JSON porque o servidor nao
-            // expoe o hash). Sempre manda a senha que o servidor espera.
             if (!$scope.configuration.password) {
-                $scope.configuration.password = 'hwmdm';
+                $scope.errorMessage = localization.localize('error.empty.configuration.password');
+                return;
             }
             var request = angular.copy($scope.configuration);
             request.applications = installedApps();
             request.type = request.type || 0;
-            // Garante que kioskMode e' enviado explicitamente (nao depende de padrao
-            // do servidor, que pode estar desatualizado).
-            if (request.kioskMode === undefined || request.kioskMode === null) {
-                request.kioskMode = false;
-            }
             $scope.saving = true;
             $scope.errorMessage = null;
             configurationService.updateConfiguration(request, function (response) {
@@ -528,7 +521,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.openRemote = function () {
-            $state.go('shell.remote');
+            $state.go('remote');
         };
 
         loadConfigurations();

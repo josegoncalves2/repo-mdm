@@ -3110,3 +3110,554 @@
 2026-10-02 15:49:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	a0048747baa0
 2026-10-02 15:50:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	a0048747baa0
 2026-10-02 15:51:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	a0048747baa0
+2026-10-02 16:04:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:04:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:05:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:05:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:06:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:06:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:07:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	cec09d4fffa8
+2026-10-02 16:07:52	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:07:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:08:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:08:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:09:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:09:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:10:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:10:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:11:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:11:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:11:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:12:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:12:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:13:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:13:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:14:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:14:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:15:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:15:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:16:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:16:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:17:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:17:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:18:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:18:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:19:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:19:56	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:20:26	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:20:56	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:21:26	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:21:56	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:22:26	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:22:56	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:23:26	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:23:57	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:24:27	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:24:57	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:25:27	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:25:57	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:26:27	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:26:57	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:27:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:27:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:28:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:28:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:29:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:29:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:30:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:30:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:31:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:31:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:32:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:32:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:33:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:33:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:34:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:34:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:35:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:36:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:36:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:37:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:37:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:38:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:38:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:39:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:39:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:40:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:40:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:41:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:41:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:42:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:42:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:43:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:43:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:44:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:44:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:45:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:45:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:46:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:46:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:47:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:47:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:48:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:48:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:49:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:49:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:50:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:50:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:51:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:51:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:52:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:52:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:53:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:53:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:54:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:54:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:55:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:55:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:56:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:56:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:57:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:57:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:58:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:58:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:59:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 16:59:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:00:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:00:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:01:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:01:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:02:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:02:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:03:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:03:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:04:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:04:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:05:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:05:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:06:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:06:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:07:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:07:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:08:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:08:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:09:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:09:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:10:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:10:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:11:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:11:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:12:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:12:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:13:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:13:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:14:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:14:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:15:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:15:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:16:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:16:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:17:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:17:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:18:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:18:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:19:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:19:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:20:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:20:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:21:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:21:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:22:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:22:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:23:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:23:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:24:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:24:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:25:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:25:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:26:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:26:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:27:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:27:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:28:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:28:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:29:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:29:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:30:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:30:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:31:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:31:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:32:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:32:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:33:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:33:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:34:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:34:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:35:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:35:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:36:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:36:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:37:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:37:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:38:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:38:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:39:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:39:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:40:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:40:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:41:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:41:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:42:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:42:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:43:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:43:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:44:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:44:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:45:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:45:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:46:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:46:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:47:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:47:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:48:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:48:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:49:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:49:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:50:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:50:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:51:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:51:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:52:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:52:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:53:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:53:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:54:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:54:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:55:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:55:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:56:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:56:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:57:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:57:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:58:21	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:58:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:59:21	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 17:59:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:00:21	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:00:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:01:22	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:01:52	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:02:22	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:02:52	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:03:22	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:03:52	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:04:22	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:04:52	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:05:22	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:05:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:06:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:06:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:07:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:07:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:07:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:08:23	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:08:53	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:09:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:09:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:10:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:10:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:11:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:11:54	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:12:24	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:12:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:13:25	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:13:55	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:14:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:14:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:15:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:15:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:16:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:16:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:17:28	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:17:58	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:18:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:18:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:19:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:19:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:20:29	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:20:59	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:21:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:22:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:22:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:23:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:23:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:24:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:24:30	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:25:00	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:25:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:26:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:26:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:27:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:27:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:28:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:28:31	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:29:01	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:29:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:30:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:30:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:31:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:31:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:32:02	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:32:32	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:33:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:33:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:34:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:34:33	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:35:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:35:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:36:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:36:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:37:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:37:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:38:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:38:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:39:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:39:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:40:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:40:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:41:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:41:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:42:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:42:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:43:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:43:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:44:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:44:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:45:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:45:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:46:06	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:46:36	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:47:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:47:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:48:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:48:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:49:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:49:37	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:50:07	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:50:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:51:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:51:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:52:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:52:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:53:08	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:53:38	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:54:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:54:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:55:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:55:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:56:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:56:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:57:09	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:57:39	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:58:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:58:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:59:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 18:59:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:00:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:00:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:01:10	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:01:40	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:02:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:02:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:02:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:03:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:03:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:04:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:04:41	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:04:59	192.168.1.131	192.168.1.131	7	RESOLVED (tcp-tls:1.1.1.1)	www.google.com.	A (142.251.151.119), A (142.251.156.119), A (142.251.150.119), A (142.251.157.119), A (142.251.154.119), A (142.251.155.119), A (142.251.153.119), A (142.251.152.119)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:04:59	192.168.1.131	192.168.1.131	20	RESOLVED (tcp-tls:1.1.1.1)	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:04:59	192.168.1.131	192.168.1.131	127	RESOLVED (tcp-tls:1.1.1.1)	\0009w5s\000-dnsotls-ds.metric.gstatic.com.	AAAA (2800:3f0:4001:808::2003)	NOERROR	RESOLVED	AAAA	45b77163ce8f
+2026-10-02 19:04:59	192.168.1.131	192.168.1.131	0	CACHED	\0009w5s\000-dnsotls-ds.metric.gstatic.com.	AAAA (2800:3f0:4001:808::2003)	NOERROR	CACHED	AAAA	45b77163ce8f
+2026-10-02 19:04:59	192.168.1.131	192.168.1.131	0	CACHED	\0009w5s\000-dnsotls-ds.metric.gstatic.com.	AAAA (2800:3f0:4001:808::2003)	NOERROR	CACHED	AAAA	45b77163ce8f
+2026-10-02 19:05:00	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	time.android.com.	A (216.239.35.8), A (216.239.35.4), A (216.239.35.0), A (216.239.35.12)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:00	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	capi.samsungcloud.com.	A (100.20.233.255), A (52.36.11.20), A (32.189.43.149), A (44.245.88.131), A (35.85.251.244), A (52.33.226.49), A (54.245.163.165), A (35.167.203.223)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:01	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.151.119), A (142.251.156.119), A (142.251.150.119), A (142.251.157.119), A (142.251.154.119), A (142.251.155.119), A (142.251.153.119), A (142.251.152.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:05:04	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	android.clients.google.com.	CNAME (android.l.google.com.), A (172.217.30.46), A (172.217.30.78), A (172.217.172.46), A (172.217.172.174), A (142.250.79.206), A (142.251.134.174), A (142.251.133.206), A (142.251.134.46), A (172.217.29.46), A (172.217.29.78), A (172.217.29.110), A (172.217.29.142), A (172.217.29.174), A (172.217.29.206), A (172.217.29.238), A (172.217.30.14)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:04	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	play-fe.googleapis.com.	A (172.217.29.206)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:04	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	play.googleapis.com.	A (172.217.118.4), A (172.217.113.4), A (172.217.112.4), A (172.217.119.4), A (172.217.116.4), A (172.217.115.4), A (172.217.117.4), A (172.217.114.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:05	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	prod-lt-playstoregatewayadapter-pa.googleapis.com.	A (172.217.116.4), A (172.217.112.4), A (172.217.113.4), A (172.217.119.4), A (172.217.114.4), A (172.217.115.4), A (172.217.117.4), A (172.217.118.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:05	192.168.1.131	192.168.1.131	0	BLOCKED (cat-games: *.play-lh.googleusercontent.com)	play-lh.googleusercontent.com.		NXDOMAIN	BLOCKED	A	45b77163ce8f
+2026-10-02 19:05:06	192.168.1.131	192.168.1.131	0	CACHED	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:05:11	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:05:12	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	firebase-settings.crashlytics.com.	A (172.217.30.99)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:12	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	gmscompliance-pa.googleapis.com.	A (172.217.115.4), A (172.217.119.4), A (172.217.114.4), A (172.217.112.4), A (172.217.113.4), A (172.217.117.4), A (172.217.118.4), A (172.217.116.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:12	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	firebaseinstallations.googleapis.com.	A (172.217.114.4), A (172.217.118.4), A (172.217.113.4), A (172.217.115.4), A (172.217.116.4), A (172.217.112.4), A (172.217.117.4), A (172.217.119.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:13	192.168.1.131	192.168.1.131	87	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:13	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:13	192.168.1.131	192.168.1.131	11	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:13	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:13	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:15	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.151.119), A (142.251.156.119), A (142.251.150.119), A (142.251.157.119), A (142.251.154.119), A (142.251.155.119), A (142.251.153.119), A (142.251.152.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:05:15	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	www.googleapis.com.	A (172.217.118.4), A (172.217.119.4), A (172.217.117.4), A (172.217.114.4), A (172.217.115.4), A (172.217.113.4), A (172.217.116.4), A (172.217.112.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:15	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	youtubei.googleapis.com.	A (172.217.118.4), A (172.217.113.4), A (172.217.115.4), A (172.217.116.4), A (172.217.112.4), A (172.217.117.4), A (172.217.119.4), A (172.217.114.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:16	192.168.1.131	192.168.1.131	13	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:16	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	i.ytimg.com.	A (172.217.30.150), A (172.217.162.22), A (172.217.30.246), A (172.217.162.182), A (172.217.162.246), A (172.217.172.150), A (172.217.172.54), A (172.217.172.182), A (142.250.79.214), A (142.251.134.182), A (142.251.133.214), A (142.251.134.54), A (172.217.28.150), A (172.217.28.182), A (172.217.28.214), A (172.217.30.118)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:17	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	xgapromomanager-pa.googleapis.com.	A (172.217.115.4), A (172.217.119.4), A (172.217.117.4), A (172.217.118.4), A (172.217.116.4), A (172.217.113.4), A (172.217.114.4), A (172.217.112.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:20	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	notifications-pa.googleapis.com.	A (172.217.118.4), A (172.217.119.4), A (172.217.113.4), A (172.217.112.4), A (172.217.115.4), A (172.217.114.4), A (172.217.117.4), A (172.217.116.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:22	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	mtalk.google.com.	CNAME (mobile-gtalk.l.google.com.), A (108.177.123.188)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:27	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	ers.samsungcloud.com.	A (108.139.166.55), A (108.139.166.80), A (108.139.166.85), A (108.139.166.67)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:28	192.168.1.131	192.168.1.131	5	RESOLVED (tcp-tls:1.1.1.1)	play.samsungcloud.com.	CNAME (scloud-p2uw2-ext.elb.samsungcloud.com.), A (34.211.202.67), A (16.147.143.99), A (35.84.156.56), A (32.188.236.42), A (32.189.248.239), A (32.188.195.233), A (184.32.120.30), A (44.240.146.70)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:28	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:29	192.168.1.131	192.168.1.131	7	RESOLVED (tcp-tls:1.1.1.1)	poll.gras.samsungdm.com.	"CNAME (d2f18rgqnlt5oj.cloudfront.net.), poll.gras.samsungdm.com.	259	IN	RRSIG	CNAME 13 4 300 20261002200948 20261002180448 37132 gras.samsungdm.com. FDXfZNFdDg23N6neBwBfSiZFETFQ8qjTshsz/UNkBS1kgU8qNQXJDwvoE6IYFM8d560X0qjvcT7lQKtYhqiWog==, A (18.155.21.43), A (18.155.21.15), A (18.155.21.117), A (18.155.21.9)"	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:31	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	policy.samsungcloud.com.	A (18.155.21.49), A (18.155.21.104), A (18.155.21.33), A (18.155.21.89)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:33	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	api.weather.com.	CNAME (api.sun.weather.com.), CNAME (api.twc.map.fastly.net.), A (151.101.129.91), A (151.101.193.91), A (151.101.1.91), A (151.101.65.91)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:37	192.168.1.131	192.168.1.131	19	RESOLVED (tcp-tls:8.8.8.8)	api.rb.sbixby.com.	CNAME (d16y9yht9pwbes.cloudfront.net.), A (108.138.14.33), A (108.138.14.92), A (108.138.14.25), A (108.138.14.22)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:05:48	192.168.1.131	192.168.1.131	7	RESOLVED (tcp-tls:1.1.1.1)	android.googleapis.com.	A (172.217.117.4), A (172.217.118.4), A (172.217.119.4), A (172.217.114.4), A (172.217.113.4), A (172.217.115.4), A (172.217.116.4), A (172.217.112.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:49	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	www.googleapis.com.	A (172.217.117.4), A (172.217.119.4), A (172.217.116.4), A (172.217.113.4), A (172.217.112.4), A (172.217.114.4), A (172.217.115.4), A (172.217.118.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:51	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	i.ytimg.com.	A (172.217.30.150), A (172.217.162.22), A (172.217.30.246), A (172.217.29.214), A (172.217.29.246), A (172.217.30.22), A (172.217.30.54), A (172.217.30.86), A (142.250.219.214), A (142.250.219.246), A (142.250.78.118), A (142.250.78.150), A (172.217.28.150), A (172.217.28.182), A (172.217.28.214), A (172.217.30.118)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:56	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	digitalassetlinks.googleapis.com.	A (172.217.119.4), A (172.217.118.4), A (172.217.113.4), A (172.217.117.4), A (172.217.116.4), A (172.217.112.4), A (172.217.115.4), A (172.217.114.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:05:58	192.168.1.131	192.168.1.131	14	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:01	192.168.1.131	192.168.1.131	17	RESOLVED (tcp-tls:8.8.8.8)	gos-api.gos-gsp.io.	"CNAME (gos-api-pue1.gos-gsp.io.), gos-api.gos-gsp.io.	300	IN	RRSIG	CNAME 13 3 300 20261002201101 20261002180601 65236 gos-gsp.io. sPHaRIfeo5lU1kYy6ELEM5bdKnt0jbc0LrRWZzciXDO1acC6SJpjac2zd3dhEk8fkX0KqQx+qhKskddJtcHKhw==, CNAME (gos-api-pue1-a.gos-gsp.io.), gos-api-pue1.gos-gsp.io.	300	IN	RRSIG	CNAME 13 3 300 20261002201101 20261002180601 65236 gos-gsp.io. PGv8u/VHzSFJtcksLR2sJiR09X0CpepoRYqZvqnCI+bJjHzgAyOfEehaFpSMJ7xnG0NGRYbvST4r6jfCCv8cRg==, A (52.3.165.254), A (34.203.32.205), A (52.202.28.45), A (98.87.66.78), gos-api-pue1-a.gos-gsp.io.	60	IN	RRSIG	A 13 3 60 20261002200701 20261002180601 65236 gos-gsp.io. tjYe7RH3LDu+LPD3UyMLfitrQrUT8ge9YwucRG56v4ZUoORW44CVUOzTwGC9C3pQIoFLBnzqaVqJmzMff72NFA=="	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:04	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	sgepodownload.mediatek.com.	CNAME (wildcard-global-sni.mediatek.com.edgesuite.net.), CNAME (a407.d.akamai.net.)	NOERROR	RESOLVED	AAAA	45b77163ce8f
+2026-10-02 19:06:04	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	sgepodownload.mediatek.com.	CNAME (wildcard-global-sni.mediatek.com.edgesuite.net.), CNAME (a407.d.akamai.net.), A (2.16.197.206), A (2.16.197.207)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:04	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	time.google.com.	A (216.239.35.12), A (216.239.35.0), A (216.239.35.8), A (216.239.35.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:05	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	android.apis.google.com.	CNAME (clients.l.google.com.), A (172.217.29.174)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:08	192.168.1.131	192.168.1.131	0	BLOCKED (cat-games: *.play-lh.googleusercontent.com)	play-lh.googleusercontent.com.		NXDOMAIN	BLOCKED	A	45b77163ce8f
+2026-10-02 19:06:09	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	www.googleapis.com.	A (172.217.116.4), A (172.217.114.4), A (172.217.119.4), A (172.217.117.4), A (172.217.118.4), A (172.217.112.4), A (172.217.115.4), A (172.217.113.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:09	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	dc.dqa.samsung.com.	A (34.102.182.62)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:06:17	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.151.119), A (142.251.156.119), A (142.251.150.119), A (142.251.157.119), A (142.251.154.119), A (142.251.155.119), A (142.251.153.119), A (142.251.152.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:06:28	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:06:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:06:58	192.168.1.131	192.168.1.131	4087	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:07:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:07:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:08:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:08:42	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:09:12	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:09:14	192.168.1.131	192.168.1.131	0	CACHED	gmscompliance-pa.googleapis.com.	A (172.217.115.4), A (172.217.119.4), A (172.217.114.4), A (172.217.112.4), A (172.217.113.4), A (172.217.117.4), A (172.217.118.4), A (172.217.116.4)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:09:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:10:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:10:28	192.168.1.131	192.168.1.131	107	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:10:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:11:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:11:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:12:13	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:12:43	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:13:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:13:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:14:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:14:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:15:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:15:32	192.168.1.131	192.168.1.131	107	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:15:46	192.168.1.131	192.168.1.131	7	RESOLVED (tcp-tls:1.1.1.1)	www.google.com.	A (142.251.155.119), A (142.251.157.119), A (142.251.150.119), A (142.251.153.119), A (142.251.154.119), A (142.251.152.119), A (142.251.156.119), A (142.251.151.119)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:48	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.155.119), A (142.251.157.119), A (142.251.150.119), A (142.251.153.119), A (142.251.154.119), A (142.251.152.119), A (142.251.156.119), A (142.251.151.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:15:48	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:49	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	android.clients.google.com.	CNAME (android.l.google.com.), A (172.217.28.174), A (172.217.29.46), A (172.217.29.78), A (172.217.29.110), A (172.217.29.142), A (172.217.29.174), A (172.217.29.206), A (172.217.29.238), A (172.217.30.14), A (172.217.30.46), A (172.217.30.78), A (142.250.219.206), A (142.250.219.238), A (142.250.78.110), A (142.250.78.142), A (172.217.28.142)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	play-fe.googleapis.com.	A (172.217.172.174)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	play.googleapis.com.	A (172.217.118.4), A (172.217.114.4), A (172.217.119.4), A (172.217.112.4), A (172.217.117.4), A (172.217.116.4), A (172.217.115.4), A (172.217.113.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	0	CACHED	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	prod-lt-playstoregatewayadapter-pa.googleapis.com.	A (172.217.113.4), A (172.217.112.4), A (172.217.118.4), A (172.217.115.4), A (172.217.117.4), A (172.217.116.4), A (172.217.114.4), A (172.217.119.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:15:50	192.168.1.131	192.168.1.131	0	BLOCKED (cat-games: *.play-lh.googleusercontent.com)	play-lh.googleusercontent.com.		NXDOMAIN	BLOCKED	A	45b77163ce8f
+2026-10-02 19:16:10	192.168.1.131	192.168.1.131	16	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:16:14	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:16:40	192.168.1.131	192.168.1.131	13	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:16:44	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:16:50	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	play.samsungcloud.com.	CNAME (scloud-p2uw2-ext.elb.samsungcloud.com.), A (32.189.248.239), A (32.188.236.42), A (44.224.74.103), A (52.43.161.184), A (44.234.13.49), A (52.10.224.156), A (34.215.83.168), A (34.211.202.67)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:16:53	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	policy.samsungcloud.com.	A (18.155.21.49), A (18.155.21.104), A (18.155.21.33), A (18.155.21.89)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:17:10	192.168.1.131	192.168.1.131	2093	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:17:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:17:40	192.168.1.131	192.168.1.131	14	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:17:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:18:10	192.168.1.131	192.168.1.131	2088	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:18:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:18:40	192.168.1.131	192.168.1.131	9	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:18:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:19:10	192.168.1.131	192.168.1.131	4094	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:19:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:19:40	192.168.1.131	192.168.1.131	13	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:19:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:20:10	192.168.1.131	192.168.1.131	4106	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:20:15	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:20:40	192.168.1.131	192.168.1.131	2090	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:20:45	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:21:10	192.168.1.131	192.168.1.131	2096	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:21:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:21:40	192.168.1.131	192.168.1.131	4087	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:21:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:22:10	192.168.1.131	192.168.1.131	2097	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:22:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:22:40	192.168.1.131	192.168.1.131	2092	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:22:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:23:10	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:23:16	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:23:40	192.168.1.131	192.168.1.131	11	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:23:46	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:24:10	192.168.1.131	192.168.1.131	2089	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:24:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:24:40	192.168.1.131	192.168.1.131	2095	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:24:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:25:10	192.168.1.131	192.168.1.131	14	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:25:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:25:40	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:25:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:26:10	192.168.1.131	192.168.1.131	99	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:26:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:26:40	192.168.1.131	192.168.1.131	16	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:26:42	192.168.1.131	192.168.1.131	3	RESOLVED (tcp-tls:1.1.1.1)	www.google.com.	A (142.251.151.119), A (142.251.157.119), A (142.251.150.119), A (142.251.155.119), A (142.251.152.119), A (142.251.154.119), A (142.251.156.119), A (142.251.153.119)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:26:42	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.151.119), A (142.251.157.119), A (142.251.150.119), A (142.251.155.119), A (142.251.152.119), A (142.251.154.119), A (142.251.156.119), A (142.251.153.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:26:44	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.151.119), A (142.251.157.119), A (142.251.150.119), A (142.251.155.119), A (142.251.152.119), A (142.251.154.119), A (142.251.156.119), A (142.251.153.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:26:44	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:26:45	192.168.1.131	192.168.1.131	0	CACHED	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:26:45	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	play.googleapis.com.	A (172.217.117.4), A (172.217.115.4), A (172.217.119.4), A (172.217.113.4), A (172.217.116.4), A (172.217.112.4), A (172.217.118.4), A (172.217.114.4)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:26:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:27:10	192.168.1.131	192.168.1.131	2087	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:27:17	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:27:47	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:28:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:28:32	192.168.1.131	192.168.1.131	90	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:28:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:28:49	192.168.1.131	192.168.1.131	4088	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:29:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:29:19	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:29:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:30:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:30:26	192.168.1.131	192.168.1.131	2091	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:30:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:30:49	192.168.1.131	192.168.1.131	2080	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:31:18	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:31:19	192.168.1.131	192.168.1.131	12	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:31:48	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:31:49	192.168.1.131	192.168.1.131	10	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:32:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:32:19	192.168.1.131	192.168.1.131	10	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:32:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:32:49	192.168.1.131	192.168.1.131	4102	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:33:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:33:19	192.168.1.131	192.168.1.131	16	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:33:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:33:49	192.168.1.131	192.168.1.131	2093	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:34:00	192.168.1.131	192.168.1.131	6	RESOLVED (tcp-tls:1.1.1.1)	www.google.com.	A (142.251.154.119), A (142.251.151.119), A (142.251.157.119), A (142.251.156.119), A (142.251.155.119), A (142.251.152.119), A (142.251.150.119), A (142.251.153.119)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:34:02	192.168.1.131	192.168.1.131	2	RESOLVED (tcp-tls:1.1.1.1)	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	RESOLVED	A	45b77163ce8f
+2026-10-02 19:34:02	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.154.119), A (142.251.151.119), A (142.251.157.119), A (142.251.156.119), A (142.251.155.119), A (142.251.152.119), A (142.251.150.119), A (142.251.153.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:34:03	192.168.1.131	192.168.1.131	0	CACHED	connectivitycheck.gstatic.com.	A (142.251.150.120)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:34:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:34:49	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:35:19	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:35:40	192.168.1.131	192.168.1.131	0	CACHED	www.google.com.	A (142.251.154.119), A (142.251.151.119), A (142.251.157.119), A (142.251.156.119), A (142.251.155.119), A (142.251.152.119), A (142.251.150.119), A (142.251.153.119)	NOERROR	CACHED	A	45b77163ce8f
+2026-10-02 19:35:43	192.168.1.131	192.168.1.131	2094	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:35:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:35:47	192.168.1.131	192.168.1.131	4102	RESOLVED (tcp-tls:8.8.8.8)	api.al-array.com.		REFUSED	RESOLVED	A	45b77163ce8f
+2026-10-02 19:36:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:36:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:37:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:37:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:38:20	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:38:50	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:39:21	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:39:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:40:21	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f
+2026-10-02 19:40:51	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	45b77163ce8f

@@ -737,20 +737,21 @@ angular.module('headwind-kiosk')
             if (!device || !device.id) {
                 return;
             }
+            var stored = loadStoredSessions()[String(device.id)];
+            if (!stored) {
+                return;
+            }
             if (!canvas()) {
                 return;
             }
-            // Antes exigia sessionStorage para sequer perguntar; agora sempre pergunta ao
-            // servidor. Se outro agente/aba abriu a sessao, ou se sessionStorage foi perdido,
-            // o painel ainda assim reata em vez de mostrar "Solicitar acesso" como se nao
-            // existisse sessao, o que fazia o operador reconectar silenciosamente sem o
-            // consentimento no aparelho.
-            var stored = loadStoredSessions()[String(device.id)] || {};
             remoteSupportService.getStatus({id: device.id}, function (response) {
                 if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
-                    return;
+                    return; // o operador ja' saiu deste aparelho enquanto a consulta ia e voltava
                 }
                 if (response.status !== 'OK' || !response.data || !response.data.open) {
+                    // A sessao guardada no navegador ja' nao existe no servidor -- expirou
+                    // (prazos em RemoteSessionHub), foi cancelada, ou foi encerrada do outro
+                    // lado. Nao ha' nada para reatar.
                     clearStoredSession(device.id);
                     return;
                 }
@@ -758,8 +759,7 @@ angular.module('headwind-kiosk')
                 $scope.remote.error = null;
                 $scope.remote.connected = true;
                 $scope.remote.pending = !response.data.streaming;
-                $scope.remote.requestedAt = new Date(response.data.requestedAt || stored.requestedAt || Date.now());
-                saveStoredSession(device.id, {requestedAt: $scope.remote.requestedAt.getTime()});
+                $scope.remote.requestedAt = new Date(response.data.requestedAt || stored.requestedAt);
                 openPlayer(response.data.socket, device.id);
             }, angular.noop);
         };
