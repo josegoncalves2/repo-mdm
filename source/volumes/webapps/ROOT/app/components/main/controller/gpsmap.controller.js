@@ -6,6 +6,7 @@ angular.module('headwind-kiosk')
         var tileServerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var REFRESH_INTERVAL_STORAGE_KEY = 'hwmdm.gps.refreshIntervalMs';
         var DEFAULT_REFRESH_INTERVAL_MS = 30000;
+        var ONLINE_THRESHOLD_MS = 300000;
         var refreshTimer = null;
         var focusedDevice = deviceFocusService.consume();
         var firstMapFitDone = false;
@@ -14,11 +15,15 @@ angular.module('headwind-kiosk')
         $scope.groups = [];
         $scope.selectedGroupId = null;
         $scope.selectedDeviceId = null;
+        $scope.selectedDevice = null;
         $scope.loading = false;
         $scope.errorMessage = null;
         $scope.mapReady = false;
         $scope.mapError = false;
         $scope.lastUpdated = null;
+        $scope.deviceSearch = '';
+        $scope.onlineCount = 0;
+        $scope.offlineCount = 0;
         $scope.refreshOptions = [
             {value: 30000, label: localization.localize('gpsmap.refresh.30s')},
             {value: 60000, label: localization.localize('gpsmap.refresh.60s')},
@@ -62,23 +67,54 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return null;
             }
-            // publicIp e' a fonte real (o agente reporta o endereco do aparelho); os campos
-            // de info ficam por compatibilidade -- o launcher 6.36 nao envia nenhum deles.
             var info = device.info || {};
             var ip = info.deviceIp || info.ip || info.localIp || device.publicIp || null;
             return ip && !infrastructureIps[String(ip).trim()] ? ip : null;
         };
 
+        var enrichDevice = function (device) {
+            var now = Date.now();
+            device.isOnline = device.locationTs && (now - device.locationTs) < ONLINE_THRESHOLD_MS;
+            var info = device.info || {};
+            device.batteryLevel = info.batteryLevel != null ? info.batteryLevel : null;
+            device.networkType = info.wifi ? 'Wi-Fi' : (info.mobile ? info.networkType || '4G' : null);
+            device.serial = info.serial || device.serial || null;
+            device.deviceIp = reportedDeviceIp(device);
+            device.speed = info.speed != null ? info.speed * 3.6 : null;
+            device.alt = info.altitude || null;
+        };
+
+        var updateCounts = function () {
+            var on = 0, off = 0;
+            $scope.devices.forEach(function (d) {
+                if (d.isOnline) on++; else off++;
+            });
+            $scope.onlineCount = on;
+            $scope.offlineCount = off;
+        };
+
+        $scope.deviceSearchFilter = function (device) {
+            if (!$scope.deviceSearch) return true;
+            var q = $scope.deviceSearch.toLowerCase();
+            return (device.number && device.number.toLowerCase().indexOf(q) >= 0) ||
+                   (device.model && device.model.toLowerCase().indexOf(q) >= 0) ||
+                   (device.serial && device.serial.toLowerCase().indexOf(q) >= 0);
+        };
+
         var popupTemplate = function (device) {
             var title = escapeHtml(device.number || localization.localize('devices.unknown'));
             var model = escapeHtml(device.model || localization.localize('devices.model.unknown'));
-            var ip = escapeHtml(reportedDeviceIp(device) || localization.localize('devices.ip.not.reported'));
+            var ip = escapeHtml(device.deviceIp || localization.localize('devices.ip.not.reported'));
             var ts = device.locationTs ? new Date(device.locationTs).toLocaleString() : '-';
+            var statusLabel = device.isOnline ? localization.localize('gpsmap.status.online') : localization.localize('gpsmap.status.offline');
+            var statusColor = device.isOnline ? '#1f8a70' : '#d64545';
+            var battery = device.batteryLevel != null ? '<br><span>&#9889; ' + device.batteryLevel + '%</span>' : '';
             return '<div class="summary-map-popup">' +
-                '<strong>' + title + '</strong><br>' +
+                '<strong>' + title + '</strong> <span style="color:' + statusColor + ';font-size:11px">' + escapeHtml(statusLabel) + '</span><br>' +
                 '<span>' + model + '</span><br>' +
                 '<span>IP: ' + ip + '</span><br>' +
                 '<span>' + escapeHtml(localization.localize('gpsmap.popup.updated')) + ': ' + escapeHtml(ts) + '</span>' +
+                battery +
                 '</div>';
         };
 
@@ -99,7 +135,7 @@ angular.module('headwind-kiosk')
                     'device-' + device.id,
                     device.lat,
                     device.lon,
-                    markerIcon(device.statusCode),
+                    markerIcon(device.isOnline ? 'green' : 'grey'),
                     device.number,
                     popupTemplate(device)
                 );
@@ -112,6 +148,7 @@ angular.module('headwind-kiosk')
                 focusedDevice = null;
                 if (focusMatch) {
                     $scope.selectedDeviceId = focusMatch.id;
+                    $scope.selectedDevice = focusMatch;
                     mapInstance.centerMap(focusMatch.lat, focusMatch.lon);
                     mapInstance.openMarkerPopup('device-' + focusMatch.id);
                     mapInstance.invalidateSize();
@@ -125,11 +162,13 @@ angular.module('headwind-kiosk')
                     return device.id === $scope.selectedDeviceId;
                 });
                 if (selectedDevice) {
+                    $scope.selectedDevice = selectedDevice;
                     mapInstance.centerMap(selectedDevice.lat, selectedDevice.lon);
                     mapInstance.invalidateSize();
                     return;
                 }
                 $scope.selectedDeviceId = null;
+                $scope.selectedDevice = null;
             }
 
             if (fitMode === 'none') {
@@ -198,17 +237,21 @@ angular.module('headwind-kiosk')
                 $scope.loading = false;
                 if (response.status === 'OK') {
                     $scope.devices = response.data || [];
+                    $scope.devices.forEach(enrichDevice);
+                    updateCounts();
                     $scope.lastUpdated = new Date();
                     ensureMap(userRequested ? 'force' : 'none');
                 } else {
                     $scope.devices = [];
                     $scope.errorMessage = localization.localizeServerResponse(response);
+                    updateCounts();
                 }
                 scheduleRefresh();
             }, function () {
                 $scope.loading = false;
                 $scope.devices = [];
                 $scope.errorMessage = localization.localize('gpsmap.error.load.failed');
+                updateCounts();
                 scheduleRefresh();
             });
         };
@@ -222,6 +265,7 @@ angular.module('headwind-kiosk')
 
         $scope.selectDevice = function (device) {
             $scope.selectedDeviceId = device.id;
+            $scope.selectedDevice = device;
             if (mapInstance) {
                 mapInstance.centerMap(device.lat, device.lon);
                 mapInstance.openMarkerPopup('device-' + device.id);
@@ -229,8 +273,25 @@ angular.module('headwind-kiosk')
             }
         };
 
+        $scope.clearSelection = function () {
+            $scope.selectedDeviceId = null;
+            $scope.selectedDevice = null;
+            if ($scope.historyMode) {
+                $scope.historyMode = false;
+                $scope.clearHistory();
+            }
+        };
+
+        $scope.centerOnDevice = function (device) {
+            if (mapInstance && device) {
+                mapInstance.centerMap(device.lat, device.lon);
+                mapInstance.invalidateSize();
+            }
+        };
+
         $scope.onGroupChanged = function () {
             $scope.selectedDeviceId = null;
+            $scope.selectedDevice = null;
             firstMapFitDone = false;
             $scope.loadDevices(true);
         };
@@ -244,6 +305,7 @@ angular.module('headwind-kiosk')
         $scope.historyPeriod = '24';
         $scope.historyPoints = [];
         $scope.historyLoading = false;
+        $scope.historyStats = null;
 
         $scope.toggleHistory = function () {
             $scope.historyMode = !$scope.historyMode;
@@ -254,10 +316,46 @@ angular.module('headwind-kiosk')
             }
         };
 
+        var computeHistoryStats = function (points) {
+            if (!points || points.length < 2) {
+                $scope.historyStats = null;
+                return;
+            }
+            var totalDist = 0;
+            var stops = 0;
+            var STOP_THRESHOLD_MS = 300000;
+            var STOP_RADIUS_M = 50;
+
+            for (var i = 1; i < points.length; i++) {
+                totalDist += haversine(points[i - 1].lat, points[i - 1].lon, points[i].lat, points[i].lon);
+                if (points[i].ts - points[i - 1].ts > STOP_THRESHOLD_MS) {
+                    var dist = haversine(points[i - 1].lat, points[i - 1].lon, points[i].lat, points[i].lon);
+                    if (dist < STOP_RADIUS_M) {
+                        stops++;
+                    }
+                }
+            }
+            $scope.historyStats = {
+                distance: (totalDist / 1000).toFixed(1),
+                stops: stops
+            };
+        };
+
+        var haversine = function (lat1, lon1, lat2, lon2) {
+            var R = 6371000;
+            var dLat = (lat2 - lat1) * Math.PI / 180;
+            var dLon = (lon2 - lon1) * Math.PI / 180;
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        };
+
         $scope.loadHistory = function () {
             if (!$scope.selectedDeviceId) return;
             $scope.historyLoading = true;
             $scope.historyPoints = [];
+            $scope.historyStats = null;
             var now = Date.now();
             var hours = parseInt($scope.historyPeriod, 10) || 24;
             var from = now - hours * 3600000;
@@ -266,10 +364,12 @@ angular.module('headwind-kiosk')
             }).then(function (resp) {
                 $scope.historyLoading = false;
                 $scope.historyPoints = resp.data || [];
+                computeHistoryStats($scope.historyPoints);
                 $scope.drawHistory();
             }, function () {
                 $scope.historyLoading = false;
                 $scope.historyPoints = [];
+                $scope.historyStats = null;
             });
         };
 
@@ -292,6 +392,7 @@ angular.module('headwind-kiosk')
 
         $scope.clearHistory = function () {
             $scope.historyPoints = [];
+            $scope.historyStats = null;
             if (mapInstance) {
                 mapInstance.removePolyline('history-track');
                 mapInstance.removeMarker('history-start');
@@ -302,13 +403,25 @@ angular.module('headwind-kiosk')
         $scope.exportHistory = function (format) {
             if (!$scope.historyPoints.length) return;
             var blob, filename;
+            var deviceId = $scope.selectedDeviceId;
             if (format === 'csv') {
                 var lines = ['lat,lon,alt,speed,timestamp'];
                 $scope.historyPoints.forEach(function (p) {
                     lines.push([p.lat, p.lon, p.alt || 0, p.speed || 0, p.ts].join(','));
                 });
                 blob = new Blob([lines.join('\n')], { type: 'text/csv' });
-                filename = 'gps-history-' + $scope.selectedDeviceId + '.csv';
+                filename = 'gps-history-' + deviceId + '.csv';
+            } else if (format === 'gpx') {
+                var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="HWMDM">\n<trk><name>Device ' + deviceId + '</name><trkseg>\n';
+                $scope.historyPoints.forEach(function (p) {
+                    gpx += '<trkpt lat="' + p.lat + '" lon="' + p.lon + '">';
+                    if (p.alt) gpx += '<ele>' + p.alt + '</ele>';
+                    gpx += '<time>' + new Date(p.ts).toISOString() + '</time>';
+                    gpx += '</trkpt>\n';
+                });
+                gpx += '</trkseg></trk></gpx>';
+                blob = new Blob([gpx], { type: 'application/gpx+xml' });
+                filename = 'gps-history-' + deviceId + '.gpx';
             } else {
                 var kml = '<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>GPS History</name><Placemark><LineString><coordinates>\n';
                 $scope.historyPoints.forEach(function (p) {
@@ -316,7 +429,7 @@ angular.module('headwind-kiosk')
                 });
                 kml += '</coordinates></LineString></Placemark></Document></kml>';
                 blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
-                filename = 'gps-history-' + $scope.selectedDeviceId + '.kml';
+                filename = 'gps-history-' + deviceId + '.kml';
             }
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');

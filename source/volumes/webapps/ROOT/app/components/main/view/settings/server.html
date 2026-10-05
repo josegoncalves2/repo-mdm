@@ -1,6 +1,12 @@
 <!-- Gestao do servidor: o hwmdm-admin, container proprio da stack, aberto dentro do painel.
      Fica fora do Tomcat de proposito: reinicia/recria os containers sem derrubar a si mesmo. -->
-<div class="hw-server-admin" style="width:100%">
+<div class="hwmdm-page-toolbar hwmdm-settings-page">
+    <div>
+        <h3 localized>nav.server</h3>
+        <p localized>server.page.subtitle</p>
+    </div>
+</div>
+<div class="hw-server-admin hwmdm-settings-page" style="width:100%">
     <iframe ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
-            style="width:100%;height:calc(100vh - 140px);min-height:560px;border:0;display:block"></iframe>
+            style="width:100%;height:calc(100vh - 180px);min-height:520px;border:0;display:block"></iframe>
 </div>

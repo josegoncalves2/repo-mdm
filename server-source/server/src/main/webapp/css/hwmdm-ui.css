@@ -370,8 +370,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     height: auto;
     padding: 8px 14px;
     max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
     flex-shrink: 0;
     border-radius: var(--hwmdm-radius-sm);
     border-width: 1px;

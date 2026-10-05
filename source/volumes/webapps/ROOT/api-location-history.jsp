@@ -30,8 +30,8 @@
             "WHERE device_id = ? AND ts >= ? AND ts <= ? ORDER BY ts ASC LIMIT ?"
         );
         ps.setInt(1, deviceId);
-        ps.setTimestamp(2, new Timestamp(fromMs));
-        ps.setTimestamp(3, new Timestamp(toMs));
+        ps.setLong(2, fromMs);
+        ps.setLong(3, toMs);
         ps.setInt(4, limit);
         rs = ps.executeQuery();
 
@@ -41,7 +41,7 @@
             obj.put("lon", rs.getDouble("lon"));
             obj.put("alt", rs.getDouble("alt"));
             obj.put("speed", rs.getDouble("speed"));
-            obj.put("ts", rs.getTimestamp("ts").getTime());
+            obj.put("ts", rs.getLong("ts"));
             obj.put("recorded_at", rs.getTimestamp("recorded_at").getTime());
             arr.put(obj);
         }

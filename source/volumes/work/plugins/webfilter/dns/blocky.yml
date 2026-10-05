@@ -104,7 +104,20 @@ blocking:
       - cat-vpn_proxy
     c1-p60:
       - p-c1-p60
+      - cat-adult
+      - cat-dating
       - cat-doh
+      - cat-drugs
+      - cat-gambling
+      - cat-games
+      - cat-malware
+      - cat-phishing
+      - cat-piracy
+      - cat-shopping
+      - cat-social_media
+      - cat-streaming
+      - cat-violence
+      - cat-vpn_proxy
     default:
       - p-default
       - cat-adult

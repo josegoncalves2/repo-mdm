@@ -87,7 +87,8 @@
                            datepicker-options='datePickerOptions'/>
                 </div>
                 <div class='min-padding date-picker date-picker-button'>
-                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, true )'>
+                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, true )'
+                            localized-title="button.calendar.from">
                         <span class='glyphicon glyphicon-calendar'></span>
                     </button>
                 </div>
@@ -101,7 +102,8 @@
                            datepicker-options='datePickerOptions'/>
                 </div>
                 <div class='min-padding date-picker date-picker-button'>
-                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, false )'>
+                    <button type='button' class='btn btn-default' ng-click='openDateCalendar( $event, false )'
+                            localized-title="button.calendar.to">
                         <span class='glyphicon glyphicon-calendar'></span>
                     </button>
                 </div>
@@ -558,7 +560,7 @@
                     <span class='glyphicon glyphicon-qrcode'></span>
                 </button>
                 <button type='button' class='btn btn-default' ng-click='openRemoteAccess( device )'
-                        title="Remote access"
+                        localized-title="button.remote.access"
                         ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.view') || hasPermission('device.remote_access.control')">
                     <span class='glyphicon glyphicon-facetime-video'></span>
                 </button>
