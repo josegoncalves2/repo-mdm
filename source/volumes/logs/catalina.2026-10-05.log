@@ -46,3 +46,5 @@
 05-Oct-2026 14:31:15.768 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [34,433] ms
 05-Oct-2026 14:31:15.772 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 05-Oct-2026 14:31:16.005 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [34848] milliseconds
+05-Oct-2026 15:40:30.579 SEVERE [MQTT Ping: HMDMServer] org.eclipse.paho.client.mqttv3.internal.ClientState.checkForActivity HMDMServer: Timed out as no activity, keepAlive=60,000,000,000 lastOutboundActivity=443,606,181,313,026 lastInboundActivity=443,694,858,407,048 time=443,693,213,170,372 lastPing=443,607,242,263,368
+05-Oct-2026 15:48:18.070 SEVERE [MQTT Ping: HMDMServer] org.eclipse.paho.client.mqttv3.internal.ClientState.checkForActivity HMDMServer: Timed out as no activity, keepAlive=60,000,000,000 lastOutboundActivity=444,048,926,308,846 lastInboundActivity=443,987,021,061,687 time=444,113,907,043,275 lastPing=444,050,651,243,884
