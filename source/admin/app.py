@@ -244,20 +244,32 @@ def run_job(title, *commands):
 # ============================================================================== web
 
 STYLE = """
-:root{--bg:#f4f6f9;--card:#fff;--fg:#1f2933;--muted:#616e7c;--line:#d9e2ec;--accent:#1f6feb;--ok:#1a7f37;--bad:#cf222e}
-@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8b949e;--line:#30363d;--accent:#58a6ff;--ok:#3fb950;--bad:#f85149}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,sans-serif}
-main{width:100%;padding:16px 24px}h1{font-size:20px;margin:0 0 12px}h2{font-size:16px;margin:0 0 10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
-nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}nav a{padding:8px 14px;border-radius:6px;color:var(--fg);text-decoration:none;border:1px solid var(--line);background:var(--card)}
+:root{--bg:#f8fafb;--card:#fff;--fg:#17202a;--muted:#64748b;--line:#d9e2ec;--accent:#0d9488;--accent-hover:#0f766e;--accent-soft:#dff3ef;--ok:#1a7f37;--bad:#cf222e;--radius:8px}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8b949e;--line:#30363d;--accent:#2dd4bf;--accent-hover:#5eead4;--accent-soft:rgba(45,212,191,.12);--ok:#3fb950;--bad:#f85149}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 'Inter',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{width:100%;padding:20px 24px}
+h1{font-size:20px;font-weight:700;margin:0 0 4px;color:var(--fg)}
+h2{font-size:16px;font-weight:600;margin:0 0 10px;color:var(--fg)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px}
+nav a{padding:8px 16px;border-radius:var(--radius);color:var(--fg);text-decoration:none;border:1px solid var(--line);background:var(--card);font-weight:500;font-size:13.5px;transition:background .15s,color .15s,border-color .15s}
+nav a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
 nav a.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
-label{display:block;font-weight:600;margin-bottom:4px}small{color:var(--muted);display:block;margin-top:2px}
-input,select{width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
-button,.btn{padding:8px 14px;border:0;border-radius:6px;background:var(--accent);color:#fff;cursor:pointer;text-decoration:none;display:inline-block}
+label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;color:var(--fg)}
+small{color:var(--muted);display:block;margin-top:3px;font-size:12px}
+input,select{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);color:var(--fg);font-size:14px;font-family:inherit;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+button,.btn{padding:9px 16px;border:0;border-radius:var(--radius);background:var(--accent);color:#fff;cursor:pointer;text-decoration:none;display:inline-block;font-weight:600;font-size:13.5px;font-family:inherit;transition:background .15s}
+button:hover,.btn:hover{background:var(--accent-hover)}
 button.sec{background:transparent;color:var(--fg);border:1px solid var(--line)}
-table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.ok{color:var(--ok)}.bad{color:var(--bad)}pre{white-space:pre-wrap;background:var(--bg);padding:10px;border-radius:6px;max-height:420px;overflow:auto}
+button.sec:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+table{width:100%;border-collapse:collapse}
+td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:13.5px}
+th{font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+pre{white-space:pre-wrap;background:var(--bg);padding:12px;border-radius:var(--radius);max-height:420px;overflow:auto;font-size:13px;border:1px solid var(--line)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 """
 

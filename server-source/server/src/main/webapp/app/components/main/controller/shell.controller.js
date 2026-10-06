@@ -87,19 +87,37 @@ angular.module('headwind-kiosk')
 
         syncActiveTab();
 
+        var NAV_SCROLL_KEY = 'hwmdm.navScrollTop';
+
+        function saveNavScroll() {
+            var nav = document.querySelector('.hwmdm-nav');
+            if (nav) {
+                localStorage.setItem(NAV_SCROLL_KEY, nav.scrollTop);
+            }
+        }
+
+        function restoreNavScroll() {
+            var saved = localStorage.getItem(NAV_SCROLL_KEY);
+            if (saved == null) return;
+            $timeout(function () {
+                var nav = document.querySelector('.hwmdm-nav');
+                if (nav) nav.scrollTop = parseInt(saved, 10);
+            });
+        }
+
+        $rootScope.$on('$stateChangeStart', function () {
+            saveNavScroll();
+        });
+
         $rootScope.$on('$stateChangeSuccess', function () {
             syncActiveTab();
-            $timeout(function () {
-                var active = document.querySelector('.hwmdm-nav-link-active');
-                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }, 80);
         });
 
         var cacheBustDeviceInfoResource = function (url) {
-            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061630') >= 0) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061730') >= 0) {
                 return url;
             }
-            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061630';
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061730';
         };
 
         var waitForPluginModules = function (callback) {
@@ -191,11 +209,6 @@ angular.module('headwind-kiosk')
                 return;
             }
             $scope.activeTab = tabName;
-
-            $timeout(function () {
-                var active = document.querySelector('.hwmdm-nav-link-active');
-                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }, 50);
         };
 
         $scope.navOpen = false;
@@ -213,6 +226,7 @@ angular.module('headwind-kiosk')
             moduleRegistry.load().then(function () {
                 $scope.navSections = moduleRegistry.visibleSections();
                 $scope.navReady = true;
+                restoreNavScroll();
             });
         };
 

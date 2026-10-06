@@ -2699,4 +2699,56 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="06.10.06-14:50" author="olimpia" context="common">
+        <comment>Translate all permission and role descriptions to pt-BR</comment>
+        <sql>
+            UPDATE permissions SET description = 'Funções de super-administrador do sistema' WHERE name = 'superadmin';
+            UPDATE permissions SET description = 'Acesso às configurações gerais e menu de ajustes' WHERE name = 'settings';
+            UPDATE permissions SET description = 'Acesso a perfis de dispositivo, aplicativos e arquivos' WHERE name = 'configurations';
+            UPDATE permissions SET description = 'Editar e adicionar dispositivos' WHERE name = 'edit_devices';
+            UPDATE permissions SET description = 'Editar a descrição do dispositivo' WHERE name = 'edit_device_desc';
+            UPDATE permissions SET description = 'Editar configurações de aplicativo por dispositivo' WHERE name = 'edit_device_app_settings';
+            UPDATE permissions SET description = 'Adicionar novos perfis de dispositivo vazios' WHERE name = 'add_config';
+            UPDATE permissions SET description = 'Ver a aba de aplicativos' WHERE name = 'applications';
+            UPDATE permissions SET description = 'Duplicar/copiar perfis de dispositivo' WHERE name = 'copy_config';
+            UPDATE permissions SET description = 'Editar marca do portal, APK e launcher' WHERE name = 'device.branding.edit';
+            UPDATE permissions SET description = 'Gerenciar contatos, garantia e suporte do dispositivo' WHERE name = 'device.contacts.manage';
+            UPDATE permissions SET description = 'Exportar e importar dispositivos' WHERE name = 'device.export_import';
+            UPDATE permissions SET description = 'Ver mapa GPS e localização dos dispositivos' WHERE name = 'device.gps.view';
+            UPDATE permissions SET description = 'Editar configurações do modo quiosque' WHERE name = 'device.kiosk.edit';
+            UPDATE permissions SET description = 'Sincronizar dispositivos ou usuários com LDAP' WHERE name = 'device.ldap.sync';
+            UPDATE permissions SET description = 'Bloquear tela ou sessão de quiosque' WHERE name = 'device.lifecycle.lock';
+            UPDATE permissions SET description = 'Reiniciar dispositivos gerenciados' WHERE name = 'device.lifecycle.reboot';
+            UPDATE permissions SET description = 'Resetar dispositivos gerenciados' WHERE name = 'device.lifecycle.reset';
+            UPDATE permissions SET description = 'Desbloquear tela ou sessão de quiosque' WHERE name = 'device.lifecycle.unlock';
+            UPDATE permissions SET description = 'Limpar dados do dispositivo gerenciado' WHERE name = 'device.lifecycle.wipe';
+            UPDATE permissions SET description = 'Ver logs do dispositivo' WHERE name = 'device.logs.view';
+            UPDATE permissions SET description = 'Gerenciar filtro de rede do dispositivo' WHERE name = 'device.network.filter';
+            UPDATE permissions SET description = 'Enviar ou gerenciar fotos do dispositivo' WHERE name = 'device.photos.upload';
+            UPDATE permissions SET description = 'Editar perfil e metadados de configuração do dispositivo' WHERE name = 'device.profile.edit';
+            UPDATE permissions SET description = 'Ver perfil e metadados de configuração do dispositivo' WHERE name = 'device.profile.view';
+            UPDATE permissions SET description = 'Controlar dispositivos remotamente e enviar ações de suporte' WHERE name = 'device.remote_access.control';
+            UPDATE permissions SET description = 'Ver módulo de acesso remoto e status remoto' WHERE name = 'device.remote_access.view';
+            UPDATE permissions SET description = 'Adicionar e editar versões de aplicativos existentes' WHERE name = 'edit_application_versions';
+            UPDATE permissions SET description = 'Adicionar e editar aplicativos' WHERE name = 'edit_applications';
+            UPDATE permissions SET description = 'Adicionar e editar arquivos' WHERE name = 'edit_files';
+            UPDATE permissions SET description = 'Matricular dispositivos por QR code' WHERE name = 'enroll_devices';
+            UPDATE permissions SET description = 'Ver a aba de arquivos' WHERE name = 'files';
+            UPDATE permissions SET description = 'Atualizar aplicativos automaticamente' WHERE name = 'get_updates';
+            UPDATE permissions SET description = 'Excluir e atualizar histórico de mensagens' WHERE name = 'plugin_messaging_delete';
+            UPDATE permissions SET description = 'Enviar mensagens para dispositivos' WHERE name = 'plugin_messaging_send';
+            UPDATE permissions SET description = 'Excluir e atualizar histórico de Push' WHERE name = 'plugin_push_delete';
+            UPDATE permissions SET description = 'Enviar mensagens Push para dispositivos' WHERE name = 'plugin_push_send';
+            UPDATE permissions SET description = 'Acesso ao plugin de solicitação da versão Premium' WHERE name = 'plugin_xtra_access';
+            UPDATE permissions SET description = 'Enviar mensagens Push via API REST' WHERE name = 'push_api';
+
+            UPDATE userRoles SET name = 'Super-Administrador', description = 'Administrador global do sistema' WHERE id = 1;
+            UPDATE userRoles SET name = 'Administrador', description = 'Administrador de uma conta de cliente' WHERE id = 2;
+            UPDATE userRoles SET name = 'Usuário', description = 'Usuário de uma conta de cliente' WHERE id = 3;
+        </sql>
+        <rollback>
+            <comment>No rollback - original values were in Russian/English mix, pt-BR is the target</comment>
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
