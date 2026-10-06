@@ -38,5 +38,6 @@
   "plugin.messaging.scope.configuration": "Configurações",
   "plugin.messaging.scope.all": "Todos os dispositivos",
   "plugin.messaging.label.group": "Grupo",
-  "plugin.messaging.label.configuration": "Configuração"
+  "plugin.messaging.label.configuration": "Configuração",
+  "plugin.messaging.tab.subtitle": "Envie e acompanhe notificações aos dispositivos"
 }

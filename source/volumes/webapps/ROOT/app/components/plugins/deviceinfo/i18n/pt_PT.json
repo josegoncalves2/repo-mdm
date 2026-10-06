@@ -174,5 +174,6 @@
 
   "button.plugin.deviceinfo.export": "Exportar",
   "button.plugin.deviceinfo.view": "Vizualizar",
-  "button.plugin.deviceinfo.dynamic": "Informações Dinâmicas"
+  "button.plugin.deviceinfo.dynamic": "Informações Dinâmicas",
+  "plugin.deviceinfo.tab.subtitle": "Dados completos de hardware e software do dispositivo"
 }
