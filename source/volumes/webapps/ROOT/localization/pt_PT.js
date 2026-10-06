@@ -851,6 +851,10 @@ document.localization ['pt_PT'] = {
     'form.settings.icons.title': 'Ícones',
     'form.settings.icons.search.placeholder': 'Pesquisar ícones',
 
+    'form.qr.title': 'Matricular dispositivo',
+    'form.qr.subtitle': 'Gere o QR Code para matricular um novo dispositivo na plataforma.',
+    'form.qr.settings.title': 'Configurações da matrícula',
+    'form.qr.scan.instruction': 'Aponte a câmera do tablet para este QR Code durante a configuração inicial.',
     'form.qr.device.number': 'Número do dispositivo',
     'form.qr.auto.create': 'Adicionar a lista de dispositivos se não existir',
     'form.qr.number.use': 'Atribuição de número de dispositivo',

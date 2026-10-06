@@ -115,7 +115,7 @@ angular.module('headwind-kiosk',
         $stateProvider
             .state('qr', {
                 url: '/qr/{qrCode}/{deviceId}',
-                templateUrl: 'app/components/main/view/qr.html?v=h526879efd5',
+                templateUrl: 'app/components/main/view/qr.html?v=hux202610061730',
                 controller: 'QRController'
             })
             .state('summary', {
@@ -429,17 +429,17 @@ angular.module('headwind-kiosk',
             })
             .state('configEditor', {
                 url: '/configuration/{id}',
-                // The editor is opened both from Device profiles and from a device row on
-                // the Devices screen. 'from' carries the screen that opened it so Cancel
-                // returns there instead of always landing on Device profiles.
                 params: {
                     from: null
                 },
-                templateUrl: 'app/components/main/view/configuration.html?v=hdcb7af584c',
-                controller: 'ConfigurationEditorController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
-                    label: '{{"breadcrumb.config.details" | localize}}', //label to show in breadcrumbs
+                    label: '{{"breadcrumb.config.details" | localize}}',
                     parent: 'configurations'
+                },
+                resolve: {
+                    openTab: function () {return "CONFEDIT"}
                 }
             })
             .state('login', {

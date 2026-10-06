@@ -114,6 +114,10 @@
                 <ng-include src="'app/components/main/view/settings/integrations.html?v=h303483d897'" ng-if="activeTab === 'INTEGRATIONS'"></ng-include>
                 <ng-include src="'app/components/main/view/profile.html?v=hux202610061730'" ng-if="activeTab === 'PROFILE'"></ng-include>
 
+                <div ng-if="activeTab === 'CONFEDIT'" ng-controller="ConfigurationEditorController">
+                    <ng-include src="'app/components/main/view/configuration.html?v=hux202610061730'"></ng-include>
+                </div>
+
                 <div ng-repeat="plugin in functionsPlugins">
                     <div ng-if="activeTab === ('plugin-' + plugin.identifier) && !isModuleBlocked('plugin-' + plugin.identifier)">
                         <button type="button" class="ext-back-link" ng-click="openTab('EXTENSIONS')">

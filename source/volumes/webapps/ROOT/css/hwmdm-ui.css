@@ -294,6 +294,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .glyphicon-globe::before           { -webkit-mask-image: url('../images/icons/globe.svg');          mask-image: url('../images/icons/globe.svg'); }
 .glyphicon-tree-deciduous::before  { -webkit-mask-image: url('../images/icons/mountain.svg');       mask-image: url('../images/icons/mountain.svg'); }
 .glyphicon-check::before           { -webkit-mask-image: url('../images/icons/check.svg');          mask-image: url('../images/icons/check.svg'); }
+.glyphicon-question-sign::before   { -webkit-mask-image: url('../images/icons/help-circle.svg');    mask-image: url('../images/icons/help-circle.svg'); }
 .glyphicon-search::before          { -webkit-mask-image: url('../images/icons/search.svg');         mask-image: url('../images/icons/search.svg'); }
 .glyphicon-sort-by-attributes::before     { -webkit-mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); }
 .glyphicon-sort-by-attributes-alt::before { -webkit-mask-image: url('../images/icons/arrow-up-narrow-wide.svg');   mask-image: url('../images/icons/arrow-up-narrow-wide.svg'); }
@@ -847,7 +848,10 @@ input[type="radio"] {
 .hwmdm-nav {
     flex: 1 1 auto;
     overflow-y: auto;
+    overflow-anchor: none;
 }
+.hwmdm-nav-link:focus { scroll-margin: 0; }
+.hwmdm-nav-link { overflow-anchor: none; }
 
 .hwmdm-sidebar-footer {
     flex: 0 0 auto;
