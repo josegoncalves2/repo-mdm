@@ -5,6 +5,11 @@
             <h3 localized>nav.chat</h3>
             <p localized>chat.page.subtitle</p>
         </div>
+        <div class="hwmdm-search-actions">
+            <button type="button" class="btn btn-primary" ng-click="loadDevices()" ng-disabled="loadingDevices">
+                <span class="glyphicon glyphicon-refresh" ng-class="{'glyphicon-spin': loadingDevices}"></span>&nbsp;<span localized>button.refresh</span>
+            </button>
+        </div>
     </div>
 
     <div class='form-group' ng-show='errorMessage'>
@@ -35,11 +40,13 @@
                         data-testid="chat-device-select"
                         ng-model="chat.deviceNumber"
                         ng-disabled="loadingDevices || devices.length === 0"
+                        ng-change="selectDevice(chat.deviceNumber)"
                         ng-options="device.number as deviceLabel(device) for device in devices">
                     <option value="" localized>chat.device.select.placeholder</option>
                 </select>
                 <div class="field-hint" ng-if="loadingDevices" localized>remote.loading</div>
-                <div class="field-hint" ng-if="!loadingDevices && devices.length === 0"
+                <div class="field-hint" ng-if="deviceLoadError" role="alert">{{deviceLoadError}}</div>
+                <div class="field-hint" ng-if="!loadingDevices && !deviceLoadError && devices.length === 0"
                      localized>chat.device.select.empty</div>
             </div>
             <div class="form-group">
@@ -52,7 +59,7 @@
                 <div class="field-hint" ng-if="!canSendChat" localized>chat.send.no.permission</div>
             </div>
             <button type="button" class="btn btn-default" ng-click="send()"
-                    ng-disabled="sending || !canSendChat || !chat.deviceNumber || !chat.text">
+                    ng-disabled="sending || loadingDevices || !canSendChat || !selectedDevice || !chat.text">
                 <span class="glyphicon glyphicon-send"></span>
                 <span localized>plugin.messaging.button.send</span>
             </button>

@@ -21,6 +21,19 @@ Os templates de Arquivos já contêm os modos Cartões/Lista e traduções novas
 - Alterar APIs, permissões de backend, protocolo de acesso remoto, comportamento do APK ou componentes de produção.
 - Reiniciar a stack ou modificar dados persistidos quando os arquivos estáticos servidos podem ser atualizados pelo volume montado.
 
+## Revisão UX/UI
+
+A revisão das capturas fornecidas identificou seis problemas de usabilidade que orientam a implementação:
+
+- **Mensagens:** o compositor não podia ser localizado sem selecionar um dispositivo. O campo deve permanecer visível, com envio desabilitado até haver dispositivo, permissão e texto.
+- **Arquivos:** as chaves de tradução apareciam literalmente e o controle de Cartões/Lista deve continuar restrito a esta tela.
+- **Mapa GPS:** os filtros e ações estavam visualmente separados do título e do mapa; os filtros devem alinhar-se à direita do título e o histórico deve permanecer no contexto do mapa.
+- **Acesso remoto:** a coluna de ações precisa conservar rótulos e alvos clicáveis sem comprimir a visualização, reorganizando-se em telas estreitas.
+- **Relatórios:** quatro cartões na mesma linha e cartões esticados criavam colunas estreitas e grandes áreas vazias; a grade deve usar até três colunas em telas amplas, duas em médias e uma em estreitas, alinhando os cartões ao conteúdo.
+- **Informação Detalhada:** a busca precisa tornar sugestões selecionáveis e explicitar carregamento, ausência de resultados e falhas, sem manter detalhes antigos para uma consulta nova.
+
+A revisão não autoriza mudanças de enrollment: preservar o APK aprovado 6.36 e os três perfis existentes é requisito de escopo. Nenhum APK ou configuração de perfil deve ser alterado nesta mudança.
+
 ## Decisions
 
 1. **Manter AngularJS e os controllers atuais.** A correção ficará em templates, formatação local de identificadores e CSS/i18n já usados. Isso evita introduzir dependências ou alterar endpoints. Um seletor de dispositivo só atualiza `selectedDevice` via `selectDevice`; o envio continuará usando esse estado como fonte única.

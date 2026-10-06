@@ -29,10 +29,13 @@
                 <span class="gps-stat">{{devices.length}} dispositivo(s)</span>
             </div>
 
+            <div class="alert alert-danger" ng-if="deviceLoadError" role="alert">
+                {{deviceLoadError}}
+            </div>
             <div class="hwmdm-empty-state" ng-if="loadingDevices" style="min-height:80px">
                 <span localized>remote.loading</span>
             </div>
-            <div class="hwmdm-empty-state" ng-if="!loadingDevices && devices.length === 0" style="min-height:80px">
+            <div class="hwmdm-empty-state" ng-if="!loadingDevices && !deviceLoadError && devices.length === 0" style="min-height:80px">
                 <span localized>chat.device.select.empty</span>
             </div>
 

@@ -89,13 +89,23 @@ angular.module('headwind-kiosk')
             syncActiveTab();
         });
 
+        var cacheBustDeviceInfoResource = function (url) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061630') >= 0) {
+                return url;
+            }
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061630';
+        };
+
         var waitForPluginModules = function (callback) {
             return function (response) {
                 var plugins = response.status === 'OK' && response.data ? response.data.filter(function (plugin) {
                     return plugin.javascriptModuleFile;
                 }) : [];
                 $q.all(plugins.map(function (plugin) {
-                    return $ocLazyLoad.load(plugin.javascriptModuleFile).catch(angular.noop);
+                    var moduleFile = plugin.identifier === 'deviceinfo'
+                        ? cacheBustDeviceInfoResource(plugin.javascriptModuleFile)
+                        : plugin.javascriptModuleFile;
+                    return $ocLazyLoad.load(moduleFile).catch(angular.noop);
                 })).then(function () {
                     callback(response);
                 });
@@ -110,6 +120,9 @@ angular.module('headwind-kiosk')
                             return plugin.functionsViewTemplate !== undefined && plugin.functionsViewTemplate !== null;
                         });
                         $scope.functionsPlugins.forEach(function (plugin) {
+                            if (plugin.identifier === 'deviceinfo') {
+                                plugin.functionsViewTemplate = cacheBustDeviceInfoResource(plugin.functionsViewTemplate);
+                            }
                             var ID = 'plugin-' + plugin.identifier;
                             routes[ID] = PLUGIN_STATES[ID] || ('shell.' + ID);
                             STATE_TO_TAB[routes[ID]] = ID;

@@ -10,12 +10,14 @@ angular.module('headwind-kiosk')
         $scope.loading = false;
         $scope.loadingDevices = false;
         $scope.devices = [];
+        $scope.deviceLoadError = undefined;
         $scope.selectedDevice = null;
         $scope.deviceSearch = '';
         $scope.sending = false;
         $scope.errorMessage = undefined;
         $scope.successMessage = undefined;
         $scope.messages = [];
+        var messageRequestId = 0;
         $scope.unreadCount = 0;
         $scope.dateFormat = localization.localize('format.date.plugin.messaging.createTime') || 'dd/MM/yyyy HH:mm:ss';
         $scope.chat = { text: '' };
@@ -55,6 +57,7 @@ angular.module('headwind-kiosk')
 
         $scope.loadDevices = function (userRequested) {
             $scope.loadingDevices = true;
+            $scope.deviceLoadError = undefined;
             deviceService.getAllDevices({
                 value: '', pageNum: 1, pageSize: 1000, sortBy: null, sortDir: 'ASC'
             }, function (response) {
@@ -63,10 +66,12 @@ angular.module('headwind-kiosk')
                     $scope.devices = response.data.devices.items || [];
                 } else {
                     $scope.devices = [];
+                    $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
                 }
             }, function () {
                 $scope.loadingDevices = false;
                 $scope.devices = [];
+                $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
             });
         };
 
@@ -76,13 +81,17 @@ angular.module('headwind-kiosk')
             $scope.paging.deviceFilter = displayText(device.number);
             $scope.paging.pageNum = 1;
             $scope.chat.text = '';
+            $scope.messages = [];
+            $scope.errorMessage = undefined;
             $scope.loadMessages();
         };
 
         $scope.clearSelection = function () {
+            messageRequestId++;
             $scope.selectedDevice = null;
             $scope.paging.deviceFilter = '';
             $scope.messages = [];
+            $scope.loading = false;
         };
 
         var setTransientSuccess = function (key) {
@@ -100,11 +109,13 @@ angular.module('headwind-kiosk')
         };
 
         $scope.loadMessages = function () {
-            if (!$scope.canViewChat || $scope.loading || !$scope.selectedDevice) return;
+            if (!$scope.canViewChat || !$scope.selectedDevice) return;
+            var requestId = ++messageRequestId;
             $scope.loading = true;
             $scope.errorMessage = undefined;
             var request = angular.copy($scope.paging);
             chatService.getMessages(request, function (response) {
+                if (requestId !== messageRequestId) return;
                 $scope.loading = false;
                 if (response.status === 'OK') {
                     $scope.messages = response.data.items || [];
@@ -113,6 +124,7 @@ angular.module('headwind-kiosk')
                     $scope.errorMessage = localization.localizeServerResponse(response);
                 }
             }, function () {
+                if (requestId !== messageRequestId) return;
                 $scope.loading = false;
                 $scope.errorMessage = localization.localize('chat.error.load.failed');
             });

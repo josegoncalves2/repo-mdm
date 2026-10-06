@@ -51,6 +51,7 @@
   "plugin.deviceinfo.tab.title": "Detailed Information",
   "plugin.deviceinfo.search.placeholder": "Number, description, IMEI, serial, phone, model, or IP",
   "plugin.deviceinfo.search.loading": "Searching devices...",
+  "plugin.deviceinfo.search.loadingInfo": "Loading device information...",
   "plugin.deviceinfo.search.noresults": "No devices found.",
   "plugin.deviceinfo.enum.time.min": "min ago",
   "plugin.deviceinfo.enum.time.hour": "hours ago",

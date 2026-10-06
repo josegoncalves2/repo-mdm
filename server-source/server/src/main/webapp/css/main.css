@@ -5035,6 +5035,11 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 14px;
+    align-items: start;
+}
+
+.reports-grid > .ext-hub-section {
+    margin-bottom: 0;
 }
 
 /* Export sits below the report, after the data it exports. */
@@ -6256,8 +6261,13 @@ body {
     font-size: 13px;
 }
 
-.reports-grid {
+.reports-page .reports-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+.reports-page .reports-grid > .ext-hub-section {
+    min-width: 0;
 }
 
 .gps-map-page > .hwmdm-page-toolbar > div:first-child {
@@ -6273,13 +6283,13 @@ body {
 }
 
 @media (max-width: 1200px) {
-    .reports-grid {
+    .reports-page .reports-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 768px) {
-    .reports-grid {
+    .reports-page .reports-grid {
         grid-template-columns: minmax(0, 1fr);
     }
 

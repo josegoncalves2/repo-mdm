@@ -12,10 +12,12 @@ angular.module('headwind-kiosk')
         $scope.loading = false;
         $scope.loadingDevices = false;
         $scope.devices = [];
+        $scope.deviceLoadError = undefined;
         $scope.sending = false;
         $scope.errorMessage = undefined;
         $scope.successMessage = undefined;
         $scope.messages = [];
+        var messageRequestId = 0;
         $scope.dateFormat = localization.localize('format.date.plugin.messaging.createTime') || 'dd/MM/yyyy HH:mm:ss';
         $scope.chat = {
             deviceNumber: '',
@@ -44,12 +46,10 @@ angular.module('headwind-kiosk')
         // The history filter is a free-text field and an operator may still paste a
         // "number / imei" label into it, so the number is taken from before the slash.
         $scope.deviceLookupFormatter = function (value) {
-            value = displayText(value);
-            if (value) {
-                var pos = value.indexOf('/');
-                if (pos > -1) {
-                    return value.substr(0, pos).trim();
-                }
+            value = value && typeof value === 'object' ? displayText(value.number) : displayText(value);
+            var pos = value.indexOf('/');
+            if (pos > -1) {
+                return value.substr(0, pos).trim();
             }
             return value;
         };
@@ -65,8 +65,9 @@ angular.module('headwind-kiosk')
             return number ? number + (extra ? ' / ' + extra : '') : '';
         };
 
-        var loadDevices = function () {
+        $scope.loadDevices = function () {
             $scope.loadingDevices = true;
+            $scope.deviceLoadError = undefined;
             deviceService.getAllDevices({
                 value: '',
                 pageNum: 1,
@@ -79,11 +80,26 @@ angular.module('headwind-kiosk')
                     $scope.devices = response.data.devices.items || [];
                 } else {
                     $scope.devices = [];
+                    $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
                 }
             }, function () {
                 $scope.loadingDevices = false;
                 $scope.devices = [];
+                $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
             });
+        };
+
+        $scope.selectDevice = function (deviceNumber) {
+            var selected = $scope.devices.filter(function (device) {
+                return displayText(device.number) === displayText(deviceNumber);
+            })[0];
+            $scope.selectedDevice = selected || null;
+            $scope.chat.deviceNumber = selected ? displayText(selected.number) : '';
+            $scope.paging.deviceFilter = $scope.chat.deviceNumber;
+            $scope.paging.pageNum = 1;
+            $scope.messages = [];
+            $scope.errorMessage = undefined;
+            $scope.loadMessages();
         };
 
         var setTransientSuccess = function (key) {
@@ -112,16 +128,20 @@ angular.module('headwind-kiosk')
         };
 
         $scope.loadMessages = function () {
-            if (!$scope.canViewChat || $scope.loading) {
+            if (!$scope.canViewChat) {
                 return;
             }
 
+            var requestId = ++messageRequestId;
             $scope.loading = true;
             $scope.errorMessage = undefined;
             var request = angular.copy($scope.paging);
             request.deviceFilter = $scope.deviceLookupFormatter(request.deviceFilter || $scope.chat.deviceNumber);
 
             chatService.getMessages(request, function (response) {
+                if (requestId !== messageRequestId) {
+                    return;
+                }
                 $scope.loading = false;
                 if (response.status === 'OK') {
                     $scope.messages = response.data.items || [];
@@ -133,6 +153,9 @@ angular.module('headwind-kiosk')
                     $scope.errorMessage = localization.localizeServerResponse(response);
                 }
             }, function () {
+                if (requestId !== messageRequestId) {
+                    return;
+                }
                 $scope.loading = false;
                 $scope.errorMessage = localization.localize('chat.error.load.failed');
             });
@@ -145,9 +168,10 @@ angular.module('headwind-kiosk')
                 return;
             }
 
-            var deviceNumber = $scope.deviceLookupFormatter($scope.chat.deviceNumber || '').trim();
+            var deviceNumber = $scope.selectedDevice ?
+                displayText($scope.selectedDevice.number) : '';
             var text = ($scope.chat.text || '').trim();
-            if (!deviceNumber) {
+            if (!deviceNumber || deviceNumber !== displayText($scope.chat.deviceNumber)) {
                 $scope.errorMessage = localization.localize('plugin.messaging.error.empty.device');
                 return;
             }
@@ -187,7 +211,7 @@ angular.module('headwind-kiosk')
             $scope.loadMessages();
         });
 
-        loadDevices();
+        $scope.loadDevices();
         $scope.loadMessages();
 
         var refreshInterval = $interval($scope.loadMessages, 15000);
