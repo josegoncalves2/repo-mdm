@@ -6,6 +6,24 @@
             <p localized>applications.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'cards'}"
+                        ng-attr-aria-pressed="{{viewMode === 'cards'}}"
+                        localized-title="files.view.cards"
+                        ng-click="viewMode = 'cards'">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                    <span localized>files.view.cards</span>
+                </button>
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'list'}"
+                        ng-attr-aria-pressed="{{viewMode === 'list'}}"
+                        localized-title="files.view.list"
+                        ng-click="viewMode = 'list'">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <span localized>files.view.list</span>
+                </button>
+            </div>
             <input type='text'
                    ng-model='search.searchValue'
                    ng-change="search()"
