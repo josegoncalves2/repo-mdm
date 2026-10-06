@@ -18,10 +18,10 @@
 ## Fase 2 — Botões laterais no Remoto + Relatórios por device
 
 ### 2.1 Acesso Remoto — botões de ação na coluna lateral
-- [x] Ler layout atual dos botões de ação em `remote.html`
-- [x] Reestruturar: tela do device à esquerda, coluna de ações à direita (grid `remote-body-columns` com 2 colunas)
-- [x] Categorias de botões em grupos verticais (Tela e Sessão, Ciclo de Vida, Aplicativos, etc) — já existiam como `remote-command-group`
-- [x] CSS: coluna lateral fixa 300px (`remote-body-right`), botões empilhados verticalmente (`flex-direction: column`), scrollável
+- [ ] Ler layout atual dos botões de ação em `remote.html`
+- [ ] Reestruturar: tela do device à esquerda, coluna de ações à direita (grid `remote-body-columns` com 2 colunas)
+- [ ] Categorias de botões em grupos verticais (Tela e Sessão, Ciclo de Vida, Aplicativos, etc) — já existiam como `remote-command-group`
+- [ ] CSS: coluna lateral fixa 300px (`remote-body-right`), botões empilhados verticalmente (`flex-direction: column`), scrollável
 - [ ] Testar no DEV: botões acessíveis, não cobrem a tela, responsivo
 
 ### 2.2 Relatórios — lista lateral + relatório por device

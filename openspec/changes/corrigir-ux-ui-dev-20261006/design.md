@@ -1,6 +1,6 @@
 ## Context
 
-The current DEV screenshots cover Messages, Files, GPS, Remote Access, Reports, and Detailed Information. They show literal translation keys in page subtitles, GPS controls detached from their map context, a Reports dashboard that leaves uneven whitespace, and inconsistent search/action layouts. The attached DOM also shows Files being included with an old cache token even though the current DEV `index.html` references newer assets. HTTP success alone therefore does not prove that the browser rendered the current UI.
+The current DEV screenshots cover Messages, Files, GPS, Remote Access, Reports, and Detailed Information. They show literal translation keys in page subtitles, GPS controls detached from their map context, a Reports dashboard that leaves uneven whitespace, and inconsistent search/action layouts. The attached DOM also shows Files being included with an old cache token even though the current DEV `index.html` references newer assets. The latest browser diagnostic reports Quirks Mode, and code inspection found that the `localized` directive does not rerender when saved language settings load asynchronously. HTTP success alone therefore does not prove that the browser rendered the current UI.
 
 The deployment target is the `source/volumes/webapps/ROOT/` tree, which is served by the DEV Tomcat volume. The source webapp is under `server-source/server/src/main/webapp/`; corresponding source and served assets must remain aligned without replacing DEV-only template functionality (notably the expanded Reports view). The available integrated browser is currently unauthenticated.
 
@@ -20,6 +20,8 @@ The review is based on the operator's screenshots and attached DOM context, usin
 | Detailed Information | The user needs more than a device-number-only lookup; typeahead and asynchronous requests can otherwise show stale details or unclear empty/error states. | Search across supported identifying fields, require a valid selected result for details, clear old details when the query changes, and announce loading, no results, and request failures. |
 
 The assessment finds task completion, not decoration, to be the primary risk: entry points and feedback must be visible, related controls grouped, text readable at the tested viewport, and stale results/errors made explicit. Keyboard focus and accessible names/pressed states are retained for interactive controls.
+
+The follow-up diagnostic identifies two additional root causes to correct before visual acceptance: the served shell lacks `<!DOCTYPE html>`, placing the application in Quirks Mode; and ordinary `localized` elements translate only once, before the user's saved locale may have resolved. The fix adds the HTML5 doctype and subscribes the directive to locale changes, with listener cleanup on scope destruction.
 
 ## Goals / Non-Goals
 
@@ -50,7 +52,7 @@ The assessment finds task completion, not decoration, to be the primary risk: en
 
 5. **Do not mutate enrollment data during UI deployment.** The 6.36 version is user-approved, but the screenshots reveal conflicting live profile actions. No profile save or APK/version change is safe without confirming the three tested profiles and the intended OTA policy. Record the observed discrepancy for a separate, explicitly approved enrollment correction.
 
-6. **Treat authenticated visual inspection as a release gate, not a proxy.** Run static checks and DEV HTTP/cache-reference checks here. Since the available browser resolves to the login screen, do not mark the authenticated six-screen smoke test as passed or claim final UX approval.
+6. **Treat authenticated visual inspection as a release gate, not a proxy.** Use the operator-provided authenticated screenshots as evidence for only the screens and viewport states they actually show. Do not infer unshown interactions, other screens, or narrow-width behavior from those images, and do not claim final UX approval until the remaining visual checks pass.
 
 ## Risks / Trade-offs
 

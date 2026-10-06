@@ -2,6 +2,7 @@
 
 ### Requirement: Current localized assets are rendered in DEV
 The DEV interface SHALL load the current version of each changed page template and its localization resources rather than a previously cached parent or child template. All changed assets SHALL use a consistent cache-busting token through the initial page, application shell, page includes, and dynamically loaded plugin resources.
+The application shell SHALL declare the HTML5 doctype, and localized elements SHALL re-render when the authenticated user's language setting finishes loading or changes.
 
 #### Scenario: Open Files after a UI deployment
 - **WHEN** an operator opens or reloads Files after the DEV UI update
@@ -10,6 +11,14 @@ The DEV interface SHALL load the current version of each changed page template a
 #### Scenario: Open Applications after a UI deployment
 - **WHEN** an operator opens Applications after the DEV UI update
 - **THEN** the page subtitle renders as localized text instead of `applications.page.subtitle`
+
+#### Scenario: Load a saved language after initial render
+- **WHEN** the authenticated user's language setting resolves after the initial page render
+- **THEN** visible elements using the `localized` directive update to that language instead of retaining a translation key or the browser-language fallback
+
+#### Scenario: Load the application shell
+- **WHEN** an operator opens the DEV panel
+- **THEN** the document is rendered in standards mode rather than Quirks Mode
 
 ### Requirement: Reports cards align to content in a responsive grid
 The aggregate Reports dashboard SHALL display no more than three columns on wide viewports, two columns at medium widths, and one column on narrow viewports. Each report card SHALL size to its own content and SHALL NOT stretch vertically to match an unrelated card in the same row.

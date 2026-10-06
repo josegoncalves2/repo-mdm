@@ -5,7 +5,6 @@
             <p localized>remote.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
-            <input type="text" class="form-control" ng-model="searchValue" localized-placeholder="remote.search.device"/>
             <button type="button" class="btn btn-primary" ng-click="loadDevices(true)" ng-disabled="loading" localized>remote.refresh</button>
         </div>
     </div>
@@ -15,36 +14,47 @@
 
     <div class="remote-layout hwmdm-split-layout">
         <section class="remote-device-panel hwmdm-section-card">
-            <div class="hwmdm-section-head">
-                <h4 localized>remote.devices</h4>
+            <div class="gps-device-search">
+                <input type="text" class="form-control" ng-model="searchValue"
+                       localized-placeholder="remote.search.device" />
             </div>
 
-            <div ng-if="!devices || devices.length === 0" class="alert alert-info">
+            <div class="gps-device-stats">
+                <span class="gps-stat" title="{{'remote.status.online' | localize}}">
+                    <span class="hwmdm-status-dot hwmdm-status-dot--online"></span> {{onlineCount}}
+                </span>
+                <span class="gps-stat" title="{{'remote.status.offline' | localize}}">
+                    <span class="hwmdm-status-dot hwmdm-status-dot--offline"></span> {{offlineCount}}
+                </span>
+                <span class="gps-stat">
+                    {{devices.length}} total
+                </span>
+            </div>
+
+            <div ng-if="!devices || devices.length === 0" class="summary-empty-map" style="padding:24px;text-align:center">
                 <span localized>remote.no.devices</span>
             </div>
 
-            <div ng-repeat="device in devices | filter:searchValue"
-                 ng-click="selectDevice(device)"
-                 class="remote-device-item"
-                 ng-class="{'remote-device-item-active': selectedDevice && selectedDevice.id === device.id}">
-                <div class="remote-device-item-head">
-                    <div>
-                        <strong>{{device.number}}</strong>
-                        <div class="remote-device-item-meta">
-                            {{device.model}} · {{device.androidVersion}}
-                        </div>
-                    </div>
-                    <div class="remote-device-item-status">
-                        <span class="label" ng-class="{'label-success': device.online, 'label-danger': !device.online}">
-                            {{device.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
-                        </span>
+            <a href="" class="list-group-item remote-device-item"
+               ng-repeat="device in devices | filter:searchValue"
+               ng-click="selectDevice(device)"
+               ng-class="{'remote-device-item-active': selectedDevice && selectedDevice.id === device.id}">
+                <span class="hwmdm-status-dot"
+                      ng-class="device.online ? 'hwmdm-status-dot--online' : 'hwmdm-status-dot--offline'"></span>
+                <div class="remote-device-main">
+                    <span class="remote-device-number">{{device.number}}</span>
+                    <span class="remote-device-model">{{device.model || '—'}}</span>
+                    <!-- Detalhes expandidos no item selecionado -->
+                    <div class="remote-device-expanded" ng-if="selectedDevice && selectedDevice.id === device.id">
+                        <span>Android {{device.androidVersion || '-'}}</span>
+                        <span ng-if="getRemoteDeviceIp(device)">IP: {{getRemoteDeviceIp(device)}}</span>
+                        <span ng-if="device.lastUpdateAgeSec != null">Checkin: {{device.lastUpdateAgeSec}}s atras</span>
                     </div>
                 </div>
-
-                <div class="remote-device-item-foot">
-                    <span localized>remote.label.serial</span>: {{device.serial || '-'}}
+                <div class="gps-device-meta">
+                    <span class="gps-device-time">{{device.lastUpdate | date:'HH:mm'}}</span>
                 </div>
-            </div>
+            </a>
         </section>
 
         <section class="remote-screen-panel hwmdm-section-card">
@@ -53,280 +63,226 @@
             </div>
 
             <div ng-if="selectedDevice && selectedDevice.id" class="remote-screen-shell">
-                <div class="remote-device-header">
-                    <h4>
-                        {{selectedDevice.number}}
-                        <span class="label" ng-class="{'label-success': selectedDevice.online, 'label-danger': !selectedDevice.online}">
-                            {{selectedDevice.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
-                        </span>
-                    </h4>
-                    <div class="remote-device-header-grid">
-                        <div>
-                            <strong localized>remote.label.model</strong>: {{selectedDevice.model || '-'}}
-                        </div>
-                        <div>
-                            <strong localized>remote.label.android</strong>: {{selectedDevice.androidVersion || '-'}}
-                        </div>
-                        <div>
-                            <strong localized>remote.label.last.checkin</strong>:
-                            <span ng-if="selectedDevice.lastUpdateAgeSec !== null && selectedDevice.lastUpdateAgeSec !== undefined">
-                                {{selectedDevice.lastUpdateAgeSec}}{{'remote.label.seconds.ago' | localize}}
-                                <span class="remote-ip-note">({{'remote.label.offline.after' | localize}} {{selectedDevice.onlineThresholdSec}}s)</span>
-                            </span>
-                            <span ng-if="selectedDevice.lastUpdateAgeSec === null || selectedDevice.lastUpdateAgeSec === undefined"
-                                  localized>remote.label.never</span>
-                        </div>
-                    </div>
-
-                    <div class="remote-ip-grid">
-                        <div class="remote-ip-cell">
-                            <span class="remote-ip-label" localized>remote.label.device.ip</span>
-                            <strong>{{getRemoteDeviceIp(selectedDevice)}}</strong>
-                            <span class="remote-ip-note" ng-if="selectedDevice.info.networkName || selectedDevice.info.networkType">
-                                {{selectedDevice.info.networkType}}<span ng-if="selectedDevice.info.networkName && selectedDevice.info.networkType"> · </span>{{selectedDevice.info.networkName}}
-                            </span>
-                            <span class="remote-ip-note">{{getRemoteNetworkNote(selectedDevice)}}</span>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="remote-body-columns">
                     <div class="remote-body-left">
                         <div class="device-preview-container remote-preview-shell">
-                    <div class="device-preview-statusbar">
-                        <span>{{selectedDevice.lastUpdate | date:'HH:mm:ss'}}</span>
-                        <span ng-if="selectedDevice.info.phone">{{selectedDevice.info.phone}}</span>
-                        <span style="text-align: right;">
-                            <span ng-if="selectedDevice.info.batteryLevel !== undefined">{{selectedDevice.info.batteryLevel}}%</span>
-                        </span>
-                    </div>
+                            <div class="device-preview-statusbar">
+                                <span>{{selectedDevice.lastUpdate | date:'HH:mm:ss'}}</span>
+                                <span ng-if="selectedDevice.info.phone">{{selectedDevice.info.phone}}</span>
+                                <span style="text-align: right;">
+                                    <span ng-if="selectedDevice.info.batteryLevel !== undefined">{{selectedDevice.info.batteryLevel}}%</span>
+                                </span>
+                            </div>
 
-                    <div class="device-preview-screen remote-preview-screen"
-                         ng-style="remote.keyboard ? {'box-shadow': '0 0 0 3px #1ab394'} : {}">
-                        <!-- O canvas fica sempre montado: o player pinta nele quadro a quadro,
-                             e recria-lo a cada mudanca de estado perderia o decodificador.
-                             mousedown/mouseup em vez de click porque a distincao entre toque,
-                             toque longo e arrasto depende de quanto tempo e quanto se moveu. -->
-                        <!-- A captura principal do teclado fisico fica no DOCUMENTO
-                             (remote.controller.js, "Teclado FISICO"): pelo IP o player troca
-                             este canvas por um <video> (caminho MSE) e o esconde. O ng-keydown
-                             aqui so' cobre um navegador que ainda tenha o controller antigo em
-                             cache; com o novo, o listener do documento trata a tecla antes e
-                             interrompe a propagacao, sem envio duplo. -->
-                        <canvas id="remote-screen-canvas"
-                                class="remote-live-canvas"
-                                tabindex="0"
-                                ng-class="{'remote-live-canvas-interactive': remote.streaming}"
-                                ng-show="remote.streaming"
-                                ng-mousedown="onScreenDown($event)"
-                                ng-mouseup="onScreenUp($event)"
-                                ng-keydown="onScreenKey($event)"></canvas>
+                            <div class="device-preview-screen remote-preview-screen"
+                                 ng-class="{'remote-preview-streaming': remote.streaming}"
+                                 ng-style="remote.keyboard ? {'box-shadow': '0 0 0 3px #1ab394'} : {}">
+                                <canvas id="remote-screen-canvas"
+                                        class="remote-live-canvas"
+                                        tabindex="-1"
+                                        ng-class="{'remote-live-canvas-interactive': remote.streaming}"
+                                        ng-show="remote.streaming"
+                                        ng-mousedown="onScreenDown($event)"
+                                        ng-mouseup="onScreenUp($event)"
+                                        ng-keydown="onScreenKey($event)"></canvas>
 
-                        <textarea id="remote-keyboard-capture"
-                                  class="remote-keyboard-capture"
-                                  ng-if="remote.streaming"
-                                  ng-keydown="onKeyboardCaptureKey($event)"
-                                  ng-input="onKeyboardCaptureInput($event)"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  spellcheck="false"
-                                  aria-label="Remote physical keyboard capture"></textarea>
+                                <textarea id="remote-keyboard-capture"
+                                          class="remote-keyboard-capture"
+                                          ng-if="remote.streaming"
+                                          ng-keydown="onKeyboardCaptureKey($event)"
+                                          ng-input="onKeyboardCaptureInput($event)"
+                                          autocapitalize="off"
+                                          autocomplete="off"
+                                          autocorrect="off"
+                                          spellcheck="false"
+                                          aria-label="Remote physical keyboard capture"></textarea>
 
-                        <!-- "pending" cobre tanto o handshake normal (aparelho online, o
-                             agente ainda nao respondeu) quanto o pedido em espera de um
-                             aparelho offline (item 3): dos dois lados o operador ve "sessao
-                             pedida, sem imagem ainda", e requestedAt mostra ha' quanto tempo. -->
-                        <div ng-if="remote.pending" class="remote-preview-state">
-                            <img src="images/loading.gif" alt="" class="remote-preview-spinner">
-                            <strong ng-if="selectedDevice.online" localized>remote.screen.connecting.title</strong>
-                            <strong ng-if="!selectedDevice.online" localized>remote.screen.waiting.title</strong>
-                            <p class="remote-preview-copy">
-                                <span ng-if="selectedDevice.online" localized>remote.screen.connecting.body</span>
-                                <span ng-if="!selectedDevice.online" localized>remote.screen.waiting.body</span>
-                            </p>
-                            <p class="remote-ip-note" ng-if="remote.requestedAt">
-                                {{'remote.screen.requested.at' | localize}} {{remote.requestedAt | date:'HH:mm:ss'}}
-                            </p>
+                                <div ng-if="remote.pending" class="remote-preview-state">
+                                    <img src="images/loading.gif" alt="" class="remote-preview-spinner">
+                                    <strong ng-if="selectedDevice.online" localized>remote.screen.connecting.title</strong>
+                                    <strong ng-if="!selectedDevice.online" localized>remote.screen.waiting.title</strong>
+                                    <p class="remote-preview-copy">
+                                        <span ng-if="selectedDevice.online" localized>remote.screen.connecting.body</span>
+                                        <span ng-if="!selectedDevice.online" localized>remote.screen.waiting.body</span>
+                                    </p>
+                                    <p class="remote-ip-note" ng-if="remote.requestedAt">
+                                        {{'remote.screen.requested.at' | localize}} {{remote.requestedAt | date:'HH:mm:ss'}}
+                                    </p>
+                                </div>
+
+                                <div ng-if="remote.error && !remote.streaming"
+                                     class="remote-preview-state remote-preview-state-error">
+                                    <div class="remote-preview-icon">!</div>
+                                    <strong localized>remote.screen.failed.title</strong>
+                                    <p class="remote-preview-copy">{{remote.error}}</p>
+                                    <button class="btn btn-sm btn-warning" ng-click="startRemote()"
+                                            ng-disabled="remote.pending"
+                                            localized>remote.screen.try.again</button>
+                                </div>
+
+                                <div ng-if="!remote.pending && !remote.streaming && !remote.error"
+                                     class="remote-preview-state">
+                                    <strong localized>remote.screen.idle.title</strong>
+                                    <p class="remote-preview-copy">
+                                        <span ng-if="selectedDevice.online && remoteSupported" localized>remote.screen.idle.body</span>
+                                        <span ng-if="!selectedDevice.online" localized>remote.screen.idle.offline</span>
+                                        <span ng-if="selectedDevice.online && !remoteSupported" localized>remote.error.stream.unsupported</span>
+                                    </p>
+                                    <button class="btn btn-primary" ng-click="startRemote()"
+                                            ng-disabled="remote.pending || !remoteSupported"
+                                            localized>remote.screen.request.access</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div ng-if="remote.error && !remote.streaming"
-                             class="remote-preview-state remote-preview-state-error">
-                            <div class="remote-preview-icon">!</div>
-                            <strong localized>remote.screen.failed.title</strong>
-                            <p class="remote-preview-copy">{{remote.error}}</p>
-                            <button class="btn btn-sm btn-warning" ng-click="startRemote()"
-                                    ng-disabled="remote.pending"
-                                    localized>remote.screen.try.again</button>
-                        </div>
-
-                        <div ng-if="!remote.pending && !remote.streaming && !remote.error"
-                             class="remote-preview-state">
-                            <strong localized>remote.screen.idle.title</strong>
-                            <p class="remote-preview-copy">
-                                <span ng-if="selectedDevice.online && remoteSupported" localized>remote.screen.idle.body</span>
-                                <span ng-if="!selectedDevice.online" localized>remote.screen.idle.offline</span>
-                                <span ng-if="selectedDevice.online && !remoteSupported" localized>remote.error.stream.unsupported</span>
-                            </p>
-                            <button class="btn btn-primary" ng-click="startRemote()"
-                                    ng-disabled="remote.pending || !remoteSupported"
-                                    localized>remote.screen.request.access</button>
-                        </div>
-                    </div>
-                        </div>
-
-                <div class="remote-live-bar">
-                    <button type="button" class="btn btn-primary btn-sm"
-                            ng-click="startRemote()"
-                            ng-disabled="remote.connected || !remoteSupported"
-                            localized>remote.screen.connect</button>
-                    <button type="button" class="btn btn-default btn-sm"
-                            ng-click="stopRemote()"
-                            ng-disabled="!remote.connected">
-                        {{ (remote.streaming ? 'remote.screen.disconnect' : 'remote.screen.cancel.request') | localize }}
-                    </button>
-
-                    <span class="remote-ip-note" ng-if="remote.streaming">
-                        {{'remote.screen.live' | localize}} ·
-                        {{remote.width}}x{{remote.height}} ·
-                        {{remote.fps}} fps · {{remote.kbps}} kbps ·
-                        <strong ng-if="remote.input" localized>remote.input.active</strong>
-                        <strong ng-if="!remote.input" localized>remote.input.inactive</strong>
-                        ·
-                        <strong ng-if="remote.keyboard" style="color: #1ab394;">{{"remote.keyboard.active" | localize}}</strong>
-                        <button type="button"
-                                class="btn btn-xs btn-success remote-keyboard-arm"
-                                ng-if="!remote.keyboard"
-                                ng-click="activateRemoteKeyboard()">
-                            {{"remote.keyboard.activate" | localize}}
-                        </button>
-                    </span>
-                </div>
-
-                <!-- Teclas de navegacao e digitacao. So aparecem com a sessao ao vivo: fora
-                     dela nao teriam para onde ir. -->
-                <div class="remote-input-bar" ng-if="remote.streaming">
-                    <div class="alert alert-warning" ng-if="!remote.input">
-                        <span localized>remote.input.unavailable</span>
-                        <button type="button" class="btn btn-warning btn-sm"
-                                ng-if="canOpenRemoteAgent()"
-                                ng-click="openRemoteAgent()"
-                                localized>remote.input.open.agent</button>
-                    </div>
-                    <div class="remote-input-keys">
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('back')"
-                                ng-disabled="!remote.streaming" localized>remote.key.back</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('home')"
-                                ng-disabled="!remote.streaming" localized>remote.key.home</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('recents')"
-                                ng-disabled="!remote.streaming" localized>remote.key.recents</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('backspace')"
-                                ng-disabled="!remote.streaming" localized>remote.key.backspace</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('enter')"
-                                ng-disabled="!remote.streaming" localized>remote.key.enter</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('left')"
-                                ng-disabled="!remote.streaming" localized>remote.key.left</button>
-                        <button type="button" class="btn btn-default btn-sm"
-                                ng-click="sendRemoteKey('right')"
-                                ng-disabled="!remote.streaming" localized>remote.key.right</button>
-                    </div>
-
-                    <div class="remote-input-typing">
-                        <input type="text" class="form-control" ng-model="remote.typing"
-                               ng-disabled="!remote.streaming"
-                               ng-keypress="$event.which === 13 && sendRemoteText()"
-                               localized-placeholder="remote.type.placeholder"/>
-                        <button class="btn btn-primary" ng-click="sendRemoteText()"
-                                ng-disabled="!remote.streaming || !remote.typing"
-                                localized>remote.type.send</button>
-                    </div>
-
-                    <p class="remote-ip-note" localized>remote.keyboard.hint</p>
-
-                    <p class="remote-ip-note" ng-if="remote.inputNote">{{remote.inputNote}}</p>
-                    <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>
-                </div>
-
-                    </div>
-                    <aside class="remote-body-right">
-                <div class="remote-actions-shell">
-                    <div class="hwmdm-section-head">
-                        <h4 localized>remote.actions.title</h4>
-                        <p class="ext-hub-section-hint" localized>remote.actions.hint</p>
-                    </div>
-
-                    <div ng-if="!commandCatalogLoaded" class="ext-hub-empty" localized>remote.actions.loading</div>
-                    <div ng-if="commandCatalogError" class="alert alert-warning"><span>{{commandCatalogError}}</span></div>
-                    <div ng-if="commandCatalogLoaded && !commandCatalogError && commandGroups.length === 0"
-                         class="ext-hub-empty" localized>remote.actions.none</div>
-
-                    <div class="remote-command-group" ng-repeat="group in commandGroups">
-                        <div class="remote-command-group-title">{{group.title}}</div>
-                        <div class="remote-action-grid">
-                            <button type="button"
-                                    ng-repeat="command in group.commands"
-                                    class="btn"
-                                    ng-class="command.danger ? 'btn-danger' : 'btn-default'"
-                                    ng-if="canRunCommand(command)"
-                                    ng-disabled="!selectedDevice.online"
-                                    ng-click="startCommand(command)">
-                                {{command.label}}<span ng-if="command.fields.length">…</span>
+                        <div class="remote-live-bar">
+                            <button type="button" class="btn btn-primary btn-sm"
+                                    ng-click="startRemote()"
+                                    ng-disabled="remote.connected || !remoteSupported"
+                                    localized>remote.screen.connect</button>
+                            <button type="button" class="btn btn-default btn-sm"
+                                    ng-click="stopRemote()"
+                                    ng-disabled="!remote.connected">
+                                {{ (remote.streaming ? 'remote.screen.disconnect' : 'remote.screen.cancel.request') | localize }}
                             </button>
+
+                            <span class="remote-ip-note" ng-if="remote.streaming">
+                                {{'remote.screen.live' | localize}} ·
+                                {{remote.width}}x{{remote.height}} ·
+                                {{remote.fps}} fps · {{remote.kbps}} kbps ·
+                                <strong ng-if="remote.input" localized>remote.input.active</strong>
+                                <strong ng-if="!remote.input" localized>remote.input.inactive</strong>
+                                ·
+                                <strong ng-if="remote.keyboard" style="color: #1ab394;">{{"remote.keyboard.active" | localize}}</strong>
+                                <button type="button"
+                                        class="btn btn-xs btn-success remote-keyboard-arm"
+                                        ng-if="!remote.keyboard"
+                                        ng-click="activateRemoteKeyboard()">
+                                    {{"remote.keyboard.activate" | localize}}
+                                </button>
+                            </span>
                         </div>
-                            </aside>
+
+                        <div class="remote-input-bar" ng-if="remote.streaming">
+                            <div class="alert alert-warning" ng-if="!remote.input">
+                                <span localized>remote.input.unavailable</span>
+                                <button type="button" class="btn btn-warning btn-sm"
+                                        ng-if="canOpenRemoteAgent()"
+                                        ng-click="openRemoteAgent()"
+                                        localized>remote.input.open.agent</button>
+                            </div>
+                            <div class="remote-input-keys">
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('back')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.back</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('home')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.home</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('recents')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.recents</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('backspace')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.backspace</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('enter')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.enter</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('left')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.left</button>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="sendRemoteKey('right')"
+                                        ng-disabled="!remote.streaming" localized>remote.key.right</button>
+                            </div>
+
+                            <div class="remote-input-typing">
+                                <input type="text" class="form-control" ng-model="remote.typing"
+                                       ng-disabled="!remote.streaming"
+                                       ng-keypress="$event.which === 13 && sendRemoteText()"
+                                       localized-placeholder="remote.type.placeholder"/>
+                                <button class="btn btn-primary" ng-click="sendRemoteText()"
+                                        ng-disabled="!remote.streaming || !remote.typing"
+                                        localized>remote.type.send</button>
+                            </div>
+
+                            <p class="remote-ip-note" localized>remote.keyboard.hint</p>
+
+                            <p class="remote-ip-note" ng-if="remote.inputNote">{{remote.inputNote}}</p>
+                            <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>
                         </div>
                     </div>
 
-                    <!-- Parameter form for the armed action. Shown inline so the operator sees
-                         which action it belongs to and what the server will receive. -->
-                    <div class="remote-command-form" ng-if="pendingCommand">
-                        <div class="remote-command-form-head">
-                            <strong>{{pendingCommand.label}}</strong>
-                            <span>{{'remote.form.on.device' | localize}} {{selectedDevice.number}}</span>
-                        </div>
-                        <div class="form-group" ng-repeat="field in pendingCommand.fields">
-                            <label class="control-label" for="remote-field-{{field.name}}">{{field.label}}
-                                <span class="remote-ip-note" ng-if="!field.required" localized>remote.form.optional</span>
-                            </label>
-                            <input ng-if="field.type === 'checkbox'" type="checkbox"
-                                   id="remote-field-{{field.name}}"
-                                   ng-model="pendingParams[field.name]"/>
-                            <input ng-if="field.type !== 'checkbox'"
-                                   type="{{field.type === 'number' ? 'number' : 'text'}}"
-                                   id="remote-field-{{field.name}}"
-                                   class="form-control"
-                                   placeholder="{{field.placeholder}}"
-                                   ng-model="pendingParams[field.name]"/>
-                        </div>
-                        <div class="error" ng-if="pendingError"><span>{{pendingError}}</span></div>
-                        <div class="gov-actions-row">
-                            <button type="button" class="btn btn-default" ng-click="cancelCommand()"
-                                    localized>remote.form.cancel</button>
-                            <button type="button" class="btn"
-                                    ng-class="pendingCommand.danger ? 'btn-danger' : 'btn-primary'"
-                                    ng-click="submitCommand()" localized>remote.form.send</button>
-                        </div>
-                    </div>
+                    <aside class="remote-body-right">
+                        <div class="remote-actions-shell">
+                            <div class="hwmdm-section-head">
+                                <h4 localized>remote.actions.title</h4>
+                                <p class="ext-hub-section-hint" localized>remote.actions.hint</p>
+                            </div>
 
-                    <div class="remote-message-shell">
-                        <div class="hwmdm-section-head">
-                            <h4 localized>remote.quick.message</h4>
+                            <div ng-if="!commandCatalogLoaded" class="ext-hub-empty" localized>remote.actions.loading</div>
+                            <div ng-if="commandCatalogError" class="alert alert-warning"><span>{{commandCatalogError}}</span></div>
+                            <div ng-if="commandCatalogLoaded && !commandCatalogError && commandGroups.length === 0"
+                                 class="ext-hub-empty" localized>remote.actions.none</div>
+
+                            <div class="remote-command-group" ng-repeat="group in commandGroups">
+                                <div class="remote-command-group-title">{{group.title}}</div>
+                                <div class="remote-action-grid">
+                                    <button type="button"
+                                            ng-repeat="command in group.commands"
+                                            class="btn"
+                                            ng-class="command.danger ? 'btn-danger' : 'btn-default'"
+                                            ng-if="canRunCommand(command)"
+                                            ng-disabled="!selectedDevice.online"
+                                            ng-click="startCommand(command)">
+                                        {{command.label}}<span ng-if="command.fields.length">…</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="remote-command-form" ng-if="pendingCommand">
+                                <div class="remote-command-form-head">
+                                    <strong>{{pendingCommand.label}}</strong>
+                                    <span>{{'remote.form.on.device' | localize}} {{selectedDevice.number}}</span>
+                                </div>
+                                <div class="form-group" ng-repeat="field in pendingCommand.fields">
+                                    <label class="control-label" for="remote-field-{{field.name}}">{{field.label}}
+                                        <span class="remote-ip-note" ng-if="!field.required" localized>remote.form.optional</span>
+                                    </label>
+                                    <input ng-if="field.type === 'checkbox'" type="checkbox"
+                                           id="remote-field-{{field.name}}"
+                                           ng-model="pendingParams[field.name]"/>
+                                    <input ng-if="field.type !== 'checkbox'"
+                                           type="{{field.type === 'number' ? 'number' : 'text'}}"
+                                           id="remote-field-{{field.name}}"
+                                           class="form-control"
+                                           placeholder="{{field.placeholder}}"
+                                           ng-model="pendingParams[field.name]"/>
+                                </div>
+                                <div class="error" ng-if="pendingError"><span>{{pendingError}}</span></div>
+                                <div class="gov-actions-row">
+                                    <button type="button" class="btn btn-default" ng-click="cancelCommand()"
+                                            localized>remote.form.cancel</button>
+                                    <button type="button" class="btn"
+                                            ng-class="pendingCommand.danger ? 'btn-danger' : 'btn-primary'"
+                                            ng-click="submitCommand()" localized>remote.form.send</button>
+                                </div>
+                            </div>
+
+                            <div class="remote-message-shell">
+                                <div class="hwmdm-section-head">
+                                    <h4 localized>remote.quick.message</h4>
+                                </div>
+                                <div class="remote-message-row">
+                                    <input type="text" class="form-control" ng-model="supportMessage"
+                                           localized-placeholder="remote.quick.message.placeholder"
+                                           ng-disabled="!selectedDevice.online" />
+                                    <button class="btn btn-primary" ng-click="sendRemoteMessage(selectedDevice, supportMessage)"
+                                            ng-disabled="!canControlRemote() || !selectedDevice.online || !supportMessage"
+                                            localized>remote.quick.message.send</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="remote-message-row">
-                            <input type="text" class="form-control" ng-model="supportMessage"
-                                   localized-placeholder="remote.quick.message.placeholder"
-                                   ng-disabled="!selectedDevice.online" />
-                            <button class="btn btn-primary" ng-click="sendRemoteMessage(selectedDevice, supportMessage)"
-                                    ng-disabled="!canControlRemote() || !selectedDevice.online || !supportMessage"
-                                    localized>remote.quick.message.send</button>
-                        </div>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </section>

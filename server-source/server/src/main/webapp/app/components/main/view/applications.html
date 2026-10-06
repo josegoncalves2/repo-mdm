@@ -3,7 +3,7 @@
     <div class="hwmdm-page-toolbar">
         <div>
             <h3 localized>tab.applications</h3>
-            <p>Application catalog, package versions and configuration assignment.</p>
+            <p localized>applications.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
             <input type='text'
@@ -13,7 +13,9 @@
                    ng-enter='search()'
                    localized-placeholder='search.placeholder.application'
                    class='form-control'>
-            <button ng-if="hasPermission('edit_applications')" type='button' class='btn btn-default' ng-click='editApplication( {arch:null} )' localized>button.add</button>
+            <button ng-if="hasPermission('edit_applications')" type='button' class='btn btn-primary' ng-click='editApplication( {arch:null} )'>
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;<span localized>button.add</span>
+            </button>
         </div>
     </div>
 
@@ -36,7 +38,7 @@
                    ng-change="showMyAppsOnlyToggled()"/>
         </div>
     </form>
-    
+
     <div class="text-center" ng-if="applications.length > paging.pageSize">
         <pagination
                 boundary-links='true' class='pagination-sm'
@@ -48,76 +50,58 @@
                 last-text='&raquo;'></pagination>
     </div>
 
-    <div ng-if='applications && applications.length > 0' class="table-responsive">
-
-
-    <table class='table'>
-        <thead>
-        <tr>
-            <th localized>table.heading.application.pkg</th>
-            <th localized>table.heading.application.name</th>
-            <th localized>table.heading.application.version</th>
-            <th localized>table.heading.application.url</th>
-            <th localized>table.heading.application.label</th>
-            <th class='actions-column-150' localized>table.heading.application.actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat='application in applications.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
-            <td>
-                <span ng-if="pkgInfoVisible(application)">{{application.pkg}}</span>
-            </td>
-            <td>{{application.name}}</td>
-            <td>
-                <span ng-if="pkgInfoVisible(application)">{{application.version}}</span>
-            </td>
-            <td ng-if="!application.split">{{application.url}}</td>
-            <td ng-if="application.split" class="column-split-apk"><span class="configuration-hint">arm64:</span>&nbsp;&nbsp;
-                <span ng-if="application.urlArm64">{{application.urlArm64}}</span>
-                <span class="warning-font" ng-if="!application.urlArm64" localized>form.configuration.apps.no.apk</span><br>
-                <span class="configuration-hint">armeabi:</span>
-                <span ng-if="application.urlArmeabi">{{application.urlArmeabi}}</span>
-                <span class="warning-font" ng-if="!application.urlArmeabi" localized>form.configuration.apps.no.apk</span>
-            <td>{{application.showIcon ? '✓' : ''}}</td>
-
-            <td>
-                <div>
-                    <button localized-title="button.edit.versions" ng-class="'btn btn-default ' + (application.type == 'app' ? '' : 'expired-device-hidden')"
-                            type='button' ng-click='editVersions( application )'>
-                        <span class='glyphicon glyphicon-sound-5-1'></span>
-                    </button>
-                    <button localized-title="button.set.configurations"
-                            type='button' class='btn btn-default' ng-click='editConfiguration( application )'>
-                        <span class='glyphicon glyphicon-list'></span>
-                    </button>
-                    <button ng-if="hasPermission('edit_applications') && (!application.commonApplication || application.customerId == user.customerId)"
-                            localized-title="button.edit"
-                            type='button' class='btn btn-default' ng-click='editApplication( application )'>
-                        <span class='glyphicon glyphicon-pencil'></span>
-                    </button>
-                    <button ng-if="hasPermission('edit_applications') && !application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
-                            localized-title="button.delete"
-                            type='button' class='btn btn-default' ng-click='removeApplication( application )'>
-                        <span class='glyphicon glyphicon-trash'></span>
-                    </button>
-                    <button ng-if="hasPermission('edit_applications') && application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
-                            localized-title="error.application.config.reference.exists" disabled="disabled"
-                            type='button' class='btn btn-default' ng-click='removeApplication( application )'>
-                        <span class='glyphicon glyphicon-trash'></span>
-                    </button>
-                    <button ng-if="hasPermission('edit_applications') && application.commonApplication && application.customerId != user.customerId"
-                            ng-click="clarifyOnCommon()"
-                            localized-title="button.common" type='button' class='btn btn-default'>
-                        <span class='glyphicon glyphicon-cloud'></span>
-                    </button>
+    <div ng-if='applications && applications.length > 0' class="config-card-grid">
+        <div class="config-card"
+             ng-repeat="application in applications.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
+            <div class="config-card-body" ng-click="editApplication(application)">
+                <div class="config-card-name">{{application.name}}</div>
+                <div class="config-card-desc" ng-if="pkgInfoVisible(application)">{{application.pkg}}</div>
+                <div class="app-card-meta">
+                    <span ng-if="pkgInfoVisible(application) && application.version" class="app-card-version">v{{application.version}}</span>
+                    <span ng-if="application.showIcon" class="app-card-badge" title="Visivel no launcher">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </span>
+                    <span ng-if="application.type === 'web'" class="app-card-badge app-card-badge--web">WEB</span>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
+            <div class="config-card-actions">
+                <button localized-title="button.edit.versions"
+                        ng-class="'btn btn-sm btn-default ' + (application.type == 'app' ? '' : 'expired-device-hidden')"
+                        type='button' ng-click='editVersions(application)'>
+                    <span class='glyphicon glyphicon-sound-5-1'></span>
+                </button>
+                <button localized-title="button.set.configurations"
+                        type='button' class='btn btn-sm btn-default' ng-click='editConfiguration(application)'>
+                    <span class='glyphicon glyphicon-list'></span>
+                </button>
+                <button ng-if="hasPermission('edit_applications') && (!application.commonApplication || application.customerId == user.customerId)"
+                        localized-title="button.edit"
+                        type='button' class='btn btn-sm btn-default' ng-click='editApplication(application)'>
+                    <span class='glyphicon glyphicon-pencil'></span>
+                </button>
+                <button ng-if="hasPermission('edit_applications') && !application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
+                        localized-title="button.delete"
+                        type='button' class='btn btn-sm btn-default' ng-click='removeApplication(application)'>
+                    <span class='glyphicon glyphicon-trash'></span>
+                </button>
+                <button ng-if="hasPermission('edit_applications') && application.deletionProhibited && (!application.commonApplication || application.customerId == user.customerId)"
+                        localized-title="error.application.config.reference.exists" disabled="disabled"
+                        type='button' class='btn btn-sm btn-default'>
+                    <span class='glyphicon glyphicon-trash'></span>
+                </button>
+                <button ng-if="hasPermission('edit_applications') && application.commonApplication && application.customerId != user.customerId"
+                        ng-click="clarifyOnCommon()"
+                        localized-title="button.common" type='button' class='btn btn-sm btn-default'>
+                    <span class='glyphicon glyphicon-cloud'></span>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div ng-if='applications && applications.length === 0' class='center' localized>notfound.apps.for.display</div>
+    <div ng-if='applications && applications.length === 0' class='hwmdm-empty-state'>
+        <span class="glyphicon glyphicon-th"></span>
+        <span localized>notfound.apps.for.display</span>
+    </div>
 
     <div class="text-center" ng-if="applications.length > paging.pageSize">
         <pagination

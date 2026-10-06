@@ -259,6 +259,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .glyphicon-ok::before              { -webkit-mask-image: url('../images/icons/check.svg');          mask-image: url('../images/icons/check.svg'); }
 .glyphicon-option-horizontal::before{-webkit-mask-image: url('../images/icons/more-horizontal.svg');mask-image: url('../images/icons/more-horizontal.svg'); }
 .glyphicon-pencil::before          { -webkit-mask-image: url('../images/icons/pencil.svg');         mask-image: url('../images/icons/pencil.svg'); }
+.glyphicon-plus::before            { -webkit-mask-image: url('../images/icons/plus.svg');           mask-image: url('../images/icons/plus.svg'); }
 .glyphicon-phone::before           { -webkit-mask-image: url('../images/icons/smartphone.svg');     mask-image: url('../images/icons/smartphone.svg'); }
 .glyphicon-picture::before         { -webkit-mask-image: url('../images/icons/image.svg');          mask-image: url('../images/icons/image.svg'); }
 .glyphicon-qrcode::before          { -webkit-mask-image: url('../images/icons/qr-code.svg');        mask-image: url('../images/icons/qr-code.svg'); }

@@ -170,28 +170,28 @@ angular.module('headwind-kiosk')
                     value: data.devicesEnrolled || 0,
                     detail: localization.localize('summary.devices.enrolled.monthly') + ': ' + (data.devicesEnrolledLastMonth || 0),
                     tone: 'blue',
-                    targetState: 'shell.main'
+                    targetState: 'main'
                 },
                 {
                     label: localization.localize('summary.devices.active'),
                     value: active,
                     detail: localization.localize('summary.devices.idle') + ': ' + idle,
                     tone: 'green',
-                    targetState: 'shell.main'
+                    targetState: 'main'
                 },
                 {
                     label: localization.localize('summary.devices.offline'),
                     value: offline,
                     detail: localization.localize('summary.devices.installation.failed') + ': ' + failures,
                     tone: 'red',
-                    targetState: 'shell.main'
+                    targetState: 'main'
                 },
                 {
                     label: 'GPS visible',
                     value: data.devicesWithLocation || 0,
                     detail: 'Last locations: ' + (data.locatedDevices || []).length,
                     tone: 'amber',
-                    targetState: 'shell.gpsMap'
+                    targetState: 'gpsMap'
                 },
                 {
                     label: 'Operational alerts',
@@ -199,7 +199,7 @@ angular.module('headwind-kiosk')
                     detail: localization.localize('summary.alerts.critical') + ': ' + (data.criticalAlerts || 0)
                         + ' / ' + localization.localize('summary.alerts.warning') + ': ' + (data.warningAlerts || 0),
                     tone: alertTotal > 0 ? 'red' : 'green',
-                    targetState: 'shell.main'
+                    targetState: 'main'
                 }
             ];
         };

@@ -1,19 +1,19 @@
 # gps-rastreabilidade-avancada — GPS avançado: rastreabilidade, análise e exportação
 
 Origem: `docs/gps.md`
-Status: A VERIFICAR — layout split, histórico, busca, contadores e export GPX já DEPLOYED. Restante pendente.
+Status: PENDENTE — todos os itens precisam de verificação e provisionamento no DEV.
 
 ## Motivação
 
 A tela de GPS atual é um MVP de localização. Para se tornar uma ferramenta de gestão de rastreabilidade, deve evoluir para uma plataforma de análise temporal e geoespacial, com auditoria, exportação e conformidade legal.
 
-## O que já foi implementado (conforme backlog)
+## Itens a verificar e provisionar
 
-- [x] Layout split (lista esquerda, mapa centro) — DEPLOYED
-- [x] Histórico de localização (tabela + trigger + API) — DEPLOYED
-- [x] Busca de dispositivos com typeahead — DEPLOYED
-- [x] Status online/offline com contadores — DEPLOYED
-- [x] Export GPX — DEPLOYED
+- [ ] Layout split (lista esquerda, mapa centro) — PENDENTE
+- [ ] Histórico de localização (tabela + trigger + API) — PENDENTE
+- [ ] Busca de dispositivos com typeahead — PENDENTE
+- [ ] Status online/offline com contadores — PENDENTE
+- [ ] Export GPX — PENDENTE
 
 ## Escopo — o que falta
 

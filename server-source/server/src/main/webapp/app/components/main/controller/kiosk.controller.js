@@ -521,7 +521,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.openRemote = function () {
-            $state.go('shell.remote');
+            $state.go('remote');
         };
 
         loadConfigurations();

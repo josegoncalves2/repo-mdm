@@ -13,22 +13,22 @@ Cada item e uma microtarefa para Ordem de Servico. Todo item traz: escopo de arq
 
 ## 1. Resolvedor webfilter-dns (gate de arquitetura)
 
-- [x] 1.1 Criar imagem do resolvedor com Blocky fixado por digest e Python 3; aceite: `docker build -t webfilter-dns:test webfilter-dns` exit 0 e `docker run --rm --entrypoint blocky webfilter-dns:test version` imprime a versao fixada.
+- [ ] 1.1 Criar imagem do resolvedor com Blocky fixado por digest e Python 3; aceite: `docker build -t webfilter-dns:test webfilter-dns` exit 0 e `docker run --rm --entrypoint blocky webfilter-dns:test version` imprime a versao fixada.
   - Escopo: `webfilter-dns/Dockerfile`, `webfilter-dns/requirements.txt`
   - Cobre: design D3
   - Evidencia: saida do build com o digest e saida de `blocky version`
   - **Executor-1 APROVADO:** Blocky v0.34.0 (digest 17b03f89...), docker build EXIT 0
-- [x] 1.2 Implementar updater de listas (le `sources.json`, baixa, concatena partes, normaliza cada entrada para `*.<dominio>`, ignora comentarios, rejeita conteudo sem dominios, troca atomica, intervalo minimo de 1 h por URL, maximo de 24 h, chama `POST /api/lists/refresh`); aceite: `python -m pytest tests/test_updater.py` com servidor HTTP local cobrindo sucesso, HTTP 404, timeout, HTTP 200 vazio, lista em 3 partes, normalizacao com e sem `*.` e comentarios, intervalo minimo e chamada de refresh.
+- [ ] 1.2 Implementar updater de listas (le `sources.json`, baixa, concatena partes, normaliza cada entrada para `*.<dominio>`, ignora comentarios, rejeita conteudo sem dominios, troca atomica, intervalo minimo de 1 h por URL, maximo de 24 h, chama `POST /api/lists/refresh`); aceite: `python -m pytest tests/test_updater.py` com servidor HTTP local cobrindo sucesso, HTTP 404, timeout, HTTP 200 vazio, lista em 3 partes, normalizacao com e sem `*.` e comentarios, intervalo minimo e chamada de refresh.
   - Escopo: `webfilter-dns/app/updater.py`, `webfilter-dns/tests/test_updater.py`, `webfilter-dns/tests/conftest.py`, `webfilter-dns/requirements-dev.txt`
   - Cobre: classification "Listas de dominios atualizadas sem perder a ultima versao valida" (4 cenarios); design D3 (normalizacao)
   - Evidencia: saida vermelha antes da implementacao e verde depois
   - **Executor-1 APROVADO:** 10/10 testes passando
-- [x] 1.3 Implementar supervisor: inicia Blocky; reinicia quando o sha256 de `blocky.yml` muda; volta para a ultima configuracao valida se o Blocky nao ficar saudavel; chama `POST /api/lists/refresh`, sem reiniciar, quando so arquivos de `profiles/` mudam; aceite: `python -m pytest tests/test_supervisor.py` cobrindo inicio, troca de configuracao, configuracao invalida com retorno a anterior e registro no log, e mudanca de lista de perfil sem reinicio.
+- [ ] 1.3 Implementar supervisor: inicia Blocky; reinicia quando o sha256 de `blocky.yml` muda; volta para a ultima configuracao valida se o Blocky nao ficar saudavel; chama `POST /api/lists/refresh`, sem reiniciar, quando so arquivos de `profiles/` mudam; aceite: `python -m pytest tests/test_supervisor.py` cobrindo inicio, troca de configuracao, configuracao invalida com retorno a anterior e registro no log, e mudanca de lista de perfil sem reinicio.
   - Escopo: `webfilter-dns/app/supervisor.py`, `webfilter-dns/tests/test_supervisor.py`
   - Cobre: classification "Configuracao invalida nao derruba o resolvedor"; design D8
   - Evidencia: saida vermelha e verde; trecho de log da configuracao invalida
   - **Executor-1 APROVADO:** 4/4 testes passando
-- [x] 1.4 Criar `webfilter-dns/docker-compose.yaml` proprio, sem alterar o compose do MDM: TCP 853 publicada, 53 nao publicada, volume somente leitura de `../source/volumes/work/plugins/webfilter/dns`, volume de listas, certificado somente leitura, healthcheck, `restart: unless-stopped`, e caminho de certificado declarado por variavel/volume. Aceite:
+- [ ] 1.4 Criar `webfilter-dns/docker-compose.yaml` proprio, sem alterar o compose do MDM: TCP 853 publicada, 53 nao publicada, volume somente leitura de `../source/volumes/work/plugins/webfilter/dns`, volume de listas, certificado somente leitura, healthcheck, `restart: unless-stopped`, e caminho de certificado declarado por variavel/volume. Aceite:
   - com fixtures de `blocky.yml`, listas locais e certificado de teste nos caminhos documentados, `docker compose -f webfilter-dns/docker-compose.yaml config` exit 0 e servico `healthy`;
   - `docker compose -f webfilter-dns/docker-compose.yaml port webfilter-dns 853` retorna porta, e o mesmo comando para 53 nao retorna;
   - `source/docker-compose.yaml` sem diff.
