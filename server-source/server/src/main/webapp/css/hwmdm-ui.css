@@ -284,6 +284,19 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .glyphicon-user::before            { -webkit-mask-image: url('../images/icons/user.svg');           mask-image: url('../images/icons/user.svg'); }
 .glyphicon-warning-sign::before    { -webkit-mask-image: url('../images/icons/alert-triangle.svg'); mask-image: url('../images/icons/alert-triangle.svg'); }
 .glyphicon-wrench::before          { -webkit-mask-image: url('../images/icons/wrench.svg');         mask-image: url('../images/icons/wrench.svg'); }
+.glyphicon-file::before            { -webkit-mask-image: url('../images/icons/file.svg');           mask-image: url('../images/icons/file.svg'); }
+.glyphicon-pause::before           { -webkit-mask-image: url('../images/icons/pause.svg');          mask-image: url('../images/icons/pause.svg'); }
+.glyphicon-play::before            { -webkit-mask-image: url('../images/icons/play.svg');           mask-image: url('../images/icons/play.svg'); }
+.glyphicon-screenshot::before      { -webkit-mask-image: url('../images/icons/crosshair.svg');      mask-image: url('../images/icons/crosshair.svg'); }
+.glyphicon-stop::before            { -webkit-mask-image: url('../images/icons/square.svg');         mask-image: url('../images/icons/square.svg'); }
+.glyphicon-time::before            { -webkit-mask-image: url('../images/icons/clock.svg');          mask-image: url('../images/icons/clock.svg'); }
+.glyphicon-road::before            { -webkit-mask-image: url('../images/icons/map.svg');            mask-image: url('../images/icons/map.svg'); }
+.glyphicon-globe::before           { -webkit-mask-image: url('../images/icons/globe.svg');          mask-image: url('../images/icons/globe.svg'); }
+.glyphicon-tree-deciduous::before  { -webkit-mask-image: url('../images/icons/mountain.svg');       mask-image: url('../images/icons/mountain.svg'); }
+.glyphicon-check::before           { -webkit-mask-image: url('../images/icons/check.svg');          mask-image: url('../images/icons/check.svg'); }
+.glyphicon-search::before          { -webkit-mask-image: url('../images/icons/search.svg');         mask-image: url('../images/icons/search.svg'); }
+.glyphicon-sort-by-attributes::before     { -webkit-mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); }
+.glyphicon-sort-by-attributes-alt::before { -webkit-mask-image: url('../images/icons/arrow-up-narrow-wide.svg');   mask-image: url('../images/icons/arrow-up-narrow-wide.svg'); }
 
 /* Utilitario generico para markup novo (ex.: menu lateral do pacote "modulos"):
    <span class="hw-icon hw-icon-smartphone"></span> */
