@@ -29,18 +29,28 @@ angular.module('headwind-kiosk')
             sortValue: 'createTime'
         };
 
+        var displayText = function (value) {
+            if (typeof value === 'string') return value.trim();
+            if (typeof value === 'number' && isFinite(value)) return String(value);
+            return '';
+        };
+
         $scope.deviceSearchFn = function (device) {
             if (!$scope.deviceSearch) return true;
             var q = $scope.deviceSearch.toLowerCase();
-            return (device.number && device.number.toLowerCase().indexOf(q) >= 0) ||
-                   (device.model && device.model.toLowerCase().indexOf(q) >= 0) ||
-                   (device.imei && device.imei.toLowerCase().indexOf(q) >= 0);
+            return [device.number, device.model, device.imei, device.serial,
+                    device.info && device.info.imei]
+                .map(displayText)
+                .some(function (value) { return value.toLowerCase().indexOf(q) >= 0; });
         };
 
         $scope.deviceLabel = function (device) {
             if (!device) return '';
-            var extra = device.imei || (device.info && device.info.imei) || device.serial || '';
-            return device.number + (extra ? ' / ' + extra : '');
+            var number = displayText(device.number);
+            var extra = displayText(device.model) || displayText(device.imei) ||
+                displayText(device.info && device.info.imei) || displayText(device.serial);
+            if (!number) return '';
+            return number + (extra ? ' / ' + extra : '');
         };
 
         $scope.loadDevices = function (userRequested) {
@@ -61,8 +71,9 @@ angular.module('headwind-kiosk')
         };
 
         $scope.selectDevice = function (device) {
+            if (!device || !displayText(device.number)) return;
             $scope.selectedDevice = device;
-            $scope.paging.deviceFilter = device.number;
+            $scope.paging.deviceFilter = displayText(device.number);
             $scope.paging.pageNum = 1;
             $scope.chat.text = '';
             $scope.loadMessages();
@@ -110,7 +121,8 @@ angular.module('headwind-kiosk')
         $scope.send = function () {
             $scope.errorMessage = undefined;
             if (!$scope.canSendChat || !$scope.selectedDevice) return;
-            var deviceNumber = $scope.selectedDevice.number;
+            var deviceNumber = displayText($scope.selectedDevice.number);
+            if (!deviceNumber) return;
             var text = ($scope.chat.text || '').trim();
             if (!text) {
                 $scope.errorMessage = localization.localize('plugin.messaging.error.empty.text');

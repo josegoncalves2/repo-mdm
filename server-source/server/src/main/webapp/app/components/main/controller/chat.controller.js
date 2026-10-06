@@ -31,9 +31,20 @@ angular.module('headwind-kiosk')
             sortValue: 'createTime'
         };
 
+        var displayText = function (value) {
+            if (typeof value === 'string') {
+                return value.trim();
+            }
+            if (typeof value === 'number' && isFinite(value)) {
+                return String(value);
+            }
+            return '';
+        };
+
         // The history filter is a free-text field and an operator may still paste a
         // "number / imei" label into it, so the number is taken from before the slash.
         $scope.deviceLookupFormatter = function (value) {
+            value = displayText(value);
             if (value) {
                 var pos = value.indexOf('/');
                 if (pos > -1) {
@@ -47,8 +58,11 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return '';
             }
-            var extra = device.imei || (device.info && device.info.imei) || device.serial || '';
-            return device.number + (extra ? ' / ' + extra : '');
+            var number = displayText(device.number);
+            var extra = displayText(device.imei) ||
+                displayText(device.info && device.info.imei) ||
+                displayText(device.serial);
+            return number ? number + (extra ? ' / ' + extra : '') : '';
         };
 
         var loadDevices = function () {

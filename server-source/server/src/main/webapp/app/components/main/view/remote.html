@@ -90,7 +90,9 @@
                     </div>
                 </div>
 
-                <div class="device-preview-container remote-preview-shell">
+                <div class="remote-body-columns">
+                    <div class="remote-body-left">
+                        <div class="device-preview-container remote-preview-shell">
                     <div class="device-preview-statusbar">
                         <span>{{selectedDevice.lastUpdate | date:'HH:mm:ss'}}</span>
                         <span ng-if="selectedDevice.info.phone">{{selectedDevice.info.phone}}</span>
@@ -171,7 +173,7 @@
                                     localized>remote.screen.request.access</button>
                         </div>
                     </div>
-                </div>
+                        </div>
 
                 <div class="remote-live-bar">
                     <button type="button" class="btn btn-primary btn-sm"
@@ -251,6 +253,8 @@
                     <p class="remote-ip-note" ng-if="remote.input" localized>remote.input.hint</p>
                 </div>
 
+                    </div>
+                    <aside class="remote-body-right">
                 <div class="remote-actions-shell">
                     <div class="hwmdm-section-head">
                         <h4 localized>remote.actions.title</h4>
@@ -274,6 +278,8 @@
                                     ng-click="startCommand(command)">
                                 {{command.label}}<span ng-if="command.fields.length">…</span>
                             </button>
+                        </div>
+                            </aside>
                         </div>
                     </div>
 

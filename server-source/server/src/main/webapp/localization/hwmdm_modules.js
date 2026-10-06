@@ -555,6 +555,15 @@ if (!document.localization) document.localization = [];
         'chat.page.subtitle': 'Send a message to a device and review what has already been delivered.',
         'chat.device.select.placeholder': 'Select a device',
         'chat.device.select.empty': 'No device is enrolled yet.',
+        'chat.device.select.hint': 'Select a device to enable sending and view its message history.',
+        'chat.send.no.permission': 'Your account does not have permission to send messages.',
+        'applications.page.subtitle': 'Manage Android applications available to enrolled devices.',
+        'files.page.subtitle': 'APK packages and managed files delivered to devices by configuration.',
+        'files.view.cards': 'Cards',
+        'files.view.list': 'List',
+        'files.loading': 'Loading files...',
+        'files.load.error': 'Files could not be loaded. Check your connection and try again.',
+        'files.load.retry': 'Retry',
 
         // --- Reports ---------------------------------------------------------------------
         'reports.page.subtitle': 'Fleet composition, health and app inventory, computed live from the current device list.',
@@ -1137,6 +1146,15 @@ if (!document.localization) document.localization = [];
         'chat.page.subtitle': 'Envie uma mensagem a um dispositivo e veja o que ja foi entregue.',
         'chat.device.select.placeholder': 'Selecione um dispositivo',
         'chat.device.select.empty': 'Nenhum dispositivo cadastrado ainda.',
+        'chat.device.select.hint': 'Selecione um dispositivo para habilitar o envio e ver o histórico de mensagens.',
+        'chat.send.no.permission': 'Sua conta não tem permissão para enviar mensagens.',
+        'applications.page.subtitle': 'Gerencie os aplicativos Android disponíveis para os dispositivos cadastrados.',
+        'files.page.subtitle': 'Pacotes APK e arquivos gerenciados enviados aos dispositivos pelas configurações.',
+        'files.view.cards': 'Cartões',
+        'files.view.list': 'Lista',
+        'files.loading': 'Carregando arquivos...',
+        'files.load.error': 'Não foi possível carregar os arquivos. Verifique sua conexão e tente novamente.',
+        'files.load.retry': 'Tentar novamente',
 
         // --- Relatorios ------------------------------------------------------------------
         'reports.page.subtitle': 'Composicao da frota, saude e inventario de apps, calculados a partir da lista atual de dispositivos.',

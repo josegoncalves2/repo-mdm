@@ -4137,6 +4137,20 @@ body {
     border-left-color: #0ea5b7;
 }
 
+.chat-device-option {
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.chat-device-option:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline: 2px solid var(--hwmdm-accent);
+    outline-offset: -2px;
+}
+
 .remote-device-item-head {
     display: flex;
     justify-content: space-between;
@@ -4215,6 +4229,13 @@ body {
     color: #e5edf5;
 }
 
+.remote-preview-screen.remote-preview-streaming {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 0;
+    margin-inline: auto;
+}
+
 .remote-preview-state {
     display: flex;
     flex-direction: column;
@@ -4256,7 +4277,7 @@ body {
     display: block;
     margin: auto;
     max-width: 100%;
-    max-height: 640px;
+    max-height: min(640px, calc(100vh - 240px));
     object-fit: contain;
     background: #000;
 }
@@ -4264,6 +4285,9 @@ body {
 .remote-live-video {
     width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: min(640px, calc(100vh - 240px));
+    object-fit: contain;
 }
 
 /* Cursor de ponteiro so' quando o clique realmente sai daqui: sem acessibilidade
@@ -4377,6 +4401,15 @@ body {
     padding: 16px;
     background: var(--hwmdm-bg);
     border-top: 1px solid var(--hwmdm-border);
+}
+
+.remote-actions-shell .remote-action-grid .btn,
+.remote-actions-shell .remote-message-row .btn {
+    min-height: 38px;
+    height: auto;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .kiosk-page {
@@ -5227,6 +5260,105 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 0;
+}
+
+.gps-map-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.gps-map-selection-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.gps-map-selection-actions .btn {
+    white-space: nowrap;
+}
+
+.remote-body-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+    gap: 0;
+    align-items: start;
+    min-height: 0;
+}
+
+.remote-body-left {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.remote-body-right {
+    min-width: 0;
+    border-left: 1px solid var(--hwmdm-border);
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.remote-body-right .remote-action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.remote-body-right .remote-action-grid .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    line-height: 1.35;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.remote-body-right .remote-message-row {
+    flex-direction: column;
+}
+
+.remote-body-right .remote-message-row .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: center;
+    white-space: normal;
+}
+
+@media (max-width: 1280px) {
+    .remote-body-columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .remote-body-right {
+        border-left: 0;
+        border-top: 1px solid var(--hwmdm-border);
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .gps-map-toolbar,
+    .gps-map-selection-actions {
+        width: 100%;
+    }
+
+    .gps-map-selection-actions {
+        margin-left: 0;
+    }
+
+    .gps-map-selection-actions .btn {
+        flex: 1 1 auto;
+    }
 }
 
 .gps-detail-panel {
@@ -6122,4 +6254,38 @@ body {
     margin: 0 0 10px;
     color: var(--hwmdm-muted);
     font-size: 13px;
+}
+
+.reports-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gps-map-page > .hwmdm-page-toolbar > div:first-child {
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+.gps-page-actions {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+@media (max-width: 1200px) {
+    .reports-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gps-page-actions {
+        justify-content: flex-end;
+        margin-left: 0;
+        width: 100%;
+    }
 }

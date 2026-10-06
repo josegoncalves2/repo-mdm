@@ -47,9 +47,12 @@
                 <textarea class="form-control chat-compose-text"
                           rows="7"
                           ng-model="chat.text"
-                          maxlength="5000"></textarea>
+                          maxlength="5000"
+                          ng-disabled="!canSendChat || sending"></textarea>
+                <div class="field-hint" ng-if="!canSendChat" localized>chat.send.no.permission</div>
             </div>
-            <button type="button" class="btn btn-default" ng-click="send()" ng-disabled="sending || !canSendChat">
+            <button type="button" class="btn btn-default" ng-click="send()"
+                    ng-disabled="sending || !canSendChat || !chat.deviceNumber || !chat.text">
                 <span class="glyphicon glyphicon-send"></span>
                 <span localized>plugin.messaging.button.send</span>
             </button>

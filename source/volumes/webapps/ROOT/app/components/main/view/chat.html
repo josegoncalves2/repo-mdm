@@ -36,78 +36,73 @@
                 <span localized>chat.device.select.empty</span>
             </div>
 
-            <a href="" class="list-group-item remote-device-item"
+            <button type="button" class="list-group-item remote-device-item chat-device-option"
                ng-repeat="device in devices | filter:deviceSearchFn"
                ng-click="selectDevice(device)"
                ng-class="{'remote-device-item-active': selectedDevice && selectedDevice.id === device.id}">
-                <span class="hwmdm-status-dot"
-                      ng-class="device.online ? 'hwmdm-status-dot--online' : 'hwmdm-status-dot--offline'"></span>
-                <div class="remote-device-main">
-                    <span class="remote-device-number">{{device.number}}</span>
-                    <span class="remote-device-model">{{device.model || device.imei || ''}}</span>
-                </div>
+               <span class="hwmdm-status-dot"
+                     ng-class="device.online ? 'hwmdm-status-dot--online' : 'hwmdm-status-dot--offline'"></span>
+               <div class="remote-device-main">
+                   <span class="remote-device-number">{{deviceLabel(device)}}</span>
+               </div>
                 <div class="gps-device-meta">
                     <span class="gps-device-time">{{device.lastUpdate | date:'HH:mm'}}</span>
                 </div>
-            </a>
+            </button>
         </div>
 
         <div class="chat-main-area">
-            <div ng-if="!selectedDevice" class="hwmdm-empty-state">
-                <span class="glyphicon glyphicon-comment"></span>
-                <span>Selecione um dispositivo para enviar ou ver mensagens</span>
+            <div ng-if="!selectedDevice" class="field-hint chat-select-hint" localized>chat.device.select.hint</div>
+
+            <div class="hwmdm-compose-bar">
+                <textarea class="form-control"
+                          rows="3"
+                          ng-model="chat.text"
+                          maxlength="5000"
+                          ng-disabled="!canSendChat || sending"
+                          localized-placeholder="plugin.messaging.label.message"></textarea>
+                <button type="button" class="btn btn-primary" ng-click="send()"
+                        ng-disabled="!selectedDevice || !canSendChat || sending || !chat.text">
+                    <span class="glyphicon glyphicon-send"></span>&nbsp;{{"plugin.messaging.button.send" | localize}}
+                </button>
             </div>
+            <div class="field-hint" ng-if="!canSendChat" localized>chat.send.no.permission</div>
 
             <div ng-if="selectedDevice">
-                <!-- Compose -->
-                <div class="hwmdm-compose-bar" ng-if="canSendChat">
-                    <textarea class="form-control"
-                              rows="3"
-                              ng-model="chat.text"
-                              maxlength="5000"
-                              placeholder="{{'plugin.messaging.label.message' | localize}}"></textarea>
-                    <button type="button" class="btn btn-primary" ng-click="send()" ng-disabled="sending || !chat.text">
-                        <span class="glyphicon glyphicon-send"></span>&nbsp;{{"plugin.messaging.button.send" | localize}}
-                    </button>
+                <div class="hwmdm-content-header">
+                    <h4>{{deviceLabel(selectedDevice)}}</h4>
+                    <span ng-if="loading" class="text-muted">
+                        <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+                    </span>
                 </div>
 
-                <!-- Historico -->
-                <div style="padding:12px 14px">
-                    <div class="hwmdm-content-header">
-                        <h4>Historico — {{selectedDevice.number}}</h4>
-                        <span ng-if="loading" class="text-muted">
-                            <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
-                        </span>
-                    </div>
-
-                    <div class="chat-message-list" ng-if="messages.length > 0">
-                        <div class="chat-message"
-                             ng-class="{'chat-message-from-device': message.direction === 1, 'chat-message-from-admin': message.direction !== 1}"
-                             ng-repeat="message in messages">
-                            <div class="chat-message-head">
-                                <span class="label" ng-class="message.direction === 1 ? 'label-info' : 'label-default'">
-                                    {{(message.direction === 1 ? 'chat.direction.device' : 'chat.direction.admin') | localize}}
-                                </span>
-                                <span>{{message.ts | date:dateFormat}}</span>
-                            </div>
-                            <div class="chat-message-body">{{message.message}}</div>
-                            <div class="chat-message-status" ng-if="message.direction !== 1">{{statusLabel(message.status)}}</div>
+                <div class="chat-message-list" ng-if="messages.length > 0">
+                    <div class="chat-message"
+                         ng-class="{'chat-message-from-device': message.direction === 1, 'chat-message-from-admin': message.direction !== 1}"
+                         ng-repeat="message in messages">
+                        <div class="chat-message-head">
+                            <span class="label" ng-class="message.direction === 1 ? 'label-info' : 'label-default'">
+                                {{(message.direction === 1 ? 'chat.direction.device' : 'chat.direction.admin') | localize}}
+                            </span>
+                            <span>{{message.ts | date:dateFormat}}</span>
                         </div>
+                        <div class="chat-message-body">{{message.message}}</div>
+                        <div class="chat-message-status" ng-if="message.direction !== 1">{{statusLabel(message.status)}}</div>
                     </div>
-                    <div class="hwmdm-empty-state" ng-if="!loading && messages.length === 0" style="min-height:80px">
-                        <span>Nenhuma mensagem com este dispositivo</span>
-                    </div>
+                </div>
+                <div class="hwmdm-empty-state" ng-if="!loading && messages.length === 0" style="min-height:80px">
+                    <span localized>notfound.common.plugin.messaging.messages</span>
+                </div>
 
-                    <div class="text-center" ng-if="paging.totalItems > paging.pageSize">
-                        <pagination
-                                boundary-links='true' class='pagination-sm'
-                                max-size='3'
-                                ng-model='paging.pageNum'
-                                total-items='paging.totalItems'
-                                items-per-page='paging.pageSize'
-                                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                                last-text='&raquo;'></pagination>
-                    </div>
+                <div class="text-center" ng-if="paging.totalItems > paging.pageSize">
+                    <pagination
+                            boundary-links='true' class='pagination-sm'
+                            max-size='3'
+                            ng-model='paging.pageNum'
+                            total-items='paging.totalItems'
+                            items-per-page='paging.pageSize'
+                            previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                            last-text='&raquo;'></pagination>
                 </div>
             </div>
         </div>

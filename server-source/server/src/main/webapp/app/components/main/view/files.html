@@ -3,9 +3,29 @@
     <div class="hwmdm-page-toolbar">
         <div>
             <h3 localized>tab.files</h3>
-            <p>APK packages and managed files delivered to devices by configuration.</p>
+            <p localized>files.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'cards'}"
+                        ng-attr-aria-pressed="{{viewMode === 'cards'}}"
+                        localized-title="files.view.cards"
+                        ng-attr-aria-label="{{'files.view.cards' | localize}}"
+                        ng-click="viewMode = 'cards'">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                    <span localized>files.view.cards</span>
+                </button>
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'list'}"
+                        ng-attr-aria-pressed="{{viewMode === 'list'}}"
+                        localized-title="files.view.list"
+                        ng-attr-aria-label="{{'files.view.list' | localize}}"
+                        ng-click="viewMode = 'list'">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <span localized>files.view.list</span>
+                </button>
+            </div>
             <input type='text'
                    ng-enter='search()'
                    ng-model='search.searchValue'
@@ -18,6 +38,16 @@
 
     <div ng-if="availableSpace" class="field-hint">{{availableSpace}}</div>
 
+    <div ng-if="loadingFiles" class="alert alert-info" role="status" aria-live="polite">
+        <span localized>files.loading</span>
+    </div>
+    <div ng-if="!loadingFiles && loadError" class="alert alert-danger" role="alert">
+        <span>{{loadError}}</span>
+        <button type="button" class="btn btn-danger btn-sm" ng-click="search()">
+            <span localized>files.load.retry</span>
+        </button>
+    </div>
+
     <div class="text-center" ng-if="files.length > paging.pageSize">
         <pagination
                 boundary-links='true' class='pagination-sm'
@@ -29,9 +59,49 @@
                 last-text='&raquo;'></pagination>
     </div>
 
-    <div ng-if='files && files.length > 0' class="table-responsive">
+    <div ng-if='files && files.length > 0 && viewMode === "cards"' class="config-card-grid">
+        <div class="config-card"
+             ng-repeat="file in files.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
+            <div class="config-card-body" ng-click="editFile(file)">
+                <div class="config-card-name">{{file.description || file.filePath}}</div>
+                <div class="config-card-desc" ng-if="file.description">{{file.filePath}}</div>
+                <div class="app-card-meta">
+                    <span ng-if="!file.external && file.size > 0" class="app-card-version">{{readableSizeMb(file.size)}}</span>
+                    <span ng-if="file.external" class="app-card-badge app-card-badge--web">EXTERNO</span>
+                    <span ng-if="file.replaceVariables" class="app-card-badge">VAR</span>
+                    <span ng-if="file.devicePath" class="config-card-desc" style="font-size:11px">{{file.devicePath}}</span>
+                </div>
+                <div class="config-card-desc" ng-if="!file.external && file.uploadTime" style="margin-top:4px;font-size:11px">
+                    {{file.uploadTime | date:updateTimeFormat}}
+                </div>
+            </div>
+            <div class="config-card-actions">
+                <button type='button' title="{{file.copyLinkTooltip}}"
+                        class='btn btn-sm btn-default' ng-click='copyLink(file)'>
+                    <span class='glyphicon glyphicon-link'></span>
+                </button>
+                <button type='button' localized-title="button.set.configurations"
+                        class='btn btn-sm btn-default' ng-click='editConfiguration(file)'>
+                    <span class='glyphicon glyphicon-list'></span>
+                </button>
+                <button ng-if="hasPermission('edit_files')" ng-disabled="file.size == -1"
+                        localized-title="button.edit" type='button' class='btn btn-sm btn-default'
+                        ng-click='editFile(file)'>
+                    <span class='glyphicon glyphicon-pencil'></span>
+                </button>
+                <button type='button' ng-if="hasPermission('edit_files') && !file.removalDisabled"
+                        localized-title="button.delete" class='btn btn-sm btn-default' ng-click='removeFile(file)'>
+                    <span class='glyphicon glyphicon-trash'></span>
+                </button>
+                <button type='button' ng-if="hasPermission('edit_files') && file.removalDisabled"
+                        disabled="disabled" title="{{file.removeButtonTooltip}}" class='btn btn-sm btn-default'>
+                    <span class='glyphicon glyphicon-trash'></span>
+                </button>
+            </div>
+        </div>
+    </div>
 
-
+    <div ng-if='files && files.length > 0 && viewMode === "list"' class="table-responsive">
     <table class='table'>
         <thead>
         <tr>
@@ -88,7 +158,7 @@
     </table>
     </div>
 
-    <div ng-if='files && files.length == 0' class='center' localized>notfound.files</div>
+    <div ng-if='!loadingFiles && !loadError && files.length == 0' class='center' localized>notfound.files</div>
 
     <div class="text-center" ng-if="files.length > paging.pageSize">
         <pagination
