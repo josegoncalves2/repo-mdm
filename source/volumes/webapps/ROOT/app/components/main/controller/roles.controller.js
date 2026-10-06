@@ -2,6 +2,9 @@
 angular.module('headwind-kiosk')
     .controller('RolesTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal,
                                                  roleService, $window, localization) {
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_roles_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_roles_viewMode', v); });
+
         $scope.init = function () {
             $rootScope.settingsTabActive = true;
             $rootScope.pluginsTabActive = false;

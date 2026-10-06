@@ -1,5 +1,5 @@
 angular.module('headwind-kiosk')
-    .controller('ShellController', function ($scope, $sce, $rootScope, $state, userService, authService,
+    .controller('ShellController', function ($scope, $sce, $rootScope, $state, $timeout, userService, authService,
                                              pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
 
         $scope.localization = localization;
@@ -26,7 +26,8 @@ angular.module('headwind-kiosk')
             GENERAL: 'generalSettings',
             EXTENSIONS: 'extensions',
             INTEGRATIONS: 'integrations',
-            SERVER: 'server'
+            SERVER: 'server',
+            PROFILE: 'profile'
         };
 
         var PLUGIN_STATES = {
@@ -59,7 +60,8 @@ angular.module('headwind-kiosk')
             EXTENSIONS: 'nav.extensions',
             GOVERNANCE: 'nav.governance',
             INTEGRATIONS: 'nav.integrations',
-            SERVER: 'nav.server'
+            SERVER: 'nav.server',
+            PROFILE: 'menu.profile'
         };
 
         var STATE_TO_TAB = {};
@@ -85,15 +87,23 @@ angular.module('headwind-kiosk')
 
         syncActiveTab();
 
+        function scrollToActiveNav() {
+            $timeout(function () {
+                var active = document.querySelector('.hwmdm-nav-link-active');
+                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 350);
+        }
+
         $rootScope.$on('$stateChangeSuccess', function () {
             syncActiveTab();
+            scrollToActiveNav();
         });
 
         var cacheBustDeviceInfoResource = function (url) {
-            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061630') >= 0) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061730') >= 0) {
                 return url;
             }
-            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061630';
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061730';
         };
 
         var waitForPluginModules = function (callback) {
@@ -185,6 +195,11 @@ angular.module('headwind-kiosk')
                 return;
             }
             $scope.activeTab = tabName;
+
+            $timeout(function () {
+                var active = document.querySelector('.hwmdm-nav-link-active');
+                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 50);
         };
 
         $scope.navOpen = false;
@@ -202,6 +217,7 @@ angular.module('headwind-kiosk')
             moduleRegistry.load().then(function () {
                 $scope.navSections = moduleRegistry.visibleSections();
                 $scope.navReady = true;
+                scrollToActiveNav();
             });
         };
 

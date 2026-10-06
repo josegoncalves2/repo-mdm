@@ -7,13 +7,29 @@
             <p localized>roles.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'cards'}"
+                        localized-title="files.view.cards"
+                        ng-click="viewMode = 'cards'">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                    <span localized>files.view.cards</span>
+                </button>
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'list'}"
+                        localized-title="files.view.list"
+                        ng-click="viewMode = 'list'">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <span localized>files.view.list</span>
+                </button>
+            </div>
             <button type='button' class='btn btn-primary' ng-click='editRole( {} )'>
                 <span class="glyphicon glyphicon-plus"></span>&nbsp;<span localized>button.add</span>
             </button>
         </div>
     </div>
 
-    <div ng-if='roles && roles.length > 0' class="config-card-grid">
+    <div ng-if='roles && roles.length > 0 && viewMode === "cards"' class="config-card-grid">
         <div class="config-card" ng-repeat="role in roles">
             <div class="config-card-body" ng-click="editRole(role)">
                 <div class="config-card-name">{{role.name}}</div>
@@ -27,6 +43,32 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <div ng-if='roles && roles.length > 0 && viewMode === "list"' class="table-responsive">
+        <table class='table'>
+            <thead>
+            <tr>
+                <th localized>form.role.name</th>
+                <th class='actions-column' localized>table.heading.configuration.actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat='role in roles'>
+                <td><a class="action-link" ng-click="editRole(role)">{{role.name}}</a></td>
+                <td>
+                    <div><nobr>
+                        <button type='button' class='btn btn-default' localized-title="button.edit" ng-click='editRole(role)'>
+                            <span class='glyphicon glyphicon-pencil'></span>
+                        </button>
+                        <button type='button' class='btn btn-default' localized-title="button.delete" ng-click='removeRole(role)'>
+                            <span class='glyphicon glyphicon-trash'></span>
+                        </button>
+                    </nobr></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div ng-if='roles && roles.length === 0' class='hwmdm-empty-state'>

@@ -39,6 +39,26 @@
             <h3 localized>nav.devices</h3>
             <p localized>devices.page.subtitle</p>
         </div>
+        <div class="hwmdm-search-actions">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'cards'}"
+                        ng-attr-aria-pressed="{{viewMode === 'cards'}}"
+                        localized-title="files.view.cards"
+                        ng-click="viewMode = 'cards'">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                    <span localized>files.view.cards</span>
+                </button>
+                <button type="button" class="btn btn-default"
+                        ng-class="{active: viewMode === 'list'}"
+                        ng-attr-aria-pressed="{{viewMode === 'list'}}"
+                        localized-title="files.view.list"
+                        ng-click="viewMode = 'list'">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <span localized>files.view.list</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="hwmdm-section-card">
@@ -270,7 +290,46 @@
         </div>
     </div>
 
-    <div ng-if='devices && devices.length > 0' class="table-responsive devices-table-wrap" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+    <div ng-if='devices && devices.length > 0 && viewMode === "cards"' class="config-card-grid">
+        <div class="config-card"
+             ng-repeat="device in devices">
+            <div class="config-card-body" ng-click="editDevice(device)">
+                <div class="config-card-name">
+                    <img class='device-indicator' ng-src='{{getDeviceIndicatorImage(device)}}' style="width:10px;height:10px;margin-right:4px">
+                    {{device.number}}
+                </div>
+                <div class="config-card-desc">{{getDeviceModel(device) || '—'}}</div>
+                <div class="app-card-meta">
+                    <span class="app-card-version" ng-if="device.configuration">{{device.configuration.name}}</span>
+                    <span class="app-card-version" ng-if="getDeviceBatteryLevel(device)">
+                        <span class="glyphicon glyphicon-flash"></span>{{getDeviceBatteryLevel(device)}}
+                    </span>
+                </div>
+                <div class="config-card-desc" ng-if="device.lastUpdateDate > 0" style="font-size:11px;margin-top:4px">
+                    {{device.lastUpdateDate|date:dateFormat}}
+                </div>
+            </div>
+            <div class="config-card-actions">
+                <button type='button' class='btn btn-sm btn-default' ng-click='editDevice(device)'
+                        localized-title="button.change" ng-if="hasPermission('edit_devices') || hasPermission('edit_device_desc')">
+                    <span class='glyphicon glyphicon-pencil'></span>
+                </button>
+                <button type='button' class='btn btn-sm btn-default' localized-title="button.qrcode"
+                        ng-if="hasPermission('enroll_devices')"
+                        ng-disabled="device.configuration.qrCodeKey == null"
+                        ng-click='showQrCode(device)'>
+                    <span class='glyphicon glyphicon-qrcode'></span>
+                </button>
+                <button type='button' class='btn btn-sm btn-default' ng-click='openRemoteAccess(device)'
+                        localized-title="button.remote.access"
+                        ng-if="hasPermission('edit_devices') || hasPermission('device.remote_access.view') || hasPermission('device.remote_access.control')">
+                    <span class='glyphicon glyphicon-facetime-video'></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if='devices && devices.length > 0 && viewMode === "list"' class="table-responsive devices-table-wrap" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
     <table class='table devices-table' style="width: 100%; table-layout: auto;">
         <!-- Sem larguras fixas: antes somavam ~1230px e empurravam a tabela para fora da tela.
              Larguras da tabela: css/hwmdm-ui.css, secao 21. -->

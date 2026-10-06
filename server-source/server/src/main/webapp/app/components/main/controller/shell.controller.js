@@ -1,5 +1,5 @@
 angular.module('headwind-kiosk')
-    .controller('ShellController', function ($scope, $sce, $rootScope, $state, userService, authService,
+    .controller('ShellController', function ($scope, $sce, $rootScope, $state, $timeout, userService, authService,
                                              pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
 
         $scope.localization = localization;
@@ -26,7 +26,8 @@ angular.module('headwind-kiosk')
             GENERAL: 'generalSettings',
             EXTENSIONS: 'extensions',
             INTEGRATIONS: 'integrations',
-            SERVER: 'server'
+            SERVER: 'server',
+            PROFILE: 'profile'
         };
 
         var PLUGIN_STATES = {
@@ -59,7 +60,8 @@ angular.module('headwind-kiosk')
             EXTENSIONS: 'nav.extensions',
             GOVERNANCE: 'nav.governance',
             INTEGRATIONS: 'nav.integrations',
-            SERVER: 'nav.server'
+            SERVER: 'nav.server',
+            PROFILE: 'menu.profile'
         };
 
         var STATE_TO_TAB = {};
@@ -87,6 +89,10 @@ angular.module('headwind-kiosk')
 
         $rootScope.$on('$stateChangeSuccess', function () {
             syncActiveTab();
+            $timeout(function () {
+                var active = document.querySelector('.hwmdm-nav-link-active');
+                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 80);
         });
 
         var cacheBustDeviceInfoResource = function (url) {
@@ -185,6 +191,11 @@ angular.module('headwind-kiosk')
                 return;
             }
             $scope.activeTab = tabName;
+
+            $timeout(function () {
+                var active = document.querySelector('.hwmdm-nav-link-active');
+                if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }, 50);
         };
 
         $scope.navOpen = false;

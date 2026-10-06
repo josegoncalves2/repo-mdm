@@ -11,7 +11,8 @@ angular.module('headwind-kiosk')
         $scope.files = [];
         $scope.loadingFiles = false;
         $scope.loadError = '';
-        $scope.viewMode = 'cards';
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_files_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_files_viewMode', v); });
         var searchRequest = 0;
 
         $scope.$watch('paging.currentPage', function () {

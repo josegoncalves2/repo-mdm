@@ -40,6 +40,9 @@ if (!document.localization) document.localization = [];
         'plugin.messaging.send.success': 'The message has been sent',
         'notfound.common.plugin.messaging.messages': 'No messages yet',
         'button.refresh': 'Refresh',
+        'button.remote.access': 'Remote access',
+        'button.calendar.from': 'Start date',
+        'button.calendar.to': 'End date',
 
         // --- WebFilter plugin ------------------------------------------------------------
         'plugin.webfilter.localization.key.name': 'Web Filter',
@@ -550,6 +553,8 @@ if (!document.localization) document.localization = [];
         'kiosk.perm.grantall': 'Grant all',
         'kiosk.perm.ask': 'Ask',
         'kiosk.perm.denylocation': 'Deny location',
+        'kiosk.enable.gps': 'Enable managed GPS',
+        'kiosk.enable.gps.tip': 'Turn on GPS tracking with recommended settings for this profile',
 
         // --- Messages --------------------------------------------------------------------
         'chat.page.subtitle': 'Send a message to a device and review what has already been delivered.',
@@ -558,7 +563,7 @@ if (!document.localization) document.localization = [];
         'chat.device.select.hint': 'Select a device to enable sending and view its message history.',
         'chat.send.no.permission': 'Your account does not have permission to send messages.',
         'applications.page.subtitle': 'Manage Android applications available to enrolled devices.',
-        'files.page.subtitle': 'APK packages and managed files delivered to devices by configuration.',
+        'files.page.subtitle': 'APK packages and managed files deployed to devices through configurations.',
         'files.view.cards': 'Cards',
         'files.view.list': 'List',
         'plugin.deviceinfo.search.placeholder': 'Number, description, IMEI, serial, phone, model, or IP',
@@ -611,6 +616,9 @@ if (!document.localization) document.localization = [];
         'settings.design.console.logo.choose': 'Choose file',
         'settings.design.console.logo.hint': 'Empty keeps the Headwind MDM brand. Any aspect ratio works: the logo is scaled by height.',
         'settings.design.console.logo.preview': 'Preview',
+        'settings.design.preview.title': 'Live preview',
+        'settings.design.preview.subtitle': 'Approximate look of the console with your colours.',
+        'settings.design.reset': 'Reset to defaults',
         'settings.design.launcher.moved.title': 'Tablet home screen',
         'settings.design.launcher.moved.body': 'The launcher theme sent to the tablets (background, icon size, desktop title) belongs to a device profile. Edit it in step 6, "Home screen appearance", of the profile.',
         'settings.design.launcher.moved.action': 'Open device profiles',
@@ -658,6 +666,9 @@ if (!document.localization) document.localization = [];
         'plugin.messaging.send.success': 'A mensagem foi enviada',
         'notfound.common.plugin.messaging.messages': 'Sem mensagens',
         'button.refresh': 'Atualizar',
+        'button.remote.access': 'Acesso remoto',
+        'button.calendar.from': 'Data inicial',
+        'button.calendar.to': 'Data final',
 
         // --- WebFilter plugin (pt_PT) ----------------------------------------------------
         'plugin.webfilter.localization.key.name': 'Filtro Web',
@@ -1145,6 +1156,8 @@ if (!document.localization) document.localization = [];
         'kiosk.perm.grantall': 'Conceder todas',
         'kiosk.perm.ask': 'Perguntar',
         'kiosk.perm.denylocation': 'Negar localizacao',
+        'kiosk.enable.gps': 'Ativar GPS gerenciado',
+        'kiosk.enable.gps.tip': 'Liga o rastreamento GPS com configurações recomendadas para este perfil',
 
         // --- Mensagens -------------------------------------------------------------------
         'chat.page.subtitle': 'Envie uma mensagem a um dispositivo e veja o que ja foi entregue.',
@@ -1206,6 +1219,9 @@ if (!document.localization) document.localization = [];
         'settings.design.console.logo.choose': 'Escolher arquivo',
         'settings.design.console.logo.hint': 'Vazio mantem a marca Headwind MDM. Qualquer proporcao serve: o logo e ajustado pela altura.',
         'settings.design.console.logo.preview': 'Previa',
+        'settings.design.preview.title': 'Previa ao vivo',
+        'settings.design.preview.subtitle': 'Aparencia aproximada do console com suas cores.',
+        'settings.design.reset': 'Restaurar padroes',
         'settings.design.launcher.moved.title': 'Tela inicial do tablet',
         'settings.design.launcher.moved.body': 'O tema do launcher enviado aos tablets (fundo, tamanho dos icones, titulo da area de trabalho) pertence ao perfil de dispositivo. Edite no passo 6, "Aparencia da tela inicial", do perfil.',
         'settings.design.launcher.moved.action': 'Abrir perfis de dispositivo',

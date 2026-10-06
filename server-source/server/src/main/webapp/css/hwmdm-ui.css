@@ -1208,3 +1208,55 @@ button:focus-visible,
 /* Menu "..." da linha de dispositivo: anexado ao body e alinhado a direita do botao (ultima
    coluna); antes abria para a direita e ficava fora da tela. Altura limitada com rolagem. */
 .dropdown-menu-devices-row { overflow-y: auto; }
+
+/* Preview ao vivo na tela de Aparencia e marca */
+.hwmdm-brand-preview-box {
+    border: 1px solid var(--hwmdm-border, #dee2e6);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 480px;
+}
+.hwmdm-brand-preview-topbar {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    min-height: 44px;
+}
+.hwmdm-brand-preview-sidebar-slice {
+    width: 48px;
+    margin: -8px 12px -8px -16px;
+    padding: 10px 6px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.hwmdm-brand-preview-sidebar-item {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.2);
+}
+.hwmdm-brand-preview-sidebar-item.active {
+    background: rgba(255,255,255,0.7);
+}
+.hwmdm-brand-preview-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.hwmdm-brand-preview-body {
+    background: var(--hwmdm-surface, #f8f9fa);
+    padding: 16px;
+    min-height: 80px;
+}
+.hwmdm-brand-preview-content {
+    display: flex;
+    gap: 8px;
+}
+.hwmdm-brand-preview-card {
+    flex: 1;
+    height: 40px;
+    background: #fff;
+    border: 1px solid var(--hwmdm-border, #dee2e6);
+    border-radius: 6px;
+}
