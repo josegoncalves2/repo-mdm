@@ -1,4 +1,4 @@
-<!-- Localization completed -->
+<!-- GPS Map - Rastreabilidade completa -->
 <div ng-controller="GpsMapTabController" class="gps-map-page">
     <div class="hwmdm-page-toolbar">
         <div>
@@ -14,179 +14,178 @@
                     ng-model="refreshIntervalMs" ng-change="onRefreshIntervalChanged()"
                     ng-options="option.value as option.label for option in refreshOptions">
             </select>
-            <button type="button" class="btn btn-primary" ng-click="loadDevices(true)" ng-disabled="loading"
-                    title="{{'button.refresh' | localize}}">
-                <span class="glyphicon glyphicon-refresh" ng-class="{'glyphicon-spin': loading}"></span>&nbsp;<span>{{"button.refresh" | localize}}</span>
+            <button type="button" class="btn btn-primary" ng-click="loadDevices(true)" ng-disabled="loading">
+                <span class="glyphicon glyphicon-refresh" ng-class="{'glyphicon-spin': loading}"></span>&nbsp;{{"button.refresh" | localize}}
             </button>
-            <button type="button" class="btn btn-default" ng-click="fitAll()" ng-disabled="!devices.length"
-                    title="{{'gpsmap.fit.all' | localize}}">
-                <span class="glyphicon glyphicon-fullscreen"></span>&nbsp;<span>{{"gpsmap.fit.all" | localize}}</span>
-            </button>
-            <button type="button" class="btn btn-default" ng-if="selectedDeviceId"
-                    ng-class="{active: historyMode}" ng-click="toggleHistory()"
-                    title="{{'gpsmap.history' | localize}}">
-                <span class="glyphicon glyphicon-refresh"></span>&nbsp;{{"gpsmap.history" | localize}}
+            <button type="button" class="btn btn-default" ng-click="fitAll()" ng-disabled="!devices.length">
+                <span class="glyphicon glyphicon-fullscreen"></span>&nbsp;{{"gpsmap.fit.all" | localize}}
             </button>
         </div>
     </div>
 
     <div class="error" ng-if="errorMessage">{{errorMessage}}</div>
 
-    <div class="gps-history-bar" ng-if="historyMode && selectedDeviceId">
-        <div class="gps-history-controls">
+    <!-- History control bar -->
+    <div class="hwmdm-control-bar" ng-if="historyMode && selectedDeviceId">
+        <div class="hwmdm-control-group">
             <label>{{"gpsmap.history.period" | localize}}:</label>
             <select class="form-control input-sm" ng-model="historyPeriod" ng-change="loadHistory()">
-                <option value="1">{{"gpsmap.history.1h" | localize}}</option>
-                <option value="6">{{"gpsmap.history.6h" | localize}}</option>
-                <option value="24">{{"gpsmap.history.24h" | localize}}</option>
-                <option value="168">{{"gpsmap.history.7d" | localize}}</option>
+                <option value="1">1h</option>
+                <option value="6">6h</option>
+                <option value="24">24h</option>
+                <option value="168">7 dias</option>
+                <option value="720">30 dias</option>
             </select>
-            <span class="gps-history-count" ng-if="historyPoints.length">
-                {{historyPoints.length}} {{"gpsmap.history.points" | localize}}
-                <span ng-if="historyStats"> &middot; {{historyStats.distance}} km &middot; {{historyStats.stops}} {{"gpsmap.history.stops" | localize}}</span>
+            <span ng-if="historyPoints.length" style="font-size:13px">
+                {{historyPoints.length}} pontos
+                <span ng-if="historyStats"> &middot; {{historyStats.distance}} km &middot; {{historyStats.stops}} paradas &middot; {{historyStats.duration}}</span>
             </span>
-            <span class="gps-history-count text-warning" ng-if="historyLoading">
-                <span class="glyphicon glyphicon-refresh glyphicon-spin"></span> {{"gpsmap.history.loading" | localize}}
-            </span>
-            <span class="gps-history-count text-muted" ng-if="!historyLoading && !historyPoints.length">
-                {{"gpsmap.history.empty" | localize}}
+            <span class="text-warning" ng-if="historyLoading">
+                <span class="glyphicon glyphicon-refresh glyphicon-spin"></span> Carregando...
             </span>
         </div>
-        <div class="gps-history-actions">
-            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('csv')"
-                    ng-disabled="!historyPoints.length" title="CSV">
-                <span class="glyphicon glyphicon-download"></span> CSV
+        <div class="hwmdm-control-group">
+            <button type="button" class="btn btn-xs" ng-class="playback.playing ? 'btn-warning' : 'btn-success'"
+                    ng-click="togglePlayback()" ng-disabled="!historyPoints.length">
+                <span class="glyphicon" ng-class="playback.playing ? 'glyphicon-pause' : 'glyphicon-play'"></span>
             </button>
-            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('kml')"
-                    ng-disabled="!historyPoints.length" title="KML">
-                <span class="glyphicon glyphicon-globe"></span> KML
+            <button type="button" class="btn btn-xs btn-default" ng-click="stopPlayback()" ng-disabled="!playback.index">
+                <span class="glyphicon glyphicon-stop"></span>
             </button>
-            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('gpx')"
-                    ng-disabled="!historyPoints.length" title="GPX">
-                <span class="glyphicon glyphicon-download"></span> GPX
-            </button>
-            <button type="button" class="btn btn-xs btn-danger" ng-click="toggleHistory()"
-                    title="{{'gpsmap.history.close' | localize}}">
+            <select class="form-control input-sm" ng-model="playback.speed" style="width:60px;display:inline-block">
+                <option value="1">1x</option>
+                <option value="2">2x</option>
+                <option value="5">5x</option>
+                <option value="10">10x</option>
+            </select>
+            <span style="color:var(--hwmdm-border)">|</span>
+            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('csv')" ng-disabled="!historyPoints.length">CSV</button>
+            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('kml')" ng-disabled="!historyPoints.length">KML</button>
+            <button type="button" class="btn btn-xs btn-default" ng-click="exportHistory('gpx')" ng-disabled="!historyPoints.length">GPX</button>
+            <button type="button" class="btn btn-xs btn-danger" ng-click="toggleHistory()">
                 <span class="glyphicon glyphicon-remove"></span>
             </button>
         </div>
     </div>
 
+    <!-- Timeline slider -->
+    <div class="hwmdm-timeline-bar" ng-if="historyMode && historyPoints.length > 1">
+        <span class="hwmdm-timeline-time">{{playback.currentTime}}</span>
+        <input type="range" min="0" max="{{historyPoints.length - 1}}"
+               ng-model="playback.index" ng-change="seekPlayback()">
+        <span class="hwmdm-timeline-time">{{playback.endTime}}</span>
+    </div>
+
+    <!-- Stops -->
+    <div class="hwmdm-chip-bar" ng-if="historyMode && historyStops.length">
+        <div class="hwmdm-chip-bar-title" style="color:#e74c3c">
+            <span class="glyphicon glyphicon-map-marker"></span> {{historyStops.length}} paradas
+        </div>
+        <div class="hwmdm-chip-list">
+            <a href="" class="hwmdm-chip" ng-repeat="stop in historyStops" ng-click="goToStop(stop)">
+                <strong style="color:#e74c3c">#{{$index + 1}}</strong>
+                <span>{{stop.arrivalTime}}</span>
+                <span style="color:var(--hwmdm-muted)">({{stop.durationText}})</span>
+            </a>
+        </div>
+    </div>
+
     <div class="hwmdm-split-layout">
-        <div class="remote-device-panel gps-device-panel">
+        <!-- Lista lateral com detalhes integrados no item selecionado -->
+        <div class="remote-device-panel">
             <div class="gps-device-search">
                 <input type="text" class="form-control" ng-model="deviceSearch"
                        placeholder="{{'gpsmap.search.device' | localize}}" />
             </div>
 
             <div class="gps-device-stats">
-                <span class="gps-stat" title="{{'gpsmap.status.online' | localize}}">
-                    <span class="remote-status-dot remote-status-online"></span> {{onlineCount}}
-                </span>
-                <span class="gps-stat" title="{{'gpsmap.status.offline' | localize}}">
-                    <span class="remote-status-dot remote-status-offline"></span> {{offlineCount}}
+                <span class="gps-stat">
+                    <span class="hwmdm-status-dot hwmdm-status-dot--online"></span> {{onlineCount}}
                 </span>
                 <span class="gps-stat">
-                    {{devices.length}} {{"gpsmap.status.total" | localize}}
+                    <span class="hwmdm-status-dot hwmdm-status-dot--offline"></span> {{offlineCount}}
                 </span>
+                <span class="gps-stat">{{devices.length}} total</span>
             </div>
 
-            <div class="summary-empty-map" ng-if="!devices.length" style="padding:24px;text-align:center">{{"gpsmap.empty" | localize}}</div>
+            <div class="hwmdm-filter-bar" ng-if="showFilters">
+                <label class="hwmdm-filter-check">
+                    <input type="checkbox" ng-model="filters.onlineOnly" ng-change="applyFilters()"> Apenas online
+                </label>
+                <label class="hwmdm-filter-check">
+                    <input type="checkbox" ng-model="filters.lowBattery" ng-change="applyFilters()"> Bateria &lt; 20%
+                </label>
+                <label class="hwmdm-filter-check">
+                    <input type="checkbox" ng-model="filters.moving" ng-change="applyFilters()"> Em movimento
+                </label>
+            </div>
+            <a href="" class="hwmdm-filter-toggle" ng-click="showFilters = !showFilters">
+                <span class="glyphicon" ng-class="showFilters ? 'glyphicon-chevron-up' : 'glyphicon-filter'"></span>
+                Filtros
+            </a>
 
             <a href="" class="list-group-item remote-device-item"
                ng-repeat="device in filteredDevices = (devices | filter:deviceSearchFilter)"
                ng-click="selectDevice(device)"
                ng-class="{'remote-device-item-active': selectedDeviceId === device.id}">
-                <span class="remote-status-dot"
-                      ng-class="device.isOnline ? 'remote-status-online' : 'remote-status-offline'"
-                      title="{{device.isOnline ? ('gpsmap.status.online' | localize) : ('gpsmap.status.offline' | localize)}}"></span>
+                <span class="hwmdm-status-dot"
+                      ng-class="{'hwmdm-status-dot--online': device.isOnline, 'hwmdm-status-dot--offline': !device.isOnline}"></span>
                 <div class="remote-device-main">
                     <span class="remote-device-number">{{device.number}}</span>
                     <span class="remote-device-model">{{device.model || '—'}}</span>
+                    <!-- Detalhes expandidos no item selecionado -->
+                    <div class="remote-device-expanded" ng-if="selectedDeviceId === device.id">
+                        <span>{{device.lat | number:5}}, {{device.lon | number:5}}</span>
+                        <span ng-if="device.batteryLevel != null">Bateria: {{device.batteryLevel}}%</span>
+                        <span ng-if="device.speed > 0">{{device.speed | number:0}} km/h</span>
+                        <span ng-if="device.deviceIp">IP: {{device.deviceIp}}</span>
+                        <span ng-if="device.networkType">{{device.networkType}}</span>
+                        <span>{{device.locationTs | date:'dd/MM HH:mm:ss'}}</span>
+                        <div style="margin-top:4px;display:flex;gap:4px">
+                            <button type="button" class="btn btn-xs btn-primary" ng-click="toggleHistory(); $event.stopPropagation()" ng-if="!historyMode">
+                                <span class="glyphicon glyphicon-time"></span> Historico
+                            </button>
+                            <button type="button" class="btn btn-xs btn-default" ng-click="centerOnDevice(device); $event.stopPropagation()">
+                                <span class="glyphicon glyphicon-screenshot"></span> Centralizar
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="gps-device-meta">
+                <div class="gps-device-meta" ng-if="selectedDeviceId !== device.id">
                     <span class="gps-device-time">{{device.locationTs | date:'HH:mm'}}</span>
                     <span class="gps-device-battery" ng-if="device.batteryLevel != null"
-                          ng-class="{'text-danger': device.batteryLevel < 20, 'text-warning': device.batteryLevel >= 20 && device.batteryLevel < 50}">
+                          ng-class="{'text-danger': device.batteryLevel < 20}">
                         <span class="glyphicon glyphicon-flash"></span>{{device.batteryLevel}}%
                     </span>
                 </div>
             </a>
         </div>
 
+        <!-- Mapa ocupa todo o painel direito -->
         <div class="gps-map-area">
+            <div class="hwmdm-layer-control">
+                <button type="button" class="btn btn-xs" ng-class="currentLayer === 'streets' ? 'btn-primary' : 'btn-default'"
+                        ng-click="setMapLayer('streets')" title="Ruas">
+                    <span class="glyphicon glyphicon-road"></span>
+                </button>
+                <button type="button" class="btn btn-xs" ng-class="currentLayer === 'satellite' ? 'btn-primary' : 'btn-default'"
+                        ng-click="setMapLayer('satellite')" title="Satelite">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </button>
+                <button type="button" class="btn btn-xs" ng-class="currentLayer === 'topo' ? 'btn-primary' : 'btn-default'"
+                        ng-click="setMapLayer('topo')" title="Topografico">
+                    <span class="glyphicon glyphicon-tree-deciduous"></span>
+                </button>
+            </div>
+
             <div class="gps-map-shell">
                 <div id="gps-map" class="gps-map-canvas"></div>
-                <div class="summary-empty-map" ng-if="mapReady && !devices.length">
-                    <span>{{"gpsmap.empty" | localize}}</span>
-                </div>
-                <div class="summary-empty-map" ng-if="mapError">
-                    <span>{{"gpsmap.error.render" | localize}}</span>
-                </div>
             </div>
 
-            <div class="gps-detail-panel" ng-if="selectedDevice">
-                <div class="gps-detail-header">
-                    <strong>{{selectedDevice.number}}</strong>
-                    <span class="gps-detail-status" ng-class="selectedDevice.isOnline ? 'gps-detail-online' : 'gps-detail-offline'">
-                        {{selectedDevice.isOnline ? ('gpsmap.status.online' | localize) : ('gpsmap.status.offline' | localize)}}
-                    </span>
-                    <button type="button" class="close" ng-click="clearSelection()" title="{{'gpsmap.detail.close' | localize}}">&times;</button>
-                </div>
-                <div class="gps-detail-body">
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"remote.label.model" | localize}}</span>
-                        <span>{{selectedDevice.model || '—'}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.serial">
-                        <span class="gps-detail-label">{{"remote.label.serial" | localize}}</span>
-                        <span>{{selectedDevice.serial}}</span>
-                    </div>
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"gpsmap.detail.coordinates" | localize}}</span>
-                        <span>{{selectedDevice.lat | number:6}}, {{selectedDevice.lon | number:6}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.alt">
-                        <span class="gps-detail-label">{{"gpsmap.detail.altitude" | localize}}</span>
-                        <span>{{selectedDevice.alt | number:0}} m</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.speed != null">
-                        <span class="gps-detail-label">{{"gpsmap.detail.speed" | localize}}</span>
-                        <span>{{selectedDevice.speed | number:1}} km/h</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.batteryLevel != null">
-                        <span class="gps-detail-label">{{"gpsmap.detail.battery" | localize}}</span>
-                        <span ng-class="{'text-danger': selectedDevice.batteryLevel < 20}">{{selectedDevice.batteryLevel}}%</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.networkType">
-                        <span class="gps-detail-label">{{"gpsmap.detail.network" | localize}}</span>
-                        <span>{{selectedDevice.networkType}}</span>
-                    </div>
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"gpsmap.detail.updated" | localize}}</span>
-                        <span>{{selectedDevice.locationTs | date:'dd/MM/yyyy HH:mm:ss'}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.deviceIp">
-                        <span class="gps-detail-label">IP</span>
-                        <span>{{selectedDevice.deviceIp}}</span>
-                    </div>
-                </div>
-                <div class="gps-detail-actions">
-                    <button type="button" class="btn btn-sm btn-default" ng-click="toggleHistory()" ng-if="!historyMode"
-                            title="{{'gpsmap.history' | localize}}">
-                        <span class="glyphicon glyphicon-refresh"></span> {{"gpsmap.history" | localize}}
-                    </button>
-                    <button type="button" class="btn btn-sm btn-default" ng-click="centerOnDevice(selectedDevice)"
-                            title="{{'gpsmap.detail.center' | localize}}">
-                        <span class="glyphicon glyphicon-fullscreen"></span> {{"gpsmap.detail.center" | localize}}
-                    </button>
-                </div>
-            </div>
-
-            <div class="text-muted gps-footer-bar">
-                {{devices.length}} {{"gpsmap.devices.on.map" | localize}}
-                <span ng-if="lastUpdated"> &middot; {{"gpsmap.updated.at" | localize}} {{lastUpdated | date:'HH:mm:ss'}}</span>
-                <span ng-if="refreshIntervalMs"> &middot; {{"gpsmap.auto.refresh" | localize}} {{refreshIntervalMs / 1000}}s</span>
+            <div class="hwmdm-footer-bar">
+                {{devices.length}} dispositivo(s) no mapa
+                <span ng-if="lastUpdated"> - Atualizado as {{lastUpdated | date:'HH:mm:ss'}}</span>
+                <span ng-if="refreshIntervalMs"> - atualizacao automatica {{refreshIntervalMs / 1000}}s</span>
             </div>
         </div>
     </div>

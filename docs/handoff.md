@@ -1,4 +1,4 @@
-# Handoff — Sessao 2026-10-05 (atualizado 13:39)
+# Handoff — Sessao 2026-10-06 (atualizado 09:15)
 
 ## Contexto
 - Stack online: 4 containers (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin) — todos UP
@@ -92,6 +92,51 @@ Auditoria cruzada de 60 itens. Resultado em auditoria.md. Resumo:
 | Entrypoint | Reescrito como minimo (so sobe Tomcat). NAO destroi mais CSS |
 | Persistencia | md5 container = md5 volume. Sobrevive restart |
 | CryptoUtil | BaseEncoding.base64() confirmado no fonte (fix base64 standard com padding) |
+
+## Sessao 2026-10-06
+
+### Fixes deployados
+
+1. **CSS `.remote-preview-screen`** — removido `display: flex` que fazia canvas e overlay "Chamando o aparelho" ficarem lado a lado em vez de sobrepostos (main.css)
+2. **CSS `.remote-device-item` antigo** — removido grid de 3 colunas que conflitava com layout novo, causando nomes sobrepostos na lista de devices (main.css)
+3. **CSS `.remote-device-item` novo** — reescrito com grid 3 colunas correto (dot + nome/modelo + hora) igual ao Mapa de Localização (main.css)
+4. **CSS `.remote-status-dot`** — restauradas classes de bolinha de status (removidas acidentalmente na limpeza) (main.css)
+5. **HTML `remote.html`** — lista de dispositivos reescrita com padrão do Mapa (dot + serial + modelo + hora), busca movida para inline no painel
+6. **JS `remote.controller.js`** — BLOQUEADO: arquivo do root, precisa de `chown` para editar (contadores online/offline pendentes)
+
+### OpenSpec — documentação completa
+
+Todos os docs de `/opt/projetos/hwmdm/repo-mdm/docs/` foram organizados em changes no OpenSpec. Cada change com proposal.md detalhado e tarefas.
+
+**7 changes ativas:**
+
+| Change | Tema | Status |
+|--------|------|--------|
+| `add-webfilter-module` | WebFilter completo (DNS, launcher, console) | Já existia, bem detalhado |
+| `api-token-powerbi` | Integração Power BI + gerador de API token | Novo — a verificar |
+| `correcoes-interface-pendentes` | ~30 bugs/correções de problemas.md | Novo — a verificar |
+| `corrigir-12-itens` | Os 12 itens originais do responsável | Já existia |
+| `corrigir-permissoes-e-console` | Permissões e console | Já existia |
+| `gps-rastreabilidade-avancada` | GPS avançado (playback, geocercas, heatmap) | Novo — parcialmente implementado |
+| `redesign-consistencia-painel` | Padronização visual de todas as telas | Novo — parcialmente iniciado |
+
+### Redesign de consistência — levantamento completo
+
+O responsável fez levantamento de TODAS as telas do painel pedindo padronização:
+
+- **Acesso Remoto:** lista padronizada (parcialmente feito), botões de ação na lateral (pendente)
+- **Mensagens:** trocar dropdown por lista lateral
+- **Relatórios:** lista lateral + relatório por device + visão unificada
+- **Perfis de dispositivo:** edição inline (sem página separada, sem confirmação de saída)
+- **Aplicativos, Arquivos, Ícones:** lista lateral + detalhe inline
+- **Usuários, Permissões:** lista lateral + edição inline
+- **Aparência e marca:** personalização completa (nome, logo, favicon, tela inicial)
+
+### Pendencias desta sessao
+
+- [ ] `sudo chown -R sahw:sahw` nos controllers (root) para poder editar JS
+- [ ] Adicionar `onlineCount`/`offlineCount` no remote.controller.js
+- [ ] Implementar restante do redesign (5 fases detalhadas em `redesign-consistencia-painel/tasks.md`)
 
 ## Arquivos-chave alterados nesta sessao
 

@@ -1,6 +1,18 @@
-# Backlog — HWMDM (atualizado 2026-10-05 13:39)
+# Backlog — HWMDM (atualizado 2026-10-06 09:15)
 
 ## Status geral: 27 FALHAS, 10 PARCIAIS, 9 PENDENTES, 14 OK
+
+### OpenSpec changes ativas (documentacao completa em openspec/changes/)
+
+| Change | Tema |
+|--------|------|
+| `add-webfilter-module` | WebFilter completo |
+| `api-token-powerbi` | Power BI + API token |
+| `correcoes-interface-pendentes` | ~30 bugs de interface |
+| `corrigir-12-itens` | 12 itens do responsável |
+| `corrigir-permissoes-e-console` | Permissões e console |
+| `gps-rastreabilidade-avancada` | GPS avançado |
+| `redesign-consistencia-painel` | Padronização visual de todas as telas |
 
 ---
 
@@ -74,6 +86,26 @@
 - [ ] Controle de versao/build — NAO implementado
 - [ ] Modularidade (desativar modulo sem parar tudo) — NAO implementado
 - [ ] Validacao visual de TODAS as telas por UX/UI
+
+### Prioridade 9 — Redesign de consistência do painel (change: redesign-consistencia-painel)
+- [x] CSS remote-preview-screen: removido display:flex (canvas estourava) — DEPLOYED 2026-10-06
+- [x] CSS remote-device-item: removido grid antigo conflitante — DEPLOYED 2026-10-06
+- [x] CSS remote-device-item: reescrito com grid padrão do Mapa — DEPLOYED 2026-10-06
+- [x] HTML remote.html: lista padronizada (dot + serial + modelo + hora) — DEPLOYED 2026-10-06
+- [x] HTML remote.html: busca movida para inline no painel — DEPLOYED 2026-10-06
+- [ ] JS remote.controller.js: contadores online/offline — BLOQUEADO (arquivo root, precisa chown)
+- [ ] Mensagens: trocar dropdown por lista lateral padrão
+- [ ] Relatórios: lista lateral + relatório por device + visão unificada
+- [ ] Perfis de dispositivo: edição inline (sem página separada)
+- [ ] Aplicativos, Arquivos, Ícones: lista lateral + detalhe inline
+- [ ] Usuários, Permissões: lista lateral + edição inline
+- [ ] Acesso Remoto: botões de ação na coluna lateral (não embaixo esticados)
+- [ ] Aparência e marca: personalização completa (nome, logo, favicon)
+
+### Prioridade 10 — Integração Power BI e API Token (change: api-token-powerbi)
+- [ ] Endpoint/tela para gerar token de longa duração (read-only)
+- [ ] UserRole de leitura (API reader)
+- [ ] Documentação Swagger dos endpoints
 
 ### Prioridade 8 — Infra
 - [x] docker-compose.yaml unico — OK

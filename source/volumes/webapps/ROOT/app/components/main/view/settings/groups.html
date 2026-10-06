@@ -1,5 +1,5 @@
 <!-- Localization completed -->
-<div class="width-1000" ng-controller="GroupsTabController">
+<div class="hwmdm-list-page" ng-controller="GroupsTabController">
 
     <div class="hwmdm-page-toolbar">
         <div>
@@ -11,65 +11,55 @@
                    ng-change="search()"
                    localized-placeholder='form.settings.groups.search.placeholder'
                    class='form-control'/>
-            <button type='button' class='btn btn-default' ng-click='search()' localized>button.search</button>
-            <button type='button' class='btn btn-default' ng-click='editGroup( {} )' localized>button.add</button>
+            <button type='button' class='btn btn-primary' ng-click='editGroup( {} )'>
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;<span localized>button.add</span>
+            </button>
         </div>
     </div>
 
-    <div>
-        <div class="text-center" ng-if="groups.length > paging.pageSize">
-            <pagination
-                    boundary-links='true' class='pagination-sm'
-                    max-size='3'
-                    ng-model='paging.currentPage'
-                    total-items='groups.length'
-                    items-per-page='paging.pageSize'
-                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                    last-text='&raquo;'></pagination>
-        </div>
-
-        <div ng-if='groups && groups.length > 0' class="table-responsive">
-
-
-        <table class='table'>
-            <thead>
-            <tr>
-                <th localized>table.heading.group.name</th>
-                <th class='actions-column' localized>table.heading.group.actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat='group in groups.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
-                <td>{{group.name}}</td>
-                <td>
-                    <div>
-                        <button type='button' class='btn btn-default' ng-click='editGroup( group )'>
-                            <span class='glyphicon glyphicon-pencil'></span>
-                        </button>
-                        <button type='button'
-                                class='btn btn-default'
-                                ng-disabled='group.id === 1'
-                                ng-click='removeGroup( group )'>
-                            <span class='glyphicon glyphicon-trash'></span>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="text-center" ng-if="groups.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='groups.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
     </div>
 
-        <div ng-if='groups && groups.length === 0' class='center' localized>notfound.groups</div>
-
-        <div class="text-center" ng-if="groups.length > paging.pageSize">
-            <pagination
-                    boundary-links='true' class='pagination-sm'
-                    max-size='3'
-                    ng-model='paging.currentPage'
-                    total-items='groups.length'
-                    items-per-page='paging.pageSize'
-                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                    last-text='&raquo;'></pagination>
+    <div ng-if='groups && groups.length > 0' class="config-card-grid">
+        <div class="config-card"
+             ng-repeat="group in groups.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
+            <div class="config-card-body" ng-click="editGroup(group)">
+                <div class="config-card-name">{{group.name}}</div>
+            </div>
+            <div class="config-card-actions">
+                <button type='button' class='btn btn-sm btn-default' localized-title="button.edit" ng-click='editGroup(group)'>
+                    <span class='glyphicon glyphicon-pencil'></span>
+                </button>
+                <button type='button' class='btn btn-sm btn-default' localized-title="button.delete"
+                        ng-disabled='group.id === 1'
+                        ng-click='removeGroup(group)'>
+                    <span class='glyphicon glyphicon-trash'></span>
+                </button>
+            </div>
         </div>
+    </div>
+
+    <div ng-if='groups && groups.length === 0' class='hwmdm-empty-state'>
+        <span class="glyphicon glyphicon-th-large"></span>
+        <span localized>notfound.groups</span>
+    </div>
+
+    <div class="text-center" ng-if="groups.length > paging.pageSize">
+        <pagination
+                boundary-links='true' class='pagination-sm'
+                max-size='3'
+                ng-model='paging.currentPage'
+                total-items='groups.length'
+                items-per-page='paging.pageSize'
+                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                last-text='&raquo;'></pagination>
     </div>
 </div>

@@ -28,6 +28,16 @@
 | 2026-10-05 | Claude Opus 4.6 | Fix: botao "Enable managed GPS" em kiosk.html hardcoded em ingles → localizado kiosk.enable.gps | DEPLOYED | kiosk.html + hwmdm_modules.js |
 | 2026-10-05 | Claude Opus 4.6 | PROVA VIVA: Acesso Remoto funcional — login admin, 3 devices (2 offline, 1 online R9XT200AMYY), IP 192.168.1.116, Android 14, sessão pausada com botão Request | SCREENSHOT | /home/sahw/remote-access.png |
 | 2026-10-05 13:39 | Claude Opus 4.6 | DIFF COMPLETO: lidos 21 docs + estado real do servidor (containers, DB, files) | OK | Relatório abaixo |
+| 2026-10-06 08:37 | Claude Opus 4.6 | Fix CSS remote-preview-screen: removido display:flex (canvas e overlay lado a lado) | DEPLOYED | main.css |
+| 2026-10-06 08:40 | Claude Opus 4.6 | Fix CSS remote-device-item: removido grid antigo conflitante (nomes sobrepostos na lista) | DEPLOYED | main.css |
+| 2026-10-06 08:41 | Claude Opus 4.6 | CSS remote-device-item: reescrito com grid 3 colunas padrão do Mapa (dot + main + meta) | DEPLOYED | main.css |
+| 2026-10-06 08:41 | Claude Opus 4.6 | CSS remote-status-dot: restauradas classes de bolinha (removidas na limpeza) | DEPLOYED | main.css |
+| 2026-10-06 08:42 | Claude Opus 4.6 | HTML remote.html: lista reescrita com padrão do Mapa (dot + serial + modelo + hora) | DEPLOYED | remote.html |
+| 2026-10-06 08:42 | Claude Opus 4.6 | HTML remote.html: busca movida de toolbar para inline no painel | DEPLOYED | remote.html |
+| 2026-10-06 08:45 | Claude Opus 4.6 | JS remote.controller.js: contadores online/offline | BLOQUEADO | Arquivo do root, precisa chown |
+| 2026-10-06 09:00 | Claude Opus 4.6 | OpenSpec: criadas 9 changes a partir de docs/ (depois consolidadas para 7) | OK | openspec/changes/ |
+| 2026-10-06 09:10 | Claude Opus 4.6 | OpenSpec: removidas 5 changes irrelevantes (não são do projeto MDM) | OK | Consolidação |
+| 2026-10-06 09:15 | Claude Opus 4.6 | Atualização de handoff.md, backlog.md e auditoria.md com trabalho da sessão 2026-10-06 | OK | docs/ |
 
 ---
 
