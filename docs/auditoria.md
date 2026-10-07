@@ -63,6 +63,11 @@
 | 2026-10-07 15:00 | Claude Opus 4.6 | Erro "Assinatura da política do MDM não confere" (webfilter no tablet): APK 1.0 compilado com segredo padrão `changeme-C3z9vi54`; servidor assina com hash.secret do projeto | CORRIGIDO | build.gradle lê SHARED_SECRET (source/.env), falha se ausente; webfilter 1.1 (versionCode 2), mesma chave (SHA-256 44372f14…), conta de assinatura reproduzida = CONFERE |
 | 2026-10-07 15:05 | Claude Opus 4.6 | Plugin webfilter em produção (jar 29/09) NÃO enviava webfilterBrowserPolicies; jar de 02/10 (mesmo fonte, bytecode 52, mesmos changesets) sim | DEPLOYED | Backup em backups/webfilter-0.1.0-20260929-antes-20261007.jar; trocado em WEB-INF/lib (volume + server-source), re-travado; hwmdm-mdm reiniciado, login OK, 0 erros. Sync agora traz políticas p/ 5 navegadores |
 | 2026-10-07 15:10 | Claude Opus 4.6 | Webfilter 1.1 publicado pelo painel (upload + versão 10137) e atribuído ao perfil 60; set_config enviado ao R9XT200AMYY | DEPLOYED | Arquivo sahw:sahw 664 +i. Instalação/uso no tablet: ver linha seguinte |
+| 2026-10-07 15:55 | Claude Opus 4.6 | Webfilter 1.1 instalado no R9XT200AMYY (toque no ícone de download do launcher via acesso remoto) | OK | Provado por print: Informação detalhada > Status da instalação = 1.1 |
+| 2026-10-07 16:10 | Claude Opus 4.6 | Relatório de prints de TODAS as 26 telas (Chromium real) | OK | docs/evidencias/2026-10-07/RELATORIO.md + 30 prints |
+| 2026-10-07 16:15 | Claude Opus 4.6 | Tela Servidor em branco: lógica do iframe num `<script>` de template (ng-include não executa) → movida p/ ShellController (armServerFrame/serverFrameLoaded/retryServerFrame, ng-on-load) | CORRIGIDO | Print 23-servidor-corrigido.png |
+| 2026-10-07 16:20 | Claude Opus 4.6 | Informação detalhada: busca dava HTTP 400 (`sortBy:'number'`, enum exige `NUMBER`) e mensagem pt "Falha de solicitou" | CORRIGIDO | volume + server-source; tradução → "Falha na requisição"; print 15b |
+| 2026-10-07 16:20 | Claude Opus 4.6 | Pendências abertas | ABERTO | Piscada do bloqueio (APK), print do app Web Filter no tablet, acessibilidade "não", R9XT106Y5RP fora da rede, textos em inglês, Aparência vazia, Backup sem .dump, senha fraca |
 
 ---
 

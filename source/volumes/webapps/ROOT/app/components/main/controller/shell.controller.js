@@ -120,10 +120,10 @@ angular.module('headwind-kiosk')
         });
 
         var cacheBustDeviceInfoResource = function (url) {
-            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061730') >= 0) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610071540') >= 0) {
                 return url;
             }
-            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061730';
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610071540';
         };
 
         var waitForPluginModules = function (callback) {
@@ -184,9 +184,30 @@ angular.module('headwind-kiosk')
         };
 
         var runtime = window.HWMDM_RUNTIME || {};
-        $scope.serverAdminUrl = runtime.adminPort
-            ? $sce.trustAsResourceUrl(window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/')
+        var serverAdminBase = runtime.adminPort
+            ? window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/'
             : null;
+        $scope.serverAdminUrl = serverAdminBase ? $sce.trustAsResourceUrl(serverAdminBase) : null;
+
+        // Estado do iframe do hwmdm-admin. Ficava num <script> do template, que o
+        // ng-include nao executa: a tela Servidor abria em branco.
+        var serverFrameTimer = null;
+        $scope.armServerFrame = function () {
+            $scope.serverFrameState = serverAdminBase ? 'loading' : 'error';
+            if (serverFrameTimer) { $timeout.cancel(serverFrameTimer); }
+            if (!serverAdminBase) { return; }
+            serverFrameTimer = $timeout(function () {
+                if ($scope.serverFrameState === 'loading') { $scope.serverFrameState = 'error'; }
+            }, 30000);
+        };
+        $scope.serverFrameLoaded = function () {
+            if (serverFrameTimer) { $timeout.cancel(serverFrameTimer); }
+            $scope.serverFrameState = 'ready';
+        };
+        $scope.retryServerFrame = function () {
+            $scope.serverAdminUrl = $sce.trustAsResourceUrl(serverAdminBase + '?r=' + Date.now());
+            $scope.armServerFrame();
+        };
 
         $scope.tabTitle = function () {
             if (tabTitleKeys[$scope.activeTab]) {

@@ -297,7 +297,7 @@ document.localization ['pt_PT'] = {
     'error.internal.server': 'Erro interno do servidor',
     'error.invalid.device.command': 'Comando de dispositivo inválido',
     'error.permission.denied': 'Sem direitos de execução',
-    'error.request.failure': 'Falha de solicitou',
+    'error.request.failure': 'Falha na requisição',
     'error.configuration.device.use': 'Não é possível excluir essa configuração, ela está sendo usada em algum(ns) dispositivo(s). Primeiro vá para "Dispositivos", encontre o dispositivo usando esta configuração e altere sua configuração.',
     'error.invalid.system.update.time': 'Intervalo de instalação inválido',
     'error.size.limit.exceeded': 'Limite de armazenamento excedido',
