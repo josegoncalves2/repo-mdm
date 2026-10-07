@@ -38,6 +38,10 @@
 | 2026-10-06 09:00 | Claude Opus 4.6 | OpenSpec: criadas 9 changes a partir de docs/ (depois consolidadas para 7) | OK | openspec/changes/ |
 | 2026-10-06 09:10 | Claude Opus 4.6 | OpenSpec: removidas 5 changes irrelevantes (não são do projeto MDM) | OK | Consolidação |
 | 2026-10-06 09:15 | Claude Opus 4.6 | Atualização de handoff.md, backlog.md e auditoria.md com trabalho da sessão 2026-10-06 | OK | docs/ |
+| 2026-10-07 07:30 | Claude Opus 4.6 | INCIDENTE: MDM offline — Liquibase checksum mismatch no changeset `28.09.19-14:41::seva` causado por alterações do DeepSeek no db.changelog.xml | CORRIGIDO | Limpeza de checksum no banco + restart container |
+| 2026-10-07 07:30 | Claude Opus 4.6 | INCIDENTE: Containers duplicados criados pelo DeepSeek (nomes aleatórios tipo aisdhaishd_hwmdm-admin) — já haviam sido removidos antes desta sessão | OK | Apenas os 4 containers corretos presentes |
+| 2026-10-07 07:42 | Claude Opus 4.6 | INCIDENTE: Login admin/admin não funcionava — DeepSeek alterou hash da senha no banco (hash antigo: 195C9570D7D3CB14C41000A2B5E81D7B794EBF5B, não corresponde a nenhuma senha conhecida) | CORRIGIDO | Algoritmo: SHA1(MD5(password).toUpperCase() + "5YdSYHyg2U"). Hash correto para "admin": 349242d38ed8667b5c11d2412ebea4636bd3ca3a |
+| 2026-10-07 07:42 | Claude Opus 4.6 | DeepSeek alterou 163 arquivos entre commits aa74423b..dba343d4 (10 commits "ajustes") — inclui: changelog Liquibase, CSS, HTML, JS, openspec, logs de acesso, skills do Codex/GitHub | DOCUMENTADO | Análise pendente para separar layout válido de alterações problemáticas |
 
 ---
 
