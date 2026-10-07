@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.webkit.WebView;
@@ -29,9 +30,11 @@ public final class BlockOverlay {
             try {
                 WindowManager wm = (WindowManager) service.getSystemService(Context.WINDOW_SERVICE);
                 if (view != null) {
-                    if (page.equals(shownPage)) return;
-                    load(view, page, html);
-                    shownPage = page;
+                    if (!page.equals(shownPage)) {
+                        load(view, page, html);
+                        shownPage = page;
+                    }
+                    view.setVisibility(View.VISIBLE);
                     return;
                 }
                 WebView web = newWebView(service);
@@ -58,20 +61,23 @@ public final class BlockOverlay {
         });
     }
 
+    // Esconde sem destruir: recriar a WebView a cada volta pintava branco antes da
+    // pagina de bloqueio (piscada). A janela nao recebe toque, entao nao atrapalha.
     public static void hide(final AccessibilityService service) {
         if (view == null) return;
         MAIN.post(() -> {
-            if (view == null) return;
-            try {
-                ((WindowManager) service.getSystemService(Context.WINDOW_SERVICE)).removeView(view);
-                view.destroy();
-            } catch (Throwable ignored) { }
-            view = null;
-            shownPage = null;
+            if (view != null) view.setVisibility(View.GONE);
         });
     }
 
-    public static boolean isShown() { return view != null; }
+    public static void reveal(final AccessibilityService service) {
+        if (view == null) return;
+        MAIN.post(() -> {
+            if (view != null && shownPage != null) view.setVisibility(View.VISIBLE);
+        });
+    }
+
+    public static boolean isShown() { return view != null && view.getVisibility() == View.VISIBLE; }
 
     static int contentTop(AccessibilityNodeInfo bar) {
         if (bar == null) return 0;

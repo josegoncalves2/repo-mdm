@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         layout.setPadding(32, 40, 32, 32);
 
         TextView title = new TextView(this);
-        title.setText("HWMDM Web Filter v1.0");
+        title.setText("HWMDM Web Filter v" + com.hwmdm.webfilter.BuildConfig.VERSION_NAME);
         title.setTextSize(24);
         layout.addView(title);
 

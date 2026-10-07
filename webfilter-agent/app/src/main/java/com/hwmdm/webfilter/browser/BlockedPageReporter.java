@@ -72,19 +72,23 @@ public final class BlockedPageReporter {
         if (root == null) return;
         try {
             if (!isBrowser(root.getPackageName())) return;
+            // Barra focada ou pagina carregando nao provam que o usuario saiu: esconder
+            // aqui e mostrar de novo no evento seguinte era a piscada do bloqueio.
             String address = urlBarText(root);
-            if (address == null) {
-                shownHost = null;
-                BlockOverlay.hide(service);
-                return;
-            }
-            if (!isBlockedPage(root)) {
-                shownHost = null;
-                BlockOverlay.hide(service);
-                return;
-            }
+            if (address == null) return;
             String host = hostOf(address);
-            if (host == null || host.equals(shownHost)) return;
+            if (!isBlockedPage(root)) {
+                if (host == null || !host.equals(shownHost)) {
+                    shownHost = null;
+                    BlockOverlay.hide(service);
+                }
+                return;
+            }
+            if (host == null) return;
+            if (host.equals(shownHost)) {
+                BlockOverlay.reveal(service);
+                return;
+            }
             shownHost = host;
             final String url = address;
             AccessibilityNodeInfo bar = firstNode(root, root.getPackageName() + ":id/url_bar");
