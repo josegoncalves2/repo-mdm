@@ -185,3 +185,39 @@ O responsável fez levantamento de TODAS as telas do painel pedindo padronizaç�
 O handoff original (02/10) lista 3 devices: R9XT200AMYY, R9XT106VP1E, R9XT108EM8T.
 Atualmente no banco: R9XT200AMYY e R9XT106Y5RP. Os outros dois foram removidos/substituídos.
 R9XT106Y5RP aparenta ser um novo tablet. Não é possível determinar se o DeepSeek removeu os outros.
+
+## Sessao 2026-10-07 (terceira restauração — consolidação final)
+
+### Contexto
+
+O responsável reportou que o DeepSeek quebrou a aplicação tentando ajustar layout. A sessão anterior (07:42/10:50) restaurou o funcionamento básico. Esta sessão consolidou tudo.
+
+### Verificações realizadas
+
+1. **Login admin/admin** — FUNCIONAL. Hash `349242D38ED8667B5C11D2412EBEA4636BD3CA3A` está correto. Frontend envia MD5 uppercase, backend calcula SHA1(MD5 + salt). NOTA: a sessão anterior (10:50) registrou incorretamente que o hash estava errado — estava correto o tempo todo.
+2. **APKs** — 44 arquivos em `source/volumes/work/files/` (launcher, remote, webfilter)
+3. **Configurações** — 6 perfis no banco: Common-Minimal, MIUI, Kiosk Total, modelo-default, modelo-kiosk, modelo-default-v2
+4. **Devices** — 4 no banco
+5. **Containers** — Apenas os 4 corretos (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin). Extras do DeepSeek já removidos pelo responsável.
+6. **Layout 05-06/10** — Preservado integralmente. CSS, HTML, JS dos commits 2322eee8..dba343d4 no HEAD.
+7. **Acesso remoto** — remote.controller.js (1212 linhas), remote.html redesenhado, CSS responsivo.
+8. **Container = disco** — md5sum confirmado para app.js e main.css.
+9. **JS sem erros** — Todos os controllers passam `node -c`.
+
+### Commit 2a804673
+
+66 arquivos consolidados:
+- Layout visual 05-06/10 preservado
+- Server-source sincronizado com volume
+- Cache busting atualizado (hux202610061730)
+- i18n pt_PT ampliado
+- CSS responsivo (remote, GPS, reports, chat)
+- Entrypoint mínimo (não destrói CSS)
+
+### Pendências (do backlog)
+
+- WebFilter no dispositivo (FALHA CRÍTICA — tablet não bloqueia)
+- Permissões RBAC (4 em russo, segregação ver/editar)
+- Kiosk modo quebrado
+- GPS avançado (playback, geocercas, heatmap)
+- Layout M365 (barra lateral com sub-menus aninhados)

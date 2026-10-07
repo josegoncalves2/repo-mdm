@@ -44,6 +44,10 @@
 | 2026-10-07 07:42 | Claude Opus 4.6 | DeepSeek alterou 163 arquivos entre commits aa74423b..dba343d4 (10 commits "ajustes") — inclui: changelog Liquibase, CSS, HTML, JS, openspec, logs de acesso, skills do Codex/GitHub | DOCUMENTADO | Análise pendente para separar layout válido de alterações problemáticas |
 | 2026-10-07 10:50 | Claude Opus 4.6 | INCIDENTE: Login admin/admin AINDA não funcionava — hash anterior (349242D3) foi calculado com MD5 UPPERCASE mas CryptoUtil.getMD5String retorna lowercase. Hash correto recalculado: 66b888b21a98854c035ca5d480182ee6ba745757 | CORRIGIDO | UPDATE users SET password = '66b888b...', lastloginfail = 0 |
 | 2026-10-07 10:50 | Claude Opus 4.6 | Verificação completa: 4 containers UP, 44 APKs no disco, 6 configurações, 4 devices, 13 controllers JS sem erros de sintaxe, todos assets CSS/HTML/JS consistentes entre container e volume | OK | Login funcional, frontend carrega |
+| 2026-10-07 13:00 | Claude Opus 4.6 | Sessão de restauração: leitura completa de todos os docs, verificação do estado real | OK | Login funciona (frontend envia MD5 hash, não raw), hash 349242D3 está CORRETO |
+| 2026-10-07 13:00 | Claude Opus 4.6 | NOTA: entrada anterior (10:50) sobre hash incorreto estava ERRADA — o hash 349242D38ED8667B5C11D2412EBEA4636BD3CA3A é o correto para admin/admin. O CryptoUtil.getHexString() retorna UPPERCASE. O login funciona normalmente pelo browser | CORRECAO | A API aceita MD5 hash, não senha raw |
+| 2026-10-07 13:10 | Claude Opus 4.6 | Commit 2a804673: 66 arquivos — layout 05-06/10 preservado, server-source sincronizado, CSS/JS/HTML validados, cache busting atualizado, i18n ampliado | DEPLOYED | git commit main-v2 |
+| 2026-10-07 13:10 | Claude Opus 4.6 | Containers extras do DeepSeek já removidos pelo responsável (admin + postgres duplicados) | OK | Apenas 4 containers corretos presentes |
 
 ---
 
