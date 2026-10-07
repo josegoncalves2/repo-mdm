@@ -10,8 +10,6 @@ angular.module('headwind-kiosk')
 
         $scope.search = {};
         $scope.loading = false;
-        $scope.viewMode = $window.localStorage.getItem('hwmdm_apps_viewMode') || 'cards';
-        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_apps_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,

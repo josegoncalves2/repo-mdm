@@ -156,3 +156,32 @@ O responsável fez levantamento de TODAS as telas do painel pedindo padronizaç�
 | devices.html | /usr/local/tomcat/webapps/ROOT/app/components/main/view/devices.html | volumes/webapps/ROOT/app/.../devices.html |
 | shell.controller.js | /usr/local/tomcat/webapps/ROOT/app/components/main/controller/shell.controller.js | volumes/webapps/ROOT/app/.../shell.controller.js |
 | api-location-history.jsp | /usr/local/tomcat/webapps/ROOT/api-location-history.jsp | volumes/webapps/ROOT/api-location-history.jsp |
+
+## Sessao 2026-10-07 (segunda restauração)
+
+### Problemas encontrados e corrigidos
+
+1. **Login admin/admin AINDA QUEBRADO** — A sessão anterior (07:42) calculou o hash com MD5 uppercase (`21232F29...`) mas `CryptoUtil.getMD5String()` retorna lowercase (`21232f29...`). O frontend envia o MD5 lowercase. Hash recalculado corretamente: `66b888b21a98854c035ca5d480182ee6ba745757`. Resetado `lastloginfail = 0`.
+
+### Verificação completa do estado
+
+| Item | Estado | Detalhes |
+|------|--------|----------|
+| Login admin/admin | OK | Hash corrigido, login testado via API — status OK |
+| Containers | OK | 4 containers UP (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin) |
+| APKs | OK | 44 arquivos APK no disco, 32 versões para launcher/remote/webfilter no banco |
+| Configurações | OK | 6 perfis (Common-Minimal, MIUI, Kiosk Total, modelo-default, modelo-kiosk, modelo-default-v2) |
+| Apps por config | OK | 56 atribuições app↔config verificadas |
+| Devices | 4 no banco | R9XT200AMYY, R9XT106Y5RP, TEST-ENROLL-001, TEST-ENROLL-1790864529 |
+| Devices antigos | AUSENTES | R9XT106VP1E e R9XT108EM8T do handoff original não estão no banco |
+| Frontend assets | OK | index.html, app.js, main.css, hwmdm-ui.css — HTTP 200 |
+| JS controllers | OK | 13 controllers verificados sem erros de sintaxe |
+| Container↔Volume | OK | md5sum coincide para todos arquivos-chave |
+| Layout DeepSeek | PRESENTE | 60 arquivos de webapp alterados pelo DeepSeek, mantidos no HEAD |
+| Acesso Remoto | PRESENTE | remote.controller.js (1212 linhas), remote.html com layout redesenhado |
+
+### Devices desaparecidos
+
+O handoff original (02/10) lista 3 devices: R9XT200AMYY, R9XT106VP1E, R9XT108EM8T.
+Atualmente no banco: R9XT200AMYY e R9XT106Y5RP. Os outros dois foram removidos/substituídos.
+R9XT106Y5RP aparenta ser um novo tablet. Não é possível determinar se o DeepSeek removeu os outros.

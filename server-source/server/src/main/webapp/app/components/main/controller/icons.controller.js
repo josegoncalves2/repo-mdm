@@ -3,8 +3,6 @@ angular.module('headwind-kiosk')
     .controller('IconsTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal,
                                                  iconService, $window, localization) {
         $scope.search = {};
-        $scope.viewMode = $window.localStorage.getItem('hwmdm_icons_viewMode') || 'cards';
-        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_icons_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,

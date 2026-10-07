@@ -3,8 +3,6 @@ angular.module('headwind-kiosk')
     .controller('GroupsTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal,
                                                  groupService, $window, localization) {
         $scope.search = {};
-        $scope.viewMode = $window.localStorage.getItem('hwmdm_groups_viewMode') || 'cards';
-        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_groups_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,

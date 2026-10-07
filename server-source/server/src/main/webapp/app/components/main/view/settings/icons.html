@@ -1,5 +1,5 @@
 <!-- Localization completed -->
-<div class="hwmdm-list-page" ng-controller="IconsTabController">
+<div class="width-1000" ng-controller="IconsTabController">
 
     <div class="hwmdm-page-toolbar">
         <div>
@@ -7,102 +7,70 @@
             <p localized>icons.page.subtitle</p>
         </div>
         <div class="hwmdm-search-actions">
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default"
-                        ng-class="{active: viewMode === 'cards'}"
-                        localized-title="files.view.cards"
-                        ng-click="viewMode = 'cards'">
-                    <span class="glyphicon glyphicon-th-large"></span>
-                    <span localized>files.view.cards</span>
-                </button>
-                <button type="button" class="btn btn-default"
-                        ng-class="{active: viewMode === 'list'}"
-                        localized-title="files.view.list"
-                        ng-click="viewMode = 'list'">
-                    <span class="glyphicon glyphicon-list"></span>
-                    <span localized>files.view.list</span>
-                </button>
-            </div>
             <input type='text' ng-model='search.searchValue' ng-enter='search()'
                    ng-change="search()"
                    localized-placeholder='form.settings.icons.search.placeholder'
                    class='form-control'/>
-            <button type='button' class='btn btn-primary' ng-click='editIcon( {} )'>
-                <span class="glyphicon glyphicon-plus"></span>&nbsp;<span localized>button.add</span>
-            </button>
+            <button type='button' class='btn btn-default' ng-click='search()' localized>button.search</button>
+            <button type='button' class='btn btn-default' ng-click='editIcon( {} )' localized>button.add</button>
         </div>
     </div>
 
-    <div class="text-center" ng-if="icons.length > paging.pageSize">
-        <pagination
-                boundary-links='true' class='pagination-sm'
-                max-size='3'
-                ng-model='paging.currentPage'
-                total-items='icons.length'
-                items-per-page='paging.pageSize'
-                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                last-text='&raquo;'></pagination>
-    </div>
-
-    <div ng-if='icons && icons.length > 0 && viewMode === "cards"' class="config-card-grid">
-        <div class="config-card"
-             ng-repeat="icon in icons.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
-            <div class="config-card-body" ng-click="editIcon(icon)">
-                <div class="config-card-name">{{icon.name}}</div>
-                <div class="config-card-desc">{{icon.fileName}}</div>
-            </div>
-            <div class="config-card-actions">
-                <button type='button' class='btn btn-sm btn-default' localized-title="button.edit" ng-click='editIcon(icon)'>
-                    <span class='glyphicon glyphicon-pencil'></span>
-                </button>
-                <button type='button' class='btn btn-sm btn-default' localized-title="button.delete" ng-click='removeIcon(icon)'>
-                    <span class='glyphicon glyphicon-trash'></span>
-                </button>
-            </div>
+    <div>
+        <div class="text-center" ng-if="icons.length > paging.pageSize">
+            <pagination
+                    boundary-links='true' class='pagination-sm'
+                    max-size='3'
+                    ng-model='paging.currentPage'
+                    total-items='icons.length'
+                    items-per-page='paging.pageSize'
+                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                    last-text='&raquo;'></pagination>
         </div>
-    </div>
 
-    <div ng-if='icons && icons.length > 0 && viewMode === "list"' class="table-responsive">
+        <div ng-if='icons && icons.length > 0' class="table-responsive">
+
+
         <table class='table'>
             <thead>
             <tr>
-                <th localized>form.icon.name</th>
-                <th localized>form.icon.file</th>
-                <th class='actions-column' localized>table.heading.configuration.actions</th>
+                <th localized>table.heading.group.name</th>
+                <th localized>table.heading.file.name</th>
+                <th class='actions-column' localized>table.heading.group.actions</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat='icon in icons.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
-                <td><a class="action-link" ng-click="editIcon(icon)">{{icon.name}}</a></td>
+                <td>{{icon.name}}</td>
                 <td>{{icon.fileName}}</td>
                 <td>
-                    <div><nobr>
-                        <button type='button' class='btn btn-default' localized-title="button.edit" ng-click='editIcon(icon)'>
+                    <div>
+                        <button type='button' class='btn btn-default' ng-click='editIcon(icon)'>
                             <span class='glyphicon glyphicon-pencil'></span>
                         </button>
-                        <button type='button' class='btn btn-default' localized-title="button.delete" ng-click='removeIcon(icon)'>
+                        <button type='button'
+                                class='btn btn-default'
+                                ng-click='removeIcon(icon)'>
                             <span class='glyphicon glyphicon-trash'></span>
                         </button>
-                    </nobr></div>
+                    </div>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div ng-if='icons && icons.length === 0' class='hwmdm-empty-state'>
-        <span class="glyphicon glyphicon-picture"></span>
-        <span localized>notfound.icons</span>
-    </div>
+        <div ng-if='icons && icons.length === 0' class='center' localized>notfound.icons</div>
 
-    <div class="text-center" ng-if="icons.length > paging.pageSize">
-        <pagination
-                boundary-links='true' class='pagination-sm'
-                max-size='3'
-                ng-model='paging.currentPage'
-                total-items='icons.length'
-                items-per-page='paging.pageSize'
-                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                last-text='&raquo;'></pagination>
+        <div class="text-center" ng-if="groups.length > paging.pageSize">
+            <pagination
+                    boundary-links='true' class='pagination-sm'
+                    max-size='3'
+                    ng-model='paging.currentPage'
+                    total-items='icons.length'
+                    items-per-page='paging.pageSize'
+                    previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                    last-text='&raquo;'></pagination>
+        </div>
     </div>
 </div>

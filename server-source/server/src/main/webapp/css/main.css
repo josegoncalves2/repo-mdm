@@ -4188,8 +4188,14 @@ body {
 .remote-screen-shell {
     border: 1px solid var(--hwmdm-border);
     border-radius: 10px;
-    overflow: hidden;
     background: var(--hwmdm-surface);
+}
+.remote-screen-shell > .remote-device-header {
+    border-radius: 10px 10px 0 0;
+}
+.remote-screen-shell > .remote-preview-shell:last-child,
+.remote-screen-shell > .remote-live-bar:last-child {
+    border-radius: 0 0 10px 10px;
 }
 
 .remote-device-header {

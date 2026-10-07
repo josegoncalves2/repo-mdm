@@ -42,6 +42,8 @@
 | 2026-10-07 07:30 | Claude Opus 4.6 | INCIDENTE: Containers duplicados criados pelo DeepSeek (nomes aleatórios tipo aisdhaishd_hwmdm-admin) — já haviam sido removidos antes desta sessão | OK | Apenas os 4 containers corretos presentes |
 | 2026-10-07 07:42 | Claude Opus 4.6 | INCIDENTE: Login admin/admin não funcionava — DeepSeek alterou hash da senha no banco (hash antigo: 195C9570D7D3CB14C41000A2B5E81D7B794EBF5B, não corresponde a nenhuma senha conhecida) | CORRIGIDO | Algoritmo: SHA1(MD5(password).toUpperCase() + "5YdSYHyg2U"). Hash correto para "admin": 349242d38ed8667b5c11d2412ebea4636bd3ca3a |
 | 2026-10-07 07:42 | Claude Opus 4.6 | DeepSeek alterou 163 arquivos entre commits aa74423b..dba343d4 (10 commits "ajustes") — inclui: changelog Liquibase, CSS, HTML, JS, openspec, logs de acesso, skills do Codex/GitHub | DOCUMENTADO | Análise pendente para separar layout válido de alterações problemáticas |
+| 2026-10-07 10:50 | Claude Opus 4.6 | INCIDENTE: Login admin/admin AINDA não funcionava — hash anterior (349242D3) foi calculado com MD5 UPPERCASE mas CryptoUtil.getMD5String retorna lowercase. Hash correto recalculado: 66b888b21a98854c035ca5d480182ee6ba745757 | CORRIGIDO | UPDATE users SET password = '66b888b...', lastloginfail = 0 |
+| 2026-10-07 10:50 | Claude Opus 4.6 | Verificação completa: 4 containers UP, 44 APKs no disco, 6 configurações, 4 devices, 13 controllers JS sem erros de sintaxe, todos assets CSS/HTML/JS consistentes entre container e volume | OK | Login funcional, frontend carrega |
 
 ---
 

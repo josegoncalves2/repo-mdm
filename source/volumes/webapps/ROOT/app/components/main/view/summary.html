@@ -28,36 +28,36 @@
              full-width band whose right half was empty, which is the void the "Quick access"
              label used to sit in. -->
         <div class="summary-panel-header">
-            <h3>{{"summary.backup.title" | localize}}</h3>
+            <h3>Backup / Import / Export</h3>
             <button type="button" class="btn btn-default summary-panel-action" ng-click="openTab('GOVERNANCE')"
                     data-testid="dashboard-open-governance">
-                <span class="glyphicon glyphicon-hdd"></span> {{"summary.backup.action" | localize}}
+                <span class="glyphicon glyphicon-hdd"></span> Open backups &amp; import/export
             </button>
         </div>
         <p class="summary-panel-hint">
-            {{"summary.backup.hint" | localize}}
+            Export the current settings as a JSON file, import a saved one, or manage database backups.
         </p>
     </section>
 
     <div class="summary-layout">
         <section class="summary-panel summary-map-panel">
             <div class="summary-panel-header">
-                <h3>{{"summary.map.title" | localize}}</h3>
-                <span>{{locatedDevices.length}} {{"gpsmap.devices" | localize}}</span>
+                <h3>Last device locations</h3>
+                <span>{{locatedDevices.length}} {{locatedDevices.length === 1 ? 'device' : 'devices'}}</span>
             </div>
             <div class="summary-map-shell">
                 <div id="summary-map" class="summary-map"></div>
                 <div class="summary-empty-map" ng-if="!locatedDevices.length || mapError">
-                    <span ng-if="!mapError">{{"gpsmap.empty" | localize}}</span>
-                    <span ng-if="mapError">{{"gpsmap.error.render" | localize}}</span>
+                    <span ng-if="!mapError">No device has reported a GPS location yet.</span>
+                    <span ng-if="mapError">Map data is not available right now.</span>
                 </div>
             </div>
         </section>
 
         <section class="summary-panel summary-recent-panel">
             <div class="summary-panel-header">
-                <h3>{{"summary.recent.title" | localize}}</h3>
-                <span>{{recentDevices.length}} {{"gpsmap.devices" | localize}}</span>
+                <h3>Recent devices</h3>
+                <span>{{recentDevices.length}} {{recentDevices.length === 1 ? 'device' : 'devices'}}</span>
             </div>
             <div class="summary-device-list">
                 <div class="summary-device-row" ng-repeat="device in recentDevices">
@@ -74,15 +74,15 @@
                         <span>{{getDeviceIpDisplay(device)}}</span>
                     </div>
                 </div>
-                <div class="summary-empty-list" ng-if="!recentDevices.length">{{"summary.recent.empty" | localize}}</div>
+                <div class="summary-empty-list" ng-if="!recentDevices.length">No recent device activity yet.</div>
             </div>
         </section>
     </div>
 
     <section class="summary-panel summary-alert-panel">
         <div class="summary-panel-header">
-            <h3>{{"summary.alerts.title" | localize}}</h3>
-            <span>{{alerts.length}} {{"summary.alerts.open" | localize}}</span>
+            <h3>Operational alerts</h3>
+            <span>{{alerts.length}} open</span>
         </div>
         <div class="summary-alert-list">
             <div class="summary-alert-row" ng-repeat="alert in alerts | limitTo:20" ng-class="getAlertClass(alert)">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="summary-alert-time">{{alert.lastUpdate | date:dateFormat}}</div>
             </div>
-            <div class="summary-empty-list" ng-if="!alerts.length">{{"summary.alerts.empty" | localize}}</div>
+            <div class="summary-empty-list" ng-if="!alerts.length">No operational alerts.</div>
         </div>
     </section>
 

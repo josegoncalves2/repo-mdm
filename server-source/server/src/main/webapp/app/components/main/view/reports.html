@@ -7,195 +7,90 @@
         <div class="hwmdm-search-actions">
             <span class="reports-generated" ng-if="generatedAt && !loading">{{deviceCount}} {{'reports.devices.generated' | localize}} {{generatedAt | date:'short'}}</span>
             <button type="button" class="btn btn-default" ng-click="refresh()" ng-disabled="loading" localized>button.refresh</button>
-            <button type="button" class="btn btn-primary" data-testid="reports-export-csv"
-                    ng-click="exportCsv()" ng-disabled="loading || !devices.length"
-                    localized>reports.export.csv</button>
         </div>
     </div>
 
     <div class='form-group' ng-if='errorMessage'><div class='error'><span>{{errorMessage}}</span></div></div>
     <div class="ext-hub-empty" ng-if="!loading && !errorMessage && deviceCount === 0" localized>reports.empty</div>
 
-    <div class="hwmdm-split-layout" ng-if="!loading && deviceCount > 0">
-        <!-- Lista lateral de dispositivos -->
-        <div class="remote-device-panel reports-device-panel">
-            <div class="gps-device-search">
-                <input type="text" class="form-control" ng-model="deviceSearch"
-                       placeholder="{{'search.placeholder.device' | localize}}" />
-            </div>
-
-            <div class="gps-device-stats">
-                <span class="gps-stat">{{devices.length}} total</span>
-                <span class="gps-stat" ng-if="selectedDevice">
-                    <strong>{{selectedDevice.number}}</strong>
-                </span>
-            </div>
-
-            <a href="" class="list-group-item remote-device-item reports-device-all"
-               ng-click="selectDevice(null)"
-               ng-class="{'remote-device-item-active': !selectedDevice}">
-                <span class="glyphicon glyphicon-stats"></span>
-                <div class="remote-device-main">
-                    <span class="remote-device-number">Todos os dispositivos</span>
-                    <span class="remote-device-model">Relatorio geral</span>
+    <div class="reports-grid" ng-if="!loading && deviceCount > 0">
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.status</h4>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in statusBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-            </a>
-
-            <a href="" class="list-group-item remote-device-item"
-               ng-repeat="device in devices | filter:deviceSearchFn"
-               ng-click="selectDevice(device)"
-               ng-class="{'remote-device-item-active': selectedDevice && selectedDevice.id === device.id}">
-                <span class="hwmdm-status-dot"
-                      ng-class="device.statusCode === 'green' ? 'hwmdm-status-dot--online' : (device.statusCode === 'red' ? 'hwmdm-status-dot--offline' : 'hwmdm-status-dot--idle')"></span>
-                <div class="remote-device-main">
-                    <span class="remote-device-number">{{device.number}}</span>
-                    <span class="remote-device-model">{{device.info.model || ''}}</span>
-                </div>
-                <div class="gps-device-meta">
-                    <span class="gps-device-battery" ng-if="device.info.batteryLevel != null"
-                          ng-class="{'text-danger': device.info.batteryLevel < 20}">
-                        <span class="glyphicon glyphicon-flash"></span>{{device.info.batteryLevel}}%
-                    </span>
-                </div>
-            </a>
-        </div>
-
-        <!-- Conteudo do relatorio -->
-        <div class="reports-main-area">
-            <!-- Header do device selecionado -->
-            <div class="reports-device-header" ng-if="selectedDevice">
-                <strong>{{selectedDevice.number}}</strong>
-                <span class="label" ng-class="{'label-success': selectedDevice.statusCode === 'green', 'label-warning': selectedDevice.statusCode === 'yellow', 'label-danger': selectedDevice.statusCode === 'red'}">
-                    {{selectedDevice.statusCode === 'green' ? 'Online' : (selectedDevice.statusCode === 'yellow' ? 'Idle' : 'Offline')}}
-                </span>
-                <span class="text-muted" ng-if="selectedDevice.info.model"> &middot; {{selectedDevice.info.model}}</span>
-                <button type="button" class="close" ng-click="selectDevice(null)">&times;</button>
             </div>
+        </section>
 
-            <!-- Info detalhada do device individual -->
-            <div class="reports-device-detail" ng-if="selectedDevice">
-                <div class="reports-detail-grid">
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Android</span>
-                        <span class="reports-detail-value">{{selectedDevice.info.androidVersion || '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Bateria</span>
-                        <span class="reports-detail-value" ng-class="{'text-danger': selectedDevice.info.batteryLevel < 20}">
-                            {{selectedDevice.info.batteryLevel != null ? selectedDevice.info.batteryLevel + '%' : '—'}}
-                        </span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Armazenamento livre</span>
-                        <span class="reports-detail-value">{{selectedDevice.info.storageAvailablePercent != null ? selectedDevice.info.storageAvailablePercent + '%' : '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Modelo</span>
-                        <span class="reports-detail-value">{{selectedDevice.info.model || '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Configuracao</span>
-                        <span class="reports-detail-value">{{selectedDevice.configuration.name || '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Grupo(s)</span>
-                        <span class="reports-detail-value">{{selectedDeviceGroups || '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">IMEI</span>
-                        <span class="reports-detail-value">{{selectedDevice.imei || selectedDevice.info.imei || '—'}}</span>
-                    </div>
-                    <div class="reports-detail-card">
-                        <span class="reports-detail-label">Ultima atualizacao</span>
-                        <span class="reports-detail-value">{{selectedDevice.lastUpdateDate | date:'dd/MM/yyyy HH:mm' || '—'}}</span>
-                    </div>
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.android</h4>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in osBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
                 </div>
-
-                <section class="ext-hub-section" ng-if="selectedDeviceApps.length">
-                    <h4 class="ext-hub-section-title">Aplicativos instalados ({{selectedDeviceApps.length}})</h4>
-                    <div class="reports-app-list">
-                        <div class="reports-app-item" ng-repeat="app in selectedDeviceApps">
-                            <span>{{app.name || app.pkg}}</span>
-                            <span class="text-muted" ng-if="app.version">v{{app.version}}</span>
-                        </div>
-                    </div>
-                </section>
+                <div class="ext-hub-empty" ng-if="!osBreakdown.length" localized>reports.empty.android</div>
             </div>
+        </section>
 
-            <!-- Relatorio geral (todos os devices) -->
-            <div class="reports-grid" ng-if="!selectedDevice">
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.status</h4>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in statusBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.android</h4>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in osBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                        <div class="ext-hub-empty" ng-if="!osBreakdown.length" localized>reports.empty.android</div>
-                    </div>
-                </section>
-
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.battery</h4>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in batteryBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                        <div class="ext-hub-empty" ng-if="!batteryBreakdown.length" localized>reports.empty.battery</div>
-                    </div>
-                </section>
-
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.storage</h4>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in storageBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                        <div class="ext-hub-empty" ng-if="!storageBreakdown.length" localized>reports.empty.storage</div>
-                    </div>
-                </section>
-
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.models</h4>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in modelBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                        <div class="ext-hub-empty" ng-if="!modelBreakdown.length" localized>reports.empty.models</div>
-                    </div>
-                </section>
-
-                <section class="ext-hub-section">
-                    <h4 class="ext-hub-section-title" localized>reports.section.apps</h4>
-                    <p class="ext-hub-section-hint" localized>reports.apps.hint</p>
-                    <div class="reports-bars">
-                        <div class="reports-bar-row" ng-repeat="row in appBreakdown">
-                            <span class="reports-bar-label">{{row.label}}</span>
-                            <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
-                            <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
-                        </div>
-                        <div class="ext-hub-empty" ng-if="!appBreakdown.length" localized>reports.empty.apps</div>
-                    </div>
-                </section>
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.battery</h4>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in batteryBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
+                </div>
+                <div class="ext-hub-empty" ng-if="!batteryBreakdown.length" localized>reports.empty.battery</div>
             </div>
-        </div>
+        </section>
+
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.storage</h4>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in storageBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
+                </div>
+                <div class="ext-hub-empty" ng-if="!storageBreakdown.length" localized>reports.empty.storage</div>
+            </div>
+        </section>
+
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.models</h4>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in modelBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
+                </div>
+                <div class="ext-hub-empty" ng-if="!modelBreakdown.length" localized>reports.empty.models</div>
+            </div>
+        </section>
+
+        <section class="ext-hub-section">
+            <h4 class="ext-hub-section-title" localized>reports.section.apps</h4>
+            <p class="ext-hub-section-hint" localized>reports.apps.hint</p>
+            <div class="reports-bars">
+                <div class="reports-bar-row" ng-repeat="row in appBreakdown">
+                    <span class="reports-bar-label">{{row.label}}</span>
+                    <div class="reports-bar-track"><div class="reports-bar-fill" ng-style="{width: row.percent + '%'}"></div></div>
+                    <span class="reports-bar-value">{{row.value}} ({{row.percent}}%)</span>
+                </div>
+                <div class="ext-hub-empty" ng-if="!appBreakdown.length" localized>reports.empty.apps</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Export closes the report, so it sits after the data it exports, not next to the title. -->
+    <div class="reports-footer-actions" ng-if="!loading && deviceCount > 0">
+        <button type="button" class="btn btn-primary" data-testid="reports-export-csv"
+                ng-click="exportCsv()" ng-disabled="loading || !devices.length"
+                localized>reports.export.csv</button>
     </div>
 </div>

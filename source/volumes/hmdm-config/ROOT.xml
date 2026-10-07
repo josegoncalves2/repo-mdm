@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
+<Context docBase="/usr/local/tomcat/webapps/ROOT">
     <!-- database configurations -->
     <Parameter name="JDBC.driver"   value="org.postgresql.Driver"/>
     <Parameter name="JDBC.url"      value="jdbc:postgresql://postgresql:5432/hmdm"/>

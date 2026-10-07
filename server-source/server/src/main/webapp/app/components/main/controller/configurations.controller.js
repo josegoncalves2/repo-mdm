@@ -4,8 +4,6 @@ angular.module('headwind-kiosk')
                                                          configurationService, authService, $window, localization,
                                                          alertService, hintService, $timeout) {
         $scope.isTypical = false;
-        $scope.viewMode = $window.localStorage.getItem('hwmdm_configs_viewMode') || 'cards';
-        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_configs_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,
@@ -744,6 +742,19 @@ angular.module('headwind-kiosk')
             };
 
             $scope.desktopHeaderTemplatePlaceholder = localization.localize('form.configuration.settings.design.desktop.header.template.placeholder') + ' deviceId, description, custom1, custom2, custom3';
+
+            var transFunction = function(trans) {
+                if ($scope.configurationForm && $scope.configurationForm.$dirty) {
+                    if (!$scope.saved) {
+                        var confirmed = confirm(localization.localize('question.exit.without.saving'));
+                        if (!confirmed) {
+                            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
+                            return false;
+                        }
+                    }
+                }
+            }
+            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
 
             $scope.sortByChanged = function () {
                 $window.localStorage.setItem('Headwind MDM_configAppsSortBy', $scope.sort.by);

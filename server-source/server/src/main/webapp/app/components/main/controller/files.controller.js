@@ -8,12 +8,6 @@ angular.module('headwind-kiosk')
             currentPage: 1,
             pageSize: 50
         };
-        $scope.files = [];
-        $scope.loadingFiles = false;
-        $scope.loadError = '';
-        $scope.viewMode = $window.localStorage.getItem('hwmdm_files_viewMode') || 'cards';
-        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_files_viewMode', v); });
-        var searchRequest = 0;
 
         $scope.$watch('paging.currentPage', function () {
             $window.scrollTo(0, 0);
@@ -59,24 +53,8 @@ angular.module('headwind-kiosk')
 
         $scope.updateTimeFormat = localization.localize('format.devices.date.createTime');
         $scope.search = function () {
-            var requestId = ++searchRequest;
-            $scope.paging.currentPage = 1;
-            $scope.loadingFiles = true;
-            $scope.loadError = '';
             fileService.getAllFiles({value: $scope.search.searchValue},
                 function (response) {
-                    if (requestId !== searchRequest) {
-                        return;
-                    }
-                    if (response.status !== 'OK' || !Array.isArray(response.data)) {
-                        $scope.files = [];
-                        $scope.loadingFiles = false;
-                        $scope.loadError = response.status === 'OK'
-                            ? localization.localize('files.load.error')
-                            : localization.localizeServerResponse(response);
-                        return;
-                    }
-
                     response.data.forEach(function (file) {
                         file.removeButtonTooltip = '';
                         if (file.usedByConfigurations && file.usedByConfigurations.length > 0) {
@@ -102,15 +80,6 @@ angular.module('headwind-kiosk')
                     });
 
                     $scope.files = response.data;
-                    $scope.loadingFiles = false;
-                },
-                function () {
-                    if (requestId !== searchRequest) {
-                        return;
-                    }
-                    $scope.files = [];
-                    $scope.loadingFiles = false;
-                    $scope.loadError = localization.localize('files.load.error');
                 });
         };
 

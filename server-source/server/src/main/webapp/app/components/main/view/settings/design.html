@@ -14,6 +14,12 @@
                 <div ng-show="errorMessage" class="error"><span>{{errorMessage}}</span></div>
             </div>
 
+            <!--
+                Only the web console is configured here. The launcher theme that goes down to
+                the tablets (background, icon size, desktop title) belongs to a device profile
+                and is edited in step 6 "Home screen appearance" of the profile editor - having
+                it on this page as well meant two places claimed to own the same setting.
+            -->
             <div class="hwmdm-theme-grid">
                 <section class="hwmdm-form-section">
                     <div class="hwmdm-form-section-head">
@@ -78,35 +84,15 @@
                             <div class="field-hint" localized>settings.design.console.logo.hint</div>
                         </div>
                     </div>
-                </section>
 
-                <section class="hwmdm-form-section">
-                    <div class="hwmdm-form-section-head">
-                        <h4 localized>settings.design.preview.title</h4>
-                        <p localized>settings.design.preview.subtitle</p>
-                    </div>
-
-                    <div class="hwmdm-brand-preview-box">
-                        <div class="hwmdm-brand-preview-topbar"
-                             ng-style="{'background-color': settings.webPrimaryColor || '#0d9e91', 'color': settings.webTextColor || '#fff'}">
-                            <div class="hwmdm-brand-preview-sidebar-slice"
-                                 ng-style="{'background-color': settings.webSidebarColor || '#1a2332'}">
-                                <div class="hwmdm-brand-preview-sidebar-item"></div>
-                                <div class="hwmdm-brand-preview-sidebar-item active"></div>
-                                <div class="hwmdm-brand-preview-sidebar-item"></div>
-                            </div>
-                            <div class="hwmdm-brand-preview-header">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" localized>settings.design.console.logo.preview</label>
+                        <div class="col-sm-8">
+                            <div class="hwmdm-logo-preview">
                                 <img ng-if="settings.webLogoUrl" ng-src="{{settings.webLogoUrl}}"
-                                     class="hwmdm-brand-logo" alt="" style="height:28px;margin-right:8px"/>
-                                <span ng-if="!settings.webLogoUrl" class="hwmdm-brand-mark" style="margin-right:8px">HW</span>
-                                <strong>Headwind MDM</strong>
-                            </div>
-                        </div>
-                        <div class="hwmdm-brand-preview-body">
-                            <div class="hwmdm-brand-preview-content">
-                                <div class="hwmdm-brand-preview-card"></div>
-                                <div class="hwmdm-brand-preview-card"></div>
-                                <div class="hwmdm-brand-preview-card"></div>
+                                     class="hwmdm-brand-logo" alt=""/>
+                                <span ng-if="!settings.webLogoUrl" class="hwmdm-brand-mark">HW</span>
+                                <span class="hwmdm-logo-preview-name">Headwind MDM</span>
                             </div>
                         </div>
                     </div>
@@ -127,8 +113,6 @@
                 <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary" ng-click="saveDefaultDesignSettings()"
                             localized>button.save</button>
-                    <button type="button" class="btn btn-default" ng-click="resetWebBranding()"
-                            localized>settings.design.reset</button>
                 </div>
             </div>
         </form>

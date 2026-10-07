@@ -319,14 +319,7 @@ angular.module('headwind-kiosk')
             // ficaria no esqueleto ate um Ctrl+F5.
             var timeout = $timeout(angular.noop, 8000);
             var real = $q.all([loadNativeState(), loadPlugins()]);
-            real.then(function () {
-                CATALOG.forEach(function (m) {
-                    if (m.backingPlugin && pluginsById[m.backingPlugin]) {
-                        localization.loadPluginResourceBundles(m.backingPlugin);
-                    }
-                });
-                $rootScope.$emit('aero_MODULES_LOADED');
-            });
+            real.then(function () { $rootScope.$emit('aero_MODULES_LOADED'); });
             loadPromise = $q.race([real, timeout]).then(function () {
                 $timeout.cancel(timeout);
                 loaded = true;
