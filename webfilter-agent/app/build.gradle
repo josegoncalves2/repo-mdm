@@ -1,5 +1,12 @@
 plugins { id 'com.android.application' }
 
+// Tem de ser o hash.secret do servidor (SHARED_SECRET do source/.env); sem ele o
+// tablet rejeita toda politica com "Assinatura da politica do MDM nao confere".
+def mdmSharedSecret = System.getenv('SHARED_SECRET') ?: project.findProperty('SHARED_SECRET')
+if (!mdmSharedSecret) {
+    throw new GradleException('SHARED_SECRET ausente: use o valor de source/.env')
+}
+
 android {
     namespace 'com.hwmdm.webfilter'
     compileSdk 34
@@ -7,9 +14,9 @@ android {
         applicationId 'com.hwmdm.webfilter'
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName '1.0'
-        buildConfigField 'String', 'REQUEST_SIGNATURE', '"changeme-C3z9vi54"'
+        versionCode 2
+        versionName '1.1'
+        buildConfigField 'String', 'REQUEST_SIGNATURE', "\"${mdmSharedSecret}\""
     }
     signingConfigs {
         release {

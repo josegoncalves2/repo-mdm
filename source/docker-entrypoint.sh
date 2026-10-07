@@ -57,16 +57,11 @@ cp /opt/java/openjdk/conf/security/java.security /tmp/java.security
 sed "s|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g" /tmp/java.security > /opt/java/openjdk/conf/security/java.security
 rm /tmp/java.security
 
-# Fix runtime.js: Tomcat explode o WAR como root e sobrescreve o runtime.js.
-# Escreve imediatamente (sem sleep) e re-escreve sempre que o Tomcat recriar o diretório.
-(
-  while true; do
-    if [ -d "$TOMCAT_DIR/webapps/ROOT/js" ]; then
-      echo "window.HWMDM_RUNTIME = {adminPort: '${ADMIN_PORT:-}'};" > "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js"
-      chown 1000:1000 "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js" 2>/dev/null
-    fi
-    sleep 5
-  done
-) &
+# Uma unica gravacao no boot: sem ROOT.war (webapps/ e' imutavel) o Tomcat nao
+# re-explode nada, entao nao ha o que reescrever depois.
+if [ -d "$TOMCAT_DIR/webapps/ROOT/js" ]; then
+  echo "window.HWMDM_RUNTIME = {adminPort: '${ADMIN_PORT:-}'};" > "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js"
+  chown 1000:1000 "$TOMCAT_DIR/webapps/ROOT/js/hwmdm-runtime.js" 2>/dev/null
+fi
 
 catalina.sh run
