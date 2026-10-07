@@ -1,5 +1,5 @@
 angular.module('headwind-kiosk')
-    .controller('ShellController', function ($scope, $sce, $rootScope, $state, userService, authService,
+    .controller('ShellController', function ($scope, $sce, $rootScope, $state, $timeout, userService, authService,
                                              pluginService, moduleRegistry, localization, hintService, $q, $ocLazyLoad) {
 
         $scope.localization = localization;
@@ -26,7 +26,9 @@ angular.module('headwind-kiosk')
             GENERAL: 'generalSettings',
             EXTENSIONS: 'extensions',
             INTEGRATIONS: 'integrations',
-            SERVER: 'server'
+            SERVER: 'server',
+            PROFILE: 'profile',
+            CONFEDIT: 'configEditor'
         };
 
         var PLUGIN_STATES = {
@@ -59,7 +61,9 @@ angular.module('headwind-kiosk')
             EXTENSIONS: 'nav.extensions',
             GOVERNANCE: 'nav.governance',
             INTEGRATIONS: 'nav.integrations',
-            SERVER: 'nav.server'
+            SERVER: 'nav.server',
+            PROFILE: 'menu.profile',
+            CONFEDIT: 'nav.configurations'
         };
 
         var STATE_TO_TAB = {};
@@ -85,9 +89,42 @@ angular.module('headwind-kiosk')
 
         syncActiveTab();
 
+        var NAV_SCROLL_KEY = 'hwmdm.navScrollTop';
+
+        function saveNavScroll() {
+            var nav = document.querySelector('.hwmdm-nav');
+            if (nav) {
+                localStorage.setItem(NAV_SCROLL_KEY, nav.scrollTop);
+            }
+        }
+
+        function restoreNavScroll() {
+            var saved = localStorage.getItem(NAV_SCROLL_KEY);
+            if (saved == null) return;
+            var pos = parseInt(saved, 10);
+            function apply() {
+                var nav = document.querySelector('.hwmdm-nav');
+                if (nav) nav.scrollTop = pos;
+            }
+            $timeout(apply, 0);
+            $timeout(apply, 80);
+            $timeout(apply, 200);
+        }
+
+        $rootScope.$on('$stateChangeStart', function () {
+            saveNavScroll();
+        });
+
         $rootScope.$on('$stateChangeSuccess', function () {
             syncActiveTab();
         });
+
+        var cacheBustDeviceInfoResource = function (url) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061730') >= 0) {
+                return url;
+            }
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061730';
+        };
 
         var waitForPluginModules = function (callback) {
             return function (response) {
@@ -95,7 +132,10 @@ angular.module('headwind-kiosk')
                     return plugin.javascriptModuleFile;
                 }) : [];
                 $q.all(plugins.map(function (plugin) {
-                    return $ocLazyLoad.load(plugin.javascriptModuleFile).catch(angular.noop);
+                    var moduleFile = plugin.identifier === 'deviceinfo'
+                        ? cacheBustDeviceInfoResource(plugin.javascriptModuleFile)
+                        : plugin.javascriptModuleFile;
+                    return $ocLazyLoad.load(moduleFile).catch(angular.noop);
                 })).then(function () {
                     callback(response);
                 });
@@ -110,6 +150,9 @@ angular.module('headwind-kiosk')
                             return plugin.functionsViewTemplate !== undefined && plugin.functionsViewTemplate !== null;
                         });
                         $scope.functionsPlugins.forEach(function (plugin) {
+                            if (plugin.identifier === 'deviceinfo') {
+                                plugin.functionsViewTemplate = cacheBustDeviceInfoResource(plugin.functionsViewTemplate);
+                            }
                             var ID = 'plugin-' + plugin.identifier;
                             routes[ID] = PLUGIN_STATES[ID] || ('shell.' + ID);
                             STATE_TO_TAB[routes[ID]] = ID;
@@ -165,6 +208,7 @@ angular.module('headwind-kiosk')
             if (!routes[tabName]) { return; }
             hintService.stop();
             $scope.navOpen = false;
+            saveNavScroll();
 
             var target = routes[tabName];
             if ($state.get(target)) {
@@ -189,6 +233,7 @@ angular.module('headwind-kiosk')
             moduleRegistry.load().then(function () {
                 $scope.navSections = moduleRegistry.visibleSections();
                 $scope.navReady = true;
+                restoreNavScroll();
             });
         };
 

@@ -46,8 +46,12 @@
 | 2026-10-07 10:50 | Claude Opus 4.6 | Verificação completa: 4 containers UP, 44 APKs no disco, 6 configurações, 4 devices, 13 controllers JS sem erros de sintaxe, todos assets CSS/HTML/JS consistentes entre container e volume | OK | Login funcional, frontend carrega |
 | 2026-10-07 13:00 | Claude Opus 4.6 | Sessão de restauração: leitura completa de todos os docs, verificação do estado real | OK | Login funciona (frontend envia MD5 hash, não raw), hash 349242D3 está CORRETO |
 | 2026-10-07 13:00 | Claude Opus 4.6 | NOTA: entrada anterior (10:50) sobre hash incorreto estava ERRADA — o hash 349242D38ED8667B5C11D2412EBEA4636BD3CA3A é o correto para admin/admin. O CryptoUtil.getHexString() retorna UPPERCASE. O login funciona normalmente pelo browser | CORRECAO | A API aceita MD5 hash, não senha raw |
-| 2026-10-07 13:10 | Claude Opus 4.6 | Commit 2a804673: 66 arquivos — layout 05-06/10 preservado, server-source sincronizado, CSS/JS/HTML validados, cache busting atualizado, i18n ampliado | DEPLOYED | git commit main-v2 |
+| 2026-10-07 13:10 | Claude Opus 4.6 | Commit 2a804673: 66 arquivos — ~~layout 05-06/10 preservado, server-source sincronizado~~ | REGRESSAO | FALSO: o commit gravou versão anterior a 05-06/10 em 59 arquivos. Ver linhas de 14:00 |
 | 2026-10-07 13:10 | Claude Opus 4.6 | Containers extras do DeepSeek já removidos pelo responsável (admin + postgres duplicados) | OK | Apenas 4 containers corretos presentes |
+| 2026-10-07 13:40 | Claude Opus 4.6 | Mapeamento: 59 arquivos de 05-06/10 divergentes de dba343d4 após 2a804673; banco comparado com dumps 01/10 e pre-restore 07/10 | MAPEADO | Perfis/apps/APKs íntegros; regressão só no frontend |
+| 2026-10-07 14:00 | Claude Opus 4.6 | Restaurados 59 arquivos de dba343d4 (git checkout por caminho) | DEPLOYED | 0 divergências, md5 container=disco, node -c OK, sahw:sahw |
+| 2026-10-07 14:00 | Claude Opus 4.6 | Carimbos ?v= trocados para hux202610071400 nas partes restauradas | DEPLOYED | index.html, app.js, content.html |
+| 2026-10-07 14:00 | Claude Opus 4.6 | Validação visual/uso real no navegador | PENDENTE | Responsável |
 
 ---
 

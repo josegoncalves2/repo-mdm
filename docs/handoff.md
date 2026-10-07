@@ -199,7 +199,7 @@ O responsável reportou que o DeepSeek quebrou a aplicação tentando ajustar la
 3. **Configurações** — 6 perfis no banco: Common-Minimal, MIUI, Kiosk Total, modelo-default, modelo-kiosk, modelo-default-v2
 4. **Devices** — 4 no banco
 5. **Containers** — Apenas os 4 corretos (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin). Extras do DeepSeek já removidos pelo responsável.
-6. **Layout 05-06/10** — Preservado integralmente. CSS, HTML, JS dos commits 2322eee8..dba343d4 no HEAD.
+6. **Layout 05-06/10** — ~~Preservado integralmente~~ FALSO. Ver "Correção" abaixo: o commit 2a804673 regrediu 59 arquivos.
 7. **Acesso remoto** — remote.controller.js (1212 linhas), remote.html redesenhado, CSS responsivo.
 8. **Container = disco** — md5sum confirmado para app.js e main.css.
 9. **JS sem erros** — Todos os controllers passam `node -c`.
@@ -221,3 +221,19 @@ O responsável reportou que o DeepSeek quebrou a aplicação tentando ajustar la
 - Kiosk modo quebrado
 - GPS avançado (playback, geocercas, heatmap)
 - Layout M365 (barra lateral com sub-menus aninhados)
+
+### Correção (2026-10-07 14:00) — o commit 2a804673 REGREDIU o trabalho de 05-06/10
+
+O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos commits de 05-06/10. O commit 2a804673 gravou essa versão antiga por cima. Mensagem do commit dizia "layout preservado" e "server-source sincronizado": ambas FALSAS.
+
+- 59 arquivos regredidos (14 servidos em volumes/webapps/ROOT + 45 em server-source), incluindo remote.html (redesign 06/10), gpsmap.controller.js (histórico GPS 05/10), api-location-history.jsp (apagado), reports, kiosk, summary, governance, server, tabs.controller, moduleRegistry, hwmdm_modules.
+- RESTAURADOS a partir de dba343d4 (fim de 06/10). Verificado: 0 divergências vs dba343d4, md5 container = disco, `node -c` OK, dono sahw:sahw.
+- Carimbos `?v=` trocados para `hux202610071400` (index.html, app.js, content.html) para o navegador não servir a versão antiga em cache.
+- Banco NÃO foi tocado: 6 perfis idênticos ao backup de 01/10; nenhum pacote de app de 01/10 ausente; versões de APK presentes.
+- Validação de uso real no navegador: PENDENTE (responsável).
+
+### Problemas mapeados, não corrigidos (aguardam decisão)
+
+- index.html referencia `lib/jsencrypt/bin/jsencrypt.min.js` e `lib/angular-intro.js/build/angular-intro.min.js`, que não existem (já em 02/10).
+- `/rest/public/info` recebe 404 a cada poucos segundos vindo do próprio host 192.168.1.65; origem não identificada.
+- Tablet R9XT106Y5RP sem polling desde 12:00 de 07/10.
