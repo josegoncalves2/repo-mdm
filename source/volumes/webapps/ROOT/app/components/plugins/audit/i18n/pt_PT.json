@@ -44,5 +44,17 @@
   "table.heading.plugin.audit.action": "Ação",
   "table.heading.plugin.audit.payload": "Payload",
   "notfound.common.plugin.audit.logs": "Nenhum registro encontrado. Tente uma busca diferente.",
-  "plugin.audit.tab.subtitle": "Histórico de ações dos usuários no painel"
+  "plugin.audit.tab.subtitle": "Histórico de ações dos usuários no painel",
+  "plugin.audit.action.device.force.kiosk": "Forçou quiosque no dispositivo",
+  "plugin.audit.action.device.remote.command": "Comando remoto enviado ao dispositivo",
+  "plugin.audit.action.message.remove": "Mensagem excluída",
+  "plugin.audit.action.message.send": "Mensagem enviada",
+  "plugin.audit.action.push.remove": "Mensagem push excluída",
+  "plugin.audit.action.push.send": "Mensagem push enviada",
+  "plugin.audit.action.remote.start": "Acesso remoto iniciado",
+  "plugin.audit.action.remote.stop": "Acesso remoto encerrado",
+  "plugin.audit.action.update.role": "Permissão (papel) atualizada",
+  "plugin.audit.action.update.settings": "Configurações atualizadas",
+  "plugin.audit.action.user.logout": "Logout",
+  "plugin.audit.action.webfilter.update": "Web Filter atualizado"
 }

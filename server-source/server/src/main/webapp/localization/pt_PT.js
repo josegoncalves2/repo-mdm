@@ -143,6 +143,7 @@ document.localization ['pt_PT'] = {
     'summary.devices.installation.failed': 'Falha na instalação',
     'summary.devices.enrolled.lastyear': 'Últimos 12 meses',
     'summary.devices.gps.visible': 'GPS visível',
+    'summary.devices.gps.last': 'Últimas localizações',
     'summary.devices.last.locations': 'Últimas localizações',
     'summary.devices.recent': 'Dispositivos recentes',
     'summary.devices.empty': 'Nenhum dispositivo disponível',

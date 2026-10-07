@@ -67,6 +67,10 @@
 | 2026-10-07 16:10 | Claude Opus 4.6 | Relatório de prints de TODAS as 26 telas (Chromium real) | OK | docs/evidencias/2026-10-07/RELATORIO.md + 30 prints |
 | 2026-10-07 16:15 | Claude Opus 4.6 | Tela Servidor em branco: lógica do iframe num `<script>` de template (ng-include não executa) → movida p/ ShellController (armServerFrame/serverFrameLoaded/retryServerFrame, ng-on-load) | CORRIGIDO | Print 23-servidor-corrigido.png |
 | 2026-10-07 16:20 | Claude Opus 4.6 | Informação detalhada: busca dava HTTP 400 (`sortBy:'number'`, enum exige `NUMBER`) e mensagem pt "Falha de solicitou" | CORRIGIDO | volume + server-source; tradução → "Falha na requisição"; print 15b |
+| 2026-10-07 16:40 | Claude Opus 4.6 | Webfilter 1.2: piscada do bloqueio (só esconde com sinal positivo, WebView reaproveitada, teclado/janelas do Chrome não reiniciam), sync no update, resultado nos Logs | DEPLOYED | Instalado no R9XT200AMYY (versão 1.2 reportada). Commit 6a3c2fdb |
+| 2026-10-07 16:50 | Claude Opus 4.6 | GPS: painel de detalhes do dispositivo (05/10) restaurado junto ao histórico/playback de 06/10 | CORRIGIDO | Print r2-03-mapa-detalhe.png |
+| 2026-10-07 16:50 | Claude Opus 4.6 | Textos em inglês/chaves cruas: Painel, Colunas, Backup, Acessos (12 ações de auditoria), Quiosque "nunca conectou"/tempo legível, Aparência mostra cores padrão; traduções de plugin com carimbo de cache | CORRIGIDO | Prints r2-00/07/13/19/20/22 |
+| 2026-10-07 16:50 | Claude Opus 4.6 | Ponto de retorno estavel-20261007-1400.sql gerado do .dump (pg_restore --clean --if-exists) para aparecer e ser restaurável na tela Backup; travado (+i) | OK | Print r2-22-backup.png |
 | 2026-10-07 16:20 | Claude Opus 4.6 | Pendências abertas | ABERTO | Piscada do bloqueio (APK), print do app Web Filter no tablet, acessibilidade "não", R9XT106Y5RP fora da rede, textos em inglês, Aparência vazia, Backup sem .dump, senha fraca |
 
 ---

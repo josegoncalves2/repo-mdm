@@ -95,7 +95,7 @@
                         <span class="label" ng-class="{'label-success': device.online, 'label-danger': !device.online}">
                             {{device.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
                         </span>
-                        <span class="kiosk-muted">{{device.lastUpdateAgeSec}}{{'remote.label.seconds.ago' | localize}}</span>
+                        <span class="kiosk-muted">{{lastSeenText(device)}}</span>
                     </td>
                     <td>{{device.androidVersion || '-'}}</td>
                     <td>

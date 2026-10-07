@@ -193,7 +193,7 @@ angular.module('headwind-kiosk')
 
         $scope.columnGroups = [
             {
-                label: 'Identification',
+                label: localization.localize('columns.group.identification'),
                 columns: [
                     {model: 'columnDisplayedDeviceNumber', labelKey: 'form.settings.common.device.number'},
                     {model: 'columnDisplayedDeviceImei', labelKey: 'form.settings.common.imei'},
@@ -206,7 +206,7 @@ angular.module('headwind-kiosk')
                 ]
             },
             {
-                label: 'Status & health',
+                label: localization.localize('columns.group.status'),
                 columns: [
                     {model: 'columnDisplayedDeviceStatus', labelKey: 'form.settings.common.status'},
                     {model: 'columnDisplayedDevicePermissionsStatus', labelKey: 'form.settings.common.status.permissions'},
@@ -217,7 +217,7 @@ angular.module('headwind-kiosk')
                 ]
             },
             {
-                label: 'Device info',
+                label: localization.localize('columns.group.device'),
                 columns: [
                     {model: 'columnDisplayedLauncherVersion', labelKey: 'form.settings.common.launcher.version'},
                     {model: 'columnDisplayedAndroidVersion', labelKey: 'form.settings.common.android.version'},
@@ -228,7 +228,7 @@ angular.module('headwind-kiosk')
                 ]
             },
             {
-                label: 'Timing',
+                label: localization.localize('columns.group.timing'),
                 columns: [
                     {model: 'columnDisplayedDeviceDate', labelKey: 'form.settings.common.date'},
                     {model: 'columnDisplayedEnrollmentDate', labelKey: 'form.settings.common.enrollment.date'}
