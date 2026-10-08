@@ -74,7 +74,9 @@ angular.module('headwind-kiosk',
 
     })
     .constant("localizeText", function (locale, key) {
-        var value = document.localization[locale][key];
+        var translations = document.localization[locale] || {};
+        var english = document.localization['en_US'] || {};
+        var value = translations[key] || english[key];
         if (!value) {
 //            console.error('Message key ', key, ' is missing from I18N resource bundle for locale ', locale);
         }
@@ -95,44 +97,49 @@ angular.module('headwind-kiosk',
     }])
     .config(function ($stateProvider, $locationProvider, $urlRouterProvider, getBrowserLanguageProvider, localizeText) {
         $locationProvider.hashPrefix('');
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise(function ($injector) {
+            var saved = localStorage.getItem('hwmdm.activeTab');
+            var tabToUrl = {
+                SUMMARY: '/summary', DEVICES: '/', KIOSK: '/kiosk', REMOTE: '/remote',
+                GPSMAP: '/gpsMap', CHAT: '/chat', REPORTS: '/reports', GOVERNANCE: '/governance',
+                APPS: '/applications', CONFS: '/configurations', FILES: '/files',
+                DESIGN: '/designSettings', COMMON: '/commonSettings', USERS: '/users',
+                ROLES: '/roles', GROUPS: '/groups', ICONS: '/icons', GENERAL: '/generalSettings',
+                EXTENSIONS: '/extensions', INTEGRATIONS: '/integrations', SERVER: '/server'
+            };
+            return (saved && tabToUrl[saved]) || '/';
+        });
 
         let browserLanguage = getBrowserLanguageProvider.f();
 
         $stateProvider
             .state('qr', {
                 url: '/qr/{qrCode}/{deviceId}',
-                templateUrl: 'app/components/main/view/qr.html?v=h526879efd5',
+                templateUrl: 'app/components/main/view/qr.html?v=hux202610061730',
                 controller: 'QRController'
             })
             .state('summary', {
                 url: '/summary',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
-                    label: '{{"breadcrumb.summary" | localize}}' //label to show in breadcrumbs
-                },
-                resolve: {
-                    openTab: function () {return "SUMMARY"}
+                    label: '{{"breadcrumb.summary" | localize}}'
                 }
 
             })
             .state('main', {
                 url: '/',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
-                    label: '{{"breadcrumb.devices" | localize}}' //label to show in breadcrumbs
-                },
-                resolve: {
-                    openTab: function () {return "DEVICES"}
+                    label: '{{"breadcrumb.devices" | localize}}'
                 }
 
             })
             .state('remote', {
                 url: '/remote',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.remote" | localize}}' //label to show in breadcrumbs
                 },
@@ -143,8 +150,8 @@ angular.module('headwind-kiosk',
             })
             .state('kiosk', {
                 url: '/kiosk',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Kiosk'
                 },
@@ -155,8 +162,8 @@ angular.module('headwind-kiosk',
             })
             .state('gpsMap', {
                 url: '/gpsMap',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.gpsmap" | localize}}' //label to show in breadcrumbs
                 },
@@ -167,8 +174,8 @@ angular.module('headwind-kiosk',
             })
             .state('chat', {
                 url: '/chat',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.chat" | localize}}' //label to show in breadcrumbs
                 },
@@ -185,8 +192,8 @@ angular.module('headwind-kiosk',
             // entry gives each screen its own history entry.
             .state('reports', {
                 url: '/reports',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Reports'
                 },
@@ -196,8 +203,8 @@ angular.module('headwind-kiosk',
             })
             .state('governance', {
                 url: '/governance',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Backup & restore'
                 },
@@ -207,15 +214,15 @@ angular.module('headwind-kiosk',
             })
             .state('server', {
                 url: '/server',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"nav.server" | localize}}'},
                 resolve: {openTab: function () { return 'SERVER'; }}
             })
             .state('generalSettings', {
                 url: '/generalSettings',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Server defaults'
                 },
@@ -225,8 +232,8 @@ angular.module('headwind-kiosk',
             })
             .state('extensions', {
                 url: '/extensions',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Plugins'
                 },
@@ -236,58 +243,58 @@ angular.module('headwind-kiosk',
             })
             .state('integrations', {
                 url: '/integrations',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"nav.integrations" | localize}}'},
                 resolve: {openTab: function () { return 'INTEGRATIONS'; }}
             })
             // Telas de plugin abertas pelo menu (PLUGIN_STATES em tabs.controller.js): URL propria, para F5 e Voltar
             .state('webfilterModule', {
                 url: '/webfilter?wfTab',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.webfilter.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-webfilter'; }}
             })
             .state('devicelogModule', {
                 url: '/logs',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.devicelog.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-devicelog'; }}
             })
             .state('auditModule', {
                 url: '/acessos',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.audit.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-audit'; }}
             })
             .state('pushModule', {
                 url: '/push',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.push.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-push'; }}
             })
             .state('deviceinfoModule', {
                 url: '/informacao-detalhada',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.deviceinfo.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-deviceinfo'; }}
             })
             .state('messagingSettingsModule', {
                 url: '/mensagens-config',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.messaging.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-settings-messaging'; }}
             })
             .state('applications', {
                 url: '/applications',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.applications" | localize}}' //label to show in breadcrumbs
                 },
@@ -307,8 +314,8 @@ angular.module('headwind-kiosk',
             })
             .state('configurations', {
                 url: '/configurations',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.configurations" | localize}}' //label to show in breadcrumbs
                 },
@@ -318,8 +325,8 @@ angular.module('headwind-kiosk',
             })
             .state('files', {
                 url: '/files',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.files" | localize}}' //label to show in breadcrumbs
                 },
@@ -329,8 +336,8 @@ angular.module('headwind-kiosk',
             })
             .state('designSettings', {
                 url: '/designSettings',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.default.design" | localize}}' //label to show in breadcrumbs
                 },
@@ -340,8 +347,8 @@ angular.module('headwind-kiosk',
             })
             .state('commonSettings', {
                 url: '/commonSettings',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.common.settings" | localize}}' //label to show in breadcrumbs
                 },
@@ -360,8 +367,8 @@ angular.module('headwind-kiosk',
             })
             .state('users', {
                 url: '/users',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.users" | localize}}' //label to show in breadcrumbs
                 },
@@ -371,8 +378,8 @@ angular.module('headwind-kiosk',
             })
             .state('roles', {
                 url: '/roles',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.roles" | localize}}' //label to show in breadcrumbs
                 },
@@ -382,8 +389,8 @@ angular.module('headwind-kiosk',
             })
             .state('groups', {
                 url: '/groups',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.groups" | localize}}' //label to show in breadcrumbs
                 },
@@ -393,8 +400,8 @@ angular.module('headwind-kiosk',
             })
             .state('icons', {
                 url: '/icons',
-                templateUrl: 'app/components/main/view/content.html?v=h76807a11b0',
-                controller: 'TabController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"tab.icons" | localize}}' //label to show in breadcrumbs
                 },
@@ -422,17 +429,17 @@ angular.module('headwind-kiosk',
             })
             .state('configEditor', {
                 url: '/configuration/{id}',
-                // The editor is opened both from Device profiles and from a device row on
-                // the Devices screen. 'from' carries the screen that opened it so Cancel
-                // returns there instead of always landing on Device profiles.
                 params: {
                     from: null
                 },
-                templateUrl: 'app/components/main/view/configuration.html?v=hdcb7af584c',
-                controller: 'ConfigurationEditorController',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController',
                 ncyBreadcrumb: {
-                    label: '{{"breadcrumb.config.details" | localize}}', //label to show in breadcrumbs
+                    label: '{{"breadcrumb.config.details" | localize}}',
                     parent: 'configurations'
+                },
+                resolve: {
+                    openTab: function () {return "CONFEDIT"}
                 }
             })
             .state('login', {
@@ -442,8 +449,8 @@ angular.module('headwind-kiosk',
             })
             .state('profile', {
                 url: '/profile',
-                templateUrl: 'app/components/main/view/profile.html?v=h5b0676a2ee',
-                controller: 'ProfileController'
+                templateUrl: 'app/components/main/view/content.html?v=hux202610061730',
+                controller: 'ShellController'
             })
             .state('updates', {
                 url: '/updates',

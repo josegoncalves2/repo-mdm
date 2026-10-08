@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-66:12
-INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-66:12
-INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-66:12
-INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-66:12
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-67:12
+INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-67:12
+INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-67:12
+INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:9:1-67:12
 MERGED from [androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/sahw/.gradle/caches/8.13/transforms/97be29755e6b940ef3dec554e527f2c8/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/sahw/.gradle/caches/8.13/transforms/fd03f2aa5276cf78db053a07078f9689/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -60,8 +60,8 @@ ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidMani
 	android:name
 		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:20:25-63
 application
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:23:5-65:19
-INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:23:5-65:19
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:23:5-66:19
+INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:23:5-66:19
 MERGED from [androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
 MERGED from [androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/sahw/.gradle/caches/8.13/transforms/97be29755e6b940ef3dec554e527f2c8/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
@@ -131,31 +131,35 @@ ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidMani
 	android:name
 		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:48:24-67
 receiver#com.hwmdm.webfilter.sync.BootReceiver
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:9-56:20
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:9-57:20
 	android:exported
 		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:53-77
 	android:name
 		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:19-52
-intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:53:13-55:29
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:53:13-56:29
 action#android.intent.action.BOOT_COMPLETED
 ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:54:17-79
 	android:name
 		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:54:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:55:17-84
+	android:name
+		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:55:25-81
 receiver#com.hwmdm.webfilter.sync.PolicyUpdateReceiver
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:57:9-63:20
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:58:9-64:20
 	android:exported
-		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:59:13-36
+		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:60:13-36
 	android:permission
-		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:58:13-78
+		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:59:13-78
 	android:name
-		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:57:19-60
+		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:58:19-60
 intent-filter#action:name:com.hwmdm.webfilter.action.POLICY_UPDATE
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:60:13-62:29
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:61:13-63:29
 action#com.hwmdm.webfilter.action.POLICY_UPDATE
-ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:61:17-83
+ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:62:17-83
 	android:name
-		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:61:25-80
+		ADDED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:62:25-80
 uses-sdk
 INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml

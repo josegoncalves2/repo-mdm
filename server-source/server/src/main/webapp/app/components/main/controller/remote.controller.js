@@ -410,17 +410,13 @@ angular.module('headwind-kiosk')
                         }
                     }
                     if (!$scope.selectedDevice && $scope.devices.length > 0) {
-                        // Depois de um F5 ou troca de aba, um aparelho com sessao guardada
-                        // (ver SESSION_STORAGE_KEY) ganha do "primeiro online": e' o que o
-                        // operador estava atendendo, e reatar essa tela e' o ponto do item 4.
                         var storedSessions = loadStoredSessions();
                         var resumeDevice = $scope.devices.find(function (device) {
                             return !!storedSessions[String(device.id)];
                         });
-                        var firstOnlineDevice = $scope.devices.find(function (device) {
-                            return device.online;
-                        });
-                        $scope.selectDevice(resumeDevice || firstOnlineDevice || $scope.devices[0]);
+                        if (resumeDevice) {
+                            $scope.selectDevice(resumeDevice);
+                        }
                     }
                 } else {
                     $scope.devices = [];

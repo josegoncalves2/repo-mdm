@@ -59,6 +59,7 @@ services:
       - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
       - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
       - ./tomcat_conf/server.xml:/usr/local/tomcat/conf/server.xml:ro
+      - ./tomcat_conf/logging.properties:/usr/local/tomcat/conf/logging.properties:ro
       # Os templates do repositorio, e nao os que vieram dentro da imagem. Com
       # FORCE_RECONFIGURE=true o entrypoint regenera o ROOT.xml a cada subida a partir
       # daqui; sem este mount ele usava o template da imagem, onde proxy.addresses vem

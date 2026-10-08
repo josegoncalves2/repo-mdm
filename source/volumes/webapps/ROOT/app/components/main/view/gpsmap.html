@@ -187,54 +187,6 @@
                 <div id="gps-map" class="gps-map-canvas"></div>
             </div>
 
-            <div class="gps-detail-panel" ng-if="selectedDevice">
-                <div class="gps-detail-header">
-                    <strong>{{selectedDevice.number}}</strong>
-                    <span class="gps-detail-status" ng-class="selectedDevice.isOnline ? 'gps-detail-online' : 'gps-detail-offline'">
-                        {{selectedDevice.isOnline ? ('gpsmap.status.online' | localize) : ('gpsmap.status.offline' | localize)}}
-                    </span>
-                    <button type="button" class="close" ng-click="clearSelection()" title="{{'gpsmap.detail.close' | localize}}">&times;</button>
-                </div>
-                <div class="gps-detail-body">
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"remote.label.model" | localize}}</span>
-                        <span>{{selectedDevice.model || '—'}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.serial">
-                        <span class="gps-detail-label">{{"remote.label.serial" | localize}}</span>
-                        <span>{{selectedDevice.serial}}</span>
-                    </div>
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"gpsmap.detail.coordinates" | localize}}</span>
-                        <span>{{selectedDevice.lat | number:6}}, {{selectedDevice.lon | number:6}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.alt">
-                        <span class="gps-detail-label">{{"gpsmap.detail.altitude" | localize}}</span>
-                        <span>{{selectedDevice.alt | number:0}} m</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.speed != null">
-                        <span class="gps-detail-label">{{"gpsmap.detail.speed" | localize}}</span>
-                        <span>{{selectedDevice.speed | number:1}} km/h</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.batteryLevel != null">
-                        <span class="gps-detail-label">{{"gpsmap.detail.battery" | localize}}</span>
-                        <span ng-class="{'text-danger': selectedDevice.batteryLevel < 20}">{{selectedDevice.batteryLevel}}%</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.networkType">
-                        <span class="gps-detail-label">{{"gpsmap.detail.network" | localize}}</span>
-                        <span>{{selectedDevice.networkType}}</span>
-                    </div>
-                    <div class="gps-detail-row">
-                        <span class="gps-detail-label">{{"gpsmap.detail.updated" | localize}}</span>
-                        <span>{{selectedDevice.locationTs | date:'dd/MM/yyyy HH:mm:ss'}}</span>
-                    </div>
-                    <div class="gps-detail-row" ng-if="selectedDevice.deviceIp">
-                        <span class="gps-detail-label">IP</span>
-                        <span>{{selectedDevice.deviceIp}}</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="hwmdm-footer-bar">
                 {{devices.length}} dispositivo(s) no mapa
                 <span ng-if="lastUpdated"> - Atualizado as {{lastUpdated | date:'HH:mm:ss'}}</span>

@@ -2,17 +2,6 @@
 angular.module('headwind-kiosk')
     .controller('KioskTabController', function ($scope, $state, $timeout, deviceService, configurationService,
                                                 applicationService, alertService, localization, appVersionComparisonService) {
-        $scope.lastSeenText = function (device) {
-            var sec = device ? device.lastUpdateAgeSec : null;
-            if (sec === null || sec === undefined || sec === '' || isNaN(sec)) {
-                return localization.localize('kiosk.never.seen');
-            }
-            sec = Math.max(0, Math.round(sec));
-            if (sec < 60) { return sec + ' s ' + localization.localize('kiosk.ago'); }
-            if (sec < 3600) { return Math.round(sec / 60) + ' min ' + localization.localize('kiosk.ago'); }
-            if (sec < 86400) { return Math.round(sec / 3600) + ' h ' + localization.localize('kiosk.ago'); }
-            return Math.round(sec / 86400) + ' d ' + localization.localize('kiosk.ago');
-        };
         var infrastructureIps = {
             '10.0.17.106': true,
             '10.0.9.1': true,

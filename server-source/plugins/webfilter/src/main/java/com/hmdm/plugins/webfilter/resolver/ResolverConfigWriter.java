@@ -265,12 +265,16 @@ public class ResolverConfigWriter {
         yaml.append("queryLog:\n");
         yaml.append("  type: csv\n");
         yaml.append("  target: /app/queries\n");
-        yaml.append("  logRetentionDays: 0\n");
+        yaml.append("  logRetentionDays: 7\n");
+        yaml.append("caching:\n");
+        yaml.append("  maxTime: 30m\n");
+        yaml.append("  maxItemsCount: 2048\n");
+        yaml.append("  prefetching: true\n");
         yaml.append("blocking:\n");
         yaml.append("  blockType: nxDomain\n");
         yaml.append("  blockTTL: 1m\n");
         yaml.append("  loading:\n");
-        yaml.append("    refreshPeriod: 0m\n");
+        yaml.append("    refreshPeriod: 4h\n");
         yaml.append("    strategy: failOnError\n");
         yaml.append("  denylists:\n").append(denyGroups);
         if (allowGroups.length() > 0) {

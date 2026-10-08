@@ -2,7 +2,8 @@
 angular.module('headwind-kiosk')
     .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $uibModal, confirmModal,
                                                          configurationService, authService, $window, localization,
-                                                         alertService, hintService, $timeout) {
+                                                         alertService, hintService, $timeout, $http,
+                                                         groupService, rebranding) {
         $scope.isTypical = false;
         $scope.viewMode = $window.localStorage.getItem('hwmdm_configs_viewMode') || 'cards';
         $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_configs_viewMode', v); });
@@ -35,9 +36,90 @@ angular.module('headwind-kiosk')
             return getCurrentPanelBaseUrl() + "#/qr/" + configuration.qrCodeKey + "/";
         };
 
+        $scope.splitPanel = null;
+
         $scope.showQrCode = function (configuration) {
-            var url = $scope.getQrCodeUrl(configuration);
-            $window.open(url, "_self");
+            if ($scope.splitPanel && $scope.splitPanel.type === 'qr' && $scope.splitPanel.configId === configuration.id) {
+                $scope.splitPanel = null;
+                return;
+            }
+            var panel = {
+                type: 'qr',
+                configId: configuration.id,
+                configName: configuration.name,
+                qrCodeKey: configuration.qrCodeKey,
+                size: 250,
+                showQR: true,
+                showHelp: false,
+                jsonData: null,
+                formData: {
+                    deviceIdNew: '',
+                    groups: null,
+                    create: true,
+                    useId: 'serial'
+                },
+                groupsList: [],
+                groupsSelection: [],
+                tableFilteringTexts: {
+                    'buttonDefaultText': localization.localize('table.filtering.no.selected.group'),
+                    'checkAll': localization.localize('table.filtering.check.all'),
+                    'uncheckAll': localization.localize('table.filtering.uncheck.all'),
+                    'dynamicButtonTextSuffix': localization.localize('table.filtering.suffix.group')
+                }
+            };
+            var urlPart = function () {
+                var res = '';
+                if (panel.formData.deviceIdNew) res += '&deviceId=' + panel.formData.deviceIdNew;
+                if (panel.formData.useId) res += '&useId=' + panel.formData.useId;
+                if (panel.formData.create) {
+                    res += '&create=1';
+                    for (var i = 0; i < panel.groupsSelection.length; i++) {
+                        res += '&group=' + encodeURI(panel.groupsSelection[i].id);
+                    }
+                }
+                return res;
+            };
+            panel.generateQrUrl = function () {
+                panel.qrCodeUrl = 'rest/public/qr/' + panel.qrCodeKey + '?size=' + panel.size;
+                if (panel.formData.deviceIdNew) panel.qrCodeUrl += '&deviceId=' + panel.formData.deviceIdNew;
+                panel.qrCodeUrl += urlPart();
+            };
+            panel.renew = function () {
+                panel.showQR = false;
+                panel.generateQrUrl();
+                if (panel.jsonData) panel.generateJson();
+                panel.showQR = true;
+            };
+            panel.generateJson = function () {
+                var url = 'rest/public/qr/json/' + panel.qrCodeKey + '?' + urlPart().substring(1);
+                $http.get(url).then(function (response) {
+                    if (response.status === 200) panel.jsonData = response.data;
+                });
+            };
+            panel.helpClicked = function () { panel.showHelp = !panel.showHelp; };
+            panel.close = function () { $scope.splitPanel = null; };
+
+            panel.groupsSelectionEvents = {
+                onItemSelect: function () { panel.renew(); },
+                onItemDeselect: function () { panel.renew(); },
+                onSelectAll: function () { panel.renew(); },
+                onDeselectAll: function () { panel.renew(); }
+            };
+
+            groupService.getAllGroups(function (response) {
+                panel.groupsList = response.data.map(function (g) { return {id: g.id, label: g.name}; });
+            });
+
+            rebranding.query(function (value) {
+                panel.qrCodeHelpLine5 = localization.localize('qrcode.help.line5').replace('${appName}', value.appName);
+            });
+
+            panel.generateQrUrl();
+            $scope.splitPanel = panel;
+        };
+
+        $scope.closeSplitPanel = function () {
+            $scope.splitPanel = null;
         };
 
         $scope.init = function (isTypical) {
@@ -155,6 +237,103 @@ angular.module('headwind-kiosk')
             $scope.closeModal = function () {
                 $uibModalInstance.dismiss();
             }
+        })
+    .controller('QRCodeModalController',
+        function ($scope, $uibModalInstance, $window, $http, localization, groupService, $timeout, rebranding, qrCodeKey) {
+
+            $scope.size = 250;
+            $scope.formData = {
+                deviceIdNew: '',
+                groups: null,
+                create: true,
+                useId: 'serial'
+            };
+            $scope.qrCodeKey = qrCodeKey;
+            $scope.deviceId = '';
+            $scope.showQR = true;
+            $scope.showHelp = false;
+
+            rebranding.query(function (value) {
+                $scope.qrCodeHelpLine5 = localization.localize('qrcode.help.line5').replace('${appName}', value.appName);
+            });
+
+            var urlPart = function () {
+                var res = '';
+                if ($scope.formData.deviceIdNew) {
+                    res += '&deviceId=' + $scope.formData.deviceIdNew;
+                }
+                if ($scope.formData.useId) {
+                    res += '&useId=' + $scope.formData.useId;
+                }
+                if ($scope.formData.create) {
+                    res += '&create=1';
+                    for (var i = 0; i < $scope.groupsSelection.length; i++) {
+                        res += '&group=' + encodeURI($scope.groupsSelection[i].id);
+                    }
+                }
+                return res;
+            };
+
+            var generateQrUrl = function () {
+                $scope.qrCodeUrl = 'rest/public/qr/' + $scope.qrCodeKey + '?size=' + $scope.size;
+                if ($scope.deviceId) {
+                    $scope.qrCodeUrl += '&deviceId=' + $scope.deviceId;
+                }
+                $scope.qrCodeUrl += urlPart();
+            };
+
+            $scope.renew = function () {
+                $scope.showQR = false;
+                $scope.deviceId = $scope.formData.deviceIdNew;
+                generateQrUrl();
+                if ($scope.jsonData) {
+                    $scope.generateJson();
+                }
+                $scope.showQR = true;
+            };
+
+            $scope.groupsList = [];
+            $scope.groupsSelection = [];
+
+            groupService.getAllGroups(function (response) {
+                $scope.groups = response.data;
+                $scope.groupsList = response.data.map(function (group) {
+                    return {id: group.id, label: group.name};
+                });
+            });
+
+            $scope.groupsSelectionEvents = {
+                onItemSelect: function () { $scope.renew(); },
+                onItemDeselect: function () { $scope.renew(); },
+                onSelectAll: function () { $scope.renew(); },
+                onDeselectAll: function () { $scope.renew(); }
+            };
+
+            $scope.generateJson = function () {
+                var url = 'rest/public/qr/json/' + $scope.qrCodeKey + '?' + urlPart().substring(1);
+                $http.get(url).then(function (response) {
+                    if (response.status === 200) {
+                        $scope.jsonData = response.data;
+                    }
+                });
+            };
+
+            $scope.tableFilteringTexts = {
+                'buttonDefaultText': localization.localize('table.filtering.no.selected.group'),
+                'checkAll': localization.localize('table.filtering.check.all'),
+                'uncheckAll': localization.localize('table.filtering.uncheck.all'),
+                'dynamicButtonTextSuffix': localization.localize('table.filtering.suffix.group')
+            };
+
+            $scope.helpClicked = function () {
+                $scope.showHelp = !$scope.showHelp;
+            };
+
+            $scope.closeModal = function () {
+                $uibModalInstance.dismiss();
+            };
+
+            $scope.renew();
         })
     .controller('ApplicationSettingEditorController', function ($scope, $uibModalInstance, localization,
                                                                 applicationSetting, getApps) {

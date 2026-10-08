@@ -1,6 +1,104 @@
 <!-- Gestao do servidor: o hwmdm-admin, container proprio da stack, aberto dentro do painel.
      Fica fora do Tomcat de proposito: reinicia/recria os containers sem derrubar a si mesmo. -->
-<div class="hw-server-admin" style="width:100%">
-    <iframe ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
-            style="width:100%;height:calc(100vh - 140px);min-height:560px;border:0;display:block"></iframe>
+<div class="hwmdm-page-toolbar hwmdm-settings-page">
+    <div>
+        <h3 localized>nav.server</h3>
+        <p localized>server.page.subtitle</p>
+    </div>
 </div>
+<div class="hw-server-admin hwmdm-settings-page" style="width:100%;position:relative">
+
+    <!-- Estado: carregando -->
+    <div ng-if="serverFrameState === 'loading'" class="hw-server-status">
+        <span class="hw-icon hw-icon-loader hw-spin" style="width:32px;height:32px;opacity:.5"></span>
+        <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)">Conectando ao módulo Servidor…</p>
+    </div>
+
+    <!-- Estado: offline / erro -->
+    <div ng-if="serverFrameState === 'error'" class="hw-server-status">
+        <span class="hw-icon hw-icon-alert-triangle" style="width:40px;height:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+        <h4 style="margin:14px 0 6px;font-size:16px">Módulo temporariamente indisponível</h4>
+        <p style="color:var(--hwmdm-text-muted,#64748b);max-width:420px;margin:0 auto 16px">
+            O serviço de gestão do servidor está reiniciando ou fora do ar.
+            Isso é normal após uma alteração de configuração.
+        </p>
+        <button type="button" class="btn btn-default" ng-click="retryServerFrame()" style="border-radius:8px;padding:8px 20px">
+            <span class="hw-icon hw-icon-refresh-cw" style="width:14px;height:14px;margin-right:6px;vertical-align:-2px"></span>
+            Tentar novamente
+        </button>
+    </div>
+
+    <!-- Iframe real (escondido enquanto loading/error) -->
+    <iframe ng-if="serverAdminUrl" ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
+            ng-show="serverFrameState === 'ready'"
+            style="width:100%;height:calc(100vh - 180px);min-height:520px;border:0;display:block"
+            onload="this.dataset.loaded='1'"
+            id="server-admin-frame"></iframe>
+</div>
+
+<style>
+.hw-server-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 400px;
+    background: var(--hwmdm-surface, #fff);
+    border: 1px solid var(--hwmdm-border, #d9e2ec);
+    border-radius: 8px;
+    padding: 40px 24px;
+}
+@keyframes hw-spin { to { transform: rotate(360deg) } }
+.hw-spin { animation: hw-spin .8s linear infinite; }
+</style>
+
+<script>
+(function () {
+    var scope = angular.element(document.querySelector('.hw-server-admin')).scope();
+    if (!scope) return;
+
+    scope.serverFrameState = 'loading';
+
+    scope.retryServerFrame = function () {
+        scope.serverFrameState = 'loading';
+        checkFrame();
+    };
+
+    var attempts = 0;
+    var maxAttempts = 20;
+
+    function checkFrame() {
+        attempts++;
+        var frame = document.getElementById('server-admin-frame');
+        if (!frame) {
+            if (attempts < maxAttempts) {
+                setTimeout(checkFrame, 1500);
+            } else {
+                scope.$apply(function () { scope.serverFrameState = 'error'; });
+            }
+            return;
+        }
+        try {
+            var doc = frame.contentDocument || frame.contentWindow.document;
+            if (doc && doc.body && doc.body.innerHTML.length > 50) {
+                scope.$apply(function () { scope.serverFrameState = 'ready'; });
+                return;
+            }
+        } catch (e) {
+            // cross-origin or not loaded yet
+        }
+        if (frame.dataset.loaded === '1') {
+            scope.$apply(function () { scope.serverFrameState = 'ready'; });
+            return;
+        }
+        if (attempts < maxAttempts) {
+            setTimeout(checkFrame, 1500);
+        } else {
+            scope.$apply(function () { scope.serverFrameState = 'error'; });
+        }
+    }
+
+    setTimeout(checkFrame, 2000);
+})();
+</script>

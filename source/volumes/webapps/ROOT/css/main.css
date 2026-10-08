@@ -3980,6 +3980,10 @@ body {
     padding: var(--ds-gap-sm) var(--ds-gap-lg);
     border-top: 1px solid var(--hwmdm-border);
 }
+.config-card-active {
+    border-color: var(--hwmdm-primary, #4a90d9);
+    box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.2);
+}
 .app-card-meta {
     display: flex;
     gap: var(--ds-gap-sm);

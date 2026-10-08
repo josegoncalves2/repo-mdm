@@ -259,6 +259,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .glyphicon-ok::before              { -webkit-mask-image: url('../images/icons/check.svg');          mask-image: url('../images/icons/check.svg'); }
 .glyphicon-option-horizontal::before{-webkit-mask-image: url('../images/icons/more-horizontal.svg');mask-image: url('../images/icons/more-horizontal.svg'); }
 .glyphicon-pencil::before          { -webkit-mask-image: url('../images/icons/pencil.svg');         mask-image: url('../images/icons/pencil.svg'); }
+.glyphicon-plus::before            { -webkit-mask-image: url('../images/icons/plus.svg');           mask-image: url('../images/icons/plus.svg'); }
 .glyphicon-phone::before           { -webkit-mask-image: url('../images/icons/smartphone.svg');     mask-image: url('../images/icons/smartphone.svg'); }
 .glyphicon-picture::before         { -webkit-mask-image: url('../images/icons/image.svg');          mask-image: url('../images/icons/image.svg'); }
 .glyphicon-qrcode::before          { -webkit-mask-image: url('../images/icons/qr-code.svg');        mask-image: url('../images/icons/qr-code.svg'); }
@@ -283,6 +284,20 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .glyphicon-user::before            { -webkit-mask-image: url('../images/icons/user.svg');           mask-image: url('../images/icons/user.svg'); }
 .glyphicon-warning-sign::before    { -webkit-mask-image: url('../images/icons/alert-triangle.svg'); mask-image: url('../images/icons/alert-triangle.svg'); }
 .glyphicon-wrench::before          { -webkit-mask-image: url('../images/icons/wrench.svg');         mask-image: url('../images/icons/wrench.svg'); }
+.glyphicon-file::before            { -webkit-mask-image: url('../images/icons/file.svg');           mask-image: url('../images/icons/file.svg'); }
+.glyphicon-pause::before           { -webkit-mask-image: url('../images/icons/pause.svg');          mask-image: url('../images/icons/pause.svg'); }
+.glyphicon-play::before            { -webkit-mask-image: url('../images/icons/play.svg');           mask-image: url('../images/icons/play.svg'); }
+.glyphicon-screenshot::before      { -webkit-mask-image: url('../images/icons/crosshair.svg');      mask-image: url('../images/icons/crosshair.svg'); }
+.glyphicon-stop::before            { -webkit-mask-image: url('../images/icons/square.svg');         mask-image: url('../images/icons/square.svg'); }
+.glyphicon-time::before            { -webkit-mask-image: url('../images/icons/clock.svg');          mask-image: url('../images/icons/clock.svg'); }
+.glyphicon-road::before            { -webkit-mask-image: url('../images/icons/map.svg');            mask-image: url('../images/icons/map.svg'); }
+.glyphicon-globe::before           { -webkit-mask-image: url('../images/icons/globe.svg');          mask-image: url('../images/icons/globe.svg'); }
+.glyphicon-tree-deciduous::before  { -webkit-mask-image: url('../images/icons/mountain.svg');       mask-image: url('../images/icons/mountain.svg'); }
+.glyphicon-check::before           { -webkit-mask-image: url('../images/icons/check.svg');          mask-image: url('../images/icons/check.svg'); }
+.glyphicon-question-sign::before   { -webkit-mask-image: url('../images/icons/help-circle.svg');    mask-image: url('../images/icons/help-circle.svg'); }
+.glyphicon-search::before          { -webkit-mask-image: url('../images/icons/search.svg');         mask-image: url('../images/icons/search.svg'); }
+.glyphicon-sort-by-attributes::before     { -webkit-mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); mask-image: url('../images/icons/arrow-down-narrow-wide.svg'); }
+.glyphicon-sort-by-attributes-alt::before { -webkit-mask-image: url('../images/icons/arrow-up-narrow-wide.svg');   mask-image: url('../images/icons/arrow-up-narrow-wide.svg'); }
 
 /* Utilitario generico para markup novo (ex.: menu lateral do pacote "modulos"):
    <span class="hw-icon hw-icon-smartphone"></span> */
@@ -370,8 +385,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     height: auto;
     padding: 8px 14px;
     max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
     flex-shrink: 0;
     border-radius: var(--hwmdm-radius-sm);
     border-width: 1px;
@@ -834,7 +848,10 @@ input[type="radio"] {
 .hwmdm-nav {
     flex: 1 1 auto;
     overflow-y: auto;
+    overflow-anchor: none;
 }
+.hwmdm-nav-link:focus { scroll-margin: 0; }
+.hwmdm-nav-link { overflow-anchor: none; }
 
 .hwmdm-sidebar-footer {
     flex: 0 0 auto;
@@ -1208,3 +1225,55 @@ button:focus-visible,
 /* Menu "..." da linha de dispositivo: anexado ao body e alinhado a direita do botao (ultima
    coluna); antes abria para a direita e ficava fora da tela. Altura limitada com rolagem. */
 .dropdown-menu-devices-row { overflow-y: auto; }
+
+/* Preview ao vivo na tela de Aparencia e marca */
+.hwmdm-brand-preview-box {
+    border: 1px solid var(--hwmdm-border, #dee2e6);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 480px;
+}
+.hwmdm-brand-preview-topbar {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    min-height: 44px;
+}
+.hwmdm-brand-preview-sidebar-slice {
+    width: 48px;
+    margin: -8px 12px -8px -16px;
+    padding: 10px 6px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.hwmdm-brand-preview-sidebar-item {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.2);
+}
+.hwmdm-brand-preview-sidebar-item.active {
+    background: rgba(255,255,255,0.7);
+}
+.hwmdm-brand-preview-header {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+.hwmdm-brand-preview-body {
+    background: var(--hwmdm-surface, #f8f9fa);
+    padding: 16px;
+    min-height: 80px;
+}
+.hwmdm-brand-preview-content {
+    display: flex;
+    gap: 8px;
+}
+.hwmdm-brand-preview-card {
+    flex: 1;
+    height: 40px;
+    background: #fff;
+    border: 1px solid var(--hwmdm-border, #dee2e6);
+    border-radius: 6px;
+}

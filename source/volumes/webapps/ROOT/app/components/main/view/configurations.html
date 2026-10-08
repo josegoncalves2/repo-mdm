@@ -1,4 +1,4 @@
-<!-- Localization completed -->
+<!-- Split vertical persistente: lista | contexto -->
 <div ng-controller="ConfigurationsTabController" class="hwmdm-list-page">
 
     <notification-message attr-name="configurationsMessage"></notification-message>
@@ -39,109 +39,263 @@
         </div>
     </div>
 
-    <div class="text-center" ng-if="configurations.length > paging.pageSize">
-        <pagination
-                boundary-links='true' class='pagination-sm'
-                max-size='3'
-                ng-model='paging.currentPage'
-                total-items='configurations.length'
-                items-per-page='paging.pageSize'
-                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                last-text='&raquo;'></pagination>
-    </div>
+    <div class="config-split-container">
+        <!-- Coluna esquerda: lista de perfis (sempre visivel) -->
+        <div class="config-split-left">
 
-    <div ng-if='configurations && configurations.length > 0 && viewMode === "cards"' class="config-card-grid">
-        <div class="config-card"
-             ng-repeat="configuration in configurations.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
-            <div class="config-card-body" ng-click="editConfiguration(configuration)">
-                <div class="config-card-name">{{configuration.name}}</div>
-                <div class="config-card-desc" ng-if="configuration.description">{{configuration.description}}</div>
-                <div class="config-card-desc" ng-if="!configuration.description" style="font-style:italic" localized>configurations.no.description</div>
+            <div class="text-center" ng-if="configurations.length > paging.pageSize">
+                <pagination
+                        boundary-links='true' class='pagination-sm'
+                        max-size='3'
+                        ng-model='paging.currentPage'
+                        total-items='configurations.length'
+                        items-per-page='paging.pageSize'
+                        previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                        last-text='&raquo;'></pagination>
             </div>
-            <div class="config-card-actions">
-                <button type='button' class='btn btn-sm btn-default' localized-title="button.change"
-                        ng-click='editConfiguration(configuration)'>
-                    <span class='glyphicon glyphicon-pencil'></span>
-                </button>
-                <button ng-disabled='configuration.id === 1'
-                        type='button' localized-title="button.delete"
-                        class='btn btn-sm btn-default'
-                        ng-if="hasPermission('copy_config')"
-                        ng-click='removeConfiguration(configuration)'>
-                    <span class='glyphicon glyphicon-trash'></span>
-                </button>
-                <button type='button' class='btn btn-sm btn-default' localized-title="button.copy"
-                        ng-if="hasPermission('copy_config')"
-                        ng-click='copyConfiguration(configuration)'>
-                    <span class='glyphicon glyphicon-duplicate'></span>
-                </button>
-                <button type='button' class='btn btn-sm btn-default' localized-title="button.qrcode"
-                        data-hint-key="hint.step.2"
-                        ng-if="qrCodeAvailable(configuration)"
-                        ng-click='showQrCode(configuration)'>
-                    <span class='glyphicon glyphicon-qrcode'></span>
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <div ng-if='configurations && configurations.length > 0 && viewMode === "list"' class="table-responsive">
-        <table class='table'>
-            <thead>
-            <tr>
-                <th localized>table.heading.configuration.name</th>
-                <th localized>table.heading.configuration.desc</th>
-                <th class='actions-column' localized>table.heading.configuration.actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat='configuration in configurations.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'>
-                <td><a class="action-link" ng-click="editConfiguration(configuration)">{{configuration.name}}</a></td>
-                <td>{{configuration.description || '—'}}</td>
-                <td>
-                    <div><nobr>
-                        <button type='button' class='btn btn-default' localized-title="button.change"
+            <div ng-if='configurations && configurations.length > 0 && viewMode === "cards"' class="config-card-grid config-card-grid-split">
+                <div class="config-card"
+                     ng-class="{'config-card-active': splitPanel.type === 'qr' && splitPanel.configId === configuration.id}"
+                     ng-repeat="configuration in configurations.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))">
+                    <div class="config-card-body" ng-click="editConfiguration(configuration)">
+                        <div class="config-card-name">{{configuration.name}}</div>
+                        <div class="config-card-desc" ng-if="configuration.description">{{configuration.description}}</div>
+                        <div class="config-card-desc" ng-if="!configuration.description" style="font-style:italic" localized>configurations.no.description</div>
+                    </div>
+                    <div class="config-card-actions">
+                        <button type='button' class='btn btn-sm btn-default' localized-title="button.change"
                                 ng-click='editConfiguration(configuration)'>
                             <span class='glyphicon glyphicon-pencil'></span>
                         </button>
                         <button ng-disabled='configuration.id === 1'
                                 type='button' localized-title="button.delete"
-                                class='btn btn-default'
+                                class='btn btn-sm btn-default'
                                 ng-if="hasPermission('copy_config')"
                                 ng-click='removeConfiguration(configuration)'>
                             <span class='glyphicon glyphicon-trash'></span>
                         </button>
-                        <button type='button' class='btn btn-default' localized-title="button.copy"
+                        <button type='button' class='btn btn-sm btn-default' localized-title="button.copy"
                                 ng-if="hasPermission('copy_config')"
                                 ng-click='copyConfiguration(configuration)'>
                             <span class='glyphicon glyphicon-duplicate'></span>
                         </button>
-                        <button type='button' class='btn btn-default' localized-title="button.qrcode"
+                        <button type='button' class='btn btn-sm btn-default' localized-title="button.qrcode"
+                                data-hint-key="hint.step.2"
                                 ng-if="qrCodeAvailable(configuration)"
-                                ng-click='showQrCode(configuration)'>
+                                ng-click='showQrCode(configuration)'
+                                ng-class="{'btn-primary': splitPanel.type === 'qr' && splitPanel.configId === configuration.id}">
                             <span class='glyphicon glyphicon-qrcode'></span>
                         </button>
-                    </nobr></div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+                    </div>
+                </div>
+            </div>
 
-    <div ng-if='configurations && configurations.length == 0' class='hwmdm-empty-state'>
-        <span class="glyphicon glyphicon-cog"></span>
-        <span localized>notfound.configurations</span>
-    </div>
+            <div ng-if='configurations && configurations.length > 0 && viewMode === "list"' class="table-responsive">
+                <table class='table'>
+                    <thead>
+                    <tr>
+                        <th localized>table.heading.configuration.name</th>
+                        <th localized>table.heading.configuration.desc</th>
+                        <th class='actions-column' localized>table.heading.configuration.actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat='configuration in configurations.slice(((paging.currentPage-1)*paging.pageSize), ((paging.currentPage)*paging.pageSize))'
+                        ng-class="{'info': splitPanel.type === 'qr' && splitPanel.configId === configuration.id}">
+                        <td><a class="action-link" ng-click="editConfiguration(configuration)">{{configuration.name}}</a></td>
+                        <td>{{configuration.description || '—'}}</td>
+                        <td>
+                            <div><nobr>
+                                <button type='button' class='btn btn-default' localized-title="button.change"
+                                        ng-click='editConfiguration(configuration)'>
+                                    <span class='glyphicon glyphicon-pencil'></span>
+                                </button>
+                                <button ng-disabled='configuration.id === 1'
+                                        type='button' localized-title="button.delete"
+                                        class='btn btn-default'
+                                        ng-if="hasPermission('copy_config')"
+                                        ng-click='removeConfiguration(configuration)'>
+                                    <span class='glyphicon glyphicon-trash'></span>
+                                </button>
+                                <button type='button' class='btn btn-default' localized-title="button.copy"
+                                        ng-if="hasPermission('copy_config')"
+                                        ng-click='copyConfiguration(configuration)'>
+                                    <span class='glyphicon glyphicon-duplicate'></span>
+                                </button>
+                                <button type='button' class='btn btn-default' localized-title="button.qrcode"
+                                        ng-if="qrCodeAvailable(configuration)"
+                                        ng-click='showQrCode(configuration)'
+                                        ng-class="{'btn-primary': splitPanel.type === 'qr' && splitPanel.configId === configuration.id}">
+                                    <span class='glyphicon glyphicon-qrcode'></span>
+                                </button>
+                            </nobr></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="text-center" ng-if="configurations.length > paging.pageSize">
-        <pagination
-                boundary-links='true' class='pagination-sm'
-                max-size='3'
-                ng-model='paging.currentPage'
-                total-items='configurations.length'
-                items-per-page='paging.pageSize'
-                previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
-                last-text='&raquo;'></pagination>
-    </div>
+            <div ng-if='configurations && configurations.length == 0' class='hwmdm-empty-state'>
+                <span class="glyphicon glyphicon-cog"></span>
+                <span localized>notfound.configurations</span>
+            </div>
 
+            <div class="text-center" ng-if="configurations.length > paging.pageSize">
+                <pagination
+                        boundary-links='true' class='pagination-sm'
+                        max-size='3'
+                        ng-model='paging.currentPage'
+                        total-items='configurations.length'
+                        items-per-page='paging.pageSize'
+                        previous-text='&lsaquo;' next-text='&rsaquo;' first-text='&laquo;'
+                        last-text='&raquo;'></pagination>
+            </div>
+        </div>
+
+        <!-- Coluna direita: painel de contexto (sempre visivel) -->
+        <div class="config-split-right">
+            <div class="config-split-right-inner">
+
+                <!-- Estado vazio: nenhum perfil selecionado -->
+                <div ng-if="!splitPanel" class="config-split-empty">
+                    <span class="glyphicon glyphicon-hand-left" style="font-size:36px;opacity:.3"></span>
+                    <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)" localized>configurations.split.empty</p>
+                </div>
+
+                <!-- Painel QR Code -->
+                <div ng-if="splitPanel.type === 'qr'">
+                    <div class="hwmdm-section-head" style="display:flex;justify-content:space-between;align-items:center">
+                        <h4>QR — {{splitPanel.configName}}</h4>
+                        <button type="button" class="btn btn-sm btn-default" ng-click="closeSplitPanel()" title="Fechar">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+
+                    <div style="text-align:center;padding:16px 0;border-bottom:1px solid #e5e7eb;margin-bottom:16px" ng-if="splitPanel.showQR">
+                        <div style="background:#fff;border:1px solid #d9e2ec;border-radius:8px;padding:16px;display:inline-block">
+                            <img ng-src="{{splitPanel.qrCodeUrl}}" width="{{splitPanel.size}}" height="{{splitPanel.size}}"
+                                 localized-alt="form.qr.code.image.alt"
+                                 style="display:block;border-radius:4px;max-width:100%;height:auto"/>
+                        </div>
+                        <p style="margin:10px 0 0;color:#64748b;font-size:13px" localized>form.qr.scan.instruction</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label localized>form.qr.device.number</label>
+                        <input type="text" maxlength="100"
+                               ng-enter="splitPanel.renew()"
+                               ng-change="splitPanel.renew()"
+                               ng-model="splitPanel.formData.deviceIdNew"
+                               localized-placeholder="form.qr.device.number.placeholder"
+                               class="form-control input-sm" />
+                    </div>
+
+                    <div class="form-group">
+                        <label localized>form.qr.number.use</label>
+                        <select class="form-control input-sm" ng-change="splitPanel.renew()"
+                                ng-model="splitPanel.formData.useId" ng-disabled="splitPanel.formData.deviceIdNew != ''">
+                            <option ng-value="''" localized>form.qr.number.use.request</option>
+                            <option ng-value="'imei'" localized>form.qr.number.use.imei</option>
+                            <option ng-value="'serial'" localized>form.qr.number.use.serial</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="splitPanel.formData.create" ng-change="splitPanel.renew()" />
+                            <span localized>form.qr.auto.create</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group" ng-if="splitPanel.formData.create">
+                        <label localized>form.qr.groups</label>
+                        <div ng-dropdown-multiselect
+                             options="splitPanel.groupsList"
+                             translation-texts="splitPanel.tableFilteringTexts"
+                             selected-model="splitPanel.groupsSelection"
+                             events="splitPanel.groupsSelectionEvents"
+                             class="custom-multi-select"></div>
+                    </div>
+
+                    <div style="margin-top:10px;display:flex;gap:6px">
+                        <button type="button" class="btn btn-default btn-sm" ng-click="splitPanel.generateJson()">
+                            <span class="glyphicon glyphicon-list"></span> JSON
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="splitPanel.renew()">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm" ng-click="splitPanel.helpClicked()">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                    </div>
+
+                    <div ng-if="splitPanel.jsonData" style="margin-top:10px">
+                        <textarea class="form-control" style="height:80px;font-family:monospace;font-size:11px" readonly>{{splitPanel.jsonData}}</textarea>
+                    </div>
+
+                    <div ng-if="splitPanel.showHelp" style="margin-top:10px;padding:10px;background:#f8f9fa;border-radius:4px;font-size:13px">
+                        <p localized>qrcode.help.line1</p>
+                        <ol style="margin:6px 0;padding-left:18px;line-height:1.7">
+                            <li localized>qrcode.help.line2</li>
+                            <li localized>qrcode.help.line3</li>
+                            <li localized>qrcode.help.line4</li>
+                        </ol>
+                        <p>{{splitPanel.qrCodeHelpLine5}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+.config-split-container {
+    display: flex;
+    gap: 16px;
+    min-height: calc(100vh - 200px);
+}
+.config-split-left {
+    flex: 0 0 50%;
+    max-width: 50%;
+    overflow-y: auto;
+}
+.config-split-right {
+    flex: 0 0 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+}
+.config-split-right-inner {
+    position: sticky;
+    top: 16px;
+    background: var(--hwmdm-surface, #fff);
+    border: 1px solid var(--hwmdm-border, #d9e2ec);
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 300px;
+}
+.config-split-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+}
+.config-card-grid-split {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+@media (max-width: 991px) {
+    .config-split-container {
+        flex-direction: column;
+    }
+    .config-split-left,
+    .config-split-right {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .config-card-grid-split {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+</style>

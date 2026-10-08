@@ -10,19 +10,19 @@
     <div class='form-group' ng-if='successMessage'><div class='success'><span>{{successMessage}}</span></div></div>
 
     <section class="ext-hub-section">
-        <h4 class="ext-hub-section-title">Global configuration</h4>
+        <h4 class="ext-hub-section-title">Configuração global</h4>
         <p class="ext-hub-section-hint">
-            Export the current theme, branding, language, security policy and custom device property settings
-            as a portable JSON file, or import a previously exported one to apply it to this server.
+            Exporta tema, marca, idioma, política de segurança e propriedades personalizadas de dispositivo
+            num arquivo JSON portátil, ou importa um arquivo exportado antes para aplicá-lo neste servidor.
         </p>
 
         <div class="gov-actions-row">
             <button type="button" class="btn btn-default" ng-click="exportConfiguration()">
-                <span class="glyphicon glyphicon-download-alt"></span> Export configuration
+                <span class="glyphicon glyphicon-download-alt"></span> Exportar configuração
             </button>
 
             <label class="btn btn-default gov-file-btn">
-                <span class="glyphicon glyphicon-upload"></span> Choose file to import
+                <span class="glyphicon glyphicon-upload"></span> Escolher arquivo para importar
                 <input type="file" accept="application/json" onchange="angular.element(this).scope().onImportFileSelected(this.files); angular.element(this).scope().$apply();" style="display:none"/>
             </label>
         </div>
@@ -33,21 +33,21 @@
 
         <div class="gov-import-preview" ng-if="importPreview">
             <div class="gov-import-preview-header">
-                <strong>{{importFileName}}</strong> looks valid. Review before applying:
+                <strong>{{importFileName}}</strong> parece válido. Revise antes de aplicar:
             </div>
             <table class="table gov-import-table">
                 <tbody>
-                    <tr ng-if="importPreview.webPrimaryColor"><td>Accent color</td><td>{{importPreview.webPrimaryColor}}</td></tr>
-                    <tr ng-if="importPreview.webSidebarColor"><td>Sidebar color</td><td>{{importPreview.webSidebarColor}}</td></tr>
-                    <tr ng-if="importPreview.language"><td>Language</td><td>{{importPreview.language}}</td></tr>
-                    <tr ng-if="importPreview.phoneNumberFormat"><td>Phone number format</td><td>{{importPreview.phoneNumberFormat}}</td></tr>
-                    <tr><td>Password min length</td><td>{{importPreview.passwordLength || 0}}</td></tr>
-                    <tr><td>Idle logout (seconds)</td><td>{{importPreview.idleLogout || 'never'}}</td></tr>
+                    <tr ng-if="importPreview.webPrimaryColor"><td>Cor principal</td><td>{{importPreview.webPrimaryColor}}</td></tr>
+                    <tr ng-if="importPreview.webSidebarColor"><td>Cor da lateral</td><td>{{importPreview.webSidebarColor}}</td></tr>
+                    <tr ng-if="importPreview.language"><td>Idioma</td><td>{{importPreview.language}}</td></tr>
+                    <tr ng-if="importPreview.phoneNumberFormat"><td>Formato de telefone</td><td>{{importPreview.phoneNumberFormat}}</td></tr>
+                    <tr><td>Comprimento mínimo da senha</td><td>{{importPreview.passwordLength || 0}}</td></tr>
+                    <tr><td>Sair quando ocioso (segundos)</td><td>{{importPreview.idleLogout || 'nunca'}}</td></tr>
                 </tbody>
             </table>
             <div class="dtv-save-bar">
-                <button type="button" class="btn btn-default" ng-click="cancelImport()">Cancel</button>
-                <button type="button" class="btn btn-primary" ng-disabled="loading" ng-click="applyImport()">Apply configuration</button>
+                <button type="button" class="btn btn-default" ng-click="cancelImport()">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-disabled="loading" ng-click="applyImport()">Aplicar configuração</button>
             </div>
         </div>
     </section>
@@ -68,49 +68,49 @@
             </label>
         </div>
         <p class="ext-hub-section-hint">
-            Backups are full PostgreSQL dumps stored on the server (<code>/opt/hmdm/backups</code>, outside the
-            application container's own filesystem). Restoring automatically snapshots the current state first,
-            so a bad restore is itself recoverable.
+            Os backups são cópias completas do PostgreSQL guardadas no servidor (<code>/opt/hmdm/backups</code>, fora
+            do sistema de arquivos do container). Toda restauração tira antes uma cópia do estado atual, então
+            uma restauração errada também pode ser desfeita.
         </p>
 
         <div class="alert alert-warning" ng-if="backupApiChecked && !backupApiAvailable">
-            <strong>The backup API is not available on this server.</strong>
-            <span>rest/private/backup/list answered 404, so this server build cannot create, list,
-                download or restore database backups. Configuration export and import above still work.</span>
+            <strong>A API de backup não está disponível neste servidor.</strong>
+            <span>rest/private/backup/list respondeu 404: este servidor não consegue criar, listar,
+                baixar nem restaurar backups do banco. A exportação e importação de configuração acima continuam funcionando.</span>
         </div>
 
         <div class="gov-actions-row">
             <button type="button" class="btn btn-primary" ng-disabled="loading || !backupApiAvailable" ng-click="createBackup()">
-                <span class="glyphicon glyphicon-save"></span> Create backup now
+                <span class="glyphicon glyphicon-save"></span> Criar backup agora
             </button>
-            <button type="button" class="btn btn-default" ng-click="loadBackups()">Refresh</button>
+            <button type="button" class="btn btn-default" ng-click="loadBackups()">Atualizar</button>
         </div>
 
         <table class="table gov-backups-table" ng-if="backups.length > 0">
             <thead>
                 <tr>
                     <th>Backup</th>
-                    <th>Size</th>
-                    <th>Created</th>
-                    <th>Actions</th>
+                    <th>Tamanho</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="backup in backups">
                     <td>
                         {{backup.name}}
-                        <span class="gov-safety-badge" ng-if="backup.preRestoreSafetyBackup">pre-restore safety copy</span>
+                        <span class="gov-safety-badge" ng-if="backup.preRestoreSafetyBackup">cópia de segurança pré-restauração</span>
                     </td>
                     <td>{{formatBytes(backup.sizeBytes)}}</td>
                     <td>{{backup.createdAt | date:'medium'}}</td>
                     <td class="gov-backup-actions">
-                        <button type="button" class="btn btn-default btn-sm" title="Download" ng-click="downloadBackup(backup)">
+                        <button type="button" class="btn btn-default btn-sm" title="Baixar" ng-click="downloadBackup(backup)">
                             <span class="glyphicon glyphicon-download"></span>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" title="Restore" ng-click="beginRestore(backup)">
+                        <button type="button" class="btn btn-default btn-sm" title="Restaurar" ng-click="beginRestore(backup)">
                             <span class="glyphicon glyphicon-repeat"></span>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" title="Delete" ng-click="deleteBackup(backup)">
+                        <button type="button" class="btn btn-default btn-sm" title="Excluir" ng-click="deleteBackup(backup)">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
@@ -118,24 +118,24 @@
             </tbody>
         </table>
 
-        <div class="ext-hub-empty" ng-if="!loading && backupApiAvailable && backups.length === 0">No backups yet. Create one above.</div>
+        <div class="ext-hub-empty" ng-if="!loading && backupApiAvailable && backups.length === 0" localized>governance.backups.empty</div>
 
         <div class="gov-restore-confirm" ng-if="restoreTarget">
             <div class="gov-restore-confirm-title">
                 <span class="glyphicon glyphicon-warning-sign"></span>
-                Restore from "{{restoreTarget.name}}"?
+                Restaurar "{{restoreTarget.name}}"?
             </div>
             <p>
-                This overwrites <strong>all current data</strong> (devices, users, configurations, everything)
-                with the contents of this backup. A safety snapshot of what's live right now will be taken
-                automatically first. Type the backup name below to confirm.
+                Isto substitui <strong>todos os dados atuais</strong> (dispositivos, usuários, configurações, tudo)
+                pelo conteúdo deste backup. Antes, é feita automaticamente uma cópia do estado atual.
+                Digite o nome do backup abaixo para confirmar.
             </p>
             <input type="text" class="form-control" ng-model="restoreState.confirmText"
                    placeholder="{{restoreTarget.name}}"/>
             <div class="dtv-save-bar">
-                <button type="button" class="btn btn-default" ng-click="cancelRestore()">Cancel</button>
+                <button type="button" class="btn btn-default" ng-click="cancelRestore()">Cancelar</button>
                 <button type="button" class="btn btn-danger" ng-disabled="!canConfirmRestore() || loading"
-                        ng-click="confirmRestore()">Restore now</button>
+                        ng-click="confirmRestore()">Restaurar agora</button>
             </div>
         </div>
     </section>

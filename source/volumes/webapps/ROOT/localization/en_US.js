@@ -144,7 +144,6 @@ document.localization ['en_US'] = {
     'summary.devices.installation.failed': 'Install failed',
     'summary.devices.enrolled.lastyear': 'Last 12 months',
     'summary.devices.gps.visible': 'GPS visible',
-    'summary.devices.gps.last': 'Last locations',
     'summary.devices.last.locations': 'Last locations',
     'summary.devices.recent': 'Recent devices',
     'summary.devices.empty': 'No devices available',

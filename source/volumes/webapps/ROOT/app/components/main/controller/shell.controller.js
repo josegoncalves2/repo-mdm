@@ -120,10 +120,10 @@ angular.module('headwind-kiosk')
         });
 
         var cacheBustDeviceInfoResource = function (url) {
-            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610071540') >= 0) {
+            if (typeof url !== 'string' || !url || url.indexOf('v=hux202610061730') >= 0) {
                 return url;
             }
-            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610071540';
+            return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=hux202610061730';
         };
 
         var waitForPluginModules = function (callback) {
@@ -184,30 +184,9 @@ angular.module('headwind-kiosk')
         };
 
         var runtime = window.HWMDM_RUNTIME || {};
-        var serverAdminBase = runtime.adminPort
-            ? window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/'
+        $scope.serverAdminUrl = runtime.adminPort
+            ? $sce.trustAsResourceUrl(window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/')
             : null;
-        $scope.serverAdminUrl = serverAdminBase ? $sce.trustAsResourceUrl(serverAdminBase) : null;
-
-        // Estado do iframe do hwmdm-admin. Ficava num <script> do template, que o
-        // ng-include nao executa: a tela Servidor abria em branco.
-        var serverFrameTimer = null;
-        $scope.armServerFrame = function () {
-            $scope.serverFrameState = serverAdminBase ? 'loading' : 'error';
-            if (serverFrameTimer) { $timeout.cancel(serverFrameTimer); }
-            if (!serverAdminBase) { return; }
-            serverFrameTimer = $timeout(function () {
-                if ($scope.serverFrameState === 'loading') { $scope.serverFrameState = 'error'; }
-            }, 30000);
-        };
-        $scope.serverFrameLoaded = function () {
-            if (serverFrameTimer) { $timeout.cancel(serverFrameTimer); }
-            $scope.serverFrameState = 'ready';
-        };
-        $scope.retryServerFrame = function () {
-            $scope.serverAdminUrl = $sce.trustAsResourceUrl(serverAdminBase + '?r=' + Date.now());
-            $scope.armServerFrame();
-        };
 
         $scope.tabTitle = function () {
             if (tabTitleKeys[$scope.activeTab]) {
@@ -299,4 +278,35 @@ angular.module('headwind-kiosk')
 
         loadData();
         loadNav();
+    })
+    .controller('ServerAdminController', function ($scope, $sce, $timeout) {
+        var runtime = window.HWMDM_RUNTIME || {};
+        $scope.serverAdminUrl = runtime.adminPort
+            ? $sce.trustAsResourceUrl(window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/')
+            : null;
+        $scope.frameState = $scope.serverAdminUrl ? 'loading' : 'error';
+
+        var loadTimeout;
+
+        $scope.onFrameLoad = function () {
+            if (loadTimeout) $timeout.cancel(loadTimeout);
+            $scope.frameState = 'ready';
+        };
+
+        $scope.retry = function () {
+            $scope.frameState = 'loading';
+            $scope.serverAdminUrl = null;
+            $timeout(function () {
+                $scope.serverAdminUrl = $sce.trustAsResourceUrl(
+                    window.location.protocol + '//' + window.location.hostname + ':' + runtime.adminPort + '/');
+                startTimeout();
+            }, 100);
+        };
+
+        function startTimeout() {
+            loadTimeout = $timeout(function () {
+                if ($scope.frameState === 'loading') $scope.frameState = 'error';
+            }, 15000);
+        }
+        if ($scope.serverAdminUrl) startTimeout();
     });

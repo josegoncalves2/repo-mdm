@@ -4,6 +4,8 @@ angular.module('headwind-kiosk')
                                                 alertService, authService, $window, localization) {
 
         $scope.search = {};
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_users_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_users_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,

@@ -276,9 +276,28 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
         $scope.dynamicDataMobile1FieldsOrder = [].concat(MOBILE1_PARAMS);
         $scope.dynamicDataMobile2FieldsOrder = [].concat(MOBILE2_PARAMS);
 
+        var deviceInfoRequestId = 0;
+        var clearDeviceInfo = function () {
+            deviceInfoRequestId++;
+            $scope.loadingInfo = false;
+            $scope.deviceInfo = undefined;
+            $scope.latestDynamicData = undefined;
+            $scope.dynamicDeviceData = undefined;
+            $scope.dynamicWifiData = undefined;
+            $scope.dynamicGpsData = undefined;
+            $scope.dynamicMobile1Data = undefined;
+            $scope.dynamicMobile2Data = undefined;
+        };
+
         var loadData = function () {
+            var requestId = ++deviceInfoRequestId;
+            $scope.loadingInfo = true;
             pluginDeviceInfoService.getDeviceInfo({"deviceNumber": deviceLookupFormatter($scope.formData.deviceNumber)}, function (response) {
-                if (response.status === 'OK') {
+                if (requestId !== deviceInfoRequestId) {
+                    return;
+                }
+                $scope.loadingInfo = false;
+                if (response.status === 'OK' && response.data) {
                     $scope.deviceInfo = response.data;
                     $scope.latestDynamicData = response.data.latestDynamicData;
                     if (response.data.latestDynamicData) {
@@ -291,9 +310,17 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
                         $scope.dynamicMobile2Data = data.mobile2Data;
                     }
                 } else {
-                    $scope.errorMessage = localization.localizeServerResponse(response);
+                    clearDeviceInfo();
+                    $scope.errorMessage = response.status === 'OK'
+                        ? localization.localize("error.request.failure")
+                        : localization.localizeServerResponse(response);
                 }
             }, function () {
+                if (requestId !== deviceInfoRequestId) {
+                    return;
+                }
+                $scope.loadingInfo = false;
+                clearDeviceInfo();
                 $scope.errorMessage = localization.localize("error.request.failure");
             });
         };
@@ -321,39 +348,117 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
         };
 
         var deviceLookupFormatter = function (value) {
-            return value && typeof value === 'object' ? value.number : value;
+            value = value && typeof value === 'object' ? value.number : value;
+            return (typeof value === 'string' || typeof value === 'number') ? String(value).trim() : '';
         };
         $scope.deviceLookupFormatter = deviceLookupFormatter;
+        var deviceSearchRequestId = 0;
         $scope.searchMatches = [];
+        $scope.searchLoading = false;
+        $scope.noSearchResults = false;
+        $scope.searchErrorMessage = undefined;
+
+        $scope.deviceSearchLabel = function (device) {
+            if (!device || typeof device !== 'object') {
+                return '';
+            }
+            var labels = [];
+            ['number', 'description', 'imei', 'serial', 'phoneNumber', 'phone', 'model', 'deviceIp'].forEach(function (field) {
+                var value = device[field];
+                if ((typeof value === 'string' || typeof value === 'number') && String(value).trim()) {
+                    labels.push(String(value).trim());
+                }
+            });
+            return labels.join(' · ');
+        };
+
+        $scope.onSearchTextChanged = function () {
+            clearDeviceInfo();
+            deviceSearchRequestId++;
+            $scope.searchLoading = false;
+            $scope.searchMatches = [];
+            $scope.noSearchResults = false;
+            $scope.noResults = false;
+            $scope.searchErrorMessage = undefined;
+            clearMessages();
+        };
+
         $scope.searchDevices = function (value) {
+            var requestId = ++deviceSearchRequestId;
+            $scope.searchErrorMessage = undefined;
             return $http.post('rest/private/devices/search', {
-                value: value || '', pageNum: 1, pageSize: 25, sortBy: 'number', sortDir: 'ASC'
+                value: value || '', pageNum: 1, pageSize: 25, sortBy: 'NUMBER', sortDir: 'ASC'
             }).then(function (response) {
-                var data = response.data && response.data.data;
-                return data && data.devices ? data.devices.items : [];
+                if (requestId !== deviceSearchRequestId) {
+                    return [];
+                }
+                var envelope = response && response.data;
+                if (!envelope || envelope.status !== 'OK') {
+                    $scope.searchErrorMessage = envelope
+                        ? localization.localizeServerResponse(envelope)
+                        : localization.localize("error.request.failure");
+                    return [];
+                }
+                var data = envelope.data;
+                if (!data || !data.devices || !Array.isArray(data.devices.items)) {
+                    $scope.searchErrorMessage = localization.localize("error.request.failure");
+                    return [];
+                }
+                return data.devices.items;
+            }, function () {
+                if (requestId === deviceSearchRequestId) {
+                    $scope.searchErrorMessage = localization.localize("error.request.failure");
+                }
+                return [];
             });
         };
         $scope.chooseDevice = function (device) {
+            if (!device || (typeof device.number !== 'string' && typeof device.number !== 'number') ||
+                    !String(device.number).trim()) {
+                $scope.errorMessage = localization.localize("error.request.failure");
+                return;
+            }
+            deviceSearchRequestId++;
+            $scope.searchLoading = false;
             $scope.formData.deviceNumber = device;
             $scope.searchMatches = [];
+            $scope.noSearchResults = false;
+            $scope.searchErrorMessage = undefined;
             clearMessages();
+            clearDeviceInfo();
             loadData();
         };
         $scope.search = function () {
             clearMessages();
+            $scope.searchErrorMessage = undefined;
+            $scope.searchMatches = [];
+            $scope.noSearchResults = false;
             var value = $scope.formData.deviceNumber;
             if (value && typeof value === 'object') { loadData(); return; }
-            if (!value || !value.trim()) { return; }
-            $scope.searchDevices(value).then(function (devices) {
-                var exact = devices.filter(function (d) { return d.number === value; });
-                if (exact.length === 1 || devices.length === 1) {
-                    $scope.chooseDevice(exact[0] || devices[0]);
-                } else {
-                    $scope.searchMatches = devices;
-                    $scope.deviceInfo = null;
-                    $scope.errorMessage = devices.length ? null : localization.localize('notfound.devices');
+            var query = typeof value === 'string' ? value.trim() : '';
+            if (!query) { return; }
+            $scope.formData.deviceNumber = query;
+            $scope.searchLoading = true;
+            var searchRequest = deviceSearchRequestId + 1;
+            $scope.searchDevices(query).then(function (devices) {
+                if (searchRequest !== deviceSearchRequestId) {
+                    return;
                 }
-            }, function () { $scope.errorMessage = localization.localize('error.request.failure'); });
+                $scope.searchLoading = false;
+                if ($scope.searchErrorMessage) {
+                    return;
+                }
+                var exact = devices.filter(function (device) {
+                    return String(device.number) === query;
+                });
+                if (exact.length === 1) {
+                    $scope.chooseDevice(exact[0]);
+                    return;
+                }
+                $scope.searchMatches = devices;
+                clearDeviceInfo();
+                $scope.noSearchResults = devices.length === 0;
+            });
         };
 
         $scope.viewDynamicData = function () {
@@ -695,5 +800,3 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
         localization.loadPluginResourceBundles("deviceinfo");
     })
 ;
-
-

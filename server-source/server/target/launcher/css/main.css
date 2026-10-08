@@ -8,6 +8,7 @@ body, input, select, textarea, button, .btn {
 
 html {
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -3616,19 +3617,21 @@ body {
     padding: var(--hwmdm-workspace-pad);
 }
 
+/* Sidebar sticky dentro da propria coluna do grid: nao depende mais de 100vw,
+   entao nao desliza quando a largura da pagina muda ou quando aparece scroll
+   horizontal. Fica fixa verticalmente ao rolar o conteudo principal. */
 .hwmdm-sidebar {
-    position: fixed;
+    position: sticky;
     top: 74px;
-    bottom: var(--hwmdm-workspace-pad);
-    left: max(var(--hwmdm-workspace-pad), calc((100vw - 1680px) / 2 + var(--hwmdm-workspace-pad)));
     align-self: start;
-    width: var(--hwmdm-sidebar-width);
+    width: 100%;
     max-height: calc(100vh - 74px - var(--hwmdm-workspace-pad));
     overflow-y: auto;
     background: var(--hwmdm-sidebar-bg);
     color: var(--hwmdm-sidebar-text);
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
+    scrollbar-gutter: stable;
 }
 
 .hwmdm-sidebar-brand {
@@ -4134,17 +4137,39 @@ body {
     border-left-color: #0ea5b7;
 }
 
+.chat-device-option {
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.chat-device-option:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline: 2px solid var(--hwmdm-accent);
+    outline-offset: -2px;
+}
+
 .remote-device-item-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+}
+
+.remote-device-item-head > div:first-child {
+    min-width: 0;
+    overflow: hidden;
 }
 
 .remote-device-item-meta {
     font-size: 12px;
     color: var(--hwmdm-muted);
-    margin-top: 4px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .remote-device-item-status {
@@ -4154,7 +4179,10 @@ body {
 .remote-device-item-foot {
     font-size: 11px;
     color: var(--hwmdm-muted-soft);
-    margin-top: 8px;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .remote-screen-shell {
@@ -4201,6 +4229,13 @@ body {
     color: #e5edf5;
 }
 
+.remote-preview-screen.remote-preview-streaming {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 0;
+    margin-inline: auto;
+}
+
 .remote-preview-state {
     display: flex;
     flex-direction: column;
@@ -4242,7 +4277,7 @@ body {
     display: block;
     margin: auto;
     max-width: 100%;
-    max-height: 640px;
+    max-height: min(640px, calc(100vh - 240px));
     object-fit: contain;
     background: #000;
 }
@@ -4250,6 +4285,9 @@ body {
 .remote-live-video {
     width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: min(640px, calc(100vh - 240px));
+    object-fit: contain;
 }
 
 /* Cursor de ponteiro so' quando o clique realmente sai daqui: sem acessibilidade
@@ -4363,6 +4401,15 @@ body {
     padding: 16px;
     background: var(--hwmdm-bg);
     border-top: 1px solid var(--hwmdm-border);
+}
+
+.remote-actions-shell .remote-action-grid .btn,
+.remote-actions-shell .remote-message-row .btn {
+    min-height: 38px;
+    height: auto;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .kiosk-page {
@@ -4988,6 +5035,11 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 14px;
+    align-items: start;
+}
+
+.reports-grid > .ext-hub-section {
+    margin-bottom: 0;
 }
 
 /* Export sits below the report, after the data it exports. */
@@ -5066,6 +5118,13 @@ body {
     justify-content: space-between;
     gap: 16px;
     margin: 0 0 14px;
+}
+
+.gps-map-page > .hwmdm-page-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
 }
 
 .gps-page-toolbar h4 {
@@ -5157,6 +5216,226 @@ body {
     display: flex;
     gap: 6px;
     align-items: center;
+}
+
+.gps-device-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.gps-device-search {
+    padding: 10px 12px 0;
+}
+
+.gps-device-search .form-control {
+    font-size: 13px;
+}
+
+.gps-device-stats {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--hwmdm-muted);
+    border-bottom: 1px solid var(--hwmdm-border-subtle);
+}
+
+.gps-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.gps-device-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    font-size: 11px;
+    color: var(--hwmdm-muted);
+    white-space: nowrap;
+}
+
+.gps-device-battery {
+    font-size: 11px;
+}
+
+.gps-map-area {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.gps-map-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.gps-map-selection-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.gps-map-selection-actions .btn {
+    white-space: nowrap;
+}
+
+.remote-body-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+    gap: 0;
+    align-items: start;
+    min-height: 0;
+}
+
+.remote-body-left {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.remote-body-right {
+    min-width: 0;
+    border-left: 1px solid var(--hwmdm-border);
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.remote-body-right .remote-action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.remote-body-right .remote-action-grid .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    line-height: 1.35;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.remote-body-right .remote-message-row {
+    flex-direction: column;
+}
+
+.remote-body-right .remote-message-row .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: center;
+    white-space: normal;
+}
+
+@media (max-width: 1280px) {
+    .remote-body-columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .remote-body-right {
+        border-left: 0;
+        border-top: 1px solid var(--hwmdm-border);
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .gps-map-toolbar,
+    .gps-map-selection-actions {
+        width: 100%;
+    }
+
+    .gps-map-selection-actions {
+        margin-left: 0;
+    }
+
+    .gps-map-selection-actions .btn {
+        flex: 1 1 auto;
+    }
+}
+
+.gps-detail-panel {
+    border: 1px solid var(--hwmdm-border);
+    border-radius: 6px;
+    background: var(--hwmdm-surface);
+    margin-top: 10px;
+    padding: 14px;
+}
+
+.gps-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.gps-detail-header strong {
+    font-size: 15px;
+}
+
+.gps-detail-header .close {
+    margin-left: auto;
+}
+
+.gps-detail-status {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.gps-detail-online {
+    color: #1f8a70;
+    background: #e6f5f0;
+}
+
+.gps-detail-offline {
+    color: #d64545;
+    background: #fde8e8;
+}
+
+.gps-detail-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+}
+
+.gps-detail-row {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.gps-detail-label {
+    font-size: 11px;
+    color: var(--hwmdm-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.gps-detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hwmdm-border-subtle);
+}
+
+.gps-footer-bar {
+    padding: 6px 12px;
+    font-size: 12px;
 }
 
 /* ==========================================================================
@@ -5980,4 +6259,43 @@ body {
     margin: 0 0 10px;
     color: var(--hwmdm-muted);
     font-size: 13px;
+}
+
+.reports-page .reports-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+.reports-page .reports-grid > .ext-hub-section {
+    min-width: 0;
+}
+
+.gps-map-page > .hwmdm-page-toolbar > div:first-child {
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+.gps-page-actions {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+@media (max-width: 1200px) {
+    .reports-page .reports-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-page .reports-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gps-page-actions {
+        justify-content: flex-end;
+        margin-left: 0;
+        width: 100%;
+    }
 }

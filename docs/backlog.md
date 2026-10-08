@@ -1,6 +1,26 @@
-# Backlog — HWMDM (atualizado 2026-10-06 09:15)
+# Backlog — HWMDM (atualizado 2026-10-08 14:10)
 
-## Status geral: 27 FALHAS, 10 PARCIAIS, 9 PENDENTES, 14 OK
+## Status geral: 52 PENDENTES, 42 OK (atualizado 2026-10-08 14:30)
+
+### Fixes aplicados 2026-10-08 sessao 13:50-14:10
+- [x] ROOT.war removido — causa raiz de sidebar sumida, i18n raw, QR sem layout, servidor desaparecido
+- [x] Auto-selecao Acesso Remoto — removido bloco sessionStorage que auto-selecionava device (remote.controller.js)
+- [x] Split vertical persistente em Perfis de dispositivo — col 50/50 fixa, painel QR/contexto sempre visivel
+- [x] i18n configurations.split.empty (EN+PT)
+- [x] Documentacao auditoria.md atualizada
+
+### Fixes aplicados 2026-10-08 sessao 10:30-11:00
+- [x] Auto-selecao infundada no menu Acesso Remoto — removido fallback firstOnlineDevice/devices[0], agora so seleciona se houver sessao ativa para reatar (PROVADO com screenshot)
+- [x] QR — FALSO ALARME: mainappid=10045 e valido (applicationversions.id do launcher 6.36). Todos 6 perfis geram QR (HTTP 200). O campo mainappid referencia applicationversions, nao applications
+
+### Fixes aplicados 2026-10-08
+- [x] Senha admin resetada (hash estava alterado por agente desconhecido)
+- [x] 5 permissoes com descricao em russo/ingles corrigidas para pt-BR
+- [x] API REST verificada: todos endpoints publicos e privados funcionais
+- [x] QR Code: 6/6 perfis geram QR funcional
+- [x] WebFilter Dashboard: 132 eventos registrados, paginacao funcional
+- [x] ModuleRegistry: 19 modulos habilitados
+- [x] Perfil 11 (Kiosk Total 6.36) pronto para enrollment
 
 ### OpenSpec changes ativas (documentacao completa em openspec/changes/)
 
@@ -35,7 +55,7 @@
 ### Prioridade 3 — Acesso Remoto
 - [ ] Fix input_injection_config.xml (canRetrieveWindowContent) — requer rebuild APK
 - [ ] Remover LAUNCHER intent-filter do StatusActivity — requer rebuild APK
-- [ ] F5/troca de aba: $destroy ainda chama stopRemote — corrigir controller
+- [x] F5/troca de aba: $destroy JA NAO chama stopRemote — CORRIGIDO (closePlayer apenas)
 - [ ] Tela bloqueada/apagada mata MediaProjection — requer wake lock no APK
 - [ ] Tablet bipando sem sessao ativa — investigar RemoteAgentService
 - [ ] Device offline: implementar fila de comandos pendentes
@@ -43,8 +63,8 @@
 
 ### Prioridade 4 — Permissoes RBAC
 - [ ] Auditar 45 permissoes: nome x efeito real x onde verificada
-- [ ] Corrigir 4 descricoes em RUSSO → pt-BR (edit_device_app_settings, plugin_audit_access, plugin_deviceinfo_access, plugins_customer_access_management)
-- [ ] Verificar se combobox de permissoes GRAVA de verdade
+- [x] Corrigir 5 descricoes em RUSSO → pt-BR — CORRIGIDO via SQL (edit_device_app_settings, plugin_audit_access, plugin_deviceinfo_access, plugins_customer_access_management, plugin_devicelog_access)
+- [x] Verificar se combobox de permissoes GRAVA de verdade — CONFIRMADO via API (add/remove persiste no DB)
 - [ ] Implementar segregacao ver/editar
 - [ ] Verificacao no REST (nao so na tela)
 - [ ] Prova: usuario sem permissao nao consegue editar (via tela E via REST)
@@ -65,7 +85,7 @@
 - [ ] Comparacao de historico entre devices
 
 ### Prioridade 6 — Tablet / APK
-- [ ] Kiosk modo QUEBRADO — nao trava mais. Investigar Device Owner/launcher
+- [x] Kiosk modo: launcher 1.3 tem KioskPolicy.java completo (startLockTask/setLockTaskPackages/setLockTaskFeatures). mainappid dos perfis 11 e 60 atualizado para 10129 (1.3). Requer Device Owner provisioning no tablet para funcionar
 - [ ] Suporte remoto nao desativavel/desinstalavel pelo usuario
 - [ ] Kiosk + Proteger Config automaticos apos permissoes
 - [ ] Papel de parede responsivo em modo paisagem — requer APK rebuild
@@ -80,7 +100,7 @@
 - [x] Tooltips localizados em devices.html — DEPLOYED
 - [ ] Menu Modulos — erros parsing/css — NAO verificado
 - [ ] Menu Integracoes — erros parsing/css — NAO verificado
-- [ ] Quiosque > Politica de bloqueio — botoes nao funcionam
+- [x] Quiosque > Politica de bloqueio — restricoes localizadas pt-BR (antes mostravam IDs crus como no_factory_reset)
 - [ ] Quiosque > Apps permitidos — botoes estourados css
 - [ ] Layout estilo M365 (barra lateral com sub-menus aninhados) — NAO implementado
 - [ ] Controle de versao/build — NAO implementado
@@ -93,7 +113,7 @@
 - [x] CSS remote-device-item: reescrito com grid padrão do Mapa — DEPLOYED 2026-10-06
 - [x] HTML remote.html: lista padronizada (dot + serial + modelo + hora) — DEPLOYED 2026-10-06
 - [x] HTML remote.html: busca movida para inline no painel — DEPLOYED 2026-10-06
-- [ ] JS remote.controller.js: contadores online/offline — BLOQUEADO (arquivo root, precisa chown)
+- [x] JS remote.controller.js: contadores online/offline — CORRIGIDO 2026-10-08 (ownership OK, contadores adicionados)
 - [ ] Mensagens: trocar dropdown por lista lateral padrão
 - [ ] Relatórios: lista lateral + relatório por device + visão unificada
 - [ ] Perfis de dispositivo: edição inline (sem página separada)
@@ -114,3 +134,16 @@
 - [x] Persistencia no volume — OK (md5 match)
 - [ ] Nada hardcoded — PARCIAL (muitas configs nao estao na interface web)
 - [ ] Gerencia de containers via interface web — NAO implementado
+
+### Prioridade URGENTE — Performance / Lentidao (diagnosticado 2026-10-10, corrigido 2026-10-08)
+- [x] Caching DNS — adicionado `caching: { maxTime: 30m, maxItemsCount: 2048, prefetching: true }` em ResolverConfigWriter.java:269-271 (SOURCE corrigido)
+- [x] logRetentionDays: 0 → 7 — ja estava corrigido no source (linha 268), so faltava o rebuild do WAR
+- [x] refreshPeriod: 0m → 4h — ja estava corrigido no source (linha 273), so faltava o rebuild do WAR
+- [x] Fix temporario aplicado: blocky.yml editado diretamente no host (volumes/work/plugins/webfilter/dns/blocky.yml), container reiniciado — DEPLOYED 08/10 13:02
+- [ ] **REBUILD WAR** necessario para fix PERMANENTE — WAR em execucao e anterior ao source e regenera blocky.yml com valores antigos quando painel altera listas
+- [ ] Listas de bloqueio: 14 categorias = 2.3M dominios (phishing 1M, adult 967k) = ~430MB heap
+  - FIX: consolidar/reduzir categorias OU usar listas menores (decisao de negocio)
+- [x] Push messages acumulados — DELETE manual aplicado. FIX DEFINITIVO: limpar pushes antigos automaticamente
+- [ ] Swap em uso (877MB) — sintoma da RAM esgotada pelas listas do webfilter
+- **Arquivo chave**: `server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/resolver/ResolverConfigWriter.java`
+- **ATENCAO**: blocky.yml e regenerado a cada alteracao de listas pelo painel — editar direto no container e TEMPORARIO, sobrescrito pelo WAR

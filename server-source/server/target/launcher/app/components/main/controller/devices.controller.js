@@ -5,6 +5,9 @@ angular.module('headwind-kiosk')
                                                   authService, pluginService, configurationService, alertService,
                                                   spinnerService, localization, utils, deviceFocusService) {
 
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_devices_viewMode') || 'list';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_devices_viewMode', v); });
+
         var getCurrentPanelBaseUrl = function() {
             return $window.location.origin + $window.location.pathname;
         };

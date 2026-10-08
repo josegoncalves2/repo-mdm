@@ -484,17 +484,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 /* Botao so-icone de acao de linha (tabelas): quadrado, mesmo tamanho sempre,
    title="" do proprio elemento vira o tooltip nativo do navegador -- sem
    biblioteca extra e sem mudar nenhum ng-click. */
-/* Minimo e nao fixo: botao de texto em tabela (ex. "Forcar quiosque") cresce
-   ate caber; so-icone continua ~30x30. */
-.table .btn {
-    width: auto;
-    min-width: 30px;
-    height: auto;
-    min-height: 30px;
-    padding: 4px 7px;
-    flex: 0 0 auto;
-}
-
+.table .btn,
 td .btn-default:has(.glyphicon:only-child),
 .hwmdm-icon-btn {
     width: 30px;

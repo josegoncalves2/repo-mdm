@@ -23,7 +23,7 @@ angular.module('headwind-kiosk')
             }
             requestedBundles[cacheKey] = true;
 
-            var bundleUrl = 'app/components/plugins/' + pluginId + '/i18n/' + bundleId + '.json?v=hux202610071600';
+            var bundleUrl = 'app/components/plugins/' + pluginId + '/i18n/' + bundleId + '.json';
             $http.get(bundleUrl).then(function (response) {
                 if (response.data && typeof response.data === 'object' && document.localization[bundleId]) {
                     angular.extend(document.localization[bundleId], response.data);

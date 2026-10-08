@@ -1,39 +1,41 @@
-<!-- Gestao do servidor: o hwmdm-admin, container proprio da stack, aberto dentro do painel.
-     Fica fora do Tomcat de proposito: reinicia/recria os containers sem derrubar a si mesmo. -->
-<div class="hwmdm-page-toolbar hwmdm-settings-page">
-    <div>
-        <h3 localized>nav.server</h3>
-        <p localized>server.page.subtitle</p>
-    </div>
-</div>
-<div class="hw-server-admin hwmdm-settings-page" style="width:100%;position:relative" ng-init="armServerFrame()">
-
-    <!-- Estado: carregando -->
-    <div ng-if="serverFrameState === 'loading'" class="hw-server-status">
-        <span class="hw-icon hw-icon-loader hw-spin" style="width:32px;height:32px;opacity:.5"></span>
-        <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)">Conectando ao módulo Servidor…</p>
+<!-- Gestao do servidor: hwmdm-admin em iframe -->
+<div ng-controller="ServerAdminController" class="hwmdm-settings-page">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.server</h3>
+            <p localized>server.page.subtitle</p>
+        </div>
     </div>
 
-    <!-- Estado: offline / erro -->
-    <div ng-if="serverFrameState === 'error'" class="hw-server-status">
-        <span class="hw-icon hw-icon-alert-triangle" style="width:40px;height:40px;color:var(--hwmdm-accent,#0d9488)"></span>
-        <h4 style="margin:14px 0 6px;font-size:16px">Módulo temporariamente indisponível</h4>
-        <p style="color:var(--hwmdm-text-muted,#64748b);max-width:420px;margin:0 auto 16px">
-            O serviço de gestão do servidor está reiniciando ou fora do ar.
-            Isso é normal após uma alteração de configuração.
-        </p>
-        <button type="button" class="btn btn-default" ng-click="retryServerFrame()" style="border-radius:8px;padding:8px 20px">
-            <span class="hw-icon hw-icon-refresh-cw" style="width:14px;height:14px;margin-right:6px;vertical-align:-2px"></span>
-            Tentar novamente
-        </button>
+    <div ng-if="!serverAdminUrl" class="hw-server-status">
+        <span class="glyphicon glyphicon-exclamation-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+        <h4 style="margin:14px 0 6px">Módulo Servidor não configurado</h4>
+        <p style="color:var(--hwmdm-text-muted,#64748b)">A variável adminPort não está definida em HWMDM_RUNTIME.</p>
     </div>
 
-    <!-- Iframe real (escondido enquanto loading/error) -->
-    <iframe ng-if="serverAdminUrl" ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
-            ng-show="serverFrameState === 'ready'"
-            style="width:100%;height:calc(100vh - 180px);min-height:520px;border:0;display:block"
-            ng-on-load="serverFrameLoaded()"
-            id="server-admin-frame"></iframe>
+    <div ng-if="serverAdminUrl" style="width:100%;position:relative">
+        <div ng-if="frameState === 'loading'" class="hw-server-status">
+            <span class="glyphicon glyphicon-refresh hw-spin" style="font-size:32px;opacity:.5"></span>
+            <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)">Conectando ao módulo Servidor…</p>
+        </div>
+
+        <div ng-if="frameState === 'error'" class="hw-server-status">
+            <span class="glyphicon glyphicon-warning-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+            <h4 style="margin:14px 0 6px;font-size:16px">Módulo temporariamente indisponível</h4>
+            <p style="color:var(--hwmdm-text-muted,#64748b);max-width:420px;margin:0 auto 16px">
+                O serviço de gestão do servidor está reiniciando ou fora do ar.
+            </p>
+            <button type="button" class="btn btn-default" ng-click="retry()" style="border-radius:8px;padding:8px 20px">
+                <span class="glyphicon glyphicon-refresh" style="margin-right:6px"></span>
+                Tentar novamente
+            </button>
+        </div>
+
+        <iframe ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
+                ng-show="frameState === 'ready'"
+                style="width:100%;height:calc(100vh - 180px);min-height:520px;border:0;display:block"
+                onload="angular.element(this).scope().onFrameLoad()"></iframe>
+    </div>
 </div>
 
 <style>
@@ -50,6 +52,5 @@
     padding: 40px 24px;
 }
 @keyframes hw-spin { to { transform: rotate(360deg) } }
-.hw-spin { animation: hw-spin .8s linear infinite; }
+.hw-spin { animation: hw-spin .8s linear infinite; display: inline-block; }
 </style>
-

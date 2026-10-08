@@ -387,7 +387,7 @@ angular.module('plugin-deviceinfo', ['ngResource', 'ui.bootstrap', 'ui.router', 
             var requestId = ++deviceSearchRequestId;
             $scope.searchErrorMessage = undefined;
             return $http.post('rest/private/devices/search', {
-                value: value || '', pageNum: 1, pageSize: 25, sortBy: 'NUMBER', sortDir: 'ASC'
+                value: value || '', pageNum: 1, pageSize: 25, sortBy: 'number', sortDir: 'ASC'
             }).then(function (response) {
                 if (requestId !== deviceSearchRequestId) {
                     return [];

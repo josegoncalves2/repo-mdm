@@ -89,13 +89,13 @@
                 <tr ng-repeat="device in profileDevices()">
                     <td>
                         <strong>{{device.number}}</strong>
-                        <span class="kiosk-muted">Serial: {{device.serial || '-'}}</span>
+                        <span class="kiosk-muted">{{'remote.label.serial' | localize}}: {{device.serial || '-'}}</span>
                     </td>
                     <td>
                         <span class="label" ng-class="{'label-success': device.online, 'label-danger': !device.online}">
-                            {{device.online ? 'ONLINE' : 'OFFLINE'}}
+                            {{device.online ? ('remote.status.online' | localize) : ('remote.status.offline' | localize)}}
                         </span>
-                        <span class="kiosk-muted">{{device.lastUpdateAgeSec}}s since check-in</span>
+                        <span class="kiosk-muted">{{lastSeenText(device)}}</span>
                     </td>
                     <td>{{device.androidVersion || '-'}}</td>
                     <td>
@@ -133,7 +133,7 @@
                     ng-click="applyStrictKiosk()"
                     title="{{'kiosk.apply.strict.tip' | localize}}" localized>kiosk.apply.strict</button>
         </div>
-        <p class="help-block">Altere as opções e use <strong>Salvar perfil de quiosque</strong>. A aplicação no dispositivo requer o launcher HWMDM 1.2 como Device Owner; o launcher oficial 6.36 não executa estas opções de quiosque.</p>
+        <p class="help-block" localized>kiosk.lockdown.help</p>
         <div class="kiosk-switch-grid">
             <label class="kiosk-switch">
                 <input type="checkbox" ng-model="configuration.kioskMode">
@@ -275,7 +275,8 @@
             <h4 localized>kiosk.tab.location</h4>
             <button type="button" class="btn btn-primary"
                     data-testid="kiosk-page-enable-gps"
-                    ng-click="enableGps()">Enable managed GPS</button>
+                    ng-click="enableGps()"
+                    title="{{'kiosk.enable.gps.tip' | localize}}" localized>kiosk.enable.gps</button>
         </div>
         <div class="kiosk-switch-grid">
             <label class="kiosk-switch">

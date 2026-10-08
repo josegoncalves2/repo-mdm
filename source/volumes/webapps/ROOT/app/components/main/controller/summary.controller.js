@@ -187,14 +187,14 @@ angular.module('headwind-kiosk')
                     targetState: 'main'
                 },
                 {
-                    label: localization.localize('summary.devices.gps.visible'),
+                    label: 'GPS visible',
                     value: data.devicesWithLocation || 0,
-                    detail: localization.localize('summary.devices.gps.last') + ': ' + (data.locatedDevices || []).length,
+                    detail: 'Last locations: ' + (data.locatedDevices || []).length,
                     tone: 'amber',
                     targetState: 'gpsMap'
                 },
                 {
-                    label: localization.localize('summary.alerts.title'),
+                    label: 'Operational alerts',
                     value: alertTotal,
                     detail: localization.localize('summary.alerts.critical') + ': ' + (data.criticalAlerts || 0)
                         + ' / ' + localization.localize('summary.alerts.warning') + ': ' + (data.warningAlerts || 0),

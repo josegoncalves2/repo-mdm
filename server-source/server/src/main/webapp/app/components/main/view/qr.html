@@ -1,126 +1,108 @@
 <!-- Matricula de dispositivo por QR Code -->
-<div class="qr-enrollment hwmdm-section-page">
+<div class="hwmdm-section-page">
     <div class="hwmdm-page-toolbar">
         <div>
             <h3 localized>form.qr.title</h3>
             <p localized>form.qr.subtitle</p>
         </div>
+        <div class="hwmdm-search-actions">
+            <button type="button" class="btn btn-primary" ng-click="renew()">
+                <span class="glyphicon glyphicon-refresh"></span>
+                <span localized>button.update</span>
+            </button>
+        </div>
     </div>
 
-    <div class="qr-enrollment-layout">
-        <!-- Formulario -->
-        <div class="qr-enrollment-form hwmdm-section-card">
-            <h4 style="margin:0 0 16px;font-weight:600" localized>form.qr.settings.title</h4>
+    <div class="row" style="margin-top:16px">
+        <!-- Formulario de configuracao -->
+        <div class="col-md-7">
+            <div class="hwmdm-section-card">
+                <div class="hwmdm-section-head">
+                    <h4 localized>form.qr.settings.title</h4>
+                </div>
 
-            <div class="form-group">
-                <label localized>form.qr.device.number</label>
-                <input type="text" maxlength="100" name="qrdevice"
-                       ng-enter="renew()"
-                       ng-change="renew()"
-                       ng-model="formData.deviceIdNew"
-                       localized-placeholder="form.qr.device.number.placeholder"
-                       class="form-control" />
+                <div class="form-group">
+                    <label localized>form.qr.device.number</label>
+                    <input type="text" maxlength="100" name="qrdevice"
+                           ng-enter="renew()"
+                           ng-change="renew()"
+                           ng-model="formData.deviceIdNew"
+                           localized-placeholder="form.qr.device.number.placeholder"
+                           class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label localized>form.qr.number.use</label>
+                    <select class="form-control" ng-change="renew()"
+                            ng-model="formData.useId" ng-disabled="formData.deviceIdNew != ''">
+                        <option ng-value="''" ng-selected="!formData.useId && formData.deviceIdNew == ''" localized>form.qr.number.use.request</option>
+                        <option ng-value="'imei'" ng-selected="formData.useId === 'imei'" localized>form.qr.number.use.imei</option>
+                        <option ng-value="'serial'" ng-selected="formData.useId === 'serial'" localized>form.qr.number.use.serial</option>
+                    </select>
+                    <p class="help-block" localized>form.qr.number.hint</p>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="formData.create" ng-change="renew()" />
+                        <span localized>form.qr.auto.create</span>
+                    </label>
+                </div>
+
+                <div class="form-group" ng-if="formData.create">
+                    <label localized>form.qr.groups</label>
+                    <div ng-dropdown-multiselect
+                         options="groupsList"
+                         translation-texts="tableFilteringTexts"
+                         selected-model="groupsSelection"
+                         events="groupsSelectionEvents"
+                         ng-change="renew()"
+                         class="custom-multi-select"></div>
+                </div>
+
+                <div style="margin-top:20px;display:flex;gap:8px">
+                    <button type="button" class="btn btn-default" ng-click="generateJson()">
+                        <span class="glyphicon glyphicon-list"></span> <span localized>form.qr.button.json</span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-hint-key="hint.step.3" data-hint-order="3"
+                            ng-click="helpClicked()">
+                        <span class="glyphicon glyphicon-question-sign"></span> <span localized>button.help</span>
+                    </button>
+                </div>
+
+                <div ng-if="jsonData" style="margin-top:14px">
+                    <label>JSON</label>
+                    <textarea class="form-control" style="height:120px;font-family:monospace;font-size:12px" readonly>{{jsonData}}</textarea>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label localized>form.qr.number.use</label>
-                <select class="form-control" ng-change="renew()"
-                        ng-model="formData.useId" ng-disabled="formData.deviceIdNew != ''">
-                    <option ng-value="''" ng-selected="!formData.useId && formData.deviceIdNew == ''" localized>form.qr.number.use.request</option>
-                    <option ng-value="'imei'" ng-selected="formData.useId === 'imei'" localized>form.qr.number.use.imei</option>
-                    <option ng-value="'serial'" ng-selected="formData.useId === 'serial'" localized>form.qr.number.use.serial</option>
-                </select>
-                <small localized>form.qr.number.hint</small>
-            </div>
-
-            <div class="form-group">
-                <label class="hwmdm-checkbox-label">
-                    <input type="checkbox" ng-model="formData.create" ng-change="renew()" />
-                    <span localized>form.qr.auto.create</span>
-                </label>
-            </div>
-
-            <div class="form-group" ng-if="formData.create">
-                <label localized>form.qr.groups</label>
-                <div ng-dropdown-multiselect
-                     options="groupsList"
-                     translation-texts="tableFilteringTexts"
-                     selected-model="groupsSelection"
-                     events="groupsSelectionEvents"
-                     ng-change="renew()"
-                     class="custom-multi-select"></div>
-            </div>
-
-            <div class="qr-enrollment-actions">
-                <button type="button" class="btn btn-default" ng-click="generateJson()">
-                    <span class="glyphicon glyphicon-list"></span> <span localized>form.qr.button.json</span>
-                </button>
-                <button type="button" class="btn btn-default" data-hint-key="hint.step.3" data-hint-order="3"
-                        ng-click="helpClicked()">
-                    <span class="glyphicon glyphicon-question-sign"></span> <span localized>button.help</span>
-                </button>
-            </div>
-
-            <div ng-if="jsonData" class="qr-json-output">
-                <label>JSON</label>
-                <textarea class="form-control" style="height:120px;font-family:monospace;font-size:12px" readonly>{{jsonData}}</textarea>
+            <!-- Ajuda -->
+            <div class="hwmdm-section-card" ng-if="showHelp" style="margin-top:16px">
+                <div class="hwmdm-section-head">
+                    <h4 localized>button.help</h4>
+                </div>
+                <p localized>qrcode.help.line1</p>
+                <ol style="margin:12px 0;padding-left:20px;line-height:1.8">
+                    <li localized>qrcode.help.line2</li>
+                    <li localized>qrcode.help.line3</li>
+                    <li localized>qrcode.help.line4</li>
+                </ol>
+                <p>{{qrCodeHelpLine5}}</p>
             </div>
         </div>
 
         <!-- QR Code -->
-        <div class="qr-enrollment-preview hwmdm-section-card" ng-if="showQR">
-            <div class="qr-code-frame">
-                <img ng-src="{{qrCodeUrl}}" width="{{size}}" height="{{size}}"
-                     localized-alt="form.qr.code.image.alt" class="qr-code-image"/>
+        <div class="col-md-5" ng-if="showQR">
+            <div class="hwmdm-section-card" style="text-align:center">
+                <div class="hwmdm-section-head">
+                    <h4>QR Code</h4>
+                </div>
+                <div style="background:#fff;border:1px solid var(--hwmdm-border,#d9e2ec);border-radius:12px;padding:20px;display:inline-block;box-shadow:0 2px 8px rgba(0,0,0,.06)">
+                    <img ng-src="{{qrCodeUrl}}" width="{{size}}" height="{{size}}"
+                         localized-alt="form.qr.code.image.alt" style="display:block;border-radius:4px;max-width:100%;height:auto"/>
+                </div>
+                <p style="margin:16px 0 0;color:var(--hwmdm-muted,#64748b);font-size:13px" localized>form.qr.scan.instruction</p>
             </div>
-            <p class="qr-code-caption" localized>form.qr.scan.instruction</p>
         </div>
     </div>
-
-    <!-- Ajuda -->
-    <div class="qr-help-card hwmdm-section-card" ng-if="showHelp" style="margin-top:16px">
-        <h4 style="margin:0 0 12px;font-weight:600" localized>button.help</h4>
-        <div class="qr-help-line" localized>qrcode.help.line1</div>
-        <ol style="margin:12px 0;padding-left:20px;line-height:1.8">
-            <li localized>qrcode.help.line2</li>
-            <li localized>qrcode.help.line3</li>
-            <li localized>qrcode.help.line4</li>
-        </ol>
-        <div class="qr-help-line">{{qrCodeHelpLine5}}</div>
-    </div>
 </div>
-
-<style>
-.qr-enrollment-layout {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 20px;
-    align-items: start;
-}
-@media (max-width: 860px) {
-    .qr-enrollment-layout { grid-template-columns: 1fr; }
-}
-.qr-enrollment-form { padding: 20px 24px; }
-.qr-enrollment-form .form-group { margin-bottom: 14px; }
-.qr-enrollment-form label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
-.qr-enrollment-form small { color: var(--hwmdm-text-muted, #64748b); margin-top: 4px; display: block; }
-.qr-enrollment-actions { display: flex; gap: 8px; margin-top: 18px; }
-.qr-json-output { margin-top: 14px; }
-.hwmdm-checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: 500; cursor: pointer; }
-.hwmdm-checkbox-label input[type=checkbox] { width: auto; margin: 0; }
-
-.qr-enrollment-preview { padding: 24px; text-align: center; min-width: 280px; }
-.qr-code-frame {
-    background: #fff;
-    border: 1px solid var(--hwmdm-border, #d9e2ec);
-    border-radius: 12px;
-    padding: 16px;
-    display: inline-block;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-}
-.qr-code-image { display: block; border-radius: 4px; }
-.qr-code-caption { margin: 12px 0 0; color: var(--hwmdm-text-muted, #64748b); font-size: 13px; }
-
-.qr-help-card { padding: 20px 24px; }
-.qr-help-line { line-height: 1.6; }
-</style>
