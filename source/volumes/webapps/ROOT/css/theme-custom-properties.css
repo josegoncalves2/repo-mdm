@@ -10,6 +10,10 @@
     --hwmdm-border: #e0e0e0;
     --hwmdm-surface-bg: #ffffff;
     --hwmdm-surface-hover: #f9f9f9;
+    --hwmdm-bg-subtle: #f6f8fc;
+    --hwmdm-muted: #64748b;
+    --hwmdm-danger: #e74c3c;
+    --hwmdm-border-light: #d9e2ec;
 
     /* Accent shades */
     --hwmdm-accent-dark: #0B8190;

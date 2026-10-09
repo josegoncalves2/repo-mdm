@@ -3,7 +3,7 @@
     <div class='panel panel-default width-700' ng-class='{"panel-danger": errorMessage, "panel-success": successMessage}'>
         <div class='panel-heading' ng-if='errorMessage'>{{errorMessage}}</div>
         <div class='panel-heading' ng-if='successMessage'>{{successMessage}}</div>
-        <div class='panel-body' style="padding: 30px; background: #f6f8fc">
+        <div class='panel-body' style="padding: 30px; background:var(--hwmdm-bg-subtle,#f6f8fc)">
             <form name='signupForm' ng-submit='signupForm.$valid && onSignup()' style="margin-bottom: 0px" ng-if="tokenValid && !signupComplete">
                 <div class='col-sm-12'>
                     <label for='customerId' localized>signup.customer.id</label>

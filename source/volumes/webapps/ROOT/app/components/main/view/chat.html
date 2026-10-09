@@ -57,20 +57,6 @@
         <div class="chat-main-area">
             <div ng-if="!selectedDevice" class="field-hint chat-select-hint" localized>chat.device.select.hint</div>
 
-            <div class="hwmdm-compose-bar">
-                <textarea class="form-control"
-                          rows="3"
-                          ng-model="chat.text"
-                          maxlength="5000"
-                          ng-disabled="!canSendChat || sending"
-                          localized-placeholder="plugin.messaging.label.message"></textarea>
-                <button type="button" class="btn btn-primary" ng-click="send()"
-                        ng-disabled="!selectedDevice || !canSendChat || sending || !chat.text">
-                    <span class="glyphicon glyphicon-send"></span>&nbsp;{{"plugin.messaging.button.send" | localize}}
-                </button>
-            </div>
-            <div class="field-hint" ng-if="!canSendChat" localized>chat.send.no.permission</div>
-
             <div ng-if="selectedDevice">
                 <div class="hwmdm-content-header">
                     <h4>{{deviceLabel(selectedDevice)}}</h4>
@@ -108,6 +94,20 @@
                             last-text='&raquo;'></pagination>
                 </div>
             </div>
+
+            <div class="hwmdm-compose-bar" ng-if="selectedDevice">
+                <textarea class="form-control"
+                          rows="2"
+                          ng-model="chat.text"
+                          maxlength="5000"
+                          ng-disabled="!canSendChat || sending"
+                          localized-placeholder="plugin.messaging.label.message"></textarea>
+                <button type="button" class="btn btn-primary" ng-click="send()"
+                        ng-disabled="!selectedDevice || !canSendChat || sending || !chat.text">
+                    <span class="glyphicon glyphicon-send"></span>&nbsp;{{"plugin.messaging.button.send" | localize}}
+                </button>
+            </div>
+            <div class="field-hint" ng-if="!canSendChat" localized>chat.send.no.permission</div>
         </div>
     </div>
 </div>

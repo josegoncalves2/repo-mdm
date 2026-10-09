@@ -76,7 +76,7 @@
 
                             <div class="device-preview-screen remote-preview-screen"
                                  ng-class="{'remote-preview-streaming': remote.streaming}"
-                                 ng-style="remote.keyboard ? {'box-shadow': '0 0 0 3px #1ab394'} : {}">
+                                 ng-style="remote.keyboard ? {'box-shadow': '0 0 0 3px var(--hwmdm-accent,#1ab394)'} : {}">
                                 <canvas id="remote-screen-canvas"
                                         class="remote-live-canvas"
                                         tabindex="-1"
@@ -153,7 +153,7 @@
                                 <strong ng-if="remote.input" localized>remote.input.active</strong>
                                 <strong ng-if="!remote.input" localized>remote.input.inactive</strong>
                                 ·
-                                <strong ng-if="remote.keyboard" style="color: #1ab394;">{{"remote.keyboard.active" | localize}}</strong>
+                                <strong ng-if="remote.keyboard" style="color:var(--hwmdm-accent,#1ab394);">{{"remote.keyboard.active" | localize}}</strong>
                                 <button type="button"
                                         class="btn btn-xs btn-success remote-keyboard-arm"
                                         ng-if="!remote.keyboard"

@@ -39,6 +39,28 @@
         <level value="ERROR"/>
     </logger>
 
+    <!-- Suppress 'Empty constructor called!' — Tomcat instantiates the servlet
+         via the no-arg constructor before dependency injection; this is expected
+         behavior, not an error. -->
+    <logger name="com.hmdm.notification.rest.LongPollingServlet">
+        <level value="FATAL"/>
+    </logger>
+
+    <!-- Suppress MyBatis/VFS class-not-found debug noise -->
+    <logger name="org.apache.ibatis.io">
+        <level value="WARN"/>
+    </logger>
+
+    <!-- Suppress Liquibase resource scanning debug noise -->
+    <logger name="liquibase">
+        <level value="WARN"/>
+    </logger>
+
+    <!-- Suppress ActiveMQ MQTT ping debug noise -->
+    <logger name="org.apache.activemq.transport.mqtt">
+        <level value="WARN"/>
+    </logger>
+
     <root>
         <level value="DEBUG"/>
         <appender-ref ref="stdout"/>

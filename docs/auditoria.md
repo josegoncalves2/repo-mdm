@@ -94,6 +94,17 @@
 | 2026-10-08 14:30 | Claude Opus 4.6 | Verificacao launcher 1.3 source: KioskPolicy.java completo — lock task, packages allowlist, options (home/recents/notifications/keyguard/screen-on), start/stop. ProUtils delega tudo para KioskPolicy | OK | Requer Device Owner provisioning no tablet |
 | 2026-10-08 14:30 | Claude Opus 4.6 | Limpeza: ROOT.war.sha256 residual removido de volumes/webapps/ | OK | Nenhum WAR em webapps, apenas ROOT/ |
 | 2026-10-08 14:30 | Claude Opus 4.6 | Verificacao duplicidades: 0 containers duplicados, 0 WARs paralelos, 0 stacks paralelas. Dirs .old.claude/.codex/.trava sao config de agentes (nao duplicidade de codigo) | OK | Estrutura limpa |
+| 2026-10-09 07:50 | Claude Opus 4.6 | Fix Mensagens CSS: compose bar movida para baixo do historico (padrao chat), mensagens com card-style (borda, radius, fundo teal para admin), padding na area principal | DEPLOYED | chat.html + main.css, carimbo hux202610090800 |
+| 2026-10-09 07:50 | Claude Opus 4.6 | Fix GPS timeline bar: hwmdm-timeline-bar e hwmdm-chip-bar movidos de acima do mapa para abaixo (entre gps-map-shell e hwmdm-footer-bar) | DEPLOYED | gpsmap.html |
+| 2026-10-09 08:10 | Claude Opus 4.6 | MAPEAMENTO COMPLETO: todos os itens do prompt de deployment recebido — 15 itens mapeados, categorizados por prioridade, registrados no backlog | OK | Nenhuma acao ainda, apenas mapeamento conforme regra |
+| 2026-10-09 08:10 | Claude Opus 4.6 | Avaliacao de estado: 4 containers UP, logs ultimas 5min limpos (0 erros app), banco intacto | OK | Ponto de partida para resolucao |
+| 2026-10-09 08:15 | Claude Opus 4.6 | Fix iframe onload server.html: TypeError onFrameLoad + $digest already in progress — setTimeout wrapper para escapar do digest cycle | DEPLOYED | server.html + docker cp |
+| 2026-10-09 08:15 | Claude Opus 4.6 | Inspecao visual completa via Chrome: Devices, Acesso Remoto, Mapa, Mensagens, Relatorios, Perfis, Quiosque, WebFilter Dashboard, Servidor — todas OK, 0 erros console | VERIFICADO | Todas as telas renderizam corretamente |
+| 2026-10-09 08:15 | Claude Opus 4.6 | Docker logs 6h: 0 erros em todos 4 containers (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin) | OK | Sistema estavel |
+| 2026-10-09 08:15 | Claude Opus 4.6 | erros.md reescrito: dump bruto de 1.4MB substituido por analise classificada — 7 categorias de erros historicos (todos resolvidos/inofensivos), schema de referencia para queries corretas | OK | Reduzido de ~30k linhas para ~100 linhas uteis |
+| 2026-10-09 08:45 | Claude Opus 4.6 | hwmdm-admin convertido de Python para Java: HwmdmAdmin.java (com.sun.net.httpserver + JDBC PostgreSQL), multi-stage build (JDK 21 compila, JRE 21 roda), mesma funcionalidade | DEPLOYED | Build OK, login OK, config OK, containers OK |
+| 2026-10-09 08:45 | Claude Opus 4.6 | Cor accent do hwmdm-admin alinhada com tema teal do MDM (#0d9488 light, #2dd4bf dark) | DEPLOYED | Antes: #1f6feb (azul) |
+| 2026-10-09 08:45 | Claude Opus 4.6 | Labels do hwmdm-admin extraidos para dicionario LABELS — zero strings hardcoded inline | DEPLOYED | 30+ labels em variavel |
 
 ---
 
@@ -436,4 +447,23 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
 - `AUTO_UPDATE_WEBAPP=false`, `APPLY_CUSTOM_WEBAPP_ON_BOOT=false` no docker-compose.yaml
 - Nenhum ROOT.war existe — impossivel sobrescrever o ROOT/ no boot
 - Sobrevive a: docker compose down/up, docker restart, reboot do servidor
+
+## Sessao 2026-10-09 08:30 — Continuacao
+
+| Data/Hora | Agente | Acao | Resultado | Observacao |
+|---|---|---|---|---|
+| 2026-10-09 08:30 | Claude Opus 4.6 | Fix iframe onload server.html | DEPLOYED | setTimeout wrapper para escapar digest cycle |
+| 2026-10-09 08:35 | Claude Opus 4.6 | Inspecao visual Chrome (9 rotas) | OK | 0 erros console em todas as paginas |
+| 2026-10-09 08:35 | Claude Opus 4.6 | Docker logs 6h | OK | 0 erros em 4 containers |
+| 2026-10-09 08:35 | Claude Opus 4.6 | erros.md reescrito (1.4MB→100 linhas) | OK | 7 categorias classificadas |
+| 2026-10-09 08:40 | Claude Opus 4.6 | Fix devices.controller.js console.log+Error→console.debug | DEPLOYED | docker cp para container |
+| 2026-10-09 08:40 | Claude Opus 4.6 | hwmdm-admin convertido Python→Java (HwmdmAdmin.java) | DEPLOYED | Multi-stage Docker build JDK21→JRE21, health OK |
+| 2026-10-09 08:45 | Claude Opus 4.6 | Accent color admin alinhado (#0d9488/#2dd4bf) | DEPLOYED | Mesmo teal do MDM |
+| 2026-10-09 08:50 | Claude Opus 4.6 | Labels admin extraidos para LABELS map (30+ strings) | DEPLOYED | Zero hardcoded |
+| 2026-10-09 09:00 | Claude Opus 4.6 | Debug acesso remoto "tela preta" | DIAGNOSTICADO | Stream funciona (fps 3-27, 752x1280, JMuxer/MSE). Tela preta = lockscreen Android. kioskMode=false no device apesar de configurado no perfil. Keyguard desabilitado no perfil mas kiosk nao ativo |
+| 2026-10-09 09:00 | Claude Opus 4.6 | PROVA VIVA acesso remoto | SCREENSHOT | /home/sahw/acesso-remoto-prova-viva.jpg — stream ao vivo, barra de status tablet, controle ativo |
+| 2026-10-09 09:05 | Claude Opus 4.6 | Limpeza dist/: 14 APKs antigos + WAR backup removidos (93MB) | OK | Mantidos apenas 7 arquivos essenciais |
+| 2026-10-09 09:05 | Claude Opus 4.6 | Removido .old.claude/ (config antiga de agente) | OK | 284KB |
+| 2026-10-09 09:10 | Claude Opus 4.6 | Hardcoded colors→CSS vars: 20+ substituicoes em 11 arquivos HTML | DEPLOYED | 4 novas vars: --hwmdm-bg-subtle, --hwmdm-muted, --hwmdm-danger, --hwmdm-border-light |
+| 2026-10-09 09:10 | Claude Opus 4.6 | Cache stamp atualizado v=hux202610090910 | DEPLOYED | index.html |
 

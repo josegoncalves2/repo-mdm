@@ -1,4 +1,86 @@
-# Handoff — Sessao 2026-10-08/10 (atualizado 2026-10-08 14:30)
+# Handoff — Sessao 2026-10-09 (atualizado 2026-10-09 09:00)
+
+## Sessao 2026-10-09 09:00 — Debug acesso remoto + admin Java
+
+### O que foi feito
+1. **hwmdm-admin Python→Java** — HwmdmAdmin.java (~700 linhas), multi-stage Docker build (JDK21 compile, JRE21 runtime), JDBC PostgreSQL, 30+ labels no map, accent color teal (#0d9488/#2dd4bf). Health check OK.
+2. **Fix devices.controller.js** — console.log com new Error() trocado por console.debug (eliminava stack trace falso).
+3. **Debug acesso remoto "tela preta"** — stream FUNCIONA (fps 3-27, 752x1280, JMuxer/MSE via WebSocket). A "tela preta" é o lockscreen do Android: o tablet tem mdmMode=true mas kioskMode=false. O perfil modelo-default-v2 tem kiosk habilitado com keyguard desabilitado e keep-screen-awake, mas o tablet não está rodando o kiosk (launcher 6.36 instalado, perfil espera 1.3).
+
+### Diagnostico acesso remoto
+- WebSocket conecta, servidor recebe frames do tablet (121+ frames, H.264 Annex-B)
+- JMuxer inicializa MediaSource, decodifica e renderiza no `<video>` element
+- Quando tela do tablet está off: fps cai para 0 (MediaProjection envia pretos, encoder quase não gera dados)
+- Quando tela acende: fps sobe para 27, kbps=25, video renderiza
+- Tela é preta porque é o lockscreen Android (não há PIN visível, fundo preto)
+- O agente remoto tem dismissKeyguardIfPossible() mas só funciona sem PIN/Pattern
+
+### Root cause da "tela preta"
+O kiosk mode não está ativo no dispositivo (kioskMode=false no device info), apesar de o perfil ter kiosk enabled. Sem kiosk: keyguard fica ativo, screen timeout desliga a tela. A solução é garantir que o launcher 1.3 (APK de gerenciamento com KioskPolicy) está instalado e ativo como launcher padrão.
+
+### Arquivos alterados
+- `admin/HwmdmAdmin.java` — novo (substituiu app.py)
+- `admin/app.py` — deletado
+- `Dockerfile` — admin stage reescrito para multi-stage Java
+- `volumes/webapps/ROOT/app/components/main/controller/devices.controller.js` — console.debug
+
+### Proxima acao
+Ativar kiosk mode no tablet R9XT200AMYY (enrollment com launcher 1.3). Depois: cleanup de duplicidades, arquivos desnecessários, UX/UI review completo.
+
+---
+
+## Sessao 2026-10-09 08:30 — Continuacao: fix iframe + inspecao visual + erros.md
+
+### O que foi feito
+1. **Fix iframe onload server.html** — TypeError `onFrameLoad is not a function` + `$digest already in progress`. Causa: onload do iframe dispara antes do Angular compilar o scope. Fix: setTimeout wrapper para escapar do digest cycle. 0 erros console apos fix.
+2. **Inspecao visual completa via Chrome** — Devices, Acesso Remoto, Mapa de Localizacao, Mensagens, Relatorios, Perfis de dispositivo, Quiosque (Apps permitidos), WebFilter Dashboard, Servidor. Todas renderizando corretamente, 0 erros no console.
+3. **Docker logs 6h** — 0 erros em todos 4 containers.
+4. **erros.md reescrito** — dump bruto de 1.4MB (30k linhas) substituido por analise classificada (~100 linhas): 7 categorias de erros historicos (todos resolvidos ou inofensivos), schema de referencia para queries.
+
+### Arquivos alterados
+- `volumes/webapps/ROOT/app/components/main/view/settings/server.html` — setTimeout no onload
+- `docs/erros.md` — reescrito completo
+
+### Proxima acao
+Verificar botoes hardcoded do menu Server (item novo do prompt). Depois continuar com itens criticos: Kiosk, Acesso Remoto, duplicidades.
+
+---
+
+## Sessao 2026-10-09 08:10 — Mapeamento completo de todos os itens pendentes
+
+### Mapeamento
+Prompt de deployment recebido com 15+ itens. Regra: NAO INICIAR resolucao sem todos os cenarios previamente mapeados. Mapeamento registrado no backlog.md com 15 itens categorizados por prioridade.
+
+### Estado atual
+- 4 containers UP (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin)
+- Logs ultimas 5min: 0 erros de aplicacao
+- Banco intacto
+- 2 itens ja feitos nesta sessao (Mensagens CSS, GPS timeline)
+- 13 itens pendentes
+
+### Proxima acao
+Verificacao completa dos logs Docker (item 5), seguida de inspecao visual de todas as telas no Chrome (item 6), e depois resolucao dos itens criticos (Kiosk, Enrollment, Acesso Remoto).
+
+---
+
+## Sessao 2026-10-09 07:50 — Fix Mensagens CSS + GPS timeline bar
+
+### O que foi feito
+1. **Mensagens (chat) CSS corrigido** — compose bar (textarea + botao Enviar) movida de cima para baixo do historico de mensagens (padrao de chat). Mensagens com estilo card (borda, border-radius, fundo levemente teal para mensagens do admin, margem diferenciada admin vs device). Padding adicionado na area principal.
+2. **GPS timeline bar reposicionada** — barra de timeline (slider de playback) e chips de paradas movidos de acima do mapa para logo abaixo dele, conforme solicitado. Ordem: mapa → timeline → paradas → footer.
+3. **Cache stamp atualizado** — main.css v=hux202610090800
+
+### Arquivos alterados
+- `volumes/webapps/ROOT/app/components/main/view/chat.html` — reordenacao DOM
+- `volumes/webapps/ROOT/app/components/main/view/gpsmap.html` — reordenacao DOM
+- `volumes/webapps/ROOT/css/main.css` — CSS chat-main-area, chat-message, compose-bar
+- `volumes/webapps/ROOT/index.html` — cache stamp
+
+### Verificacao
+- Mensagens: compose bar abaixo do historico, mensagens estilizadas, layout correto
+- GPS: timeline bar abaixo do mapa, paradas abaixo da timeline, footer no fim
+
+---
 
 ## Sessao 2026-10-08 14:30 — Kiosk fix + verificacao completa
 

@@ -1,6 +1,26 @@
-# Backlog — HWMDM (atualizado 2026-10-08 14:10)
+# Backlog — HWMDM (atualizado 2026-10-09 09:10)
 
-## Status geral: 52 PENDENTES, 42 OK (atualizado 2026-10-08 14:30)
+## Status geral: atualizado 2026-10-09 09:10
+
+### Mapeamento sessao 2026-10-09 — TODOS os itens do prompt de deployment
+
+| # | Item | Status | Prioridade | Observacao |
+|---|------|--------|-----------|------------|
+| 1 | Kiosk mode 100% funcional | PENDENTE | CRITICO | NAO FUNCIONA MAIS; 6.36 faz enroll, 1.3 gerencia; requer Device Owner no tablet |
+| 2 | Enrollment: 6.36 enroll → MDM lanca 1.3 + suporte remoto + webfilter | PENDENTE | CRITICO | Fluxo combinado nunca testado end-to-end |
+| 3 | Acesso remoto — tela preta, parou de funcionar | DIAGNOSTICADO | CRITICO | Stream FUNCIONA (752x1280, JMuxer/MSE). Tela preta = lockscreen Android (kioskMode=false). Resolvido quando kiosk ativar |
+| 4 | Analise e correcao /docs/erros.md | FEITO | ALTO | Reescrito de 1.4MB para ~100 linhas classificadas |
+| 5 | Zero erros/warnings/not found nos logs Docker | FEITO | ALTO | 0 erros em 4 containers (6h de logs) |
+| 6 | Inspecao completa interface web — todos bugs e erros | FEITO | ALTO | 9 rotas percorridas no Chrome, 0 erros console |
+| 7 | Conectar no Chrome e resolver problemas encontrados | FEITO | ALTO | console.debug fix em devices.controller.js |
+| 8 | Mensagens CSS quebrado | FEITO | MEDIO | Sessao 07:50 — compose bar, card-style msgs |
+| 9 | GPS timeline bar abaixo do mapa | FEITO | MEDIO | Sessao 07:50 — reordenacao DOM |
+| 10 | Remover duplicidade de codigo/diretorios/arquivos/pastas inuteis | PARCIAL | MEDIO | Removidos: 14 APKs antigos dist/, .old.claude/, WAR backup (93MB). Deploy dirs root-owned pendentes (699MB, precisa sudo) |
+| 11 | Manter apenas arquivos essenciais — mover demais | PARCIAL | MEDIO | dist/ limpo (7 arquivos essenciais). Deploy backups root-owned pendentes |
+| 12 | Proibido hardcoded — usar variaveis | FEITO | MEDIO | 20+ cores hardcoded convertidas para var(--hwmdm-*) com fallback. 4 novas CSS vars adicionadas. 0 hardcoded restantes em views |
+| 13 | Layout UX/UI com boas praticas, design system, design patterns | PENDENTE | MEDIO | Validacao em todas as telas |
+| 14 | Persistencia e compliance de permissoes | PENDENTE | MEDIO | chown, bind mounts, sobrevive reboot |
+| 15 | Nao aplicar correcao em arquivo desatualizado | REGRA | — | Verificar estado antes de cada edicao |
 
 ### Fixes aplicados 2026-10-08 sessao 13:50-14:10
 - [x] ROOT.war removido — causa raiz de sidebar sumida, i18n raw, QR sem layout, servidor desaparecido

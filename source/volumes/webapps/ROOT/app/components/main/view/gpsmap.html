@@ -90,7 +90,47 @@
 
         <!-- Mapa ocupa todo o painel direito -->
         <div class="gps-map-area">
-            <!-- Keep history controls within the map panel rather than spanning the page. -->
+            <div class="gps-map-toolbar">
+                <div class="gps-map-layer-actions" role="group" aria-label="Camadas do mapa">
+                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'streets' ? 'btn-primary' : 'btn-default'"
+                            ng-click="setMapLayer('streets')" title="Ruas" aria-label="Ruas">
+                        <span class="glyphicon glyphicon-road"></span> Ruas
+                    </button>
+                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'satellite' ? 'btn-primary' : 'btn-default'"
+                            ng-click="setMapLayer('satellite')" title="Satélite" aria-label="Satélite">
+                        <span class="glyphicon glyphicon-globe"></span> Satélite
+                    </button>
+                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'topo' ? 'btn-primary' : 'btn-default'"
+                            ng-click="setMapLayer('topo')" title="Topográfico" aria-label="Topográfico">
+                        <span class="glyphicon glyphicon-tree-deciduous"></span> Topo
+                    </button>
+                </div>
+                <div class="gps-map-selection-actions" ng-if="selectedDevice" role="group"
+                     aria-label="Ações do dispositivo selecionado">
+                    <button type="button" class="btn btn-sm btn-default"
+                            ng-class="{active: historyMode}" ng-click="toggleHistory()">
+                        <span class="glyphicon glyphicon-time"></span>
+                        <span>{{"gpsmap.history" | localize}}</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-default"
+                            ng-click="centerOnDevice(selectedDevice)">
+                        <span class="glyphicon glyphicon-screenshot"></span>
+                        <span>{{"gpsmap.detail.center" | localize}}</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="gps-map-shell">
+                <div id="gps-map" class="gps-map-canvas"></div>
+            </div>
+
+            <div class="hwmdm-timeline-bar" ng-if="historyMode && historyPoints.length > 1">
+                <span class="hwmdm-timeline-time">{{playback.currentTime}}</span>
+                <input type="range" min="0" max="{{historyPoints.length - 1}}"
+                       ng-model="playback.index" ng-change="seekPlayback()">
+                <span class="hwmdm-timeline-time">{{playback.endTime}}</span>
+            </div>
+
             <div class="hwmdm-control-bar" ng-if="historyMode && selectedDeviceId">
                 <div class="hwmdm-control-group">
                     <label>{{"gpsmap.history.period" | localize}}:</label>
@@ -133,58 +173,17 @@
                 </div>
             </div>
 
-            <div class="hwmdm-timeline-bar" ng-if="historyMode && historyPoints.length > 1">
-                <span class="hwmdm-timeline-time">{{playback.currentTime}}</span>
-                <input type="range" min="0" max="{{historyPoints.length - 1}}"
-                       ng-model="playback.index" ng-change="seekPlayback()">
-                <span class="hwmdm-timeline-time">{{playback.endTime}}</span>
-            </div>
-
             <div class="hwmdm-chip-bar" ng-if="historyMode && historyStops.length">
-                <div class="hwmdm-chip-bar-title" style="color:#e74c3c">
+                <div class="hwmdm-chip-bar-title" style="color:var(--hwmdm-danger,#e74c3c)">
                     <span class="glyphicon glyphicon-map-marker"></span> {{historyStops.length}} paradas
                 </div>
                 <div class="hwmdm-chip-list">
                     <a href="" class="hwmdm-chip" ng-repeat="stop in historyStops" ng-click="goToStop(stop)">
-                        <strong style="color:#e74c3c">#{{$index + 1}}</strong>
+                        <strong style="color:var(--hwmdm-danger,#e74c3c)">#{{$index + 1}}</strong>
                         <span>{{stop.arrivalTime}}</span>
                         <span style="color:var(--hwmdm-muted)">({{stop.durationText}})</span>
                     </a>
                 </div>
-            </div>
-
-            <div class="gps-map-toolbar">
-                <div class="gps-map-layer-actions" role="group" aria-label="Camadas do mapa">
-                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'streets' ? 'btn-primary' : 'btn-default'"
-                            ng-click="setMapLayer('streets')" title="Ruas" aria-label="Ruas">
-                        <span class="glyphicon glyphicon-road"></span> Ruas
-                    </button>
-                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'satellite' ? 'btn-primary' : 'btn-default'"
-                            ng-click="setMapLayer('satellite')" title="Satélite" aria-label="Satélite">
-                        <span class="glyphicon glyphicon-globe"></span> Satélite
-                    </button>
-                    <button type="button" class="btn btn-xs" ng-class="currentLayer === 'topo' ? 'btn-primary' : 'btn-default'"
-                            ng-click="setMapLayer('topo')" title="Topográfico" aria-label="Topográfico">
-                        <span class="glyphicon glyphicon-tree-deciduous"></span> Topo
-                    </button>
-                </div>
-                <div class="gps-map-selection-actions" ng-if="selectedDevice" role="group"
-                     aria-label="Ações do dispositivo selecionado">
-                    <button type="button" class="btn btn-sm btn-default"
-                            ng-class="{active: historyMode}" ng-click="toggleHistory()">
-                        <span class="glyphicon glyphicon-time"></span>
-                        <span>{{"gpsmap.history" | localize}}</span>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-default"
-                            ng-click="centerOnDevice(selectedDevice)">
-                        <span class="glyphicon glyphicon-screenshot"></span>
-                        <span>{{"gpsmap.detail.center" | localize}}</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="gps-map-shell">
-                <div id="gps-map" class="gps-map-canvas"></div>
             </div>
 
             <div class="hwmdm-footer-bar">

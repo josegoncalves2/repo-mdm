@@ -26,11 +26,17 @@ ENTRYPOINT ["python3", "-u", "/app/resolver.py"]
 # ---------------------------------------------------------------- hwmdm-admin
 # Gestao do servidor pela web (configuracao, containers, aplicar mudancas). Fica fora do
 # Tomcat para sobreviver ao restart/recreate/build dos outros containers que ele comanda.
-FROM alpine:3.20 AS admin
+FROM eclipse-temurin:21-jdk-alpine AS admin-build
+COPY admin/HwmdmAdmin.java /build/HwmdmAdmin.java
+ADD https://jdbc.postgresql.org/download/postgresql-42.7.3.jar /build/lib/postgresql.jar
+WORKDIR /build
+RUN javac -cp lib/postgresql.jar HwmdmAdmin.java
 
-RUN apk add --no-cache python3 py3-psycopg2 docker-cli docker-cli-compose tzdata
-COPY admin/app.py /app/app.py
+FROM eclipse-temurin:21-jre-alpine AS admin
+RUN apk add --no-cache docker-cli docker-cli-compose tzdata wget
+COPY --from=admin-build /build/*.class /app/
+COPY --from=admin-build /build/lib/postgresql.jar /app/lib/postgresql.jar
 WORKDIR /app
 EXPOSE 8090/tcp
 HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- http://127.0.0.1:${ADMIN_PORT:-8090}/health || exit 1
-ENTRYPOINT ["python3", "-u", "/app/app.py"]
+ENTRYPOINT ["java", "-cp", "/app:/app/lib/postgresql.jar", "HwmdmAdmin"]
