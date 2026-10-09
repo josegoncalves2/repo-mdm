@@ -260,7 +260,6 @@ angular.module('headwind-kiosk')
         Player.prototype.open = function (socketPath) {
             var self = this;
             this.closed = false;
-            console.log('[REMOTE] open: webcodecs=' + supportsWebCodecs() + ' mse=' + supportsMse() + ' useMse=' + this.useMse);
 
             // MSE fallback: cria video element
             if (this.useMse) {
