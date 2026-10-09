@@ -25,23 +25,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.websocket.CloseReason;
-import javax.websocket.SendHandler;
-import javax.websocket.SendResult;
 import javax.websocket.Session;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.ArrayDeque;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>As sessoes de suporte remoto que este servidor esta intermediando, em memoria.</p>
@@ -86,15 +78,6 @@ public final class RemoteSessionHub {
     // Viewer navigation does not revoke an administrator's active support session.
     // Explicit stop, agent disconnect and pending-request expiry own that lifecycle.
 
-    /**
-     * Carencia para encerrar uma sessao cujo ultimo espectador fechou o navegador
-     * (F5, troca de aba, fechou a janela). O agente continua transmitindo por este
-     * tempo para dar chance ao operador de reatar (ver tryReattach no controller).
-     * Passado este prazo sem ninguem, a sessao e' encerrada para poupar bateria e
-     * processamento no tablet.
-     */
-    private static final long VIEWER_GRACE_MS = 30_000L;
-
     /** Quadros guardados para o transporte HTTP: ~2s de video a 15 fps. */
     private static final int MAX_BUFFERED_FRAMES = 30;
 
@@ -103,9 +86,6 @@ public final class RemoteSessionHub {
     public static final byte FRAME_DELTA = 3;
 
     private static final RemoteSessionHub INSTANCE = new RemoteSessionHub();
-
-    /** Reaper periodico. Precisa ser desligado no undeploy (ver {@link #shutdown()}). */
-    private static final ScheduledExecutorService REAPER;
 
     static {
         /*
@@ -121,28 +101,19 @@ public final class RemoteSessionHub {
          * Um unico thread daemon, de baixa frequencia, resolve isso sem exigir nenhuma outra
          * peca de infraestrutura (nao ha Quartz nem outro agendador disponivel neste modulo).
          */
-        REAPER = Executors.newSingleThreadScheduledExecutor(runnable -> {
-            Thread thread = new Thread(runnable, "remote-support-reaper");
-            thread.setDaemon(true);
-            return thread;
-        });
-        REAPER.scheduleWithFixedDelay(() -> {
+        java.util.concurrent.ScheduledExecutorService reaper =
+                java.util.concurrent.Executors.newSingleThreadScheduledExecutor(runnable -> {
+                    Thread thread = new Thread(runnable, "remote-support-reaper");
+                    thread.setDaemon(true);
+                    return thread;
+                });
+        reaper.scheduleWithFixedDelay(() -> {
             try {
                 INSTANCE.reapStale();
             } catch (Exception e) {
                 logger.warn("Falha na varredura periodica de sessoes de suporte remoto", e);
             }
-        }, 30, 30, TimeUnit.SECONDS);
-
-        /*
-         * O reaper segura a referencia para INSTANCE (e portanto para o classloader
-         * da aplicacao). Sem o shutdown explicito, um undeploy no Tomcat nao consegue
-         * liberar o classloader e a thread continua viva apos a aplicacao sair --
-         * vazamento classico. O undeploy precisa chamar {@link #shutdown()} (ver
-         * ServletContextListener). NAO registre shutdown hook aqui: o static initializer
-         * roda durante o startup do Tomcat, e se a JVM estiver parando (redeploy em
-         * andamento), addShutdownHook lanca IllegalStateException e derruba o contexto.
-         */
+        }, 30, 30, java.util.concurrent.TimeUnit.SECONDS);
     }
 
     private final Map<String, RemoteSession> byDeviceNumber = new ConcurrentHashMap<>();
@@ -153,15 +124,6 @@ public final class RemoteSessionHub {
 
     public static RemoteSessionHub getInstance() {
         return INSTANCE;
-    }
-
-    /**
-     * <p>Encerra o thread da varredura periodica. Deve ser chamado no
-     * {@code contextDestroyed} de um {@code ServletContextListener} para permitir que o
-     * container faca o undeploy da aplicacao sem vazar o classloader.</p>
-     */
-    public static void shutdown() {
-        REAPER.shutdownNow();
     }
 
     /**
@@ -212,7 +174,7 @@ public final class RemoteSessionHub {
          * pouco tempo de proposito: o objetivo e' cobrir o intervalo entre duas requisicoes
          * do navegador, nao manter historico. Video ao vivo antigo nao tem valor.
          */
-        private final ArrayDeque<byte[]> recent = new ArrayDeque<>();
+        private final java.util.ArrayDeque<byte[]> recent = new java.util.ArrayDeque<>();
         private volatile long sequence;
         private final Object pump = new Object();
 
@@ -231,16 +193,7 @@ public final class RemoteSessionHub {
         public boolean isInputAvailable() { return inputAvailable; }
         public long getFrames() { return frames; }
         public long getBytes() { return bytes; }
-
-        /** Numero de espectadores com socket aberto. Ignora sockets ja' fechados. */
-        public int getViewerCount() {
-            int n = 0;
-            for (Session v : viewers) {
-                if (v.isOpen()) n++;
-            }
-            return n;
-        }
-
+        public int getViewerCount() { return viewers.size(); }
         public boolean isStreaming() { return agent != null && agent.isOpen(); }
         /** Quando o pedido foi feito (epoch ms) -- o painel mostra isto no estado "pendente". */
         public long getCreatedAt() { return createdAt; }
@@ -263,6 +216,7 @@ public final class RemoteSessionHub {
      *                     {@link #PENDING_TIMEOUT_MS} e {@link #PENDING_OFFLINE_TIMEOUT_MS}.
      */
     public RemoteSession open(int deviceId, String deviceNumber, boolean deviceOnline) {
+        reapStale();
         byte[] raw = new byte[24];
         random.nextBytes(raw);
         String token = Base64.getUrlEncoder().withoutPadding().encodeToString(raw);
@@ -317,26 +271,11 @@ public final class RemoteSessionHub {
             logger.warn("Fluxo recusado para '{}': token nao confere", deviceNumber);
             return null;
         }
-        // Troca a referencia ANTES de fechar o socket antigo: se o onClose do socket
-        // antigo disparar e chamar detachAgent, ele ve session.agent == socket (novo)
-        // e nao zera nada. Fechar antes abriria uma janela em que o detach do antigo
-        // zeraria o campo depois que a nova referencia ja' tivesse sido atribuida.
-        Session antigo = session.agent;
+        closeQuietly(session.agent, "substituido por uma conexao mais nova do agente");
         session.agent = socket;
-        closeQuietly(antigo, "substituido por uma conexao mais nova do agente");
-
         // O agente conectou, entao o aparelho provou que esta' alcancavel agora -- o prazo
         // longo de "pedido feito com aparelho offline" deixa de fazer sentido a partir daqui.
         session.pendingOffline = false;
-
-        // Reinicia a carencia de "ninguem olhando" a partir do momento em que o agente
-        // conecta. Se a sessao nasceu sem espectador, viewerlessSince estava contando
-        // desde createdAt (esperando o agente); agora a espera passa a ser por espectador,
-        // e o relogio deve comecar de novo.
-        if (session.getViewerCount() == 0) {
-            session.viewerlessSince = System.currentTimeMillis();
-        }
-
         logger.info("Agente conectado para '{}'", deviceNumber);
         notifyViewers(session);
         return session;
@@ -354,9 +293,6 @@ public final class RemoteSessionHub {
     }
 
     public boolean attachViewer(String deviceNumber, Session socket) {
-        if (socket == null) {
-            return false;
-        }
         RemoteSession session = byDeviceNumber.get(deviceNumber);
         if (session == null) {
             return false;
@@ -365,7 +301,7 @@ public final class RemoteSessionHub {
         // Ha' espectador de novo: o relogio da carencia de "ninguem esta' olhando" para.
         session.viewerlessSince = 0;
         logger.info("Espectador anexado a '{}' (total={}, agente_conectado={})",
-                deviceNumber, session.getViewerCount(), session.isStreaming());
+                deviceNumber, session.viewers.size(), session.isStreaming());
         sendText(socket, describe(session));
         byte[] config = session.codecConfig;
         byte[] key = session.lastKeyFrame;
@@ -379,23 +315,16 @@ public final class RemoteSessionHub {
     }
 
     public void detachViewer(String deviceNumber, Session socket) {
-        if (socket == null) {
-            return;
-        }
         RemoteSession session = byDeviceNumber.get(deviceNumber);
-        if (session == null) {
-            return;
-        }
-        session.viewers.remove(socket);
-        if (session.getViewerCount() == 0) {
-            // Marca o inicio da carencia (VIEWER_GRACE_MS). Isto e' o que sobrevive a um
-            // F5 ou a uma troca de aba: o navegador fecha este socket de proposito ao
-            // desmontar a tela, mas a sessao no aparelho continua ligada ate' o prazo
-            // vencer ou o painel reatar (ver reapStale()).
-            session.viewerlessSince = System.currentTimeMillis();
-        } else {
-            // Ainda ha' espectadores: atualiza a contagem no painel deles.
-            notifyViewers(session);
+        if (session != null) {
+            session.viewers.remove(socket);
+            if (session.viewers.isEmpty()) {
+                // Marca o inicio da carencia (VIEWER_GRACE_MS). Isto e' o que sobrevive a um
+                // F5 ou a uma troca de aba: o navegador fecha este socket de proposito ao
+                // desmontar a tela, mas a sessao no aparelho continua ligada ate' o prazo
+                // vencer ou o painel reatar (ver reapStale()).
+                session.viewerlessSince = System.currentTimeMillis();
+            }
         }
     }
 
@@ -408,7 +337,7 @@ public final class RemoteSessionHub {
         session.height = height;
         session.inputAvailable = inputAvailable;
         logger.info("Fluxo descrito por '{}': {}x{} entrada={} espectadores={}",
-                deviceNumber, width, height, inputAvailable, session.getViewerCount());
+                deviceNumber, width, height, inputAvailable, session.viewers.size());
         // Descricao nova invalida os quadros guardados do fluxo anterior.
         session.codecConfig = null;
         session.lastKeyFrame = null;
@@ -434,7 +363,7 @@ public final class RemoteSessionHub {
         // "relay nao repassa" de "navegador nao decodifica".
         if (session.frames <= 3 || session.frames % 200 == 0) {
             logger.info("Quadro {} de '{}': tipo={} bytes={} espectadores={}",
-                    session.frames, deviceNumber, frame[0], frame.length, session.getViewerCount());
+                    session.frames, deviceNumber, frame[0], frame.length, session.viewers.size());
         }
 
         final byte type = frame[0];
@@ -444,22 +373,14 @@ public final class RemoteSessionHub {
             session.lastKeyFrame = frame;
         }
 
-        boolean removeu = false;
         Iterator<Session> iterator = session.viewers.iterator();
         while (iterator.hasNext()) {
             Session viewer = iterator.next();
             if (!viewer.isOpen()) {
                 iterator.remove();
-                removeu = true;
                 continue;
             }
             sendBinary(viewer, frame);
-        }
-        // Se a poda tirou o ultimo espectador sem passar por detachViewer, comeca a
-        // carencia agora -- caso contrario viewerlessSince ficaria em 0 e reapStale()
-        // nunca encerraria a sessao.
-        if (removeu && session.getViewerCount() == 0 && session.viewerlessSince == 0) {
-            session.viewerlessSince = System.currentTimeMillis();
         }
 
         // Alimenta tambem o transporte HTTP e acorda quem estiver em long polling.
@@ -488,7 +409,7 @@ public final class RemoteSessionHub {
     public PolledFrames poll(String deviceNumber, long since, long waitMs) {
         RemoteSession session = byDeviceNumber.get(deviceNumber);
         if (session == null) {
-            return new PolledFrames(since, Collections.emptyList(), false, 0, 0, false);
+            return new PolledFrames(since, java.util.Collections.emptyList(), false, 0, 0, false);
         }
         final long deadline = System.currentTimeMillis() + Math.max(0, waitMs);
         synchronized (session.pump) {
@@ -501,7 +422,7 @@ public final class RemoteSessionHub {
                 }
             }
 
-            List<byte[]> out = new ArrayList<>();
+            java.util.List<byte[]> out = new java.util.ArrayList<>();
             if (session.sequence > since) {
                 // Quando o cliente ficou para tras alem do buffer, recomecamos do que existe:
                 // reenviar a configuracao e o ultimo quadro-chave e' o que permite decodificar.
@@ -514,7 +435,7 @@ public final class RemoteSessionHub {
                         out.add(session.lastKeyFrame);
                     }
                 } else {
-                    Iterator<byte[]> it = session.recent.iterator();
+                    java.util.Iterator<byte[]> it = session.recent.iterator();
                     long skip = session.recent.size() - behind;
                     while (skip-- > 0 && it.hasNext()) {
                         it.next();
@@ -532,13 +453,13 @@ public final class RemoteSessionHub {
     /** Resposta do transporte HTTP. */
     public static final class PolledFrames {
         public final long cursor;
-        public final List<byte[]> frames;
+        public final java.util.List<byte[]> frames;
         public final boolean streaming;
         public final int width;
         public final int height;
         public final boolean input;
 
-        PolledFrames(long cursor, List<byte[]> frames, boolean streaming,
+        PolledFrames(long cursor, java.util.List<byte[]> frames, boolean streaming,
                      int width, int height, boolean input) {
             this.cursor = cursor;
             this.frames = frames;
@@ -552,11 +473,6 @@ public final class RemoteSessionHub {
     /**
      * <p>Encaminha um comando de toque ou digitacao do painel ao aparelho.</p>
      *
-     * <p>Comandos NAO sao descartados quando a fila enche: perder um "down" sem o "up"
-     * correspondente deixa o aparelho com o toque preso, e perder um "up" deixa o
-     * gesto incompleto. Se o agente nao estiver drenando, o socket e' fechado -- o
-     * operador ve a sessao cair e reata, em vez de achar que o aparelho travou.</p>
-     *
      * @return false quando nao ha agente conectado, para que o painel diga ao operador que
      *         o clique nao saiu, em vez de deixa-lo achar que a tela travou.
      */
@@ -569,7 +485,8 @@ public final class RemoteSessionHub {
         if (agent == null || !agent.isOpen()) {
             return false;
         }
-        return enfileirarComandoAgente(agent, json);
+        sendText(agent, json);
+        return true;
     }
 
     /** Repassa aos espectadores o retorno do agente sobre um comando de entrada. */
@@ -593,7 +510,7 @@ public final class RemoteSessionHub {
                 + ",\"width\":" + session.width
                 + ",\"height\":" + session.height
                 + ",\"input\":" + session.inputAvailable
-                + ",\"viewers\":" + session.getViewerCount()
+                + ",\"viewers\":" + session.viewers.size()
                 + ",\"frames\":" + session.frames
                 + ",\"bytes\":" + session.bytes
                 + "}";
@@ -609,8 +526,8 @@ public final class RemoteSessionHub {
     /**
      * <p>Varredura unica que cobre os dois prazos da sessao: o agente que nunca aparece (o
      * pedido em si expira) e o espectador que some de uma sessao ja' viva (a carencia do item
-     * 4 -- ver politica de encerramento explicito). Chamada apenas pelo thread periodico
-     * registrado no bloco {@code static} da classe.</p>
+     * 4 -- ver politica de encerramento explicito). Chamada tanto por {@link #open(int, String, boolean)}
+     * quanto pelo thread periodico registrado no bloco {@code static} da classe.</p>
      */
     private void reapStale() {
         long now = System.currentTimeMillis();
@@ -618,27 +535,6 @@ public final class RemoteSessionHub {
             RemoteSession session = entry.getValue();
 
             if (session.isStreaming()) {
-                // Remove espectadores cujo socket ja fechou mas nao passaram por
-                // detachViewer(). Sem esta limpeza, getViewerCount() nunca chega a
-                // zero e a sessao vaza recursos no tablet.
-                session.viewers.removeIf(v -> !v.isOpen());
-
-                // Se a poda removeu o ultimo espectador mas viewerlessSince ainda esta
-                // em 0 (porque nunca passou por detachViewer), inicia a carencia agora.
-                if (session.getViewerCount() == 0 && session.viewerlessSince == 0) {
-                    session.viewerlessSince = now;
-                }
-
-                // Sessao com agente conectado: se nao ha espectadores ha mais tempo
-                // que VIEWER_GRACE_MS, encerra para poupar bateria e processamento.
-                if (session.getViewerCount() == 0
-                        && session.viewerlessSince > 0
-                        && now - session.viewerlessSince > VIEWER_GRACE_MS) {
-                    logger.info("Encerrando sessao de '{}' sem espectadores apos {} ms (carencia {} ms)",
-                            entry.getKey(), now - session.viewerlessSince, VIEWER_GRACE_MS);
-                    closeQuietly(session.agent, "sessao sem espectadores");
-                    return true;
-                }
                 return false;
             }
 
@@ -647,126 +543,71 @@ public final class RemoteSessionHub {
             // (PENDING_OFFLINE_TIMEOUT_MS, bem mais longo) ou de ele estar supostamente
             // alcancavel e simplesmente nao ter respondido ainda (PENDING_TIMEOUT_MS).
             long timeout = session.pendingOffline ? PENDING_OFFLINE_TIMEOUT_MS : PENDING_TIMEOUT_MS;
-            boolean stale = now - (session.agentDisconnectedAt > 0
-                    ? session.agentDisconnectedAt : session.createdAt) > timeout;
+            boolean stale = now - (session.agentDisconnectedAt > 0 ? session.agentDisconnectedAt : session.createdAt) > timeout;
             if (stale) {
                 logger.info("Descartando pedido pendente de '{}' apos {} ms (prazo {} ms, offline_no_pedido={})",
                         entry.getKey(), now - session.createdAt, timeout, session.pendingOffline);
-                for (Session viewer : session.viewers) {
-                    closeQuietly(viewer, "sessao expirada");
-                }
             }
             return stale;
         });
     }
 
-    /**
-     * <p>O {@code AsyncRemote} do Tomcat aceita UM envio em voo por socket, seja texto ou
-     * binario. Chamado a cada quadro sem esperar o anterior, ele lanca
-     * {@code IllegalStateException [BINARY_FULL_WRITING ou TEXT_FULL_WRITING]} e a mensagem
-     * se perdia em silencio assim que o navegador drenava mais devagar que o aparelho
-     * transmitia. Aqui o excedente espera numa fila curta e o quadro velho e' descartado no
-     * lugar do novo, que e' o que o espectador precisa ver.</p>
-     *
-     * <p>Texto e binario compartilham a MESMA fila porque o AsyncRemote aceita uma unica
-     * operacao por vez, independente do tipo. Sem isto, um {@code notifyViewers()} enviando
-     * um JSON de status enquanto um frame esta' em voo lancava
-     * {@code TEXT_FULL_WRITING} e derrubava o espectador.</p>
-     *
-     * <p>O agente usa uma fila SEPARADA e sem descarte -- ver {@link #enfileirarComandoAgente}.
-     * Misturar as duas politicas na mesma fila faria um comando de toque ser descartado no
-     * lugar de um quadro de video, deixando o aparelho com o gesto preso.</p>
-     */
+    /** Um envio em voo por espectador; o excedente espera numa fila curta. */
     private static final int MAX_FILA_ESPECTADOR = 8;
 
-    /** Fila do agente: comporta rajadas curtas de comandos sem descartar nenhum. */
-    private static final int MAX_FILA_AGENTE = 256;
-
-    private static final class EscritaSocket {
-        private final ArrayDeque<Object> fila = new ArrayDeque<>();
+    private static final class EscritaEspectador {
+        private final java.util.ArrayDeque<byte[]> fila = new java.util.ArrayDeque<>();
         private boolean escrevendo;
         private long descartados;
     }
 
-    private static EscritaSocket escritaDe(Session socket) {
+    private static EscritaEspectador escritaDe(Session socket) {
+        // getUserProperties() e' um mapa por sessao mantido pelo proprio container.
         synchronized (socket) {
             Object atual = socket.getUserProperties().get("hwmdm.escrita");
             if (atual == null) {
-                atual = new EscritaSocket();
+                atual = new EscritaEspectador();
                 socket.getUserProperties().put("hwmdm.escrita", atual);
             }
-            return (EscritaSocket) atual;
+            return (EscritaEspectador) atual;
         }
-    }
-
-    private static boolean enfileirar(Session socket, Object payload, int limite, boolean descartaAntigo) {
-        EscritaSocket e = escritaDe(socket);
-        synchronized (e) {
-            if (e.escrevendo) {
-                if (e.fila.size() >= limite) {
-                    if (descartaAntigo) {
-                        e.fila.pollFirst();
-                        if (++e.descartados % 100 == 1) {
-                            logger.info("Espectador lento: {} mensagens descartadas", e.descartados);
-                        }
-                    } else {
-                        // Nao mexe em e.escrevendo nem limpa a fila: ha um envio em voo.
-                        // Fecha o socket para que o operador veja a sessao cair, em vez de
-                        // seguir mandando comando para uma fila que nunca drena.
-                        logger.warn("Fila do agente cheia ({}), encerrando socket", limite);
-                        closeQuietly(socket, "fila de comandos cheia");
-                        return false;
-                    }
-                }
-                e.fila.addLast(payload);
-                return true;
-            }
-            e.escrevendo = true;
-        }
-        enviar(socket, e, payload);
-        return true;
-    }
-
-    private static void sendBinary(Session socket, byte[] payload) {
-        if (socket == null || payload == null) {
-            return;
-        }
-        enfileirar(socket, payload, MAX_FILA_ESPECTADOR, true);
-    }
-
-    private static void sendText(Session socket, String text) {
-        if (socket == null || text == null) {
-            return;
-        }
-        enfileirar(socket, text, MAX_FILA_ESPECTADOR, true);
-    }
-
-    private static boolean enfileirarComandoAgente(Session socket, String json) {
-        if (socket == null || json == null) {
-            return false;
-        }
-        return enfileirar(socket, json, MAX_FILA_AGENTE, false);
     }
 
     /**
-     * <p>Drena a fila de um socket, um item em voo por vez. O callback reentra neste metodo
-     * quando o envio anterior completa -- em Tomcat, o callback do {@code AsyncRemote} pode
-     * ser chamado de forma sincrona (quando o envio falha na hora, por exemplo), entao a
-     * profundidade de recursao e' limitada pelo tamanho maximo da fila (MAX_FILA_AGENTE = 256
-     * para o agente, MAX_FILA_ESPECTADOR = 8 para espectadores).</p>
+     * <p>O {@code AsyncRemote} do Tomcat aceita UM envio binario em voo por socket. Chamado a cada
+     * quadro sem esperar o anterior, ele lanca {@code IllegalStateException [BINARY_FULL_WRITING]}
+     * e o quadro se perdia em silencio assim que o navegador drenava mais devagar que o aparelho
+     * transmitia. Aqui o excedente espera numa fila curta e o quadro velho e' descartado no lugar
+     * do novo, que e' o que o espectador precisa ver.</p>
      */
-    private static void enviar(Session socket, EscritaSocket e, Object payload) {
-        try {
-            SendHandler callback = (SendResult resultado) -> {
-                if (!resultado.isOK()) {
-                    logger.debug("Falha no envio assincrono", resultado.getException());
-                    synchronized (e) {
-                        e.escrevendo = false;
-                        e.fila.clear();
+    private static void sendBinary(Session socket, byte[] payload) {
+        EscritaEspectador e = escritaDe(socket);
+        synchronized (e) {
+            if (e.escrevendo) {
+                if (e.fila.size() >= MAX_FILA_ESPECTADOR) {
+                    e.fila.pollFirst();
+                    if (++e.descartados % 100 == 1) {
+                        logger.info("Espectador lento: {} quadros descartados", e.descartados);
                     }
-                    return;
                 }
-                Object proximo;
+                e.fila.addLast(payload);
+                return;
+            }
+            e.escrevendo = true;
+        }
+        escrever(socket, e, payload);
+    }
+
+    private static void escrever(Session socket, EscritaEspectador e, byte[] payload) {
+        try {
+            // Assincrono de proposito: um envio bloqueante para um espectador seguraria a
+            // thread que le do agente e, com ela, todos os outros espectadores.
+            // A profundidade de recursao e' limitada pela fila (MAX_FILA_ESPECTADOR).
+            socket.getAsyncRemote().sendBinary(ByteBuffer.wrap(payload), resultado -> {
+                if (!resultado.isOK()) {
+                    logger.debug("Falha ao enviar quadro a um espectador", resultado.getException());
+                }
+                byte[] proximo;
                 synchronized (e) {
                     proximo = e.fila.pollFirst();
                     if (proximo == null) {
@@ -774,30 +615,22 @@ public final class RemoteSessionHub {
                         return;
                     }
                 }
-                enviar(socket, e, proximo);
-            };
-
-            if (payload instanceof byte[]) {
-                byte[] bin = (byte[]) payload;
-                socket.getAsyncRemote().sendBinary(ByteBuffer.wrap(bin), callback);
-            } else if (payload instanceof String) {
-                String txt = (String) payload;
-                socket.getAsyncRemote().sendText(txt, callback);
-            } else {
-                // Tipo desconhecido: nao deixa a fila presa.
-                synchronized (e) {
-                    e.escrevendo = false;
-                    e.fila.clear();
-                }
-                logger.warn("Payload de tipo inesperado na fila de escrita: {}",
-                        payload == null ? "null" : payload.getClass().getName());
-            }
+                escrever(socket, e, proximo);
+            });
         } catch (Exception ex) {
             synchronized (e) {
                 e.escrevendo = false;
                 e.fila.clear();
             }
-            logger.debug("Mensagem descartada para um socket que nao aceita mais dados", ex);
+            logger.debug("Quadro descartado para um espectador que nao aceita mais dados", ex);
+        }
+    }
+
+    private static void sendText(Session socket, String text) {
+        try {
+            socket.getAsyncRemote().sendText(text);
+        } catch (Exception e) {
+            logger.debug("Nao foi possivel enviar texto pelo socket", e);
         }
     }
 

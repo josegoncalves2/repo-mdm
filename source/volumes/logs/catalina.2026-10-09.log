@@ -1670,3 +1670,949 @@
 		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:09:53.632 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+09-Oct-2026 11:09:53.648 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+09-Oct-2026 11:09:53.649 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+09-Oct-2026 11:09:53.650 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+09-Oct-2026 11:09:53.650 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+09-Oct-2026 11:09:53.651 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Oct-2026 11:09:53.651 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+09-Oct-2026 11:09:53.652 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+09-Oct-2026 11:09:53.652 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+09-Oct-2026 11:09:53.653 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+09-Oct-2026 11:09:53.654 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+09-Oct-2026 11:09:53.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+09-Oct-2026 11:09:53.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+09-Oct-2026 11:09:53.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+09-Oct-2026 11:09:53.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+09-Oct-2026 11:09:53.681 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+09-Oct-2026 11:09:53.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+09-Oct-2026 11:09:53.683 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+09-Oct-2026 11:09:53.684 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+09-Oct-2026 11:09:53.684 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+09-Oct-2026 11:09:53.684 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+09-Oct-2026 11:09:53.684 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+09-Oct-2026 11:09:53.707 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+09-Oct-2026 11:09:53.708 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+09-Oct-2026 11:09:53.710 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+09-Oct-2026 11:09:53.718 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+09-Oct-2026 11:09:54.750 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:09:54.800 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [2042] milliseconds
+09-Oct-2026 11:09:54.936 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Oct-2026 11:09:54.938 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+09-Oct-2026 11:09:54.954 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+09-Oct-2026 11:10:00.487 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Oct-2026 11:10:14.945 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+09-Oct-2026 11:10:16.237 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more Filters failed to start. Full details will be found in the appropriate container log file
+09-Oct-2026 11:10:16.239 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [] startup failed due to previous errors
+09-Oct-2026 11:10:16.249 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextDestroyed Servlet context destroyed -- closing any remaning open ClassGraph ScanResult instances
+09-Oct-2026 11:10:16.257 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+09-Oct-2026 11:10:16.258 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.258 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-4-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.261 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Broker[localhost] Scheduler] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:527)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:10:16.264 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server Thread Handler: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+ org.apache.activemq.transport.tcp.TcpTransportServer$1.run(TcpTransportServer.java:496)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.266 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.PlainSocketImpl.socketAccept(Native Method)
+ java.base@11.0.31/java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:474)
+ java.base@11.0.31/java.net.ServerSocket.implAccept(ServerSocket.java:565)
+ java.base@11.0.31/java.net.ServerSocket.accept(ServerSocket.java:533)
+ org.apache.activemq.transport.tcp.TcpTransportServer.doRunWithServerSocket(TcpTransportServer.java:420)
+ org.apache.activemq.transport.tcp.TcpTransportServer.run(TcpTransportServer.java:342)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.269 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Rec: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:200)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.eclipse.paho.client.mqttv3.internal.wire.MqttInputStream.readMqttWireMessage(MqttInputStream.java:92)
+ org.eclipse.paho.client.mqttv3.internal.CommsReceiver.run(CommsReceiver.java:137)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.273 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Snd: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.ClientState.get(ClientState.java:825)
+ org.eclipse.paho.client.mqttv3.internal.CommsSender.run(CommsSender.java:129)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.277 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.280 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Call: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:181)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.280 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport: tcp:///172.18.0.4:60790@31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.fill(TcpBufferedInputStream.java:50)
+ org.apache.activemq.transport.tcp.TcpTransport$2.fill(TcpTransport.java:634)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.read(TcpBufferedInputStream.java:59)
+ org.apache.activemq.transport.tcp.TcpTransport$2.read(TcpTransport.java:619)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.apache.activemq.transport.mqtt.MQTTWireFormat.unmarshal(MQTTWireFormat.java:86)
+ org.apache.activemq.transport.tcp.TcpTransport.readCommand(TcpTransport.java:240)
+ org.apache.activemq.transport.tcp.TcpTransport.doRun(TcpTransport.java:232)
+ org.apache.activemq.transport.tcp.TcpTransport.run(TcpTransport.java:215)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.281 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.284 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [InactivityMonitor ReadCheck] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:10:16.284 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Ping: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:10:16.286 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.287 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-5-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.288 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.289 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.289 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.290 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.291 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:10:16.311 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [21,354] ms
+09-Oct-2026 11:10:16.318 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:10:16.356 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [21555] milliseconds
+09-Oct-2026 11:10:19.856 INFO [pool-2-thread-2] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.annotation.JsonFilter]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.annotation.JsonFilter]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1370)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1359)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1193)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+		at com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.findFilterId(JacksonAnnotationIntrospector.java:289)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.findFilterId(BasicSerializerFactory.java:1211)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.buildMapSerializer(BasicSerializerFactory.java:769)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.buildContainerSerializer(BasicSerializerFactory.java:568)
+		at com.fasterxml.jackson.databind.ser.BeanSerializerFactory._createSerializer2(BeanSerializerFactory.java:196)
+		at com.fasterxml.jackson.databind.ser.BeanSerializerFactory.createSerializer(BeanSerializerFactory.java:165)
+		at com.fasterxml.jackson.databind.SerializerProvider._createUntypedSerializer(SerializerProvider.java:1388)
+		at com.fasterxml.jackson.databind.SerializerProvider._createAndCacheUntypedSerializer(SerializerProvider.java:1336)
+		at com.fasterxml.jackson.databind.SerializerProvider.findValueSerializer(SerializerProvider.java:510)
+		at com.fasterxml.jackson.databind.SerializerProvider.findTypedValueSerializer(SerializerProvider.java:713)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:308)
+		at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094)
+		at com.fasterxml.jackson.databind.ObjectMapper.writeValue(ObjectMapper.java:3342)
+		at com.hmdm.plugins.webfilter.resolver.DnsEventImporter.run(DnsEventImporter.java:60)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:04.303 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+09-Oct-2026 11:13:04.331 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+09-Oct-2026 11:13:04.332 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+09-Oct-2026 11:13:04.332 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+09-Oct-2026 11:13:04.332 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+09-Oct-2026 11:13:04.339 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Oct-2026 11:13:04.339 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+09-Oct-2026 11:13:04.339 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+09-Oct-2026 11:13:04.340 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+09-Oct-2026 11:13:04.340 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+09-Oct-2026 11:13:04.340 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+09-Oct-2026 11:13:04.382 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+09-Oct-2026 11:13:04.384 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+09-Oct-2026 11:13:04.384 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+09-Oct-2026 11:13:04.385 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+09-Oct-2026 11:13:04.386 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+09-Oct-2026 11:13:04.386 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+09-Oct-2026 11:13:04.386 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+09-Oct-2026 11:13:04.391 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+09-Oct-2026 11:13:04.391 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+09-Oct-2026 11:13:04.391 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+09-Oct-2026 11:13:04.413 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+09-Oct-2026 11:13:05.471 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:13:05.545 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1765] milliseconds
+09-Oct-2026 11:13:05.710 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Oct-2026 11:13:05.710 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+09-Oct-2026 11:13:05.727 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+09-Oct-2026 11:13:11.579 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Oct-2026 11:13:34.372 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+09-Oct-2026 11:13:35.978 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more Filters failed to start. Full details will be found in the appropriate container log file
+09-Oct-2026 11:13:35.986 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [] startup failed due to previous errors
+09-Oct-2026 11:13:35.999 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextDestroyed Servlet context destroyed -- closing any remaning open ClassGraph ScanResult instances
+09-Oct-2026 11:13:36.011 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+09-Oct-2026 11:13:36.017 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.018 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-4-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.019 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Broker[localhost] Scheduler] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:527)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:13:36.020 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server Thread Handler: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+ org.apache.activemq.transport.tcp.TcpTransportServer$1.run(TcpTransportServer.java:496)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.024 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.PlainSocketImpl.socketAccept(Native Method)
+ java.base@11.0.31/java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:474)
+ java.base@11.0.31/java.net.ServerSocket.implAccept(ServerSocket.java:565)
+ java.base@11.0.31/java.net.ServerSocket.accept(ServerSocket.java:533)
+ org.apache.activemq.transport.tcp.TcpTransportServer.doRunWithServerSocket(TcpTransportServer.java:420)
+ org.apache.activemq.transport.tcp.TcpTransportServer.run(TcpTransportServer.java:342)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.025 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Rec: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:200)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.eclipse.paho.client.mqttv3.internal.wire.MqttInputStream.readMqttWireMessage(MqttInputStream.java:92)
+ org.eclipse.paho.client.mqttv3.internal.CommsReceiver.run(CommsReceiver.java:137)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.025 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Snd: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.ClientState.get(ClientState.java:825)
+ org.eclipse.paho.client.mqttv3.internal.CommsSender.run(CommsSender.java:129)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.029 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.035 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Call: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:181)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.039 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport: tcp:///172.18.0.3:39594@31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.fill(TcpBufferedInputStream.java:50)
+ org.apache.activemq.transport.tcp.TcpTransport$2.fill(TcpTransport.java:634)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.read(TcpBufferedInputStream.java:59)
+ org.apache.activemq.transport.tcp.TcpTransport$2.read(TcpTransport.java:619)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.apache.activemq.transport.mqtt.MQTTWireFormat.unmarshal(MQTTWireFormat.java:86)
+ org.apache.activemq.transport.tcp.TcpTransport.readCommand(TcpTransport.java:240)
+ org.apache.activemq.transport.tcp.TcpTransport.doRun(TcpTransport.java:232)
+ org.apache.activemq.transport.tcp.TcpTransport.run(TcpTransport.java:215)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.039 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.040 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [InactivityMonitor ReadCheck] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:13:36.040 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Ping: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:13:36.041 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.045 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-5-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:161)
+ org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:128)
+ org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:113)
+ org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:73)
+ org.postgresql.core.PGStream.receiveChar(PGStream.java:453)
+ org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2119)
+ org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+ org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:315)
+ org.postgresql.jdbc.PgConnection.executeTransactionCommand(PgConnection.java:855)
+ org.postgresql.jdbc.PgConnection.commit(PgConnection.java:877)
+ java.base@11.0.31/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ java.base@11.0.31/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ java.base@11.0.31/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.base@11.0.31/java.lang.reflect.Method.invoke(Method.java:566)
+ org.apache.ibatis.datasource.pooled.PooledConnection.invoke(PooledConnection.java:245)
+ platform//com.sun.proxy.$Proxy93.commit(Unknown Source)
+ org.apache.ibatis.transaction.jdbc.JdbcTransaction.commit(JdbcTransaction.java:71)
+ org.apache.ibatis.executor.BaseExecutor.commit(BaseExecutor.java:244)
+ org.apache.ibatis.executor.CachingExecutor.commit(CachingExecutor.java:119)
+ org.apache.ibatis.session.defaults.DefaultSqlSession.commit(DefaultSqlSession.java:223)
+ org.apache.ibatis.session.SqlSessionManager.commit(SqlSessionManager.java:297)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:114)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ com.google.inject.internal.InterceptorStackCallback.intercept(InterceptorStackCallback.java:54)
+ com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527.recalcDeviceStatuses(<generated>)
+ com.hmdm.guice.module.EventListenerModule.lambda$init$0(EventListenerModule.java:69)
+ com.hmdm.guice.module.EventListenerModule$$Lambda$269/0x00000008405f7c40.accept(Unknown Source)
+ java.base@11.0.31/java.util.ArrayList.forEach(ArrayList.java:1541)
+ com.hmdm.guice.module.EventListenerModule.lambda$init$1(EventListenerModule.java:67)
+ com.hmdm.guice.module.EventListenerModule$$Lambda$263/0x00000008405a6040.run(Unknown Source)
+ java.base@11.0.31/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+ java.base@11.0.31/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.051 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.054 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.056 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.057 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.059 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.073 SEVERE [main] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalMapForLeaks The web application [ROOT] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@d88551a]) and a value of type [org.apache.ibatis.session.defaults.DefaultSqlSession] (value [org.apache.ibatis.session.defaults.DefaultSqlSession@3c12ee82]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.
+09-Oct-2026 11:13:36.106 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [30,372] ms
+09-Oct-2026 11:13:36.122 INFO [pool-5-thread-1] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.databind.introspect.AnnotationCollector$NCollector]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.databind.introspect.AnnotationCollector$NCollector]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1370)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1359)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1193)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+		at com.fasterxml.jackson.databind.introspect.AnnotationCollector$EmptyCollector.addOrOverride(AnnotationCollector.java:83)
+		at com.fasterxml.jackson.databind.introspect.AnnotatedClassResolver._addAnnotationsIfNotPresent(AnnotatedClassResolver.java:206)
+		at com.fasterxml.jackson.databind.introspect.AnnotatedClassResolver.resolveClassAnnotations(AnnotatedClassResolver.java:153)
+		at com.fasterxml.jackson.databind.introspect.AnnotatedClassResolver.resolveFully(AnnotatedClassResolver.java:118)
+		at com.fasterxml.jackson.databind.introspect.AnnotatedClassResolver.resolve(AnnotatedClassResolver.java:69)
+		at com.fasterxml.jackson.databind.introspect.BasicClassIntrospector._resolveAnnotatedClass(BasicClassIntrospector.java:281)
+		at com.fasterxml.jackson.databind.introspect.BasicClassIntrospector.collectProperties(BasicClassIntrospector.java:191)
+		at com.fasterxml.jackson.databind.introspect.BasicClassIntrospector.forDeserialization(BasicClassIntrospector.java:112)
+		at com.fasterxml.jackson.databind.introspect.BasicClassIntrospector.forDeserialization(BasicClassIntrospector.java:16)
+		at com.fasterxml.jackson.databind.DeserializationConfig.introspect(DeserializationConfig.java:801)
+		at com.fasterxml.jackson.databind.deser.DeserializerCache._createDeserializer(DeserializerCache.java:324)
+		at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCache2(DeserializerCache.java:264)
+		at com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer(DeserializerCache.java:244)
+		at com.fasterxml.jackson.databind.deser.DeserializerCache.findValueDeserializer(DeserializerCache.java:142)
+		at com.fasterxml.jackson.databind.DeserializationContext.findRootValueDeserializer(DeserializationContext.java:476)
+		at com.fasterxml.jackson.databind.ObjectMapper._findRootDeserializer(ObjectMapper.java:4389)
+		at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4198)
+		at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3205)
+		at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3173)
+		at com.hmdm.service.DeviceStatusService.recalcDeviceStatuses(DeviceStatusService.java:80)
+		at com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527.CGLIB$recalcDeviceStatuses$0(<generated>)
+		at com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527$$FastClassByGuice$$51b5da95.invoke(<generated>)
+		at com.google.inject.internal.cglib.proxy.$MethodProxy.invokeSuper(MethodProxy.java:228)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:76)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+		at com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+		at com.google.inject.internal.InterceptorStackCallback.intercept(InterceptorStackCallback.java:54)
+		at com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527.recalcDeviceStatuses(<generated>)
+		at com.hmdm.guice.module.EventListenerModule.lambda$init$0(EventListenerModule.java:69)
+		at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+		at com.hmdm.guice.module.EventListenerModule.lambda$init$1(EventListenerModule.java:67)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.152 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:13:36.214 INFO [pool-5-thread-1] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [org.apache.log4j.spi.ThrowableInformation]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [org.apache.log4j.spi.ThrowableInformation]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1370)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1359)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1193)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+		at org.apache.log4j.spi.LoggingEvent.<init>(LoggingEvent.java:177)
+		at org.apache.log4j.Category.forcedLog(Category.java:384)
+		at org.apache.log4j.Category.log(Category.java:810)
+		at org.slf4j.reload4j.Reload4jLoggerAdapter.handleNormalizedLoggingCall(Reload4jLoggerAdapter.java:137)
+		at org.slf4j.helpers.AbstractLogger.handle2ArgsCall(AbstractLogger.java:391)
+		at org.slf4j.helpers.AbstractLogger.warn(AbstractLogger.java:275)
+		at com.hmdm.guice.module.EventListenerModule.lambda$init$0(EventListenerModule.java:71)
+		at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+		at com.hmdm.guice.module.EventListenerModule.lambda$init$1(EventListenerModule.java:67)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:13:36.273 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [30726] milliseconds
+09-Oct-2026 11:13:39.235 INFO [pool-2-thread-1] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.core.io.NumberInput]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.core.io.NumberInput]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1370)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1359)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1193)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+		at com.fasterxml.jackson.core.util.TextBuffer.contentsAsInt(TextBuffer.java:490)
+		at com.fasterxml.jackson.core.base.ParserBase._parseNumericValue(ParserBase.java:748)
+		at com.fasterxml.jackson.core.base.ParserBase.getNumberType(ParserBase.java:617)
+		at com.fasterxml.jackson.databind.deser.std.BaseNodeDeserializer._fromInt(JsonNodeDeserializer.java:570)
+		at com.fasterxml.jackson.databind.deser.std.BaseNodeDeserializer.deserializeObject(JsonNodeDeserializer.java:270)
+		at com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer.deserialize(JsonNodeDeserializer.java:68)
+		at com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer.deserialize(JsonNodeDeserializer.java:15)
+		at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4254)
+		at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2745)
+		at com.hmdm.plugins.webfilter.resolver.DnsEventImporter.run(DnsEventImporter.java:51)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:21.741 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+09-Oct-2026 11:15:21.759 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+09-Oct-2026 11:15:21.762 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+09-Oct-2026 11:15:21.762 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+09-Oct-2026 11:15:21.766 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+09-Oct-2026 11:15:21.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Oct-2026 11:15:21.767 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+09-Oct-2026 11:15:21.768 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+09-Oct-2026 11:15:21.769 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+09-Oct-2026 11:15:21.770 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+09-Oct-2026 11:15:21.770 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+09-Oct-2026 11:15:21.806 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+09-Oct-2026 11:15:21.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+09-Oct-2026 11:15:21.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+09-Oct-2026 11:15:21.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+09-Oct-2026 11:15:21.820 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+09-Oct-2026 11:15:21.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+09-Oct-2026 11:15:21.821 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+09-Oct-2026 11:15:21.822 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+09-Oct-2026 11:15:21.827 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+09-Oct-2026 11:15:21.827 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+09-Oct-2026 11:15:21.827 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+09-Oct-2026 11:15:21.844 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+09-Oct-2026 11:15:21.854 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+09-Oct-2026 11:15:21.854 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+09-Oct-2026 11:15:21.870 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+09-Oct-2026 11:15:23.152 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:15:23.251 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [2592] milliseconds
+09-Oct-2026 11:15:23.479 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Oct-2026 11:15:23.479 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+09-Oct-2026 11:15:23.505 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+09-Oct-2026 11:15:32.100 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Oct-2026 11:15:52.038 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+09-Oct-2026 11:15:53.715 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal One or more Filters failed to start. Full details will be found in the appropriate container log file
+09-Oct-2026 11:15:53.720 SEVERE [main] org.apache.catalina.core.StandardContext.startInternal Context [] startup failed due to previous errors
+09-Oct-2026 11:15:53.730 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextDestroyed Servlet context destroyed -- closing any remaning open ClassGraph ScanResult instances
+09-Oct-2026 11:15:53.739 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [ROOT] registered the JDBC driver [org.postgresql.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+09-Oct-2026 11:15:53.752 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.755 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-4-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.755 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Broker[localhost] Scheduler] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:527)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:15:53.758 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server Thread Handler: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+ org.apache.activemq.transport.tcp.TcpTransportServer$1.run(TcpTransportServer.java:496)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.763 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport Server: mqtt://0.0.0.0:31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.PlainSocketImpl.socketAccept(Native Method)
+ java.base@11.0.31/java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:474)
+ java.base@11.0.31/java.net.ServerSocket.implAccept(ServerSocket.java:565)
+ java.base@11.0.31/java.net.ServerSocket.accept(ServerSocket.java:533)
+ org.apache.activemq.transport.tcp.TcpTransportServer.doRunWithServerSocket(TcpTransportServer.java:420)
+ org.apache.activemq.transport.tcp.TcpTransportServer.run(TcpTransportServer.java:342)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.765 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Rec: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:200)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.eclipse.paho.client.mqttv3.internal.wire.MqttInputStream.readMqttWireMessage(MqttInputStream.java:92)
+ org.eclipse.paho.client.mqttv3.internal.CommsReceiver.run(CommsReceiver.java:137)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.768 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Snd: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.ClientState.get(ClientState.java:825)
+ org.eclipse.paho.client.mqttv3.internal.CommsSender.run(CommsSender.java:129)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.768 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.772 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Call: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.lang.Object.wait(Object.java:328)
+ org.eclipse.paho.client.mqttv3.internal.CommsCallback.run(CommsCallback.java:181)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.774 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ Transport: tcp:///172.18.0.3:54324@31000] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.fill(TcpBufferedInputStream.java:50)
+ org.apache.activemq.transport.tcp.TcpTransport$2.fill(TcpTransport.java:634)
+ org.apache.activemq.transport.tcp.TcpBufferedInputStream.read(TcpBufferedInputStream.java:59)
+ org.apache.activemq.transport.tcp.TcpTransport$2.read(TcpTransport.java:619)
+ java.base@11.0.31/java.io.DataInputStream.readByte(DataInputStream.java:270)
+ org.apache.activemq.transport.mqtt.MQTTWireFormat.unmarshal(MQTTWireFormat.java:86)
+ org.apache.activemq.transport.tcp.TcpTransport.readCommand(TcpTransport.java:240)
+ org.apache.activemq.transport.tcp.TcpTransport.doRun(TcpTransport.java:232)
+ org.apache.activemq.transport.tcp.TcpTransport.run(TcpTransport.java:215)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.774 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [ActiveMQ BrokerService[localhost] Task-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:462)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:361)
+ java.base@11.0.31/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.775 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [InactivityMonitor ReadCheck] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:15:53.775 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [MQTT Ping: HMDMServer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.lang.Object.wait(Native Method)
+ java.base@11.0.31/java.util.TimerThread.mainLoop(Timer.java:553)
+ java.base@11.0.31/java.util.TimerThread.run(Timer.java:506)
+09-Oct-2026 11:15:53.777 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-2-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:234)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@11.0.31/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.783 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-5-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/java.net.SocketInputStream.socketRead0(Native Method)
+ java.base@11.0.31/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:168)
+ java.base@11.0.31/java.net.SocketInputStream.read(SocketInputStream.java:140)
+ org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:161)
+ org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:128)
+ org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:113)
+ org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:73)
+ org.postgresql.core.PGStream.receiveChar(PGStream.java:453)
+ org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2119)
+ org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355)
+ org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490)
+ org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408)
+ org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:166)
+ org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:155)
+ jdk.internal.reflect.GeneratedMethodAccessor267.invoke(Unknown Source)
+ java.base@11.0.31/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.base@11.0.31/java.lang.reflect.Method.invoke(Method.java:566)
+ org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+ platform//com.sun.proxy.$Proxy94.execute(Unknown Source)
+ org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+ org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+ org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+ org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
+ org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+ org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+ org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+ org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+ org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+ java.base@11.0.31/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ java.base@11.0.31/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+ java.base@11.0.31/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ java.base@11.0.31/java.lang.reflect.Method.invoke(Method.java:566)
+ org.apache.ibatis.session.SqlSessionManager$SqlSessionInterceptor.invoke(SqlSessionManager.java:350)
+ com.sun.proxy.$Proxy68.selectList(Unknown Source)
+ org.apache.ibatis.session.SqlSessionManager.selectList(SqlSessionManager.java:206)
+ org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+ org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+ org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:93)
+ com.sun.proxy.$Proxy71.getPlainConfigurationAppsOptimized(Unknown Source)
+ com.hmdm.service.DeviceStatusService.evaluateDeviceApplicationsStatus(DeviceStatusService.java:101)
+ com.hmdm.service.DeviceStatusService.recalcDeviceStatuses(DeviceStatusService.java:83)
+ com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527.CGLIB$recalcDeviceStatuses$0(<generated>)
+ com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527$$FastClassByGuice$$51b5da95.invoke(<generated>)
+ com.google.inject.internal.cglib.proxy.$MethodProxy.invokeSuper(MethodProxy.java:228)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:76)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ org.mybatis.guice.transactional.TransactionalMethodInterceptor.invoke(TransactionalMethodInterceptor.java:96)
+ com.google.inject.internal.InterceptorStackCallback$InterceptedMethodInvocation.proceed(InterceptorStackCallback.java:78)
+ com.google.inject.internal.InterceptorStackCallback.intercept(InterceptorStackCallback.java:54)
+ com.hmdm.service.DeviceStatusService$$EnhancerByGuice$$5ddb3527.recalcDeviceStatuses(<generated>)
+ com.hmdm.guice.module.EventListenerModule.lambda$init$0(EventListenerModule.java:69)
+ com.hmdm.guice.module.EventListenerModule$$Lambda$265/0x00000008405a5440.accept(Unknown Source)
+ java.base@11.0.31/java.util.ArrayList.forEach(ArrayList.java:1541)
+ com.hmdm.guice.module.EventListenerModule.lambda$init$1(EventListenerModule.java:67)
+ com.hmdm.guice.module.EventListenerModule$$Lambda$263/0x00000008405a6040.run(Unknown Source)
+ java.base@11.0.31/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+ java.base@11.0.31/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.784 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.784 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.788 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.792 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-4] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.792 WARNING [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [ROOT] appears to have started a thread named [pool-1-thread-5] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.31/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@11.0.31/java.util.concurrent.locks.LockSupport.park(LockSupport.java:194)
+ java.base@11.0.31/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2081)
+ java.base@11.0.31/java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:433)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@11.0.31/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.31/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:15:53.805 SEVERE [main] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalMapForLeaks The web application [ROOT] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@d88551a]) and a value of type [org.apache.ibatis.session.defaults.DefaultSqlSession] (value [org.apache.ibatis.session.defaults.DefaultSqlSession@3c12ee82]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.
+09-Oct-2026 11:15:53.805 SEVERE [main] org.apache.catalina.loader.WebappClassLoaderBase.checkThreadLocalMapForLeaks The web application [ROOT] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@fc2d07f]) and a value of type [org.apache.ibatis.executor.ErrorContext] (value [
+### The error may exist in com/hmdm/persistence/mapper/ConfigurationMapper.xml
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT applications.id, applications.name, applications.pkg, applications.runAfterInstall, applications.runAtBoot,                applications.type, applications.iconText, applications.iconId,                applicationVersions.version, applicationVersions.url,                configurationApplications.applicationVersionId AS usedVersionId,                applications.system, applications.customerId,                applications.latestVersion, applications.intent,                (configurationApplications.configurationId IS NOT NULL AND applications.latestVersion <> applicationVersions.id) as outdated,                COALESCE(configurationApplications.remove, FALSE) AS remove,                COALESCE(configurationApplications.showIcon, applications.showIcon) AS showIcon,                applications.useKiosk,                configurationApplications.action AS action,                configurationApplications.screenOrder AS screenOrder,                configurationApplications.keyCode AS keyCode,                configurationApplications.bottom AS bottom,                configurationApplications.longTap AS longTap,                CASE                    WHEN cap.skipVersionCheck IS TRUE THEN TRUE                    ELSE NULL                    END AS skipVersion         FROM applications                  INNER JOIN applicationVersions ON applicationVersions.applicationId = applications.id                  JOIN configurationApplications ON applicationVersions.id = configurationApplications.applicationVersionId AND configurationApplications.configurationId = ?                  LEFT JOIN configurationapplicationparameters cap ON cap.applicationId = applications.id AND cap.configurationId = ?]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.
+09-Oct-2026 11:15:53.825 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [30,314] ms
+09-Oct-2026 11:15:53.835 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:15:53.893 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [30641] milliseconds
+09-Oct-2026 11:15:56.874 INFO [pool-2-thread-2] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.annotation.JsonFilter]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [com.fasterxml.jackson.annotation.JsonFilter]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1370)
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1359)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1193)
+		at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+		at com.fasterxml.jackson.databind.introspect.JacksonAnnotationIntrospector.findFilterId(JacksonAnnotationIntrospector.java:289)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.findFilterId(BasicSerializerFactory.java:1211)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.buildMapSerializer(BasicSerializerFactory.java:769)
+		at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.buildContainerSerializer(BasicSerializerFactory.java:568)
+		at com.fasterxml.jackson.databind.ser.BeanSerializerFactory._createSerializer2(BeanSerializerFactory.java:196)
+		at com.fasterxml.jackson.databind.ser.BeanSerializerFactory.createSerializer(BeanSerializerFactory.java:165)
+		at com.fasterxml.jackson.databind.SerializerProvider._createUntypedSerializer(SerializerProvider.java:1388)
+		at com.fasterxml.jackson.databind.SerializerProvider._createAndCacheUntypedSerializer(SerializerProvider.java:1336)
+		at com.fasterxml.jackson.databind.SerializerProvider.findValueSerializer(SerializerProvider.java:510)
+		at com.fasterxml.jackson.databind.SerializerProvider.findTypedValueSerializer(SerializerProvider.java:713)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:308)
+		at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:4094)
+		at com.fasterxml.jackson.databind.ObjectMapper.writeValue(ObjectMapper.java:3342)
+		at com.hmdm.plugins.webfilter.resolver.DnsEventImporter.run(DnsEventImporter.java:60)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+		at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+		at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+09-Oct-2026 11:19:28.803 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+09-Oct-2026 11:19:28.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+09-Oct-2026 11:19:28.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+09-Oct-2026 11:19:28.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+09-Oct-2026 11:19:28.814 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.8.0-142-generic
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+09-Oct-2026 11:19:28.815 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+09-Oct-2026 11:19:28.838 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+09-Oct-2026 11:19:28.838 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+09-Oct-2026 11:19:28.838 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+09-Oct-2026 11:19:28.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Oct-2026 11:19:28.842 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+09-Oct-2026 11:19:28.842 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+09-Oct-2026 11:19:28.842 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+09-Oct-2026 11:19:28.842 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+09-Oct-2026 11:19:28.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+09-Oct-2026 11:19:28.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+09-Oct-2026 11:19:28.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+09-Oct-2026 11:19:28.843 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+09-Oct-2026 11:19:28.856 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+09-Oct-2026 11:19:28.857 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+09-Oct-2026 11:19:28.857 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+09-Oct-2026 11:19:28.863 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+09-Oct-2026 11:19:29.687 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:19:29.745 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1603] milliseconds
+09-Oct-2026 11:19:29.900 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Oct-2026 11:19:29.901 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+09-Oct-2026 11:19:29.916 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+09-Oct-2026 11:19:34.979 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Oct-2026 11:19:49.375 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+09-Oct-2026 11:19:57.393 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [27,475] ms
+09-Oct-2026 11:19:57.404 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+09-Oct-2026 11:19:57.448 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [27702] milliseconds
