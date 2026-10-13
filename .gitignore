@@ -45,3 +45,14 @@ evidencias/
 # Gerado no boot pelo docker-entrypoint.sh a partir do .env (base.url = BASE_DOMAIN). Versionar
 # este arquivo levava o endereco de um servidor para todos os outros.
 source/volumes/hmdm-config/ROOT.xml
+
+# Saida de compilacao e cache: gerados no build, nunca versionados (limpeza 13/10/2026).
+server-source/**/target/
+server-source/server/webtarget/
+android-source/**/build/
+remote-agent/**/build/
+webfilter-agent/**/build/
+**/.gradle/
+**/__pycache__/
+# Copias de webapp/deploy dentro dos backups; os dumps de banco (.sql/.dump) continuam versionados.
+source/volumes/backups/*/
