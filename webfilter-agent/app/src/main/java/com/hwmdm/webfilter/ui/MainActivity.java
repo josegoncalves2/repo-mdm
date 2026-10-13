@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hwmdm.webfilter.browser.WebFilterAccessibilityService;
 import com.hwmdm.webfilter.sync.BrowserPolicySync;
 import com.hwmdm.webfilter.sync.PolicyScheduler;
 
@@ -43,11 +42,8 @@ public class MainActivity extends Activity {
                         .contains(DevicePolicyManager.DELEGATION_APP_RESTRICTIONS);
             } catch (Exception ignored) { }
         }
-        boolean accessibility = WebFilterAccessibilityService.isAvailable();
-
         StringBuilder sb = new StringBuilder();
-        sb.append("Delegação APP_RESTRICTIONS: ").append(delegated ? "✓ Ativa" : "✗ Aguardando MDM 6.36").append("\n");
-        sb.append("Serviço de acessibilidade: ").append(accessibility ? "✓ Ativo" : "✗ Desativado").append("\n\n");
+        sb.append("Delegação APP_RESTRICTIONS: ").append(delegated ? "✓ Ativa" : "✗ Aguardando MDM 6.36").append("\n\n");
 
         if (delegated) {
             sb.append("Sincronizando políticas do navegador…");

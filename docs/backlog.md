@@ -81,6 +81,41 @@
 - [ ] Device offline: implementar fila de comandos pendentes
 - [ ] Prova: video do teclado funcionando + sessao que sobrevive F5
 
+### RETIFICACAO 2026-10-09 12:20 — A SECAO ABAIXO FOI SUBSTITUIDA POR DADOS REAIS DOS LOGS
+
+**A versao anterior dizia que o problema era MediaProjection no tablet. OS LOGS DO SERVIDOR PROVAM QUE NAO.**
+
+#### EVIDENCIA REAL — LOGS DO SERVIDOR (12:03 - 12:15)
+```
+12:03:00 - Quadro 1000 de R9XT200AMYY: tipo=3 bytes=13080 espectadores=1
+12:04:56 - Quadro 1200 de R9XT200AMYY: tipo=3 bytes=25 espectadores=1
+12:05:00 - Quadro 1400 de R9XT200AMYY: tipo=3 bytes=25 espectadores=1
+12:12:27 - Quadro 1/2/3 (nova sessao: config+key+delta)
+12:13:10 - Quadro 200
+12:14:48 - Quadro 400
+12:14:59 - Quadro 600
+12:15:22 - Quadro 800
+```
+
+O dispositivo CAPTURA e TRANSMITE. O servidor RECEBE e REPASSA. O WebSocket do navegador esta ABERTO (mostra "Live · 752x1280 · 0 fps · 0 kbps · Remote control active").
+
+#### O PROBLEMA REAL
+O navegador nao esta decodificando os frames. O JMuxer recebe dados pelo WebSocket mas nao produz video visivel. Os `[info] delay` sao o JMuxer em loop esperando dados que chegam mas nao sao processados.
+
+#### CAUSAS POSSIVEIS (frontend, nao backend)
+1. JMuxer.js (versao UMD) usa `require('stream')` que nao existe no browser — `factory(undefined)` pode estar quebrado
+2. `MediaSource` do Chrome 155 (Canary) pode ter mudado a API de `appendBuffer()`
+3. O `codecString` detectado (`avc1.42E01E`) pode ser rejeitado pelo MediaSource
+4. O JMuxer esta em loop (`delay`) porque o `feed()` nao completa o ciclo de decodificacao
+
+#### ARQUIVOS ENVOLVIDOS (frontend)
+- `source/volumes/webapps/ROOT/app/components/main/service/remoteSupport.service.js` — `initMse()` e `mseFeed()`
+- `source/volumes/webapps/ROOT/lib/jmuxer.js` — versao UMD
+
+#### NAO MEXER
+- `RemoteSessionHub.java` — servidor funciona perfeitamente (rollback feito para 69902dc3)
+- `remote-agent/` — APK funciona, captura e transmite corretamente
+
 ### Prioridade 4 — Permissoes RBAC
 - [ ] Auditar 45 permissoes: nome x efeito real x onde verificada
 - [x] Corrigir 5 descricoes em RUSSO → pt-BR — CORRIGIDO via SQL (edit_device_app_settings, plugin_audit_access, plugin_deviceinfo_access, plugins_customer_access_management, plugin_devicelog_access)

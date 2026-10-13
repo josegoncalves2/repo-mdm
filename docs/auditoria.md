@@ -28,6 +28,10 @@
 | 2026-10-05 | Claude Opus 4.6 | Fix: botao "Enable managed GPS" em kiosk.html hardcoded em ingles → localizado kiosk.enable.gps | DEPLOYED | kiosk.html + hwmdm_modules.js |
 | 2026-10-05 | Claude Opus 4.6 | PROVA VIVA: Acesso Remoto funcional — login admin, 3 devices (2 offline, 1 online R9XT200AMYY), IP 192.168.1.116, Android 14, sessão pausada com botão Request | SCREENSHOT | /home/sahw/remote-access.png |
 | 2026-10-05 13:39 | Claude Opus 4.6 | DIFF COMPLETO: lidos 21 docs + estado real do servidor (containers, DB, files) | OK | Relatório abaixo |
+| 2026-10-09 | Claude | Documentou conflito MediaProjection como causa da tela preta | RETIFICADO | Logs do servidor provam que o dispositivo CAPTURA e TRANSMITE (1400+ quadros). O problema NAO e MediaProjection. |
+| 2026-10-09 12:03-12:15 | Servidor | Quadros recebidos do dispositivo R9XT200AMYY | CONFIRMADO | 1400+ quadros, tipo delta, espectador=1. Dispositivo capturando e transmitindo. |
+| 2026-10-09 12:15 | Navegador | Console mostra "Live · 752x1280 · 0 fps · 0 kbps" + dezenas de `[info] delay` | CONFIRMADO | WebSocket aberto, JMuxer rodando, mas sem decodificacao. O problema e no frontend (navegador), nao no backend nem no tablet. |
+| 2026-10-09 12:20 | Claude | Documentacao corrigida nos 3 arquivos | OK | Causa real: JMuxer/MSE no navegador nao esta decodificando os frames que chegam. |
 | 2026-10-06 08:37 | Claude Opus 4.6 | Fix CSS remote-preview-screen: removido display:flex (canvas e overlay lado a lado) | DEPLOYED | main.css |
 | 2026-10-06 08:40 | Claude Opus 4.6 | Fix CSS remote-device-item: removido grid antigo conflitante (nomes sobrepostos na lista) | DEPLOYED | main.css |
 | 2026-10-06 08:41 | Claude Opus 4.6 | CSS remote-device-item: reescrito com grid 3 colunas padrão do Mapa (dot + main + meta) | DEPLOYED | main.css |
@@ -466,4 +470,19 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
 | 2026-10-09 09:05 | Claude Opus 4.6 | Removido .old.claude/ (config antiga de agente) | OK | 284KB |
 | 2026-10-09 09:10 | Claude Opus 4.6 | Hardcoded colors→CSS vars: 20+ substituicoes em 11 arquivos HTML | DEPLOYED | 4 novas vars: --hwmdm-bg-subtle, --hwmdm-muted, --hwmdm-danger, --hwmdm-border-light |
 | 2026-10-09 09:10 | Claude Opus 4.6 | Cache stamp atualizado v=hux202610090910 | DEPLOYED | index.html |
+| 2026-10-09 12:30 | Claude Opus 4.6 | Removidos 2 devices fictícios TEST-ENROLL-001 e TEST-ENROLL-1790864529 do banco | OK | DELETE FROM devices WHERE id IN (66, 67) + registros dependentes |
+| 2026-10-09 12:30 | Claude Opus 4.6 | Verificação erros.md: logs=0 erros, timeline abaixo do mapa OK, Python=resolver.py do webfilter (legítimo) | VERIFICADO | — |
+| 2026-10-09 13:00 | Claude Opus 4.6 | CAUSA RAIZ acesso remoto tela preta: disablescreenshots=true nas configs 11 e 60 → launcher adiciona FLAG_SECURE → MediaProjection captura preto (24 bytes/frame) | CORRIGIDO | UPDATE configurations SET disablescreenshots = false WHERE id IN (11, 60) |
+| 2026-10-09 13:11 | Claude Opus 4.6 | VALIDADO pelo usuário: acesso remoto com launcher ativo mostra tela completa (Chrome, wallpaper OLIMPIA, barra de status) | SCREENSHOT | Confirmado funcionando após checkin do device |
+| 2026-10-09 13:16 | Claude Opus 4.6 | Removida duplicata de launcher (app 46) na config 60 | CORRIGIDO | DELETE FROM configurationapplications duplicada |
+| 2026-10-09 13:16 | Claude Opus 4.6 | Adicionado WebFilter (app 88) à config 11 Kiosk Total | CORRIGIDO | INSERT INTO configurationapplications |
+| 2026-10-09 13:20 | Claude Opus 4.6 | Atualizado erros.md: marcados como resolvidos itens de acesso remoto, timeline, Python, logs, Chrome | OK | 5 itens [x], 4 itens [~] em andamento (kiosk/launcher) |
+| 2026-10-09 13:21 | Claude Opus 4.6 | Screenshot acesso remoto capturado via Chrome | OK | Sessão em "Chamando aparelho" — dispositivo Android 14 requer consentimento manual de MediaProjection |
 
+| 2026-10-09 14:58 | Claude Opus 5.5 | Correcao no servidor: descartar configUpdated pendente na sincronizacao (SyncResource + notification jar) | REVERTIDO 15:31 | A pedido do usuario. Arquivos originais em volumes/backups/push-config-fix-20261009 |
+| 2026-10-09 15:20-15:43 | Claude Opus 5.5 | Diagnostico de rede: tablets no Wi-Fi PMETO com 60-100% de perda e pacotes duplicados; gateway no cabo 0% | MEDIDO | A causa dos comandos perdidos (protect_settings 15:23) e da navegacao ruim e o Wi-Fi |
+| 2026-10-09 15:57 | Claude Opus 5.5 | Bug no editor de perfil: o form ficava no escopo do ng-include (content.html:118); remover, adicionar e editar arquivo falhavam calados | CORRIGIDO | configuration.html: name="$parent.configurationForm"; tokens ?v=hux202610091600 em content.html, app.js e index.html. Backup em volumes/backups/config-form-scope-fix-20261009 |
+| 2026-10-09 15:57 | Claude Opus 5.5 | Removido pelo painel o arquivo "Launcher original Headwind 6.36" (sem caminho no dispositivo) do modelo-default-v2, adicionado as 11:49 | OK | Status dos arquivos verde nos 3 tablets |
+| 2026-10-09 16:00 | Claude Opus 5.5 | Varredura das 26 telas do painel pelo navegador | OK | Nenhum erro de JS, requisicao falhando ou mensagem de erro |
+| 2026-10-09 16:04 | Claude Opus 5.5 | Proteger configuracoes no R9XT106VP1E pelo painel | OK | Log do tablet: protectionOn e "Protecao ligada" as 16:04:12 (os logs chegam ao servidor com ate 14 min de atraso) |
+| 2026-10-09 16:18-16:21 | Claude Opus 5.5 | Teste pelo acesso remoto no navegador (752x1280, 15 fps) | OK | Configuracoes bloqueadas (o tablet volta ao launcher). m.facebook.com mostra "Acesso bloqueado" estavel por 20 s, sem piscar. Controle remoto responde. O overlay sai ao trocar de pagina em ate 5 s |

@@ -203,6 +203,34 @@ O `repo-mdm/` mistura:
 4. Testar: abrir sessao, digitar texto, fechar sessao limpo
 5. Prova: video do teclado funcionando
 
+### **ATUALIZACAO 2026-10-09 12:20: RETIFICACAO — O PROBLEMA NAO E MediaProjection**
+
+**A documentacao anterior estava ERRADA. Os logs do servidor provam:**
+
+```
+12:03:00 - Quadro 1000 de R9XT200AMYY: tipo=3 bytes=13080 espectadores=1
+12:04:56 - Quadro 1200 de R9XT200AMYY: tipo=3 bytes=25 espectadores=1
+12:05:00 - Quadro 1400 de R9XT200AMYY: tipo=3 bytes=25 espectadores=1
+12:12:27 - Quadro 1/2/3 (nova sessao: config+key+delta)
+12:13:10 - Quadro 200
+12:14:48 - Quadro 400
+12:14:59 - Quadro 600
+12:15:22 - Quadro 800
+```
+
+O dispositivo CAPTURA e TRANSMITE. O servidor RECEBE e REPASSA. O WebSocket do navegador esta ABERTO.
+
+**O problema real:** O navegador nao esta decodificando os frames. JMuxer/MSE no Chrome 155 (Canary) nao produz video visivel. Os `[info] delay` no console sao o JMuxer em loop.
+
+**Causas possiveis (frontend):**
+1. JMuxer.js UMD usa `require('stream')` — `factory(undefined)` pode estar quebrado
+2. `MediaSource` do Chrome 155 mudou API
+3. `codecString` rejeitado pelo MediaSource
+
+**NAO MEXER no RemoteSessionHub.java nem no remote-agent/.** O problema e no frontend.
+
+---
+
 **Prioridade 3 — WebFilter no dispositivo:**
 1. No launcher, consumir `webfilterDnsHost` do sync
 2. Usar `DevicePolicyManager.setGlobalPrivateDns()` (requer Device Owner)

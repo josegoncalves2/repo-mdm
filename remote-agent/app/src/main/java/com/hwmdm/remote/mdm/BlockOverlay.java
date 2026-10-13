@@ -29,6 +29,11 @@ public final class BlockOverlay {
 
     private static WebView view;
     private static String shownPage;
+    private static String shownHtml;
+    private static int shownTop;
+    private static String suspendedPage;
+    private static String suspendedHtml;
+    private static int suspendedTop;
 
     private BlockOverlay() {
     }
@@ -47,6 +52,8 @@ public final class BlockOverlay {
                     }
                     load(view, page, html);
                     shownPage = page;
+                    shownHtml = html;
+                    shownTop = top;
                     return;
                 }
                 WebView web = newWebView(service);
@@ -67,6 +74,8 @@ public final class BlockOverlay {
                 load(web, page, html);
                 view = web;
                 shownPage = page;
+                shownHtml = html;
+                shownTop = top;
                 RemoteLog.i(service, "Web Filter: pagina de bloqueio customizada exibida no Chrome");
             } catch (Throwable t) {
                 RemoteLog.w(service, "Web Filter: nao foi possivel exibir a pagina de bloqueio: " + t);
@@ -75,22 +84,53 @@ public final class BlockOverlay {
     }
 
     public static void hide(final AccessibilityService service) {
-        if (view == null) {
-            return;
-        }
+        MAIN.post(() -> {
+            suspendedPage = null;
+            suspendedHtml = null;
+            remove(service);
+        });
+    }
+
+    /**
+     * Tira a janela da tela guardando a pagina, para {@link #resume} recoloca-la. Janela de
+     * acessibilidade fica acima do systemui: sem isto ela cobre o pedido de captura do acesso
+     * remoto (que vira um botao invisivel) e aparece por cima da tela de bloqueio.
+     */
+    public static void suspend(final AccessibilityService service) {
         MAIN.post(() -> {
             if (view == null) {
                 return;
             }
-            try {
-                ((WindowManager) service.getSystemService(Context.WINDOW_SERVICE)).removeView(view);
-                view.destroy();
-            } catch (Throwable ignored) {
-                // A janela ja foi removida pelo sistema
-            }
-            view = null;
-            shownPage = null;
+            suspendedPage = shownPage;
+            suspendedHtml = shownHtml;
+            suspendedTop = shownTop;
+            remove(service);
         });
+    }
+
+    public static void resume(final AccessibilityService service) {
+        MAIN.post(() -> {
+            if (view != null || suspendedPage == null) {
+                return;
+            }
+            String page = suspendedPage;
+            suspendedPage = null;
+            show(service, page, suspendedHtml, suspendedTop);
+        });
+    }
+
+    private static void remove(AccessibilityService service) {
+        if (view == null) {
+            return;
+        }
+        try {
+            ((WindowManager) service.getSystemService(Context.WINDOW_SERVICE)).removeView(view);
+            view.destroy();
+        } catch (Throwable ignored) {
+            // A janela ja foi removida pelo sistema
+        }
+        view = null;
+        shownPage = null;
     }
 
     public static boolean isShown() {

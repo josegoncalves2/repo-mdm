@@ -113,6 +113,7 @@ public class InputInjectionService extends AccessibilityService {
     protected void onServiceConnected() {
         super.onServiceConnected();
         instance = this;
+        registerReceiver(screenOff, new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF));
         Log.i(TAG, "Injecao de toque disponivel");
         RemoteLog.i(this, "Acessibilidade CONECTADA: toque e digitacao remotos disponiveis");
 
@@ -132,8 +133,20 @@ public class InputInjectionService extends AccessibilityService {
         }
     }
 
+    private final android.content.BroadcastReceiver screenOff = new android.content.BroadcastReceiver() {
+        @Override
+        public void onReceive(android.content.Context context, android.content.Intent intent) {
+            BlockOverlay.suspend(InputInjectionService.this);
+        }
+    };
+
     @Override
     public boolean onUnbind(android.content.Intent intent) {
+        try {
+            unregisterReceiver(screenOff);
+        } catch (IllegalArgumentException ignored) {
+            // Nunca registrado
+        }
         instance = null;
         RemoteLog.w(this, "Acessibilidade DESCONECTADA: a partir de agora a sessao fica sem controle remoto");
         return super.onUnbind(intent);
@@ -179,6 +192,10 @@ public class InputInjectionService extends AccessibilityService {
                 && !getPackageName().contentEquals(ownerPkg)
                 && !"com.android.systemui".contentEquals(ownerPkg)) {
             BlockOverlay.hide(this);
+        }
+        // Pedido de captura do acesso remoto e tela de bloqueio sao do systemui.
+        if ("com.android.systemui".contentEquals(ownerPkg)) {
+            BlockOverlay.suspend(this);
         }
         if (ProtectionGuard.shouldBlock(this, event.getPackageName())) {
             performGlobalAction(GLOBAL_ACTION_HOME);

@@ -123,7 +123,11 @@ public final class BlockedPageReporter {
                 return;
             }
             String host = hostOf(address);
-            if (host == null || host.equals(shownHost)) {
+            if (host == null) {
+                return;
+            }
+            if (host.equals(shownHost)) {
+                BlockOverlay.resume(service);
                 return;
             }
             shownHost = host;

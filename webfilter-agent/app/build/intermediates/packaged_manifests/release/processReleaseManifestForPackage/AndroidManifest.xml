@@ -4,13 +4,13 @@
 
   Este APK recebe DELEGATION_APP_RESTRICTIONS do launcher 6.36 (Device Owner) e aplica
   as políticas de navegador (URLBlocklist/URLAllowlist) diretamente ao Chrome via
-  DevicePolicyManager.setApplicationRestrictions(). Também detecta quando o Chrome mostra
-  a página de bloqueio e reporta ao painel, exibindo uma página de bloqueio customizada.
+  DevicePolicyManager.setApplicationRestrictions(). A página de bloqueio customizada no
+  Chrome é do agente com.hwmdm.remote; duas implementações se derrubavam (piscada).
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hwmdm.webfilter"
-    android:versionCode="3"
-    android:versionName="1.2" >
+    android:versionCode="5"
+    android:versionName="1.4" >
 
     <uses-sdk
         android:minSdkVersion="26"
@@ -63,18 +63,6 @@
             android:name="com.hwmdm.webfilter.sync.PolicySyncJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <service
-            android:name="com.hwmdm.webfilter.browser.WebFilterAccessibilityService"
-            android:exported="true"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/webfilter_accessibility_config" />
-        </service>
 
         <receiver
             android:name="com.hwmdm.webfilter.sync.BootReceiver"

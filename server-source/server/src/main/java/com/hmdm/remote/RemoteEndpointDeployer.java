@@ -78,5 +78,7 @@ public class RemoteEndpointDeployer implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent event) {
+        RemoteSessionHub.shutdown();
+        logger.info("Reaper de suporte remoto encerrado");
     }
 }
