@@ -33,12 +33,12 @@ if PGPASSWORD=$SQL_PASS psql -h "$SQL_HOST" -U "$SQL_USER" -d "$SQL_BASE" -tAc \
     fi
 fi
 
-# Gera ROOT.xml se não existir (necessário para Liquibase/JDBC)
+# ROOT.xml gerado do .env em TODA subida: um arquivo que sobrevive entre subidas carrega o
+# endereco (base.url) e o segredo de outro servidor.
 CONTEXT_DIR=$TOMCAT_DIR/conf/Catalina/localhost
-if [ ! -f "$CONTEXT_DIR/ROOT.xml" ]; then
-  mkdir -p "$CONTEXT_DIR"
-  TEMPLATE=/opt/hmdm/templates/conf/context_template.xml
-  if [ -f "$TEMPLATE" ]; then
+mkdir -p "$CONTEXT_DIR"
+TEMPLATE=/opt/hmdm/templates/conf/context_template.xml
+if [ -f "$TEMPLATE" ]; then
     sed -e "s|_SQL_HOST_|${SQL_HOST}|g" \
         -e "s|_SQL_PORT_|5432|g" \
         -e "s|_SQL_BASE_|${SQL_BASE}|g" \
@@ -48,9 +48,8 @@ if [ ! -f "$CONTEXT_DIR/ROOT.xml" ]; then
         -e "s|_BASE_DOMAIN_|${BASE_DOMAIN:-localhost}|g" \
         -e "s|_SHARED_SECRET_|${SHARED_SECRET:-}|g" \
         -e "s|_PROXY_ADDRESSES_|${PROXY_ADDRESSES:-}|g" \
-        "$TEMPLATE" | sed 's|<Context>|<Context docBase="/usr/local/tomcat/webapps/ROOT">|' > "$CONTEXT_DIR/ROOT.xml"
-    echo "Generated ROOT.xml from template"
-  fi
+        "$TEMPLATE" > "$CONTEXT_DIR/ROOT.xml"
+    echo "Generated ROOT.xml from template (base.url=${PROTOCOL:-http}://${BASE_DOMAIN:-localhost})"
 fi
 
 cp /opt/java/openjdk/conf/security/java.security /tmp/java.security

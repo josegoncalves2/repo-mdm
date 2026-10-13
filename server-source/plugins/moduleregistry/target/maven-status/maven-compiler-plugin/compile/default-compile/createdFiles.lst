@@ -1,9 +1,0 @@
-com/hmdm/plugins/moduleregistry/rest/ModuleRegistryResource.class
-com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryLiquibaseModule.class
-com/hmdm/plugins/moduleregistry/rest/json/ToggleModuleRequest.class
-com/hmdm/plugins/moduleregistry/persistence/domain/ModuleState.class
-com/hmdm/plugins/moduleregistry/persistence/ModuleRegistryDAO.class
-com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryRestModule.class
-com/hmdm/plugins/moduleregistry/ModuleRegistryPluginConfigurationImpl.class
-com/hmdm/plugins/moduleregistry/persistence/mapper/ModuleRegistryMapper.class
-com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryPersistenceModule.class

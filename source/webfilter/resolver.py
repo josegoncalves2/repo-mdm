@@ -179,6 +179,18 @@ def host_ipv4_addresses():
     return found
 
 
+def without_missing_cert(text):
+    """Sem cert.pem/key.pem (servidor novo, chave fora do git), o Blocky gera um autoassinado.
+
+    O plugin sempre escreve certFile/keyFile; com os arquivos ausentes o Blocky morria inteiro,
+    levando junto a porta 53."""
+    files = re.findall(r"^(?:certFile|keyFile): (\S+)$", text, flags=re.M)
+    if all(os.path.exists(f) for f in files):
+        return text
+    log.warning("certificado DoT ausente (%s): Blocky usa um autoassinado", ", ".join(files))
+    return re.sub(r"^(?:certFile|keyFile): .*\n", "", text, flags=re.M)
+
+
 def with_host_dns_listeners(config):
     """Copia da configuracao com a porta 53 em 127.0.0.1 e nos IPs desta maquina.
 
@@ -186,7 +198,7 @@ def with_host_dns_listeners(config):
     descobertos aqui evita a colisao sem gravar IP nenhum no projeto."""
     listen = ",".join(f"{ip}:53" for ip in ["127.0.0.1"] + host_ipv4_addresses())
     with open(config) as f:
-        text = re.sub(r"^  dns: .*$", f"  dns: {listen}", f.read(), flags=re.M)
+        text = without_missing_cert(re.sub(r"^  dns: .*$", f"  dns: {listen}", f.read(), flags=re.M))
     runtime = os.path.join(STATE_DIR, "blocky.runtime.yml")
     with open(runtime, "w") as f:
         f.write(text)
@@ -282,7 +294,7 @@ class Supervisor:
     def _dry_run(self, config):
         """Sobe a configuracao em portas alternativas (sem DoT) e diz se ela fica saudavel."""
         with open(config) as f:
-            text = f.read()
+            text = without_missing_cert(f.read())
         text = re.sub(r"^  dns: .*$", f"  dns: 127.0.0.1:{DRY_RUN_DNS_PORT}", text, flags=re.M)
         text = re.sub(r"^  tls: .*\n", "", text, flags=re.M)
         text = re.sub(r"^  http: .*$", "  http: 127.0.0.1:4001", text, flags=re.M)

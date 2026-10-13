@@ -1,9 +1,0 @@
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/ModuleRegistryPluginConfigurationImpl.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/persistence/mapper/ModuleRegistryMapper.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryLiquibaseModule.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/persistence/domain/ModuleState.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/persistence/ModuleRegistryDAO.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryRestModule.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/rest/ModuleRegistryResource.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/guice/module/ModuleRegistryPersistenceModule.java
-/opt/projetos/hwmdm/repo-mdm/server-source/plugins/moduleregistry/src/main/java/com/hmdm/plugins/moduleregistry/rest/json/ToggleModuleRequest.java
