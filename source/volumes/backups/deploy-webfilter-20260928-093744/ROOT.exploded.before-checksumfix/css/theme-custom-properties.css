@@ -1,0 +1,379 @@
+/* Headwind MDM Admin Console - Custom Theme Properties */
+
+:root {
+    /* Default colors */
+    --hwmdm-accent: #0EA5B7;
+    --hwmdm-sidebar-bg: #f5f5f5;
+    --hwmdm-text: #333333;
+    --hwmdm-text-light: #666666;
+    --hwmdm-text-lighter: #999999;
+    --hwmdm-border: #e0e0e0;
+    --hwmdm-surface-bg: #ffffff;
+    --hwmdm-surface-hover: #f9f9f9;
+
+    /* Accent shades */
+    --hwmdm-accent-dark: #0B8190;
+    --hwmdm-accent-light: #1fc9db;
+}
+
+/* Apply custom properties to main elements */
+.navbar.navbar-inverse,
+.header.hwmdm-topbar {
+    background-color: var(--hwmdm-accent) !important;
+}
+
+.header.hwmdm-topbar .logo-text a,
+.header.hwmdm-topbar .logo-text a:hover {
+    color: #ffffff !important;
+}
+
+.header.hwmdm-topbar a {
+    color: #ffffff !important;
+}
+
+.header.hwmdm-topbar .open a,
+.header.hwmdm-topbar .open .dropdown-menu {
+    background-color: var(--hwmdm-accent-dark) !important;
+}
+
+/* Sidebar Styling */
+.hwmdm-sidebar {
+    background-color: var(--hwmdm-sidebar-bg) !important;
+    color: var(--hwmdm-text) !important;
+    border-right: 1px solid var(--hwmdm-border);
+}
+
+.hwmdm-sidebar .hwmdm-sidebar-brand {
+    color: var(--hwmdm-text) !important;
+}
+
+.hwmdm-sidebar .hwmdm-sidebar-brand strong {
+    color: var(--hwmdm-accent) !important;
+    font-weight: 600;
+}
+
+.hwmdm-sidebar .hwmdm-sidebar-brand span {
+    color: var(--hwmdm-text) !important;
+}
+
+.hwmdm-sidebar .hwmdm-nav-heading {
+    color: var(--hwmdm-text-lighter) !important;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hwmdm-sidebar .hwmdm-nav-link {
+    color: var(--hwmdm-text) !important;
+    padding: 10px 15px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.hwmdm-sidebar .hwmdm-nav-link:hover {
+    background-color: var(--hwmdm-surface-hover);
+    color: var(--hwmdm-accent) !important;
+}
+
+.hwmdm-sidebar .hwmdm-nav-link-active {
+    background-color: rgba(14, 165, 183, 0.1);
+    color: var(--hwmdm-accent) !important;
+    border-left-color: var(--hwmdm-accent);
+    font-weight: 600;
+}
+
+/* Main content area */
+.hwmdm-main {
+    background-color: var(--hwmdm-surface-bg);
+    color: var(--hwmdm-text);
+}
+
+.hwmdm-main h1,
+.hwmdm-main h2,
+.hwmdm-main h3,
+.hwmdm-main h4,
+.hwmdm-main h5,
+.hwmdm-main h6 {
+    color: var(--hwmdm-text);
+}
+
+.hwmdm-main a {
+    color: var(--hwmdm-accent);
+}
+
+.hwmdm-main a:hover {
+    color: var(--hwmdm-accent-light);
+}
+
+/* Form Controls */
+.hwmdm-main .form-control {
+    color: var(--hwmdm-text);
+    border-color: var(--hwmdm-border);
+    background-color: var(--hwmdm-surface-bg);
+}
+
+.hwmdm-main .form-control:focus {
+    color: var(--hwmdm-text);
+    border-color: var(--hwmdm-accent);
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 183, 0.25);
+}
+
+.hwmdm-main .form-control::placeholder {
+    color: var(--hwmdm-text-lighter);
+}
+
+.hwmdm-main label {
+    color: var(--hwmdm-text);
+}
+
+/* Buttons - IMPORTANT: Override all button colors */
+.btn,
+.btn-default {
+    color: var(--hwmdm-text) !important;
+    border-color: var(--hwmdm-border) !important;
+    background-color: var(--hwmdm-surface-bg) !important;
+}
+
+.btn:hover,
+.btn-default:hover {
+    background-color: var(--hwmdm-surface-hover) !important;
+    border-color: var(--hwmdm-accent) !important;
+    color: var(--hwmdm-accent) !important;
+}
+
+.btn-primary,
+.btn-promo {
+    background-color: var(--hwmdm-accent) !important;
+    border-color: var(--hwmdm-accent) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-promo:hover {
+    background-color: var(--hwmdm-accent-dark) !important;
+    border-color: var(--hwmdm-accent-dark) !important;
+    color: #ffffff !important;
+}
+
+.btn-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #ffffff !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.btn-info {
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: #ffffff !important;
+}
+
+/* Tables */
+.hwmdm-main .table {
+    color: var(--hwmdm-text);
+    border-color: var(--hwmdm-border);
+}
+
+.hwmdm-main .table thead th {
+    color: var(--hwmdm-text);
+    background-color: var(--hwmdm-surface-hover);
+    border-color: var(--hwmdm-border);
+}
+
+.hwmdm-main .table tbody td {
+    border-color: var(--hwmdm-border);
+}
+
+.hwmdm-main .table tbody tr:hover {
+    background-color: var(--hwmdm-surface-hover);
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background-color: var(--hwmdm-surface-bg);
+    border-color: var(--hwmdm-border);
+    color: var(--hwmdm-text);
+}
+
+.dropdown-menu > li > a,
+.dropdown-menu > a {
+    color: var(--hwmdm-text);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > a:hover {
+    background-color: var(--hwmdm-surface-hover);
+    color: var(--hwmdm-accent);
+}
+
+/* Modals */
+.modal-content {
+    background-color: var(--hwmdm-surface-bg);
+    border-color: var(--hwmdm-border);
+    color: var(--hwmdm-text);
+}
+
+.modal-header {
+    border-color: var(--hwmdm-border);
+}
+
+.modal-footer {
+    border-color: var(--hwmdm-border);
+}
+
+/* Panels */
+.panel {
+    border-color: var(--hwmdm-border);
+    background-color: var(--hwmdm-surface-bg);
+}
+
+.panel-heading {
+    background-color: var(--hwmdm-surface-hover);
+    border-color: var(--hwmdm-border);
+    color: var(--hwmdm-text);
+}
+
+.panel-body {
+    color: var(--hwmdm-text);
+}
+
+/* Tabs */
+.nav-tabs {
+    border-color: var(--hwmdm-border);
+}
+
+.nav-tabs > li > a {
+    color: var(--hwmdm-text);
+}
+
+.nav-tabs > li > a:hover {
+    border-color: var(--hwmdm-border);
+    color: var(--hwmdm-accent);
+    background-color: var(--hwmdm-surface-hover);
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    color: var(--hwmdm-accent);
+    border-color: var(--hwmdm-accent);
+    border-bottom-color: var(--hwmdm-surface-bg);
+}
+
+/* Alerts & Messages */
+.alert {
+    border-color: var(--hwmdm-border);
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Input Groups */
+.input-group-addon {
+    background-color: var(--hwmdm-surface-hover);
+    border-color: var(--hwmdm-border);
+    color: var(--hwmdm-text);
+}
+
+/* Device Preview */
+.device-preview-container {
+    background: white;
+    border: 1px solid var(--hwmdm-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.device-preview-statusbar {
+    background: #1a1a1a;
+    color: white;
+    padding: 4px 8px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.device-preview-screen {
+    aspect-ratio: 9 / 16;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: var(--hwmdm-text-lighter);
+    font-size: 12px;
+}
+
+.device-preview-screen img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Scrollbars */
+.hwmdm-main .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.hwmdm-main .table-responsive::-webkit-scrollbar-track {
+    background: var(--hwmdm-surface-hover);
+}
+
+.hwmdm-main .table-responsive::-webkit-scrollbar-thumb {
+    background: var(--hwmdm-accent);
+    border-radius: 4px;
+}
+
+.hwmdm-main .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: var(--hwmdm-accent-dark);
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --hwmdm-sidebar-bg: #2d3748;
+        --hwmdm-text: #e2e8f0;
+        --hwmdm-text-light: #cbd5e0;
+        --hwmdm-text-lighter: #a0aec0;
+        --hwmdm-border: #4a5568;
+        --hwmdm-surface-bg: #1a202c;
+        --hwmdm-surface-hover: #2d3748;
+    }
+
+    .hwmdm-sidebar {
+        background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
+    }
+}

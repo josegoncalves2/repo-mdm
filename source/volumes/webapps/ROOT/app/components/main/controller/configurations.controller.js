@@ -1,9 +1,12 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $modal, confirmModal,
+    .controller('ConfigurationsTabController', function ($scope, $rootScope, $state, $uibModal, confirmModal,
                                                          configurationService, authService, $window, localization,
-                                                         alertService, hintService, $timeout) {
+                                                         alertService, hintService, $timeout, $http,
+                                                         groupService, rebranding) {
         $scope.isTypical = false;
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_configs_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_configs_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,
@@ -33,9 +36,90 @@ angular.module('headwind-kiosk')
             return getCurrentPanelBaseUrl() + "#/qr/" + configuration.qrCodeKey + "/";
         };
 
+        $scope.splitPanel = null;
+
         $scope.showQrCode = function (configuration) {
-            var url = $scope.getQrCodeUrl(configuration);
-            $window.open(url, "_self");
+            if ($scope.splitPanel && $scope.splitPanel.type === 'qr' && $scope.splitPanel.configId === configuration.id) {
+                $scope.splitPanel = null;
+                return;
+            }
+            var panel = {
+                type: 'qr',
+                configId: configuration.id,
+                configName: configuration.name,
+                qrCodeKey: configuration.qrCodeKey,
+                size: 250,
+                showQR: true,
+                showHelp: false,
+                jsonData: null,
+                formData: {
+                    deviceIdNew: '',
+                    groups: null,
+                    create: true,
+                    useId: 'serial'
+                },
+                groupsList: [],
+                groupsSelection: [],
+                tableFilteringTexts: {
+                    'buttonDefaultText': localization.localize('table.filtering.no.selected.group'),
+                    'checkAll': localization.localize('table.filtering.check.all'),
+                    'uncheckAll': localization.localize('table.filtering.uncheck.all'),
+                    'dynamicButtonTextSuffix': localization.localize('table.filtering.suffix.group')
+                }
+            };
+            var urlPart = function () {
+                var res = '';
+                if (panel.formData.deviceIdNew) res += '&deviceId=' + panel.formData.deviceIdNew;
+                if (panel.formData.useId) res += '&useId=' + panel.formData.useId;
+                if (panel.formData.create) {
+                    res += '&create=1';
+                    for (var i = 0; i < panel.groupsSelection.length; i++) {
+                        res += '&group=' + encodeURI(panel.groupsSelection[i].id);
+                    }
+                }
+                return res;
+            };
+            panel.generateQrUrl = function () {
+                panel.qrCodeUrl = 'rest/public/qr/' + panel.qrCodeKey + '?size=' + panel.size;
+                if (panel.formData.deviceIdNew) panel.qrCodeUrl += '&deviceId=' + panel.formData.deviceIdNew;
+                panel.qrCodeUrl += urlPart();
+            };
+            panel.renew = function () {
+                panel.showQR = false;
+                panel.generateQrUrl();
+                if (panel.jsonData) panel.generateJson();
+                panel.showQR = true;
+            };
+            panel.generateJson = function () {
+                var url = 'rest/public/qr/json/' + panel.qrCodeKey + '?' + urlPart().substring(1);
+                $http.get(url).then(function (response) {
+                    if (response.status === 200) panel.jsonData = response.data;
+                });
+            };
+            panel.helpClicked = function () { panel.showHelp = !panel.showHelp; };
+            panel.close = function () { $scope.splitPanel = null; };
+
+            panel.groupsSelectionEvents = {
+                onItemSelect: function () { panel.renew(); },
+                onItemDeselect: function () { panel.renew(); },
+                onSelectAll: function () { panel.renew(); },
+                onDeselectAll: function () { panel.renew(); }
+            };
+
+            groupService.getAllGroups(function (response) {
+                panel.groupsList = response.data.map(function (g) { return {id: g.id, label: g.name}; });
+            });
+
+            rebranding.query(function (value) {
+                panel.qrCodeHelpLine5 = localization.localize('qrcode.help.line5').replace('${appName}', value.appName);
+            });
+
+            panel.generateQrUrl();
+            $scope.splitPanel = panel;
+        };
+
+        $scope.closeSplitPanel = function () {
+            $scope.splitPanel = null;
         };
 
         $scope.init = function (isTypical) {
@@ -88,7 +172,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.copyConfiguration = function (configuration) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/copyConfiguration.html?v=h29b640c39a',
                 controller: 'CopyConfigurationModalController',
                 resolve: {
@@ -121,7 +205,7 @@ angular.module('headwind-kiosk')
         $scope.init(false);
     })
     .controller('CopyConfigurationModalController',
-        function ($scope, $modalInstance, configurationService, configuration, localization) {
+        function ($scope, $uibModalInstance, configurationService, configuration, localization) {
 
             $scope.configuration = {"id": configuration.id, "name": "", "description": configuration.description};
 
@@ -142,7 +226,7 @@ angular.module('headwind-kiosk')
                     };
                     configurationService.copyConfiguration(request, function (response) {
                         if (response.status === 'OK') {
-                            $modalInstance.close();
+                            $uibModalInstance.close();
                         } else {
                             $scope.errorMessage = localization.localize('error.duplicate.configuration.name');
                         }
@@ -151,10 +235,107 @@ angular.module('headwind-kiosk')
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             }
         })
-    .controller('ApplicationSettingEditorController', function ($scope, $modalInstance, localization,
+    .controller('QRCodeModalController',
+        function ($scope, $uibModalInstance, $window, $http, localization, groupService, $timeout, rebranding, qrCodeKey) {
+
+            $scope.size = 250;
+            $scope.formData = {
+                deviceIdNew: '',
+                groups: null,
+                create: true,
+                useId: 'serial'
+            };
+            $scope.qrCodeKey = qrCodeKey;
+            $scope.deviceId = '';
+            $scope.showQR = true;
+            $scope.showHelp = false;
+
+            rebranding.query(function (value) {
+                $scope.qrCodeHelpLine5 = localization.localize('qrcode.help.line5').replace('${appName}', value.appName);
+            });
+
+            var urlPart = function () {
+                var res = '';
+                if ($scope.formData.deviceIdNew) {
+                    res += '&deviceId=' + $scope.formData.deviceIdNew;
+                }
+                if ($scope.formData.useId) {
+                    res += '&useId=' + $scope.formData.useId;
+                }
+                if ($scope.formData.create) {
+                    res += '&create=1';
+                    for (var i = 0; i < $scope.groupsSelection.length; i++) {
+                        res += '&group=' + encodeURI($scope.groupsSelection[i].id);
+                    }
+                }
+                return res;
+            };
+
+            var generateQrUrl = function () {
+                $scope.qrCodeUrl = 'rest/public/qr/' + $scope.qrCodeKey + '?size=' + $scope.size;
+                if ($scope.deviceId) {
+                    $scope.qrCodeUrl += '&deviceId=' + $scope.deviceId;
+                }
+                $scope.qrCodeUrl += urlPart();
+            };
+
+            $scope.renew = function () {
+                $scope.showQR = false;
+                $scope.deviceId = $scope.formData.deviceIdNew;
+                generateQrUrl();
+                if ($scope.jsonData) {
+                    $scope.generateJson();
+                }
+                $scope.showQR = true;
+            };
+
+            $scope.groupsList = [];
+            $scope.groupsSelection = [];
+
+            groupService.getAllGroups(function (response) {
+                $scope.groups = response.data;
+                $scope.groupsList = response.data.map(function (group) {
+                    return {id: group.id, label: group.name};
+                });
+            });
+
+            $scope.groupsSelectionEvents = {
+                onItemSelect: function () { $scope.renew(); },
+                onItemDeselect: function () { $scope.renew(); },
+                onSelectAll: function () { $scope.renew(); },
+                onDeselectAll: function () { $scope.renew(); }
+            };
+
+            $scope.generateJson = function () {
+                var url = 'rest/public/qr/json/' + $scope.qrCodeKey + '?' + urlPart().substring(1);
+                $http.get(url).then(function (response) {
+                    if (response.status === 200) {
+                        $scope.jsonData = response.data;
+                    }
+                });
+            };
+
+            $scope.tableFilteringTexts = {
+                'buttonDefaultText': localization.localize('table.filtering.no.selected.group'),
+                'checkAll': localization.localize('table.filtering.check.all'),
+                'uncheckAll': localization.localize('table.filtering.uncheck.all'),
+                'dynamicButtonTextSuffix': localization.localize('table.filtering.suffix.group')
+            };
+
+            $scope.helpClicked = function () {
+                $scope.showHelp = !$scope.showHelp;
+            };
+
+            $scope.closeModal = function () {
+                $uibModalInstance.dismiss();
+            };
+
+            $scope.renew();
+        })
+    .controller('ApplicationSettingEditorController', function ($scope, $uibModalInstance, localization,
                                                                 applicationSetting, getApps) {
         var copy = {};
         for (var p in applicationSetting) {
@@ -190,7 +371,7 @@ angular.module('headwind-kiosk')
         $scope.getApps = getApps;
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
@@ -209,14 +390,13 @@ angular.module('headwind-kiosk')
                 $scope.applicationSetting.applicationId = $scope.mainApp.id;
                 $scope.applicationSetting.lastUpdate = new Date().getTime();
 
-                $modalInstance.close($scope.applicationSetting);
+                $uibModalInstance.close($scope.applicationSetting);
             }
         };
     })
     .controller('AddConfigurationAppModalController', function ($scope, localization, configurationService, authService,
-                                                                applications, configuration, $modalInstance, $modal) {
+                                                                applications, configuration, $uibModalInstance, $uibModal) {
 
-        // TODO : ISV : Update this controller
         // $scope.mainAppSelected = false;
         $scope.mainApp = {id: -1, name: ""};
 
@@ -293,15 +473,15 @@ angular.module('headwind-kiosk')
         $scope.configuration = configuration;
 
         $scope.save = function () {
-            $modalInstance.close($scope.mainApp);
+            $uibModalInstance.close($scope.mainApp);
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.newApp = function () {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/application.html?v=h424a28dd78',
                 controller: 'ApplicationModalController',
                 resolve: {
@@ -326,7 +506,7 @@ angular.module('headwind-kiosk')
     })
     .controller('ConfigurationEditorController',
         function ($scope, configurationService, settingsService, $stateParams, $state, $rootScope, $window, $timeout,
-                  $transitions, localization, confirmModal, alertService, $modal, appVersionComparisonService, settingsService,
+                  $transitions, localization, confirmModal, alertService, $uibModal, appVersionComparisonService, settingsService,
                   mdmCatalog) {
 
             $scope.successMessage = null;
@@ -416,7 +596,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.uploadBackground = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
                     // Defined in files.controller.js
                     controller: 'FileModalController'
@@ -623,7 +803,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.addApp = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/addConfigurationApplication.html?v=hc4068664a0',
                     controller: 'AddConfigurationAppModalController',
                     resolve: {
@@ -636,7 +816,7 @@ angular.module('headwind-kiosk')
                     }
                 });
 
-                // TODO : ISV : need to re-caclculate mainappid, contentappid if necessary
+                // Main/content app identifiers are recalculated by the selected action below.
                 modalInstance.result.then(function (addedApp) {
                     if (addedApp) {
                         addedApp.actionChanged = true;
@@ -743,19 +923,6 @@ angular.module('headwind-kiosk')
             };
 
             $scope.desktopHeaderTemplatePlaceholder = localization.localize('form.configuration.settings.design.desktop.header.template.placeholder') + ' deviceId, description, custom1, custom2, custom3';
-
-            var transFunction = function(trans) {
-                if ($scope.configurationForm && $scope.configurationForm.$dirty) {
-                    if (!$scope.saved) {
-                        var confirmed = confirm(localization.localize('question.exit.without.saving'));
-                        if (!confirmed) {
-                            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
-                            return false;
-                        }
-                    }
-                }
-            }
-            $transitions.onStart({ }, transFunction, {invokeLimit: 1});
 
             $scope.sortByChanged = function () {
                 $window.localStorage.setItem('Headwind MDM_configAppsSortBy', $scope.sort.by);
@@ -1092,7 +1259,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editFile = function (configFile) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationFile.html?v=hc0af3ddb4d',
                     controller: 'FileEditorController',
                     resolve: {
@@ -1128,7 +1295,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.addApplicationSetting = function () {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
@@ -1163,7 +1330,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.selectVersion = function (application) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationAppVersionSelection.html?v=hc48e44eed2',
                     controller: 'ConfigurationAppVersionSelectController',
                     resolve: {
@@ -1308,7 +1475,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editDetails = function (application) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/configurationAppDetails.html?v=h4e66e49969',
                     controller: 'ConfigurationAppDetailsController',
                     resolve: {
@@ -1360,7 +1527,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.editApplicationSetting = function (setting) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/applicationSetting.html?v=h9e530ca89f',
                     controller: 'ApplicationSettingEditorController',
                     resolve: {
@@ -1409,7 +1576,7 @@ angular.module('headwind-kiosk')
             };
 
             $scope.removeFile = function (file) {
-                var modalInstance = $modal.open({
+                var modalInstance = $uibModal.open({
                     templateUrl: 'app/components/main/view/modal/removeFileConfirmation.html?v=h9ab42ea0f4',
                     controller: 'RemoveConfigurationFileModalController',
                     resolve: {
@@ -1712,7 +1879,7 @@ angular.module('headwind-kiosk')
                 allApplications = [];
             }
         })
-    .controller('ConfigurationAppVersionSelectController', function ($scope, $modalInstance, applicationService,
+    .controller('ConfigurationAppVersionSelectController', function ($scope, $uibModalInstance, applicationService,
                                                                      localization, application, applicationParameters) {
 
         $scope.errorMessage = undefined;
@@ -1748,28 +1915,28 @@ angular.module('headwind-kiosk')
         });
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
-            $modalInstance.close({
+            $uibModalInstance.close({
                 selectedVersion: $scope.usedVersion,
                 availableVersions: $scope.versions,
                 applicationParameters: $scope.applicationParameters
             });
         };
     })
-    .controller('ConfigurationAppDetailsController', function ($scope, $modalInstance, applicationService,
+    .controller('ConfigurationAppDetailsController', function ($scope, $uibModalInstance, applicationService,
                                                                      localization, application) {
 
         $scope.errorMessage = undefined;
         $scope.application = application;
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
     })
-    .controller('FileEditorController', function ($scope, $modalInstance, localization, configFile,
+    .controller('FileEditorController', function ($scope, $uibModalInstance, localization, configFile,
                                                   defaultFilePath, fileService, configFiles) {
 
         $scope.file = {};
@@ -1835,7 +2002,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         };
 
         $scope.save = function () {
@@ -1873,7 +2040,7 @@ angular.module('headwind-kiosk')
                         $scope.file.path = response.data.devicePath;
                         $scope.file.tmpPath = response.data.tmpPath;
                         $scope.file.id = null;
-                        $modalInstance.close($scope.file);
+                        $uibModalInstance.close($scope.file);
                     } else {
                         $scope.errorMessage = localization.localize(response.message);
                     }
@@ -1884,7 +2051,7 @@ angular.module('headwind-kiosk')
                 $scope.file.fileId = $scope.file.id;
                 $scope.file.id = null;
                 $scope.file.path = $scope.file.devicePath;
-                $modalInstance.close($scope.file);
+                $uibModalInstance.close($scope.file);
             }
         };
 
@@ -1923,18 +2090,17 @@ angular.module('headwind-kiosk')
         };
     })
     .controller('RemoveConfigurationFileModalController',
-        function ($scope, $modalInstance, file) {
+        function ($scope, $uibModalInstance, file) {
 
             // By now, disable this option so the user isn't confused
-            // TODO: suggest permanent deletion if a file is not used in icons and configurations (except this one)
             $scope.deleteOptionEnabled = false;
 
             $scope.save = function () {
-                $modalInstance.close($scope.deleteOptionEnabled && $scope.obj.deleteFileFromDisk);
+                $uibModalInstance.close($scope.deleteOptionEnabled && $scope.obj.deleteFileFromDisk);
             };
 
             $scope.closeModal = function () {
-                $modalInstance.dismiss();
+                $uibModalInstance.dismiss();
             }
         })
 ;

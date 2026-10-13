@@ -2,6 +2,17 @@
 angular.module('headwind-kiosk')
     .controller('KioskTabController', function ($scope, $state, $timeout, deviceService, configurationService,
                                                 applicationService, alertService, localization, appVersionComparisonService) {
+        $scope.lastSeenText = function (device) {
+            var sec = device ? device.lastUpdateAgeSec : null;
+            if (sec === null || sec === undefined || sec === '' || isNaN(sec)) {
+                return localization.localize('kiosk.never.seen');
+            }
+            sec = Math.max(0, Math.round(sec));
+            if (sec < 60) { return sec + ' s ' + localization.localize('kiosk.ago'); }
+            if (sec < 3600) { return Math.round(sec / 60) + ' min ' + localization.localize('kiosk.ago'); }
+            if (sec < 86400) { return Math.round(sec / 3600) + ' h ' + localization.localize('kiosk.ago'); }
+            return Math.round(sec / 86400) + ' d ' + localization.localize('kiosk.ago');
+        };
         var infrastructureIps = {
             '10.0.17.106': true,
             '10.0.9.1': true,
@@ -20,9 +31,6 @@ angular.module('headwind-kiosk')
             'no_config_vpn',
             'no_config_wifi',
             'no_debugging_features',
-            'no_status_bar',
-            'no_recent_apps',
-            'no_notifications',
             'no_usb_file_transfer',
             'no_outgoing_beam'
         ];
@@ -283,7 +291,7 @@ angular.module('headwind-kiosk')
             $scope.configuration.kioskScreenOn = true;
             $scope.configuration.permissive = false;
             $scope.configuration.lockSafeSettings = true;
-            $scope.configuration.pushOptions = 'polling';
+            // Preserve the configured delivery transport.
             $scope.enableGps();
             strictRestrictions.forEach(function (restriction) {
                 $scope.setRestriction(restriction, true);
@@ -315,6 +323,7 @@ angular.module('headwind-kiosk')
         $scope.toggleAppInstall = function (app) {
             if (app.action == 1) {
                 app.action = 0;
+                app.actionChanged = true;
                 app.useKiosk = false;
             } else {
                 ensureApplicationInstall(app, false);
@@ -391,7 +400,7 @@ angular.module('headwind-kiosk')
         // O estado real de bloqueio deste parque nao e' o "kioskMode" do Headwind.
         //
         // O launcher 6.36 open source NAO tem o quiosque single-app (lock task): a funcao
-        // ProUtils.isKioskModeRunning() e' um stub que devolve false fixo, e e' dela que sai
+        // ProUtils.isKioskModeRunning() devolve false fixo nesta edicao, e e' dela que sai
         // o device.kioskMode reportado. Ou seja, esse campo e' SEMPRE false neste launcher,
         // e ler so' ele fazia a coluna dizer "Nao bloqueado" para aparelhos que estao, sim,
         // travados -- porque estao presos no launcher do MDM como home (defaultLauncher) em
@@ -474,7 +483,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.saveProfile = function () {
-            if (!$scope.configuration) {
+            if (!$scope.configuration || $scope.saving) {
                 return;
             }
             if (!$scope.configuration.password) {
@@ -494,7 +503,7 @@ angular.module('headwind-kiosk')
                         $scope.configuration = response.data;
                         normalizeConfigurationCollections();
                     }
-                    $timeout(function () { $scope.feedback = null; }, 3500);
+                    $timeout(function () { $scope.feedback = null; }, 10000);
                     loadDevices();
                     selectConfiguration($scope.selectedConfigurationId);
                 } else {

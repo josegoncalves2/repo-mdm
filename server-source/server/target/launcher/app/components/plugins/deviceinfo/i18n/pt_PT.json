@@ -49,6 +49,10 @@
   "plugin.deviceinfo.state.mobile2SimState.restricted": "Uso limitado",
 
   "plugin.deviceinfo.tab.title": "Informação detalhada",
+  "plugin.deviceinfo.search.placeholder": "Número, descrição, IMEI, serial, telefone, modelo ou IP",
+  "plugin.deviceinfo.search.loading": "Buscando dispositivos...",
+  "plugin.deviceinfo.search.loadingInfo": "Carregando informações do dispositivo...",
+  "plugin.deviceinfo.search.noresults": "Nenhum dispositivo encontrado.",
   "plugin.deviceinfo.enum.time.min": "min atrás",
   "plugin.deviceinfo.enum.time.hour": "horas atrás",
   "plugin.deviceinfo.enum.time.day": "dias atrás",

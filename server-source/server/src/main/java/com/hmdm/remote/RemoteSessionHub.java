@@ -25,15 +25,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.websocket.CloseReason;
+import javax.websocket.SendHandler;
+import javax.websocket.SendResult;
 import javax.websocket.Session;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
+import java.util.ArrayDeque;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>As sessoes de suporte remoto que este servidor esta intermediando, em memoria.</p>
@@ -61,11 +67,32 @@ public final class RemoteSessionHub {
     /** Quadros guardados para o transporte HTTP: ~2s de video a 15 fps. */
     private static final int MAX_BUFFERED_FRAMES = 30;
 
+    /** Tempo sem espectadores antes de encerrar uma transmissão abandonada. */
+    private static final long VIEWER_GRACE_MS = 30_000L;
+
     public static final byte FRAME_CONFIG = 1;
     public static final byte FRAME_KEY = 2;
     public static final byte FRAME_DELTA = 3;
 
     private static final RemoteSessionHub INSTANCE = new RemoteSessionHub();
+
+    /** Reapera sessões mesmo quando nenhum novo pedido é aberto. */
+    private static final ScheduledExecutorService REAPER =
+            Executors.newSingleThreadScheduledExecutor(runnable -> {
+                Thread thread = new Thread(runnable, "remote-support-reaper");
+                thread.setDaemon(true);
+                return thread;
+            });
+
+    static {
+        REAPER.scheduleWithFixedDelay(() -> {
+            try {
+                INSTANCE.reapStale();
+            } catch (Exception e) {
+                logger.warn("Falha na varredura periodica de sessoes de suporte remoto", e);
+            }
+        }, 30, 30, TimeUnit.SECONDS);
+    }
 
     private final Map<String, RemoteSession> byDeviceNumber = new ConcurrentHashMap<>();
     private final SecureRandom random = new SecureRandom();
@@ -75,6 +102,11 @@ public final class RemoteSessionHub {
 
     public static RemoteSessionHub getInstance() {
         return INSTANCE;
+    }
+
+    /** Encerra o reapera para permitir o undeploy sem reter o classloader da aplicação. */
+    public static void shutdown() {
+        REAPER.shutdownNow();
     }
 
     /**
@@ -101,6 +133,7 @@ public final class RemoteSessionHub {
         private volatile byte[] lastKeyFrame;
         private volatile long frames;
         private volatile long bytes;
+        private volatile long viewerlessSince;
 
         /*
          * Buffer circular dos quadros recentes, para o transporte HTTP.
@@ -118,6 +151,7 @@ public final class RemoteSessionHub {
             this.deviceId = deviceId;
             this.deviceNumber = deviceNumber;
             this.token = token;
+            this.viewerlessSince = this.createdAt;
         }
 
         public String getDeviceNumber() { return deviceNumber; }
@@ -196,8 +230,12 @@ public final class RemoteSessionHub {
             logger.warn("Fluxo recusado para '{}': token nao confere", deviceNumber);
             return null;
         }
-        closeQuietly(session.agent, "substituido por uma conexao mais nova do agente");
+        Session previous = session.agent;
         session.agent = socket;
+        if (previous != socket) {
+            clearFrameCache(session);
+            closeQuietly(previous, "substituido por uma conexao mais nova do agente");
+        }
         logger.info("Agente conectado para '{}'", deviceNumber);
         notifyViewers(session);
         return session;
@@ -219,6 +257,7 @@ public final class RemoteSessionHub {
             return false;
         }
         session.viewers.add(socket);
+        session.viewerlessSince = 0L;
         logger.info("Espectador anexado a '{}' (total={}, agente_conectado={})",
                 deviceNumber, session.viewers.size(), session.isStreaming());
         sendText(socket, describe(session));
@@ -237,6 +276,9 @@ public final class RemoteSessionHub {
         RemoteSession session = byDeviceNumber.get(deviceNumber);
         if (session != null) {
             session.viewers.remove(socket);
+            if (session.getViewerCount() == 0) {
+                session.viewerlessSince = System.currentTimeMillis();
+            }
         }
     }
 
@@ -250,10 +292,17 @@ public final class RemoteSessionHub {
         session.inputAvailable = inputAvailable;
         logger.info("Fluxo descrito por '{}': {}x{} entrada={} espectadores={}",
                 deviceNumber, width, height, inputAvailable, session.viewers.size());
-        // Descricao nova invalida os quadros guardados do fluxo anterior.
-        session.codecConfig = null;
-        session.lastKeyFrame = null;
+        // Descricao nova invalida tambem os quadros do long polling do fluxo anterior.
+        clearFrameCache(session);
         notifyViewers(session);
+    }
+
+    private static void clearFrameCache(RemoteSession session) {
+        synchronized (session.pump) {
+            session.codecConfig = null;
+            session.lastKeyFrame = null;
+            session.recent.clear();
+        }
     }
 
     /**
@@ -293,6 +342,9 @@ public final class RemoteSessionHub {
                 continue;
             }
             sendBinary(viewer, frame);
+        }
+        if (session.getViewerCount() == 0 && session.viewerlessSince == 0L) {
+            session.viewerlessSince = System.currentTimeMillis();
         }
 
         // Alimenta tambem o transporte HTTP e acorda quem estiver em long polling.
@@ -343,7 +395,22 @@ public final class RemoteSessionHub {
                     if (session.codecConfig != null) {
                         out.add(session.codecConfig);
                     }
-                    if (session.lastKeyFrame != null) {
+                    int keyIndex = -1;
+                    int index = 0;
+                    for (byte[] candidate : session.recent) {
+                        if (candidate.length > 0 && candidate[0] == FRAME_KEY) {
+                            keyIndex = index;
+                        }
+                        index++;
+                    }
+                    if (keyIndex >= 0) {
+                        index = 0;
+                        for (byte[] candidate : session.recent) {
+                            if (index++ >= keyIndex) {
+                                out.add(candidate);
+                            }
+                        }
+                    } else if (session.lastKeyFrame != null) {
                         out.add(session.lastKeyFrame);
                     }
                 } else {
@@ -397,8 +464,7 @@ public final class RemoteSessionHub {
         if (agent == null || !agent.isOpen()) {
             return false;
         }
-        sendText(agent, json);
-        return true;
+        return sendText(agent, json);
     }
 
     /** Repassa aos espectadores o retorno do agente sobre um comando de entrada. */
@@ -437,32 +503,103 @@ public final class RemoteSessionHub {
         long now = System.currentTimeMillis();
         byDeviceNumber.entrySet().removeIf(entry -> {
             RemoteSession session = entry.getValue();
-            boolean stale = !session.isStreaming()
-                    && session.viewers.isEmpty()
-                    && now - session.createdAt > PENDING_TIMEOUT_MS;
+            session.viewers.removeIf(viewer -> !viewer.isOpen());
+            if (session.getViewerCount() == 0 && session.viewerlessSince == 0L) {
+                session.viewerlessSince = now;
+            }
+            boolean stale = (!session.isStreaming()
+                    && now - session.createdAt > PENDING_TIMEOUT_MS)
+                    || (session.isStreaming()
+                    && session.getViewerCount() == 0
+                    && now - session.viewerlessSince > VIEWER_GRACE_MS);
             if (stale) {
                 logger.info("Descartando sessao abandonada de '{}'", entry.getKey());
+                closeQuietly(session.agent, "sessao abandonada");
             }
             return stale;
         });
     }
 
-    private static void sendBinary(Session socket, byte[] payload) {
-        try {
-            // Assincrono de proposito: um envio bloqueante para um espectador seguraria a
-            // thread que le do agente e, com ela, todos os outros espectadores.
-            socket.getAsyncRemote().sendBinary(ByteBuffer.wrap(payload));
-        } catch (Exception e) {
-            logger.debug("Quadro descartado para um espectador que nao aceita mais dados", e);
+    /** Estado de escrita por socket: o AsyncRemote permite apenas um envio em voo. */
+    private static final class SocketWriter {
+        private final ArrayDeque<Object> queue = new ArrayDeque<>();
+        private boolean writing;
+    }
+
+    private static SocketWriter writerFor(Session socket) {
+        synchronized (socket) {
+            Object writer = socket.getUserProperties().get("hwmdm.remote.writer");
+            if (writer == null) {
+                writer = new SocketWriter();
+                socket.getUserProperties().put("hwmdm.remote.writer", writer);
+            }
+            return (SocketWriter) writer;
         }
     }
 
-    private static void sendText(Session socket, String text) {
-        try {
-            socket.getAsyncRemote().sendText(text);
-        } catch (Exception e) {
-            logger.debug("Nao foi possivel enviar texto pelo socket", e);
+    private static boolean enqueue(Session socket, Object payload, boolean dropOldest) {
+        if (socket == null || payload == null || !socket.isOpen()) {
+            return false;
         }
+        SocketWriter writer = writerFor(socket);
+        synchronized (writer) {
+            if (writer.writing) {
+                // Video ao vivo pode descartar o frame mais antigo; status/comandos continuam
+                // na mesma fila, mantendo a ordem e evitando TEXT_FULL_WRITING/BINARY_FULL_WRITING.
+                if (writer.queue.size() >= 8) {
+                    if (!dropOldest) {
+                        closeQuietly(socket, "fila de escrita cheia");
+                        return false;
+                    }
+                    writer.queue.pollFirst();
+                }
+                writer.queue.addLast(payload);
+                return true;
+            }
+            writer.writing = true;
+        }
+        writeNext(socket, writer, payload);
+        return true;
+    }
+
+    private static void writeNext(Session socket, SocketWriter writer, Object payload) {
+        SendHandler callback = result -> {
+            Object next;
+            synchronized (writer) {
+                if (!result.isOK()) {
+                    writer.queue.clear();
+                    writer.writing = false;
+                    return;
+                }
+                next = writer.queue.pollFirst();
+                if (next == null) {
+                    writer.writing = false;
+                    return;
+                }
+            }
+            writeNext(socket, writer, next);
+        };
+        try {
+            if (payload instanceof byte[]) {
+                socket.getAsyncRemote().sendBinary(ByteBuffer.wrap((byte[]) payload), callback);
+            } else {
+                socket.getAsyncRemote().sendText((String) payload, callback);
+            }
+        } catch (Exception e) {
+            synchronized (writer) {
+                writer.queue.clear();
+                writer.writing = false;
+            }
+            logger.debug("Nao foi possivel enviar dados pelo socket", e);
+        }
+    }
+
+    private static void sendBinary(Session socket, byte[] payload) {
+        enqueue(socket, payload, true);
+    }
+
+    private static boolean sendText(Session socket, String text) {
+        return enqueue(socket, text, false);
     }
 
     private static void closeQuietly(Session socket, String reason) {

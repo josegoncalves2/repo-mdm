@@ -1,8 +1,13 @@
 <!-- Localization completed -->
 <nav class="navbar navbar-default navbar-fixed-top header hwmdm-topbar">
+    <button type="button" class="hwmdm-menu-toggle" ng-click="toggleMenu()" ng-if="isAuth()"
+            aria-label="Menu" title="Mostrar/ocultar menu" data-testid="menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
     <div class="hwmdm-topbar-brand" ng-click="mainPanel()">
-        <img ng-if="webLogoUrl" ng-src="{{webLogoUrl}}" class="hwmdm-brand-logo" alt=""/>
-        <span ng-if="!webLogoUrl" class="hwmdm-brand-mark">HW</span>
+        <img ng-if="webLogoUrl" ng-src="{{webLogoUrl}}" class="hwmdm-brand-logo" alt=""
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"/>
+        <span class="hwmdm-brand-mark" ng-style="webLogoUrl && {'display':'none'}">HW</span>
         <span class="hwmdm-brand-text">{{appName}}</span>
     </div>
 

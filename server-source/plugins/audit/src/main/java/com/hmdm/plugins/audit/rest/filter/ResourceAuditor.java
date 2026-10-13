@@ -168,8 +168,17 @@ class ResourceAuditor {
         }
         if (this.response.getStatus() == 200) {
             final byte[] content = this.response.getContent();
-            ObjectMapper objectMapper = new ObjectMapper();
-            final Response response = objectMapper.readValue(content, Response.class);
+            // Endpoints de plugin nem sempre respondem no envelope Response padrao (ou
+            // respondem com corpo vazio). Antes, a falha do parse subia como IOException
+            // e o registro de auditoria da acao era descartado inteiro.
+            Response response = null;
+            if (checkResponse && content != null && content.length > 0) {
+                try {
+                    response = new ObjectMapper().readValue(content, Response.class);
+                } catch (IOException e) {
+                    response = null;
+                }
+            }
             if (checkResponse &&
                     (response == null || response.getStatus() != Response.ResponseStatus.OK)) {
                 logRecord.setErrorCode(1);
@@ -192,7 +201,8 @@ class ResourceAuditor {
                "plugin.audit.action.jwt.login".equals(action) ||
                "plugin.audit.action.password.changed".equals(action) ||
                "plugin.audit.action.update.configuration".equals(action) ||
-               "plugin.audit.action.update.user".equals(action);
+               "plugin.audit.action.update.user".equals(action) ||
+               "plugin.audit.action.update.customer".equals(action);
     }
 
     private class StripPasswordResponse {

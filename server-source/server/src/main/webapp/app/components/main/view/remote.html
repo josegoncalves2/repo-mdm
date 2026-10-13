@@ -157,6 +157,9 @@
                         {{remote.width}}x{{remote.height}} ·
                         {{remote.fps}} fps · {{remote.kbps}} kbps
                     </span>
+                    <span class="remote-ip-note remote-stream-error" ng-if="remote.streaming && remote.error">
+                        {{remote.error}}
+                    </span>
                 </div>
 
                 <!-- Teclas de navegacao e digitacao. So aparecem com a sessao ao vivo: fora

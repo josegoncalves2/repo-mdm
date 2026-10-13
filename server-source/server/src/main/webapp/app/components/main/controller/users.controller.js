@@ -1,9 +1,11 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('UsersTabController', function ($scope, $rootScope, $timeout, $state, userService, $modal, confirmModal,
+    .controller('UsersTabController', function ($scope, $rootScope, $timeout, $state, userService, $uibModal, confirmModal,
                                                 alertService, authService, $window, localization) {
 
         $scope.search = {};
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_users_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_users_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,
@@ -41,7 +43,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editUser = function (user) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/user.html?v=hf7cb3223df',
                 controller: 'UserModalController',
                 resolve: {
@@ -88,7 +90,7 @@ angular.module('headwind-kiosk')
         $scope.init();
     })
     //*******************************************************************************************************************
-    .controller('UserModalController', function ($scope, $modalInstance, userService, user, groupService,
+    .controller('UserModalController', function ($scope, $uibModalInstance, userService, user, groupService,
                                                  configurationService, localization, settingsService, passwordService) {
         $scope.groupsList = [];
 
@@ -208,7 +210,7 @@ angular.module('headwind-kiosk')
 
                 userService.update(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.errorMessage = localization.localizeServerResponse(response);
                     }
@@ -218,6 +220,6 @@ angular.module('headwind-kiosk')
 
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     });

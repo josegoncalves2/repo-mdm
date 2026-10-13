@@ -66,8 +66,7 @@ public class PublicFilesResource {
     @Path("/{filePath}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public javax.ws.rs.core.Response downloadFile(@PathParam("filePath") String filePath) throws Exception {
-        // TODO : ISV : Needs to identify the device and do a security check if device is granted access to specified
-        //  file
+        // Deprecated endpoint retained only for compatibility; mobile clients use DownloadFilesServlet.
         File file = new File(filePath + "/" + URLDecoder.decode(filePath, "UTF8"));
         if (!file.exists()) {
             return javax.ws.rs.core.Response.status(404).build();

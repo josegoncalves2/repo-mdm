@@ -1,0 +1,36 @@
+/* Layout shared by the module and integration screens. */
+.ext-hub .table { width: 100%; table-layout: auto; }
+.ext-hub .table td { vertical-align: middle; overflow-wrap: anywhere; }
+.ext-hub-row-icon { width: 36px; }
+.ext-hub-row-name { font-weight: 600; margin-bottom: 4px; }
+.ext-hub-row-desc { color: var(--hwmdm-muted); line-height: 1.5; max-width: 52em; }
+.ext-hub-row-actions { min-width: 170px; }
+.ext-hub-row-toggle { display: inline-flex; vertical-align: middle; margin: 6px; }
+.ext-hub .label { display: inline-block; white-space: normal; line-height: 1.5; text-align: left; }
+.ext-hub code { white-space: normal; overflow-wrap: anywhere; }
+.ext-hub-steps li { margin-bottom: 10px; line-height: 1.5; }
+.ext-hub .table-responsive { border: 0; }
+.kiosk-action-row { min-width: 150px; }
+.kiosk-action-row .btn { flex: 1 1 140px; }
+.kiosk-table .btn { min-width: 90px; }
+.qr-enrollment { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 420px); gap: 32px; align-items: start; max-width: 1150px; margin: 24px auto; }
+.qr-enrollment form { min-width: 0; padding: 24px; border: 1px solid var(--hwmdm-border-subtle); border-radius: 12px; background: var(--hwmdm-surface); }
+.qr-enrollment-preview { grid-column: 2; grid-row: 1; padding: 20px; background: white; border-radius: 12px; text-align: center; position: sticky; top: 24px; }
+.qr-enrollment-preview img { max-width: 100%; height: auto; image-rendering: pixelated; }
+.qr-enrollment .form-control { max-width: 100%; }
+.qr-enrollment .dropdown-multiselect button { min-width: 0; width: 100%; }
+.qr-enrollment .form-group:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .qr-enrollment { grid-template-columns: minmax(0, 1fr); }
+  .qr-enrollment-preview { grid-column: 1; grid-row: auto; position: static; max-width: 420px; justify-self: center; }
+  .ext-hub .table { min-width: 620px; }
+}
+/* Botoes das tabelas de Modulos e Integracoes. A regra global .btn (hwmdm-ui.css) deixa o texto
+   quebrar em qualquer ponto e ".table .btn" (hwmdm-ui.css) fixa todo botao de tabela em 30px, o
+   quadrado do botao so-icone: "Configurar"/"Copiar" saiam uma letra por linha, com o texto
+   vazando por cima do interruptor. Aqui o botao de texto fica numa linha so' e na largura do
+   proprio texto, e a celula de acoes nao encolhe abaixo do conteudo (width:1% = so' o que o
+   conteudo pede; a sobra vai para as outras colunas), com botao e interruptor lado a lado. */
+.ext-hub .table .btn { width: auto; white-space: nowrap; overflow-wrap: normal; word-break: normal; max-width: none; }
+.ext-hub .table td.ext-hub-row-actions { width: 1%; white-space: nowrap; }
+.ext-hub .table td:last-child:has(> .btn) { width: 1%; white-space: nowrap; }

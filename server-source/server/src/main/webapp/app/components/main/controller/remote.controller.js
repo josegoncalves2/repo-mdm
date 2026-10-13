@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('RemoteAccessTabController', function ($scope, $document, deviceService,
+    .controller('RemoteAccessTabController', function ($scope, $document, $window, $timeout, deviceService,
                                                        remoteSupportService, remoteSupportPlayer, confirmModal,
                                                        alertService, localization, authService, deviceFocusService) {
 
@@ -26,7 +26,7 @@ angular.module('headwind-kiosk')
             return {
                 name: 'pkg',
                 labelKey: 'remote.field.pkg',
-                placeholder: 'com.example.app',
+                placeholder: 'com.android.chrome',
                 required: true,
                 pattern: PACKAGE_PATTERN,
                 errorKey: 'remote.error.field.pkg'
@@ -157,13 +157,20 @@ angular.module('headwind-kiosk')
         /*
          * Estado da sessao de suporte remoto.
          *
-         * "connecting" cobre o handshake inteiro: o painel pediu a sessao e o push saiu, mas
-         * nenhum video chegou ainda. Esse intervalo nao e' instantaneo -- o tablet precisa
-         * receber o chamado e, no Android 14, alguem precisa aceitar o aviso de captura --
-         * entao e' um estado proprio, e nao algo dobrado em "ligado" ou "desligado".
+         * "pending" cobre tanto o handshake normal (painel pediu a sessao, push saiu, nenhum
+         * video chegou ainda -- o tablet precisa receber o chamado e, no Android 14, alguem
+         * precisa aceitar o aviso de captura) quanto o caso novo do item 3: o aparelho estava
+         * offline no momento do pedido, o chamado ficou em espera no servidor, e so' vira
+         * video quando o aparelho sincronizar de novo. Os dois sao "sessao pedida, ainda sem
+         * imagem" do ponto de vista do operador, entao usam o mesmo estado; requestedAt e' o
+         * que diferencia "acabei de pedir" de "estou esperando ha' um tempo".
+         *
+         * "connected" e' "esta aba tem uma sessao (pendente ou ao vivo) aberta com o
+         * servidor" -- e' o que habilita o botao de desconectar/cancelar.
          */
         $scope.remote = {
-            connecting: false,
+            pending: false,
+            requestedAt: null,
             connected: false,
             streaming: false,
             input: false,
@@ -174,7 +181,57 @@ angular.module('headwind-kiosk')
             startedAt: null,
             error: null,
             inputNote: null,
+            // true enquanto o teclado fisico do operador esta' sendo enviado ao aparelho
+            keyboard: false,
             typing: ''
+        };
+
+        /*
+         * ---------------------------------------------------------------------------------
+         * Persistencia da sessao no navegador (item 4 da queixa)
+         * ---------------------------------------------------------------------------------
+         *
+         * $scope e o controller morrem e renascem a cada F5 e a cada troca de aba do menu --
+         * Angular recria RemoteAccessTabController do zero toda vez que a rota volta a
+         * carregar esta tela. Sem isto, nao ha' como o painel saber, ao nascer de novo, que
+         * ja' existia uma sessao (pendente ou ao vivo) para o aparelho selecionado. Guardar o
+         * essencial em sessionStorage -- sobrevive a F5 e a troca de aba, mas nao a fechar a
+         * aba, que e' o comportamento certo para uma sessao de suporte -- e' o que permite
+         * reatar em vez de reabrir (ver tryReattach() mais abaixo).
+         *
+         * A fonte da verdade continua sendo o servidor: o que fica aqui e' so' "existia algo
+         * para este aparelho, vale a pena perguntar" -- tryReattach() sempre confirma com
+         * GET status antes de reabrir o socket do visualizador.
+         */
+        var SESSION_STORAGE_KEY = 'hwmdm.remote.sessions';
+
+        var loadStoredSessions = function () {
+            try {
+                return JSON.parse($window.sessionStorage.getItem(SESSION_STORAGE_KEY)) || {};
+            } catch (e) {
+                return {};
+            }
+        };
+
+        var saveStoredSession = function (deviceId, info) {
+            try {
+                var all = loadStoredSessions();
+                all[String(deviceId)] = info;
+                $window.sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(all));
+            } catch (e) {
+                // sessionStorage indisponivel (navegacao privada, quota, etc.): a sessao
+                // continua funcionando nesta aba, so' nao sobrevive a um F5. Degradar, nao
+                // quebrar.
+            }
+        };
+
+        var clearStoredSession = function (deviceId) {
+            try {
+                var all = loadStoredSessions();
+                delete all[String(deviceId)];
+                $window.sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(all));
+            } catch (e) {
+            }
         };
 
         $scope.remoteSupported = remoteSupportPlayer.isSupported();
@@ -236,6 +293,7 @@ angular.module('headwind-kiosk')
         $scope.commandGroups = [];
         $scope.commandCatalogLoaded = false;
         $scope.commandCatalogError = null;
+        var supportedCommandActions = {};
 
         var labelForAction = function (action, meta) {
             if (meta && meta.labelKey) {
@@ -282,6 +340,10 @@ angular.module('headwind-kiosk')
         var loadCommandCatalog = function () {
             deviceService.getSupportedCommands(function (response) {
                 if (response.status === 'OK' && angular.isArray(response.data)) {
+                    supportedCommandActions = {};
+                    response.data.forEach(function (action) {
+                        supportedCommandActions[action] = true;
+                    });
                     $scope.commandGroups = buildCommandGroups(response.data);
                     $scope.commandCatalogLoaded = true;
                     $scope.commandCatalogError = null;
@@ -299,6 +361,11 @@ angular.module('headwind-kiosk')
         // blanket edit_devices, which is exactly how the server authorises it.
         $scope.canRunCommand = function (command) {
             return hasPermission('edit_devices') || hasPermission(command.permission);
+        };
+
+        $scope.canOpenRemoteAgent = function () {
+            return !!supportedCommandActions.run_app
+                && (hasPermission('edit_devices') || hasPermission('device.remote_access.control'));
         };
 
         $scope.loadDevices = function (keepSelection) {
@@ -343,10 +410,13 @@ angular.module('headwind-kiosk')
                         }
                     }
                     if (!$scope.selectedDevice && $scope.devices.length > 0) {
-                        var firstOnlineDevice = $scope.devices.find(function (device) {
-                            return device.online;
+                        var storedSessions = loadStoredSessions();
+                        var resumeDevice = $scope.devices.find(function (device) {
+                            return !!storedSessions[String(device.id)];
                         });
-                        $scope.selectDevice(firstOnlineDevice || $scope.devices[0]);
+                        if (resumeDevice) {
+                            $scope.selectDevice(resumeDevice);
+                        }
                     }
                 } else {
                     $scope.devices = [];
@@ -363,11 +433,18 @@ angular.module('headwind-kiosk')
             if (!device) {
                 return;
             }
-            // Trocar de aparelho encerra a sessao anterior, em vez de deixar o
-            // tablet transmitindo para um visualizador que ninguem esta olhando.
-            $scope.stopRemote();
+            // Trocar de aparelho fecha apenas este visualizador. A sessao no servidor e no
+            // tablet continua dentro da carencia do hub, igual ao F5 e a troca de menu, e
+            // pode ser reatada ao selecionar o aparelho de novo. O botao Desconectar e' o
+            // unico comando que encerra a sessao remota de fato.
+            closePlayer();
+            resetRemote();
             $scope.selectedDevice = device;
             $scope.cancelCommand();
+            // O aparelho que acaba de ser selecionado pode ter, ele mesmo, uma sessao guardada
+            // (pendente ou ao vivo) de uma visita anterior a esta tela -- reata em vez de
+            // deixar o operador clicar "Solicitar acesso" nao sabendo que ja' havia um pedido.
+            tryReattach(device);
         };
 
         /*
@@ -513,6 +590,13 @@ angular.module('headwind-kiosk')
             });
         };
 
+        $scope.openRemoteAgent = function () {
+            if (!$scope.selectedDevice || !$scope.canOpenRemoteAgent()) {
+                return;
+            }
+            dispatch($scope.selectedDevice, 'run_app', {pkg: 'com.hwmdm.remote'});
+        };
+
         // Kiosk lock has a dedicated endpoint (it re-applies the kiosk policy server-side, not
         // just a push), so it is issued through that endpoint rather than the generic command.
         $scope.forceKiosk = function (device) {
@@ -572,7 +656,8 @@ angular.module('headwind-kiosk')
         };
 
         var resetRemote = function () {
-            $scope.remote.connecting = false;
+            $scope.remote.pending = false;
+            $scope.remote.requestedAt = null;
             $scope.remote.connected = false;
             $scope.remote.streaming = false;
             $scope.remote.input = false;
@@ -582,12 +667,20 @@ angular.module('headwind-kiosk')
             $scope.remote.kbps = 0;
             $scope.remote.startedAt = null;
             $scope.remote.inputNote = null;
+            $scope.remote.keyboard = false;
+            keyboardArmed = false;
         };
 
+        /*
+         * Item 3 da queixa: o aparelho offline nao e' mais motivo para desistir aqui. O
+         * pedido e' sempre enviado; o servidor decide se atende na hora ou registra como
+         * pendente (RemoteSupportResource.start() olha o lastUpdate do aparelho). O painel
+         * so' precisa mostrar honestamente qual dos dois esta' acontecendo, o que a resposta
+         * do servidor (`pending`, `requestedAt`) ja' informa.
+         */
         $scope.startRemote = function () {
             var device = $scope.selectedDevice;
-            if (!device || !device.id || !device.online
-                    || $scope.remote.connecting || $scope.remote.connected) {
+            if (!device || !device.id || $scope.remote.connected) {
                 return;
             }
             if (!canvas()) {
@@ -595,27 +688,76 @@ angular.module('headwind-kiosk')
             }
             resetRemote();
             $scope.remote.error = null;
-            $scope.remote.connecting = true;
+            $scope.remote.connected = true;
+            $scope.remote.pending = true;
+            $scope.remote.requestedAt = new Date();
 
             remoteSupportService.start({id: device.id}, {}, function (response) {
                 if (response.status !== 'OK' || !response.data || !response.data.socket) {
-                    $scope.remote.connecting = false;
+                    resetRemote();
                     $scope.remote.error = localization.localize('remote.error.session.start');
                     return;
                 }
                 if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
                     // O operador mudou de aparelho enquanto a chamada estava em voo; nao
-                    // deixe o tablet transmitindo para um visualizador que nunca vai abrir.
+                    // deixe o tablet transmitindo/pendente para um visualizador que nunca
+                    // vai abrir.
                     remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+                    clearStoredSession(device.id);
                     return;
                 }
-                $scope.remote.connected = true;
+                if (response.data.requestedAt) {
+                    $scope.remote.requestedAt = new Date(response.data.requestedAt);
+                }
                 $scope.remote.startedAt = new Date();
+                saveStoredSession(device.id, {
+                    requestedAt: $scope.remote.requestedAt.getTime(),
+                    deviceNumber: response.data.deviceNumber
+                });
                 openPlayer(response.data.socket, device.id);
             }, function () {
-                $scope.remote.connecting = false;
+                resetRemote();
                 $scope.remote.error = localization.localize('remote.error.session.start');
             });
+        };
+
+        /*
+         * Item 4 da queixa: reconstroi o que este navegador tinha aberto para `device` antes
+         * de o controller morrer (F5, troca de aba). NUNCA chama /start de novo -- so' /status,
+         * seguido de reabrir o socket do visualizador para a MESMA sessao no hub. E' isto que
+         * evita pedir consentimento de captura de novo ao usuario do tablet: o servidor nunca
+         * soube que o navegador tinha ido embora, entao nao ha nada para reiniciar do lado do
+         * aparelho.
+         */
+        var tryReattach = function (device) {
+            if (!device || !device.id) {
+                return;
+            }
+            var stored = loadStoredSessions()[String(device.id)];
+            if (!stored) {
+                return;
+            }
+            if (!canvas()) {
+                return;
+            }
+            remoteSupportService.getStatus({id: device.id}, function (response) {
+                if (!$scope.selectedDevice || $scope.selectedDevice.id !== device.id) {
+                    return; // o operador ja' saiu deste aparelho enquanto a consulta ia e voltava
+                }
+                if (response.status !== 'OK' || !response.data || !response.data.open) {
+                    // A sessao guardada no navegador ja' nao existe no servidor -- expirou
+                    // (prazos em RemoteSessionHub), foi cancelada, ou foi encerrada do outro
+                    // lado. Nao ha' nada para reatar.
+                    clearStoredSession(device.id);
+                    return;
+                }
+                resetRemote();
+                $scope.remote.error = null;
+                $scope.remote.connected = true;
+                $scope.remote.pending = !response.data.streaming;
+                $scope.remote.requestedAt = new Date(response.data.requestedAt || stored.requestedAt);
+                openPlayer(response.data.socket, device.id);
+            }, angular.noop);
         };
 
         var openPlayer = function (socketPath, deviceId) {
@@ -623,11 +765,15 @@ angular.module('headwind-kiosk')
             player = remoteSupportPlayer.create(canvas(), {
                 onStatus: function (status) {
                     $scope.$applyAsync(function () {
-                        $scope.remote.connecting = !status.streaming;
+                        var wasStreaming = $scope.remote.streaming;
+                        $scope.remote.pending = !status.streaming;
                         $scope.remote.streaming = !!status.streaming;
                         $scope.remote.input = !!status.input;
                         $scope.remote.width = status.width || 0;
                         $scope.remote.height = status.height || 0;
+                        if (status.requestedAt) {
+                            $scope.remote.requestedAt = new Date(status.requestedAt);
+                        }
                         if (status.streaming) {
                             $scope.remote.error = null;
                             // Dizer isto antes do primeiro clique frustrado: sem
@@ -635,6 +781,15 @@ angular.module('headwind-kiosk')
                             $scope.remote.inputNote = status.input
                                 ? null
                                 : localization.localize('remote.input.unavailable');
+                            // Imagem acabou de chegar: o teclado fisico ja' vai para o
+                            // aparelho, sem exigir um clique antes. So' na transicao -- o
+                            // status se repete, e re-armar a cada um desfaria o "clicar fora
+                            // da tela libera o teclado".
+                            if (!wasStreaming) {
+                                setKeyboard(true);
+                            }
+                        } else {
+                            setKeyboard(false);
                         }
                     });
                 },
@@ -665,10 +820,22 @@ angular.module('headwind-kiosk')
                 },
                 onClose: function () {
                     $scope.$applyAsync(function () {
-                        $scope.remote.connecting = false;
+                        // So' o estado local. NAO mexe em sessionStorage aqui: o socket pode
+                        // ter caido por uma instabilidade passageira do navegador, e a sessao
+                        // continua viva no servidor (dentro da carencia -- ver VIEWER_GRACE_MS
+                        // em RemoteSessionHub). Quem apaga o registro e' so' o stopRemote()
+                        // explicito ou o proprio tryReattach() quando o servidor confirma que
+                        // a sessao ja' nao existe mais.
+                        $scope.remote.pending = false;
                         $scope.remote.connected = false;
                         $scope.remote.streaming = false;
                     });
+                },
+                onPointerDown: function (event) {
+                    $scope.onScreenDown(event);
+                },
+                onPointerUp: function (event) {
+                    $scope.onScreenUp(event);
                 }
             }, deviceId);
             player.open(socketPath);
@@ -682,16 +849,19 @@ angular.module('headwind-kiosk')
         };
 
         /**
-         * Encerra nas duas pontas. Fechar so' o lado do navegador deixaria o aparelho
-         * capturando a propria tela indefinidamente.
+         * <p>Encerra nas duas pontas -- e' o UNICO caminho que faz isso. Chamado pelo botao
+         * explicito de desconectar/cancelar. Fechar so' o lado do navegador deixaria o aparelho
+         * capturando a propria tela indefinidamente -- por isto troca de aparelho e $destroy
+         * (F5, troca de aba do menu) NAO chamam mais esta funcao, so' closePlayer().</p>
          */
         $scope.stopRemote = function () {
             var device = $scope.selectedDevice;
-            var wasOpen = $scope.remote.connected || $scope.remote.connecting;
+            var wasOpen = $scope.remote.connected;
             closePlayer();
             resetRemote();
             if (wasOpen && device && device.id) {
                 remoteSupportService.stop({id: device.id}, {}, angular.noop, angular.noop);
+                clearStoredSession(device.id);
             }
         };
 
@@ -712,6 +882,10 @@ angular.module('headwind-kiosk')
             if (!player || !$scope.remote.streaming) {
                 return;
             }
+            // Clicar na tela do aparelho (canvas OU o <video> do caminho MSE) arma o teclado
+            // fisico. Nao depende de foco: o <video> faz preventDefault no pointerdown e
+            // nunca recebe foco -- era por isso que pelo IP nenhuma tecla chegava.
+            setKeyboard(true);
             pressedAt = player.toUnit(event);
             pressedTime = Date.now();
         };
@@ -745,13 +919,265 @@ angular.module('headwind-kiosk')
         };
 
         /*
+         * ---------------------------------------------------------------------------------
+         * Teclado FISICO do operador -> aparelho (item 2 da queixa)
+         * ---------------------------------------------------------------------------------
+         *
+         * "No VS Code digita, no navegador nao": o VS Code abre o painel em localhost, que e'
+         * contexto seguro -- ha' WebCodecs e a imagem e' pintada no <canvas>. Pelo IP
+         * (http://192.168.1.65:8080) nao e' contexto seguro, nao ha' WebCodecs, e o player
+         * usa o caminho MSE: cria um <video>, ESCONDE o canvas e so' repassa ponteiros. A
+         * captura anterior dependia de o canvas ter foco (ng-keydown + tabindex), entao pelo
+         * IP nenhuma tecla era capturada.
+         *
+         * Agora a captura independe de qual elemento mostra a imagem e de foco: um listener
+         * no documento envia as teclas enquanto o teclado esta' ARMADO. Arma quando a imagem
+         * chega e ao clicar na tela do aparelho; desarma ao clicar em qualquer outro ponto da
+         * pagina. Teclas digitadas num campo editavel da propria pagina (o campo de texto, a
+         * busca de aparelhos) nunca sao desviadas.
+         *
+         * Caracteres sao juntados por alguns milissegundos e enviados num unico 'text'. Cada
+         * 'text' vira um ACTION_SET_TEXT no aparelho, que le o texto atual e grava o novo;
+         * dezenas deles em rajada competem entre si e letras se perdiam ao digitar rapido.
+         */
+        var KEY_FLUSH_MS = 60;
+        var KEY_BUFFER_MAX = 200;      // o servidor recusa 'text' acima de 500 caracteres
+        var keyBuffer = '';
+        var keyTimer = null;
+        var keyboardArmed = false;
+
+        var KEY_NAMES = {
+            'Backspace': 'backspace',
+            'Enter': 'enter',
+            'Tab': 'tab',
+            'ArrowLeft': 'left',
+            'ArrowRight': 'right',
+            'Escape': 'back'
+        };
+
+        // Envio disparado por listener nativo: no transporte HTTP o $http so' sai no
+        // proximo digest. Isto faz o digest acontecer ja'.
+        var kick = function () {
+            $scope.$evalAsync(angular.noop);
+        };
+
+        var flushKeys = function () {
+            if (keyTimer) {
+                clearTimeout(keyTimer);
+                keyTimer = null;
+            }
+            if (keyBuffer.length > 0 && player && $scope.remote.streaming) {
+                player.type(keyBuffer);
+                kick();
+            }
+            keyBuffer = '';
+        };
+
+        var queueText = function (text) {
+            // Um trecho nunca termina em espaco: medido no omnibox do Chrome do tablet,
+            // "ido " seguido de "456789" virou "ido456789" -- o espaco final de um trecho se
+            // perde. Espaco no INICIO do trecho seguinte (" 456789") ou sozinho chega certo.
+            if (/\s/.test(text) && keyBuffer.length > 0 && !/\s$/.test(keyBuffer)) {
+                flushKeys();
+            }
+            keyBuffer += text;
+            if (keyBuffer.length >= KEY_BUFFER_MAX) {
+                flushKeys();
+            } else if (!keyTimer) {
+                keyTimer = setTimeout(flushKeys, KEY_FLUSH_MS);
+            }
+        };
+
+        var sendKeyName = function (name) {
+            flushKeys();    // o texto pendente vai antes da tecla de controle
+            player.key(name);
+            kick();
+        };
+
+        var keyboardCapture = function () {
+            return $document[0].getElementById('remote-keyboard-capture');
+        };
+
+        var isKeyboardCapture = function (el) {
+            return !!(el && el.id === 'remote-keyboard-capture');
+        };
+
+        var focusKeyboardCapture = function () {
+            if (!keyboardArmed || !$scope.remote.streaming) {
+                return;
+            }
+            $timeout(function () {
+                var capture = keyboardCapture();
+                if (capture && $document[0].activeElement !== capture) {
+                    try {
+                        capture.value = '';
+                        capture.focus({preventScroll: true});
+                    } catch (e) {
+                        try {
+                            capture.focus();
+                        } catch (ignored) {
+                        }
+                    }
+                }
+            }, 0, false);
+        };
+
+        var isEditable = function (el) {
+            if (!el) {
+                return false;
+            }
+            if (isKeyboardCapture(el)) {
+                return true;
+            }
+            var tag = (el.tagName || '').toLowerCase();
+            return tag === 'input' || tag === 'textarea' || tag === 'select' || !!el.isContentEditable;
+        };
+
+        var isScreen = function (el) {
+            while (el && el !== $document[0]) {
+                if (el.id === 'remote-screen-canvas'
+                        || (el.classList && (el.classList.contains('remote-live-video')
+                            || el.classList.contains('remote-preview-screen')))) {
+                    return true;
+                }
+                el = el.parentNode;
+            }
+            return false;
+        };
+
+        var setKeyboard = function (armed) {
+            armed = !!armed && !!player && !!$scope.remote.streaming;
+            if (armed === keyboardArmed) {
+                return;
+            }
+            keyboardArmed = armed;
+            if (!armed) {
+                flushKeys();
+            }
+            $scope.$applyAsync(function () {
+                $scope.remote.keyboard = armed;
+            });
+            if (armed) {
+                focusKeyboardCapture();
+            }
+        };
+
+        var handleRemoteKey = function (event, allowCharacters) {
+            if (!player || !$scope.remote.streaming) {
+                return false;
+            }
+            var e = event.originalEvent || event;
+            if (e.isComposing) {
+                return false;
+            }
+            // AltGr (ABNT2: / ? ° ª º) chega com ctrlKey e altKey ligados; nao e' atalho.
+            var altGr = !!(e.getModifierState && e.getModifierState('AltGraph'));
+            if (!altGr && (e.ctrlKey || e.metaKey || e.altKey)) {
+                // Atalhos do navegador/SO ficam com eles. Ctrl+V chega pelo evento 'paste'.
+                return false;
+            }
+            var key = e.key;
+            if (KEY_NAMES.hasOwnProperty(key)) {
+                sendKeyName(KEY_NAMES[key]);
+            } else if (allowCharacters && key && key.length === 1) {
+                queueText(key);
+            } else {
+                // Shift, CapsLock, acento pendente (Dead), F1...: nada a enviar.
+                return false;
+            }
+            event.preventDefault();
+            event.stopPropagation();
+            return true;
+        };
+
+        $scope.onScreenKey = function (event) {
+            return handleRemoteKey(event, true);
+        };
+
+        $scope.onKeyboardCaptureKey = function (event) {
+            return handleRemoteKey(event, false);
+        };
+
+        $scope.onKeyboardCaptureInput = function (event) {
+            if (!keyboardArmed || !player || !$scope.remote.streaming) {
+                return false;
+            }
+            var target = event.target || (event.originalEvent && event.originalEvent.target);
+            var text = target && target.value ? String(target.value) : '';
+            if (target) {
+                target.value = '';
+            }
+            if (text.length === 0) {
+                return false;
+            }
+            queueText(text);
+            if (event.preventDefault) {
+                event.preventDefault();
+            }
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+            return true;
+        };
+
+        $scope.activateRemoteKeyboard = function () {
+            setKeyboard(true);
+        };
+
+        var onDocumentPointerDown = function (event) {
+            var inside = isScreen(event.target);
+            if (inside && $scope.remote.streaming) {
+                // Se o foco esta' num campo da pagina, as teclas iriam para ele.
+                var active = $document[0].activeElement;
+                if (isEditable(active) && active.blur) {
+                    active.blur();
+                }
+            }
+            setKeyboard(inside);
+        };
+
+        var onDocumentKeyDown = function (event) {
+            if (!keyboardArmed || isEditable(event.target)) {
+                return;
+            }
+            $scope.onScreenKey(event);
+        };
+
+        var onDocumentPaste = function (event) {
+            if (!keyboardArmed || !player || !$scope.remote.streaming || isEditable(event.target)) {
+                return;
+            }
+            var data = event.clipboardData || $window.clipboardData;
+            var text = data ? data.getData('text') : '';
+            if (!text) {
+                return;
+            }
+            event.preventDefault();
+            flushKeys();
+            for (var i = 0; i < text.length; i += 400) {
+                player.type(text.substring(i, i + 400));
+            }
+            kick();
+        };
+
+        // Fase de captura: chega antes de qualquer handler da pagina. pointerdown porque o
+        // <video> do MSE faz preventDefault nele, o que suprime o mousedown; mousedown fica
+        // para navegadores sem Pointer Events.
+        $document[0].addEventListener('pointerdown', onDocumentPointerDown, true);
+        $document[0].addEventListener('mousedown', onDocumentPointerDown, true);
+        $document[0].addEventListener('keydown', onDocumentKeyDown, true);
+        $document[0].addEventListener('paste', onDocumentPaste, true);
+
+        /*
          * A digitacao vai por um campo proprio, e nao capturando teclas sobre o canvas.
          * O Android aplica o texto no campo em foco de uma vez (ACTION_SET_TEXT); mandar
          * tecla a tecla disputaria com o aplicativo em foco no aparelho. Alem disso, um
          * campo visivel deixa o operador conferir o que vai enviar antes de enviar.
          */
         $scope.sendRemoteText = function () {
-            var text = ($scope.remote.typing || '').trim();
+            var text = ($scope.remote.typing === undefined || $scope.remote.typing === null)
+                ? ''
+                : String($scope.remote.typing);
             if (!player || !$scope.remote.streaming || text.length === 0) {
                 return;
             }
@@ -759,8 +1185,22 @@ angular.module('headwind-kiosk')
             $scope.remote.typing = '';
         };
 
+        /*
+         * Item 4 da queixa, causa-raiz: isto costumava chamar $scope.stopRemote(), que
+         * encerra a sessao no SERVIDOR e no APARELHO. Como o controller e' destruido e
+         * recriado a cada F5 e a cada troca de aba do menu (a rota descarrega esta tela
+         * inteira), aquele stopRemote() matava a sessao de proposito toda vez -- exatamente o
+         * que a queixa descreve. So' fecha o socket deste navegador; a sessao no hub continua
+         * viva (dentro da carencia sem espectador -- VIEWER_GRACE_MS em RemoteSessionHub) e
+         * e' reatada quando o controller nasce de novo, por tryReattach().
+         */
         $scope.$on('$destroy', function () {
-            $scope.stopRemote();
+            flushKeys();
+            $document[0].removeEventListener('pointerdown', onDocumentPointerDown, true);
+            $document[0].removeEventListener('mousedown', onDocumentPointerDown, true);
+            $document[0].removeEventListener('keydown', onDocumentKeyDown, true);
+            $document[0].removeEventListener('paste', onDocumentPaste, true);
+            closePlayer();
         });
 
         loadCommandCatalog();

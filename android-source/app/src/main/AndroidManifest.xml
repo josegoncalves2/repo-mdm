@@ -26,24 +26,15 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29"/>
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.hwmdm.webfilter.permission.POLICY_UPDATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 <!-- This permission is dangerous and causes blocking by Play Protect in some countries.
      In fact, this permission is currently never used by Headwind MDM.
  -->
 <!--    <uses-permission android:name="android.permission.READ_SMS"/>-->
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
-        tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
                      tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.INJECT_EVENTS"
-        tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" android:maxSdkVersion="30"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:required="false" android:maxSdkVersion="30"/>
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" android:required="false"/>
@@ -58,14 +49,11 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <!-- Necessaria a partir do Android 14 para o servico que faz a captura de tela -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.REQUEST_PASSWORD_COMPLEXITY" />
     <uses-permission android:name="android.permission.MASTER_CLEAR"
@@ -114,6 +102,9 @@
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <permission android:name="com.hmdm.launcher.permission.PLUGIN_API"
+        android:protectionLevel="signature"/>
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -240,19 +231,16 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
-        <service android:name=".pro.service.CheckForegroundApplicationService"
-            android:exported="true"/>
-
-        <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true">
+        <!-- Protegido por permissao de ASSINATURA: so' apps assinados com a mesma chave do
+             launcher (os agentes da prefeitura, ex.: Suporte Remoto) conectam. BIND_DEVICE_ADMIN,
+             usada antes, e' reservada ao sistema: nenhum plugin conseguia se ligar, e o Suporte
+             Remoto ficava sem vinculo, sem log e sem receber o chamado de acesso remoto. -->
+        <service android:name=".service.PluginApiService" android:enabled="true" android:exported="true"
+            android:permission="com.hmdm.launcher.permission.PLUGIN_API">
             <intent-filter>
                 <action android:name="com.hmdm.action.Connect" />
             </intent-filter>
         </service>
-
-        <!-- Removido: declaracao nua de servico com "AccessibilityService" no nome era o
-             gatilho classico do Play Protect no scan estatico do manifest (USE_ACCESSIBILITY
-             ja e' false em build.gradle, nada em codigo chamava este stub). O binario oficial
-             hmdm-6.36-os.apk nao declara isso; ver scripts/verificar-apk.sh. -->
 
         <service android:name="org.eclipse.paho.android.service.MqttService"
             android:foregroundServiceType="specialUse|systemExempted"
@@ -275,16 +263,7 @@
                 android:value="Push notification service"/>
         </service>
 
-        <!-- Captura de tela pedida pelo painel (push "screenshot"). A activity so existe
-             para obter o consentimento de MediaProjection, que o Android exige sempre. -->
-        <service android:name=".service.ScreenshotService"
-            android:foregroundServiceType="mediaProjection"
-            android:exported="false"/>
 
-        <activity android:name=".ui.ScreenshotConsentActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:excludeFromRecents="true"
-            android:exported="false"/>
 
     </application>
 

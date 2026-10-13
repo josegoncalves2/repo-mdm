@@ -199,6 +199,9 @@ public class DeviceInfoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/private/{deviceNumber}")
     public Response getDeviceDetailedInfo(@PathParam("deviceNumber") String deviceNumber) {
+        if (!SecurityContext.get().hasPermission("plugin_deviceinfo_access")) {
+            return Response.PERMISSION_DENIED();
+        }
         try {
             Device dbDevice = this.deviceDAO.getDeviceByNumber(deviceNumber);
             if (dbDevice == null) {
@@ -227,6 +230,9 @@ public class DeviceInfoResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/private/search/device")
     public Response lookupDevices(@QueryParam("filter") String filter, @QueryParam("limit") int limit) {
+        if (!SecurityContext.get().hasPermission("plugin_deviceinfo_access")) {
+            return Response.PERMISSION_DENIED();
+        }
         try {
             final List<DeviceLookupItem> devices = this.deviceDAO.findDevices(filter, limit);
             return Response.OK(devices);
@@ -253,6 +259,9 @@ public class DeviceInfoResource {
     @Path("/private/search/dynamic")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPhotos(DynamicInfoFilter filter) {
+        if (!SecurityContext.get().hasPermission("plugin_deviceinfo_access")) {
+            return Response.PERMISSION_DENIED();
+        }
         try {
             final String deviceNumber = filter.getDeviceNumber();
 

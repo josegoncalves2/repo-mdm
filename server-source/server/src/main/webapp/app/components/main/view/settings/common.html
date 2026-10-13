@@ -21,15 +21,15 @@
                     ng-options="role.id as role.name for role in userRoles">
             </select>
         </div>
-        <div class="dtv-role-count" ng-if="!loading">{{countVisibleColumns()}} columns visible</div>
+        <div class="dtv-role-count" ng-if="!loading">{{countVisibleColumns()}} {{'columns.visible' | localize}}</div>
     </div>
 
     <div class="dtv-group" ng-repeat="group in columnGroups" ng-if="groupHasVisibleColumns(group)">
         <div class="dtv-group-header">
             <h4>{{group.label}}</h4>
             <div class="dtv-group-actions">
-                <button type="button" class="dtv-link-btn" ng-disabled="loading" ng-click="setGroupColumns(group, true)">Select all</button>
-                <button type="button" class="dtv-link-btn" ng-disabled="loading" ng-click="setGroupColumns(group, false)">Clear</button>
+                <button type="button" class="dtv-link-btn" ng-disabled="loading" ng-click="setGroupColumns(group, true)" localized>columns.select.all</button>
+                <button type="button" class="dtv-link-btn" ng-disabled="loading" ng-click="setGroupColumns(group, false)" localized>columns.clear</button>
             </div>
         </div>
         <div class="dtv-toggle-grid">

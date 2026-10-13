@@ -1,0 +1,53 @@
+<div class="content-wrapper fullscreen" ng-controller="ShellController">
+    <div class="hwmdm-workspace" ng-class="{'nav-open': navOpen}">
+
+        <div class="hwmdm-navbar">
+            <button type="button" class="hwmdm-nav-toggle" ng-click="toggleNav()"
+                    aria-controls="hwmdm-sidebar" aria-label="Menu">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                <span localized-change-tracking>nav.menu</span>
+            </button>
+            <span class="hwmdm-navbar-current">{{tabTitle()}}</span>
+        </div>
+
+        <div class="hwmdm-nav-scrim" ng-click="closeNav()"></div>
+
+        <aside class="hwmdm-sidebar" id="hwmdm-sidebar">
+            <div class="hwmdm-sidebar-brand">
+                <span localized-change-tracking>nav.brand.control.panel</span>
+                <strong>Headwind MDM</strong>
+                <button type="button" class="hwmdm-nav-close" ng-click="closeNav()" aria-label="Close menu">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+
+            <nav class="hwmdm-nav" aria-label="Headwind MDM modules" ng-if="navReady">
+                <div class="hwmdm-nav-section" ng-repeat="section in navSections">
+                    <div class="hwmdm-nav-heading">{{section.labelKey | localize}}</div>
+                    <button type="button" class="hwmdm-nav-link"
+                            ng-repeat="m in section.modules"
+                            ng-class="{'hwmdm-nav-link-active': activeTab === m.id, 'is-maintenance': isModuleInMaintenance(m.id)}"
+                            ng-click="openTab(m.id)"
+                            data-testid="nav-{{m.testId}}">
+                        <span class="hw-icon hw-icon-{{m.icon}}"></span>
+                        <span class="hwmdm-nav-label">{{m.labelKey | localize}}</span>
+                        <span class="hwmdm-nav-badge" ng-if="isModuleInMaintenance(m.id)" localized>modules.badge.maintenance</span>
+                    </button>
+                </div>
+            </nav>
+
+            <nav class="hwmdm-nav hwmdm-nav-skeleton" aria-hidden="true" ng-if="!navReady">
+                <div class="hwmdm-nav-section" ng-repeat="n in [1,2,3,4,5,6]">
+                    <div class="hwmdm-nav-heading-skeleton"></div>
+                    <div class="hwmdm-nav-link-skeleton" ng-repeat="i in [1,2,3]"></div>
+                </div>
+            </nav>
+
+            <div class="hwmdm-sidebar-footer"><hwmdm-version-footer></hwmdm-version-footer></div>
+        </aside>
+
+        <main class="hwmdm-main">
+            <div class="hwmdm-main-surface" ui-view></div>
+        </main>
+    </div>
+</div>

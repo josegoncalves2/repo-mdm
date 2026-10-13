@@ -62,6 +62,8 @@ angular.module('headwind-kiosk')
     })
     .factory('backupService', function ($resource) {
         return $resource('', {}, {
+            getSchedule: {url: 'rest/private/backup/schedule', method: 'GET'},
+            saveSchedule: {url: 'rest/private/backup/schedule', method: 'PUT'},
             list: {url: 'rest/private/backup/list', method: 'GET'},
             create: {url: 'rest/private/backup/create', method: 'POST'},
             remove: {url: 'rest/private/backup/:filename', method: 'DELETE'},

@@ -77,6 +77,7 @@ public interface ApplicationMapper {
                     "applicationVersions.urlArmeabi, " +
                     "applicationVersions.urlArm64, " +
                     "applicationVersions.apkHash, " +
+                    "applicationVersions.signatureHash, " +
                     "(usageData.usageCount > 0 OR versionsData.appVersionsCount = 1) AS deletionProhibited, " +
                     "customers.master AS commonApplication," +
                     "applications.system, " +

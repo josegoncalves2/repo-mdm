@@ -1,9 +1,14 @@
-* {
+/* Antes: `* { font-size: 14px; }` achatava toda a hierarquia tipografica
+   (h1..h6 todos em 14px). Substituido por uma base no corpo do texto e nos
+   controles de formulario -- css/hwmdm-ui.css (carregado por ultimo) devolve
+   a escala de titulos dentro do workspace/modais/login. */
+body, input, select, textarea, button, .btn {
     font-size: 14px;
 }
 
 html {
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -171,7 +176,8 @@ body {
 }
 
 .width-1000 {
-    max-width: 1000px;
+    max-width: none;
+    width: 100%;
     margin: 0px auto;
 }
 
@@ -2221,7 +2227,7 @@ td.no-right-padding {
 td.deviceActions {
     min-width: 190px;
     width: 1%;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 td.deviceActions > button,
@@ -3599,25 +3605,33 @@ body {
 }
 
 .hwmdm-workspace {
+    --hwmdm-sidebar-width: 300px;
+    --hwmdm-workspace-pad: 18px;
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-columns: var(--hwmdm-sidebar-width) minmax(0, 1fr);
     gap: 18px;
     width: 100%;
     max-width: 1680px;
     margin: 0 auto;
-    padding: 18px;
+    padding: var(--hwmdm-workspace-pad);
 }
 
+/* Sidebar sticky dentro da propria coluna do grid: nao depende mais de 100vw,
+   entao nao desliza quando a largura da pagina muda ou quando aparece scroll
+   horizontal. Fica fixa verticalmente ao rolar o conteudo principal. */
 .hwmdm-sidebar {
     position: sticky;
     top: 74px;
     align-self: start;
-    max-height: calc(100vh - 92px);
+    width: 100%;
+    max-height: calc(100vh - 74px - var(--hwmdm-workspace-pad));
     overflow-y: auto;
     background: var(--hwmdm-sidebar-bg);
     color: var(--hwmdm-sidebar-text);
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
+    scrollbar-gutter: stable;
 }
 
 .hwmdm-sidebar-brand {
@@ -3744,6 +3758,7 @@ body {
 }
 
 .hwmdm-main {
+    grid-column: 2;
     min-width: 0;
 }
 
@@ -3815,8 +3830,7 @@ body {
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
     background: var(--hwmdm-surface);
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: auto;
 }
 
 .hwmdm-main .table {
@@ -4085,9 +4099,9 @@ body {
 
 .hwmdm-split-layout {
     display: grid;
-    grid-template-columns: minmax(280px, 0.95fr) minmax(520px, 1.35fr);
-    gap: 18px;
-    align-items: start;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
 }
 
 .remote-layout {
@@ -4095,24 +4109,27 @@ body {
 }
 
 .remote-device-panel {
-    max-height: 720px;
+    max-height: calc(100vh - 160px);
     overflow-y: auto;
+    border-right: 1px solid var(--hwmdm-border-subtle);
+    background: var(--hwmdm-surface);
 }
 
 .remote-device-item {
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 0;
+    border-radius: 0;
     cursor: pointer;
-    background: var(--hwmdm-surface);
-    border: 1px solid var(--hwmdm-border);
-    border-left: 3px solid var(--hwmdm-border);
-    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--hwmdm-border-subtle);
+    border-left: 3px solid transparent;
+    transition: background-color 0.12s ease, border-color 0.12s ease;
 }
 
 .remote-device-item:hover {
-    background: var(--hwmdm-surface-hover);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    background: rgba(14, 165, 183, 0.04);
+    box-shadow: none;
 }
 
 .remote-device-item-active {
@@ -4120,17 +4137,39 @@ body {
     border-left-color: #0ea5b7;
 }
 
+.chat-device-option {
+    width: 100%;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.chat-device-option:focus-visible {
+    position: relative;
+    z-index: 1;
+    outline: 2px solid var(--hwmdm-accent);
+    outline-offset: -2px;
+}
+
 .remote-device-item-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+}
+
+.remote-device-item-head > div:first-child {
+    min-width: 0;
+    overflow: hidden;
 }
 
 .remote-device-item-meta {
     font-size: 12px;
     color: var(--hwmdm-muted);
-    margin-top: 4px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .remote-device-item-status {
@@ -4140,7 +4179,10 @@ body {
 .remote-device-item-foot {
     font-size: 11px;
     color: var(--hwmdm-muted-soft);
-    margin-top: 8px;
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .remote-screen-shell {
@@ -4178,12 +4220,20 @@ body {
 }
 
 .remote-preview-screen {
+    position: relative;
     display: flex;
     align-items: stretch;
     justify-content: center;
     min-height: 500px;
     background: #1a1a1a;
     color: #e5edf5;
+}
+
+.remote-preview-screen.remote-preview-streaming {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 0;
+    margin-inline: auto;
 }
 
 .remote-preview-state {
@@ -4227,9 +4277,17 @@ body {
     display: block;
     margin: auto;
     max-width: 100%;
-    max-height: 640px;
+    max-height: min(640px, calc(100vh - 240px));
     object-fit: contain;
     background: #000;
+}
+
+.remote-live-video {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: min(640px, calc(100vh - 240px));
+    object-fit: contain;
 }
 
 /* Cursor de ponteiro so' quando o clique realmente sai daqui: sem acessibilidade
@@ -4237,6 +4295,30 @@ body {
    acontece. */
 .remote-live-canvas-interactive {
     cursor: pointer;
+}
+
+.remote-keyboard-capture {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    opacity: 0.01;
+    border: 0;
+    padding: 0;
+    resize: none;
+    background: transparent;
+    color: transparent;
+    caret-color: transparent;
+    pointer-events: none;
+}
+
+.remote-keyboard-capture:focus {
+    outline: none;
+}
+
+.remote-keyboard-arm {
+    margin-left: 4px;
 }
 
 .remote-input-bar {
@@ -4319,6 +4401,15 @@ body {
     padding: 16px;
     background: var(--hwmdm-bg);
     border-top: 1px solid var(--hwmdm-border);
+}
+
+.remote-actions-shell .remote-action-grid .btn,
+.remote-actions-shell .remote-message-row .btn {
+    min-height: 38px;
+    height: auto;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .kiosk-page {
@@ -4418,10 +4509,20 @@ body {
 
 .kiosk-table {
     margin-bottom: 0;
+    table-layout: auto;
 }
 
 .kiosk-table td {
     vertical-align: middle !important;
+}
+
+.kiosk-table .btn {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    padding: 4px 10px;
 }
 
 .kiosk-muted {
@@ -4934,6 +5035,11 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 14px;
+    align-items: start;
+}
+
+.reports-grid > .ext-hub-section {
+    margin-bottom: 0;
 }
 
 /* Export sits below the report, after the data it exports. */
@@ -5014,6 +5120,13 @@ body {
     margin: 0 0 14px;
 }
 
+.gps-map-page > .hwmdm-page-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+}
+
 .gps-page-toolbar h4 {
     margin: 0;
     color: var(--hwmdm-text);
@@ -5048,49 +5161,281 @@ body {
     }
 }
 
-.gps-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 14px;
+:focus-visible {
+    outline: 2px solid var(--hwmdm-accent, #0ea5b7);
+    outline-offset: 2px;
 }
 
-.gps-map-shell,
-.gps-device-list {
+.gps-map-shell {
+    position: relative;
     border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
     background: var(--hwmdm-surface);
     overflow: hidden;
 }
 
-.gps-map-shell {
-    position: relative;
-}
-
 .gps-map-canvas {
     height: 640px;
 }
 
-.gps-device-list {
-    position: relative;
-    max-height: 640px;
+.gps-history-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 14px;
+    margin-bottom: 8px;
+    background: var(--hwmdm-surface);
+    border: 1px solid var(--hwmdm-border);
+    border-radius: 6px;
+}
+
+.gps-history-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.gps-history-controls label {
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.gps-history-controls .form-control {
+    width: auto;
+    min-width: 100px;
+}
+
+.gps-history-count {
+    font-size: 13px;
+}
+
+.gps-history-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.gps-device-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.gps-device-search {
+    padding: 10px 12px 0;
+}
+
+.gps-device-search .form-control {
+    font-size: 13px;
+}
+
+.gps-device-stats {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--hwmdm-muted);
+    border-bottom: 1px solid var(--hwmdm-border-subtle);
+}
+
+.gps-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.gps-device-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    font-size: 11px;
+    color: var(--hwmdm-muted);
+    white-space: nowrap;
+}
+
+.gps-device-battery {
+    font-size: 11px;
+}
+
+.gps-map-area {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.gps-map-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.gps-map-selection-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.gps-map-selection-actions .btn {
+    white-space: nowrap;
+}
+
+.remote-body-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+    gap: 0;
+    align-items: start;
+    min-height: 0;
+}
+
+.remote-body-left {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.remote-body-right {
+    min-width: 0;
+    border-left: 1px solid var(--hwmdm-border);
+    max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
 
-.gps-device-list .summary-empty-map {
-    position: static;
-    min-height: 180px;
+.remote-body-right .remote-action-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.gps-device-item {
-    display: block;
-    border: 0;
-    border-bottom: 1px solid var(--hwmdm-border-subtle);
-    border-radius: 0 !important;
-    padding: 10px 12px;
+.remote-body-right .remote-action-grid .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    line-height: 1.35;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
-.gps-device-item:last-child {
-    border-bottom: 0;
+.remote-body-right .remote-message-row {
+    flex-direction: column;
+}
+
+.remote-body-right .remote-message-row .btn {
+    width: 100%;
+    min-height: 38px;
+    height: auto;
+    justify-content: center;
+    white-space: normal;
+}
+
+@media (max-width: 1280px) {
+    .remote-body-columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .remote-body-right {
+        border-left: 0;
+        border-top: 1px solid var(--hwmdm-border);
+        max-height: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .gps-map-toolbar,
+    .gps-map-selection-actions {
+        width: 100%;
+    }
+
+    .gps-map-selection-actions {
+        margin-left: 0;
+    }
+
+    .gps-map-selection-actions .btn {
+        flex: 1 1 auto;
+    }
+}
+
+.gps-detail-panel {
+    border: 1px solid var(--hwmdm-border);
+    border-radius: 6px;
+    background: var(--hwmdm-surface);
+    margin-top: 10px;
+    padding: 14px;
+}
+
+.gps-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.gps-detail-header strong {
+    font-size: 15px;
+}
+
+.gps-detail-header .close {
+    margin-left: auto;
+}
+
+.gps-detail-status {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.gps-detail-online {
+    color: #1f8a70;
+    background: #e6f5f0;
+}
+
+.gps-detail-offline {
+    color: #d64545;
+    background: #fde8e8;
+}
+
+.gps-detail-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+}
+
+.gps-detail-row {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.gps-detail-label {
+    font-size: 11px;
+    color: var(--hwmdm-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.gps-detail-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hwmdm-border-subtle);
+}
+
+.gps-footer-bar {
+    padding: 6px 12px;
+    font-size: 12px;
 }
 
 /* ==========================================================================
@@ -5527,29 +5872,23 @@ body {
 /* --- 1440 and below: give the content column back some room ---------------- */
 @media (max-width: 1440px) {
     .hwmdm-workspace {
-        grid-template-columns: 264px minmax(0, 1fr);
+        --hwmdm-sidebar-width: 264px;
+        --hwmdm-workspace-pad: 16px;
         gap: 16px;
-        padding: 16px;
     }
 }
 
 @media (max-width: 1200px) {
     .hwmdm-workspace {
-        grid-template-columns: 240px minmax(0, 1fr);
+        --hwmdm-sidebar-width: 240px;
+        --hwmdm-workspace-pad: 14px;
         gap: 14px;
-        padding: 14px;
     }
 
-    .gps-layout,
     .chat-layout,
-    .hwmdm-split-layout,
     .summary-layout,
     .summary-chart-grid {
         grid-template-columns: minmax(0, 1fr);
-    }
-
-    .gps-device-list {
-        max-height: 320px;
     }
 
     .summary-metric-grid,
@@ -5680,6 +6019,24 @@ body {
     }
 }
 
+/* Desktop/zoomed-out browsers must keep the fixed sidebar and the grid column
+   in the same coordinate system. This rule intentionally lives after the
+   drawer rules so a leaked media block or cached ordering cannot let the main
+   content slide underneath the menu. */
+@media (min-width: 1025px) {
+    .hwmdm-workspace {
+        box-sizing: border-box;
+        display: grid;
+        max-width: 1680px;
+        padding: var(--hwmdm-workspace-pad);
+    }
+
+    .hwmdm-main {
+        grid-column: 2;
+        padding: 0;
+    }
+}
+
 /* --- 768 and below: one column, and stop horizontal page scroll ------------ */
 @media (max-width: 768px) {
     .header.hwmdm-topbar {
@@ -5740,6 +6097,22 @@ body {
         -webkit-overflow-scrolling: touch;
     }
 
+    /* Override Bootstrap 3 nowrap so columns can shrink naturally.
+       Only the wrapper scrolls when the table is genuinely wider than
+       the viewport; individual cells are allowed to wrap. */
+    .table-responsive > .table > thead > tr > th,
+    .table-responsive > .table > tbody > tr > th,
+    .table-responsive > .table > tfoot > tr > th,
+    .table-responsive > .table > thead > tr > td,
+    .table-responsive > .table > tbody > tr > td,
+    .table-responsive > .table > tfoot > tr > td {
+        white-space: normal;
+    }
+
+    .hwmdm-main .table {
+        width: 100%;
+    }
+
     .hwmdm-section-card,
     .hwmdm-form-section,
     .ext-hub-section,
@@ -5753,6 +6126,14 @@ body {
         text-align: left;
         padding-top: 0;
         margin-bottom: 4px;
+    }
+
+    .hwmdm-split-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hwmdm-split-layout .remote-device-panel {
+        max-height: 240px;
     }
 
     .gps-page-toolbar,
@@ -5837,6 +6218,31 @@ body {
     }
 }
 
+/* --- 400 and below: phone portrait ------------------------------------------- */
+@media (max-width: 400px) {
+    /* Action buttons in the devices table: shrink icons-only buttons so the
+       whole column fits without forcing the table wider than the viewport. */
+    .hwmdm-main .table .deviceActions .btn {
+        padding: 4px 5px;
+        margin: 1px;
+        font-size: 11px;
+    }
+
+    .hwmdm-main .table .deviceActions .btn .glyphicon {
+        font-size: 11px;
+    }
+
+    .hwmdm-main .table .deviceActions .dropdown-toggle .caret {
+        display: none;
+    }
+
+    /* Let the table wrapper scroll horizontally only when genuinely needed,
+       but keep the page itself from scrolling sideways. */
+    .hwmdm-main .table-responsive {
+        max-width: 100%;
+    }
+}
+
 /* A viewport this narrow cannot show a data table without a scroller, and the
    page itself must never be the thing that scrolls sideways. */
 @media (max-width: 1024px) {
@@ -5853,4 +6259,43 @@ body {
     margin: 0 0 10px;
     color: var(--hwmdm-muted);
     font-size: 13px;
+}
+
+.reports-page .reports-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+.reports-page .reports-grid > .ext-hub-section {
+    min-width: 0;
+}
+
+.gps-map-page > .hwmdm-page-toolbar > div:first-child {
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+.gps-page-actions {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+@media (max-width: 1200px) {
+    .reports-page .reports-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .reports-page .reports-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gps-page-actions {
+        justify-content: flex-end;
+        margin-left: 0;
+        width: 100%;
+    }
 }

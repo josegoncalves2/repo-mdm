@@ -1,0 +1,2 @@
+*.facebook.com
+*.webfilter-sentinel.invalid

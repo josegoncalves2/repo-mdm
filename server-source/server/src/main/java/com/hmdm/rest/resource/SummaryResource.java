@@ -175,6 +175,13 @@ public class SummaryResource {
     @Path("/locations")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getDeviceLocations(@QueryParam("groupId") Integer groupId) {
+        // Mapa de localizacao: so' quem tem a permissao do mapa (ou o acesso amplo a dispositivos).
+        if (!com.hmdm.security.SecurityContext.get().hasPermission("device.gps.view")
+                && !com.hmdm.security.SecurityContext.get().hasPermission("edit_devices")) {
+            log.error("Unauthorized attempt to read device locations by user {}",
+                    com.hmdm.security.SecurityContext.get().getCurrentUserName());
+            return Response.PERMISSION_DENIED();
+        }
         try {
             return Response.OK(deviceDAO.getDeviceLocations(groupId));
         } catch (Exception e) {

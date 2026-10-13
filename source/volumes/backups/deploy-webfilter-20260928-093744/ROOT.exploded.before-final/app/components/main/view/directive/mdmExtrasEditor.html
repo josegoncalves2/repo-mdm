@@ -1,0 +1,87 @@
+<div class="mdm-extras" ng-class="{'mdm-picker-disabled': desabilitado}">
+
+    <div class="alert alert-danger" ng-if="erro" style="padding:8px 12px;font-size:12px;margin:10px;">
+        {{ erro }}
+    </div>
+
+    <table class="mdm-extras-tabela" ng-if="pares.length">
+        <tr ng-repeat="par in pares track by $index">
+            <td class="mdm-extras-chave">
+                <span ng-if="definicao(par.chave)">
+                    <strong>{{ definicao(par.chave).label }}</strong>
+                    <code class="mdm-item-key">{{ par.chave }}</code>
+                </span>
+                <input ng-if="!definicao(par.chave)" type="text" class="form-control input-sm"
+                       ng-model="par.chave" ng-change="gravar()" ng-disabled="desabilitado"
+                       placeholder="com.hmdm.CHAVE"/>
+            </td>
+            <td class="mdm-extras-valor">
+                <select ng-if="definicao(par.chave).tipo === 'booleano'" class="form-control input-sm"
+                        ng-model="par.valor" ng-change="gravar()" ng-disabled="desabilitado">
+                    <option value="true">Sim</option>
+                    <option value="false">Nao</option>
+                </select>
+                <select ng-if="definicao(par.chave).tipo === 'opcao'" class="form-control input-sm"
+                        ng-model="par.valor" ng-change="gravar()" ng-disabled="desabilitado"
+                        ng-options="o as o for o in definicao(par.chave).opcoes"></select>
+                <input ng-if="!definicao(par.chave) || definicao(par.chave).tipo === 'texto' || definicao(par.chave).tipo === 'numero'"
+                       type="{{ definicao(par.chave).tipo === 'numero' ? 'number' : 'text' }}"
+                       class="form-control input-sm"
+                       ng-model="par.valor" ng-change="gravar()" ng-disabled="desabilitado"/>
+            </td>
+            <td class="mdm-extras-acao">
+                <a href="" ng-click="$event.preventDefault(); remover($index)"
+                   ng-if="!desabilitado" title="Remover">&times;</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="mdm-extras-vazio" ng-if="!pares.length && !erro">
+        Nenhum parametro extra definido. Os campos abaixo sao os aceitos pelo agente —
+        clique para adicionar.
+    </div>
+
+    <div class="mdm-extras-add" ng-if="!desabilitado">
+        <div class="mdm-extras-add-titulo">Parametros disponiveis</div>
+        <div class="mdm-extras-chips">
+            <button type="button" class="btn btn-default btn-xs"
+                    ng-repeat="def in disponiveis"
+                    ng-disabled="jaAdicionada(def)"
+                    ng-click="adicionar(def)"
+                    title="{{ def.help }}">
+                + {{ def.label }}
+            </button>
+            <button type="button" class="btn btn-link btn-xs" ng-click="adicionarLivre()">
+                + outra chave
+            </button>
+        </div>
+
+        <div class="mdm-extras-ajuda">
+            <div ng-repeat="def in disponiveis" ng-if="jaAdicionada(def) && def.help">
+                <code class="mdm-item-key">{{ def.key }}</code>
+                <span class="mdm-item-help" ng-class="{'text-warning': def.risk === 'warn'}">{{ def.help }}</span>
+            </div>
+        </div>
+
+        <div class="mdm-extras-auto">
+            <a href="" ng-click="$event.preventDefault(); mostrarAuto = !mostrarAuto">
+                {{ mostrarAuto ? 'ocultar' : 'ver' }} os parametros preenchidos automaticamente
+            </a>
+            <div ng-if="mostrarAuto" class="mdm-extras-ajuda">
+                <div ng-repeat="def in automaticas">
+                    <code class="mdm-item-key">{{ def.key }}</code>
+                    <span class="mdm-item-help">{{ def.help }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdm-extras-avancado">
+            <a href="" ng-click="$event.preventDefault(); mostrarAvancado = !mostrarAvancado">
+                {{ mostrarAvancado ? 'ocultar' : 'mostrar' }} o fragmento JSON gerado
+            </a>
+            <textarea ng-if="mostrarAvancado" class="form-control" rows="4"
+                      ng-model="bruto" ng-model-options="{getterSetter: true}"
+                      ng-disabled="desabilitado"></textarea>
+        </div>
+    </div>
+</div>

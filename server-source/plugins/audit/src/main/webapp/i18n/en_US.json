@@ -43,5 +43,17 @@
   "table.heading.plugin.audit.ipAddress": "IP-address",
   "table.heading.plugin.audit.action": "Action",
   "table.heading.plugin.audit.payload": "Payload",
-  "notfound.common.plugin.audit.logs": "No audit log records found. Try a different query."
+  "notfound.common.plugin.audit.logs": "No audit log records found. Try a different query.",
+  "plugin.audit.action.device.force.kiosk": "Forced kiosk on device",
+  "plugin.audit.action.device.remote.command": "Remote command sent to device",
+  "plugin.audit.action.message.remove": "Message deleted",
+  "plugin.audit.action.message.send": "Message sent",
+  "plugin.audit.action.push.remove": "Push message deleted",
+  "plugin.audit.action.push.send": "Push message sent",
+  "plugin.audit.action.remote.start": "Remote access started",
+  "plugin.audit.action.remote.stop": "Remote access stopped",
+  "plugin.audit.action.update.role": "Role updated",
+  "plugin.audit.action.update.settings": "Settings updated",
+  "plugin.audit.action.user.logout": "Logout",
+  "plugin.audit.action.webfilter.update": "Web Filter updated"
 }

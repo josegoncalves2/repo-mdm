@@ -277,8 +277,17 @@ public class GetServerConfigTask extends AsyncTask< Void, Integer, Integer > {
 
         if (response == null) {
             serverHost = settingsHelper.getSecondaryBaseUrl();
-            response = secondaryServerService.enrollAndGetServerConfig(settingsHelper.getServerProject(),
-                    deviceId, signature, Build.CPU_ABI, createOptions).execute();
+            try {
+                response = secondaryServerService.enrollAndGetServerConfig(settingsHelper.getServerProject(),
+                        deviceId, signature, Build.CPU_ABI, createOptions).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (response == null) {
+            errorText = "Enrollment failed: primary and secondary servers are unavailable";
+            return null;
         }
 
         if (response.isSuccessful() && Const.STATUS_OK.equals(response.body().getStatus()) && response.body().getData() != null) {
@@ -310,9 +319,18 @@ public class GetServerConfigTask extends AsyncTask< Void, Integer, Integer > {
 
         if (response == null) {
             serverHost = settingsHelper.getSecondaryBaseUrl();
-            response = secondaryServerService.
-                    enrollAndGetServerConfigRaw(settingsHelper.getServerProject(),
-                            deviceId, signature, Build.CPU_ABI, createOptions).execute();
+            try {
+                response = secondaryServerService.
+                        enrollAndGetServerConfigRaw(settingsHelper.getServerProject(),
+                                deviceId, signature, Build.CPU_ABI, createOptions).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (response == null) {
+            errorText = "Enrollment failed: primary and secondary servers are unavailable";
+            return null;
         }
 
         if (response.isSuccessful()) {

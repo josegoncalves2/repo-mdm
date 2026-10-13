@@ -67,7 +67,6 @@ public interface NotificationMapper {
 
     @Select("SELECT status FROM pendingPushes WHERE messageId = #{messageId}")
     Integer getDeliveryStatus(@Param("messageId") int messageId);
-
     @Delete("DELETE FROM pushMessages " +
             "WHERE EXISTS " +
             "(" +

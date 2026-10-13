@@ -10,6 +10,7 @@ com/hmdm/rest/resource/UserRoleResource.class
 com/hmdm/HMDMApplication.class
 com/hmdm/guice/module/StartupTaskModule$UpdateDeviceFastSearchTask.class
 com/hmdm/guice/module/MainRestModule.class
+com/hmdm/remote/RemoteSessionHub$EscritaEspectador.class
 com/hmdm/guice/module/LiquibaseModule.class
 com/hmdm/rest/json/view/devicelist/DeviceView.class
 com/hmdm/rest/json/AuthOptionsResponse.class
@@ -34,6 +35,7 @@ com/hmdm/HMDMApplication$1.class
 com/hmdm/rest/json/view/devicelist/DeviceApplicationView.class
 com/hmdm/rest/resource/HintResource.class
 com/hmdm/remote/RemoteSessionHub$PolledFrames.class
+com/hmdm/service/backup/BackupArchiveService.class
 com/hmdm/rest/resource/IconResource.class
 com/hmdm/rest/json/BackupInfo.class
 com/hmdm/rest/json/NameResponse.class

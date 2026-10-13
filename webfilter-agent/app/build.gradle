@@ -1,0 +1,50 @@
+plugins { id 'com.android.application' }
+
+// Tem de ser o hash.secret do servidor (SHARED_SECRET do source/.env); sem ele o
+// tablet rejeita toda politica com "Assinatura da politica do MDM nao confere".
+def mdmSharedSecret = System.getenv('SHARED_SECRET') ?: project.findProperty('SHARED_SECRET')
+if (!mdmSharedSecret) {
+    throw new GradleException('SHARED_SECRET ausente: use o valor de source/.env')
+}
+
+android {
+    namespace 'com.hwmdm.webfilter'
+    compileSdk 34
+    defaultConfig {
+        applicationId 'com.hwmdm.webfilter'
+        minSdk 26
+        targetSdk 34
+        versionCode 5
+        versionName '1.4'
+        buildConfigField 'String', 'REQUEST_SIGNATURE', "\"${mdmSharedSecret}\""
+    }
+    signingConfigs {
+        release {
+            storeFile file('../../android-source/keystore/hwmdm-release.jks')
+            storePassword 'HwMdm!Release2026'
+            keyAlias 'hwmdm'
+            keyPassword 'HwMdm!Release2026'
+            // Mesmo perfil conferido por scripts/verificar-apk.sh: v2 apenas.
+            // v1 e' dispensavel com minSdk 24 e sinaliza no scan estatico; v3 traz bloco de
+            // rotacao de chave que o binario oficial nao tem.
+            enableV1Signing false
+            enableV2Signing true
+            enableV3Signing false
+        }
+    }
+
+    buildTypes {
+        release { minifyEnabled false; signingConfig signingConfigs.release }
+        debug { minifyEnabled false }
+    }
+
+    buildFeatures { aidl true; buildConfig true }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+}

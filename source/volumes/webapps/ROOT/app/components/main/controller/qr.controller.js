@@ -2,7 +2,7 @@
 angular.module('headwind-kiosk')
     .controller('QRController', function ($state, $scope, $window, $stateParams, $http,
                                           localization, hintService, groupService, $timeout, rebranding) {
-        $scope.size = (Math.min($window.innerWidth, $window.innerHeight) * 0.80).toFixed(0);
+        $scope.size = Math.min((Math.min($window.innerWidth, $window.innerHeight) * 0.80), 250).toFixed(0);
         $scope.deviceId = $stateParams.deviceId;
 
         $scope.formData = {
@@ -37,7 +37,7 @@ angular.module('headwind-kiosk')
 
         $scope.renew = function () {
             $scope.showQR = false;
-            $scope.size = (Math.min($window.innerWidth, $window.innerHeight) * 0.80).toFixed(0);
+            $scope.size = Math.min((Math.min($window.innerWidth, $window.innerHeight) * 0.80), 250).toFixed(0);
             $scope.deviceId = $scope.formData.deviceIdNew;
             generateQrUrl();
             if ($scope.jsonData) {

@@ -98,7 +98,10 @@ public class QRCodeResource {
         this.filesDirectory = filesDirectory;
         final URL url = new URL(baseUrl);
         final int port = url.getPort();
-        this.baseUrlForQrCode = url.getProtocol() + "://" + url.getHost() + (port != -1 ? ":" + port : "");
+        final String path = url.getPath();
+        this.baseUrlForQrCode = url.getProtocol() + "://" + url.getHost()
+                + (port != -1 ? ":" + port : "")
+                + (path != null && path.length() > 1 ? path : "");
     }
 
     /**
@@ -193,13 +196,13 @@ public class QRCodeResource {
                         // URL can be overridden to simplify enrollment in closed networks
                         String url = !StringUtil.isEmpty(configuration.getLauncherUrl()) ? configuration.getLauncherUrl() : appVersion.getUrl();
                         final String apkUrl = url.replace(" ", "%20");
-                        final String sha256;
-                        if (appVersion.getApkHash() == null) {
-                            // Here we keep the original URL to be able to access the file locally
-                            sha256 = calculateApkHash(appVersion.getUrl());
+                        // The QR checksum must describe the exact APK URL used by this
+                        // enrollment. Stored hashes may be stale or truncated (for
+                        // example, missing Base64 padding), which makes Android reject
+                        // the download before the device can contact the MDM server.
+                        final String sha256 = calculateApkHash(url);
+                        if (url.equals(appVersion.getUrl()) && !sha256.equals(appVersion.getApkHash())) {
                             this.unsecureDAO.saveApkFileHash(appVersion.getId(), sha256);
-                        } else {
-                            sha256 = appVersion.getApkHash();
                         }
 
                         Application appMain = this.unsecureDAO.findApplicationById(appVersion.getApplicationId());
@@ -243,10 +246,22 @@ public class QRCodeResource {
                             }
                         }
 
+                        String checksumEntry = "\"android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM\":\"" + sha256 + "\",\n";
+
+                        String signatureChecksumEntry = "";
+                        if (configuration.getQrParameters() != null && configuration.getQrParameters().contains("PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM")) {
+                            signatureChecksumEntry = configuration.getQrParameters().trim();
+                            if (!signatureChecksumEntry.endsWith(",")) {
+                                signatureChecksumEntry += ",";
+                            }
+                            signatureChecksumEntry += "\n";
+                        }
+
                         StringBuffer sb = new StringBuffer("{\n" +
                                 "\"android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME\":\"" + appMain.getPkg() +"/" + configuration.getEventReceivingComponent() + "\",\n" +
                                 "\"android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION\":" + JSONObject.quote(apkUrl) + ",\n" +
-                                "\"android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM\":\"" + sha256 + "\",\n" +
+                                checksumEntry +
+                                signatureChecksumEntry +
                                 wifiSsidEntry + wifiPasswordEntry + mobileEnrollmentEntry +
                                 "\"android.app.extra.PROVISIONING_LEAVE_ALL_SYSTEM_APPS_ENABLED\":true,\n");
                         if (!configuration.isEncryptDevice()) {

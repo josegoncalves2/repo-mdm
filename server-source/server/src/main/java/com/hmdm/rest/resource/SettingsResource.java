@@ -130,7 +130,9 @@ public class SettingsResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/design")
     public Response updateDefaultDesignSettings(Settings settings) {
-        if (!SecurityContext.get().hasPermission("settings")) {
+        // Aparencia e marca tem permissao propria; a tela ja abria para ela, mas o salvamento recusava.
+        if (!SecurityContext.get().hasPermission("settings")
+                && !SecurityContext.get().hasPermission("device.branding.edit")) {
             log.error("Unauthorized attempt to update settings by user " +
                     SecurityContext.get().getCurrentUserName());
             return Response.PERMISSION_DENIED();

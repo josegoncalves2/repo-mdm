@@ -167,6 +167,18 @@ public class PushResource {
                 return Response.PERMISSION_DENIED();
             }
 
+            // O push e' um canal de comando: reiniciar, travar, apagar... Cada tipo exige a mesma
+            // permissao que o comando equivalente do painel (RemoteCommand); sem isso, quem so'
+            // podia "enviar push" reiniciava ou apagava aparelho sem ter Reiniciar/Apagar.
+            final String requiredPermission = requiredPermission(sendRequest.getMessageType());
+            if (!SecurityContext.get().hasPermission("edit_devices")
+                    && !SecurityContext.get().hasPermission(requiredPermission)) {
+                logger.error("Unauthorized attempt to send Push message '{}' without permission '{}' by user {}",
+                        sendRequest.getMessageType(), requiredPermission,
+                        SecurityContext.get().getCurrentUserName());
+                return Response.PERMISSION_DENIED();
+            }
+
             List<PluginPushMessage> messages = new LinkedList<>();
 
             if (sendRequest.getScope().equals("device")) {
@@ -404,4 +416,14 @@ public class PushResource {
     }
 
 
+
+    /** Permissao exigida para enviar cada tipo de push: a do comando equivalente do painel. */
+    private static String requiredPermission(String messageType) {
+        for (com.hmdm.service.RemoteCommand c : com.hmdm.service.RemoteCommand.values()) {
+            if (c.getPushType() != null && c.getPushType().equals(messageType)) {
+                return c.getPermission();
+            }
+        }
+        return "device.remote_access.control";
+    }
 }

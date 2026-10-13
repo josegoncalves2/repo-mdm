@@ -159,7 +159,10 @@ public class RemoteViewerEndpoint {
                     // Lista fechada: o agente traduz nome em acao global, e aceitar nome
                     // arbitrario so' aumentaria a superficie sem oferecer nada.
                     if (!name.equals("back") && !name.equals("home")
-                            && !name.equals("recents") && !name.equals("notifications")) {
+                            && !name.equals("recents") && !name.equals("notifications")
+                            && !name.equals("backspace") && !name.equals("enter")
+                            && !name.equals("tab") && !name.equals("left")
+                            && !name.equals("right")) {
                         reject(session, "tecla desconhecida");
                         return;
                     }

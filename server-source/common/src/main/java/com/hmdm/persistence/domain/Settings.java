@@ -136,6 +136,14 @@ public class Settings implements CustomerData, Serializable {
     @ApiModelProperty(hidden = true)
     private int sizeLimit;
 
+    // Alertas da lista de dispositivos (colunas da tabela settings; null = alerta desligado).
+    @ApiModelProperty("Days without a report after which a device is flagged as not reporting")
+    private Integer offlineAlertDays;
+    @ApiModelProperty("Battery level (%) at or below which a device is shown with a low battery warning")
+    private Integer batteryWarnLevel;
+    @ApiModelProperty("Battery level (%) at or below which a device is shown with a critical battery alert")
+    private Integer batteryCriticalLevel;
+
     public Settings() {
     }
 
@@ -449,6 +457,30 @@ public class Settings implements CustomerData, Serializable {
 
     public void setSizeLimit(int sizeLimit) {
         this.sizeLimit = sizeLimit;
+    }
+
+    public Integer getOfflineAlertDays() {
+        return offlineAlertDays;
+    }
+
+    public void setOfflineAlertDays(Integer offlineAlertDays) {
+        this.offlineAlertDays = offlineAlertDays;
+    }
+
+    public Integer getBatteryWarnLevel() {
+        return batteryWarnLevel;
+    }
+
+    public void setBatteryWarnLevel(Integer batteryWarnLevel) {
+        this.batteryWarnLevel = batteryWarnLevel;
+    }
+
+    public Integer getBatteryCriticalLevel() {
+        return batteryCriticalLevel;
+    }
+
+    public void setBatteryCriticalLevel(Integer batteryCriticalLevel) {
+        this.batteryCriticalLevel = batteryCriticalLevel;
     }
 
     @Override

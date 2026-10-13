@@ -251,7 +251,9 @@ public class MessagingResource {
             notes = "Delete an existing message"
     )
     @DELETE
-    @Path("/{id}")
+    // Sob /private: fora dele a rota nao passava pelo filtro de autenticacao, o servidor nao sabia
+    // quem estava logado e respondia 500 -- apagar mensagem nao funcionava para ninguem.
+    @Path("/private/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response removeDevice(@PathParam("id") @ApiParam("Message ID") Integer id) {
         final boolean canSendMessages = SecurityContext.get().hasPermission("plugin_messaging_delete");

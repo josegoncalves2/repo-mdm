@@ -40,7 +40,15 @@ angular.module('headwind-kiosk')
          * Chutar baseline funciona ate um aparelho codificar em high profile, e ai o
          * decodificador recusa um fluxo que saberia tocar.
          */
+        var isAvccConfig = function (bytes) {
+            return bytes && bytes.length >= 7 && bytes[0] === 1 && bytes[5] !== 0;
+        };
+
         var codecFromParameterSet = function (bytes) {
+            // MediaCodec normally emits Annex-B, but some hardware encoders return an
+            // AVCDecoderConfigurationRecord (AVCC) for the codec-config buffer. The old
+            // parser only understood start codes, leaving codecString null and producing a
+            // permanently black canvas even though the relay reported streaming=true.
             for (var i = 0; i + 4 < bytes.length; i++) {
                 var isStart = bytes[i] === 0 && bytes[i + 1] === 0
                     && (bytes[i + 2] === 1 || (bytes[i + 2] === 0 && bytes[i + 3] === 1));
@@ -54,6 +62,12 @@ angular.module('headwind-kiosk')
                 if ((bytes[nal] & 0x1f) === 7) {
                     return 'avc1.' + hex(bytes[nal + 1]) + hex(bytes[nal + 2]) + hex(bytes[nal + 3]);
                 }
+            }
+
+            // AVCC: version, profile, compatibility, level, length-size, SPS count.
+            // The profile/compatibility/level bytes are exactly the avc1 codec suffix.
+            if (isAvccConfig(bytes)) {
+                return 'avc1.' + hex(bytes[1]) + hex(bytes[2]) + hex(bytes[3]);
             }
             return null;
         };
@@ -80,6 +94,7 @@ angular.module('headwind-kiosk')
             this.socket = null;
             this.decoder = null;
             this.pendingConfig = null;
+            this.configIsAvcc = false;
             this.codecString = null;
             this.awaitingKeyFrame = true;
             this.closed = false;
@@ -227,9 +242,15 @@ angular.module('headwind-kiosk')
 
             if (type === FRAME_CONFIG) {
                 // Os parametros ficam guardados em vez de submetidos sozinhos: em Annex-B
-                // eles pertencem a frente do quadro-chave que depende deles.
+                // eles pertencem a frente do quadro-chave que depende deles. Alguns encoders
+                // entregam AVCC; a detecção acima cobre ambos os formatos.
                 this.pendingConfig = payload;
+                this.configIsAvcc = isAvccConfig(payload);
                 this.codecString = codecFromParameterSet(payload) || this.codecString;
+                if (!this.codecString) {
+                    this.report('onError', 'remote.error.stream.codec');
+                    return;
+                }
                 this.configure();
                 return;
             }
@@ -243,7 +264,9 @@ angular.module('headwind-kiosk')
                 return;
             }
 
-            var data = (type === FRAME_KEY && this.pendingConfig)
+            // Annex-B carries SPS/PPS immediately before the keyframe. AVCC carries
+            // SPS/PPS in VideoDecoderConfig.description and the chunk remains length-prefixed.
+            var data = (type === FRAME_KEY && this.pendingConfig && !this.configIsAvcc)
                 ? concat(this.pendingConfig, payload)
                 : payload;
 
@@ -278,9 +301,11 @@ angular.module('headwind-kiosk')
                         self.report('onError', 'remote.error.stream.decode');
                     }
                 });
-                // Sem "description": o fluxo e' Annex-B, que e' o que o encoder do aparelho
-                // emite e o que isto sinaliza ao WebCodecs.
-                this.decoder.configure({codec: this.codecString, optimizeForLatency: true});
+                var decoderConfig = {codec: this.codecString, optimizeForLatency: true};
+                if (this.configIsAvcc && this.pendingConfig) {
+                    decoderConfig.description = this.pendingConfig;
+                }
+                this.decoder.configure(decoderConfig);
                 this.awaitingKeyFrame = true;
             } catch (e) {
                 this.decoder = null;

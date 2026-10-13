@@ -23,7 +23,7 @@ angular.module('headwind-kiosk')
             }
             requestedBundles[cacheKey] = true;
 
-            var bundleUrl = 'app/components/plugins/' + pluginId + '/i18n/' + bundleId + '.json';
+            var bundleUrl = 'app/components/plugins/' + pluginId + '/i18n/' + bundleId + '.json?v=hux202610071600';
             $http.get(bundleUrl).then(function (response) {
                 if (response.data && typeof response.data === 'object' && document.localization[bundleId]) {
                     angular.extend(document.localization[bundleId], response.data);
@@ -151,7 +151,14 @@ angular.module('headwind-kiosk')
         return {
             restrict: 'A',
             link: function ($scope, element, attrs) {
-                element.html(localization.localize(element.html()));
+                var key = element.html();
+                var destroyScopeHandler = $scope.$root.$on('aero_LOCALE_CHANGED', function () {
+                    element.html(localization.localize(key));
+                });
+                $scope.$on('$destroy', function () {
+                    destroyScopeHandler();
+                });
+                element.html(localization.localize(key));
             }
         }
     })
@@ -200,4 +207,3 @@ angular.module('headwind-kiosk')
         };
     })
 ;
-

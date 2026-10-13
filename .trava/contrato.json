@@ -1,0 +1,145 @@
+{
+  "versao": 1,
+  "_comentario": "Contrato MÍNIMO gerado pelo setup.sh. Adicione UMA trava por vez, cada uma respondendo a uma falha que JÁ ACONTECEU. Exemplo completo em .trava/contrato.exemplo.json. Antes de adicionar, leia o antipadrão 'travar demais' em docs/07-antipadroes.md.",
+  "verificacoes": {
+    "relatorio": {
+      "comando": "test -s output/relatorio.md && [ $(wc -c < output/relatorio.md) -ge 300 ]",
+      "ttl": 0,
+      "descricao": "Relatório de entrega do sub-agente."
+    },
+    "revisao-cruzada": {
+      "comando": "python3 .claude/hooks/verificar_revisao.py output/REVISAO.md . --min-refs 2",
+      "ttl": 3600,
+      "descricao": "Revisão do FISCAL, fresca e com lastro."
+    },
+    "doc-revisada": {
+      "comando": "python3 .claude/hooks/verificar_doc.py",
+      "ttl": 3600,
+      "descricao": "Documentação viva mais nova que o código."
+    }
+  },
+  "travas": [
+    {
+      "id": "subagente-nasce-com-contrato",
+      "quando": {
+        "ferramentas": [
+          "Task"
+        ]
+      },
+      "exige_trecho_no_alvo": [
+        "## CONTRATO DE EXECUÇÃO"
+      ],
+      "veredito": "deny",
+      "como_destravar": [
+        "cat .trava/bloco-contrato.md",
+        "# cole no INÍCIO do prompt do sub-agente"
+      ],
+      "mensagem": "O sub-agente nasce sem a sua conversa. Sem o contrato no prompt ele bate nas travas sem saber destravar e entra em loop."
+    },
+    {
+      "id": "confirmar-destrutivo",
+      "quando": {
+        "ferramentas": [
+          "Bash"
+        ],
+        "regex_alvo": "\\b(rm\\s+-rf|drop\\s+(table|database)|truncate|git\\s+reset\\s+--hard|git\\s+clean\\s+-fd|mkfs\\.|dd\\s+of=/dev/)|docker[\\s-]+compose\\s+(down|rm)[^|;&]*(-v\\b|--volumes)|docker\\s+volume\\s+(rm|prune)"
+      },
+      "veredito": "ask",
+      "mensagem": "Ação destrutiva e IRREVERSÍVEL. Se for docker: 'down -v' e 'volume rm' APAGAM OS DADOS dos volumes. Liste exatamente o que será perdido antes de o usuário aprovar."
+    }
+  ],
+  "perfis": {
+    "trava-fiscal": {
+      "proibido_escrever": [
+        "\\.(ts|tsx|js|jsx|vue|svelte|py|go|rs|css|scss|html|gd|shader)$"
+      ],
+      "mensagem": "Você é FISCAL. Fiscal aponta, não conserta. Se corrigir, vira executor do próprio laudo."
+    },
+    "trava-executor": {
+      "proibido_escrever": [
+        "output/REVISAO\\.md$",
+        "output/LAUDO-BANCADA\\.md$"
+      ],
+      "mensagem": "Você é EXECUTOR. Quem constrói não julga: você não escreve a revisão nem o laudo."
+    },
+    "trava-operador": {
+      "proibido_escrever": [
+        "\\.(ts|tsx|js|jsx|vue|svelte|py|go|rs|css|scss|html|gd|shader)$"
+      ],
+      "mensagem": "Você é OPERADOR. Opera e relata; não conserta."
+    }
+  },
+  "bancada": {
+    "alvo": "a interface do produto, como um usuário a usaria",
+    "min_segundos": 180,
+    "roteiro": [
+      "Abra o produto como se fosse a primeira vez. Não leia documentação antes.",
+      "Nos primeiros 5 segundos: o que saltou aos olhos? Anote ANTES de explorar.",
+      "Tente realizar a tarefa principal sem que ninguém explique nada.",
+      "Clique em cada botão visível. Faz o que o nome promete? Deveria estar ali?",
+      "Force o erro: envie vazio, envie lixo, recarregue no meio, desconecte a rede.",
+      "Passe 30s parado olhando a tela. Cansa? Alguma coisa vibra, aperta ou grita?",
+      "Se o produto promete uma sensação (movimento, peso, resposta): ela está lá?"
+    ]
+  },
+  "documentacao": {
+    "vivos": [
+      "README.md"
+    ],
+    "min_bytes": 400
+  },
+  "entrega_final": {
+    "ativo": true,
+    "exige_selos": [],
+    "exige_bancada": true,
+    "exige_revisao_doc": true,
+    "exige_evidencia_visual": false,
+    "exige_movimento": false,
+    "min_contraste": 4.5,
+    "dossie": "output/LAUDO-BANCADA.md",
+    "midia": "evidencias",
+    "_nota": "exige_evidencia_visual começa desligado: ligue quando o projeto tiver interface e você estiver capturando telas em evidencias/."
+  },
+  "saida_subagente": {
+    "exige_selos": [
+      "relatorio"
+    ],
+    "exige_arquivos": [
+      {
+        "caminho": "output/relatorio.md",
+        "min_bytes": 300
+      }
+    ],
+    "max_reentradas": 3,
+    "como_destravar": {
+      "relatorio": "escreva output/relatorio.md (o que fez, o que verificou, o que ficou pendente) e rode: ./trava selo emitir relatorio"
+    },
+    "saida_honrosa": "Se a tarefa for IMPOSSÍVEL, isso também é entrega válida: escreva em output/relatorio.md o que tentou, o erro literal e o que faltaria; emita o selo; encerre. Relatar bloqueio é sucesso; fingir conclusão é falha."
+  },
+  "saida_por_papel": {
+    "trava-fiscal": {
+      "exige_arquivos": [
+        {
+          "caminho": "output/REVISAO.md",
+          "min_bytes": 400
+        }
+      ],
+      "max_reentradas": 3,
+      "saida_honrosa": "REPROVADO é um veredito válido e bom. Diga isso com lastro e encerre — não conserte."
+    }
+  },
+  "saida_principal": {
+    "exige_selos": [],
+    "max_reentradas": 1
+  },
+  "loop": {
+    "max_rodadas": 6
+  },
+  "pos_acao": {
+    "selos_volateis": [
+      "revisao-cruzada",
+      "doc-revisada"
+    ],
+    "checagens": []
+  }
+}

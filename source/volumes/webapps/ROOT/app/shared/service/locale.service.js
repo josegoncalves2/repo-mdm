@@ -151,7 +151,14 @@ angular.module('headwind-kiosk')
         return {
             restrict: 'A',
             link: function ($scope, element, attrs) {
-                element.html(localization.localize(element.html()));
+                var key = element.html();
+                var destroyScopeHandler = $scope.$root.$on('aero_LOCALE_CHANGED', function () {
+                    element.html(localization.localize(key));
+                });
+                $scope.$on('$destroy', function () {
+                    destroyScopeHandler();
+                });
+                element.html(localization.localize(key));
             }
         }
     })
@@ -200,4 +207,3 @@ angular.module('headwind-kiosk')
         };
     })
 ;
-

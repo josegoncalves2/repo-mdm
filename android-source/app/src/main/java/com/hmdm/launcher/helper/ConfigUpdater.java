@@ -30,7 +30,6 @@ import com.hmdm.launcher.json.Download;
 import com.hmdm.launcher.json.PushMessage;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
-import com.hmdm.launcher.pro.worker.DetailedInfoWorker;
 import com.hmdm.launcher.server.ServerServiceKeeper;
 import com.hmdm.launcher.service.PushLongPollingService;
 import com.hmdm.launcher.task.ConfirmDeviceResetTask;
@@ -136,7 +135,6 @@ public class ConfigUpdater {
 
         Log.i(Const.LOG_TAG, "updateConfig(): set configInitializing=true");
         configInitializing = true;
-        DetailedInfoWorker.requestConfigUpdate(context);
         this.context = context;
         this.uiNotifier = uiNotifier;
         this.userInteraction = userInteraction;
@@ -443,6 +441,10 @@ public class ConfigUpdater {
 
         // Set up a proxy server
         SettingsHelper settingsHelper = SettingsHelper.getInstance(context);
+        // The Web Filter companion is an ordinary app. Grant it only the Android
+        // application-restrictions delegation after it has been installed and only
+        // when it is signed by the same project key as this device owner.
+        Utils.delegateWebFilterApplicationRestrictions(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.isDeviceOwner(context)) {
             String proxyUrl = settingsHelper.getAppPreference(context.getPackageName(), "proxy");
             if (proxyUrl != null) {
@@ -453,6 +455,18 @@ public class ConfigUpdater {
                     proxyUrl = null;
                 }
                 Utils.setProxy(context, proxyUrl);
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Utils.isDeviceOwner(context)) {
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null) {
+                Utils.setPrivateDnsPolicy(config.getWebfilterDnsHost(), context);
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Utils.isDeviceOwner(context)) {
+            ServerConfig config = settingsHelper.getConfig();
+            if (config != null) {
+                Utils.setKeyguardDisabledPolicy(config.getKioskKeyguard(), context);
             }
         }
 
@@ -808,13 +822,6 @@ public class ConfigUpdater {
                             }
                         } );
 
-                    } else if (application.getUrl().startsWith("market://details")) {
-                        RemoteLogger.log(context, Const.LOG_INFO, "Installing app " + application.getPkg() + " from Google Play");
-                        installApplicationFromPlayMarket(application.getUrl(), application.getPkg());
-                        applicationStatus = new ApplicationStatus();
-                        applicationStatus.application = application;
-                        applicationStatus.installed = true;
-
                     } else if (application.getUrl().startsWith("file:///")) {
                         RemoteLogger.log(context, Const.LOG_INFO, "Installing app " + application.getPkg() + " from SD card");
                         applicationStatus = new ApplicationStatus();
@@ -996,6 +1003,7 @@ public class ConfigUpdater {
                 // Send notification about the configuration update to all plugins
                 Intent intent = new Intent(Const.INTENT_PUSH_NOTIFICATION_PREFIX + PushMessage.TYPE_CONFIG_UPDATED);
                 context.sendBroadcast(intent);
+                Utils.requestWebFilterPolicyRefresh(context);
 
                 RemoteLogger.log(context, Const.LOG_VERBOSE, "Update flow completed");
                 if (pendingInstallations.size() > 0) {
@@ -1078,6 +1086,9 @@ public class ConfigUpdater {
                                 if (packageName != null) {
                                     RemoteLogger.log(context, Const.LOG_DEBUG, "App " + packageName + " installed successfully");
                                     Log.i(Const.LOG_TAG, "Install complete: " + packageName);
+                                    if ("com.hwmdm.webfilter".equals(packageName)) {
+                                        Utils.delegateWebFilterApplicationRestrictions(context);
+                                    }
                                     File file = pendingInstallations.get(packageName);
                                     if (file != null) {
                                         pendingInstallations.remove(packageName);
@@ -1187,17 +1198,6 @@ public class ConfigUpdater {
                 e.printStackTrace();
             }
             appInstallReceiver = null;
-        }
-    }
-
-    private void installApplicationFromPlayMarket(final String uri, final String packageName) {
-        RemoteLogger.log(context, Const.LOG_DEBUG, "Asking user to install app " + packageName);
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(uri));
-        try {
-            context.startActivity(intent);
-        } catch (Exception e) {
-            RemoteLogger.log(context, Const.LOG_DEBUG, "Failed to run app install activity for " + packageName);
         }
     }
 

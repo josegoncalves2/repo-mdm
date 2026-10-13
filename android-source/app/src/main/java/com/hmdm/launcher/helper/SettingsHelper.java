@@ -24,10 +24,12 @@ import android.content.SharedPreferences;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmdm.launcher.BuildConfig;
+import com.hmdm.launcher.Const;
 import com.hmdm.launcher.json.Application;
 import com.hmdm.launcher.json.ApplicationSetting;
 import com.hmdm.launcher.json.RemoteFile;
 import com.hmdm.launcher.json.ServerConfig;
+import com.hmdm.launcher.util.RemoteLogger;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -67,6 +69,7 @@ public class SettingsHelper {
     // This prefix is for the compatibility with a legacy package name
     private static String PACKAGE_NAME;
 
+    private Context context;
     private SharedPreferences sharedPreferences;
     private ServerConfig config;
     private ServerConfig oldConfig;
@@ -84,14 +87,16 @@ public class SettingsHelper {
     }
 
     public SettingsHelper(Context context) {
-        PACKAGE_NAME = context.getPackageName();
-        sharedPreferences = context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
+        this.context = context.getApplicationContext();
+        PACKAGE_NAME = this.context.getPackageName();
+        sharedPreferences = this.context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
         initConfig();
     }
 
     public void refreshConfig(Context context) {
+        this.context = context.getApplicationContext();
         if (config == null) {
-            sharedPreferences = context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
+            sharedPreferences = this.context.getSharedPreferences(PACKAGE_NAME + PREFERENCES_ID, Context.MODE_PRIVATE );
             initConfig();
         }
     }
@@ -445,7 +450,7 @@ public class SettingsHelper {
     }
 
     public void commitAppPreferences(String packageId) {
-        // TODO: send new preferences to server
+        RemoteLogger.log(context, Const.LOG_INFO, "Application preferences committed for " + packageId);
     }
 
     public Map<String,ApplicationSetting> getProcessedAppSettings() {

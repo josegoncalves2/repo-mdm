@@ -1,8 +1,10 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('IconsTabController', function ($scope, $rootScope, $state, $modal, alertService, confirmModal,
+    .controller('IconsTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal,
                                                  iconService, $window, localization) {
         $scope.search = {};
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_icons_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_icons_viewMode', v); });
 
         $scope.paging = {
             currentPage: 1,
@@ -28,7 +30,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editIcon = function (icon) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/addIcon.html?v=h2cd3aa07f7',
                 controller: 'IconModalController',
                 resolve: {
@@ -58,7 +60,7 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('IconModalController', function ($scope, $modalInstance, iconService, fileService, icon, localization) {
+    .controller('IconModalController', function ($scope, $uibModalInstance, iconService, fileService, icon, localization) {
         $scope.icon = {};
         for (var prop in icon) {
             if (icon.hasOwnProperty(prop)) {
@@ -109,7 +111,7 @@ angular.module('headwind-kiosk')
 
                 iconService.createIcon(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close();
+                        $uibModalInstance.close();
                     } else {
                         $scope.errorMessage = localization.localize('error.duplicate.icon.name');
                     }
@@ -118,6 +120,6 @@ angular.module('headwind-kiosk')
         };
 
         $scope.cancel = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     });

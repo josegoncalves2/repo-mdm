@@ -9,7 +9,8 @@
         <div class='success'><span>{{successMessage}}</span></div>
     </div>
     <div>
-        <form class='form-horizontal' name="configurationForm">
+        <!-- $parent: content.html includes this page with ng-include, whose child scope would hide the form from ConfigurationEditorController -->
+        <form class='form-horizontal' name="$parent.configurationForm">
 
             <div class='form-group'>
                 <div class='center'>

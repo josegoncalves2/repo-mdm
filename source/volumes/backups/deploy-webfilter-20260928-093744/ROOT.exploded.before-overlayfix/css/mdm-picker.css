@@ -1,0 +1,236 @@
+/* ===================================================================
+   Seletor de opcoes MDM (restrictions / allowed activities)
+   Substitui os textarea de texto livre por catalogo navegavel.
+   Responsivo: 2 colunas no desktop, 1 coluna abaixo de 768px.
+   =================================================================== */
+
+.mdm-picker {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.mdm-picker-disabled {
+    opacity: .55;
+    pointer-events: none;
+}
+
+.mdm-picker-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.mdm-picker-busca {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.mdm-picker-contador {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.mdm-picker-grupo {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mdm-picker-grupo:last-child {
+    border-bottom: 0;
+}
+
+.mdm-picker-grupo-cab {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #f7f7f7;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.mdm-picker-seta {
+    color: #888;
+    width: 12px;
+}
+
+.mdm-picker-badge {
+    background: #337ab7;
+    color: #fff;
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: 11px;
+}
+
+.mdm-picker-acoes {
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.mdm-picker-acoes a {
+    margin-left: 10px;
+}
+
+.mdm-picker-nota {
+    font-size: 11px;
+    color: #999;
+    font-weight: normal;
+}
+
+/* duas colunas no desktop */
+.mdm-picker-itens {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+}
+
+.mdm-picker-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    margin: 0;
+    border-top: 1px solid #f5f5f5;
+    font-weight: normal;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.mdm-picker-item:hover {
+    background: #f9fcff;
+}
+
+.mdm-picker-item input[type=checkbox] {
+    margin-top: 3px;
+    flex: 0 0 auto;
+}
+
+.mdm-item-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.mdm-item-label {
+    font-size: 13px;
+    color: #333;
+}
+
+.mdm-item-key {
+    font-size: 11px;
+    color: #777;
+    background: #f4f4f4;
+    padding: 0 4px;
+    border-radius: 3px;
+    align-self: flex-start;
+    word-break: break-all;
+}
+
+.mdm-item-help {
+    font-size: 11px;
+    color: #888;
+    line-height: 1.35;
+}
+
+.mdm-item-tag {
+    font-size: 10px;
+    color: #8a6d3b;
+    background: #fcf8e3;
+    border-radius: 3px;
+    padding: 1px 5px;
+    align-self: flex-start;
+}
+
+.mdm-item-on {
+    background: #eef6ff;
+}
+
+.mdm-item-on .mdm-item-label {
+    font-weight: 600;
+}
+
+.mdm-item-danger .mdm-item-help {
+    color: #a94442;
+}
+
+.mdm-item-danger.mdm-item-on {
+    background: #fdf0ef;
+}
+
+.mdm-item-warn .mdm-item-help {
+    color: #8a6d3b;
+}
+
+.mdm-item-remover {
+    font-size: 11px;
+    color: #a94442;
+}
+
+.mdm-picker-add {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
+.mdm-picker-add input {
+    flex: 1 1 260px;
+    min-width: 0;
+}
+
+/* uma coluna em telas estreitas (celular / tablet retrato) */
+@media (max-width: 991px) {
+    .mdm-picker-itens {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .mdm-picker-bar {
+        position: static;
+    }
+    .mdm-picker-acoes {
+        margin-left: 0;
+        width: 100%;
+    }
+    .mdm-picker-acoes a {
+        margin-left: 0;
+        margin-right: 12px;
+    }
+}
+
+/* Editor de Admin Extras */
+.mdm-extras { border: 1px solid #ddd; border-radius: 4px; background: #fff; }
+.mdm-extras-tabela { width: 100%; }
+.mdm-extras-tabela td { padding: 6px 10px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+.mdm-extras-chave { width: 45%; font-size: 13px; }
+.mdm-extras-chave code { display: block; margin-top: 2px; }
+.mdm-extras-valor { width: 45%; }
+.mdm-extras-acao { width: 10%; text-align: right; }
+.mdm-extras-acao a { color: #a94442; font-size: 18px; text-decoration: none; }
+.mdm-extras-vazio { padding: 14px; font-size: 12px; color: #888; }
+.mdm-extras-add { padding: 10px; border-top: 1px solid #eee; background: #fafafa; }
+.mdm-extras-add-titulo { font-size: 12px; color: #666; margin-bottom: 6px; }
+.mdm-extras-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.mdm-extras-ajuda { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.mdm-extras-ajuda > div { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+.mdm-extras-auto, .mdm-extras-avancado { margin-top: 10px; font-size: 12px; }
+.mdm-extras-avancado textarea { margin-top: 6px; font-family: monospace; font-size: 12px; }
+
+@media (max-width: 767px) {
+    .mdm-extras-tabela, .mdm-extras-tabela tr, .mdm-extras-tabela td { display: block; width: 100%; }
+    .mdm-extras-tabela tr { border-bottom: 1px solid #eee; padding: 6px 0; }
+    .mdm-extras-acao { text-align: left; }
+}

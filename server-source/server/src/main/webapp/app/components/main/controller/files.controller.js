@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('FilesTabController', function ($scope, $rootScope, $state, $modal, alertService, confirmModal, fileService,
+    .controller('FilesTabController', function ($scope, $rootScope, $state, $uibModal, alertService, confirmModal, fileService,
                                                 authService, $window, localization, storageService) {
         $scope.search = {};
 
@@ -8,6 +8,12 @@ angular.module('headwind-kiosk')
             currentPage: 1,
             pageSize: 50
         };
+        $scope.files = [];
+        $scope.loadingFiles = false;
+        $scope.loadError = '';
+        $scope.viewMode = $window.localStorage.getItem('hwmdm_files_viewMode') || 'cards';
+        $scope.$watch('viewMode', function (v) { if (v) $window.localStorage.setItem('hwmdm_files_viewMode', v); });
+        var searchRequest = 0;
 
         $scope.$watch('paging.currentPage', function () {
             $window.scrollTo(0, 0);
@@ -53,8 +59,24 @@ angular.module('headwind-kiosk')
 
         $scope.updateTimeFormat = localization.localize('format.devices.date.createTime');
         $scope.search = function () {
+            var requestId = ++searchRequest;
+            $scope.paging.currentPage = 1;
+            $scope.loadingFiles = true;
+            $scope.loadError = '';
             fileService.getAllFiles({value: $scope.search.searchValue},
                 function (response) {
+                    if (requestId !== searchRequest) {
+                        return;
+                    }
+                    if (response.status !== 'OK' || !Array.isArray(response.data)) {
+                        $scope.files = [];
+                        $scope.loadingFiles = false;
+                        $scope.loadError = response.status === 'OK'
+                            ? localization.localize('files.load.error')
+                            : localization.localizeServerResponse(response);
+                        return;
+                    }
+
                     response.data.forEach(function (file) {
                         file.removeButtonTooltip = '';
                         if (file.usedByConfigurations && file.usedByConfigurations.length > 0) {
@@ -80,6 +102,15 @@ angular.module('headwind-kiosk')
                     });
 
                     $scope.files = response.data;
+                    $scope.loadingFiles = false;
+                },
+                function () {
+                    if (requestId !== searchRequest) {
+                        return;
+                    }
+                    $scope.files = [];
+                    $scope.loadingFiles = false;
+                    $scope.loadError = localization.localize('files.load.error');
                 });
         };
 
@@ -91,7 +122,7 @@ angular.module('headwind-kiosk')
             if (file && file.external) {
                 file.externalUrl = file.url;
             }
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/file.html?v=he8add84400',
                 controller: 'FileModalController',
                 resolve: {
@@ -128,7 +159,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.editConfiguration = function(file) {
-            var modalInstance = $modal.open({
+            var modalInstance = $uibModal.open({
                 templateUrl: 'app/components/main/view/modal/fileConfigurations.html?v=h3f333963c6',
                 controller: 'FileConfigurationsModalController',
                 resolve: {
@@ -146,7 +177,7 @@ angular.module('headwind-kiosk')
         $scope.showApps = function (file) {
             fileService.getApps({value: encodeURIComponent(file.url)}, function (response) {
                 if (response.status === 'OK') {
-                    var modalInstance = $modal.open({
+                    var modalInstance = $uibModal.open({
                         templateUrl: 'app/components/main/view/modal/fileApps.html?v=h58738df6b8',
                         controller: 'FileAppsModalController',
                         resolve: {
@@ -163,14 +194,14 @@ angular.module('headwind-kiosk')
 
         $scope.init();
     })
-    .controller('FileAppsModalController', function ($scope, $modalInstance, apps) {
+    .controller('FileAppsModalController', function ($scope, $uibModalInstance, apps) {
         $scope.apps = apps;
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
-    .controller('FileModalController', function ($scope, $modalInstance, fileService, file, localization) {
+    .controller('FileModalController', function ($scope, $uibModalInstance, fileService, file, localization) {
         $scope.file = file !== null ? angular.copy(file, {}) : {};
 
         fileService.getLimit(function(response) {
@@ -203,7 +234,7 @@ angular.module('headwind-kiosk')
 
                 fileService.updateFile(request, function (response) {
                     if (response.status === 'OK') {
-                        $modalInstance.close(response.data);
+                        $uibModalInstance.close(response.data);
                     } else {
                         $scope.errorMessage = localization.localize(response.message);
                     }
@@ -241,10 +272,10 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
     })
-    .controller('FileConfigurationsModalController', function ($scope, $modalInstance, fileService, file, localization) {
+    .controller('FileConfigurationsModalController', function ($scope, $uibModalInstance, fileService, file, localization) {
         $scope.file = angular.copy(file);
 
         var loadData = function () {
@@ -278,7 +309,7 @@ angular.module('headwind-kiosk')
 
             fileService.updateConfigurations(request, function (response) {
                 if (response.status === 'OK') {
-                    $modalInstance.close();
+                    $uibModalInstance.close();
                 } else {
                     $scope.errorMessage = localization.localizeServerResponse(response);
                 }
@@ -286,7 +317,7 @@ angular.module('headwind-kiosk')
         };
 
         $scope.closeModal = function () {
-            $modalInstance.dismiss();
+            $uibModalInstance.dismiss();
         }
 
     });

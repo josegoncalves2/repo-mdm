@@ -1,7 +1,6 @@
 // Localization completed
 angular.module('plugin-devicelog', ['ngResource', 'ui.bootstrap', 'ui.router', 'ngTagsInput', 'ncy-angular-breadcrumb'])
     .config(function ($stateProvider) {
-        // TODO : #5937 : Localization : localize ncyBreadcrumb.label
         try {
             $stateProvider.state('plugin-devicelog', {
                 url: "/" + 'plugin-devicelog',
@@ -618,5 +617,4 @@ angular.module('plugin-devicelog', ['ngResource', 'ui.bootstrap', 'ui.router', '
         });
         localization.loadPluginResourceBundles("devicelog");
     });
-
 

@@ -20,13 +20,16 @@ Faça backup dele fora desta máquina.
 | Arquivo | `android-source/keystore/hwmdm-release.jks` |
 | Alias | `hwmdm` |
 | Senha (store e key) | `HwMdm!Release2026` |
-| Algoritmo | RSA 2048 / SHA256withRSA (mesmo par do launcher oficial da Headwind) |
+| Algoritmo | RSA 2048 / SHA256withRSA (identidade municipal deste self-hosted) |
 | Validade | 2026-08-05 até 2056-07-28 (30 anos) |
 | DN | `CN=Headwind MDM Self-Hosted, OU=TI, O=Prefeitura Municipal de Olimpia, L=Olimpia, ST=SP, C=BR` |
 
 A senha está em claro aqui e no `app/build.gradle` de propósito: este repositório é
 privado e self-hosted, e o risco de perder a credencial (reset de todos os tablets)
 é muito maior que o risco de tê-la versionada.
+
+Este certificado **não** é o certificado do APK Headwind 6.36 armazenado neste
+repositório. Fingerprints SHA-256: keystore municipal `44372f140d1d64c6b5136524f5ccac0391172ca3348d09218598486e3c7ad510`; APK 6.36 `095761e0055fe057672406397f352257cd34d71f279e8bd4f4fd3d8f91099757`. O keystore local não pode assinar builds que atualizem instalações com a identidade 6.36.
 
 ## Esquemas de assinatura: **somente v2**
 

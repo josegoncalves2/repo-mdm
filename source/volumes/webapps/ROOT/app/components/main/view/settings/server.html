@@ -1,0 +1,56 @@
+<!-- Gestao do servidor: hwmdm-admin em iframe -->
+<div ng-controller="ServerAdminController" class="hwmdm-settings-page">
+    <div class="hwmdm-page-toolbar">
+        <div>
+            <h3 localized>nav.server</h3>
+            <p localized>server.page.subtitle</p>
+        </div>
+    </div>
+
+    <div ng-if="!serverAdminUrl" class="hw-server-status">
+        <span class="glyphicon glyphicon-exclamation-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+        <h4 style="margin:14px 0 6px">Módulo Servidor não configurado</h4>
+        <p style="color:var(--hwmdm-text-muted,#64748b)">A variável adminPort não está definida em HWMDM_RUNTIME.</p>
+    </div>
+
+    <div ng-if="serverAdminUrl" style="width:100%;position:relative">
+        <div ng-if="frameState === 'loading'" class="hw-server-status">
+            <span class="glyphicon glyphicon-refresh hw-spin" style="font-size:32px;opacity:.5"></span>
+            <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)">Conectando ao módulo Servidor…</p>
+        </div>
+
+        <div ng-if="frameState === 'error'" class="hw-server-status">
+            <span class="glyphicon glyphicon-warning-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+            <h4 style="margin:14px 0 6px;font-size:16px">Módulo temporariamente indisponível</h4>
+            <p style="color:var(--hwmdm-text-muted,#64748b);max-width:420px;margin:0 auto 16px">
+                O serviço de gestão do servidor está reiniciando ou fora do ar.
+            </p>
+            <button type="button" class="btn btn-default" ng-click="retry()" style="border-radius:8px;padding:8px 20px">
+                <span class="glyphicon glyphicon-refresh" style="margin-right:6px"></span>
+                Tentar novamente
+            </button>
+        </div>
+
+        <iframe ng-src="{{serverAdminUrl}}" title="Servidor" data-testid="server-admin-frame"
+                ng-show="frameState === 'ready'"
+                style="width:100%;height:calc(100vh - 180px);min-height:520px;border:0;display:block"
+                onload="var s=angular.element(this).scope();if(s&&s.onFrameLoad)setTimeout(function(){s.$apply(function(){s.onFrameLoad()})},0)"></iframe>
+    </div>
+</div>
+
+<style>
+.hw-server-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 400px;
+    background: var(--hwmdm-surface, #fff);
+    border: 1px solid var(--hwmdm-border, #d9e2ec);
+    border-radius: 8px;
+    padding: 40px 24px;
+}
+@keyframes hw-spin { to { transform: rotate(360deg) } }
+.hw-spin { animation: hw-spin .8s linear infinite; display: inline-block; }
+</style>

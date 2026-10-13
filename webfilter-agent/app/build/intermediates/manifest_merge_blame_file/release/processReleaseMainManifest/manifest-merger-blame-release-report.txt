@@ -1,0 +1,198 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3  Agente Web Filter do HWMDM.
+4
+5  Este APK recebe DELEGATION_APP_RESTRICTIONS do launcher 6.36 (Device Owner) e aplica
+6  as políticas de navegador (URLBlocklist/URLAllowlist) diretamente ao Chrome via
+7  DevicePolicyManager.setApplicationRestrictions(). A página de bloqueio customizada no
+8  Chrome é do agente com.hwmdm.remote; duas implementações se derrubavam (piscada).
+9-->
+10<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+11    package="com.hwmdm.webfilter"
+12    android:versionCode="5"
+13    android:versionName="1.4" >
+14
+15    <uses-sdk
+16        android:minSdkVersion="26"
+17        android:targetSdkVersion="34" />
+18
+19    <permission
+19-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:10:5-11:47
+20        android:name="com.hwmdm.webfilter.permission.POLICY_UPDATE"
+20-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:10:17-76
+21        android:protectionLevel="signature" />
+21-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:11:9-44
+22
+23    <uses-permission android:name="com.hwmdm.webfilter.permission.POLICY_UPDATE" />
+23-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:12:5-84
+23-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:12:22-81
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:13:5-67
+24-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:13:22-64
+25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+25-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:14:5-79
+25-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:14:22-76
+26    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+26-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:15:5-81
+26-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:15:22-78
+27    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+27-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:16:5-77
+27-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:16:22-74
+28
+29    <queries>
+29-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:18:5-21:15
+30        <package android:name="com.hmdm.launcher" />
+30-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:19:9-53
+30-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:19:18-50
+31
+32        <intent>
+32-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:20:9-75
+33            <action android:name="com.hmdm.action.Connect" />
+33-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:20:17-66
+33-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:20:25-63
+34        </intent>
+35    </queries>
+36
+37    <permission
+37-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+38        android:name="com.hwmdm.webfilter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="com.hwmdm.webfilter.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+42
+43    <application
+43-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:23:5-56:19
+44        android:allowBackup="false"
+44-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:26:9-36
+45        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+45-->[androidx.core:core:1.13.1] /home/sahw/.gradle/caches/8.13/transforms/2a73b9be6d4f291b9bd93ba4a78e16cf/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+46        android:extractNativeLibs="false"
+47        android:icon="@android:drawable/ic_menu_search"
+47-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:25:9-56
+48        android:label="@string/app_name"
+48-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:24:9-41
+49        android:networkSecurityConfig="@xml/network_security_config"
+49-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:28:9-69
+50        android:theme="@android:style/Theme.Material.Light.NoActionBar"
+50-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:29:9-72
+51        android:usesCleartextTraffic="true" >
+51-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:27:9-44
+52        <activity
+52-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:31:9-36:20
+53            android:name="com.hwmdm.webfilter.ui.MainActivity"
+53-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:31:19-50
+54            android:exported="true" >
+54-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:31:51-74
+55            <intent-filter>
+55-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:32:13-35:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:33:17-69
+56-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:33:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:34:17-77
+58-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:34:27-74
+59            </intent-filter>
+60        </activity>
+61
+62        <service
+62-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:38:9-40:39
+63            android:name="com.hwmdm.webfilter.sync.PolicySyncJobService"
+63-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:38:18-59
+64            android:exported="true"
+64-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:40:13-36
+65            android:permission="android.permission.BIND_JOB_SERVICE" />
+65-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:39:13-69
+66
+67        <receiver
+67-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:42:9-47:20
+68            android:name="com.hwmdm.webfilter.sync.BootReceiver"
+68-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:42:19-52
+69            android:exported="false" >
+69-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:42:53-77
+70            <intent-filter>
+70-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:43:13-46:29
+71                <action android:name="android.intent.action.BOOT_COMPLETED" />
+71-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:44:17-79
+71-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:44:25-76
+72                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+72-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:45:17-84
+72-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:45:25-81
+73            </intent-filter>
+74        </receiver>
+75        <receiver
+75-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:48:9-54:20
+76            android:name="com.hwmdm.webfilter.sync.PolicyUpdateReceiver"
+76-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:48:19-60
+77            android:exported="true"
+77-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:50:13-36
+78            android:permission="com.hwmdm.webfilter.permission.POLICY_UPDATE" >
+78-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:49:13-78
+79            <intent-filter>
+79-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:51:13-53:29
+80                <action android:name="com.hwmdm.webfilter.action.POLICY_UPDATE" />
+80-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:17-83
+80-->/opt/projetos/hwmdm/repo-mdm/webfilter-agent/app/src/main/AndroidManifest.xml:52:25-80
+81            </intent-filter>
+82        </receiver>
+83
+84        <provider
+84-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+85            android:name="androidx.startup.InitializationProvider"
+85-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+86            android:authorities="com.hwmdm.webfilter.androidx-startup"
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+87            android:exported="false" >
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+88            <meta-data
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+89                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+90                android:value="androidx.startup" />
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+91        </provider>
+92
+93        <receiver
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+94            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+95            android:directBootAware="false"
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+96            android:enabled="true"
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+97            android:exported="true"
+97-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+98            android:permission="android.permission.DUMP" >
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+100                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+101            </intent-filter>
+102            <intent-filter>
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+103                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+104            </intent-filter>
+105            <intent-filter>
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+106                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+107            </intent-filter>
+108            <intent-filter>
+108-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+109                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/sahw/.gradle/caches/8.13/transforms/dac026611e494124e2f9ae76190a7245/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+110            </intent-filter>
+111        </receiver>
+112    </application>
+113
+114</manifest>

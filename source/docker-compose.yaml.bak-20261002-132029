@@ -1,0 +1,183 @@
+# Sobe com `docker compose up -d` num clone recem-feito, sem nenhum passo previo.
+#
+# Todo ${VAR} tem valor padrao para desenvolvimento local, entao a ausencia de
+# source/.env (que e' gitignored, porque carrega senha e segredo reais) nao impede
+# a subida. Quando o .env existe, o compose o le automaticamente e os valores dele
+# vencem estes padroes -- o fluxo do scripts/provision.sh continua igual.
+#
+# name: fixa o nome do projeto Compose. Sem isto, o Compose usa o nome da PASTA
+# ("source") como nome do projeto -- e cada clone deste repo tem uma pasta
+# "source" identica, um `docker compose up` num segundo clone na MESMA maquina
+# reconhece os containers do primeiro como se fossem dele e os RECRIA, derrubando
+# o que estava rodando. Ja aconteceu em producao. Se for subir mais de uma
+# instancia no mesmo host, rode com um nome proprio:
+#     COMPOSE_PROJECT_NAME=outro-nome docker compose up -d
+name: ${COMPOSE_PROJECT_NAME:-hwmdm}
+services:
+
+  postgresql:
+    image: postgres:12-alpine
+    container_name: hwmdm-postgres
+    restart: unless-stopped
+    # O hmdm so sobe depois que o banco aceita conexao (evita UnknownHostException/PSQLException no boot).
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${SQL_USER:-hmdm} -d ${SQL_BASE:-hmdm}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+    environment:
+      # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam
+      # 3h adiantados em relacao ao horario local (America/Sao_Paulo).
+      TZ: ${TZ:-America/Sao_Paulo}
+      POSTGRES_USER: ${SQL_USER:-hmdm}
+      POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
+      POSTGRES_DB: ${SQL_BASE:-hmdm}
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+      # O Postgres executa o que estiver aqui na PRIMEIRA inicializacao do cluster,
+      # e aceita .sql.gz nativamente. Sem isto o banco sobe vazio, sem usuario
+      # nenhum, e nao ha como entrar no painel. O provision.sh restaura o mesmo
+      # dump quando ja existe banco; os dois caminhos levam ao mesmo lugar.
+      - ./sql/hmdm-dump.sql.gz:/docker-entrypoint-initdb.d/10-hmdm-dump.sql.gz:ro
+
+  hmdm:
+    image: headwindmdm/hmdm:0.1.8
+    container_name: hwmdm-mdm
+    restart: unless-stopped
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    ports:
+      - ${MDM_HTTP_PORT:-8080}:8080
+      # Porta publica sem ":porta" na URL (pagina de bloqueio e painel pelo dominio).
+      - ${MDM_PUBLIC_PORT:-80}:8080
+      - ${MDM_PUSH_PORT:-31000}:31000
+    volumes:
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
+      - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
+      - ./tomcat_conf/server.xml:/usr/local/tomcat/conf/server.xml:ro
+      # Os templates do repositorio, e nao os que vieram dentro da imagem. Com
+      # FORCE_RECONFIGURE=true o entrypoint regenera o ROOT.xml a cada subida a partir
+      # daqui; sem este mount ele usava o template da imagem, onde proxy.addresses vem
+      # comentado -- e toda edicao manual do ROOT.xml era desfeita no restart seguinte,
+      # deixando o painel mostrando o IP do proxy no lugar do IP de cada aparelho.
+      - ./templates:/opt/hmdm/templates:ro
+      - ./volumes/work:/usr/local/tomcat/work
+      - ./volumes/hmdm-config:/usr/local/tomcat/conf/Catalina/localhost
+      - ./volumes/webapps:/usr/local/tomcat/webapps
+      # BackupResource grava/le dumps aqui. Fora do container de proposito -- um backup
+      # que so existe dentro do proprio container que ele deveria proteger nao serve
+      # de nada quando esse container e' o que precisa ser restaurado.
+      - ./volumes/backups:/opt/hmdm/backups
+      # Logs do Tomcat fora do container: sobrevivem a recreate/reinicio.
+      - ./volumes/logs:/usr/local/tomcat/logs
+      # A WAR versionada entra direto no cache que o docker-entrypoint.sh procura.
+      # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
+      # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
+      - ../dist/hmdm.war:/usr/local/tomcat/work/cache/hmdm-5.39.2-os.war:ro
+    environment:
+      # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga 3h adiantado.
+      TZ: ${TZ:-America/Sao_Paulo}
+      # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
+      # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
+      # dono root:root (o processo roda como root dentro do container, sem userns-remap).
+      # Root le/escreve esses arquivos de qualquer forma, entao o app nunca vê erro; quem
+      # apanha e' tudo que roda FORA do container com o usuario do host (sahwmdm): backup,
+      # inspecao manual, qualquer script em scripts/. 0022 mantem dono root mas deixa os
+      # arquivos world-readable (644 em vez de 640), sem abrir escrita para ninguem alem
+      # do dono.
+      UMASK: "0022"
+      SQL_HOST: postgresql
+      SQL_USER: ${SQL_USER:-hmdm}
+      SQL_BASE: ${SQL_BASE:-hmdm}
+      SQL_PASS: ${SQL_PASS:-hmdm}
+      BASE_DOMAIN: ${BASE_DOMAIN:-localhost}
+      LOCAL_IP: ${LOCAL_IP:-}
+      PROXY_ADDRESSES: ${PROXY_ADDRESSES:-}
+      PROTOCOL: ${PROTOCOL:-http}
+      PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL:-http}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
+      SHARED_SECRET: ${SHARED_SECRET:-hwmdm-local-dev}
+      HMDM_VARIANT: ${HMDM_VARIANT:-os}
+      DOWNLOAD_CREDENTIALS: ${DOWNLOAD_CREDENTIALS:-}
+      HMDM_URL: ${HMDM_URL:-}
+      CLIENT_VERSION: ${CLIENT_VERSION:-6.36}
+      FORCE_RECONFIGURE: ${FORCE_RECONFIGURE:-true}
+      APPLY_CUSTOM_WEBAPP_ON_BOOT: "true"
+      ADMIN_PORT: ${ADMIN_PORT:-8090}
+      AUTO_UPDATE_WEBAPP: "false"
+
+  # Resolvedor DNS do Web Filter. O MDM so escreve em volumes/work/plugins/webfilter/dns;
+  # este container le dali e devolve o log de consultas em .../queries.
+  # Certificado: WEBFILTER_CERTS_DIR deve conter cert.pem e key.pem para *.<dominio DNS do filtro>.
+  webfilter-dns:
+    build:
+      context: .
+      target: webfilter
+    image: hwmdm/webfilter-dns:0.34.0
+    container_name: hwmdm-webfilter
+    restart: unless-stopped
+    ports:
+      - "853:853/tcp"          # DoT (DNS privado do Android)
+      # Preso a um endereco: o systemd-resolved do host ja ocupa 127.0.0.53:53.
+      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/udp"
+      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/tcp"
+    volumes:
+      - ./volumes/work/plugins/webfilter/dns:/app/dns:ro
+      - ${WEBFILTER_CERTS_DIR:-./webfilter/certs}:/app/certs:ro
+      - webfilter-lists:/app/lists
+      - webfilter-state:/app/state
+      - ./volumes/work/plugins/webfilter/queries:/app/queries
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '/app'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 300s
+    mem_limit: 3g
+
+  # Gestao do servidor (configuracao, containers, aplicar mudancas). Container proprio para
+  # sobreviver ao restart/recreate/build dos outros, que ele mesmo comanda. Mesmo banco e
+  # mesmo login do MDM. O socket do Docker e' o unico meio de um container comandar os
+  # outros; ele e' montado SO' aqui. A pasta do projeto entra no MESMO caminho do host,
+  # porque o compose resolve os volumes relativos (./volumes, ../dist) pelo caminho real.
+  admin:
+    build:
+      context: .
+      target: admin
+    image: hwmdm/admin:1.0.0
+    container_name: hwmdm-admin
+    restart: unless-stopped
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    ports:
+      - ${ADMIN_PORT:-8090}:${ADMIN_PORT:-8090}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HWMDM_ROOT:?defina HWMDM_ROOT no source/.env}:${HWMDM_ROOT}
+      # Historico das execucoes (restart, aplicar, build) sobrevive ao restart deste container.
+      - ./volumes/admin:/data
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+      HWMDM_ROOT: ${HWMDM_ROOT}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-hwmdm}
+      ADMIN_PORT: ${ADMIN_PORT:-8090}
+      SQL_HOST: postgresql
+      SQL_USER: ${SQL_USER:-hmdm}
+      SQL_BASE: ${SQL_BASE:-hmdm}
+      SQL_PASS: ${SQL_PASS:-hmdm}
+
+volumes:
+  postgresql-data:
+  # Nomes fixos: sao os volumes que ja existiam quando o DNS tinha compose proprio.
+  # Sem "external": numa maquina nova o compose cria; onde ja existem, reaproveita pelo nome.
+  webfilter-lists:
+    name: hwmdm-webfilter_webfilter-lists
+  webfilter-state:
+    name: hwmdm-webfilter_webfilter-state

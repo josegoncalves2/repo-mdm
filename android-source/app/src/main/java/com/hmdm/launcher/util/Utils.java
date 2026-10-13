@@ -70,6 +70,48 @@ import java.util.List;
 import java.util.Set;
 
 public class Utils {
+    private static final String WEBFILTER_PACKAGE = "com.hwmdm.webfilter";
+
+    /**
+     * Give the separately installed Web Filter app only authority to manage Android
+     * application restrictions (used for native browser policies). The owner remains
+     * this launcher; no VPN or second device owner is involved.
+     */
+    @TargetApi(Build.VERSION_CODES.O)
+    public static void delegateWebFilterApplicationRestrictions(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || !isDeviceOwner(context)) {
+            return;
+        }
+        try {
+            PackageManager pm = context.getPackageManager();
+            pm.getPackageInfo(WEBFILTER_PACKAGE, 0);
+            if (pm.checkSignatures(context.getPackageName(), WEBFILTER_PACKAGE)
+                    != PackageManager.SIGNATURE_MATCH) {
+                return;
+            }
+            DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(
+                    Context.DEVICE_POLICY_SERVICE);
+            if (dpm != null) {
+                dpm.setDelegatedScopes(LegacyUtils.getAdminComponentName(context), WEBFILTER_PACKAGE,
+                        java.util.Collections.singletonList(DevicePolicyManager.DELEGATION_APP_RESTRICTIONS));
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+            // The MDM installs the companion as a managed application; grant on the next sync.
+        } catch (Exception e) {
+            Log.w(Const.LOG_TAG, "Could not delegate browser policy management to Web Filter", e);
+        }
+    }
+
+    public static void requestWebFilterPolicyRefresh(Context context) {
+        try {
+            Intent intent = new Intent("com.hwmdm.webfilter.action.POLICY_UPDATE");
+            intent.setPackage(WEBFILTER_PACKAGE);
+            context.sendBroadcast(intent);
+        } catch (Exception e) {
+            Log.w(Const.LOG_TAG, "Could not notify Web Filter after MDM sync", e);
+        }
+    }
+
     public static boolean isDeviceOwner(Context context) {
         DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
         return dpm != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && dpm.isDeviceOwnerApp(context.getPackageName());
@@ -601,6 +643,60 @@ public class Utils {
             return false;
         }
         return true;
+    }
+
+    @TargetApi(Build.VERSION_CODES.Q)
+    public static boolean setPrivateDnsPolicy(String hostname, Context context) {
+        if (hostname == null) {
+            return true;
+        }
+        if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return false;
+        }
+
+        DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
+        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
+
+        try {
+            String value = hostname.trim();
+            if (value.length() == 0) {
+                devicePolicyManager.setGlobalPrivateDnsModeOpportunistic(adminComponentName);
+                RemoteLogger.log(context, Const.LOG_INFO, "Web Filter DNS cleared: Private DNS back to opportunistic mode");
+            } else {
+                devicePolicyManager.setGlobalPrivateDnsModeSpecifiedHost(adminComponentName, value);
+                RemoteLogger.log(context, Const.LOG_INFO, "Web Filter DNS enforced: " + value);
+            }
+            return true;
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Failed to apply Web Filter DNS policy: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean setKeyguardDisabledPolicy(Boolean kioskKeyguard, Context context) {
+        if (!isDeviceOwner(context) || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return false;
+        }
+
+        DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
+        ComponentName adminComponentName = LegacyUtils.getAdminComponentName(context);
+
+        try {
+            boolean disabled = kioskKeyguard == null || !kioskKeyguard;
+            boolean changed = devicePolicyManager.setKeyguardDisabled(adminComponentName, disabled);
+            RemoteLogger.log(context, Const.LOG_INFO,
+                    disabled
+                            ? "Keyguard disabled by MDM policy for kiosk and remote support"
+                            : "Keyguard allowed by MDM policy");
+            return changed;
+        } catch (Exception e) {
+            RemoteLogger.log(context, Const.LOG_WARN,
+                    "Failed to apply keyguard policy: " + e.getMessage());
+            return false;
+        }
     }
 
     public static boolean lockVolume(Boolean lock, Context context) {

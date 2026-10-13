@@ -150,8 +150,8 @@ public class PushNotificationProcessor {
             executor.execute(() -> wipe(context, wipePayload));
             return;
         } else if (message.getMessageType().equals(PushMessage.TYPE_SCREENSHOT)) {
-            RemoteLogger.log(context, Const.LOG_INFO, "Taking a screenshot by a Push message");
-            com.hmdm.launcher.ui.ScreenshotConsentActivity.requestScreenshot(context);
+            // Captura de tela removida na 1.6 (permissao de projecao de tela barrada pelo Play Protect)
+            RemoteLogger.log(context, Const.LOG_INFO, "Screenshot not supported by this launcher build");
             return;
         }
 
