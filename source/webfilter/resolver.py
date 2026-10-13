@@ -164,6 +164,34 @@ def referenced_files(config_text):
     return re.findall(r"^\s*-\s+(/app/\S+\.txt)\s*$", config_text, re.M)
 
 
+def host_ipv4_addresses():
+    """IPv4 locais da maquina, lidos na hora (o container roda na rede do host)."""
+    with open("/proc/net/fib_trie") as f:
+        lines = f.read().splitlines()
+    found = []
+    for prev, line in zip(lines, lines[1:]):
+        if "/32 host LOCAL" in line:
+            ip = prev.split()[-1]
+            if not ip.startswith("127.") and ip not in found:
+                found.append(ip)
+    return found
+
+
+def with_host_dns_listeners(config):
+    """Copia da configuracao com a porta 53 em 127.0.0.1 e nos IPs desta maquina.
+
+    0.0.0.0:53 colide com o stub do systemd-resolved (127.0.0.53/54); listar os enderecos
+    descobertos aqui evita a colisao sem gravar IP nenhum no projeto."""
+    listen = ",".join(f"{ip}:53" for ip in ["127.0.0.1"] + host_ipv4_addresses())
+    with open(config) as f:
+        text = re.sub(r"^  dns: .*$", f"  dns: {listen}", f.read(), flags=re.M)
+    runtime = os.path.join(STATE_DIR, "blocky.runtime.yml")
+    with open(runtime, "w") as f:
+        f.write(text)
+    log.info("porta 53 em %s", listen)
+    return runtime
+
+
 def dns_ok(port=53):
     """Consulta A de 'localhost.' no listener local; qualquer resposta DNS = Blocky servindo."""
     q = struct.pack(">HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0) + b"\x09localhost\x00" + struct.pack(">HH", 1, 1)
@@ -228,7 +256,7 @@ class Supervisor:
     def _start(self, config):
         self.stop()  # fail-closed: nunca duas instancias, nunca uma sem filtro
         log.info("iniciando Blocky com %s", config)
-        self.proc = subprocess.Popen([BLOCKY, "--config", config])
+        self.proc = subprocess.Popen([BLOCKY, "--config", with_host_dns_listeners(config)])
         deadline = time.time() + HEALTH_TIMEOUT
         while time.time() < deadline:
             if self.proc.poll() is not None:

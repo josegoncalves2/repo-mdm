@@ -96,7 +96,6 @@ services:
       SQL_BASE: ${SQL_BASE:-hmdm}
       SQL_PASS: ${SQL_PASS:-hmdm}
       BASE_DOMAIN: ${BASE_DOMAIN:-localhost}
-      LOCAL_IP: ${LOCAL_IP:-}
       PROXY_ADDRESSES: ${PROXY_ADDRESSES:-}
       PROTOCOL: ${PROTOCOL:-http}
       PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL:-http}
@@ -121,11 +120,9 @@ services:
     image: hwmdm/webfilter-dns:0.34.0
     container_name: hwmdm-webfilter
     restart: unless-stopped
-    ports:
-      - "853:853/tcp"          # DoT (DNS privado do Android)
-      # Preso a um endereco: o systemd-resolved do host ja ocupa 127.0.0.53:53.
-      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/udp"
-      - "${WEBFILTER_BIND_ADDR:-${LOCAL_IP:?defina LOCAL_IP no source/.env}}:53:53/tcp"
+    # Rede do host, sem IP no projeto: 853 (DoT) escuta em todos os enderecos e a 53 nos IPs
+    # que o resolver.py descobre ao subir -- 0.0.0.0:53 colide com o stub do systemd-resolved.
+    network_mode: host
     volumes:
       - ./volumes/work/plugins/webfilter/dns:/app/dns:ro
       - ${WEBFILTER_CERTS_DIR:-./webfilter/certs}:/app/certs:ro
