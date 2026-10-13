@@ -9,6 +9,8 @@ FROM python:3.12-slim AS webfilter
 
 # Blocky versionado em vendor/ (conferido por vendor/SHA256SUMS): o build nao baixa nada.
 COPY vendor/blocky-v0.34.0-linux-x86_64 /usr/local/bin/blocky
+# Listas de categorias versionadas: sementes para o primeiro boot; a internet so atualiza depois.
+COPY vendor/webfilter-lists/ /app/seed-lists/
 RUN mkdir -p /app/dns /app/lists /app/state /app/certs /app/queries
 
 COPY webfilter/resolver.py /app/resolver.py

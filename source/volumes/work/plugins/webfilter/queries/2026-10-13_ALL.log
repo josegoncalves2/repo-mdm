@@ -561,3 +561,15 @@
 2026-10-13 15:56:58	192.168.1.65	192.168.1.65	0	CACHED	google.com.	A (142.250.219.206)	NOERROR	CACHED	A	pmohw
 2026-10-13 15:56:58	192.168.1.65	192.168.1.65	0	BLOCKED (cat-social_media: *.facebook.com, p-default: *.facebook.com)	facebook.com.		NXDOMAIN	BLOCKED	A	pmohw
 2026-10-13 15:57:03	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 15:57:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 15:58:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 15:58:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 15:59:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 15:59:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:00:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:00:34	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:01:04	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:01:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:02:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:02:35	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw
+2026-10-13 16:03:05	127.0.0.1	127.0.0.1	0	Special-Use Domain Name	localhost.	A (127.0.0.1)	NOERROR	SPECIAL	A	pmohw

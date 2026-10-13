@@ -17,6 +17,7 @@ Este processo:
     nova nao ficar saudavel;
   * pede POST /api/lists/refresh (sem reinicio) quando so listas mudam.
 """
+import gzip
 import hashlib
 import json
 import logging
@@ -36,6 +37,7 @@ DNS_DIR = os.environ.get("WEBFILTER_DNS_DIR", "/app/dns")
 LISTS_DIR = os.environ.get("WEBFILTER_LISTS_DIR", "/app/lists")
 STATE_DIR = os.environ.get("WEBFILTER_STATE_DIR", "/app/state")
 BLOCKY = os.environ.get("BLOCKY_BINARY", "/usr/local/bin/blocky")
+SEED_DIR = os.environ.get("WEBFILTER_SEED_DIR", "/app/seed-lists")
 API = "http://127.0.0.1:4000"
 REFRESH_MAX = 24 * 3600
 REFRESH_MIN = 3600
@@ -386,20 +388,48 @@ class Supervisor:
                       current[:12])
         # O passo 1 do proximo ciclo sobe a configuracao boa (e insiste nela se tambem falhar).
 
+def seed_lists():
+    """Lista ausente no volume vem da copia versionada: o DNS sobe sem depender da internet."""
+    if not os.path.isdir(SEED_DIR):
+        return
+    for name in sorted(os.listdir(SEED_DIR)):
+        if not name.endswith(".txt.gz"):
+            continue
+        target = os.path.join(LISTS_DIR, name[:-3])
+        if os.path.exists(target):
+            continue
+        tmp = target + ".seed.tmp"
+        with gzip.open(os.path.join(SEED_DIR, name), "rb") as src, open(tmp, "wb") as dst:
+            shutil.copyfileobj(src, dst)
+        os.replace(tmp, target)
+        log.info("lista %s semeada da copia versionada", name[:-7])
+
+
 def main():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", stream=sys.stdout)
     for d in (LISTS_DIR, STATE_DIR):
         os.makedirs(d, exist_ok=True)
+    seed_lists()
     updater, supervisor = Updater(), Supervisor()
     stop = threading.Event()
+    lists_changed = threading.Event()
 
     def terminate(*_):
         stop.set()
 
+    def update_loop():
+        # Download em thread propria: internet lenta ou ausente nunca atrasa o DNS.
+        while not stop.is_set():
+            if updater.run_once():
+                lists_changed.set()
+            stop.wait(LOOP_SECONDS)
+
     signal.signal(signal.SIGTERM, terminate)
     signal.signal(signal.SIGINT, terminate)
+    threading.Thread(target=update_loop, name="hwmdm-webfilter-updater", daemon=True).start()
     while not stop.is_set():
-        changed = updater.run_once()
+        changed = lists_changed.is_set()
+        lists_changed.clear()
         supervisor.reconcile(changed)
         stop.wait(LOOP_SECONDS)
     supervisor.stop()
