@@ -41,3 +41,7 @@ source/webfilter/certs/*.pem
 .trava/forense/
 .trava/bancada/
 evidencias/
+
+# Gerado no boot pelo docker-entrypoint.sh a partir do .env (base.url = BASE_DOMAIN). Versionar
+# este arquivo levava o endereco de um servidor para todos os outros.
+source/volumes/hmdm-config/ROOT.xml
