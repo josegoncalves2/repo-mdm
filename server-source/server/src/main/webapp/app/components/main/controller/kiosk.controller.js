@@ -13,11 +13,7 @@ angular.module('headwind-kiosk')
             if (sec < 86400) { return Math.round(sec / 3600) + ' h ' + localization.localize('kiosk.ago'); }
             return Math.round(sec / 86400) + ' d ' + localization.localize('kiosk.ago');
         };
-        var infrastructureIps = {
-            '10.0.17.106': true,
-            '10.0.9.1': true,
-            '10.1.1.1': true
-        };
+        var infrastructureIps = (window.HWMDM_RUNTIME && window.HWMDM_RUNTIME.infrastructureIps || []).reduce(function (m, ip) { m[ip] = true; return m; }, {});
         var strictRestrictions = [
             'no_factory_reset',
             'no_safe_boot',

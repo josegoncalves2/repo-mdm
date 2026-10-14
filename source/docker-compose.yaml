@@ -1,60 +1,108 @@
-# Sobe com `docker compose up -d` num clone recem-feito, sem nenhum passo previo.
-#
-# Todo ${VAR} tem valor padrao para desenvolvimento local, entao a ausencia de
-# source/.env (que e' gitignored, porque carrega senha e segredo reais) nao impede
-# a subida. Quando o .env existe, o compose o le automaticamente e os valores dele
-# vencem estes padroes -- o fluxo do scripts/provision.sh continua igual.
+# Sobe com `docker compose up -d`. Todo valor vem do source/.env (modelo completo em
+# source/.env.example): este arquivo nao carrega valor nenhum, so nomes de variavel.
+# Variavel ausente no .env = o compose sobe com valor vazio e o servico falha na hora,
+# em vez de subir com um padrao escondido aqui.
 #
 # name: fixa o nome do projeto Compose. Sem isto, o Compose usa o nome da PASTA
 # ("source") como nome do projeto -- e cada clone deste repo tem uma pasta
 # "source" identica, um `docker compose up` num segundo clone na MESMA maquina
 # reconhece os containers do primeiro como se fossem dele e os RECRIA, derrubando
-# o que estava rodando. Ja aconteceu em producao. Se for subir mais de uma
-# instancia no mesmo host, rode com um nome proprio:
-#     COMPOSE_PROJECT_NAME=outro-nome docker compose up -d
-name: ${COMPOSE_PROJECT_NAME:-hwmdm}
+# o que estava rodando. Ja aconteceu em producao. Para mais de uma instancia no
+# mesmo host, use outro COMPOSE_PROJECT_NAME no .env.
+name: ${COMPOSE_PROJECT_NAME}
+
+# Configuracao do resolvedor DNS: o MDM gera o blocky.yml com ela e o webfilter-dns a executa,
+# entao os dois servicos recebem exatamente o mesmo conjunto.
+x-webfilter-env: &webfilter-env
+  WEBFILTER_APP_DIR: ${WEBFILTER_APP_DIR}
+  WEBFILTER_DNS_DIR: ${WEBFILTER_DNS_DIR}
+  WEBFILTER_LISTS_DIR: ${WEBFILTER_LISTS_DIR}
+  WEBFILTER_STATE_DIR: ${WEBFILTER_STATE_DIR}
+  WEBFILTER_SEED_DIR: ${WEBFILTER_SEED_DIR}
+  WEBFILTER_CERTS_MOUNT: ${WEBFILTER_CERTS_MOUNT}
+  WEBFILTER_CERT_FILE: ${WEBFILTER_CERT_FILE}
+  WEBFILTER_KEY_FILE: ${WEBFILTER_KEY_FILE}
+  WEBFILTER_QUERY_LOG_DIR: ${WEBFILTER_QUERY_LOG_DIR}
+  BLOCKY_BINARY: ${BLOCKY_BINARY}
+  WEBFILTER_LOOPBACK_ADDR: ${WEBFILTER_LOOPBACK_ADDR}
+  WEBFILTER_API_ADDR: ${WEBFILTER_API_ADDR}
+  WEBFILTER_DNS_PORT: ${WEBFILTER_DNS_PORT}
+  WEBFILTER_DOT_PORT: ${WEBFILTER_DOT_PORT}
+  WEBFILTER_BIND_ADDRS: ${WEBFILTER_BIND_ADDRS}
+  WEBFILTER_DRY_RUN_DNS_PORT: ${WEBFILTER_DRY_RUN_DNS_PORT}
+  WEBFILTER_DRY_RUN_API_ADDR: ${WEBFILTER_DRY_RUN_API_ADDR}
+  WEBFILTER_UPSTREAMS: ${WEBFILTER_UPSTREAMS}
+  WEBFILTER_UPSTREAM_STRATEGY: ${WEBFILTER_UPSTREAM_STRATEGY}
+  WEBFILTER_LOG_LEVEL: ${WEBFILTER_LOG_LEVEL}
+  WEBFILTER_QUERY_LOG_TYPE: ${WEBFILTER_QUERY_LOG_TYPE}
+  WEBFILTER_QUERY_LOG_RETENTION_DAYS: ${WEBFILTER_QUERY_LOG_RETENTION_DAYS}
+  WEBFILTER_CACHE_MAX_TIME: ${WEBFILTER_CACHE_MAX_TIME}
+  WEBFILTER_CACHE_MAX_ITEMS: ${WEBFILTER_CACHE_MAX_ITEMS}
+  WEBFILTER_CACHE_PREFETCHING: ${WEBFILTER_CACHE_PREFETCHING}
+  WEBFILTER_BLOCK_TYPE: ${WEBFILTER_BLOCK_TYPE}
+  WEBFILTER_BLOCK_TTL: ${WEBFILTER_BLOCK_TTL}
+  WEBFILTER_LISTS_REFRESH_PERIOD: ${WEBFILTER_LISTS_REFRESH_PERIOD}
+  WEBFILTER_LISTS_LOADING_STRATEGY: ${WEBFILTER_LISTS_LOADING_STRATEGY}
+  WEBFILTER_REFRESH_MAX_SECONDS: ${WEBFILTER_REFRESH_MAX_SECONDS}
+  WEBFILTER_REFRESH_MIN_SECONDS: ${WEBFILTER_REFRESH_MIN_SECONDS}
+  WEBFILTER_LOOP_SECONDS: ${WEBFILTER_LOOP_SECONDS}
+  WEBFILTER_HEALTH_TIMEOUT: ${WEBFILTER_HEALTH_TIMEOUT}
+  WEBFILTER_HEALTH_POLL_SECONDS: ${WEBFILTER_HEALTH_POLL_SECONDS}
+  WEBFILTER_RETRY_FIRST_SECONDS: ${WEBFILTER_RETRY_FIRST_SECONDS}
+  WEBFILTER_RETRY_MAX_SECONDS: ${WEBFILTER_RETRY_MAX_SECONDS}
+  WEBFILTER_RESTART_GOOD_SECONDS: ${WEBFILTER_RESTART_GOOD_SECONDS}
+  WEBFILTER_API_REFRESH_ATTEMPTS: ${WEBFILTER_API_REFRESH_ATTEMPTS}
+  WEBFILTER_API_REFRESH_BACKOFF: ${WEBFILTER_API_REFRESH_BACKOFF}
+  WEBFILTER_API_TIMEOUT: ${WEBFILTER_API_TIMEOUT}
+  WEBFILTER_DOWNLOAD_TIMEOUT: ${WEBFILTER_DOWNLOAD_TIMEOUT}
+  WEBFILTER_DNS_PROBE_TIMEOUT: ${WEBFILTER_DNS_PROBE_TIMEOUT}
+  WEBFILTER_STOP_TIMEOUT: ${WEBFILTER_STOP_TIMEOUT}
+  WEBFILTER_PROBE_NAME: ${WEBFILTER_PROBE_NAME}
+
 services:
 
   postgresql:
-    image: postgres:12-alpine
-    container_name: hwmdm-postgres
-    restart: unless-stopped
+    image: ${POSTGRES_IMAGE}
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    restart: ${RESTART_POLICY}
     # O hmdm so sobe depois que o banco aceita conexao (evita UnknownHostException/PSQLException no boot).
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${SQL_USER:-hmdm} -d ${SQL_BASE:-hmdm}"]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-      start_period: 10s
+      test: ["CMD-SHELL", "pg_isready -U ${SQL_USER} -d ${SQL_BASE}"]
+      interval: ${POSTGRES_HEALTH_INTERVAL}
+      timeout: ${POSTGRES_HEALTH_TIMEOUT}
+      retries: ${POSTGRES_HEALTH_RETRIES}
+      start_period: ${POSTGRES_HEALTH_START_PERIOD}
+    # Bind por endereco em toda porta publicada: sem ele o Docker publica em 0.0.0.0 (todas as
+    # NICs) e passa por cima do firewalld. Postgres so para o proprio host (backup/inspecao).
     ports:
-      - ${POSTGRES_PORT:-5432}:5432
+      - ${POSTGRES_BIND_ADDR}:${POSTGRES_PORT}:${POSTGRES_INTERNAL_PORT}
     environment:
-      # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam
-      # 3h adiantados em relacao ao horario local (America/Sao_Paulo).
-      TZ: ${TZ:-America/Sao_Paulo}
-      POSTGRES_USER: ${SQL_USER:-hmdm}
-      POSTGRES_PASSWORD: ${SQL_PASS:-hmdm}
-      POSTGRES_DB: ${SQL_BASE:-hmdm}
+      # Sem TZ o container roda em UTC e todos os timestamps do banco/logs ficam adiantados.
+      TZ: ${TZ}
+      POSTGRES_USER: ${SQL_USER}
+      POSTGRES_PASSWORD: ${SQL_PASS}
+      POSTGRES_DB: ${SQL_BASE}
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - postgresql-data:${POSTGRES_DATA_DIR}
       # O Postgres executa o que estiver aqui na PRIMEIRA inicializacao do cluster,
       # e aceita .sql.gz nativamente. Sem isto o banco sobe vazio, sem usuario
       # nenhum, e nao ha como entrar no painel. O provision.sh restaura o mesmo
       # dump quando ja existe banco; os dois caminhos levam ao mesmo lugar.
-      - ./sql/hmdm-dump.sql.gz:/docker-entrypoint-initdb.d/10-hmdm-dump.sql.gz:ro
+      - ${SQL_DUMP_FILE}:${POSTGRES_INITDB_DUMP}:ro
 
   hmdm:
-    image: headwindmdm/hmdm:0.1.8
-    container_name: hwmdm-mdm
-    restart: unless-stopped
+    image: ${MDM_IMAGE}
+    container_name: ${MDM_CONTAINER_NAME}
+    restart: ${RESTART_POLICY}
     depends_on:
       postgresql:
         condition: service_healthy
     ports:
-      - ${MDM_HTTP_PORT:-8080}:8080
-      # Porta publica sem ":porta" na URL (pagina de bloqueio e painel pelo dominio).
-      - ${MDM_PUBLIC_PORT:-80}:8080
-      - ${MDM_PUSH_PORT:-31000}:31000
+      # Painel: so na NIC de gerencia.
+      - ${MGMT_BIND_ADDR}:${MDM_HTTP_PORT}:${MDM_INTERNAL_HTTP_PORT}
+      # Porta publica sem ":porta" na URL e push: o que os dispositivos usam, na NIC de dispositivos.
+      - ${DEVICE_BIND_ADDR}:${MDM_PUBLIC_PORT}:${MDM_INTERNAL_HTTP_PORT}
+      - ${DEVICE_BIND_ADDR}:${MDM_PUSH_PORT}:${MDM_INTERNAL_PUSH_PORT}
     volumes:
       - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
       - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
@@ -78,37 +126,44 @@ services:
       # A WAR versionada entra direto no cache que o docker-entrypoint.sh procura.
       # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
       # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
-      - ../dist/hmdm.war:/usr/local/tomcat/work/cache/hmdm-5.39.2-os.war:ro
+      - ${MDM_WAR_FILE}:${MDM_WAR_CACHE_FILE}:ro
     environment:
-      # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga 3h adiantado.
-      TZ: ${TZ:-America/Sao_Paulo}
+      <<: *webfilter-env
+      # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga adiantado.
+      TZ: ${TZ}
       # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
       # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
       # dono root:root (o processo roda como root dentro do container, sem userns-remap).
       # Root le/escreve esses arquivos de qualquer forma, entao o app nunca vê erro; quem
-      # apanha e' tudo que roda FORA do container com o usuario do host (sahwmdm): backup,
+      # apanha e' tudo que roda FORA do container com o usuario do host: backup,
       # inspecao manual, qualquer script em scripts/. 0022 mantem dono root mas deixa os
       # arquivos world-readable (644 em vez de 640), sem abrir escrita para ninguem alem
       # do dono.
-      UMASK: "0022"
-      SQL_HOST: postgresql
-      SQL_USER: ${SQL_USER:-hmdm}
-      SQL_BASE: ${SQL_BASE:-hmdm}
-      SQL_PASS: ${SQL_PASS:-hmdm}
-      BASE_DOMAIN: ${BASE_DOMAIN:-localhost}
-      PROXY_ADDRESSES: ${PROXY_ADDRESSES:-}
-      PROTOCOL: ${PROTOCOL:-http}
-      PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL:-http}
-      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@localhost}
-      SHARED_SECRET: ${SHARED_SECRET:-hwmdm-local-dev}
-      HMDM_VARIANT: ${HMDM_VARIANT:-os}
-      DOWNLOAD_CREDENTIALS: ${DOWNLOAD_CREDENTIALS:-}
-      HMDM_URL: ${HMDM_URL:-}
-      CLIENT_VERSION: ${CLIENT_VERSION:-6.36}
-      FORCE_RECONFIGURE: ${FORCE_RECONFIGURE:-true}
-      APPLY_CUSTOM_WEBAPP_ON_BOOT: "false"
-      ADMIN_PORT: ${ADMIN_PORT:-8090}
-      AUTO_UPDATE_WEBAPP: "false"
+      UMASK: ${MDM_UMASK}
+      SQL_HOST: ${SQL_HOST}
+      SQL_USER: ${SQL_USER}
+      SQL_BASE: ${SQL_BASE}
+      SQL_PASS: ${SQL_PASS}
+      BASE_DOMAIN: ${BASE_DOMAIN}
+      PROXY_ADDRESSES: ${PROXY_ADDRESSES}
+      PROTOCOL: ${PROTOCOL}
+      PUBLIC_PROTOCOL: ${PUBLIC_PROTOCOL}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      SHARED_SECRET: ${SHARED_SECRET}
+      HMDM_VARIANT: ${HMDM_VARIANT}
+      DOWNLOAD_CREDENTIALS: ${DOWNLOAD_CREDENTIALS}
+      HMDM_URL: ${HMDM_URL}
+      CLIENT_VERSION: ${CLIENT_VERSION}
+      FORCE_RECONFIGURE: ${FORCE_RECONFIGURE}
+      APPLY_CUSTOM_WEBAPP_ON_BOOT: ${APPLY_CUSTOM_WEBAPP_ON_BOOT}
+      ADMIN_PORT: ${ADMIN_PORT}
+      INFRASTRUCTURE_IPS: ${INFRASTRUCTURE_IPS}
+      DEVICE_ONLINE_SECONDS: ${DEVICE_ONLINE_SECONDS}
+      DEVICE_AWAY_SECONDS: ${DEVICE_AWAY_SECONDS}
+      GPS_STOP_SECONDS: ${GPS_STOP_SECONDS}
+      POSTGRES_INTERNAL_PORT: ${POSTGRES_INTERNAL_PORT}
+      MQTT_SERVER_URI: ${MQTT_SERVER_URI}
+      AUTO_UPDATE_WEBAPP: ${AUTO_UPDATE_WEBAPP}
 
   # Resolvedor DNS do Web Filter. O MDM so escreve em volumes/work/plugins/webfilter/dns;
   # este container le dali e devolve o log de consultas em .../queries.
@@ -117,27 +172,28 @@ services:
     build:
       context: .
       target: webfilter
-    image: hwmdm/webfilter-dns:0.34.0
-    container_name: hwmdm-webfilter
-    restart: unless-stopped
-    # Rede do host, sem IP no projeto: 853 (DoT) escuta em todos os enderecos e a 53 nos IPs
-    # que o resolver.py descobre ao subir -- 0.0.0.0:53 colide com o stub do systemd-resolved.
+    image: ${WEBFILTER_IMAGE}
+    container_name: ${WEBFILTER_CONTAINER_NAME}
+    restart: ${RESTART_POLICY}
+    # Rede do host: DNS e DoT escutam so no loopback e em WEBFILTER_BIND_ADDRS (o resolver.py
+    # aplica ao subir) -- 0.0.0.0 colide com o stub do systemd-resolved e exporia todas as NICs.
     network_mode: host
     volumes:
-      - ./volumes/work/plugins/webfilter/dns:/app/dns:ro
-      - ${WEBFILTER_CERTS_DIR:-./webfilter/certs}:/app/certs:ro
-      - webfilter-lists:/app/lists
-      - webfilter-state:/app/state
-      - ./volumes/work/plugins/webfilter/queries:/app/queries
+      - ./volumes/work/plugins/webfilter/dns:${WEBFILTER_DNS_DIR}:ro
+      - ${WEBFILTER_CERTS_DIR}:${WEBFILTER_CERTS_MOUNT}:ro
+      - webfilter-lists:${WEBFILTER_LISTS_DIR}
+      - webfilter-state:${WEBFILTER_STATE_DIR}
+      - ./volumes/work/plugins/webfilter/queries:${WEBFILTER_QUERY_LOG_DIR}
     environment:
-      TZ: ${TZ:-America/Sao_Paulo}
+      <<: *webfilter-env
+      TZ: ${TZ}
     healthcheck:
-      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '/app'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 300s
-    mem_limit: 3g
+      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '${WEBFILTER_APP_DIR}'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
+      interval: ${WEBFILTER_HEALTHCHECK_INTERVAL}
+      timeout: ${WEBFILTER_HEALTHCHECK_TIMEOUT}
+      retries: ${WEBFILTER_HEALTHCHECK_RETRIES}
+      start_period: ${WEBFILTER_HEALTHCHECK_START_PERIOD}
+    mem_limit: ${WEBFILTER_MEM_LIMIT}
 
   # Gestao do servidor (configuracao, containers, aplicar mudancas). Container proprio para
   # sobreviver ao restart/recreate/build dos outros, que ele mesmo comanda. Mesmo banco e
@@ -148,34 +204,42 @@ services:
     build:
       context: .
       target: admin
-    image: hwmdm/admin:1.0.0
-    container_name: hwmdm-admin
-    restart: unless-stopped
+    image: ${ADMIN_IMAGE}
+    container_name: ${ADMIN_CONTAINER_NAME}
+    restart: ${RESTART_POLICY}
     depends_on:
       postgresql:
         condition: service_healthy
     ports:
-      - ${ADMIN_PORT:-8090}:${ADMIN_PORT:-8090}
+      - ${MGMT_BIND_ADDR}:${ADMIN_PORT}:${ADMIN_PORT}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${DOCKER_SOCKET}:${DOCKER_SOCKET}
       - ${HWMDM_ROOT:?defina HWMDM_ROOT no source/.env}:${HWMDM_ROOT}
       # Historico das execucoes (restart, aplicar, build) sobrevive ao restart deste container.
       - ./volumes/admin:/data
     environment:
-      TZ: ${TZ:-America/Sao_Paulo}
+      TZ: ${TZ}
       HWMDM_ROOT: ${HWMDM_ROOT}
-      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-hwmdm}
-      ADMIN_PORT: ${ADMIN_PORT:-8090}
-      SQL_HOST: postgresql
-      SQL_USER: ${SQL_USER:-hmdm}
-      SQL_BASE: ${SQL_BASE:-hmdm}
-      SQL_PASS: ${SQL_PASS:-hmdm}
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
+      ADMIN_PORT: ${ADMIN_PORT}
+      ADMIN_BIND_ADDR: ${ADMIN_BIND_ADDR}
+      ADMIN_HEALTH_HOST: ${ADMIN_HEALTH_HOST}
+      ADMIN_ROLE_IDS: ${ADMIN_ROLE_IDS}
+      ADMIN_SESSION_TTL: ${ADMIN_SESSION_TTL}
+      ADMIN_JOBS_FILE: ${ADMIN_JOBS_FILE}
+      HMDM_PASS_SALT: ${HMDM_PASS_SALT}
+      MDM_INTERNAL_URL: ${MDM_INTERNAL_URL}
+      SQL_HOST: ${SQL_HOST}
+      SQL_PORT: ${POSTGRES_INTERNAL_PORT}
+      SQL_USER: ${SQL_USER}
+      SQL_BASE: ${SQL_BASE}
+      SQL_PASS: ${SQL_PASS}
 
 volumes:
   postgresql-data:
-  # Nomes fixos: sao os volumes que ja existiam quando o DNS tinha compose proprio.
+  # Nomes: sao os volumes que ja existiam quando o DNS tinha compose proprio.
   # Sem "external": numa maquina nova o compose cria; onde ja existem, reaproveita pelo nome.
   webfilter-lists:
-    name: hwmdm-webfilter_webfilter-lists
+    name: ${WEBFILTER_LISTS_VOLUME}
   webfilter-state:
-    name: hwmdm-webfilter_webfilter-state
+    name: ${WEBFILTER_STATE_VOLUME}

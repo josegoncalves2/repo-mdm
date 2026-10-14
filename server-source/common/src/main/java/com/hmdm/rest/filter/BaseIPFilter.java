@@ -13,9 +13,7 @@ public class BaseIPFilter {
     private Logger logger = LoggerFactory.getLogger(BaseIPFilter.class);
 
     private static final Set<String> INFRASTRUCTURE_IPS = new HashSet<>(Arrays.asList(
-        "10.0.17.106",  // proxy management IP
-        "10.0.9.1",     // proxy management IP
-        "10.1.1.1"      // tunnel IP
+        Optional.ofNullable(System.getenv("INFRASTRUCTURE_IPS")).orElse("").split("\\s*,\\s*")
     ));
 
     public class Net {

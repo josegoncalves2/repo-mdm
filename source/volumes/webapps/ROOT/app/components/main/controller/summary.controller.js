@@ -75,11 +75,7 @@ angular.module('headwind-kiosk')
                 .replace(/'/g, '&#39;');
         };
 
-        var infrastructureIps = {
-            '10.0.17.106': true,
-            '10.0.9.1': true,
-            '10.1.1.1': true
-        };
+        var infrastructureIps = (window.HWMDM_RUNTIME && window.HWMDM_RUNTIME.infrastructureIps || []).reduce(function (m, ip) { m[ip] = true; return m; }, {});
 
         var reportedDeviceIp = function (device) {
             if (!device) {

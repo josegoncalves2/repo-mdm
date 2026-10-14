@@ -6,7 +6,7 @@ upstreams:
       - tcp-tls:8.8.8.8:853
   strategy: parallel_best
 ports:
-  dns: 0.0.0.0:53
+  dns: 53
   tls: 853
   http: 127.0.0.1:4000
 certFile: /app/certs/cert.pem
@@ -16,12 +16,16 @@ log:
 queryLog:
   type: csv
   target: /app/queries
-  logRetentionDays: 0
+  logRetentionDays: 7
+caching:
+  maxTime: 30m
+  maxItemsCount: 2048
+  prefetching: true
 blocking:
   blockType: nxDomain
   blockTTL: 1m
   loading:
-    refreshPeriod: 0m
+    refreshPeriod: 4h
     strategy: failOnError
   denylists:
     p-c1-p11:

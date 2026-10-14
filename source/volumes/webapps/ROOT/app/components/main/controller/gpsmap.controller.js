@@ -7,8 +7,8 @@ angular.module('headwind-kiosk')
         var tileLayers = {};
         var REFRESH_INTERVAL_STORAGE_KEY = 'hwmdm.gps.refreshIntervalMs';
         var DEFAULT_REFRESH_INTERVAL_MS = 30000;
-        var ONLINE_THRESHOLD_MS = 300000;
-        var STOP_THRESHOLD_MS = 300000;
+        var ONLINE_THRESHOLD_MS = window.HWMDM_RUNTIME.deviceOnlineSeconds * 1000;
+        var STOP_THRESHOLD_MS = window.HWMDM_RUNTIME.gpsStopSeconds * 1000;
         var STOP_RADIUS_M = 50;
         var refreshTimer = null;
         var focusedDevice = deviceFocusService.consume();
@@ -72,7 +72,7 @@ angular.module('headwind-kiosk')
             return String(v || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         };
 
-        var infrastructureIps = { '10.0.17.106': true, '10.0.9.1': true, '10.1.1.1': true };
+        var infrastructureIps = (window.HWMDM_RUNTIME && window.HWMDM_RUNTIME.infrastructureIps || []).reduce(function (m, ip) { m[ip] = true; return m; }, {});
 
         var reportedDeviceIp = function (device) {
             if (!device) return null;

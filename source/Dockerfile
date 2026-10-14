@@ -32,6 +32,5 @@ RUN apk add --no-cache docker-cli docker-cli-compose tzdata wget
 COPY --from=admin-build /build/*.class /app/
 COPY --from=admin-build /build/lib/postgresql.jar /app/lib/postgresql.jar
 WORKDIR /app
-EXPOSE 8090/tcp
-HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- http://127.0.0.1:${ADMIN_PORT:-8090}/health || exit 1
+HEALTHCHECK --interval=30s --timeout=5s CMD wget -qO- "http://${ADMIN_HEALTH_HOST}:${ADMIN_PORT}/health" || exit 1
 ENTRYPOINT ["java", "-cp", "/app:/app/lib/postgresql.jar", "HwmdmAdmin"]

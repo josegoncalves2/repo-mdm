@@ -1125,7 +1125,7 @@ button:focus-visible,
 
 /* 21.4 Datas quebram no espaco (dd/MM/yy | HH:mm) pelo white-space:normal
    acima. O IP fica inteiro numa linha (quebrado em ponto arbitrario virava
-   "192.168.1.1 / 00", que se le como outro endereco); quem alargava a
+   "<IP> / 00", que se le como outro endereco); quem alargava a
    coluna era a nota abaixo dele, que era nowrap e agora quebra entre
    palavras. */
 .hwmdm-main .devices-table .device-address-secondary {

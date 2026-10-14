@@ -17,14 +17,14 @@ public class HwmdmAdmin {
     static final String ROOT = System.getenv("HWMDM_ROOT");
     static final String STACK_DIR = ROOT + "/source";
     static final String ENV_FILE = STACK_DIR + "/.env";
-    static final String PROJECT = env("COMPOSE_PROJECT_NAME", "hwmdm");
+    static final String PROJECT = env("COMPOSE_PROJECT_NAME");
     static final String SELF_SERVICE = "admin";
-    static final int PORT = Integer.parseInt(env("ADMIN_PORT", "8090"));
-    static final String PASS_SALT = env("HMDM_PASS_SALT", "5YdSYHyg2U");
-    static final Set<Integer> ADMIN_ROLES = parseRoles(env("ADMIN_ROLE_IDS", "1,2"));
-    static final int SESSION_TTL = Integer.parseInt(env("ADMIN_SESSION_TTL", "28800"));
-    static final String MDM_INTERNAL_URL = env("MDM_INTERNAL_URL", "http://hmdm:8080").replaceAll("/+$", "");
-    static final String JOBS_FILE = env("ADMIN_JOBS_FILE", "/data/jobs.json");
+    static final int PORT = Integer.parseInt(env("ADMIN_PORT"));
+    static final String PASS_SALT = env("HMDM_PASS_SALT");
+    static final Set<Integer> ADMIN_ROLES = parseRoles(env("ADMIN_ROLE_IDS"));
+    static final int SESSION_TTL = Integer.parseInt(env("ADMIN_SESSION_TTL"));
+    static final String MDM_INTERNAL_URL = env("MDM_INTERNAL_URL").replaceAll("/+$", "");
+    static final String JOBS_FILE = env("ADMIN_JOBS_FILE");
 
     static final Map<String, Session> SESSIONS = new ConcurrentHashMap<>();
     static final List<Map<String, String>> JOBS = Collections.synchronizedList(new ArrayList<>());
@@ -79,7 +79,12 @@ public class HwmdmAdmin {
             "PROXY_ADDRESSES|Proxies confiáveis|IPs separados por vírgula; vazio se não há proxy",
             "TZ|Fuso horário|Ex.: America/Sao_Paulo"},
         {"DNS / Web Filter",
-            "WEBFILTER_CERTS_DIR|Pasta dos certificados DoT|cert.pem e key.pem"},
+            "WEBFILTER_CERTS_DIR|Pasta dos certificados DoT|cert.pem e key.pem",
+            "WEBFILTER_BIND_ADDRS|Endereços do DNS do filtro|IPs separados por vírgula onde escutam DNS e DoT (além do loopback)"},
+        {"Rede",
+            "MGMT_BIND_ADDR|IP da NIC de gerência|Painel e esta gestão escutam só aqui",
+            "DEVICE_BIND_ADDR|IP da NIC dos dispositivos|Porta pública e push dos tablets escutam só aqui",
+            "POSTGRES_BIND_ADDR|IP do PostgreSQL no host|Ex.: 127.0.0.1 (só a própria máquina)"},
         {"Portas",
             "MDM_HTTP_PORT|Porta HTTP do painel|",
             "MDM_PUBLIC_PORT|Porta pública (sem :porta na URL)|",
@@ -127,9 +132,13 @@ public class HwmdmAdmin {
 
     // ================================================================ helpers
 
-    static String env(String key, String def) {
+    /** Todo valor vem do ambiente (source/.env); variavel ausente e' erro de implantacao. */
+    static String env(String key) {
         String v = System.getenv(key);
-        return v != null ? v : def;
+        if (v == null || v.isBlank()) {
+            throw new IllegalStateException("Variavel de ambiente obrigatoria ausente: " + key);
+        }
+        return v;
     }
 
     static Set<Integer> parseRoles(String s) {
@@ -210,11 +219,11 @@ public class HwmdmAdmin {
 
     static Connection db() throws SQLException {
         var envVals = readEnv();
-        String host = env("SQL_HOST", "postgresql");
-        int port = Integer.parseInt(env("SQL_PORT", "5432"));
-        String base = envVals.getOrDefault("SQL_BASE", env("SQL_BASE", "hmdm"));
-        String user = envVals.getOrDefault("SQL_USER", env("SQL_USER", "hmdm"));
-        String pass = envVals.getOrDefault("SQL_PASS", env("SQL_PASS", "hmdm"));
+        String host = env("SQL_HOST");
+        int port = Integer.parseInt(env("SQL_PORT"));
+        String base = envVals.getOrDefault("SQL_BASE", env("SQL_BASE"));
+        String user = envVals.getOrDefault("SQL_USER", env("SQL_USER"));
+        String pass = envVals.getOrDefault("SQL_PASS", env("SQL_PASS"));
         return DriverManager.getConnection(
             "jdbc:postgresql://" + host + ":" + port + "/" + base + "?connectTimeout=5", user, pass);
     }
@@ -748,7 +757,7 @@ public class HwmdmAdmin {
                 Thread.sleep(5000);
             }
         }
-        var server = HttpServer.create(new InetSocketAddress("0.0.0.0", PORT), 50);
+        var server = HttpServer.create(new InetSocketAddress(env("ADMIN_BIND_ADDR"), PORT), 50);
         server.createContext("/", ex -> {
             try {
                 if ("POST".equalsIgnoreCase(ex.getRequestMethod())) handlePost(ex);

@@ -41,7 +41,7 @@
     <Parameter name="aapt.command" value="aapt"/>
 
     <!-- MQTT notification service parameters -->
-    <Parameter name="mqtt.server.uri" value="0.0.0.0:31000"/>
+    <Parameter name="mqtt.server.uri" value="_MQTT_SERVER_URI_"/>
 
     <!-- Fast device search by last characters, here's the length -->
     <Parameter name="device.fast.search.chars" value="5"/>
@@ -81,8 +81,6 @@
     <Parameter name="email.recovery.body" value="/usr/local/tomcat/work/emails/en/recovery_body.txt"/>
 
     <!-- IP filters for devices and web panel UI users, comma-separated networks or single IPs -->
-<!--    <Parameter name="device.allowed.address" value='10.0.0.0/8'/>
-    <Parameter name="ui.allowed.address" value='10.0.0.0/8'/> -->
 
     <Parameter name="sql.init.script.path" value="/usr/local/tomcat/work/init.sql"/>
 

@@ -33,22 +33,33 @@ import threading
 import time
 import urllib.request
 
-DNS_DIR = os.environ.get("WEBFILTER_DNS_DIR", "/app/dns")
-LISTS_DIR = os.environ.get("WEBFILTER_LISTS_DIR", "/app/lists")
-STATE_DIR = os.environ.get("WEBFILTER_STATE_DIR", "/app/state")
-BLOCKY = os.environ.get("BLOCKY_BINARY", "/usr/local/bin/blocky")
-SEED_DIR = os.environ.get("WEBFILTER_SEED_DIR", "/app/seed-lists")
-API = "http://127.0.0.1:4000"
-REFRESH_MAX = 24 * 3600
-REFRESH_MIN = 3600
-LOOP_SECONDS = 5
-HEALTH_TIMEOUT = 180
-RETRY_FIRST_SECONDS = 120
-RETRY_MAX_SECONDS = 3600
-DRY_RUN_DNS_PORT = 5353
-RESTART_GOOD_SECONDS = 10
-API_REFRESH_ATTEMPTS = 3
-API_REFRESH_BACKOFF = 1
+DNS_DIR = os.environ["WEBFILTER_DNS_DIR"]
+LISTS_DIR = os.environ["WEBFILTER_LISTS_DIR"]
+STATE_DIR = os.environ["WEBFILTER_STATE_DIR"]
+BLOCKY = os.environ["BLOCKY_BINARY"]
+SEED_DIR = os.environ["WEBFILTER_SEED_DIR"]
+LOOPBACK = os.environ["WEBFILTER_LOOPBACK_ADDR"]
+API = "http://" + os.environ["WEBFILTER_API_ADDR"]
+DNS_PORT = int(os.environ["WEBFILTER_DNS_PORT"])
+DOT_PORT = int(os.environ["WEBFILTER_DOT_PORT"])
+BIND_ADDRS = [a.strip() for a in os.environ["WEBFILTER_BIND_ADDRS"].split(",") if a.strip()]
+REFRESH_MAX = int(os.environ["WEBFILTER_REFRESH_MAX_SECONDS"])
+REFRESH_MIN = int(os.environ["WEBFILTER_REFRESH_MIN_SECONDS"])
+LOOP_SECONDS = int(os.environ["WEBFILTER_LOOP_SECONDS"])
+HEALTH_TIMEOUT = int(os.environ["WEBFILTER_HEALTH_TIMEOUT"])
+RETRY_FIRST_SECONDS = int(os.environ["WEBFILTER_RETRY_FIRST_SECONDS"])
+RETRY_MAX_SECONDS = int(os.environ["WEBFILTER_RETRY_MAX_SECONDS"])
+DRY_RUN_DNS_PORT = int(os.environ["WEBFILTER_DRY_RUN_DNS_PORT"])
+DRY_RUN_API_ADDR = os.environ["WEBFILTER_DRY_RUN_API_ADDR"]
+RESTART_GOOD_SECONDS = int(os.environ["WEBFILTER_RESTART_GOOD_SECONDS"])
+API_REFRESH_ATTEMPTS = int(os.environ["WEBFILTER_API_REFRESH_ATTEMPTS"])
+API_REFRESH_BACKOFF = int(os.environ["WEBFILTER_API_REFRESH_BACKOFF"])
+API_TIMEOUT = int(os.environ["WEBFILTER_API_TIMEOUT"])
+DOWNLOAD_TIMEOUT = int(os.environ["WEBFILTER_DOWNLOAD_TIMEOUT"])
+DNS_PROBE_TIMEOUT = int(os.environ["WEBFILTER_DNS_PROBE_TIMEOUT"])
+STOP_TIMEOUT = int(os.environ["WEBFILTER_STOP_TIMEOUT"])
+HEALTH_POLL_SECONDS = int(os.environ["WEBFILTER_HEALTH_POLL_SECONDS"])
+PROBE_QNAME = b"".join(bytes([len(p)]) + p.encode() for p in os.environ["WEBFILTER_PROBE_NAME"].strip(".").split(".")) + b"\x00"
 
 log = logging.getLogger("webfilter-dns")
 LABEL = re.compile(r"^[a-z0-9_](?:[a-z0-9_-]{0,61}[a-z0-9_])?$")
@@ -75,7 +86,7 @@ def normalize(line):
     return "*." + token
 
 
-def download(url, timeout=120):
+def download(url, timeout=DOWNLOAD_TIMEOUT):
     req = urllib.request.Request(url, headers={"User-Agent": "hwmdm-source/webfilter/1.0"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         if resp.status != 200:
@@ -163,20 +174,7 @@ def sha256_file(path):
 
 
 def referenced_files(config_text):
-    return re.findall(r"^\s*-\s+(/app/\S+\.txt)\s*$", config_text, re.M)
-
-
-def host_ipv4_addresses():
-    """IPv4 locais da maquina, lidos na hora (o container roda na rede do host)."""
-    with open("/proc/net/fib_trie") as f:
-        lines = f.read().splitlines()
-    found = []
-    for prev, line in zip(lines, lines[1:]):
-        if "/32 host LOCAL" in line:
-            ip = prev.split()[-1]
-            if not ip.startswith("127.") and ip not in found:
-                found.append(ip)
-    return found
+    return re.findall(r"^\s*-\s+((?:" + re.escape(DNS_DIR) + "|" + re.escape(LISTS_DIR) + r")/\S+\.txt)\s*$", config_text, re.M)
 
 
 def without_missing_cert(text):
@@ -191,28 +189,31 @@ def without_missing_cert(text):
     return re.sub(r"^(?:certFile|keyFile): .*\n", "", text, flags=re.M)
 
 
-def with_host_dns_listeners(config):
-    """Copia da configuracao com a porta 53 em 127.0.0.1 e nos IPs desta maquina.
+def with_bind_listeners(config):
+    """Copia da configuracao com DNS e DoT no loopback e em WEBFILTER_BIND_ADDRS.
 
-    0.0.0.0:53 colide com o stub do systemd-resolved (127.0.0.53/54); listar os enderecos
-    descobertos aqui evita a colisao sem gravar IP nenhum no projeto."""
-    listen = ",".join(f"{ip}:53" for ip in ["127.0.0.1"] + host_ipv4_addresses())
+    Escutar em todos os enderecos colide com o stub do systemd-resolved e expoe o resolvedor
+    em toda NIC da maquina (gerencia inclusive); so os enderecos configurados recebem a porta."""
+    addrs = [LOOPBACK] + [a for a in BIND_ADDRS if a != LOOPBACK]
+    dns = ",".join(f"{ip}:{DNS_PORT}" for ip in addrs)
+    tls = ",".join(f"{ip}:{DOT_PORT}" for ip in addrs)
     with open(config) as f:
-        text = without_missing_cert(re.sub(r"^  dns: .*$", f"  dns: {listen}", f.read(), flags=re.M))
+        text = re.sub(r"^  dns: .*$", f"  dns: {dns}", f.read(), flags=re.M)
+    text = without_missing_cert(re.sub(r"^  tls: .*$", f"  tls: {tls}", text, flags=re.M))
     runtime = os.path.join(STATE_DIR, "blocky.runtime.yml")
     with open(runtime, "w") as f:
         f.write(text)
-    log.info("porta 53 em %s", listen)
+    log.info("DNS em %s; DoT em %s", dns, tls)
     return runtime
 
 
-def dns_ok(port=53):
-    """Consulta A de 'localhost.' no listener local; qualquer resposta DNS = Blocky servindo."""
-    q = struct.pack(">HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0) + b"\x09localhost\x00" + struct.pack(">HH", 1, 1)
+def dns_ok(port=DNS_PORT):
+    """Consulta A de WEBFILTER_PROBE_NAME no listener local; qualquer resposta DNS = Blocky servindo."""
+    q = struct.pack(">HHHHHH", 0x1234, 0x0100, 1, 0, 0, 0) + PROBE_QNAME + struct.pack(">HH", 1, 1)
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-            s.settimeout(2)
-            s.sendto(q, ("127.0.0.1", port))
+            s.settimeout(DNS_PROBE_TIMEOUT)
+            s.sendto(q, (LOOPBACK, port))
             data, _ = s.recvfrom(512)
             return data[:2] == q[:2]
     except OSError:
@@ -223,7 +224,7 @@ def api_refresh():
     req = urllib.request.Request(API + "/api/lists/refresh", method="POST")
     for attempt in range(API_REFRESH_ATTEMPTS):
         try:
-            with urllib.request.urlopen(req, timeout=30) as response:
+            with urllib.request.urlopen(req, timeout=API_TIMEOUT) as response:
                 response.read()
             log.info("listas recarregadas sem reinicio")
             return True
@@ -261,7 +262,7 @@ class Supervisor:
         if self.proc and self.proc.poll() is None:
             self.proc.terminate()
             try:
-                self.proc.wait(timeout=20)
+                self.proc.wait(timeout=STOP_TIMEOUT)
             except subprocess.TimeoutExpired:
                 self.proc.kill()
                 self.proc.wait()
@@ -270,7 +271,7 @@ class Supervisor:
     def _start(self, config):
         self.stop()  # fail-closed: nunca duas instancias, nunca uma sem filtro
         log.info("iniciando Blocky com %s", config)
-        self.proc = subprocess.Popen([BLOCKY, "--config", with_host_dns_listeners(config)])
+        self.proc = subprocess.Popen([BLOCKY, "--config", with_bind_listeners(config)])
         deadline = time.time() + HEALTH_TIMEOUT
         while time.time() < deadline:
             if self.proc.poll() is not None:
@@ -279,7 +280,7 @@ class Supervisor:
             if dns_ok():
                 self.started_once = True
                 return True
-            time.sleep(1)
+            time.sleep(HEALTH_POLL_SECONDS)
         log.error("Blocky nao ficou saudavel em %ss", HEALTH_TIMEOUT)
         return False
 
@@ -295,9 +296,9 @@ class Supervisor:
         """Sobe a configuracao em portas alternativas (sem DoT) e diz se ela fica saudavel."""
         with open(config) as f:
             text = without_missing_cert(f.read())
-        text = re.sub(r"^  dns: .*$", f"  dns: 127.0.0.1:{DRY_RUN_DNS_PORT}", text, flags=re.M)
+        text = re.sub(r"^  dns: .*$", f"  dns: {LOOPBACK}:{DRY_RUN_DNS_PORT}", text, flags=re.M)
         text = re.sub(r"^  tls: .*\n", "", text, flags=re.M)
-        text = re.sub(r"^  http: .*$", "  http: 127.0.0.1:4001", text, flags=re.M)
+        text = re.sub(r"^  http: .*$", f"  http: {DRY_RUN_API_ADDR}", text, flags=re.M)
         trial = os.path.join(STATE_DIR, "blocky.trial.yml")
         with open(trial, "w") as f:
             f.write(text)
@@ -310,13 +311,13 @@ class Supervisor:
                     return False
                 if dns_ok(DRY_RUN_DNS_PORT):
                     return True
-                time.sleep(1)
+                time.sleep(HEALTH_POLL_SECONDS)
             return False
         finally:
             if proc.poll() is None:
                 proc.terminate()
                 try:
-                    proc.wait(timeout=20)
+                    proc.wait(timeout=STOP_TIMEOUT)
                 except subprocess.TimeoutExpired:
                     proc.kill()
                     proc.wait()

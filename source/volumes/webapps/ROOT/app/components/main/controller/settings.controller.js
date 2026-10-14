@@ -42,7 +42,7 @@ angular.module('headwind-kiosk')
 
         // The web logo is only ever shown by this console, so a file from the server's own
         // /files/ area is kept as a path relative to the console origin. A full URL here froze
-        // whatever host the admin happened to be on (e.g. http://192.168.1.75:8080/files/...),
+        // whatever host the admin happened to be on (e.g. http://<host>:<port>/files/...),
         // which then broke on any other address the console is opened from.
         var toConsoleFilesPath = function (url) {
             if (!url) {

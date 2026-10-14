@@ -82,3 +82,814 @@
 13-Oct-2026 14:07:18.900 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [18,819] ms
 13-Oct-2026 14:07:18.906 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 13-Oct-2026 14:07:18.923 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [18959] milliseconds
+13-Oct-2026 14:33:53.877 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+13-Oct-2026 14:33:53.938 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+13-Oct-2026 14:33:53.944 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+13-Oct-2026 14:33:53.951 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Oct-2026 14:33:53.952 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            7.2.8-200.fc44.x86_64
+13-Oct-2026 14:33:53.954 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Oct-2026 14:33:53.955 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+13-Oct-2026 14:33:53.961 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+13-Oct-2026 14:33:53.962 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+13-Oct-2026 14:33:53.968 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Oct-2026 14:33:53.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Oct-2026 14:33:54.186 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Oct-2026 14:33:54.189 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+13-Oct-2026 14:33:54.196 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+13-Oct-2026 14:33:54.196 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Oct-2026 14:33:54.203 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+13-Oct-2026 14:33:54.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+13-Oct-2026 14:33:54.211 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Oct-2026 14:33:54.211 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Oct-2026 14:33:54.228 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Oct-2026 14:33:54.233 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Oct-2026 14:33:54.238 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Oct-2026 14:33:54.238 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+13-Oct-2026 14:33:54.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+13-Oct-2026 14:33:54.248 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Oct-2026 14:33:54.254 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Oct-2026 14:33:54.256 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Oct-2026 14:33:54.263 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Oct-2026 14:33:54.338 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+13-Oct-2026 14:33:54.345 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+13-Oct-2026 14:33:54.347 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Oct-2026 14:33:54.415 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+13-Oct-2026 14:34:02.072 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 14:34:02.815 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [13180] milliseconds
+13-Oct-2026 14:34:03.887 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Oct-2026 14:34:03.895 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+13-Oct-2026 14:34:04.174 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+13-Oct-2026 14:34:42.589 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Oct-2026 14:35:59.697 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+13-Oct-2026 14:37:04.280 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [180,067] ms
+13-Oct-2026 14:37:04.492 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 14:37:05.054 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [182233] milliseconds
+13-Oct-2026 14:38:40.792 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+13-Oct-2026 14:38:40.856 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+13-Oct-2026 14:38:40.861 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+13-Oct-2026 14:38:40.873 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Oct-2026 14:38:40.874 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            7.2.8-200.fc44.x86_64
+13-Oct-2026 14:38:40.879 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Oct-2026 14:38:40.884 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+13-Oct-2026 14:38:40.890 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+13-Oct-2026 14:38:40.895 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+13-Oct-2026 14:38:40.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Oct-2026 14:38:40.904 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Oct-2026 14:38:41.086 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Oct-2026 14:38:41.104 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+13-Oct-2026 14:38:41.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+13-Oct-2026 14:38:41.120 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Oct-2026 14:38:41.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+13-Oct-2026 14:38:41.138 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+13-Oct-2026 14:38:41.159 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Oct-2026 14:38:41.176 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Oct-2026 14:38:41.223 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Oct-2026 14:38:41.233 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Oct-2026 14:38:41.243 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Oct-2026 14:38:41.245 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+13-Oct-2026 14:38:41.248 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+13-Oct-2026 14:38:41.255 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Oct-2026 14:38:41.265 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Oct-2026 14:38:41.291 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Oct-2026 14:38:41.305 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Oct-2026 14:38:41.419 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+13-Oct-2026 14:38:41.422 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+13-Oct-2026 14:38:41.425 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Oct-2026 14:38:41.536 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+13-Oct-2026 14:38:48.555 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 14:38:49.038 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [12121] milliseconds
+13-Oct-2026 14:38:50.951 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Oct-2026 14:38:50.957 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+13-Oct-2026 14:38:51.061 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+13-Oct-2026 14:39:37.826 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Oct-2026 14:41:01.507 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+13-Oct-2026 14:41:32.665 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [161,585] ms
+13-Oct-2026 14:41:32.784 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 14:41:32.998 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [163944] milliseconds
+13-Oct-2026 15:17:27.777 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+13-Oct-2026 15:17:27.827 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+13-Oct-2026 15:17:27.833 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+13-Oct-2026 15:17:27.837 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Oct-2026 15:17:27.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            7.2.8-200.fc44.x86_64
+13-Oct-2026 15:17:27.844 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Oct-2026 15:17:27.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+13-Oct-2026 15:17:27.850 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+13-Oct-2026 15:17:27.853 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+13-Oct-2026 15:17:27.853 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Oct-2026 15:17:27.859 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Oct-2026 15:17:28.011 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Oct-2026 15:17:28.016 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+13-Oct-2026 15:17:28.019 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+13-Oct-2026 15:17:28.028 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Oct-2026 15:17:28.029 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+13-Oct-2026 15:17:28.035 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+13-Oct-2026 15:17:28.036 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Oct-2026 15:17:28.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Oct-2026 15:17:28.051 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Oct-2026 15:17:28.062 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Oct-2026 15:17:28.080 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Oct-2026 15:17:28.082 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+13-Oct-2026 15:17:28.084 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+13-Oct-2026 15:17:28.088 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Oct-2026 15:17:28.098 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Oct-2026 15:17:28.120 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Oct-2026 15:17:28.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Oct-2026 15:17:28.323 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+13-Oct-2026 15:17:28.326 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+13-Oct-2026 15:17:28.327 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Oct-2026 15:17:28.413 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+13-Oct-2026 15:17:33.811 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 15:17:34.178 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [10744] milliseconds
+13-Oct-2026 15:17:35.201 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Oct-2026 15:17:35.204 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+13-Oct-2026 15:17:35.281 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+13-Oct-2026 15:18:07.830 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Oct-2026 15:19:23.084 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+13-Oct-2026 15:19:23.436 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [169] milliseconds.
+13-Oct-2026 15:19:51.809 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [136,530] ms
+13-Oct-2026 15:19:51.850 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 15:19:52.017 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [137826] milliseconds
+13-Oct-2026 15:19:59.525 SEVERE [http-nio-8080-exec-6] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:19:59.526 SEVERE [http-nio-8080-exec-5] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:19:59.526 SEVERE [http-nio-8080-exec-16] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:19:59.527 SEVERE [http-nio-8080-exec-1] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:19:59.527 SEVERE [http-nio-8080-exec-11] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:19:59.523 SEVERE [http-nio-8080-exec-13] org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse An I/O error has occurred while writing a response message entity to the container output stream.
+	org.glassfish.jersey.server.internal.process.MappableException: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:92)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.message.internal.MessageBodyFactory.writeTo(MessageBodyFactory.java:1130)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.writeResponse(ServerRuntime.java:711)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.processResponse(ServerRuntime.java:444)
+		at org.glassfish.jersey.server.ServerRuntime$Responder.process(ServerRuntime.java:434)
+		at org.glassfish.jersey.server.ServerRuntime$2.run(ServerRuntime.java:329)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:271)
+		at org.glassfish.jersey.internal.Errors$1.call(Errors.java:267)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:315)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:297)
+		at org.glassfish.jersey.internal.Errors.process(Errors.java:267)
+		at org.glassfish.jersey.process.internal.RequestScope.runInScope(RequestScope.java:317)
+		at org.glassfish.jersey.server.ServerRuntime.process(ServerRuntime.java:305)
+		at org.glassfish.jersey.server.ApplicationHandler.handle(ApplicationHandler.java:1154)
+		at org.glassfish.jersey.servlet.WebComponent.serviceImpl(WebComponent.java:473)
+		at org.glassfish.jersey.servlet.ServletContainer.serviceImpl(ServletContainer.java:408)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:583)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:524)
+		at org.glassfish.jersey.servlet.ServletContainer.doFilter(ServletContainer.java:461)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:89)
+		at com.hmdm.plugins.audit.rest.filter.AuditFilter.doFilter(AuditFilter.java:128)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.PublicIPFilter.doFilter(PublicIPFilter.java:68)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.HstsFilter.doFilter(HstsFilter.java:57)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.hmdm.rest.filter.ApiOriginFilter.doFilter(ApiOriginFilter.java:52)
+		at com.google.inject.servlet.FilterChainInvocation.doFilter(FilterChainInvocation.java:82)
+		at com.google.inject.servlet.ManagedFilterPipeline.dispatch(ManagedFilterPipeline.java:121)
+		at com.google.inject.servlet.GuiceFilter.doFilter(GuiceFilter.java:133)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:166)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:142)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:491)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:643)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:939)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1854)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:829)
+	Caused by: org.apache.catalina.connector.ClientAbortException: java.io.IOException: Broken pipe
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:340)
+		at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:775)
+		at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:672)
+		at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:375)
+		at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:353)
+		at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:99)
+		at org.glassfish.jersey.servlet.internal.ResponseWriter$NonCloseableOutputStreamWrapper.write(ResponseWriter.java:325)
+		at org.glassfish.jersey.message.internal.CommittingOutputStream.write(CommittingOutputStream.java:229)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$UnCloseableOutputStream.write(WriterInterceptorExecutor.java:299)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2136)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator._writeStringSegments(UTF8JsonGenerator.java:1279)
+		at com.fasterxml.jackson.core.json.UTF8JsonGenerator.writeString(UTF8JsonGenerator.java:502)
+		at com.fasterxml.jackson.databind.node.TextNode.serialize(TextNode.java:145)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.node.ObjectNode.serialize(ObjectNode.java:328)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:39)
+		at com.fasterxml.jackson.databind.ser.std.SerializableSerializer.serialize(SerializableSerializer.java:20)
+		at com.fasterxml.jackson.databind.ser.std.JsonValueSerializer.serialize(JsonValueSerializer.java:181)
+		at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+		at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:721)
+		at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:166)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+		at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+		at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1433)
+		at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:921)
+		at com.fasterxml.jackson.jaxrs.base.ProviderBase.writeTo(ProviderBase.java:618)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.invokeWriteTo(WriterInterceptorExecutor.java:265)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor$TerminalWriterInterceptor.aroundWriteTo(WriterInterceptorExecutor.java:250)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.JsonWithPaddingInterceptor.aroundWriteTo(JsonWithPaddingInterceptor.java:106)
+		at org.glassfish.jersey.message.internal.WriterInterceptorExecutor.proceed(WriterInterceptorExecutor.java:162)
+		at org.glassfish.jersey.server.internal.MappableExceptionWrapperInterceptor.aroundWriteTo(MappableExceptionWrapperInterceptor.java:86)
+		... 51 more
+	Caused by: java.io.IOException: Broken pipe
+		at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+		at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:47)
+		at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+		at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:50)
+		at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:462)
+		at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:146)
+		at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1490)
+		at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:773)
+		at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:613)
+		at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:561)
+		at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:548)
+		at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:109)
+		at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:193)
+		at org.apache.coyote.Response.doWrite(Response.java:614)
+		at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:328)
+		... 83 more
+13-Oct-2026 15:23:35.797 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.117
+13-Oct-2026 15:23:35.918 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 30 2026 18:21:16 UTC
+13-Oct-2026 15:23:35.921 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.117.0
+13-Oct-2026 15:23:35.927 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+13-Oct-2026 15:23:35.931 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            7.2.8-200.fc44.x86_64
+13-Oct-2026 15:23:35.938 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+13-Oct-2026 15:23:35.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /opt/java/openjdk
+13-Oct-2026 15:23:35.948 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.31+11
+13-Oct-2026 15:23:35.953 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Eclipse Adoptium
+13-Oct-2026 15:23:35.956 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+13-Oct-2026 15:23:35.959 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+13-Oct-2026 15:23:36.170 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+13-Oct-2026 15:23:36.182 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+13-Oct-2026 15:23:36.185 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+13-Oct-2026 15:23:36.195 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+13-Oct-2026 15:23:36.195 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+13-Oct-2026 15:23:36.205 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+13-Oct-2026 15:23:36.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+13-Oct-2026 15:23:36.214 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+13-Oct-2026 15:23:36.216 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+13-Oct-2026 15:23:36.226 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+13-Oct-2026 15:23:36.240 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+13-Oct-2026 15:23:36.244 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dsun.io.useCanonCaches=false
+13-Oct-2026 15:23:36.253 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0022
+13-Oct-2026 15:23:36.253 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+13-Oct-2026 15:23:36.264 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+13-Oct-2026 15:23:36.264 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+13-Oct-2026 15:23:36.264 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+13-Oct-2026 15:23:36.360 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.3.7] using APR version [1.7.0].
+13-Oct-2026 15:23:36.364 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+13-Oct-2026 15:23:36.371 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+13-Oct-2026 15:23:36.464 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.2 15 Mar 2022]
+13-Oct-2026 15:23:43.429 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 15:23:43.775 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [12086] milliseconds
+13-Oct-2026 15:23:45.261 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+13-Oct-2026 15:23:45.273 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.117]
+13-Oct-2026 15:23:45.449 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml]
+13-Oct-2026 15:24:18.870 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+13-Oct-2026 15:25:31.259 INFO [main] nonapi.io.github.classgraph.classloaderhandler.lifecycle.ServletLifeCycleListener.contextInitialized Servlet context initialized
+13-Oct-2026 15:25:57.690 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml] has finished in [132,232] ms
+13-Oct-2026 15:25:57.734 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+13-Oct-2026 15:25:57.845 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [134064] milliseconds

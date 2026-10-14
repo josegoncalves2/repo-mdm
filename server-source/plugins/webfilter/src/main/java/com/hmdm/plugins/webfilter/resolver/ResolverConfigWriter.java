@@ -47,8 +47,17 @@ public class ResolverConfigWriter {
     static final String DENY_SENTINEL = "*.webfilter-sentinel.invalid";
 
     /** Paths as seen inside the resolver container. */
-    private static final String CONTAINER_DNS_DIR = "/app/dns";
-    private static final String CONTAINER_LISTS_DIR = "/app/lists";
+    private static final String CONTAINER_DNS_DIR = env("WEBFILTER_DNS_DIR");
+    private static final String CONTAINER_LISTS_DIR = env("WEBFILTER_LISTS_DIR");
+
+    /** Every resolver setting comes from the environment (.env); a missing variable is a deployment error. */
+    private static String env(String name) {
+        String value = System.getenv(name);
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalStateException("Variavel de ambiente obrigatoria ausente: " + name);
+        }
+        return value.trim();
+    }
 
     private final WebFilterDAO dao;
     private final WebFilterCatalog catalog;
@@ -251,31 +260,32 @@ public class ResolverConfigWriter {
         yaml.append("upstreams:\n");
         yaml.append("  groups:\n");
         yaml.append("    default:\n");
-        yaml.append("      - tcp-tls:1.1.1.1:853\n");
-        yaml.append("      - tcp-tls:8.8.8.8:853\n");
-        yaml.append("  strategy: parallel_best\n");
+        for (String upstream : env("WEBFILTER_UPSTREAMS").split("\\s*,\\s*")) {
+            yaml.append("      - ").append(upstream).append("\n");
+        }
+        yaml.append("  strategy: ").append(env("WEBFILTER_UPSTREAM_STRATEGY")).append("\n");
         yaml.append("ports:\n");
-        yaml.append("  dns: 0.0.0.0:53\n");
-        yaml.append("  tls: 853\n");
-        yaml.append("  http: 127.0.0.1:4000\n");
-        yaml.append("certFile: /app/certs/cert.pem\n");
-        yaml.append("keyFile: /app/certs/key.pem\n");
+        yaml.append("  dns: ").append(env("WEBFILTER_DNS_PORT")).append("\n");
+        yaml.append("  tls: ").append(env("WEBFILTER_DOT_PORT")).append("\n");
+        yaml.append("  http: ").append(env("WEBFILTER_API_ADDR")).append("\n");
+        yaml.append("certFile: ").append(env("WEBFILTER_CERT_FILE")).append("\n");
+        yaml.append("keyFile: ").append(env("WEBFILTER_KEY_FILE")).append("\n");
         yaml.append("log:\n");
-        yaml.append("  level: info\n");
+        yaml.append("  level: ").append(env("WEBFILTER_LOG_LEVEL")).append("\n");
         yaml.append("queryLog:\n");
-        yaml.append("  type: csv\n");
-        yaml.append("  target: /app/queries\n");
-        yaml.append("  logRetentionDays: 7\n");
+        yaml.append("  type: ").append(env("WEBFILTER_QUERY_LOG_TYPE")).append("\n");
+        yaml.append("  target: ").append(env("WEBFILTER_QUERY_LOG_DIR")).append("\n");
+        yaml.append("  logRetentionDays: ").append(env("WEBFILTER_QUERY_LOG_RETENTION_DAYS")).append("\n");
         yaml.append("caching:\n");
-        yaml.append("  maxTime: 30m\n");
-        yaml.append("  maxItemsCount: 2048\n");
-        yaml.append("  prefetching: true\n");
+        yaml.append("  maxTime: ").append(env("WEBFILTER_CACHE_MAX_TIME")).append("\n");
+        yaml.append("  maxItemsCount: ").append(env("WEBFILTER_CACHE_MAX_ITEMS")).append("\n");
+        yaml.append("  prefetching: ").append(env("WEBFILTER_CACHE_PREFETCHING")).append("\n");
         yaml.append("blocking:\n");
-        yaml.append("  blockType: nxDomain\n");
-        yaml.append("  blockTTL: 1m\n");
+        yaml.append("  blockType: ").append(env("WEBFILTER_BLOCK_TYPE")).append("\n");
+        yaml.append("  blockTTL: ").append(env("WEBFILTER_BLOCK_TTL")).append("\n");
         yaml.append("  loading:\n");
-        yaml.append("    refreshPeriod: 4h\n");
-        yaml.append("    strategy: failOnError\n");
+        yaml.append("    refreshPeriod: ").append(env("WEBFILTER_LISTS_REFRESH_PERIOD")).append("\n");
+        yaml.append("    strategy: ").append(env("WEBFILTER_LISTS_LOADING_STRATEGY")).append("\n");
         yaml.append("  denylists:\n").append(denyGroups);
         if (allowGroups.length() > 0) {
             yaml.append("  allowlists:\n").append(allowGroups);

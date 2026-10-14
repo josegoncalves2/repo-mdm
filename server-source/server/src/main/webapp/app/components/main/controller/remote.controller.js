@@ -115,11 +115,7 @@ angular.module('headwind-kiosk')
         ];
 
         var hasPermission = authService.hasPermission;
-        var infrastructureIps = {
-            '10.0.17.106': true,
-            '10.0.9.1': true,
-            '10.1.1.1': true
-        };
+        var infrastructureIps = (window.HWMDM_RUNTIME && window.HWMDM_RUNTIME.infrastructureIps || []).reduce(function (m, ip) { m[ip] = true; return m; }, {});
 
         var isInfrastructureIp = function (ip) {
             return !!(ip && infrastructureIps[String(ip).trim()]);
@@ -925,7 +921,7 @@ angular.module('headwind-kiosk')
          *
          * "No VS Code digita, no navegador nao": o VS Code abre o painel em localhost, que e'
          * contexto seguro -- ha' WebCodecs e a imagem e' pintada no <canvas>. Pelo IP
-         * (http://192.168.1.65:8080) nao e' contexto seguro, nao ha' WebCodecs, e o player
+         * (http://<IP do servidor>:<porta>) nao e' contexto seguro, nao ha' WebCodecs, e o player
          * usa o caminho MSE: cria um <video>, ESCONDE o canvas e so' repassa ponteiros. A
          * captura anterior dependia de o canvas ter foco (ng-keydown + tabindex), entao pelo
          * IP nenhuma tecla era capturada.

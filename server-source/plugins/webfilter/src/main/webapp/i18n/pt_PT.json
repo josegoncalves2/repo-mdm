@@ -131,7 +131,7 @@
   "plugin.webfilter.events.per.page": "Por página",
   "plugin.webfilter.events.select.page": "Selecionar todos desta página",
   "plugin.webfilter.device.unknown": "Dispositivo não identificado",
-  "plugin.webfilter.filter.ip": "IP (ex.: 192.168.1.100)",
+  "plugin.webfilter.filter.ip": "IP",
   "plugin.webfilter.filter.device": "Dispositivo (ex.: R9XT200AMYY)",
   "plugin.webfilter.filter.site": "Site (ex.: facebook.com)",
   "plugin.webfilter.filter.search": "Buscar",

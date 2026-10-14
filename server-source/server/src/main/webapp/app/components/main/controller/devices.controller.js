@@ -167,11 +167,7 @@ angular.module('headwind-kiosk')
                 || authService.hasPermission('plugin_devicelocations_access');
         };
 
-        var infrastructureIps = {
-            '10.0.17.106': true,
-            '10.0.9.1': true,
-            '10.1.1.1': true
-        };
+        var infrastructureIps = (window.HWMDM_RUNTIME && window.HWMDM_RUNTIME.infrastructureIps || []).reduce(function (m, ip) { m[ip] = true; return m; }, {});
 
         var isInfrastructureIp = function (ip) {
             return !!(ip && infrastructureIps[String(ip).trim()]);
@@ -789,17 +785,18 @@ angular.module('headwind-kiosk')
 
         // m15: selo do ultimo reporte - verde < 1 dia, amarelo 1-7 dias, vermelho > 7 dias.
         var DAY_MS = 86400000;
+        // Mesmo criterio do indicador de status: statusCode vem do servidor (DEVICE_ONLINE_SECONDS/DEVICE_AWAY_SECONDS).
+        var REPORT_BADGES = {
+            green: {cls: 'device-report-recent', key: 'devices.report.badge.recent'},
+            yellow: {cls: 'device-report-week', key: 'devices.report.badge.week'},
+            red: {cls: 'device-report-old', key: 'devices.report.badge.old'}
+        };
         $scope.getReportBadge = function (device) {
-            if (!device.lastUpdate || device.lastUpdate <= 0) {
+            var badge = (device.lastUpdate > 0 && REPORT_BADGES[device.statusCode]) || null;
+            if (!badge) {
                 return {cls: 'device-report-old', title: localization.localize('devices.report.badge.unknown')};
             }
-            var age = Date.now() - device.lastUpdate;
-            if (age < DAY_MS) {
-                return {cls: 'device-report-recent', title: localization.localize('devices.report.badge.recent')};
-            } else if (age <= 7 * DAY_MS) {
-                return {cls: 'device-report-week', title: localization.localize('devices.report.badge.week')};
-            }
-            return {cls: 'device-report-old', title: localization.localize('devices.report.badge.old')};
+            return {cls: badge.cls, title: localization.localize(badge.key)};
         };
 
         // C2: dispositivo sem reportar ha mais de N dias (settings.offlineAlertDays; 0/null desliga).
