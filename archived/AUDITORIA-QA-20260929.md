@@ -4,9 +4,9 @@
 
 ### 1. SERVIDOR INSTÁVEL — ERRO 404/EMPTY RESPONSE NO FAVICON
 
-**Onde:** Toda página carrega `http://192.168.1.75:8080/files/favicon.png` — **QUE NEM EXISTE**.  
+**Onde:** Toda página carrega `http://<IP>:8080/files/favicon.png` — **QUE NEM EXISTE**.  
 **Evidência:** `net::ERR_EMPTY_RESPONSE` no console.  
-**Problema:** O path do favicon está hardcoded apontando para **outro IP (192.168.1.75)** que não é o servidor atual. Isso é sintoma de configuração mal copiada de ambiente.  
+**Problema:** O path do favicon está hardcoded apontando para **outro IP (<IP>)** que não é o servidor atual. Isso é sintoma de configuração mal copiada de ambiente.  
 **Correção:** Usar favicon relativo ao domínio atual ou remover o hardcode.
 
 ### 2. 3 DISPOSITIVOS OFFLINE HÁ 2 MESES — SEM ALERTA

@@ -4,8 +4,8 @@
 (uso humano no browser/tablet, prints, vídeo). Qualquer marcação anterior de
 "deployado" ou "entregue" é desconsiderada.
 
-**Ambiente DEV:** 192.168.1.65:8080 — user web: admin / admin
-**PROD (NUNCA TOCAR):** 192.168.1.75
+**Ambiente DEV:** <DEVICE_BIND_ADDR>:8080 — user web: admin / admin
+**PROD (NUNCA TOCAR):** <IP>
 
 ---
 
@@ -256,7 +256,7 @@
 - STATUS: **NÃO CORRIGIDO**
 
 ### 7.9 Menu Server fora do padrão (handoff-5)
-- `http://192.168.1.65:8080/#/server` não segue layout do resto
+- `http://<DEVICE_BIND_ADDR>:8080/#/server` não segue layout do resto
 - STATUS: **NÃO CORRIGIDO**
 
 ### 7.10 Layout estilo Microsoft 365 (handoff-5)

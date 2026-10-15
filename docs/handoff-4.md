@@ -113,4 +113,4 @@ Todos os arquivos do painel estão dentro do container `hwmdm-mdm`, propriedade 
 docker cp local_file.css hwmdm-mdm:/usr/local/tomcat/webapps/ROOT/css/main.css
 ```
 
-**IMPORTANTE**: NÃO usar Playwright, NÃO criar scripts de teste, NÃO perder tempo com screenshots automatizados. Verificação visual é feita MANUALMENTE pelo usuário no browser. Credenciais do painel DEV: admin/admin em `http://192.168.1.65:8080`. Foco é editar os arquivos dentro do container via `docker exec` ou `docker cp` e pedir ao usuário que valide visualmente.
+**IMPORTANTE**: NÃO usar Playwright, NÃO criar scripts de teste, NÃO perder tempo com screenshots automatizados. Verificação visual é feita MANUALMENTE pelo usuário no browser. Credenciais do painel DEV: admin/admin em `http://<DEVICE_BIND_ADDR>:8080`. Foco é editar os arquivos dentro do container via `docker exec` ou `docker cp` e pedir ao usuário que valide visualmente.

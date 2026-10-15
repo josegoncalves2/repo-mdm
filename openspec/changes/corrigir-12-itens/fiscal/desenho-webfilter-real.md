@@ -5,14 +5,14 @@ Levantamento feito na sessão principal em 2026-09-23, com comando, antes de des
 ## O que JÁ funciona (não refazer)
 
 O resolvedor do DEV bloqueia de verdade. Container `webfilter-dns` (`hwmdm/webfilter-dns:0.34.0`,
-Blocky supervisionado por `webfilter-dns/app/resolver.py`), ouvindo em `192.168.1.65:53` e DoT em
+Blocky supervisionado por `webfilter-dns/app/resolver.py`), ouvindo em `<DEVICE_BIND_ADDR>:53` e DoT em
 `:853`:
 
 ```
-$ dig +short @192.168.1.65 facebook.com     (vazio — NXDOMAIN)
-$ dig +short @192.168.1.65 instagram.com    (vazio — NXDOMAIN)
-$ dig +short @192.168.1.65 pornhub.com      (vazio — NXDOMAIN)
-$ dig +short @192.168.1.65 google.com       142.251.133.78
+$ dig +short @<DEVICE_BIND_ADDR> facebook.com     (vazio — NXDOMAIN)
+$ dig +short @<DEVICE_BIND_ADDR> instagram.com    (vazio — NXDOMAIN)
+$ dig +short @<DEVICE_BIND_ADDR> pornhub.com      (vazio — NXDOMAIN)
+$ dig +short @<DEVICE_BIND_ADDR> google.com       142.251.133.78
 ```
 
 A política também está no banco, e para o perfil certo — o tablet R9XT200AMYY está na
@@ -45,7 +45,7 @@ Mesmo pondo o DNS do filtro na mão, na conexão Wi-Fi:
 
 1. vale só naquela rede — sai do Wi-Fi, entra no 4G, acabou o filtro;
 2. o usuário desfaz em dois toques, e o MDM não fica sabendo;
-3. `192.168.1.65` não é alcançável fora da LAN.
+3. `<DEVICE_BIND_ADDR>` não é alcançável fora da LAN.
 
 Filtro que o usuário desliga não é filtro. O pedido é imposição.
 
@@ -78,7 +78,7 @@ Por que resolve o que o DNS da rede não resolve:
 ### Decisões de projeto que a tarefa D precisa tomar (e justificar)
 
 1. **Onde mora a lista.** Recomendado: o agente responde localmente, com a política que baixou do
-   MDM, em vez de encaminhar tudo para `192.168.1.65`. Encaminhar quebra fora da LAN. Local
+   MDM, em vez de encaminhar tudo para `<DEVICE_BIND_ADDR>`. Encaminhar quebra fora da LAN. Local
    funciona inclusive sem rede. Para consultas não bloqueadas, encaminhe ao DNS que o sistema já
    usava (obtenha-o via `ConnectivityManager`/`LinkProperties`, não cravado).
 2. **Como a política chega.** O `webfilterDnsHost` sozinho não basta — é preciso a lista de

@@ -26,10 +26,10 @@ cadeia contra o repositório do sistema e recusa um autoassinado, então **o cam
 tem como funcionar em DEV** — por mais correta que esteja a configuração no console.
 
 Para validar o filtro em DEV usa-se DNS comum, que o compose publica na porta 53 do endereço
-de rede do host (`WEBFILTER_BIND_ADDR`, padrão `192.168.1.65`):
+de rede do host (`WEBFILTER_BIND_ADDR`, padrão `<DEVICE_BIND_ADDR>`):
 
 1. Suba o resolvedor e espere `Blocky pronto` em `docker logs webfilter-dns`.
-2. No tablet, Wi-Fi → rede → IP estático (ou DHCP com DNS manual) → **DNS 1 = 192.168.1.65**.
+2. No tablet, Wi-Fi → rede → IP estático (ou DHCP com DNS manual) → **DNS 1 = <DEVICE_BIND_ADDR>**.
 3. Confirme pelo próprio aparelho que a consulta passa pelo filtro: um site de categoria
    bloqueada deve falhar a resolução, e o domínio do MDM deve continuar resolvendo.
 

@@ -5,7 +5,7 @@ Executor: sessao-principal
 Evidencia: /opt/projetos/hwmdm/evidencias/webfilter/validador-t2/
 
 - Data: 2026-09-18, 18:02–18:40 (horário de Brasília).
-- Ambiente: somente DEV (`http://localhost:8080`, 192.168.1.65). Nenhum comando meu acessou o servidor de produção.
+- Ambiente: somente DEV (`http://localhost:8080`, <DEVICE_BIND_ADDR>). Nenhum comando meu acessou o servidor de produção.
 - Pedido: `fiscal/fila/para-validador/WEBFILTER-DEV-t2.md`, com as regras do t1 e o parecer `pareceres/WEBFILTER-DEV-t1.md`. O relatório do executor foi tratado como alegação.
 - Decisões humanas respeitadas:
   - (1) item próprio no menu e correção do F5 em `app.js`;

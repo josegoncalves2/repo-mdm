@@ -18,7 +18,7 @@ Texto do pedido, copiado literalmente (não resumir, não reinterpretar):
 ## Causas-raiz já confirmadas no disco (2026-09-23, sessão principal)
 
 - **Item 1 — webfilter é placeholder no aparelho.** O resolvedor DNS do DEV BLOQUEIA de
-  verdade (`dig @192.168.1.65 facebook.com` → NXDOMAIN; `google.com` resolve). As políticas
+  verdade (`dig @<DEVICE_BIND_ADDR> facebook.com` → NXDOMAIN; `google.com` resolve). As políticas
   estão no banco para o perfil 11 (o do tablet). O `WebFilterSyncResponseHook` devolve um campo
   `webfilterDnsHost` no sync. **Ninguém no aparelho consome esse campo**: `grep -ril webfilter
   android-source/` não retorna nada e o launcher oficial `com.hmdm.launcher` não conhece o campo.

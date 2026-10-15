@@ -2847,27 +2847,27 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10074	75	0	\N	\N	f	\N	\N	0
 10075	76	0	\N	\N	f	\N	\N	0
 10076	77	0	\N	\N	f	\N	\N	0
-10045	46	6.36	http://192.168.1.65:8080/files/hmdm-6.36-os.apk	aNlmR0NqQ2Dl4W7VXXuQWTSnzg40svKKpz2Ii4y433s=	f	\N	\N	0
-10114	87	1.15	http://192.168.1.65:8080/files/hwmdm-remote-1.15.apk	ejZ+YF+LbkppofUjVBSlyKNwSOL42Bb/i+ZSC49OhKk	f	\N	\N	16
-10047	48	1.02	http://192.168.1.65:8080/files/pager-1.02.apk	\N	f	\N	\N	0
-10048	49	1.02	http://192.168.1.65:8080/files/phoneproxy-1.02.apk	\N	f	\N	\N	0
-10049	50	1.04	http://192.168.1.65:8080/files/LauncherRestarter-1.04.apk	\N	f	\N	\N	0
-10102	87	1.3	http://192.168.1.65:8080/files/hwmdm-remote-1.3.apk	fTOWfYkSzgBndhfyav8mLU6eJyg19T0DOTuOfHrUG4U	f	\N	\N	0
-10103	87	1.4	http://192.168.1.65:8080/files/hwmdm-remote-1.4.apk	w8F42l7BvCeWw1t9F++oA8lFisKvnNovwwGjssc34Mw	f	\N	\N	5
-10104	87	1.5	http://192.168.1.65:8080/files/hwmdm-remote-1.5.apk	iLED381c+YCo5UIajQPlx+kQRPelU0CET29Oj49AyBM	f	\N	\N	6
-10092	86	2.26.29.71	http://192.168.1.65:8080/files/WhatsApp.apk	\N	f	\N	\N	262907130
-10105	87	1.6	http://192.168.1.65:8080/files/hwmdm-remote-1.6.apk	VulxLaiyWWhCEM7rm2tdB9d0NpDyUHPKul0FaKdQohU	f	\N	\N	7
-10106	87	1.7	http://192.168.1.65:8080/files/hwmdm-remote-1.7.apk	pvp4UTk/0py5P+/JsWIRlv05iw7VgESmIYxXCkc+Kmk	f	\N	\N	8
-10107	87	1.8	http://192.168.1.65:8080/files/hwmdm-remote-1.8.apk	s+gHfyLxTAMzqnthya/PLLxQ4AsCOp2DSXHmixiplAI	f	\N	\N	9
-10108	87	1.9	http://192.168.1.65:8080/files/hwmdm-remote-1.9.apk	tQ8z/EAavdYpInOeGTuB3Ac/y5geUWBUdUXHds2Fda4	f	\N	\N	10
-10109	87	1.10	http://192.168.1.65:8080/files/hwmdm-remote-1.10.apk	SMXyxa12zTB9IMdaXnO71JWMOpLNDJofchcK90mPe1Q	f	\N	\N	11
-10110	87	1.11	http://192.168.1.65:8080/files/hwmdm-remote-1.11.apk	jXzRAAwavptrVlxFHDrY1s2+iq6y0cokd4gu3LJWyYg	f	\N	\N	12
-10111	87	1.12	http://192.168.1.65:8080/files/hwmdm-remote-1.12.apk	tAJysfJ3DYSdwP2OrEa9Yd6RTiGvpO4xjbqhYC+P+MI	f	\N	\N	13
-10112	87	1.13	http://192.168.1.65:8080/files/hwmdm-remote-1.13.apk	FpgS+aeKQgdGDyXTUflEr76YyvJvKsEhcA/cdVp5Mug	f	\N	\N	14
-10113	87	1.14	http://192.168.1.65:8080/files/hwmdm-remote-1.14.apk	IgxFToQDmDGSzv8CQJG7tGLFuyu5y9Ds4gsiQ3+kfeI	f	\N	\N	15
-10115	87	1.17	http://192.168.1.65:8080/files/hwmdm-remote-1.17.apk	XM/cpp5JJOKzVB0NkaH9AP77X+ceH/4XMcXiTAYOveQ=	f	\N	\N	18
-10116	46	1.1	http://192.168.1.65:8080/files/hmdm-v1.1.apk	zrFchZ0HUAWW0lEduaGs4FzVYkm98krnXjOPDnuTM8k	f	\N	\N	15380
-10118	87	1.19	http://192.168.1.65:8080/files/hwmdm-remote-1.19.apk	Je_X6_kIckKokLFKxKrIVkea7BZTOKZm8sVbioMBq70	f	\N	\N	20
+10045	46	6.36	http://172.16.24.70:8080/files/hmdm-6.36-os.apk	aNlmR0NqQ2Dl4W7VXXuQWTSnzg40svKKpz2Ii4y433s=	f	\N	\N	0
+10114	87	1.15	http://172.16.24.70:8080/files/hwmdm-remote-1.15.apk	ejZ+YF+LbkppofUjVBSlyKNwSOL42Bb/i+ZSC49OhKk	f	\N	\N	16
+10047	48	1.02	http://172.16.24.70:8080/files/pager-1.02.apk	\N	f	\N	\N	0
+10048	49	1.02	http://172.16.24.70:8080/files/phoneproxy-1.02.apk	\N	f	\N	\N	0
+10049	50	1.04	http://172.16.24.70:8080/files/LauncherRestarter-1.04.apk	\N	f	\N	\N	0
+10102	87	1.3	http://172.16.24.70:8080/files/hwmdm-remote-1.3.apk	fTOWfYkSzgBndhfyav8mLU6eJyg19T0DOTuOfHrUG4U	f	\N	\N	0
+10103	87	1.4	http://172.16.24.70:8080/files/hwmdm-remote-1.4.apk	w8F42l7BvCeWw1t9F++oA8lFisKvnNovwwGjssc34Mw	f	\N	\N	5
+10104	87	1.5	http://172.16.24.70:8080/files/hwmdm-remote-1.5.apk	iLED381c+YCo5UIajQPlx+kQRPelU0CET29Oj49AyBM	f	\N	\N	6
+10092	86	2.26.29.71	http://172.16.24.70:8080/files/WhatsApp.apk	\N	f	\N	\N	262907130
+10105	87	1.6	http://172.16.24.70:8080/files/hwmdm-remote-1.6.apk	VulxLaiyWWhCEM7rm2tdB9d0NpDyUHPKul0FaKdQohU	f	\N	\N	7
+10106	87	1.7	http://172.16.24.70:8080/files/hwmdm-remote-1.7.apk	pvp4UTk/0py5P+/JsWIRlv05iw7VgESmIYxXCkc+Kmk	f	\N	\N	8
+10107	87	1.8	http://172.16.24.70:8080/files/hwmdm-remote-1.8.apk	s+gHfyLxTAMzqnthya/PLLxQ4AsCOp2DSXHmixiplAI	f	\N	\N	9
+10108	87	1.9	http://172.16.24.70:8080/files/hwmdm-remote-1.9.apk	tQ8z/EAavdYpInOeGTuB3Ac/y5geUWBUdUXHds2Fda4	f	\N	\N	10
+10109	87	1.10	http://172.16.24.70:8080/files/hwmdm-remote-1.10.apk	SMXyxa12zTB9IMdaXnO71JWMOpLNDJofchcK90mPe1Q	f	\N	\N	11
+10110	87	1.11	http://172.16.24.70:8080/files/hwmdm-remote-1.11.apk	jXzRAAwavptrVlxFHDrY1s2+iq6y0cokd4gu3LJWyYg	f	\N	\N	12
+10111	87	1.12	http://172.16.24.70:8080/files/hwmdm-remote-1.12.apk	tAJysfJ3DYSdwP2OrEa9Yd6RTiGvpO4xjbqhYC+P+MI	f	\N	\N	13
+10112	87	1.13	http://172.16.24.70:8080/files/hwmdm-remote-1.13.apk	FpgS+aeKQgdGDyXTUflEr76YyvJvKsEhcA/cdVp5Mug	f	\N	\N	14
+10113	87	1.14	http://172.16.24.70:8080/files/hwmdm-remote-1.14.apk	IgxFToQDmDGSzv8CQJG7tGLFuyu5y9Ds4gsiQ3+kfeI	f	\N	\N	15
+10115	87	1.17	http://172.16.24.70:8080/files/hwmdm-remote-1.17.apk	XM/cpp5JJOKzVB0NkaH9AP77X+ceH/4XMcXiTAYOveQ=	f	\N	\N	18
+10116	46	1.1	http://172.16.24.70:8080/files/hmdm-v1.1.apk	zrFchZ0HUAWW0lEduaGs4FzVYkm98krnXjOPDnuTM8k	f	\N	\N	15380
+10118	87	1.19	http://172.16.24.70:8080/files/hwmdm-remote-1.19.apk	Je_X6_kIckKokLFKxKrIVkea7BZTOKZm8sVbioMBq70	f	\N	\N	20
 \.
 
 
@@ -2965,7 +2965,7 @@ COPY public.configurationfiles (id, configurationid, description, devicepath, ex
 COPY public.configurations (id, name, description, type, password, backgroundcolor, textcolor, backgroundimageurl, iconsize, desktopheader, usedefaultdesignsettings, customerid, gps, bluetooth, wifi, mobiledata, mainappid, eventreceivingcomponent, kioskmode, qrcodekey, contentappid, autoupdate, blockstatusbar, systemupdatetype, systemupdatefrom, systemupdateto, usbstorage, requestupdates, pushoptions, autobrightness, brightness, managetimeout, timeout, lockvolume, wifissid, wifipassword, wifisecuritytype, passwordmode, kioskhome, kioskrecents, kiosknotifications, kiosksysteminfo, kioskkeyguard, orientation, rundefaultlauncher, timezone, allowedclasses, newserverurl, locksafesettings, disablescreenshots, restrictions, defaultfilepath, keepalivetime, managevolume, volume, showwifi, mobileenrollment, desktopheadertemplate, kiosklockbuttons, scheduleappupdate, appupdatefrom, appupdateto, disablelocation, apppermissions, permissive, kioskexit, qrparameters, autostartforeground, displaystatus, encryptdevice, downloadupdates, kioskscreenon, launcherurl, adminextras) FROM stdin;
 1	Common - Minimal	Suitable for generic Android devices; minimum of apps installed	0	12345678			\N	SMALL	NO_HEADER	t	1	t	\N	\N	\N	10045	com.hmdm.launcher.AdminReceiver	f	6fb9c8dc81483173a0c0e9f8b2e46be1	\N	f	t	0	\N	\N	\N	DONOTTRACK	polling	\N	180	f	60	f	PMETO	pmeto1054	\N	\N	f	f	f	f	\N	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	\N	\N	\N	/	\N	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	\N	f	\N	\N	f	f	UNLIMITED	\N	\N	\N
 2	MIUI (Xiaomi Redmi)	Optimized for MIUI-running devices	0	12345678			\N	SMALL	NO_HEADER	t	1	t	\N	\N	\N	\N	com.hmdm.launcher.AdminReceiver	f	8e6ca072ddb926a1af61578dfa9fc334	\N	f	f	0	\N	\N	\N	DONOTTRACK	polling	\N	180	f	60	f	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	https://mdm.olimpia.sp.gov.br	\N	\N	\N	/	\N	\N	\N	\N	f	\N	\N	\N	\N	\N	f	GRANTALL	\N	t	\N	\N	f	f	UNLIMITED	\N	\N	\N
-11	Kiosk Total (6.37.3)	Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.	0	08448402	\N	\N	\N	SMALL	NO_HEADER	t	1	t	f	t	f	10116	com.hmdm.launcher.AdminReceiver	t	ee6fb8ac963bea8e14bcc123235120f5	10008	f	f	0	\N	\N	\N	GPS	polling	\N	180	f	60	f	PMETO	pmeto1054	WPA	\N	f	f	f	f	f	\N	\N	\N	\N	http://192.168.1.65:8080	t	\N	no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location	/	60	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	f	f	\N	\N	f	f	UNLIMITED	t	\N	\N
+11	Kiosk Total (6.37.3)	Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.	0	08448402	\N	\N	\N	SMALL	NO_HEADER	t	1	t	f	t	f	10116	com.hmdm.launcher.AdminReceiver	t	ee6fb8ac963bea8e14bcc123235120f5	10008	f	f	0	\N	\N	\N	GPS	polling	\N	180	f	60	f	PMETO	pmeto1054	WPA	\N	f	f	f	f	f	\N	\N	\N	\N	http://172.16.24.70:8080	t	\N	no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location	/	60	\N	\N	\N	f	\N	t	f	01:00	05:59	f	GRANTALL	f	f	\N	\N	f	f	UNLIMITED	t	\N	\N
 \.
 
 
@@ -3527,7 +3527,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 213	1784844913719	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0	172.19.0.1	0
 214	1784844978406	1	1	admin	plugin.audit.action.update.device	Method: PUT\nURI: /rest/private/devices\nBody: {"number":"olp0006","id":16,"groups":[],"configurationId":5}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.19.0.1	0
 218	1784848059749	1	3	hwmdm_ui_1784848057049	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_1784848057049"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5124	1789759766192	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5124	1789759766192	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 219	1784848515693	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.20.0.1	0
 220	1784848763025	1	4	hwmdm_ui_1784848756839	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_1784848756839"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 221	1784849067271	1	5	hwmdm_ui_1784849060357	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_1784849060357"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -3551,7 +3551,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 239	1784858120673	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.20.0.1	0
 240	1784858420088	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.20.0.1	0
 241	1784859718692	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.20.0.1	0
-5125	1789759767264	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5125	1789759767264	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 242	1784860920387	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.20.0.1	0
 243	1784881810222	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	172.20.0.1	0
 244	1784882477014	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36		0
@@ -4154,7 +4154,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 848	1785072054739	1	116	hwmdm_files_1785072043710	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_files_1785072043710"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 849	1785072054826	1	115	hwmdm_evm_1785072025735	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 850	1785072116343	1	115	hwmdm_evm_1785072025735	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_evm_1785072025735"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5117	1789746128086	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5117	1789746128086	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 851	1785072124728	1	115	hwmdm_evm_1785072025735	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_evm_1785072025735"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 852	1785072127559	1	115	hwmdm_evm_1785072025735	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 853	1785072130074	1	115	hwmdm_evm_1785072025735	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4203,7 +4203,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 895	1785075557500	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 896	1785075559992	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 897	1785075570751	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"unlock_screen","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5126	1789759768301	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5126	1789759768301	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 898	1785075615184	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"set_config","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 899	1785075853449	1	122	hwmdm_ui_admin_1785075847441	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785075847441"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 900	1785075865076	1	122	hwmdm_ui_admin_1785075847441	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785075847441"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4227,7 +4227,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 917	1785076136561	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 918	1785076145854	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 919	1785076152114	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5127	1789759769349	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5127	1789759769349	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 920	1785076157419	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 921	1785076165511	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 922	1785076178018	1	124	hwmdm_ui_admin_1785076131980	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076131980"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4250,7 +4250,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 939	1785076822258	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076790563"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 940	1785076834949	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076790563"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 941	1785076844756	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076790563"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5129	1789759771462	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5129	1789759771462	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 942	1785076852317	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076790563"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 943	1785076865091	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785076790563"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 944	1785076867162	1	133	hwmdm_ui_admin_1785076790563	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"remote_touch","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
@@ -4274,7 +4274,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 957	1785076946270	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 958	1785076947544	1	137	hwmdm_cmd_guest_1785076929230	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"reboot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 959	1785076950275	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5130	1789759772511	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5130	1789759772511	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 960	1785076950346	1	136	hwmdm_cmd_admin_1785076929230	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_cmd_admin_1785076929230"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 964	1785076958707	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 965	1785076961231	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4345,7 +4345,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1025	1785080554351	1	147	hwmdm_cmd_admin_1785080544181	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"run_app","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1026	1785080554392	1	147	hwmdm_cmd_admin_1785080544181	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"delete_file","params":{"path":"/sdcard/../../etc/passwd"}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1027	1785080554447	1	147	hwmdm_cmd_admin_1785080544181	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/999999/command\nBody: {"action":"reboot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
-5131	1789759773589	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5131	1789759773589	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1028	1785080556823	1	148	hwmdm_cmd_guest_1785080544181	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_cmd_guest_1785080544181"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1029	1785080560435	1	148	hwmdm_cmd_guest_1785080544181	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"reboot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1030	1785080561700	1	147	hwmdm_cmd_admin_1785080544181	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_cmd_admin_1785080544181"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4370,7 +4370,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1060	1785080907089	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1061	1785080909583	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1068	1785080927088	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5132	1789759774732	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5132	1789759774732	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1071	1785080934581	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1072	1785080937079	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1073	1785080939581	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4682,7 +4682,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1369	1785081676341	1	155	hwmdm_cmd_admin_1785081654227	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"delete_file","params":{"path":"/sdcard/../../etc/passwd"}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1372	1785081679613	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1319	1785081581747	1	151	hwmdm_ui_admin_1785081490670	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785081490670"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5133	1789759775795	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5133	1789759775795	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1326	1785081592092	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1327	1785081594588	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1328	1785081597084	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4707,7 +4707,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1366	1785081676115	1	155	hwmdm_cmd_admin_1785081654227	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"nao_existe","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1368	1785081676250	1	155	hwmdm_cmd_admin_1785081654227	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"run_app","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1371	1785081677168	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5134	1789759776970	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5134	1789759776970	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1375	1785081683491	1	156	hwmdm_cmd_guest_1785081654227	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"reboot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1376	1785081684618	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1377	1785081685946	1	155	hwmdm_cmd_admin_1785081654227	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_cmd_admin_1785081654227"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -4803,7 +4803,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1477	1785082265172	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1478	1785082270940	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1479	1785082279631	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5135	1789759778002	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5135	1789759778002	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1480	1785082292428	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1481	1785082301890	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1482	1785082309372	1	158	hwmdm_ui_admin_1785082246144	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785082246144"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -5008,7 +5008,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1689	1785089745125	1	205	hwmdm_cmd_admin_1785089735887	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"run_app","params":{"pkg":"nao eh pacote!!"}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1694	1785089750324	1	206	hwmdm_cmd_guest_1785089735887	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"reboot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	1
 1681	1785089692406	1	203	kiosk_785089670986	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"kiosk_785089670986"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5136	1789759779044	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5136	1789759779044	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1683	1785089696687	1	203	kiosk_785089670986	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1684	1785089712599	1	204	hwmdm_ip_1785089708732	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ip_1785089708732"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1685	1785089739631	1	205	hwmdm_cmd_admin_1785089735887	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_cmd_admin_1785089735887"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -5202,7 +5202,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1877	1785098627562	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1879	1785098642205	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/23/command\nBody: {"action":"set_config","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1882	1785098649486	1	1	admin	plugin.audit.action.device.force.kiosk	\N	10.0.17.198	0
-5137	1789759780082	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5137	1789759780082	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1885	1785098658959	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/29/command\nBody: {"action":"set_config","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1858	1785098580075	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 1861	1785098587562	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -5272,7 +5272,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 1945	1785099409849	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785099379751"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	0
 1946	1785099423206	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785099379751"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	0
 1947	1785099436624	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785099379751"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	0
-5139	1789759782174	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5139	1789759782174	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 1948	1785099448387	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785099379751"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	0
 1949	1785099465144	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_ui_admin_1785099379751"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	0
 1950	1785099468253	1	220	hwmdm_ui_admin_1785099379751	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"remote_touch","params":{}}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	172.21.0.1	1
@@ -5496,7 +5496,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2255	1785237666727	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/20/command\nBody: {"action":"message","params":{"text":"teste","duration":10}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2199	1785116984266	1	289	hwmdm_opcoes_1785116926127	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_opcoes_1785116926127"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2200	1785116991715	1	290	hwmdm_qr_1785116990526	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_qr_1785116990526"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
-5140	1789759783204	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5140	1789759783204	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2209	1785117051221	1	291	hwmdm_opcoes_1785117008969	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_opcoes_1785117008969"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2210	1785117057175	1	291	hwmdm_opcoes_1785117008969	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_opcoes_1785117008969"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2201	1785116997902	1	290	hwmdm_qr_1785116990526	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"hwmdm_qr_1785116990526"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -5536,7 +5536,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2245	1785179196928	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2246	1785179641172	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"webPrimaryColor":"#134b83","webSidebarColor":"#dbdfe2","webTextColor":"#17202A","webLogoUrl":"https://i.ytimg.com/vi/NfoH_n3lm3Q/maxresdefault.jpg","customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":null,"newDeviceConfigurationId":1,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2247	1785220880742	1	\N	404.466.868-08	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"404.466.868-08"}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/150 Version/11.1.1 Safari/605.1.15	192.168.1.254	1
-5142	1789759785294	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5142	1789759785294	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2248	1785220899007	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/150 Version/11.1.1 Safari/605.1.15	192.168.1.254	0
 2249	1785222915097	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/150 Version/11.1.1 Safari/605.1.15	192.168.1.254	0
 2250	1785227810148	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/150 Version/11.1.1 Safari/605.1.15	192.168.1.254	0
@@ -5560,7 +5560,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2298	1785238310139	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2303	1785238322569	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2304	1785238325072	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
-5143	1789759786335	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5143	1789759786335	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2309	1785238475584	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"unlock_screen","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2339	1785329996714	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2342	1785330148023	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"webPrimaryColor":"#134b83","webSidebarColor":"#3284c1","webTextColor":"#17202A","webLogoUrl":"https://i.ytimg.com/vi/NfoH_n3lm3Q/maxresdefault.jpg","customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":null,"newDeviceConfigurationId":1,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
@@ -5666,7 +5666,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2438	1785952288450	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2465	1785952355907	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2490	1785952418408	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
-5144	1789759787506	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5144	1789759787506	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2491	1785952421111	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2495	1785952431294	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 2367	1785951498155	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
@@ -7267,7 +7267,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 3996	1786012744262	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 3997	1786012746772	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 3998	1786012749274	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
-5145	1789759788541	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5145	1789759788541	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 3999	1786012751775	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4000	1786012754277	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4001	1786012756879	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
@@ -7338,7 +7338,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4011	1786012781770	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4012	1786012784273	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4020	1786012804263	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
-5146	1789759789594	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5146	1789759789594	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4021	1786012806792	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4022	1786012809280	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
 4023	1786012811781	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36	192.168.1.254	0
@@ -7527,14 +7527,14 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2102	1785115233361	1	277	hwmdm_opcoes_1785115179869	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"9973a2c71adb8f89472823fcd273db81","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":34,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115179869","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4079	1786017783061	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4080	1786017785554	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5147	1789759790658	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5147	1789759790658	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2107	1785115269057	1	278	hwmdm_opcoes_1785115247285	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"e70b58d8342541360d3e971dd3929617","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":35,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115247285","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2109	1785115279171	1	278	hwmdm_opcoes_1785115247285	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"e70b58d8342541360d3e971dd3929617","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":35,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115247285","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2113	1785115301343	1	278	hwmdm_opcoes_1785115247285	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"e70b58d8342541360d3e971dd3929617","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":35,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115247285","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2118	1785115336885	1	279	hwmdm_opcoes_1785115314978	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"84d74d8eb1952e5429d993ca2524e8ee","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":36,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115314978","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4087	1786017803052	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4092	1786017815552	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5148	1789759791687	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5148	1789759791687	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2120	1785115347019	1	279	hwmdm_opcoes_1785115314978	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"84d74d8eb1952e5429d993ca2524e8ee","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":36,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115314978","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2129	1785115404316	1	280	hwmdm_opcoes_1785115382180	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"f6cb0fd0d8fca8edc879b719840269d8","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":37,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115382180","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2124	1785115368469	1	279	hwmdm_opcoes_1785115314978	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"84d74d8eb1952e5429d993ca2524e8ee","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":36,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115314978","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -7547,28 +7547,28 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 2146	1785115504728	1	281	hwmdm_opcoes_1785115450374	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"0663746b1b829b0ccf27eb1f3f25f93e","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":38,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785115450375","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4091	1786017813139	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4099	1786017833056	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5149	1789759792770	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5149	1789759792770	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2159	1785116731836	1	283	hwmdm_opcoes_1785116679100	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"ece79e4b330ef91f24ff3e987f66e0fd","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":39,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116679100","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2153	1785116699635	1	283	hwmdm_opcoes_1785116679100	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"ece79e4b330ef91f24ff3e987f66e0fd","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":39,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116679100","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2155	1785116710153	1	283	hwmdm_opcoes_1785116679100	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"ece79e4b330ef91f24ff3e987f66e0fd","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":39,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116679100","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2166	1785116782441	1	285	hwmdm_opcoes_1785116760651	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"bd1fabb20c6b6f00777f058ed17a4635","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":40,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116760651","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4093	1786017818069	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4094	1786017820570	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5150	1789759793805	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5150	1789759793805	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2168	1785116792777	1	285	hwmdm_opcoes_1785116760651	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"bd1fabb20c6b6f00777f058ed17a4635","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":40,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116760651","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2172	1785116814629	1	285	hwmdm_opcoes_1785116760651	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"bd1fabb20c6b6f00777f058ed17a4635","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":40,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116760651","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2179	1785116865304	1	287	hwmdm_opcoes_1785116843588	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"43d6c1de7a8948b1cfcb5481be7748a4","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":41,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116843588","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2181	1785116875607	1	287	hwmdm_opcoes_1785116843588	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"43d6c1de7a8948b1cfcb5481be7748a4","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":41,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116843588","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4095	1786017823057	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4096	1786017825624	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5151	1789759794859	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5151	1789759794859	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2185	1785116897357	1	287	hwmdm_opcoes_1785116843588	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"43d6c1de7a8948b1cfcb5481be7748a4","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":41,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116843588","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2192	1785116948171	1	289	hwmdm_opcoes_1785116926127	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"41ab8abc0d666822e92ace02687076c8","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":42,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116926127","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2194	1785116958506	1	289	hwmdm_opcoes_1785116926127	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"41ab8abc0d666822e92ace02687076c8","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":42,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116926127","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2205	1785117030396	1	291	hwmdm_opcoes_1785117008969	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"edfd403fb9756becbe363a769c8f2d04","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":43,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785117008969","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 4097	1786017828060	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4098	1786017830554	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5152	1789759795889	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5152	1789759795889	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 2198	1785116979910	1	289	hwmdm_opcoes_1785116926127	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"41ab8abc0d666822e92ace02687076c8","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":42,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785116926127","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2207	1785117040615	1	291	hwmdm_opcoes_1785117008969	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"edfd403fb9756becbe363a769c8f2d04","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":43,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785117008969","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
 2211	1785117062165	1	291	hwmdm_opcoes_1785117008969	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10086,"autoUpdate":false,"kioskLockButtons":null,"wifiSSID":null,"qrCodeKey":"edfd403fb9756becbe363a769c8f2d04","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":null,"lockSafeSettings":null,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":43,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":null,"lockVolume":false,"kioskMode":false,"kioskKeyguard":null,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"","gps":null,"timeZoneMode":"default","kioskExit":true,"textColor":null,"wifiSecurityType":null,"volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":null,"launcherUrl":null,"disableLocation":false,"name":"zz-teste-opcoes-1785117008969","systemUpdateTo":null,"kioskSystemInfo":null,"files":[],"permissive":null,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":null,"scheduleAppUpdate":false,"adminExtras":"\\"com.hmdm.SKIP_INTRO\\":\\"true\\"","manageTimeout":false,"disableScreenshots":null,"description":null,"autostartForeground":null,"wifiPassword":null,"displayStatus":false,"timeout":60,"contentAppId":null,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"DONOTTRACK","useDefaultDesignSettings":true,"mobileData":null,"kioskNotifications":null,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":null,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":null,"baseUrl":"https://mdm.olimpia.sp.gov.br","brightness":180,"bluetooth":null,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37","version":"6.37","intent":null,"versionCode":0,"url":"https://mdm.olimpia.sp.gov.br/files/hmdm-6.37-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10086,"name":"Headwind MDM","arch":null,"usedVersionId":10086}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36	10.0.17.198	0
@@ -7601,7 +7601,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4141	1786017938084	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4142	1786017940564	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4143	1786017943065	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5153	1789759796995	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5153	1789759796995	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4144	1786017945555	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4145	1786017948070	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4146	1786017950571	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -7624,7 +7624,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4162	1786018105639	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4163	1786018108125	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4164	1786018110644	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5154	1789759798023	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5154	1789759798023	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4165	1786018113132	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4166	1786018115634	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4167	1786018118148	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -7693,7 +7693,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4202	1786018282989	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4232	1786018358030	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4233	1786018360458	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5155	1789759799061	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5155	1789759799061	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4234	1786018362961	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4235	1786018365453	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4236	1786018367947	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -7877,7 +7877,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4379	1786019888416	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4387	1786019908429	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4394	1786019925923	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5156	1789759800118	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5156	1789759800118	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4395	1786019928427	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4405	1786019953428	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4406	1786019955937	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -7946,7 +7946,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4454	1786020160073	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4455	1786020220064	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4456	1786020226494	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5157	1789759801173	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5157	1789759801173	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4459	1786020233451	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4460	1786020235931	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4469	1786020258419	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -7992,7 +7992,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4557	1786020822694	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"lock_screen","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4571	1786020854009	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4483	1786020293492	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5158	1789759802286	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5158	1789759802286	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4484	1786020295926	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4486	1786020529798	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10093,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"2944dfa7981bab8ea1253c0277a59c68","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"https://mdm.olimpia.sp.gov.br","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":44,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.7)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://192.168.1.75:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":false,"selected":true,"iconId":null,"useKiosk":true,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.whatsapp","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":86,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"2.26.29.71","version":"2.26.29.71","intent":null,"versionCode":0,"url":"http://192.168.1.75:8080/files/WhatsApp.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10092,"name":"WhatsApp","arch":null,"usedVersionId":10092},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":true,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.37.6","version":"6.37.6","intent":null,"versionCode":0,"url":"http://192.168.1.75:8080/files/hmdm-6.37.6-olimpia-screenshot.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10093,"name":"Headwind MDM","arch":null,"usedVersionId":10093}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4487	1786020599256	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8084,7 +8084,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4562	1786020831530	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4564	1786020836519	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4565	1786020839030	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5159	1789759803381	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5159	1789759803381	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4566	1786020841531	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4576	1786020864018	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4577	1786020866521	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8107,7 +8107,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4610	1786020949026	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4624	1786020984022	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4625	1786020987474	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5160	1789759804413	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5160	1789759804413	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4626	1786020989016	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4627	1786020991527	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4628	1786020994027	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8130,7 +8130,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4648	1786021044027	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4649	1786021046518	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4650	1786021049029	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5161	1789759805470	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5161	1789759805470	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4651	1786021051539	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4652	1786021054016	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4653	1786021056527	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/41/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8199,7 +8199,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4713	1786025566684	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4714	1786025569219	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4715	1786025571698	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5162	1789759806511	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5162	1789759806511	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4716	1786025573925	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4717	1786025576420	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4718	1786025599530	1	1	admin	plugin.audit.action.update.device	Method: PUT\nURI: /rest/private/devices\nBody: {"number":"R9XT106Y5RP","id":44,"groups":[],"configurationId":44}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8243,7 +8243,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4794	1786026696110	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4796	1786026701107	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4797	1786026703108	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5163	1789759807764	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5163	1789759807764	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4798	1786026705394	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4799	1786026707203	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4817	1786026746938	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8356,7 +8356,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4828	1786026774471	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4829	1786026776950	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4830	1786026779456	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5164	1789759808820	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5164	1789759808820	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4831	1786026781973	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4832	1786026784436	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4833	1786026786945	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/45/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8425,7 +8425,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4943	1786027212114	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4950	1786027230181	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4964	1786027265117	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5165	1789759809860	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5165	1789759809860	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4965	1786027268119	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4968	1786027275120	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4969	1786027278108	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8445,7 +8445,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 4958	1786027249538	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4959	1786027253133	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4966	1786027270112	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
-5166	1789759810924	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5166	1789759810924	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 4967	1786027272147	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4975	1786027372817	1	1	admin	plugin.audit.action.version.config	Method: POST\nURI: /rest/private/applications/version/configurations\nBody: {"applicationVersionId":10093,"configurations":[{"id":null,"customerId":1,"configurationId":45,"configurationName":"Kiosk Total (POC)","applicationId":46,"applicationName":"Headwind MDM","applicationVersionId":10093,"versionText":10093,"showIcon":false,"screenOrder":null,"keyCode":null,"bottom":false,"longTap":false,"action":1,"remove":false,"notify":true,"common":false}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
 4935	1786027192145	1	1	admin	plugin.audit.action.device.remote.command	Method: POST\nURI: /rest/private/devices/44/command\nBody: {"action":"screenshot","params":{}}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0	192.168.1.254	0
@@ -8536,9 +8536,9 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5059	1786130403897	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5062	1786130480118	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false,"webLogoUrl":"http://192.168.1.75:8080/files/logo2.png"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5087	1786378596128	1	316	smoke_326698	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"smoke_326698"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
-5120	1789759447799	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	1
-5123	1789759765125	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5128	1789759770387	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5120	1789759447799	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	1
+5123	1789759765125	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5128	1789759770387	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5058	1786130385739	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false,"webLogoUrl":"https://mdm.olimpia.sp.gov.br/files/logo2.png"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5060	1786130444923	1	1	admin	plugin.audit.action.remove.file	Method: POST\nURI: /rest/private/web-ui-files/remove\nBody: {"id":10,"filePath":"logo_olimpia.jpg","description":"logo_olimpia","url":"http://192.168.1.75:8080/files/logo_olimpia.jpg","size":49901,"uploadTime":1785178564725,"devicePath":"/Download/logo_olimpia.jpg","external":false,"replaceVariables":false,"usedByApps":null,"usedByIcons":[],"usedByConfigurations":[],"removeButtonTooltip":"","copyLinkTooltip":"Copiar link: http://192.168.1.75:8080/files/logo_olimpia.jpg"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5061	1786130450958	1	1	admin	plugin.audit.action.remove.file	Method: POST\nURI: /rest/private/web-ui-files/remove\nBody: {"id":12,"filePath":"logo2.png","description":null,"url":"http://192.168.1.75:8080/files/logo2.png","size":13570,"uploadTime":1786130240477,"devicePath":"/Download/logo2.png","external":false,"replaceVariables":false,"usedByApps":null,"usedByIcons":[],"usedByConfigurations":[],"removeButtonTooltip":"","copyLinkTooltip":"Copiar link: http://192.168.1.75:8080/files/logo2.png"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
@@ -8573,9 +8573,9 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5095	1786380849586	1	320	wp_331788	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"wp_331788"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5096	1786380854165	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#ac0000","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5114	1789667152802	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36	192.168.1.254	1
-5121	1789759453028	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	1
-5138	1789759781119	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5141	1789759784257	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5121	1789759453028	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	1
+5138	1789759781119	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5141	1789759784257	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5097	1786380858625	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#f37c7c","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5100	1786380881159	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5105	1786380899727	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#d51735","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
@@ -8583,7 +8583,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5099	1786380875214	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#27b4e6","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5101	1786380881470	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#0a1e6e","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5115	1789667184937	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36	192.168.1.254	1
-5122	1789759750704	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5122	1789759750704	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5102	1786380886480	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#1c40e3","webSidebarColor":"#4e4f56","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5104	1786380894348	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/logo_olimpia.jpg","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#222d31","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
 5106	1786380916320	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.75:8080/files/favicon.png","webPrimaryColor":"#bcbec8","webSidebarColor":"#b5bbe0","webTextColor":"#d51735","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36	192.168.250.254	0
@@ -8595,35 +8595,35 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5111	1786389132772	1	322	pr_346709	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"pr_346709"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5112	1786389490124	1	323	up_348811	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"up_348811"}\nUser-Agent: curl/8.5.0	192.168.1.75	0
 5113	1789667130036	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36	192.168.1.254	1
-5167	1789759811957	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5178	1789759823835	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5181	1789759842068	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5189	1789759850567	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5191	1789759852765	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5199	1789759861221	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5167	1789759811957	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5178	1789759823835	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5181	1789759842068	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5189	1789759850567	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5191	1789759852765	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5199	1789759861221	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5203	1789760187938	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5213	1789760617210	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal Observer","newPassword":"******","groups":[],"userRole":{"id":100},"login":"f.observer","email":"f.observer@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5216	1789760627092	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal Helpdesk 3","newPassword":"******","groups":[],"userRole":{"id":103},"login":"f.helpdesk3","email":"f.helpdesk3@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
-5168	1789759813010	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5183	1789759844192	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5185	1789759846324	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5193	1789759854873	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5168	1789759813010	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5183	1789759844192	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5185	1789759846324	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5193	1789759854873	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5200	1789760174318	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5205	1789760191117	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
-5169	1789759814036	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5171	1789759816220	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5173	1789759818329	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5175	1789759820659	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5177	1789759822765	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5179	1789759839672	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5184	1789759845221	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5186	1789759847351	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5188	1789759849502	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5190	1789759851656	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5192	1789759853840	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5194	1789759855903	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5196	1789759857988	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5198	1789759860125	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5169	1789759814036	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5171	1789759816220	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5173	1789759818329	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5175	1789759820659	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5177	1789759822765	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5179	1789759839672	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5184	1789759845221	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5186	1789759847351	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5188	1789759849502	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5190	1789759851656	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5192	1789759853840	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5194	1789759855903	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5196	1789759857988	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5198	1789759860125	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5202	1789760186457	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5207	1789760194300	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5208	1789760346564	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
@@ -8631,17 +8631,17 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5212	1789760614446	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal User","newPassword":"******","groups":[],"userRole":{"id":3},"login":"f.user","email":"f.user@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5215	1789760623296	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal Helpdesk 2","newPassword":"******","groups":[],"userRole":{"id":102},"login":"f.helpdesk2","email":"f.helpdesk2@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5217	1789760631014	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal Guest","newPassword":"******","groups":[],"userRole":{"id":104},"login":"f.guest","email":"f.guest@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
-5170	1789759815113	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5172	1789759817291	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5174	1789759819427	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5176	1789759821735	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5182	1789759843118	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5187	1789759848470	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5195	1789759856959	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5170	1789759815113	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5172	1789759817291	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5174	1789759819427	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5176	1789759821735	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5182	1789759843118	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5187	1789759848470	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5195	1789759856959	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5204	1789760189561	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5210	1789760588338	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal SuperAdmin","newPassword":"******","groups":[],"userRole":{"id":2},"login":"f.superadmin","email":"f.superadmin@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
-5180	1789759840818	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
-5197	1789759859102	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	192.168.1.65	1
+5180	1789759840818	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
+5197	1789759859102	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.16.24.70	1
 5201	1789760184773	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5206	1789760192721	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5211	1789760611854	1	1	admin	plugin.audit.action.update.user	Method: PUT\nURI: /rest/private/users\nBody: {"confirm":"******","allConfigAvailable":false,"allDevicesAvailable":false,"configurations":[],"name":"Fiscal Admin","newPassword":"******","groups":[],"userRole":{"id":2},"login":"f.admin","email":"f.admin@teste.local","confirmModal":"1F0E3D9AD5B78193333013536558705E"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
@@ -8781,7 +8781,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5350	1789991035584	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5351	1789991038378	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5352	1789991040848	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
-5356	1789994687506	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10045,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"https://mdm.olimpia.sp.gov.br","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://192.168.1.65:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.36","version":"6.36","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hmdm-6.36-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10045,"name":"Headwind MDM","arch":null,"usedVersionId":10045},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.15","version":"1.15","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hwmdm-remote-1.15.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10114,"name":"Suporte Remoto","arch":null,"usedVersionId":10114}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5356	1789994687506	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10045,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"https://mdm.olimpia.sp.gov.br","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://172.16.24.70:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.36","version":"6.36","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hmdm-6.36-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10045,"name":"Headwind MDM","arch":null,"usedVersionId":10045},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.15","version":"1.15","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hwmdm-remote-1.15.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10114,"name":"Suporte Remoto","arch":null,"usedVersionId":10114}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5353	1789991120295	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5354	1789991141409	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	1
 5355	1789991144855	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
@@ -8792,7 +8792,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5361	1789996677080	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5362	1789996735346	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5363	1789996765778	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
-5364	1789996771722	1	332	f.webfilter	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10045,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://192.168.1.65:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://192.168.1.65:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.36","version":"6.36","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hmdm-6.36-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10045,"name":"Headwind MDM","arch":null,"usedVersionId":10045},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.15","version":"1.15","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hwmdm-remote-1.15.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10114,"name":"Suporte Remoto","arch":null,"usedVersionId":10114}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
+5364	1789996771722	1	332	f.webfilter	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10045,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://172.16.24.70:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://172.16.24.70:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"6.36","version":"6.36","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hmdm-6.36-os.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10045,"name":"Headwind MDM","arch":null,"usedVersionId":10045},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.15","version":"1.15","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hwmdm-remote-1.15.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10114,"name":"Suporte Remoto","arch":null,"usedVersionId":10114}]}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5365	1789996857043	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5366	1789996973057	1	\N	ADMIN	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"ADMIN"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
 5367	1789996976803	1	\N	ADMIN	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"ADMIN"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	1
@@ -8859,7 +8859,7 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5428	1790012504294	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5429	1790012735683	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5430	1790013008167	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
-5505	1790256033962	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5505	1790256033962	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5431	1790013131254	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5432	1790013179218	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5433	1790013364121	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
@@ -8885,9 +8885,9 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5453	1790102975130	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5454	1790164499205	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5455	1790166163642	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
-5456	1790167018519	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5457	1790167348783	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5458	1790167564705	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5456	1790167018519	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5457	1790167348783	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5458	1790167564705	1	332	f.webfilter	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"f.webfilter"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5459	1790172529098	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: curl/8.5.0	172.18.0.1	1
 5460	1790173152628	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
 5461	1790176065719	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	192.168.1.254	0
@@ -8911,36 +8911,36 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5479	1790179357163	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	0
 5480	1790181023370	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	0
 5481	1790188226805	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	0
-5482	1790189288236	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5482	1790189288236	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5483	1790248031087	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5484	1790248199908	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5485	1790248226948	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	1
 5486	1790248227785	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	1
 5487	1790248229176	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36	172.18.0.1	0
 5488	1790251414929	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	172.18.0.1	0
-5489	1790252274479	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5490	1790252477990	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5491	1790252637108	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5492	1790252691745	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5493	1790252850548	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5494	1790252925243	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5495	1790253046883	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5496	1790253189461	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5497	1790253235694	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5498	1790254703969	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5499	1790255001718	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5500	1790255034369	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5501	1790255085227	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5502	1790255363672	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5489	1790252274479	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5490	1790252477990	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5491	1790252637108	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5492	1790252691745	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5493	1790252850548	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5494	1790252925243	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5495	1790253046883	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5496	1790253189461	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5497	1790253235694	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5498	1790254703969	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5499	1790255001718	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5500	1790255034369	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5501	1790255085227	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5502	1790255363672	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5503	1790255457559	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	172.18.0.1	0
 5504	1790255487921	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5506	1790256202121	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5507	1790256417105	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5506	1790256202121	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5507	1790256417105	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5508	1790256453564	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5509	1790256502596	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5510	1790256537349	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5511	1790256638166	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5512	1790256640222	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5512	1790256640222	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5513	1790256645142	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5514	1790256659603	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	172.18.0.1	0
 5515	1790256670553	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
@@ -8961,26 +8961,26 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5530	1790262254260	1	342	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5531	1790262955456	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
 5532	1790263014862	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5533	1790263325260	1	343	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5534	1790263337860	1	344	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5535	1790263387061	1	345	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5536	1790263406134	1	346	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5537	1790263582675	1	347	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5533	1790263325260	1	343	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5534	1790263337860	1	344	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5535	1790263387061	1	345	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5536	1790263406134	1	346	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5537	1790263582675	1	347	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5538	1790263659530	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5539	1790263781003	1	348	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5540	1790263898155	1	350	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5541	1790263917021	1	351	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5542	1790264061999	1	352	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
-5543	1790264070718	1	353	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	192.168.1.65	0
+5539	1790263781003	1	348	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5540	1790263898155	1	350	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5541	1790263917021	1	351	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5542	1790264061999	1	352	codex_remote_f5	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_remote_f5"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
+5543	1790264070718	1	353	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.16.24.70	0
 5544	1790264082417	1	354	codex_ui_test	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"codex_ui_test"}\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.7827.55 Safari/537.36	172.18.0.1	0
 5545	1790264568549	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5546	1790270681611	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
-5547	1790270732732	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#e9f000","webSidebarColor":"#e9f000","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
-5551	1790334549719	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10116,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://192.168.1.65:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://192.168.1.65:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.whatsapp","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":true,"customerId":1,"commonApplication":false,"action":1,"id":86,"showIcon":true,"selected":false,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"2.26.29.71","version":"2.26.29.71","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/WhatsApp.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10092,"name":"WhatsApp","arch":null,"usedVersionId":null},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.1","version":"1.1","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hmdm-v1.1.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10116,"name":"Headwind MDM","arch":null,"usedVersionId":10116},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.19","version":"1.19","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hwmdm-remote-1.19.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10118,"name":"Suporte Remoto","arch":null,"usedVersionId":10118}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5548	1790270750287	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#212eb3","webSidebarColor":"#212eb3","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
-5549	1790270762621	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#212eb3","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
-5550	1790271962188	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#3846d6","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5552	1790334628840	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10116,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://192.168.1.65:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://192.168.1.65:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.whatsapp","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":86,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"2.26.29.71","version":"2.26.29.71","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/WhatsApp.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10092,"name":"WhatsApp","arch":null,"usedVersionId":10092},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.1","version":"1.1","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hmdm-v1.1.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10116,"name":"Headwind MDM","arch":null,"usedVersionId":10116},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.19","version":"1.19","intent":null,"versionCode":0,"url":"http://192.168.1.65:8080/files/hwmdm-remote-1.19.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10118,"name":"Suporte Remoto","arch":null,"usedVersionId":10118}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5547	1790270732732	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#e9f000","webSidebarColor":"#e9f000","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
+5551	1790334549719	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10116,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://172.16.24.70:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://172.16.24.70:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.whatsapp","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":true,"customerId":1,"commonApplication":false,"action":1,"id":86,"showIcon":true,"selected":false,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"2.26.29.71","version":"2.26.29.71","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/WhatsApp.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10092,"name":"WhatsApp","arch":null,"usedVersionId":null},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.1","version":"1.1","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hmdm-v1.1.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10116,"name":"Headwind MDM","arch":null,"usedVersionId":10116},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.19","version":"1.19","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hwmdm-remote-1.19.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10118,"name":"Suporte Remoto","arch":null,"usedVersionId":10118}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5548	1790270750287	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#212eb3","webSidebarColor":"#212eb3","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
+5549	1790270762621	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#212eb3","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
+5550	1790271962188	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#3846d6","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5552	1790334628840	1	1	admin	plugin.audit.action.update.configuration	Method: PUT\nURI: /rest/private/configurations\nBody: {"appUpdateFrom":"01:00","qrParameters":null,"mainAppId":10116,"autoUpdate":false,"kioskLockButtons":true,"wifiSSID":"PMETO","qrCodeKey":"ee6fb8ac963bea8e14bcc123235120f5","mobileEnrollment":false,"type":0,"appUpdateTo":"05:59","newServerUrl":"http://172.16.24.70:8080","lockSafeSettings":true,"password":"******","passwordMode":null,"manageVolume":null,"iconSize":"SMALL","id":11,"applicationSettings":[],"defaultFilePath":"/","selected":false,"wifi":true,"lockVolume":false,"kioskMode":true,"kioskKeyguard":false,"eventReceivingComponent":"com.hmdm.launcher.AdminReceiver","timeZone":null,"restrictions":"no_factory_reset,no_safe_boot,no_add_user,no_modify_accounts,no_control_apps,no_config_bluetooth,no_config_credentials,no_config_mobile_networks,no_config_tethering,no_config_vpn,no_config_wifi,no_debugging_features,no_status_bar,no_recent_apps,no_notifications,no_usb_file_transfer,no_physical_media,no_outgoing_beam,no_config_location","gps":true,"timeZoneMode":"default","kioskExit":false,"textColor":null,"wifiSecurityType":"WPA","volume":null,"encryptDevice":false,"downloadUpdates":"UNLIMITED","appPermissions":"GRANTALL","pushOptions":"polling","kioskRecents":false,"launcherUrl":null,"disableLocation":false,"name":"Kiosk Total (6.37.3)","systemUpdateTo":null,"kioskSystemInfo":false,"files":[],"permissive":false,"usbStorage":null,"applicationUsageParameters":[],"backgroundImageUrl":null,"allowedClasses":null,"kioskScreenOn":true,"scheduleAppUpdate":false,"adminExtras":null,"manageTimeout":false,"disableScreenshots":null,"description":"Kiosk maximo: lock task com allowlist por perfil, sem home/recentes/notificacoes/status bar, sem saida.","autostartForeground":null,"wifiPassword":"pmeto1054","displayStatus":false,"timeout":60,"contentAppId":10008,"blockStatusBar":false,"systemUpdateType":0,"common":false,"customerId":1,"filesToRemove":null,"requestUpdates":"GPS","useDefaultDesignSettings":true,"mobileData":false,"kioskNotifications":false,"orientation":null,"backgroundColor":null,"desktopHeader":"NO_HEADER","kioskHome":false,"runDefaultLauncher":null,"autoBrightness":null,"desktopHeaderTemplate":null,"keepaliveTime":60,"baseUrl":"http://172.16.24.70:8080","brightness":180,"bluetooth":false,"systemUpdateFrom":null,"showWifi":null,"applications":[{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.android.chrome","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":9,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"0","version":"0","intent":null,"versionCode":0,"url":null,"customerName":null,"urlArm64":null,"system":true,"latestVersion":10008,"name":"Chrome Browser","arch":null,"usedVersionId":10008},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.whatsapp","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":86,"showIcon":true,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"2.26.29.71","version":"2.26.29.71","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/WhatsApp.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10092,"name":"WhatsApp","arch":null,"usedVersionId":10092},{"configurations":[],"runAfterInstall":false,"type":"app","pkg":"com.hmdm.launcher","runAtBoot":false,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":46,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.1","version":"1.1","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hmdm-v1.1.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10116,"name":"Headwind MDM","arch":null,"usedVersionId":10116},{"configurations":[],"runAfterInstall":true,"type":"app","pkg":"com.hwmdm.remote","runAtBoot":true,"longTap":false,"remove":false,"deletionProhibited":false,"split":false,"outdated":false,"common":false,"actionChanged":false,"customerId":1,"commonApplication":false,"action":1,"id":87,"showIcon":false,"selected":true,"iconId":null,"useKiosk":false,"urlArmeabi":null,"bottom":false,"filePath":null,"skipVersion":false,"latestVersionText":"1.19","version":"1.19","intent":null,"versionCode":0,"url":"http://172.16.24.70:8080/files/hwmdm-remote-1.19.apk","customerName":null,"urlArm64":null,"system":false,"latestVersion":10118,"name":"Suporte Remoto","arch":null,"usedVersionId":10118}]}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5553	1790350827884	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
 5554	1790357553166	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5555	1790357632468	1	\N	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	1
@@ -8990,10 +8990,10 @@ COPY public.plugin_audit_log (id, createtime, customerid, userid, login, action,
 5559	1790360179303	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5560	1790360534636	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5561	1790360656253	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.139.0 Chrome/150.0.7871.250 Electron/43.6.0 Safari/537.36	192.168.1.254	0
-5562	1790360943867	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#717eff","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5563	1790360953701	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5564	1790360975326	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#b3b4bc","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
-5565	1790360980364	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://192.168.1.65:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#ffffff","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5562	1790360943867	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#717eff","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5563	1790360953701	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#e7e9fa","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5564	1790360975326	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#b3b4bc","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
+5565	1790360980364	1	1	admin	plugin.audit.action.update.design	Method: POST\nURI: /rest/private/settings/design\nBody: {"id":1,"backgroundColor":"#1c40e3","textColor":"#fcfcfc","backgroundImageUrl":"http://192.168.1.75:8080/files/BG_Tablet.png","webLogoUrl":"http://172.16.24.70:8080/files/favicon.png","webPrimaryColor":"#2a9bd9","webSidebarColor":"#ffffff","webTextColor":"","iconSize":"LARGE","desktopHeader":"DEVICE_ID","desktopHeaderTemplate":null,"customerId":1,"useDefaultLanguage":true,"language":null,"createNewDevices":true,"newDeviceGroupId":1,"newDeviceConfigurationId":11,"phoneNumberFormat":"+9 (999) 999-99-99","customPropertyName1":null,"customPropertyName2":null,"customPropertyName3":null,"customMultiline1":false,"customMultiline2":false,"customMultiline3":false,"customSend1":false,"customSend2":false,"customSend3":false,"sendDescription":false,"passwordReset":false,"passwordLength":0,"passwordStrength":0,"twoFactor":false,"idleLogout":null,"singleCustomer":true,"accountType":0,"expiryTime":null,"deviceLimit":0,"deviceCount":0,"sizeLimit":0,"common":false}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5566	1790364235125	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 5567	1790364260229	1	1	admin	plugin.audit.action.user.login	Method: POST\nURI: /rest/public/auth/login\nBody: {"password":"******","login":"admin"}\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36	192.168.1.254	0
 \.
@@ -9128,14 +9128,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 73905	1789994573880	1	46	46	192.168.1.100	DEBUG	4	Ignoring downgrade request for com.hwmdm.remote: remove current version first!
 73906	1789994573899	1	46	46	192.168.1.100	DEBUG	4	Downloading app: com.whatsapp
 73913	1789994577944	1	46	46	192.168.1.100	DEBUG	4	Downloading app: com.whatsapp
-73914	1789994577970	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://192.168.1.65:8080/files/WhatsApp.apk: 404
-73907	1789994573941	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://192.168.1.65:8080/files/WhatsApp.apk: 404
+73914	1789994577970	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://172.16.24.70:8080/files/WhatsApp.apk: 404
+73907	1789994573941	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://172.16.24.70:8080/files/WhatsApp.apk: 404
 73915	1789994578878	1	46	46	192.168.1.100	DEBUG	4	Downloading app: com.whatsapp
-73916	1789994578918	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://192.168.1.65:8080/files/WhatsApp.apk: 404
+73916	1789994578918	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://172.16.24.70:8080/files/WhatsApp.apk: 404
 73908	1789994575196	1	46	46	192.168.1.100	DEBUG	4	Downloading app: com.whatsapp
-73909	1789994575232	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://192.168.1.65:8080/files/WhatsApp.apk: 404
+73909	1789994575232	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://172.16.24.70:8080/files/WhatsApp.apk: 404
 73910	1789994576538	1	46	46	192.168.1.100	DEBUG	4	Downloading app: com.whatsapp
-73911	1789994576562	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://192.168.1.65:8080/files/WhatsApp.apk: 404
+73911	1789994576562	1	46	46	192.168.1.100	WARNING	2	Failed to download app com.whatsapp: Bad server response for http://172.16.24.70:8080/files/WhatsApp.apk: 404
 73912	1789994576804	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 73917	1789994581818	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 73918	1789994584093	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
@@ -9265,94 +9265,94 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74041	1789995041787	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74043	1789995056278	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74044	1789995080940	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391724, lon=-48.9139197
-74045	1789995081324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74046	1789995081364	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74045	1789995081324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74046	1789995081364	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74047	1789995086496	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74048	1789995141373	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74049	1789995141384	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74050	1789995141404	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74049	1789995141384	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74050	1789995141404	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74051	1789995180663	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74052	1789995201411	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74053	1789995201426	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74054	1789995201440	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74053	1789995201426	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74054	1789995201440	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74055	1789995261448	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74056	1789995261463	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74057	1789995261476	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74056	1789995261463	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74057	1789995261476	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74058	1789995273430	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74059	1789995321484	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74060	1789995321496	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74060	1789995321496	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74384	1789998524715	1	46	46	192.168.1.100	INFO	3	Device owner: true
-74061	1789995321510	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74061	1789995321510	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74062	1789995333436	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74063	1789995381517	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74064	1789995381532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74065	1789995381546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74064	1789995381532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74065	1789995381546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74066	1789995393537	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74067	1789995441553	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74068	1789995441567	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74069	1789995441581	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74068	1789995441567	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74069	1789995441581	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74070	1789995483402	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74071	1789995501589	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74072	1789995501603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74073	1789995501614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74072	1789995501603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74073	1789995501614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74074	1789995543506	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74075	1789995561621	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74076	1789995561633	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74077	1789995561646	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74076	1789995561633	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74077	1789995561646	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74078	1789995603608	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74079	1789995621654	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74080	1789995621682	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74081	1789995621695	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74080	1789995621682	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74081	1789995621695	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74082	1789995681702	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74133	1789996193571	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74134	1789996199224	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74135	1789996204411	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74136	1789996208167	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101:443
-74137	1789996208192	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74137	1789996208192	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74138	1789996208244	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
-74139	1789996208292	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74139	1789996208292	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74140	1789996233698	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74141	1789996268315	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74142	1789996268332	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74143	1789996268344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74142	1789996268332	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74143	1789996268344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74144	1789996312634	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74145	1789996328353	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74146	1789996328367	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74147	1789996328377	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74146	1789996328367	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74147	1789996328377	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74148	1789996373114	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74149	1789996381253	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391654, lon=-48.9138983
 74150	1789996388383	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74151	1789996392048	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 74152	1789996398711	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74083	1789995681716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74084	1789995681728	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74083	1789995681716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74084	1789995681728	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74085	1789995693475	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74086	1789995741735	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74087	1789995741751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74088	1789995741765	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74087	1789995741751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74088	1789995741765	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74089	1789995753570	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74090	1789995801773	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74091	1789995801785	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74092	1789995801795	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74091	1789995801785	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74092	1789995801795	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74093	1789995813677	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74094	1789995861800	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74095	1789995861814	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74096	1789995861826	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74095	1789995861814	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74096	1789995861826	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74097	1789995903523	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74098	1789995921835	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74099	1789995921848	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74100	1789995921861	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74099	1789995921848	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74100	1789995921861	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74101	1789995963627	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74102	1789995981868	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74103	1789995981881	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74104	1789995981894	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74103	1789995981881	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74104	1789995981894	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74105	1789996023734	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74106	1789996041901	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74107	1789996041914	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74108	1789996041925	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74107	1789996041914	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74108	1789996041925	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74109	1789996101932	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74110	1789996101947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74111	1789996101956	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74110	1789996101947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74111	1789996101956	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74112	1789996113567	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739284, lon=-48.9137438
 74113	1789996161964	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74114	1789996161983	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
@@ -9427,13 +9427,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74203	1789996618089	1	46	46	192.168.1.100	DEBUG	4	Downgrade requested for com.hwmdm.remote: installed version 1.17, required version 1.15
 74204	1789996618095	1	46	46	192.168.1.100	DEBUG	4	Ignoring downgrade request for com.hwmdm.remote: remove current version first!
 74205	1789996638200	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
-74206	1789996640697	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74207	1789996640713	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74206	1789996640697	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74207	1789996640713	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74208	1789996640865	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 74209	1789996640938	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74210	1789996700719	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74211	1789996700731	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
-74212	1789996700743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74211	1789996700731	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
+74212	1789996700743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Unable to resolve host "mdm.olimpia.sp.gov.br": No address associated with hostname
 74213	1789996729809	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
 74214	1789996735496	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391614, lon=-48.9138796
 74215	1789996735577	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
@@ -9452,7 +9452,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74245	1789996835952	1	46	87	192.168.1.100	INFO	3	Protecao desligada: as Configuracoes voltam a abrir normalmente
 74246	1789996835960	1	46	46	192.168.1.100	INFO	3	Got Push Message, type protectionOff
 74247	1789996835962	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74248	1789996835966	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74248	1789996835966	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74250	1789996835976	1	46	46	192.168.1.100	INFO	3	Got Push Message, type exitKiosk
 74251	1789996836086	1	46	46	192.168.1.100	DEBUG	4	Update configuration by MainActivity
 74252	1789996836087	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
@@ -9480,7 +9480,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74232	1789996826203	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74265	1789996841271	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 74233	1789996835045	1	46	46	192.168.1.100	INFO	3	Configuration updated
-74258	1789996839336	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=jL9yg44ckEgqoq1eaECLtc5wa2Z0lUoP
+74258	1789996839336	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=jL9yg44ckEgqoq1eaECLtc5wa2Z0lUoP
 74259	1789996839441	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74260	1789996840046	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74261	1789996840051	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
@@ -9490,16 +9490,16 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74266	1789996854430	1	46	87	192.168.1.100	INFO	3	Protecao das Configuracoes ativada automaticamente: acessibilidade e sobreposicao concedidas
 74267	1789996869413	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74268	1789996869423	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74269	1789996869428	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74269	1789996869428	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74270	1789996869517	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74271	1789996871715	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=8cruNZlPF5zA6Fu-_kG7mQWLij9_HQaQ
+74271	1789996871715	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=8cruNZlPF5zA6Fu-_kG7mQWLij9_HQaQ
 74272	1789996871747	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74273	1789996871970	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74274	1789996871974	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
 74275	1789996874424	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74276	1789996874424	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74277	1789996896765	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74278	1789996896799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74277	1789996896765	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74278	1789996896799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74279	1789996909120	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392284, lon=-48.9139123
 74280	1789996956808	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74281	1789996970481	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392273, lon=-48.9139226
@@ -9511,12 +9511,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74287	1789997116320	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393665, lon=-48.913933
 74288	1789997135670	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74289	1789997135681	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74290	1789997135686	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74290	1789997135686	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74291	1789997135763	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 74292	1789997140679	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74293	1789997142485	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
-74294	1789997167441	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-74295	1789997167464	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74294	1789997167441	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+74295	1789997167464	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74296	1789997197894	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393665, lon=-48.913933
 74297	1789997257891	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391705, lon=-48.9138642
 74298	1789997275492	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -9563,9 +9563,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74339	1789997866841	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74340	1789997911661	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74341	1789997911672	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74342	1789997911676	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74342	1789997911676	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74343	1789997911759	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74344	1789997914683	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=hPCbXEvulGkye1VQYK8m2cSnb04EC6C_
+74344	1789997914683	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=hPCbXEvulGkye1VQYK8m2cSnb04EC6C_
 74345	1789997914868	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74346	1789997915084	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74347	1789997915087	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
@@ -9577,9 +9577,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74353	1789998048859	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74354	1789998049308	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74355	1789998049318	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74356	1789998049324	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74356	1789998049324	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74357	1789998049391	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74358	1789998053038	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=WMXmUfP25I7m0PvstHwMG5Nf6EoMLHO6
+74358	1789998053038	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=WMXmUfP25I7m0PvstHwMG5Nf6EoMLHO6
 74359	1789998053109	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74360	1789998053376	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74361	1789998053381	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
@@ -9620,16 +9620,16 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74395	1789998637628	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392249, lon=-48.9139108
 74397	1789998704701	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74398	1789998704743	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74399	1789998704748	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-74401	1789998706734	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=lYyjeNdPZ9ElNR1NWkeGyCpHYUE_kjd_
+74399	1789998704748	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74401	1789998706734	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=lYyjeNdPZ9ElNR1NWkeGyCpHYUE_kjd_
 74402	1789998706941	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74403	1789998707180	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74404	1789998707184	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
 74405	1789998709745	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74406	1789998751656	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101 (port 443) from /192.168.1.100 (port 39234) after 9999ms
 74407	1789998753764	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketException: Software caused connection abort
-74408	1789998753794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74409	1789998753839	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74408	1789998753794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74409	1789998753839	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74410	1789998758876	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74411	1789998777742	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 74412	1789998779264	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
@@ -9640,18 +9640,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74417	1789998793373	1	46	46	192.168.1.100	INFO	3	Device owner: true
 74418	1789998794021	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 74419	1789998813846	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74420	1789998844611	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-74421	1789998844631	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74420	1789998844611	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+74421	1789998844631	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74422	1789998928232	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74423	1789999000361	1	46	46	192.168.1.100	INFO	3	Configuration updated
 74424	1789999000436	1	46	46	192.168.1.100	INFO	3	Device owner: true
 74425	1789999003607	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
-74426	1789999023801	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-74427	1789999023824	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74426	1789999023801	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+74427	1789999023824	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74428	1789999028903	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74429	1789999083832	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74430	1789999083848	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74431	1789999083868	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74430	1789999083848	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74431	1789999083868	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74432	1789999133034	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74433	1789999140366	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74434	1789999140782	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
@@ -9659,8 +9659,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74436	1789999145055	1	46	46	192.168.1.100	INFO	3	Configuration updated
 74437	1789999145094	1	46	46	192.168.1.100	INFO	3	Device owner: true
 74438	1789999148359	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
-74439	1789999189690	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-74440	1789999189709	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74439	1789999189690	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+74440	1789999189709	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74441	1789999194803	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74442	1789999216795	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
 74443	1789999221126	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
@@ -9678,15 +9678,15 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74455	1789999309238	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74456	1789999309247	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 74458	1789999309342	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74457	1789999309252	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-74459	1789999312580	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=v5QzeLJwqfGB6PE8PCzrSdoK9l99peNo
+74457	1789999309252	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74459	1789999312580	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=v5QzeLJwqfGB6PE8PCzrSdoK9l99peNo
 74460	1789999312666	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74461	1789999312903	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74462	1789999312906	1	46	87	192.168.1.100	INFO	3	Transmitindo 464x800 com toque
 74463	1789999314249	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74464	1789999326949	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-74465	1789999326971	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74466	1789999327004	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74465	1789999326971	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74466	1789999327004	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74467	1789999387017	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74468	1789999398364	1	46	87	192.168.1.100	WARNING	2	Servidor recusou o endereco 192.168.1.100 (HTTP 502)
 74469	1789999453108	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -9768,8 +9768,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74544	1790001679854	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74546	1790001746112	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74547	1790001776758	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
-74548	1790001778188	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74549	1790001778229	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74548	1790001778188	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74549	1790001778229	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74550	1790001778273	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74551	1790001814407	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74552	1790001836869	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
@@ -9780,8 +9780,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74557	1790001986951	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
 74558	1790002045261	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74559	1790002047056	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
-74560	1790002083095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74561	1790002083151	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74560	1790002083095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74561	1790002083151	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74562	1790002107165	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
 74563	1790002143164	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74564	1790002196950	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
@@ -9803,16 +9803,16 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74580	1790002715713	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74581	1790002770713	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391675, lon=-48.9139024
 74582	1790002783714	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74583	1790002784793	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74584	1790002784856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74583	1790002784793	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74584	1790002784856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74585	1790002844869	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74586	1790002846791	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392921, lon=-48.9138844
 74587	1790002906897	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392921, lon=-48.9138844
 74588	1790002910810	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74589	1790002976695	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74590	1790003005768	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392921, lon=-48.9138844
-74591	1790003013161	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74592	1790003013234	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74591	1790003013161	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74592	1790003013234	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74593	1790003156121	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392921, lon=-48.9138844
 74594	1790003169342	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74595	1790003217225	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392921, lon=-48.9138844
@@ -9849,8 +9849,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74626	1790003783543	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74627	1790003818944	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74628	1790003850197	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739181, lon=-48.9138799
-74629	1790003851343	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74630	1790003851373	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74629	1790003851343	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74630	1790003851373	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74631	1790003880344	1	46	46	192.168.1.100	INFO	3	Configuration updated
 74632	1790003880402	1	46	46	192.168.1.100	INFO	3	Device owner: true
 74633	1790003882884	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
@@ -9866,8 +9866,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74643	1790004178994	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391687, lon=-48.9138984
 74644	1790004240846	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74645	1790004267969	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391687, lon=-48.9138984
-74646	1790004271906	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74647	1790004271932	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74646	1790004271906	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74647	1790004271932	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74648	1790004328072	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391687, lon=-48.9138984
 74649	1790004331943	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74650	1790004388178	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391687, lon=-48.9138984
@@ -9951,8 +9951,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74726	1790006839797	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74727	1790006848412	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73915, lon=-48.9139015
 74730	1790006971691	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74731	1790006997193	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74732	1790006997230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74731	1790006997193	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74732	1790006997230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74733	1790006998323	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73915, lon=-48.9139015
 74734	1790007057241	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74735	1790007058424	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73915, lon=-48.9139015
@@ -9971,8 +9971,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74748	1790007518722	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74749	1790007538618	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392296, lon=-48.913794
 74750	1790007584771	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74751	1790007611749	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74752	1790007611780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74751	1790007611749	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74752	1790007611780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74753	1790007628423	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392296, lon=-48.913794
 74754	1790007671790	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74755	1790007688529	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392296, lon=-48.913794
@@ -10000,32 +10000,32 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74779	1790008468524	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392296, lon=-48.913794
 74769	1790008168682	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392296, lon=-48.913794
 74776	1790008397226	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74780	1790008499149	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74781	1790008499163	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74780	1790008499149	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74781	1790008499163	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74782	1790008504326	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 74783	1790008559170	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74784	1790008559181	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74785	1790008559196	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74784	1790008559181	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74785	1790008559196	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74786	1790008562199	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391757, lon=-48.9138956
 74787	1790008619206	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74788	1790008619218	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74789	1790008619238	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74788	1790008619218	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74789	1790008619238	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74790	1790008619507	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391618, lon=-48.9138982
 74791	1790008679248	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74792	1790008679263	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74793	1790008679283	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74792	1790008679263	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74793	1790008679283	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74794	1790008680400	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391606, lon=-48.9138949
 74795	1790008739292	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74796	1790008739307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74797	1790008739328	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74796	1790008739307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74797	1790008739328	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74798	1790008741255	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391881, lon=-48.9138783
 74799	1790008799338	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74800	1790008799354	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74801	1790008799375	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74800	1790008799354	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74801	1790008799375	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74802	1790008802175	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139088
 74803	1790008859386	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74804	1790008859403	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74805	1790008859422	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74804	1790008859403	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74805	1790008859422	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74806	1790008890432	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391533, lon=-48.9139047
 74807	1790008905940	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74808	1790008919430	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10058,13 +10058,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74835	1790009098404	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392192, lon=-48.9138704
 74836	1790009162809	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74837	1790009166718	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391621, lon=-48.9138881
-74838	1790009179910	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74839	1790009180986	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74838	1790009179910	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74839	1790009180986	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74840	1790009227956	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391898, lon=-48.9138669
 74841	1790009240996	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74842	1790009306457	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74843	1790009311100	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74844	1790009368714	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53604) after 10000ms
+74844	1790009368714	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53604) after 10000ms
 74845	1790009371095	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74846	1790009431201	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74847	1790009463678	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10074,42 +10074,42 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74851	1790009596667	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74852	1790009638892	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74853	1790009662511	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74854	1790009695984	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74855	1790009696040	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74854	1790009695984	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74855	1790009696040	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74856	1790009728677	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74857	1790009756052	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74858	1790009764742	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101 (port 443) from /192.168.1.100 (port 40200) after 10000ms
-74859	1790009766074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53640) after 10000ms
+74859	1790009766074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53640) after 10000ms
 74860	1790009788779	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74861	1790009803430	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
+74861	1790009803430	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
 74862	1790009846779	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74863	1790009863440	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74864	1790009873462	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53652) after 10000ms
-74865	1790009884738	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
+74864	1790009873462	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53652) after 10000ms
+74865	1790009884738	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
 74866	1790009906883	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74867	1790009944747	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74868	1790009954768	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53660) after 10000ms
+74868	1790009954768	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53660) after 10000ms
 74869	1790009966987	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74870	1790009986318	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
+74870	1790009986318	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
 74871	1790010027094	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74872	1790010046327	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74873	1790009179910	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74874	1790009180986	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74873	1790009179910	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74874	1790009180986	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74875	1790009227956	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391898, lon=-48.9138669
 74876	1790009240996	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74877	1790009306457	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74878	1790009311100	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74879	1790009368714	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53604) after 10000ms
+74879	1790009368714	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53604) after 10000ms
 74880	1790009371095	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74881	1790009431201	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74882	1790009463678	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74883	1790010113992	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74884	1790010116920	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74885	1790010138875	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 53708) after 10000ms
+74885	1790010138875	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 53708) after 10000ms
 74896	1790010354667	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 74886	1790010177026	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74887	1790010237126	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
-74888	1790010286612	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Connection reset
+74888	1790010286612	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Connection reset
 74889	1790010326988	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74890	1790010346620	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74891	1790010351823	1	46	46	192.168.1.100	INFO	3	MDM Launcher 6.36-opensource started
@@ -10127,9 +10127,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74904	1790010386303	1	46	46	192.168.1.100	INFO	3	Device owner: true
 74905	1790010387038	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
 74906	1790010388926	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
-74907	1790010406169	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
+74907	1790010406169	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
 74908	1790010406365	1	46	46	192.168.1.100	INFO	3	MDM Launcher 6.36-opensource started
-74909	1790010406437	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74909	1790010406437	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74910	1790010408899	1	46	46	192.168.1.100	DEBUG	4	Push notifications enqueued: 15 mins
 74911	1790010408917	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 74912	1790010446994	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9139019
@@ -10149,8 +10149,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74926	1790010867271	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
 74927	1790010927990	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74928	1790010957113	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
-74929	1790010979483	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74930	1790010979715	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74929	1790010979483	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74930	1790010979715	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74931	1790011017219	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
 74932	1790011039730	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74933	1790011077323	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
@@ -10161,8 +10161,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74938	1790011238160	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74939	1790011287345	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
 74940	1790011304012	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-74941	1790011328603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-74942	1790011328771	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+74941	1790011328603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+74942	1790011328771	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 74943	1790011377146	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
 74944	1790011388783	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74945	1790011437248	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391777, lon=-48.9138858
@@ -10175,9 +10175,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74952	1790011653098	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74953	1790011694379	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74954	1790011694390	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74955	1790011694396	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74955	1790011694396	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74956	1790011694505	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74957	1790011697823	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=vvVcRh4C5lEcEWBwb97k98Hd0m83tgei
+74957	1790011697823	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=vvVcRh4C5lEcEWBwb97k98Hd0m83tgei
 74958	1790011697990	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74959	1790011698516	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74960	1790011698521	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10188,26 +10188,26 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 74965	1790011653098	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74966	1790011694379	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74967	1790011694390	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74968	1790011694396	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74968	1790011694396	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74969	1790011694505	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74970	1790011697823	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=vvVcRh4C5lEcEWBwb97k98Hd0m83tgei
+74970	1790011697823	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=vvVcRh4C5lEcEWBwb97k98Hd0m83tgei
 74971	1790011697990	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74972	1790011713527	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 74974	1790011733701	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74975	1790011733711	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74976	1790011733723	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74976	1790011733723	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74977	1790011733807	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 74982	1790011738709	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74983	1790011755671	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketTimeoutException: timeout
 74987	1790011775434	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-74988	1790011778223	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=4oag8S4j6M80kryZDlaE3q41goD4uJ-T
+74988	1790011778223	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=4oag8S4j6M80kryZDlaE3q41goD4uJ-T
 74989	1790011778323	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74990	1790011778575	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74991	1790011778580	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 74994	1790011798109	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74995	1790011798120	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74996	1790011798131	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-74998	1790011799979	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=y721OT3F5sJNASqU1tYiBX83Vo3rPlm5
+74996	1790011798131	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74998	1790011799979	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=y721OT3F5sJNASqU1tYiBX83Vo3rPlm5
 74999	1790011800084	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75000	1790011800323	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75001	1790011800327	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10220,47 +10220,47 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75010	1790012071923	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75011	1790012123713	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75012	1790012123733	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75013	1790012123751	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75013	1790012123751	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75016	1790012126485	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74973	1790011720451	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
-74978	1790011735702	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=L3H5PbPsE6gEAp-pwBv9tsXyy0owRSIT
+74978	1790011735702	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=L3H5PbPsE6gEAp-pwBv9tsXyy0owRSIT
 74979	1790011735991	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 74980	1790011736174	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 74981	1790011736179	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 74984	1790011775317	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 74985	1790011775330	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-74986	1790011775337	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+74986	1790011775337	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 74992	1790011780329	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 74993	1790011796937	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 74997	1790011798202	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75002	1790011803118	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75003	1790011856943	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75014	1790012123843	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75015	1790012125659	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=eejZ6W-_FI2mdPB-OlUqLIgWX_cs04ek
+75015	1790012125659	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=eejZ6W-_FI2mdPB-OlUqLIgWX_cs04ek
 75017	1790012126672	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75018	1790012126680	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75019	1790012127015	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75020	1790012128723	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75021	1790012129084	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75022	1790012129526	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75023	1790012129596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75022	1790012129526	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75023	1790012129596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75024	1790012189605	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75025	1790012217123	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75026	1790012255548	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75027	1790012255815	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75028	1790012255846	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75029	1790012255853	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75029	1790012255853	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75030	1790012255915	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75031	1790012257499	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=py7WFuvwIsCrU_Y0PqcNdcwVrJ-sm1uz
+75031	1790012257499	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=py7WFuvwIsCrU_Y0PqcNdcwVrJ-sm1uz
 75032	1790012257666	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75033	1790012257928	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75034	1790012257932	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75035	1790012260831	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75036	1790012272258	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75037	1790012272266	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75038	1790012272270	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75038	1790012272270	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75039	1790012272314	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75040	1790012273714	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=2TVQx2Tk7-xOL8MENPbfJZ33cNvyLK8C
+75040	1790012273714	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=2TVQx2Tk7-xOL8MENPbfJZ33cNvyLK8C
 75041	1790012274024	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75042	1790012274203	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75043	1790012274206	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10269,30 +10269,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75046	1790012337134	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75047	1790012343592	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75048	1790012351187	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75049	1790012351278	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75050	1790012351344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75049	1790012351278	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75050	1790012351344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75051	1790012411353	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75052	1790012427138	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75053	1790012477425	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75054	1790012487241	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75055	1790012508885	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75056	1790012508895	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75057	1790012508903	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75057	1790012508903	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75058	1790012508989	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75059	1790012510926	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=lSJoV_0oY1Y-2T8ArJ5VmAzMvhbmjc9h
+75059	1790012510926	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=lSJoV_0oY1Y-2T8ArJ5VmAzMvhbmjc9h
 75060	1790012511145	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75061	1790012511351	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75062	1790012511355	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75063	1790012513893	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75064	1790012520451	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75065	1790012520460	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75066	1790012520467	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75066	1790012520467	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75067	1790012520547	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75113	1790013163832	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=vO1C3Cis680pb5Elf37Q-fPsmEz5-7T2
+75113	1790013163832	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=vO1C3Cis680pb5Elf37Q-fPsmEz5-7T2
 75115	1790013164137	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75116	1790013164140	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75123	1790013185221	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=rFEe7TxzPY_fe76ZEm4a7Xw1l7JtlOLe
-75068	1790012522168	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=6V_8teMgd1k4li6JnqUiGLRPZGIJA83M
+75123	1790013185221	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=rFEe7TxzPY_fe76ZEm4a7Xw1l7JtlOLe
+75068	1790012522168	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=6V_8teMgd1k4li6JnqUiGLRPZGIJA83M
 75069	1790012522205	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75070	1790012522416	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75071	1790012522419	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10302,47 +10302,47 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75075	1790012637103	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75076	1790012657446	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75077	1790012677942	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75078	1790012677964	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75079	1790012678007	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75078	1790012677964	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75079	1790012678007	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75080	1790012697109	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75081	1790012738028	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75082	1790012757207	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75083	1790012803585	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75084	1790012847380	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
-75085	1790012852372	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75086	1790012852550	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75085	1790012852372	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75086	1790012852550	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75087	1790012907480	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.913906
 75088	1790012912558	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75089	1790012960999	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-75090	1790012961243	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75089	1790012960999	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+75090	1790012961243	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75091	1790012974862	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75092	1790013021255	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75093	1790013057407	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75094	1790013087356	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75095	1790013093724	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75096	1790013093804	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75095	1790013093724	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75096	1790013093804	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75097	1790013117513	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75098	1790013147929	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
 75099	1790013153812	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75100	1790013153923	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75101	1790013153931	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75102	1790013153934	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75102	1790013153934	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75103	1790013153975	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75104	1790013155434	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=yMVsABw1G0R7gGS8nIU1ubuR5G6EqwIO
+75104	1790013155434	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=yMVsABw1G0R7gGS8nIU1ubuR5G6EqwIO
 75105	1790013155525	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75106	1790013155711	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75107	1790013155714	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75108	1790013158930	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75109	1790013161999	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75110	1790013162009	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75111	1790013162014	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75111	1790013162014	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75112	1790013162105	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75114	1790013163882	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75117	1790013167008	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75118	1790013177517	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75119	1790013183810	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75120	1790013183823	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75121	1790013183829	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75121	1790013183829	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75122	1790013183903	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75124	1790013185400	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75125	1790013185575	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
@@ -10351,12 +10351,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75128	1790013254658	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75129	1790013267177	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75130	1790013299522	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75131	1790013300892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75132	1790013302062	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75131	1790013300892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75132	1790013302062	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75133	1790013327170	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75134	1790013299522	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75135	1790013300892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75136	1790013302062	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75135	1790013300892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75136	1790013302062	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75137	1790013327170	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75138	1790013362074	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75139	1790013387278	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
@@ -10366,13 +10366,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75143	1790013537528	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75144	1790013562309	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75145	1790013597632	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
-75146	1790013612339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75147	1790013612398	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75146	1790013612339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75147	1790013612398	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75148	1790013672404	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75149	1790013687464	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75150	1790013738406	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75151	1790013745233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75152	1790013745259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75151	1790013745233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75152	1790013745259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75153	1790013747570	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75154	1790013805270	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75155	1790013807583	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
@@ -10389,8 +10389,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75166	1790014068753	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75167	1790014107562	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391786, lon=-48.9138868
 75168	1790014134700	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75169	1790014141013	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75170	1790014141037	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75169	1790014141013	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75170	1790014141037	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75171	1790014175021	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75172	1790014201046	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75173	1790014235124	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
@@ -10401,30 +10401,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75178	1790014398810	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75179	1790014437749	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75180	1790014464950	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75181	1790014478095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75182	1790014478135	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75181	1790014478095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75182	1790014478135	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75183	1790014527575	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75184	1790014538146	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75185	1790014587675	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75186	1790014604216	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75187	1790014640388	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75188	1790014640398	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75189	1790014640404	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75189	1790014640404	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75190	1790014640498	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75191	1790014642078	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=7GVc7cPZuRkIap3DBhJgdxn_U-PX8LhL
+75191	1790014642078	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=7GVc7cPZuRkIap3DBhJgdxn_U-PX8LhL
 75192	1790014642248	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75193	1790014642477	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75194	1790014642481	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75195	1790014645396	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75196	1790014478095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75197	1790014478135	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75196	1790014478095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75197	1790014478135	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75198	1790014527575	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75199	1790014538146	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75200	1790014587675	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75201	1790014604216	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75202	1790014640388	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75203	1790014640398	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75204	1790014640404	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75204	1790014640404	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75205	1790014640498	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75206	1790014647675	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391838, lon=-48.9138697
 75207	1790014669854	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketException: Socket closed
@@ -10451,8 +10451,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75228	1790015378278	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75229	1790015436500	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75230	1790015444114	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75231	1790015444174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75232	1790015444190	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75231	1790015444174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75232	1790015444190	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75233	1790015496605	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75234	1790015504196	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75235	1790015570172	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10461,8 +10461,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75238	1790015637861	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75239	1790015697967	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75240	1790015702174	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75241	1790015757833	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75242	1790015757921	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75241	1790015757833	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75242	1790015757921	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75243	1790015787798	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75244	1790015817929	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75245	1790015847899	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
@@ -10470,7 +10470,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75247	1790015908005	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75248	1790015944271	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75249	1790015944280	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75250	1790015944286	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75250	1790015944286	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75251	1790015944379	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75252	1790015945455	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 75253	1790015949280	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10478,9 +10478,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75255	1790015955527	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75256	1790015955738	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75257	1790015955748	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75258	1790015955755	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75258	1790015955755	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75259	1790015955820	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75260	1790015958455	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=wIOj7gkcSEPtZe1B0s7G--M68eGAtWSX
+75260	1790015958455	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=wIOj7gkcSEPtZe1B0s7G--M68eGAtWSX
 75261	1790015958587	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75262	1790015958763	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75263	1790015958766	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10489,7 +10489,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75266	1790016026883	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75267	1790016057707	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75271	1790016065554	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75272	1790016067073	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Eu6CQIXT540c32bW3IEER2-ZJZiakpYt
+75272	1790016067073	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Eu6CQIXT540c32bW3IEER2-ZJZiakpYt
 75273	1790016067147	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75274	1790016067415	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75275	1790016067420	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10499,53 +10499,53 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75279	1790016117709	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75280	1790016118278	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75281	1790016118290	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75282	1790016118298	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75282	1790016118298	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75283	1790016118367	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75288	1790016123288	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75289	1790016163010	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75290	1790016168022	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75291	1790016169772	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75292	1790016169782	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75293	1790016169789	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75293	1790016169789	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75294	1790016169859	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75297	1790016172923	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75298	1790016172927	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75300	1790016207644	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75302	1790016241071	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75303	1790016241084	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75304	1790016241090	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75304	1790016241090	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75305	1790016241154	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75306	1790016242935	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=5IXhtzS7D0Ij8k5qlno64gsdEDm2ZpZ0
+75306	1790016242935	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=5IXhtzS7D0Ij8k5qlno64gsdEDm2ZpZ0
 75307	1790016242984	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75308	1790016243267	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75309	1790016243271	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75310	1790016246080	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75268	1790016065466	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75269	1790016065489	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75270	1790016065493	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-75284	1790016121678	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=8Pmsw1__eCB5PJEqG7Cue3ZpGasMjHo5
+75270	1790016065493	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75284	1790016121678	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=8Pmsw1__eCB5PJEqG7Cue3ZpGasMjHo5
 75285	1790016122525	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75286	1790016122741	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75287	1790016122744	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75295	1790016171711	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=hNA0PONRhUEkItNCJrQ2B7bv4wGJw1bc
+75295	1790016171711	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=hNA0PONRhUEkItNCJrQ2B7bv4wGJw1bc
 75296	1790016172740	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75299	1790016174780	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75301	1790016240907	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75311	1790016267645	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75312	1790016269999	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75313	1790016270014	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75314	1790016270025	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75314	1790016270025	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75315	1790016270117	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75316	1790016272113	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=ZlS0q3zNz46Vk21_96AJ6ohq60pw0b83
+75316	1790016272113	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=ZlS0q3zNz46Vk21_96AJ6ohq60pw0b83
 75317	1790016273395	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75318	1790016273625	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75319	1790016273630	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75320	1790016275009	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75321	1790016282328	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75322	1790016282357	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75323	1790016282361	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75323	1790016282361	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75324	1790016282418	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75325	1790016284053	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=tbXaBKUOunNPP1JWILLD18GIGaDml-3J
+75325	1790016284053	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=tbXaBKUOunNPP1JWILLD18GIGaDml-3J
 75326	1790016284140	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75327	1790016284379	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75328	1790016284383	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10553,18 +10553,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75330	1790016327648	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391572, lon=-48.9139062
 75331	1790016340563	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75332	1790016340575	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75333	1790016340583	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75333	1790016340583	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75334	1790016340679	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75335	1790016342265	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=L4_-EpOUgzwimX7B1SpWH1I4DSLO_rgR
+75335	1790016342265	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=L4_-EpOUgzwimX7B1SpWH1I4DSLO_rgR
 75336	1790016342444	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75337	1790016342647	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75338	1790016342650	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75339	1790016345574	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75340	1790016356628	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75341	1790016356644	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75342	1790016356657	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75342	1790016356657	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75343	1790016356740	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75344	1790016360297	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=0VYaEX44JtM8zd393YFLgLtFzPPBUeog
+75344	1790016360297	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=0VYaEX44JtM8zd393YFLgLtFzPPBUeog
 75345	1790016360331	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75346	1790016360624	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75347	1790016360634	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10573,30 +10573,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75350	1790016426862	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75351	1790016459135	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75352	1790016459146	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75353	1790016459156	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75353	1790016459156	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75354	1790016459259	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75355	1790016461228	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=H6XiGot70IzCVVchBQ4h5TF9t5SNvkCk
+75355	1790016461228	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=H6XiGot70IzCVVchBQ4h5TF9t5SNvkCk
 75356	1790016461291	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75357	1790016461609	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75358	1790016461614	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75359	1790016464152	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75360	1790016471521	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75361	1790016471532	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75362	1790016471538	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75362	1790016471538	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75372	1790016607906	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75388	1790016644285	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75395	1790016655620	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75396	1790016655743	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75397	1790016655751	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75398	1790016655756	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75398	1790016655756	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75415	1790016687659	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
 75449	1790016937963	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75450	1790016942972	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75451	1790016943099	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75452	1790016943108	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75453	1790016943114	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75453	1790016943114	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75459	1790016948108	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75467	1790016998486	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=WEQTpWBlRvDoaa-kMhcapCcAUIkIzfpB
+75467	1790016998486	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=WEQTpWBlRvDoaa-kMhcapCcAUIkIzfpB
 75468	1790016998615	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75469	1790016998869	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75470	1790016998872	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10605,35 +10605,35 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75480	1790017317730	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
 75492	1790017387304	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75493	1790017387315	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75494	1790017387325	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75494	1790017387325	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75503	1790017458887	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75504	1790017458898	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75505	1790017458903	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75505	1790017458903	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75363	1790016471636	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75368	1790016476530	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75399	1790016655824	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75405	1790016660872	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75406	1790016660880	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75407	1790016660892	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75408	1790016660895	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75408	1790016660895	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75419	1790016699786	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75426	1790016769907	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75429	1790016852893	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75430	1790016852901	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75431	1790016852907	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75431	1790016852907	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75437	1790016857901	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75438	1790016857945	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75441	1790016858012	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75461	1790016981025	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75463	1790016996131	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75464	1790016996141	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75465	1790016996145	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75465	1790016996145	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75477	1790017198868	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75478	1790017257724	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
 75485	1790017371558	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75491	1790017377734	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
 75502	1790017447612	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75364	1790016472568	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Oga8o-q7PjRD45kDJAoo9V2_7yIB6ql0
+75364	1790016472568	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Oga8o-q7PjRD45kDJAoo9V2_7yIB6ql0
 75365	1790016472689	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75366	1790016472933	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75367	1790016472937	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10642,7 +10642,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75373	1790016607967	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75376	1790016629429	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75377	1790016629439	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75378	1790016629444	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75378	1790016629444	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75379	1790016629505	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75384	1790016634438	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75393	1790016649227	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10667,63 +10667,63 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75375	1790016627658	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
 75385	1790016644197	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75386	1790016644229	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75387	1790016644234	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-75389	1790016645379	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Kk2Ll0U6Oy5WElVNCeB0_nj5EPKmMfS9
+75387	1790016644234	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75389	1790016645379	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Kk2Ll0U6Oy5WElVNCeB0_nj5EPKmMfS9
 75390	1790016645509	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75391	1790016645734	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75392	1790016645737	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75394	1790016650610	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
-75400	1790016658273	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=EwOSSjWRWtTs1aExXHPwRukLpYWey4rb
+75400	1790016658273	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=EwOSSjWRWtTs1aExXHPwRukLpYWey4rb
 75401	1790016658314	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75402	1790016658430	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 800x464: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 75403	1790016658437	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
-75410	1790016662461	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=oFlxZHTr1q5DO8Pe9nlpFljheDqgTbOJ
+75410	1790016662461	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=oFlxZHTr1q5DO8Pe9nlpFljheDqgTbOJ
 75411	1790016662511	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75412	1790016662762	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75413	1790016662767	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75420	1790016701118	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=BeDf9YY1W7Dg5TeIC-nRhHO8h1shyuTB
+75420	1790016701118	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=BeDf9YY1W7Dg5TeIC-nRhHO8h1shyuTB
 75421	1790016701360	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75422	1790016701557	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75423	1790016701560	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75439	1790016857951	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75440	1790016857956	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75440	1790016857956	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75446	1790016862951	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75447	1790016897664	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739173, lon=-48.9138919
-75455	1790016944757	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=yYk6Ka2FI_eFWHIwaixgX9KToYiXlh_8
+75455	1790016944757	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=yYk6Ka2FI_eFWHIwaixgX9KToYiXlh_8
 75456	1790016944878	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75457	1790016945134	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75458	1790016945136	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75481	1790017330864	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75482	1790017371436	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75483	1790017371449	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75484	1790017371458	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-75486	1790017372752	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=mXRGY80E5jm-uoja8FZ7By6hmcpWFaPb
+75484	1790017371458	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75486	1790017372752	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=mXRGY80E5jm-uoja8FZ7By6hmcpWFaPb
 75487	1790017372885	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75488	1790017373116	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75489	1790017373119	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75496	1790017388337	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=4W9fG5VeeYI67KUGQQJeuSAHH3P6_B1r
+75496	1790017388337	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=4W9fG5VeeYI67KUGQQJeuSAHH3P6_B1r
 75497	1790017388434	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75498	1790017388695	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75499	1790017388698	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75509	1790017480884	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=wr44ZBIsk9MT166TD5IE3We33ihEp4ak
+75509	1790017480884	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=wr44ZBIsk9MT166TD5IE3We33ihEp4ak
 75510	1790017480933	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75511	1790017481192	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75512	1790017481196	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75380	1790016631289	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=zJeNbJKKv4kabi4DZDNjMLLBiKWhxiru
+75380	1790016631289	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=zJeNbJKKv4kabi4DZDNjMLLBiKWhxiru
 75381	1790016631349	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75382	1790016631599	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75383	1790016631603	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75404	1790016660751	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75416	1790016699674	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75417	1790016699683	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75418	1790016699726	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75418	1790016699726	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75427	1790016835821	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75432	1790016852967	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75433	1790016856506	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=NhTmHbjKA37NinMJAGFDKIpmTbE6uPfY
+75433	1790016856506	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=NhTmHbjKA37NinMJAGFDKIpmTbE6uPfY
 75434	1790016856704	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75435	1790016856937	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75436	1790016856940	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
-75442	1790016859593	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Lqr9eq2KqHO1N4uGGQH1ecbpLUgwJeHF
+75442	1790016859593	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Lqr9eq2KqHO1N4uGGQH1ecbpLUgwJeHF
 75443	1790016859637	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75444	1790016859898	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75445	1790016859901	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10744,9 +10744,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75521	1790017661822	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75522	1790017675607	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75523	1790017675619	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75524	1790017675626	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75524	1790017675626	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75525	1790017675697	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75526	1790017677561	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Tz-dlJ7cRR93IckmUdgznGfDfksyAJm8
+75526	1790017677561	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Tz-dlJ7cRR93IckmUdgznGfDfksyAJm8
 75527	1790017677653	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75528	1790017677894	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75529	1790017677898	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10754,9 +10754,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75531	1790017680622	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75532	1790017707718	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75533	1790017707731	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75534	1790017707740	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75534	1790017707740	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75535	1790017707816	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75536	1790017709089	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=frEdMSqKSyKuGZ_gYcBJL52BBt1oA1KM
+75536	1790017709089	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=frEdMSqKSyKuGZ_gYcBJL52BBt1oA1KM
 75537	1790017709253	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75538	1790017709501	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75539	1790017709504	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10764,9 +10764,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75541	1790017712852	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75542	1790017712858	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75543	1790017712870	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75544	1790017712873	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75544	1790017712873	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75545	1790017712922	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75546	1790017714541	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=U0PCNDG3mNY3EdDSQNkS14pGkAPgq3v8
+75546	1790017714541	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=U0PCNDG3mNY3EdDSQNkS14pGkAPgq3v8
 75547	1790017714587	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75548	1790017714833	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75549	1790017714836	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10774,27 +10774,27 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75563	1790017842986	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75565	1790017893483	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75566	1790017893492	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75567	1790017893497	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75567	1790017893497	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75570	1790017900292	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 75571	1790017948001	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75579	1790018218218	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75592	1790018302077	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75593	1790018302089	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75594	1790018302098	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75594	1790018302098	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75601	1790018307825	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
-75608	1790018317590	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=KSuLewyDedPHBll6u6nnadhXHz5fw4-8
+75608	1790018317590	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=KSuLewyDedPHBll6u6nnadhXHz5fw4-8
 75609	1790018317641	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75610	1790018317923	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75611	1790018317927	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75614	1790018338509	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75620	1790018369398	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=GpGd-WbLth84ASTfVok6WUsK33X-WfSY
+75620	1790018369398	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=GpGd-WbLth84ASTfVok6WUsK33X-WfSY
 75621	1790018369462	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75622	1790018369719	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75623	1790018369723	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75642	1790018448103	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 75645	1790018473872	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75669	1790018590017	1	46	87	192.168.1.100	INFO	3	Encerrando a sessao anterior antes de abrir a nova
-75670	1790018590032	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=88PkFIvm1NYac2VgLmgE19PZ6H-A2Iqa
+75670	1790018590032	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=88PkFIvm1NYac2VgLmgE19PZ6H-A2Iqa
 75672	1790018590410	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75673	1790018590413	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75684	1790018612848	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
@@ -10804,11 +10804,11 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75696	1790018731821	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75551	1790017731887	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75552	1790017731896	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75553	1790017731901	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75553	1790017731901	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75561	1790017802936	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75574	1790018030063	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75581	1790018225660	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75586	1790018240092	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=wdaYZL0HePfawHivqwq45otQ3aY85sp3
+75586	1790018240092	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=wdaYZL0HePfawHivqwq45otQ3aY85sp3
 75587	1790018240246	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75588	1790018240481	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75589	1790018240484	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10817,9 +10817,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75602	1790018311275	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75615	1790018367503	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75616	1790018367513	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75617	1790018367520	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75617	1790018367520	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75629	1790018423785	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75630	1790018424842	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=jiHU_Femnil7FAG2m7kdXaiGeDveca5a
+75630	1790018424842	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=jiHU_Femnil7FAG2m7kdXaiGeDveca5a
 75631	1790018424951	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75632	1790018425214	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75633	1790018425219	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10827,18 +10827,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75637	1790018447032	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75638	1790018447369	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75639	1790018447380	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75640	1790018447393	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75640	1790018447393	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75644	1790018452379	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75657	1790018481567	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=fiCWpnzAq_yRFrgeS35h9LsNi6I8BlA7
+75657	1790018481567	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=fiCWpnzAq_yRFrgeS35h9LsNi6I8BlA7
 75658	1790018481747	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75663	1790018550829	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75665	1790018588235	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75666	1790018588242	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75667	1790018588245	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75667	1790018588245	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75668	1790018588287	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75674	1790018593241	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75678	1790018604146	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75679	1790018605755	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=85fsvJRS41XH8YoctNRTW_wAFHE51YiD
+75679	1790018605755	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=85fsvJRS41XH8YoctNRTW_wAFHE51YiD
 75680	1790018606237	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75681	1790018606453	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75682	1790018606456	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10853,7 +10853,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75585	1790018237542	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75626	1790018423712	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75627	1790018423723	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75628	1790018423727	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75628	1790018423727	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75634	1790018428570	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75646	1790018478882	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75661	1790018485390	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10861,12 +10861,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75664	1790018577791	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75675	1790018604043	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75676	1790018604054	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75677	1790018604060	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75677	1790018604060	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75683	1790018609052	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75686	1790018637802	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
-75693	1790018731525	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=WoNEZ_ESAVvZJS3OdpDGTJt7ps-4QFxA
+75693	1790018731525	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=WoNEZ_ESAVvZJS3OdpDGTJt7ps-4QFxA
 75697	1790018734785	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75555	1790017733386	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=ChmtBC5tYgAC4WQ7VLoXGVzalhzDbYGa
+75555	1790017733386	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=ChmtBC5tYgAC4WQ7VLoXGVzalhzDbYGa
 75556	1790017733438	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75557	1790017733726	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75558	1790017733730	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10875,9 +10875,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75578	1790018162061	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75582	1790018237454	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75583	1790018237464	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75584	1790018237468	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75584	1790018237468	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75595	1790018302178	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75596	1790018303364	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=dbzcsntcLnlO2o91KCnMgQUWd4La36Dj
+75596	1790018303364	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=dbzcsntcLnlO2o91KCnMgQUWd4La36Dj
 75597	1790018303550	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75598	1790018303759	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75599	1790018303762	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10892,16 +10892,16 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75648	1790018480372	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 75649	1790018480372	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 75650	1790018480380	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
-75651	1790018480382	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75651	1790018480382	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75652	1790018480445	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75653	1790018480453	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75654	1790018480456	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75654	1790018480456	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75655	1790018480487	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75656	1790018481447	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 75685	1790018617860	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75689	1790018729776	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75690	1790018729786	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75691	1790018729790	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75691	1790018729790	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75692	1790018729843	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75699	1790018800849	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75559	1790017736896	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -10911,7 +10911,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75603	1790018316286	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75604	1790018316415	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75605	1790018316425	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75606	1790018316432	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75606	1790018316432	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75612	1790018321425	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75618	1790018367603	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75625	1790018418754	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketTimeoutException: sent ping but didn't receive pong within 20000ms (after 0 successful ping/pongs)
@@ -10921,26 +10921,26 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75694	1790018731637	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75698	1790018787900	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75700	1790018827687	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75701	1790018827816	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75702	1790018827843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75701	1790018827816	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75702	1790018827843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75703	1790018847898	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391608, lon=-48.913913
 75704	1790018887849	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75705	1790018921094	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75706	1790018956083	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75707	1790018966449	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75708	1790018966512	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75707	1790018966449	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75708	1790018966512	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75709	1790018980574	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75710	1790019026523	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75711	1790019040579	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75712	1790019091867	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75713	1790019107755	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75714	1790019107766	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75715	1790019107772	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75715	1790019107772	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75716	1790019107838	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75717	1790019112764	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75718	1790019147893	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75719	1790019178936	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75720	1790019206674	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=HCyK_PCBbs6poQZXiDMN2Fw7iWbaObjC
+75720	1790019206674	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=HCyK_PCBbs6poQZXiDMN2Fw7iWbaObjC
 75721	1790019206736	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75722	1790019206925	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75723	1790019206929	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10951,20 +10951,20 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75728	1790019274892	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75729	1790019286247	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75730	1790019286257	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75731	1790019286263	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75731	1790019286263	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75732	1790019286324	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 75733	1790019291255	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75734	1790019356883	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75735	1790019357939	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
-75736	1790019359467	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=swJq6w95XCGIz4kEmURuNh2kb0xv4RIO
+75736	1790019359467	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=swJq6w95XCGIz4kEmURuNh2kb0xv4RIO
 75737	1790019359534	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75738	1790019359718	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75739	1790019359722	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
 75740	1790019388676	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75741	1790019388703	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75742	1790019388708	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75742	1790019388708	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75743	1790019388760	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75744	1790019390113	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Q9Y7y9gcVjvOTC_2ISxLv06wK7aFeoq7
+75744	1790019390113	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Q9Y7y9gcVjvOTC_2ISxLv06wK7aFeoq7
 75745	1790019390414	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75746	1790019390572	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75747	1790019390575	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10972,9 +10972,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75749	1790019417944	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75750	1790019448040	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75751	1790019448051	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75752	1790019448064	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75752	1790019448064	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75753	1790019448170	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75754	1790019449365	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=GDg_Gka-5PwvYlKE8A50CZaU5TTzWR10
+75754	1790019449365	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=GDg_Gka-5PwvYlKE8A50CZaU5TTzWR10
 75755	1790019449451	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75756	1790019449684	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75757	1790019449688	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10983,9 +10983,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75760	1790019518881	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75761	1790019561907	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75762	1790019561922	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75763	1790019561938	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75763	1790019561938	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75764	1790019562022	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75765	1790019564121	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=uaTVVDcV5lV830HHXGjz2cnQdDUU4QrJ
+75765	1790019564121	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=uaTVVDcV5lV830HHXGjz2cnQdDUU4QrJ
 75766	1790019564203	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75767	1790019564392	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75768	1790019564396	1	46	87	192.168.1.100	INFO	3	Transmitindo 800x464 com toque
@@ -10996,14 +10996,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75773	1790019687962	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75774	1790019698855	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75775	1790019709568	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75776	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75777	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75776	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75777	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75778	1790019709568	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75779	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75780	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75779	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75780	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75781	1790019709568	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75782	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75783	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75782	1790019709583	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75783	1790019709606	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75784	1790019769638	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75785	1790019777229	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75786	1790019835516	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -11012,9 +11012,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75789	1790019901458	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75790	1790019932194	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 75791	1790019932205	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-75792	1790019932212	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+75792	1790019932212	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 75793	1790019932310	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-75794	1790019934261	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=h0CcO5392fhNtMjBKQ1I7yQ80Q6Nhqkm
+75794	1790019934261	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=h0CcO5392fhNtMjBKQ1I7yQ80Q6Nhqkm
 75795	1790019934543	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 75796	1790019934782	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 75797	1790019934788	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -11025,12 +11025,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75802	1790020069411	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75803	1790020107394	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9138888
 75804	1790020121430	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-75805	1790020121473	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75806	1790020121614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75805	1790020121473	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75806	1790020121614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75807	1790020181623	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75808	1790020197489	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
-75809	1790020219331	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-75810	1790020219352	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75809	1790020219331	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+75810	1790020219352	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75811	1790020257590	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
 75812	1790020279365	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75813	1790020317696	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
@@ -11045,12 +11045,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75822	1790020617646	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
 75823	1790020676742	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75824	1790020677749	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
-75825	1790020688658	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75826	1790020688696	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75825	1790020688658	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75826	1790020688696	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75827	1790020737855	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
 75828	1790020748706	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75829	1790020781517	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-75830	1790020781539	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75829	1790020781517	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+75830	1790020781539	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75831	1790020827649	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
 75832	1790020841548	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75833	1790020887754	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391681, lon=-48.9138902
@@ -11087,8 +11087,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75880	1790022358035	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391613, lon=-48.9139045
 75883	1790022424947	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75895	1790022838146	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
-75898	1790022947801	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75899	1790022947829	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75898	1790022947801	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75899	1790022947829	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75900	1790022952976	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 75901	1790022960961	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 75902	1790022988088	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
@@ -11098,40 +11098,40 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75906	1790023138037	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75907	1790023140021	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75918	1790023367875	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75919	1790023367886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75920	1790023367896	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75919	1790023367886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75920	1790023367896	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75921	1790023408134	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75922	1790023427902	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75923	1790023427912	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75924	1790023427926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75923	1790023427912	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75924	1790023427926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75925	1790023468243	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75926	1790023487934	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75927	1790023487947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75927	1790023487947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75968	1790024148408	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75969	1790024148425	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75970	1790024148444	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75969	1790024148425	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75970	1790024148444	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75971	1790024163285	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75972	1790024208453	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75973	1790024208468	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75974	1790024208486	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75973	1790024208468	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75974	1790024208486	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75975	1790024223390	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75976	1790024268496	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75977	1790024268511	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75978	1790024268531	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75977	1790024268511	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75978	1790024268531	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75979	1790024283493	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75980	1790024328539	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75981	1790024328555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75982	1790024328575	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75981	1790024328555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75982	1790024328575	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75983	1790024373323	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75984	1790024388583	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75985	1790024388598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75986	1790024388617	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75985	1790024388598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75986	1790024388617	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75987	1790024433428	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
-76038	1790025109108	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76038	1790025109108	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76039	1790025123593	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76040	1790025169117	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76041	1790025169131	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76042	1790025169150	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76041	1790025169131	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76042	1790025169150	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75861	1790021699035	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75862	1790021727925	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391613, lon=-48.9139045
 75868	1790021937956	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391613, lon=-48.9139045
@@ -11142,46 +11142,46 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75893	1790022778047	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75896	1790022887087	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75897	1790022927982	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
-75928	1790023487965	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75928	1790023487965	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75929	1790023533188	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75930	1790023547975	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75931	1790023547991	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75932	1790023548011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75931	1790023547991	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75932	1790023548011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75933	1790023593291	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75934	1790023608020	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75935	1790023608035	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75936	1790023608054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75935	1790023608035	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75936	1790023608054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75937	1790023653396	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
-75948	1790023788182	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75948	1790023788182	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75949	1790023845324	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75950	1790023848189	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75951	1790023848205	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75952	1790023848226	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75951	1790023848205	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75952	1790023848226	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75953	1790023908234	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75954	1790023908249	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75955	1790023908269	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75954	1790023908249	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75955	1790023908269	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75956	1790023953281	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75957	1790023968278	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75988	1790024448627	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75989	1790024448649	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75990	1790024448667	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75989	1790024448649	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75990	1790024448667	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75991	1790024493535	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75992	1790024508675	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75993	1790024508688	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75994	1790024508707	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75993	1790024508688	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75994	1790024508707	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75995	1790024568715	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75996	1790024568728	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75997	1790024568746	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75996	1790024568728	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75997	1790024568746	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76048	1790025289198	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76049	1790025289212	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76050	1790025289233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76049	1790025289212	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76050	1790025289233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76051	1790025333587	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76052	1790025349242	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76053	1790025349256	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76054	1790025349274	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76053	1790025349256	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76054	1790025349274	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76055	1790025409283	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76056	1790025409297	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76057	1790025409312	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76056	1790025409297	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76057	1790025409312	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76174	1790027223655	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 75863	1790021765072	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75870	1790021998062	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391613, lon=-48.9139045
@@ -11191,49 +11191,49 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75888	1790022623093	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75892	1790022754986	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75938	1790023668063	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75939	1790023668078	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75940	1790023668097	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75939	1790023668078	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75940	1790023668097	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75941	1790023726027	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75942	1790023728106	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75943	1790023728119	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75944	1790023728139	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75943	1790023728119	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75944	1790023728139	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75945	1790023785219	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75946	1790023788148	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75947	1790023788162	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75958	1790023968293	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75959	1790023968311	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75947	1790023788162	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75958	1790023968293	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75959	1790023968311	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75960	1790024013385	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75961	1790024028320	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75962	1790024028334	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75963	1790024028351	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75962	1790024028334	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75963	1790024028351	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75964	1790024073489	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75965	1790024088361	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75966	1790024088376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75967	1790024088397	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75966	1790024088376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75967	1790024088397	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76028	1790024989006	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76029	1790024989021	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76030	1790024989036	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76029	1790024989021	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76030	1790024989036	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76031	1790025003384	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76032	1790025049043	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76033	1790025049054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76034	1790025049071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76033	1790025049054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76034	1790025049071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76035	1790025063488	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76036	1790025109078	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76037	1790025109091	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76037	1790025109091	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76098	1790026069726	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76099	1790026069737	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76100	1790026069751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76099	1790026069737	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76100	1790026069751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76101	1790026113621	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76102	1790026129758	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76103	1790026129771	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76104	1790026129788	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76103	1790026129771	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76104	1790026129788	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76105	1790026187049	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76106	1790026189796	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76107	1790026189811	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76107	1790026189811	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76178	1790027313454	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76179	1790027330577	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76180	1790027330594	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76181	1790027330614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76180	1790027330594	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76181	1790027330614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75865	1790021831221	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75873	1790022095007	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75874	1790022148007	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391613, lon=-48.9139045
@@ -11244,46 +11244,46 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75894	1790022821039	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75908	1790023198135	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75909	1790023206178	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75910	1790023247811	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75911	1790023247828	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75910	1790023247811	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75911	1790023247828	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75912	1790023252935	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 75913	1790023258242	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
 75914	1790023307836	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-75915	1790023307850	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-75916	1790023307867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+75915	1790023307850	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+75916	1790023307867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 75917	1790023348030	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391524, lon=-48.9139092
-76008	1790024748856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76009	1790024748874	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76008	1790024748856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76009	1790024748874	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76010	1790024793358	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 76011	1790024808884	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76012	1790024808899	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76013	1790024808917	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76012	1790024808899	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76013	1790024808917	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76014	1790024810779	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 76015	1790024811230	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76016	1790024826349	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76017	1790024841478	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76058	1790025423414	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76059	1790025469320	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76060	1790025469335	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76061	1790025469354	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76060	1790025469335	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76061	1790025469354	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76062	1790025483517	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76063	1790025529363	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76064	1790025529378	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76065	1790025529395	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76064	1790025529378	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76065	1790025529395	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76066	1790025543619	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76067	1790025589405	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76078	1790025753660	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76079	1790025769532	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76080	1790025769546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76081	1790025769565	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76080	1790025769546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76081	1790025769565	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76082	1790025829573	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76083	1790025829587	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76084	1790025829604	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76083	1790025829587	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76084	1790025829604	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76085	1790025843499	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76086	1790025889612	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76087	1790025889623	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76118	1790026369935	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76119	1790026369955	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76087	1790025889623	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76118	1790026369935	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76119	1790026369955	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76120	1790026383795	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76121	1790026429963	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76175	1790027270538	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -11295,388 +11295,388 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 75890	1790022689040	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 75998	1790024583321	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 75999	1790024628755	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76000	1790024628769	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76001	1790024628787	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76000	1790024628769	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76001	1790024628787	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76002	1790024643427	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 76003	1790024688795	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76004	1790024688812	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76005	1790024688832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76004	1790024688812	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76005	1790024688832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76006	1790024703529	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 76007	1790024748841	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76018	1790024841540	1	46	46	192.168.1.100	INFO	3	Device owner: true
 76019	1790024842700	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 76020	1790024853464	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 76021	1790024868925	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76022	1790024868939	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76023	1790024868955	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76022	1790024868939	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76023	1790024868955	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76024	1790024913562	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392927, lon=-48.9137363
 76025	1790024928964	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76026	1790024928979	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76027	1790024928996	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76088	1790025889638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76026	1790024928979	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76027	1790024928996	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76088	1790025889638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76089	1790025903602	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76090	1790025949644	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76091	1790025949657	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76092	1790025949675	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76091	1790025949657	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76092	1790025949675	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76093	1790025963706	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76094	1790026009684	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76095	1790026009698	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76096	1790026009718	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76095	1790026009698	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76096	1790026009718	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76097	1790026053523	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
-76108	1790026189827	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76108	1790026189827	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76109	1790026249836	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76110	1790026249851	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76111	1790026249867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76110	1790026249851	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76111	1790026249867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76112	1790026263588	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76113	1790026309873	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76114	1790026309886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76115	1790026309907	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76114	1790026309886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76115	1790026309907	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76116	1790026323690	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76117	1790026369919	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76168	1790027150474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76169	1790027150489	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76168	1790027150474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76169	1790027150489	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76170	1790027163550	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76171	1790027210497	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76172	1790027210511	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76173	1790027210528	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76172	1790027210511	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76173	1790027210528	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76043	1790025213382	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76044	1790025229158	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76045	1790025229171	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76046	1790025229191	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76045	1790025229171	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76046	1790025229191	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76047	1790025273484	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
-76068	1790025589419	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76069	1790025589439	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76068	1790025589419	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76069	1790025589439	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76070	1790025633452	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76071	1790025649448	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76072	1790025649461	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76073	1790025649481	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76072	1790025649461	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76073	1790025649481	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76074	1790025693556	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391444, lon=-48.9139169
 76075	1790025709488	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76076	1790025709503	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76077	1790025709524	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76076	1790025709503	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76077	1790025709524	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76128	1790026533703	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76129	1790026550045	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76130	1790026550058	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76131	1790026550074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76130	1790026550058	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76131	1790026550074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76132	1790026593807	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76133	1790026610084	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76134	1790026610099	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76135	1790026610116	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76134	1790026610099	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76135	1790026610116	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76136	1790026670126	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76137	1790026670141	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76158	1790026970369	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76137	1790026670141	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76158	1790026970369	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76159	1790027013545	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76160	1790027030378	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76161	1790027030392	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76162	1790027030411	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76161	1790027030392	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76162	1790027030411	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76163	1790027090419	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76164	1790027090432	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76165	1790027090451	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76164	1790027090432	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76165	1790027090451	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76166	1790027103447	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76167	1790027150460	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76208	1790027750881	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76208	1790027750881	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76209	1790027793623	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76210	1790027810891	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76211	1790027810905	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76212	1790027810926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76211	1790027810905	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76212	1790027810926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76213	1790027853725	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76214	1790027870935	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76215	1790027870951	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76216	1790027870967	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76215	1790027870951	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76216	1790027870967	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76217	1790027930975	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76228	1790028063699	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76229	1790028111112	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76230	1790028111127	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76231	1790028111143	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76230	1790028111127	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76231	1790028111143	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76462	1790031653560	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76122	1790026429977	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76123	1790026429993	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76122	1790026429977	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76123	1790026429993	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76124	1790026473596	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76125	1790026490002	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76126	1790026490016	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76127	1790026490036	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76126	1790026490016	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76127	1790026490036	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76148	1790026850248	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76149	1790026850263	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76150	1790026850282	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76149	1790026850263	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76150	1790026850282	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76151	1790026893333	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76152	1790026910292	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76153	1790026910307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76154	1790026910324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76153	1790026910307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76154	1790026910324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76155	1790026953439	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76156	1790026970334	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76157	1790026970350	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76157	1790026970350	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76198	1790027630765	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76199	1790027630780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76200	1790027630796	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76199	1790027630780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76200	1790027630796	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76201	1790027643709	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76202	1790027690806	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76203	1790027690823	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76204	1790027690846	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76203	1790027690823	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76204	1790027690846	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76205	1790027733522	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76206	1790027750852	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76207	1790027750864	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76238	1790028231211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76239	1790028231228	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76207	1790027750864	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76238	1790028231211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76239	1790028231228	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76240	1790028273804	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76241	1790028291238	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76242	1790028291252	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76243	1790028291272	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76242	1790028291252	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76243	1790028291272	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76244	1790028351282	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76245	1790028351298	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76246	1790028351320	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76245	1790028351298	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76246	1790028351320	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76247	1790028363550	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76288	1790028903913	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76289	1790028951701	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76290	1790028951716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76291	1790028951734	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76290	1790028951716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76291	1790028951734	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76292	1790028993713	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76293	1790029011742	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76294	1790029011754	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76295	1790029011770	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76294	1790029011754	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76295	1790029011770	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76296	1790029053814	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76297	1790029071780	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76308	1790029251903	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76309	1790029251919	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76310	1790029251938	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76138	1790026670157	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76309	1790029251919	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76310	1790029251938	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76138	1790026670157	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76139	1790026683625	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76140	1790026730169	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76141	1790026730184	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76142	1790026730200	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76141	1790026730184	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76142	1790026730200	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76143	1790026743726	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
 76144	1790026790209	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76145	1790026790223	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76146	1790026790240	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76145	1790026790223	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76146	1790026790240	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76147	1790026803838	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391446, lon=-48.9139112
-76188	1790027450682	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76189	1790027450698	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76188	1790027450682	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76189	1790027450698	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76190	1790027510706	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76191	1790027510715	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76192	1790027510726	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76191	1790027510715	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76192	1790027510726	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76193	1790027523498	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76194	1790027570733	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76195	1790027570743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76196	1790027570758	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76195	1790027570743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76196	1790027570758	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76197	1790027583607	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76258	1790028471372	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76259	1790028471382	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76260	1790028471395	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76259	1790028471382	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76260	1790028471395	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76261	1790028483756	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76262	1790028531403	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76263	1790028531415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76264	1790028531434	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76263	1790028531415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76264	1790028531434	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76265	1790028588781	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76266	1790028591443	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76267	1790028591460	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76278	1790028771589	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76279	1790028771607	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76267	1790028591460	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76278	1790028771589	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76279	1790028771607	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76280	1790028783707	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76281	1790028831616	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76282	1790028831631	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76283	1790028831648	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76282	1790028831631	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76283	1790028831648	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76284	1790028843810	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76285	1790028891656	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76286	1790028891672	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76287	1790028891691	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76286	1790028891672	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76287	1790028891691	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76358	1790030032448	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76359	1790030032462	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76360	1790030032483	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76359	1790030032462	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76360	1790030032483	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76361	1790030043864	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76362	1790030092492	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76363	1790030092507	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76364	1790030092526	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76363	1790030092507	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76364	1790030092526	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76365	1790030103966	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76366	1790030152534	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76176	1790027270552	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76177	1790027270568	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76218	1790027930990	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76219	1790027931006	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76176	1790027270552	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76177	1790027270568	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76218	1790027930990	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76219	1790027931006	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76220	1790027943492	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76221	1790027991015	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76222	1790027991041	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76223	1790027991061	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76222	1790027991041	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76223	1790027991061	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76224	1790028003595	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76225	1790028051071	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76226	1790028051086	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76227	1790028051103	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76226	1790028051086	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76227	1790028051103	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76248	1790028411280	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 76249	1790028411330	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76250	1790028411350	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76251	1790028411365	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76250	1790028411350	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76251	1790028411365	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76252	1790028411776	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76253	1790028423656	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76254	1790028426895	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76255	1790028442039	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76256	1790028442063	1	46	46	192.168.1.100	INFO	3	Device owner: true
 76257	1790028442976	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
-76268	1790028591479	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76268	1790028591479	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76269	1790028648881	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76270	1790028651488	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76271	1790028651503	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76272	1790028651522	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76271	1790028651503	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76272	1790028651522	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76273	1790028708984	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76274	1790028711532	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76275	1790028711547	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76276	1790028711566	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76275	1790028711547	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76276	1790028711566	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76277	1790028771574	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76348	1790029852346	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76349	1790029852366	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76348	1790029852346	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76349	1790029852366	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76350	1790029893938	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76351	1790029912374	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76352	1790029912390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76353	1790029912405	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76352	1790029912390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76353	1790029912405	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76354	1790029954042	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76355	1790029972410	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76356	1790029972422	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76357	1790029972437	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76356	1790029972422	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76357	1790029972437	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76388	1790030463882	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76389	1790030512768	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76390	1790030512782	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76391	1790030512799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76390	1790030512782	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76391	1790030512799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76392	1790030523985	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76393	1790030572808	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76394	1790030572825	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76395	1790030572840	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76394	1790030572825	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76395	1790030572840	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76182	1790027388440	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76183	1790027390625	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76184	1790027390639	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76185	1790027390659	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76184	1790027390639	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76185	1790027390659	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76186	1790027448544	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76187	1790027450668	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76328	1790029552118	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76329	1790029552134	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76330	1790029552152	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76329	1790029552134	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76330	1790029552152	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76331	1790029612162	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76332	1790029612177	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76333	1790029612195	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76332	1790029612177	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76333	1790029612195	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76334	1790029623768	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76335	1790029672202	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76336	1790029672217	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76337	1790029672235	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76336	1790029672217	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76337	1790029672235	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76378	1790030332648	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76379	1790030332662	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76380	1790030332679	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76379	1790030332662	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76380	1790030332679	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76381	1790030374089	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76382	1790030392689	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76383	1790030392704	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76384	1790030392722	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76383	1790030392704	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76384	1790030392722	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76385	1790030452732	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76386	1790030452743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76387	1790030452760	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76398	1790030632863	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76399	1790030632883	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76386	1790030452743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76387	1790030452760	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76398	1790030632863	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76399	1790030632883	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76400	1790030673940	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76401	1790030692893	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76402	1790030692908	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76403	1790030692926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76402	1790030692908	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76403	1790030692926	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76404	1790030734044	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76405	1790030752935	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76406	1790030752949	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76407	1790030752967	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76418	1790030933087	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76406	1790030752949	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76407	1790030752967	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76418	1790030933087	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76419	1790030990974	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76420	1790030993096	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76421	1790030993111	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76422	1790030993128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76421	1790030993111	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76422	1790030993128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76423	1790031053138	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76424	1790031053153	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76425	1790031053170	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76424	1790031053153	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76425	1790031053170	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76426	1790031093988	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76427	1790031113179	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76468	1790031724107	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76469	1790031773644	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76470	1790031773659	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76470	1790031773659	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76232	1790028153594	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76233	1790028171153	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76234	1790028171168	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76235	1790028171186	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76234	1790028171168	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76235	1790028171186	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76236	1790028213690	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391556, lon=-48.9139092
 76237	1790028231194	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76298	1790029071794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76299	1790029071810	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76298	1790029071794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76299	1790029071810	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76300	1790029113913	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76301	1790029131818	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76302	1790029131837	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76303	1790029131853	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76302	1790029131837	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76303	1790029131853	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76304	1790029191863	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76305	1790029191877	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76306	1790029191892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76305	1790029191877	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76306	1790029191892	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76307	1790029203714	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
-76318	1790029372029	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76318	1790029372029	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76319	1790029413761	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76320	1790029432039	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76321	1790029432054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76322	1790029432070	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76321	1790029432054	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76322	1790029432070	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76323	1790029473876	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76324	1790029492079	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76325	1790029492093	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76326	1790029492109	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76325	1790029492093	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76326	1790029492109	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76327	1790029533973	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76338	1790029683865	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76339	1790029732244	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76340	1790029732258	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76341	1790029732277	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76340	1790029732258	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76341	1790029732277	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76342	1790029773733	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76343	1790029792287	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76344	1790029792304	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76345	1790029792323	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76344	1790029792304	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76345	1790029792323	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76346	1790029833834	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76347	1790029852331	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76368	1790030152562	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76368	1790030152562	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76369	1790030164070	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76370	1790030212569	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76371	1790030212580	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76372	1790030212596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76371	1790030212580	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76372	1790030212596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76373	1790030253882	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76374	1790030272605	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76375	1790030272620	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76376	1790030272638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76375	1790030272620	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76376	1790030272638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76377	1790030313985	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76458	1790031593517	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76459	1790031593532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76460	1790031593550	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76459	1790031593532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76460	1790031593550	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76461	1790031634264	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76311	1790029263816	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76312	1790029311948	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76313	1790029311972	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76314	1790029311989	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76313	1790029311972	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76314	1790029311989	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76315	1790029323923	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391473, lon=-48.9139108
 76316	1790029371996	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76317	1790029372011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76317	1790029372011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76438	1790031293309	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76439	1790031293325	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76440	1790031293344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76439	1790031293325	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76440	1790031293344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76441	1790031304044	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76442	1790031353353	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76443	1790031353371	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76444	1790031353390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76443	1790031353371	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76444	1790031353390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76445	1790031364139	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76446	1790031413399	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76447	1790031413415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76508	1790032253963	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76509	1790032253984	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76447	1790031413415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76508	1790032253963	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76509	1790032253984	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76510	1790032313993	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76511	1790032314008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76512	1790032314027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76511	1790032314008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76512	1790032314027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76513	1790032354155	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76514	1790032374036	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76515	1790032374051	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76516	1790032374071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76515	1790032374051	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76516	1790032374071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76517	1790032414254	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
-76367	1790030152546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76448	1790031413431	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76367	1790030152546	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76448	1790031413431	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76449	1790031424250	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76450	1790031473440	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76451	1790031473453	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76452	1790031473468	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76451	1790031473453	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76452	1790031473468	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76453	1790031514050	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76454	1790031533475	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76455	1790031533489	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76456	1790031533509	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76455	1790031533489	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76456	1790031533509	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76457	1790031574158	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76518	1790032434079	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76519	1790032434094	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76520	1790032434114	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76519	1790032434094	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76520	1790032434114	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76521	1790032466178	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 76522	1790032474358	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76523	1790032494124	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -11688,30 +11688,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 76397	1790030632849	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76408	1790030794150	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76409	1790030812977	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76410	1790030812991	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76411	1790030813008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76410	1790030812991	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76411	1790030813008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76412	1790030873017	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76413	1790030873030	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76414	1790030873050	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76413	1790030873030	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76414	1790030873050	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76415	1790030883971	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391535, lon=-48.9139124
 76416	1790030933057	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76417	1790030933069	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76428	1790031113194	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76429	1790031113212	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76417	1790030933069	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76428	1790031113194	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76429	1790031113212	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76430	1790031154094	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76431	1790031173221	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76432	1790031173236	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76433	1790031173255	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76432	1790031173236	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76433	1790031173255	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76434	1790031214195	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76435	1790031233265	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76436	1790031233281	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76437	1790031233299	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76478	1790031893743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76479	1790031893763	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76436	1790031233281	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76437	1790031233299	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76478	1790031893743	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76479	1790031893763	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76480	1790031934139	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76481	1790031953774	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76482	1790031953787	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76483	1790031953804	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76482	1790031953787	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76483	1790031953804	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76484	1790031994240	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76485	1790032011817	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 76486	1790032012219	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
@@ -11722,39 +11722,39 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 76531	1790032774222	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76532	1790032823940	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76533	1790032834325	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
-76463	1790031653574	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76464	1790031653591	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76463	1790031653574	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76464	1790031653591	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76465	1790031713599	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76466	1790031713614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76467	1790031713633	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76466	1790031713614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76467	1790031713633	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76498	1790032132160	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76499	1790032133867	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76500	1790032133880	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76501	1790032133896	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76500	1790032133880	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76501	1790032133896	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76502	1790032191840	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76503	1790032193906	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76504	1790032193922	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76505	1790032193939	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76504	1790032193922	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76505	1790032193939	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76506	1790032251944	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
 76507	1790032253947	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76535	1790032894428	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
-76471	1790031773680	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76471	1790031773680	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76472	1790031784211	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76473	1790031833689	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76474	1790031833704	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76475	1790031833723	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76474	1790031833704	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76475	1790031833723	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76476	1790031844315	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76477	1790031893730	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76488	1790032013820	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76489	1790032013827	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76488	1790032013820	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76489	1790032013827	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76490	1790032027351	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76491	1790032042482	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 76492	1790032042506	1	46	46	192.168.1.100	INFO	3	Device owner: true
 76493	1790032043206	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 76494	1790032054348	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391443, lon=-48.9139182
 76495	1790032073831	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-76496	1790032073843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-76497	1790032073859	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+76496	1790032073843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+76497	1790032073859	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 76534	1790032890005	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76536	1790032956262	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 76537	1790032983927	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391459, lon=-48.9139126
@@ -12917,25 +12917,25 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 77813	1790074351288	1	46	46	192.168.1.100	INFO	3	MDM Launcher 6.36-opensource started
 77814	1790074353843	1	46	46	192.168.1.100	DEBUG	4	Push notifications enqueued: 15 mins
 77815	1790074353859	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
-77867	1790075171560	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77868	1790075171579	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77867	1790075171560	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77868	1790075171579	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77869	1790075190838	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9138766
 77870	1790075231587	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77871	1790075231598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77872	1790075231615	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77871	1790075231598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77872	1790075231615	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77873	1790075251717	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73917, lon=-48.9138783
 77874	1790075253963	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 77875	1790075254347	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 77876	1790075269480	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
-77927	1790076012099	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77928	1790076012117	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77927	1790076012099	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77928	1790076012117	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77929	1790076031090	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392115, lon=-48.9138227
 77930	1790076072128	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77931	1790076072143	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77932	1790076072162	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77931	1790076072143	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77932	1790076072162	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77933	1790076091914	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391841, lon=-48.9138589
 77934	1790076132170	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77935	1790076132184	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77935	1790076132184	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77658	1790069469956	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77670	1790069875942	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77677	1790070101170	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
@@ -12963,32 +12963,32 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 77811	1790074353843	1	46	46	192.168.1.100	DEBUG	4	Push notifications enqueued: 15 mins
 77816	1790074363943	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77837	1790074691201	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77838	1790074691215	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77839	1790074691233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77838	1790074691215	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77839	1790074691233	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77840	1790074751243	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77841	1790074751258	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77842	1790074751280	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77841	1790074751258	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77842	1790074751280	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77843	1790074811291	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77844	1790074811307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77845	1790074811324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77844	1790074811307	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77845	1790074811324	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77846	1790074833028	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392392, lon=-48.9137532
-77857	1790074991456	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77857	1790074991456	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77858	1790075041810	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392354, lon=-48.9137567
 77859	1790075051465	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77860	1790075051478	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77861	1790075051495	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77860	1790075051478	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77861	1790075051495	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77862	1790075102650	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392511, lon=-48.9137455
 77863	1790075111503	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77864	1790075111519	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77865	1790075111535	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77864	1790075111519	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77865	1790075111535	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77866	1790075171544	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77907	1790075711882	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77908	1790075711895	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77909	1790075711912	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77908	1790075711895	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77909	1790075711912	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77910	1790075732515	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391654, lon=-48.9138733
 77911	1790075771920	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77912	1790075771934	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77913	1790075771951	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77912	1790075771934	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77913	1790075771951	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77914	1790075820972	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391711, lon=-48.9138688
 77915	1790075831960	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77659	1790069474869	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
@@ -13023,30 +13023,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 77803	1790074280698	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391519, lon=-48.9139175
 77807	1790074317407	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 77808	1790074327550	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
-77817	1790074390998	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77818	1790074391034	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77817	1790074390998	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77818	1790074391034	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77819	1790074396141	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 77820	1790074408990	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739185, lon=-48.9138737
 77821	1790074451041	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77822	1790074451052	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77823	1790074451070	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77822	1790074451052	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77823	1790074451070	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77824	1790074499888	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392498, lon=-48.9137697
 77825	1790074511076	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77826	1790074511088	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77826	1790074511088	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77877	1790075284619	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 77878	1790075284644	1	46	46	192.168.1.100	INFO	3	Device owner: true
 77879	1790075285558	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 77880	1790075291622	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77881	1790075291628	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77882	1790075291635	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77881	1790075291628	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77882	1790075291635	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77883	1790075312530	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392538, lon=-48.9137287
 77884	1790075351640	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77885	1790075351652	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77886	1790075351669	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77885	1790075351652	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77886	1790075351669	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77937	1790076152751	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392892, lon=-48.9137063
 77938	1790076192211	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77939	1790076192223	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77940	1790076192242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77939	1790076192223	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77940	1790076192242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78140	1790081028049	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 77661	1790069560871	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
 77665	1790069681078	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
@@ -13081,28 +13081,28 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 77796	1790074034103	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77800	1790074166200	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77809	1790074348912	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391519, lon=-48.9139175
-77827	1790074511105	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77827	1790074511105	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77828	1790074560659	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391829, lon=-48.9138688
 77829	1790074571113	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77830	1790074571127	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77831	1790074571148	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77830	1790074571127	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77831	1790074571148	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77832	1790074621547	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391897, lon=-48.9138164
 77833	1790074631157	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77834	1790074631174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77835	1790074631194	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77834	1790074631174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77835	1790074631194	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77836	1790074682425	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391807, lon=-48.9138736
 77887	1790075400895	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391982, lon=-48.9138241
 77888	1790075411679	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77889	1790075411694	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77890	1790075411711	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77889	1790075411694	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77890	1790075411711	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77891	1790075461774	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392692, lon=-48.9137172
 77892	1790075471720	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77893	1790075471735	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77894	1790075471751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77893	1790075471735	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77894	1790075471751	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77895	1790075522671	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392216, lon=-48.9137493
 77896	1790075531763	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77947	1790076312308	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77948	1790076312326	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77947	1790076312308	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77948	1790076312326	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77663	1790069620975	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
 77666	1790069744187	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77667	1790069770928	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391499, lon=-48.9139103
@@ -13133,55 +13133,55 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 77804	1790074298095	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 77812	1790074353859	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 77847	1790074871332	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77848	1790074871356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77849	1790074871376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77848	1790074871356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77849	1790074871376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77850	1790074893915	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391884, lon=-48.9138671
 77851	1790074931384	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77852	1790074931399	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77853	1790074931418	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77852	1790074931399	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77853	1790074931418	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77854	1790074980888	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392207, lon=-48.9137965
 77855	1790074991426	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77856	1790074991438	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77897	1790075531778	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77898	1790075531794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77856	1790074991438	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77897	1790075531778	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77898	1790075531794	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77899	1790075591803	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77900	1790075591815	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77901	1790075591832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77900	1790075591815	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77901	1790075591832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77902	1790075610946	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391784, lon=-48.9138574
 77903	1790075651842	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77904	1790075651856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77905	1790075651872	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77904	1790075651856	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77905	1790075651872	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77906	1790075671701	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391703, lon=-48.9138615
-77917	1790075831993	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77917	1790075831993	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77918	1790075881891	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391679, lon=-48.9138554
 77919	1790075892003	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77920	1790075892018	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77921	1790075892035	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77920	1790075892018	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77921	1790075892035	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77922	1790075942707	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391621, lon=-48.9138753
 77923	1790075952045	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77916	1790075831975	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77916	1790075831975	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77957	1790076492413	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77958	1790076492428	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77959	1790076492445	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77958	1790076492428	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77959	1790076492445	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77960	1790076509365	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77961	1790076552455	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77962	1790076552469	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77963	1790076552488	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77962	1790076552469	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77963	1790076552488	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77964	1790076569469	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77965	1790076612498	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77966	1790076612515	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77966	1790076612515	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77977	1790076792623	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77978	1790076792638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77979	1790076792654	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77978	1790076792638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77979	1790076792654	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77980	1790076852662	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77981	1790076852676	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77982	1790076852694	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77981	1790076852676	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77982	1790076852694	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77983	1790076869301	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77984	1790076912705	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77985	1790076912716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77986	1790076912734	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77997	1790077092843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77998	1790077092860	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77985	1790076912716	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77986	1790076912734	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77997	1790077092843	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77998	1790077092860	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77999	1790077117439	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78000	1790077139440	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 78001	1790077152869	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -13191,73 +13191,73 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78005	1790077289301	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 78006	1790077349409	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 78047	1790078501784	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78048	1790078511800	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58246) after 10000ms
-78049	1790078521823	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58248) after 10000ms
+78048	1790078511800	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58246) after 10000ms
+78049	1790078521823	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58248) after 10000ms
 78050	1790078537272	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78051	1790078581831	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78052	1790078591852	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58250) after 10000ms
+78052	1790078591852	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58250) after 10000ms
 78053	1790078597378	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78054	1790078616300	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: Read timed out
 78055	1790078661303	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78056	1790078671323	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58266) after 10000ms
+78056	1790078671323	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58266) after 10000ms
 78097	1790079737203	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
 78098	1790079784211	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78099	1790079797310	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
-78100	1790079826653	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-78101	1790079851479	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
+78100	1790079826653	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+78101	1790079851479	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
 78102	1790079857409	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
 78103	1790079858030	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101 (port 443) from /192.168.1.100 (port 44974) after 10000ms
 78104	1790079911487	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77924	1790075952059	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77925	1790075952078	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77924	1790075952059	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77925	1790075952078	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77926	1790076012085	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77967	1790076612532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77967	1790076612532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77968	1790076659267	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77969	1790076672541	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77970	1790076672555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77971	1790076672572	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77970	1790076672555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77971	1790076672572	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77972	1790076719368	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77973	1790076732582	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77974	1790076732594	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77975	1790076732614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77974	1790076732594	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77975	1790076732614	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77976	1790076779474	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77987	1790076929406	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77988	1790076972742	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77989	1790076972755	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77990	1790076972773	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77989	1790076972755	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77990	1790076972773	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77991	1790076989509	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77992	1790077032782	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77993	1790077032796	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77994	1790077032820	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77993	1790077032796	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77994	1790077032820	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77995	1790077079336	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77996	1790077092829	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78037	1790078305905	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101 (port 443) from /192.168.1.100 (port 44766) after 10000ms
 78038	1790078338344	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78039	1790078339486	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
-78040	1790078348356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58212) after 10000ms
-78041	1790078361725	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58214) after 10000ms
+78040	1790078348356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58212) after 10000ms
+78041	1790078361725	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58214) after 10000ms
 78042	1790078399593	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78043	1790078421736	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78044	1790078431752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58230) after 10000ms
-78045	1790078441776	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58238) after 10000ms
+78044	1790078431752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58230) after 10000ms
+78045	1790078441776	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58238) after 10000ms
 78046	1790078477169	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
-78087	1790079501150	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-78088	1790079511174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58338) after 10000ms
+78087	1790079501150	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+78088	1790079511174	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58338) after 10000ms
 78089	1790079527229	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
 78090	1790079571182	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78091	1790079581203	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58342) after 10000ms
+78091	1790079581203	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58342) after 10000ms
 78092	1790079587326	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
-78093	1790079591230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58348) after 10000ms
+78093	1790079591230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58348) after 10000ms
 78094	1790079647431	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
 78095	1790079651244	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78096	1790079717001	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78137	1790080929242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58516) after 10000ms
+78137	1790080929242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58516) after 10000ms
 78138	1790080973251	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
-78139	1790081027679	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-77936	1790076132202	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78139	1790081027679	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+77936	1790076132202	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78007	1790077359303	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78008	1790077375801	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: Read timed out
-78009	1790077381128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58100) after 10000ms
+78009	1790077381128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58100) after 10000ms
 78010	1790077409510	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 78011	1790077456279	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78012	1790077484280	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
@@ -13265,7 +13265,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78014	1790077561863	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78015	1790077606427	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78016	1790077621973	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
-78057	1790078686010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58268) after 10000ms
+78057	1790078686010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58268) after 10000ms
 78058	1790078687168	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78059	1790078746021	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78060	1790078763093	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
@@ -13284,34 +13284,34 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78113	1790080192498	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78114	1790080252605	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78115	1790080342413	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
-78116	1790080354736	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Connection reset
+78116	1790080354736	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Connection reset
 78157	1790081282595	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78158	1790081328153	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78159	1790081328166	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78160	1790081328182	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78159	1790081328166	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78160	1790081328182	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78161	1790081342702	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78162	1790081388191	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78163	1790081388207	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78164	1790081388224	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78163	1790081388207	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78164	1790081388224	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78165	1790081402807	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78166	1790081448231	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78187	1790081748473	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78187	1790081748473	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78188	1790081780897	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78189	1790081808484	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78190	1790081808497	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78191	1790081808517	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78190	1790081808497	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78191	1790081808517	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78192	1790081841003	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78193	1790081868528	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78194	1790081868542	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78195	1790081868559	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78194	1790081868542	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78195	1790081868559	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78196	1790081928568	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78207	1790082051018	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78208	1790082108696	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78533	1790087481430	1	46	46	192.168.1.100	DEBUG	4	Push notifications enqueued: 15 mins
 77941	1790076240798	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392062, lon=-48.9137688
 77942	1790076252251	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77943	1790076252266	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77944	1790076252285	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77943	1790076252266	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77944	1790076252285	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77945	1790076301664	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77946	1790076312294	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78017	1790077676377	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -13344,31 +13344,31 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78124	1790080612545	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78125	1790080621018	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78126	1790080672649	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
-78167	1790081448246	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78168	1790081448265	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78167	1790081448246	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78168	1790081448265	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78169	1790081462911	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78170	1790081508273	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78171	1790081508291	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78172	1790081508309	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78171	1790081508291	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78172	1790081508309	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78173	1790081552714	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78174	1790081568319	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78175	1790081568344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78176	1790081568355	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78277	1790083069389	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78278	1790083069403	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78175	1790081568344	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78176	1790081568355	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78277	1790083069389	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78278	1790083069403	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78279	1790083101150	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78280	1790083129412	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78281	1790083129426	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78282	1790083129443	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78281	1790083129426	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78282	1790083129443	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78283	1790083189452	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78534	1790087481446	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 77949	1790076361471	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 77950	1790076372333	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77951	1790076372347	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77952	1790076372367	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77951	1790076372347	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77952	1790076372367	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77953	1790076432377	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-77954	1790076432390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-77955	1790076432406	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+77954	1790076432390	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+77955	1790076432406	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 77956	1790076449262	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391726, lon=-48.9138694
 78027	1790077964346	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78028	1790077995872	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: failed to connect to mdm.olimpia.sp.gov.br/192.168.250.101 (port 443) from /192.168.1.100 (port 44732) after 10000ms
@@ -13378,7 +13378,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78032	1790078114377	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78033	1790078170298	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78034	1790078174482	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
-78035	1790078268243	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Connection reset
+78035	1790078268243	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Connection reset
 78036	1790078279382	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391685, lon=-48.9138787
 78077	1790079167325	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
 78078	1790079227428	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391694, lon=-48.9139037
@@ -13396,76 +13396,76 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78130	1790080801024	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.SocketTimeoutException: Read timed out
 78131	1790080822851	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78132	1790080824094	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78133	1790080849019	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58488) after 10000ms
-78134	1790080859087	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58496) after 10000ms
+78133	1790080849019	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58488) after 10000ms
+78134	1790080859087	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58496) after 10000ms
 78135	1790080882743	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78136	1790080919097	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78177	1790081612822	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78178	1790081628361	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78179	1790081628375	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78180	1790081628392	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78179	1790081628375	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78180	1790081628392	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78181	1790081688400	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78182	1790081688415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78183	1790081688432	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78182	1790081688415	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78183	1790081688432	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78184	1790081720797	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78185	1790081748442	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78186	1790081748457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78217	1790082228795	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78218	1790082228813	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78186	1790081748457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78217	1790082228795	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78218	1790082228813	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78219	1790082261026	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78220	1790082288821	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78105	1790079921508	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58422) after 10000ms
-78106	1790079931530	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : failed to connect to /192.168.1.65 (port 8080) from /192.168.1.100 (port 58424) after 10000ms
-78147	1790081147994	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78148	1790081148010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78105	1790079921508	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58422) after 10000ms
+78106	1790079931530	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : failed to connect to /172.16.24.70 (port 8080) from /192.168.1.100 (port 58424) after 10000ms
+78147	1790081147994	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78148	1790081148010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78149	1790081165989	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78150	1790081208017	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78151	1790081208043	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78152	1790081208061	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78151	1790081208043	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78152	1790081208061	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78153	1790081226099	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78154	1790081268071	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78155	1790081268130	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78156	1790081268145	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78197	1790081928582	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78198	1790081928602	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78155	1790081268130	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78156	1790081268145	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78197	1790081928582	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78198	1790081928602	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78199	1790081930805	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78200	1790081988610	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78201	1790081988624	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78202	1790081988640	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78201	1790081988624	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78202	1790081988640	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78203	1790081990908	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78204	1790082048651	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78205	1790082048666	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78206	1790082048686	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78205	1790082048666	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78206	1790082048686	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78227	1790082408909	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78228	1790082408924	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78229	1790082408942	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78228	1790082408924	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78229	1790082408942	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78230	1790082426565	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78231	1790082454923	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 78232	1790082455523	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 78233	1790082468951	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78234	1790082468966	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78235	1790082468983	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78234	1790082468966	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78235	1790082468983	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78236	1790082470633	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
-78257	1790082769178	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78258	1790082769196	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78257	1790082769178	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78258	1790082769196	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78259	1790082770893	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78260	1790082829205	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78261	1790082829220	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78262	1790082829238	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78261	1790082829220	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78262	1790082829238	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78263	1790082830996	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78264	1790082889246	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78265	1790082889259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78266	1790082889278	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78307	1790083549712	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78308	1790083549730	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78265	1790082889259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78266	1790082889278	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78307	1790083549712	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78308	1790083549730	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78309	1790083550915	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78310	1790083609741	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78311	1790083609756	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78311	1790083609756	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78535	1790087498177	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78141	1790081033174	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78142	1790081087847	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78143	1790081087917	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78144	1790081087943	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78143	1790081087917	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78144	1790081087943	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78145	1790081092789	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392349, lon=-48.9137749
 78146	1790081147979	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78237	1790082485767	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
@@ -13473,237 +13473,237 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78239	1790082487009	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78240	1790082487019	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 78241	1790082528993	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78242	1790082529008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78243	1790082529028	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78242	1790082529008	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78243	1790082529028	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78244	1790082560877	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78245	1790082589037	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78246	1790082589052	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78246	1790082589052	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78287	1790083249494	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78288	1790083249508	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78289	1790083249528	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78288	1790083249508	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78289	1790083249528	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78290	1790083251057	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78291	1790083309538	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78292	1790083309555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78293	1790083309574	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78292	1790083309555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78293	1790083309574	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78294	1790083311163	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78295	1790083369583	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78296	1790083369598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78296	1790083369598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78337	1790084030035	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78338	1790084030051	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78339	1790084030071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78338	1790084030051	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78339	1790084030071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78340	1790084031072	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78341	1790084090080	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78342	1790084090095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78343	1790084090112	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78342	1790084090095	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78343	1790084090112	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78344	1790084091178	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78345	1790084150121	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78346	1790084150138	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78346	1790084150138	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78387	1790084810588	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78388	1790084810598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78389	1790084810609	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78388	1790084810598	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78389	1790084810609	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78390	1790084870615	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78391	1790084870625	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78392	1790084870637	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78391	1790084870625	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78392	1790084870637	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78393	1790084871161	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78394	1790084930644	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78395	1790084930658	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78396	1790084930676	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78407	1790085110780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78408	1790085110799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78395	1790084930658	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78396	1790084930676	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78407	1790085110780	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78408	1790085110799	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78409	1790085141325	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78410	1790085170809	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78411	1790085170824	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78209	1790082108711	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78210	1790082108729	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78411	1790085170824	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78209	1790082108711	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78210	1790082108729	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78211	1790082140822	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78212	1790082168737	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78213	1790082168752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78214	1790082168769	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78213	1790082168752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78214	1790082168769	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78215	1790082200926	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392165, lon=-48.9137889
 78216	1790082228780	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78267	1790082891102	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78268	1790082949288	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78269	1790082949303	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78270	1790082949322	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78269	1790082949303	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78270	1790082949322	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78271	1790082980940	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78272	1790083009333	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78273	1790083009348	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78274	1790083009366	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78273	1790083009348	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78274	1790083009366	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78275	1790083041046	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78276	1790083069374	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78317	1790083671125	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78318	1790083729823	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78319	1790083729839	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78320	1790083729857	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78319	1790083729839	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78320	1790083729857	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78321	1790083731231	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78322	1790083789867	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78323	1790083789887	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78324	1790083789906	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78323	1790083789887	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78324	1790083789906	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78325	1790083821049	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78326	1790083849917	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78377	1790084630474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78378	1790084630495	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78377	1790084630474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78378	1790084630495	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78379	1790084661115	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78380	1790084690504	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78381	1790084690521	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78382	1790084690537	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78381	1790084690521	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78382	1790084690537	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78383	1790084750546	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78384	1790084750559	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78385	1790084750579	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78384	1790084750559	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78385	1790084750579	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78386	1790084768485	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78437	1790085591103	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78438	1790085591117	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78439	1790085591132	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78438	1790085591117	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78439	1790085591132	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78440	1790085621509	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78441	1790085651142	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78442	1790085651158	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78443	1790085651185	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78442	1790085651158	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78443	1790085651185	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78444	1790085711192	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78445	1790085711209	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78446	1790085711224	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78445	1790085711209	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78446	1790085711224	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78457	1790085891305	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78458	1790085891319	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78221	1790082288832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78222	1790082288852	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78458	1790085891319	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78221	1790082288832	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78222	1790082288852	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78223	1790082348862	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78224	1790082348876	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78225	1790082348898	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78224	1790082348876	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78225	1790082348898	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78226	1790082366462	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
-78247	1790082589069	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78247	1790082589069	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78248	1790082620982	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78249	1790082649076	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78250	1790082649091	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78251	1790082649110	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78250	1790082649091	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78251	1790082649110	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78252	1790082681086	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78253	1790082709121	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78254	1790082709136	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78255	1790082709155	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78254	1790082709136	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78255	1790082709155	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78256	1790082769164	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78297	1790083369609	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78297	1790083369609	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78298	1790083400993	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78299	1790083429616	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78300	1790083429628	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78301	1790083429647	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78300	1790083429628	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78301	1790083429647	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78302	1790083461089	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
 78303	1790083489655	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78304	1790083489671	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78305	1790083489687	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78304	1790083489671	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78305	1790083489687	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78306	1790083549697	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78357	1790084330254	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78358	1790084330270	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78359	1790084330290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78358	1790084330270	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78359	1790084330290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78360	1790084361299	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78361	1790084390298	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78362	1790084390312	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78363	1790084390329	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78362	1790084390312	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78363	1790084390329	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78364	1790084450337	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78365	1790084450351	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78366	1790084450371	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78365	1790084450351	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78366	1790084450371	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78417	1790085290894	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78418	1790085290908	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78419	1790085290927	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78418	1790085290908	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78419	1790085290927	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78420	1790085291302	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78421	1790085350935	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78422	1790085350949	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78423	1790085350966	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78422	1790085350949	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78423	1790085350966	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78424	1790085351405	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78425	1790085410974	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78426	1790085410988	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78284	1790083189467	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78285	1790083189487	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78426	1790085410988	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78284	1790083189467	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78285	1790083189487	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78286	1790083190954	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392351, lon=-48.9137464
-78327	1790083849929	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78328	1790083849947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78327	1790083849929	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78328	1790083849947	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78329	1790083881150	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78330	1790083909955	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78331	1790083909968	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78332	1790083909985	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78331	1790083909968	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78332	1790083909985	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78333	1790083941253	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78334	1790083969995	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78335	1790083970010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78336	1790083970027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78347	1790084150158	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78335	1790083970010	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78336	1790083970027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78347	1790084150158	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78348	1790084151281	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78349	1790084210167	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78350	1790084210183	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78351	1790084210200	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78350	1790084210183	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78351	1790084210200	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78352	1790084241089	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78353	1790084270211	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78354	1790084270226	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78355	1790084270244	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78354	1790084270226	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78355	1790084270244	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78356	1790084301192	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78397	1790084931265	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78398	1790084990686	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78399	1790084990701	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78400	1790084990719	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78399	1790084990701	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78400	1790084990719	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78401	1790084991370	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78402	1790085050729	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78403	1790085050740	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78404	1790085050757	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78403	1790085050740	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78404	1790085050757	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78405	1790085081224	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78406	1790085110765	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78447	1790085711317	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78448	1790085734200	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.73926, lon=-48.913605000000004
 78449	1790085771231	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78450	1790085771245	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78451	1790085771259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78450	1790085771245	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78451	1790085771259	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78452	1790085771419	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78453	1790085831268	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78454	1790085831281	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78455	1790085831298	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78454	1790085831281	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78455	1790085831298	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78456	1790085831521	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
-78467	1790086011419	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78467	1790086011419	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78468	1790086029455	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78469	1790086055493	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 78470	1790086055949	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 78471	1790086071071	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 78472	1790086071426	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78473	1790086071438	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78312	1790083609772	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78473	1790086071438	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78312	1790083609772	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78313	1790083611021	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78314	1790083669782	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78315	1790083669798	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78316	1790083669815	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78315	1790083669798	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78316	1790083669815	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78367	1790084451101	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78368	1790084510379	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78369	1790084510396	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78370	1790084510412	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78369	1790084510396	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78370	1790084510412	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78371	1790084511207	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78372	1790084570419	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78373	1790084570434	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78374	1790084570449	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78373	1790084570434	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78374	1790084570449	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78375	1790084571312	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391714, lon=-48.9138749
 78376	1790084630459	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78427	1790085411005	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78427	1790085411005	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78428	1790085411510	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78429	1790085471012	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78430	1790085471027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78431	1790085471047	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78430	1790085471027	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78431	1790085471047	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78432	1790085501301	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78433	1790085531055	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78434	1790085531071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78435	1790085531094	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78434	1790085531071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78435	1790085531094	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78436	1790085561405	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
-78412	1790085170845	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78412	1790085170845	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78413	1790085201435	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78414	1790085230853	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78415	1790085230867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78416	1790085230886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78415	1790085230867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78416	1790085230886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78477	1790086087151	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 78478	1790086109974	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78479	1790086128091	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78480	1790086136846	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78481	1790086175368	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
-78459	1790085891336	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78459	1790085891336	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78460	1790085899910	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391874, lon=-48.9138826
 78461	1790085951346	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78462	1790085951359	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78463	1790085951376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78462	1790085951359	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78463	1790085951376	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78464	1790085969350	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78465	1790086011385	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78466	1790086011399	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78466	1790086011399	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78482	1790086203338	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78474	1790086071457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78474	1790086071457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78475	1790086086188	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
 78476	1790086086211	1	46	46	192.168.1.100	INFO	3	Device owner: true
 78483	1790086241127	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
@@ -13712,53 +13712,53 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78486	1790086335738	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78487	1790086361338	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78488	1790086403929	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78489	1790086417781	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78490	1790086420084	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78489	1790086417781	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78490	1790086420084	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78491	1790086434878	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 78492	1790086451128	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78493	1790086480095	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78494	1790086480111	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78495	1790086480134	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78494	1790086480111	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78495	1790086480134	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78496	1790086486608	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78497	1790086511237	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78498	1790086540143	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78499	1790086542454	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78500	1790086544752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78499	1790086542454	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78500	1790086544752	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78501	1790086559927	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 78502	1790086571346	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78503	1790086599774	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78504	1790086622037	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78505	1790086661142	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78506	1790086811180	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
-78507	1790086822228	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Software caused connection abort
-78508	1790086822249	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78507	1790086822228	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Software caused connection abort
+78508	1790086822249	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78509	1790086827425	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 78510	1790086872286	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78511	1790086882256	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78512	1790086882269	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78513	1790086882284	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78512	1790086882269	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78513	1790086882284	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78514	1790087022191	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78515	1790087047221	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78516	1790087047236	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78517	1790087047252	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78516	1790087047236	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78517	1790087047252	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78518	1790087083292	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391622, lon=-48.9139032
 78519	1790087107262	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78520	1790087107276	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78521	1790087107294	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78520	1790087107276	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78521	1790087107294	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78522	1790087233153	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391648, lon=-48.9138941
 78523	1790087272687	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78524	1790087272701	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78525	1790087272722	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78524	1790087272701	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78525	1790087272722	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78526	1790087294272	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391648, lon=-48.9138941
 78527	1790087332732	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78528	1790087332747	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78529	1790087332766	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78528	1790087332747	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78529	1790087332766	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78530	1790087444259	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391648, lon=-48.9138941
 78531	1790087471344	1	46	46	192.168.1.100	INFO	3	MDM Launcher 6.36-opensource started
 78532	1790087479578	1	46	87	192.168.1.100	WARNING	2	Protecao ativa: acesso as Configuracoes bloqueado (com.android.settings)
 78536	1790087502833	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78537	1790087502847	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78538	1790087502859	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78538	1790087502859	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78547	1790087532012	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78570	1790087614036	1	46	46	192.168.1.100	INFO	3	Got Push Message, type configUpdated
 78571	1790087614044	1	46	46	192.168.1.100	DEBUG	4	Update configuration by MainActivity
@@ -13769,7 +13769,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78652	1790088664774	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78653	1790088664785	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 78654	1790088664790	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78655	1790088664826	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78655	1790088664826	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78656	1790088664840	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78657	1790088664906	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 78658	1790088664944	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
@@ -13783,7 +13783,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78713	1790088912066	1	46	46	192.168.1.100	INFO	3	Configuration updated
 78714	1790088912080	1	46	46	192.168.1.100	INFO	3	Device owner: true
 78715	1790088912385	1	46	46	192.168.1.100	INFO	3	Device owner: true
-78723	1790088919101	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=iR-o4KElm2zU_7KwstM_1weX1_902BXa
+78723	1790088919101	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=iR-o4KElm2zU_7KwstM_1weX1_902BXa
 78724	1790088919138	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 78728	1790088941262	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137446
 78731	1790089052960	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -13856,18 +13856,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78619	1790088300024	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78620	1790088300543	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.73917, lon=-48.91392333333333
 78621	1790088303795	1	46	46	192.168.1.100	WARNING	2	Failed to update config: network error
-78622	1790088312474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78623	1790088312492	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78622	1790088312474	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78623	1790088312492	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78644	1790088604604	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78645	1790088604625	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78646	1790088604643	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78645	1790088604625	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78646	1790088604643	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78647	1790088616610	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739354, lon=-48.9137434
 78648	1790088640437	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78662	1790088665411	1	46	46	192.168.1.100	INFO	3	Configuration updated
 78663	1790088665512	1	46	46	192.168.1.100	INFO	3	Configuration updated
 78664	1790088665528	1	46	46	192.168.1.100	INFO	3	Device owner: true
 78665	1790088665895	1	46	46	192.168.1.100	INFO	3	Device owner: true
-78666	1790088666874	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=r4Qqp-jKJbuOdor5CyPx73mU8ZLif4PO
+78666	1790088666874	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=r4Qqp-jKJbuOdor5CyPx73mU8ZLif4PO
 78667	1790088666945	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 78668	1790088667524	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 78669	1790088667528	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -13884,7 +13884,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78734	1790089147210	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137446
 78747	1790089554230	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137446
 78749	1790089644247	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137446
-78541	1790087505993	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=o_bio8KXsiSW0Uzn2Y5nLLv1AqB3Ypr6
+78541	1790087505993	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=o_bio8KXsiSW0Uzn2Y5nLLv1AqB3Ypr6
 78546	1790087527001	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 78548	1790087534060	1	46	46	192.168.1.100	INFO	3	Got Push Message, type configUpdated
 78549	1790087534069	1	46	46	192.168.1.100	DEBUG	4	Update configuration by MainActivity
@@ -13899,13 +13899,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78577	1790087619045	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78578	1790087620702	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 78579	1790087622916	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
-78580	1790087678225	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78581	1790087678255	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78580	1790087678225	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78581	1790087678255	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78582	1790087683352	1	46	46	192.168.1.100	DEBUG	4	Network connection lost
 78583	1790087700304	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391826, lon=-48.9138888
 78584	1790087738272	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78585	1790087738285	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78586	1790087738297	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78585	1790087738285	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78586	1790087738297	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78587	1790087762172	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391862, lon=-48.9138856
 78588	1790087824180	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9139076
 78589	1790087879855	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -13922,7 +13922,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78633	1790088339402	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392392, lon=-48.9137403
 78674	1790088693447	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78675	1790088693455	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78676	1790088693459	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78676	1790088693459	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78677	1790088693512	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 78706	1790088894407	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 78707	1790088895002	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -13951,33 +13951,33 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78543	1790087506516	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 78544	1790087506520	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 78573	1790087614575	1	46	46	192.168.1.100	INFO	3	Configuration updated
-78590	1790087879867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78591	1790087879880	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78590	1790087879867	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78591	1790087879880	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78592	1790087883863	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9139076
 78593	1790088034235	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391674, lon=-48.9139076
 78594	1790088044854	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78595	1790088044866	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78596	1790088044886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78595	1790088044866	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78596	1790088044886	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78597	1790088074354	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 78598	1790088096611	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739156, lon=-48.9139046
 78599	1790088104896	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78610	1790088158098	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391336, lon=-48.913911
 78611	1790088176003	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78634	1790088372533	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-78635	1790088372544	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78636	1790088372557	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78635	1790088372544	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78636	1790088372557	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78637	1790088395813	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392392, lon=-48.9137403
 78638	1790088448292	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.739221666666666, lon=-48.913745
 78639	1790088472123	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78640	1790088472140	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392392, lon=-48.9137403
-78641	1790088472213	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-78642	1790088472230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+78641	1790088472213	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+78642	1790088472230	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 78643	1790088554134	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73915, lon=-48.9139041
-78659	1790088664949	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78659	1790088664949	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78660	1790088664974	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 78661	1790088665083	1	46	46	192.168.1.100	DEBUG	4	Update configuration by MainActivity
 78678	1790088694899	1	46	87	192.168.1.100	INFO	3	Encerrando a sessao anterior antes de abrir a nova
-78679	1790088694915	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=QoAsRaTixTf8T8BY5vONbnwswta3CyZj
+78679	1790088694915	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=QoAsRaTixTf8T8BY5vONbnwswta3CyZj
 78683	1790088698454	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78684	1790088739316	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393646, lon=-48.9137559
 78686	1790088808810	1	46	46	192.168.1.100	INFO	3	Got Push Message, type configUpdated
@@ -13997,7 +13997,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78717	1790088916472	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78718	1790088916508	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78719	1790088916514	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78720	1790088916520	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78720	1790088916520	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78721	1790088916665	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 78722	1790088918228	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 78725	1790088919673	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
@@ -14022,8 +14022,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78755	1790089844963	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78757	1790089858214	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78758	1790089858234	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78759	1790089858244	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-78761	1790089860095	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=TI7E14toegMNmIJGQlOt13FDLEOEXPhb
+78759	1790089858244	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78761	1790089860095	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=TI7E14toegMNmIJGQlOt13FDLEOEXPhb
 78762	1790089860158	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 78763	1790089860518	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 78764	1790089860524	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -14042,7 +14042,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78787	1790090484284	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391414, lon=-48.9138578
 78788	1790090486691	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 78789	1790090486701	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-78790	1790090486706	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78790	1790090486706	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78794	1790090489034	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 78795	1790090489038	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 78797	1790090518749	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.739283333333333, lon=-48.913875000000004
@@ -14075,7 +14075,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78768	1790089974199	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137446
 78770	1790090060959	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78783	1790090334285	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391414, lon=-48.9138578
-78792	1790090488601	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=-GxtzmudgWztcsRkZcRXYY3isKPXe953
+78792	1790090488601	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=-GxtzmudgWztcsRkZcRXYY3isKPXe953
 78793	1790090488643	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 78796	1790090491700	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78803	1790090649404	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14141,7 +14141,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78945	1790095269034	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78949	1790095401023	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78980	1790096489267	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739162, lon=-48.9138962
-78992	1790096733467	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=CekupCbFgq9z2q20t8X3YJukZa9w-7W-
+78992	1790096733467	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=CekupCbFgq9z2q20t8X3YJukZa9w-7W-
 78993	1790096733518	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 78997	1790096740946	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739162, lon=-48.9138962
 79000	1790096767749	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
@@ -14218,7 +14218,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 78978	1790096400165	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 78984	1790096609478	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739162, lon=-48.9138962
 78988	1790096730329	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
-78990	1790096730352	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+78990	1790096730352	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 78998	1790096763527	1	46	46	192.168.1.100	INFO	3	Configuration updated
 78999	1790096763562	1	46	46	192.168.1.100	INFO	3	Device owner: true
 79001	1790096793200	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
@@ -14282,7 +14282,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79126	1790101060172	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393578, lon=-48.9137471
 79132	1790101119763	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393578, lon=-48.9137471
 79133	1790101179873	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393578, lon=-48.9137471
-79139	1790101189101	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=lehUdwLooULfRWGVVH3symG_fbM_ukdq
+79139	1790101189101	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=lehUdwLooULfRWGVVH3symG_fbM_ukdq
 79140	1790101189143	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79141	1790101189557	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79142	1790101189561	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -14296,13 +14296,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79185	1790102544058	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
 79193	1790102764211	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79194	1790102764225	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79195	1790102764236	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79195	1790102764236	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79200	1790102789660	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79201	1790102789667	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 79206	1790102967026	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79208	1790102985028	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79209	1790102985044	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79210	1790102985049	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79210	1790102985049	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79212	1790102990041	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79219	1790103122054	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79220	1790103132939	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
@@ -14427,7 +14427,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79134	1790101185030	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79135	1790101186380	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79136	1790101186388	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79137	1790101186393	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79137	1790101186393	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79144	1790101257128	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79145	1790101267633	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393578, lon=-48.9137471
 79149	1790101389023	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14442,13 +14442,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79188	1790102643025	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79189	1790102664067	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
 79197	1790102769222	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79198	1790102789033	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=UjCW_daBzqbqA267rozapaVW_6tpU9zo
+79198	1790102789033	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=UjCW_daBzqbqA267rozapaVW_6tpU9zo
 79199	1790102789087	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79202	1790102814081	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
 79203	1790102835027	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79205	1790102922899	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
 79207	1790102982899	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
-79213	1790102990694	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=7JaW96TWR_fbiJGPvcvEA4pxozflyJmY
+79213	1790102990694	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=7JaW96TWR_fbiJGPvcvEA4pxozflyJmY
 79214	1790102990764	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79217	1790103042906	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393653, lon=-48.9137389
 79221	1790103188026	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14475,8 +14475,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79250	1790104149157	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79252	1790104209161	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79254	1790104255588	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-79256	1790104255607	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-79257	1790104255695	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+79256	1790104255607	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+79257	1790104255695	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 79255	1790104602577	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79258	1790104269169	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79259	1790104326774	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14489,21 +14489,21 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79266	1790104693202	1	46	46	192.168.1.100	INFO	3	Device owner: true
 79267	1790104694578	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 79268	1790104735604	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79269	1790104746431	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+79269	1790104746431	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 79270	1790104421077	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79271	1790104481187	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79272	1790104533560	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79273	1790104571025	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
-79274	1790104746457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+79274	1790104746457	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 79275	1790104781062	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392923, lon=-48.913774
 79276	1790104806467	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79277	1790104806514	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-79278	1790104806540	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+79277	1790104806514	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+79278	1790104806540	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 79279	1790104930802	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73936, lon=-48.9137418
 79280	1790104969007	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79281	1790104991916	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73936, lon=-48.9137418
-79282	1790105005654	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-79283	1790105005675	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+79282	1790105005654	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+79283	1790105005675	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 79284	1790105142258	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73936, lon=-48.9137418
 79285	1790105170857	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79286	1790105203368	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.73936, lon=-48.9137418
@@ -14539,7 +14539,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79328	1790106762771	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79341	1790107268942	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79344	1790107472370	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
-79355	1790192.168.1.65	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
+79355	1790172.16.24.70	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393511, lon=-48.9137432
 79365	1790108390190	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 79380	1790111770098	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393498, lon=-48.9137386
 79395	1790113875282	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14899,7 +14899,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79698	1790164016687	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 79706	1790164170693	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79707	1790164261684	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393525, lon=-48.9137457
-79717	1790164511404	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=l2eGa8gU2vejVA9xytF2Cikfo5i5NLl6
+79717	1790164511404	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=l2eGa8gU2vejVA9xytF2Cikfo5i5NLl6
 79719	1790164512184	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79720	1790164512196	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 79723	1790164579481	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14911,7 +14911,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79755	1790165643334	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393475, lon=-48.9137689
 79765	1790166003377	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393475, lon=-48.9137689
 79768	1790166097476	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79775	1790166182017	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=2dfSdG0KhYOtJSwaS7jLHfJ_uFcrkrtr
+79775	1790166182017	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=2dfSdG0KhYOtJSwaS7jLHfJ_uFcrkrtr
 79777	1790166182415	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79778	1790166182419	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 79783	1790166270353	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393572, lon=-48.9137431
@@ -14922,7 +14922,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79815	1790167261503	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
 79818	1790167371255	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79819	1790167371268	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79820	1790167371276	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79820	1790167371276	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79824	1790167375003	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79825	1790167375008	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 79826	1790167376262	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -14967,7 +14967,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79704	1790164104642	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79713	1790164508232	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79714	1790164508244	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79715	1790164508250	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79715	1790164508250	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79721	1790164513241	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79725	1790164645528	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79732	1790164863284	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393525, lon=-48.9137457
@@ -15037,7 +15037,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79770	1790166163528	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79771	1790166177474	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79772	1790166177485	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79773	1790166177491	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79773	1790166177491	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79774	1790166177652	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 79779	1790166182484	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79780	1790166202665	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
@@ -15054,10 +15054,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79802	1790167130703	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
 79803	1790167143506	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79806	1790167237448	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-79822	1790167374228	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=N6eJIK6hX8zQ7olyHaLk-sWK9yBTwuOI
+79822	1790167374228	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=N6eJIK6hX8zQ7olyHaLk-sWK9yBTwuOI
 79823	1790167374587	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79837	1790167741305	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
-79838	1790167751656	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=WdatUy7A7DWyoheyVuXvvoPOZuqqxk_B
+79838	1790167751656	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=WdatUy7A7DWyoheyVuXvvoPOZuqqxk_B
 79839	1790167751700	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79840	1790167751854	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 752x1280: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 79841	1790167751881	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
@@ -15087,18 +15087,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80045	1790171003791	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80046	1790171004083	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80047	1790171004092	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80048	1790171004097	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-80050	1790171006496	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=_rKTU1cy_HCssRCVccmCdiFqzhg3xWIJ
+80048	1790171004097	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80050	1790171006496	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=_rKTU1cy_HCssRCVccmCdiFqzhg3xWIJ
 80056	1790171074529	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80064	1790171348558	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80065	1790171384255	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 79804	1790167201446	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
 79807	1790167237343	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79808	1790167237354	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79809	1790167237358	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79809	1790167237358	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79817	1790167321478	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
 79805	1790167209779	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79810	1790167239476	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=OuY8Ja1jq7lqfh0AU8Up_syJjbrfBFdu
+79810	1790167239476	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=OuY8Ja1jq7lqfh0AU8Up_syJjbrfBFdu
 79811	1790167239526	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79821	1790167371575	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 79827	1790167376262	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -15109,14 +15109,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79832	1790167531311	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393733, lon=-48.9137365
 79833	1790167577371	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79834	1790167577387	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79835	1790167577399	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79835	1790167577399	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79836	1790167577486	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 79857	1790168025016	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79858	1790168025023	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 79859	1790168025026	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79860	1790168025033	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79860	1790168025033	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79861	1790168025094	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-79862	1790168026560	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=VGj7tiBsS8tKyynJ-C-IjosMxLHgjWwQ
+79862	1790168026560	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=VGj7tiBsS8tKyynJ-C-IjosMxLHgjWwQ
 79863	1790168027966	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79864	1790168028209	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79865	1790168028212	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -15131,7 +15131,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79874	1790168059596	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392586, lon=-48.9138446
 79875	1790168072168	1	46	87	192.168.1.100	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
 79876	1790168072326	1	46	87	192.168.1.100	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
-79877	1790168072493	1	46	87	192.168.1.100	INFO	3	Vinculado ao MDM: R9XT200AMYY @ http://192.168.1.65:8080
+79877	1790168072493	1	46	87	192.168.1.100	INFO	3	Vinculado ao MDM: R9XT200AMYY @ http://172.16.24.70:8080
 79878	1790168072509	1	46	46	192.168.1.100	VERBOSE	5	Request location updates. gps=true, network=true, passive=true
 79879	1790168072563	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79880	1790168072948	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392586, lon=-48.9138446
@@ -15144,8 +15144,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79888	1790168410693	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393676, lon=-48.9137501
 79890	1790168420707	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79891	1790168420718	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79892	1790168420729	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-79894	1790168423175	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=OJIcCG0iDc0D69GcN5NLEcjvsbH6fO24
+79892	1790168420729	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79894	1790168423175	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=OJIcCG0iDc0D69GcN5NLEcjvsbH6fO24
 79895	1790168423255	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79896	1790168423934	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79897	1790168423940	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -15171,7 +15171,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80036	1790170998772	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80037	1790170998781	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 80038	1790170998782	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80039	1790170998793	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80039	1790170998793	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80042	1790171000944	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 80052	1790171007590	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80053	1790171007595	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -15180,7 +15180,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80066	1790171414509	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79916	1790168479073	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79917	1790168479081	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79918	1790168479085	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79918	1790168479085	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79919	1790168479116	1	46	46	192.168.1.100	INFO	3	Configuration updated
 79935	1790168629608	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79949	1790168663560	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
@@ -15198,9 +15198,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79991	1790169641812	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79993	1790169718706	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393433, lon=-48.9137528
 79996	1790170145162	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79997	1790170145169	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79997	1790170145169	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 79998	1790170145260	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-79999	1790170147382	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=f8rtMtp4kLXzzrR8xxLFrfd9F7o-8-_V
+79999	1790170147382	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=f8rtMtp4kLXzzrR8xxLFrfd9F7o-8-_V
 80000	1790170147436	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 80001	1790170147767	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80002	1790170147772	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -15215,7 +15215,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80059	1790171174253	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80061	1790171234256	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80429	1790181029934	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-80432	1790181037122	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=VzBkW6U83DoLA0L4KjMQYdWrqxkXQdCN
+80432	1790181037122	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=VzBkW6U83DoLA0L4KjMQYdWrqxkXQdCN
 80434	1790181037617	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80435	1790181037625	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 80437	1790181100634	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -15239,18 +15239,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80535	1790184081432	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391417, lon=-48.9138905
 80558	1790184862594	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80067	1790171438881	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-80068	1790171438987	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80069	1790171439042	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80068	1790171438987	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80069	1790171439042	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80070	1790171444263	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80071	1790171535743	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
-80072	1790171535965	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /192.168.1.65:8080
+80072	1790171535965	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /172.16.24.70:8080
 80073	1790171558717	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80074	1790171558764	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80075	1790171558785	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80074	1790171558764	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80075	1790171558785	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80076	1790171596854	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80105	1790172488009	1	46	46	192.168.1.100	INFO	3	Silently installing app com.hmdm.launcher 1.1
 80112	1790172500532	1	46	87	192.168.1.100	INFO	3	Agente de suporte no ar; gatilho registrado em com.hmdm.push.remoteScreenStart
-80113	1790172500541	1	46	87	192.168.1.100	INFO	3	Vinculado ao MDM: R9XT200AMYY @ http://192.168.1.65:8080
+80113	1790172500541	1	46	87	192.168.1.100	INFO	3	Vinculado ao MDM: R9XT200AMYY @ http://172.16.24.70:8080
 80114	1790172501573	1	46	87	192.168.1.100	INFO	3	Acessibilidade CONECTADA: toque e digitacao remotos disponiveis
 80120	1790172651553	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80122	1790172765745	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
@@ -15272,7 +15272,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80233	1790175146420	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391576, lon=-48.9138803
 80234	1790175209192	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391652, lon=-48.9138634
 80235	1790175368904	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391889, lon=-48.9138098
-80236	1790175371532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : timeout
+80236	1790175371532	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : timeout
 80238	1790175431053	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392032, lon=-48.9137687
 80239	1790175490587	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80256	1790176073870	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
@@ -15282,7 +15282,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80279	1790176233455	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80280	1790176233505	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80281	1790176233513	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80282	1790176233517	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80282	1790176233517	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80291	1790176369506	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
 80296	1790176502458	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80299	1790176634560	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -15295,13 +15295,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80320	1790177329498	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391739, lon=-48.9138913
 80329	1790177629590	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391739, lon=-48.9138913
 80077	1790171618794	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80078	1790171618824	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://192.168.1.65:8080 : HTTP status 404
+80078	1790171618824	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://172.16.24.70:8080 : HTTP status 404
 80079	1790171747729	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80080	1790171788780	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80081	1790171788808	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://192.168.1.65:8080 : HTTP status 404
+80081	1790171788808	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://172.16.24.70:8080 : HTTP status 404
 80082	1790171808834	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80083	1790171853815	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80084	1790171853844	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://192.168.1.65:8080 : HTTP status 404
+80084	1790171853844	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://172.16.24.70:8080 : HTTP status 404
 80085	1790171912735	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392905, lon=-48.9138195
 80086	1790172012865	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80088	1790172380780	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
@@ -15317,7 +15317,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80118	1790172562077	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80132	1790173158381	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80134	1790173158390	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80135	1790173158394	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80135	1790173158394	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80142	1790173175646	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392037, lon=-48.913845
 80149	1790173362269	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392037, lon=-48.913845
 80150	1790173422273	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392037, lon=-48.913845
@@ -15338,7 +15338,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80245	1790175754725	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80246	1790175799696	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
 80250	1790176009716	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
-80271	1790176099094	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Gepk9rLLFI28R0AHEgBNetD7Vm9lRT1w
+80271	1790176099094	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Gepk9rLLFI28R0AHEgBNetD7Vm9lRT1w
 80272	1790176099127	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 80294	1790176436515	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80295	1790176489513	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
@@ -15354,16 +15354,16 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80338	1790177954512	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80339	1790177989586	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391641, lon=-48.9138704
 80430	1790181031263	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
-80087	1790172012915	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://192.168.1.65:8080 : HTTP status 404
+80087	1790172012915	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://172.16.24.70:8080 : HTTP status 404
 80093	1790172019516	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80094	1790172035007	1	46	87	192.168.1.100	WARNING	2	Servidor recusou o endereco 192.168.1.100 (HTTP 404)
 80095	1790172169767	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80096	1790172182874	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80097	1790172182935	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://192.168.1.65:8080 : HTTP status 404
+80097	1790172182935	1	46	46	192.168.1.100	WARNING	2	Wrong response while querying push notifications from http://172.16.24.70:8080 : HTTP status 404
 80098	1790172230881	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80099	1790172247943	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80100	1790172248001	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80101	1790172248030	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80100	1790172248001	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80101	1790172248030	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80109	1790172498544	1	46	46	192.168.1.100	DEBUG	4	App com.hwmdm.remote installed successfully
 80110	1790172498839	1	46	46	192.168.1.100	INFO	3	Launched app after install: com.hwmdm.remote
 80111	1790172500426	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
@@ -15391,7 +15391,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80261	1790176094856	1	46	46	192.168.1.100	DEBUG	4	Push notifications enqueued: 15 mins
 80267	1790176096990	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80268	1790176097000	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80269	1790176097004	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80269	1790176097004	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80270	1790176097065	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 80277	1790176167506	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80278	1790176219349	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
@@ -15481,7 +15481,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80123	1790172768417	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80124	1790172826858	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393516, lon=-48.9137669
 80131	1790173135383	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80137	1790173161439	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=acit3aHlwTrViS-azLxTSS-xCXcBpzjy
+80137	1790173161439	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=acit3aHlwTrViS-azLxTSS-xCXcBpzjy
 80139	1790173162158	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80140	1790173162163	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 80145	1790173256745	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.739206666666668, lon=-48.91370333333332
@@ -15542,14 +15542,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80196	1790174855211	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393544, lon=-48.9137483
 80253	1790176073727	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80254	1790176073738	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80255	1790176073744	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80255	1790176073744	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80257	1790176076953	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 80258	1790176076986	1	46	87	192.168.1.100	WARNING	2	Sessao recusada: consentimento negado pelo usuario no aparelho
 80264	1790176096096	1	46	46	192.168.1.100	INFO	3	Configuration updated
 80265	1790176096181	1	46	46	192.168.1.100	INFO	3	Device owner: true
 80273	1790176099572	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80274	1790176099575	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
-80284	1790176237395	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=3zgA3KPrAw4AxxAadUqN4ca9wxdQXt1K
+80284	1790176237395	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=3zgA3KPrAw4AxxAadUqN4ca9wxdQXt1K
 80285	1790176237430	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 80289	1790176279357	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391587, lon=-48.913878
 80292	1790176370467	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -15662,8 +15662,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 81079	1790201394393	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80194	1790174795207	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393544, lon=-48.9137483
 80197	1790174880348	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80344	1790178135603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80345	1790178135638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80344	1790178135603	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80345	1790178135638	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80346	1790178169705	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391641, lon=-48.9138704
 80347	1790178195650	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80348	1790178259875	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391641, lon=-48.9138704
@@ -15846,8 +15846,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 81227	1790206097201	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393491, lon=-48.9137498
 81232	1790206278428	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80367	1790179086783	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80653	1790187943290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80654	1790187943331	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80653	1790187943290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80654	1790187943331	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80655	1790188002941	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393589, lon=-48.9137515
 80656	1790188003347	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80657	1790188071761	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393589, lon=-48.9137515
@@ -15908,12 +15908,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 81217	1790205767188	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393491, lon=-48.9137498
 80368	1790179139882	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391641, lon=-48.9138704
 80663	1790188233739	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80664	1790188233746	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80664	1790188233746	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80665	1790188233842	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 80666	1790188235514	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
 80667	1790188238738	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80668	1790188241223	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393589, lon=-48.9137515
-80669	1790188264761	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=kxe66P40w4479_dhq_Ed1rbxW5JU7Rev
+80669	1790188264761	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=kxe66P40w4479_dhq_Ed1rbxW5JU7Rev
 80670	1790188264808	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 80671	1790188265166	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80672	1790188265173	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -15922,7 +15922,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80698	1790189144778	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
 80704	1790189296995	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80705	1790189297010	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80706	1790189297017	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80706	1790189297017	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80708	1790189302005	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80709	1790189349976	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
 80711	1790189409982	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
@@ -15970,8 +15970,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 81139	1790203246918	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393374, lon=-48.9137604
 80369	1790179386468	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391897, lon=-48.913843
 80370	1790179390781	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80371	1790179444596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-80372	1790179444616	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80371	1790179444596	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+80372	1790179444616	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80373	1790179461194	1	46	46	192.168.1.100	VERBOSE	5	GPS location update: lat=-20.74318333333333, lon=-48.90577499999999
 80374	1790179462660	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391809, lon=-48.9138298
 80375	1790179504628	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -16090,15 +16090,15 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 81136	1790203156929	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393374, lon=-48.9137604
 81148	1790203572325	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80389	1790179153038	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-80390	1790179161361	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80391	1790179161391	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80390	1790179161361	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80391	1790179161391	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80392	1790179206152	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391897, lon=-48.913843
 80393	1790179221402	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80394	1790179266254	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391897, lon=-48.913843
 80395	1790179286982	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80396	1790179326363	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391897, lon=-48.913843
-80397	1790179330736	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-80398	1790179330764	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+80397	1790179330736	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+80398	1790179330764	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 80405	1790180268204	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80424	1790180958803	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391648, lon=-48.9138628
 80692	1790188931150	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393589, lon=-48.9137515
@@ -16107,7 +16107,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80724	1790189830090	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
 80727	1790189961386	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80728	1790189980077	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
-80731	1790190081961	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=H89JlrEH3lEWNRKn7ADqPma_p42x-lTD
+80731	1790190081961	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=H89JlrEH3lEWNRKn7ADqPma_p42x-lTD
 80733	1790190082426	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 80734	1790190082430	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 80738	1790190189865	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137432
@@ -16366,7 +16366,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80425	1790181007310	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80426	1790181029789	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80427	1790181029800	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-80428	1790181029810	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+80428	1790181029810	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 80431	1790181034798	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80439	1790181166587	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80448	1790181486367	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7391648, lon=-48.9138628
@@ -16398,7 +16398,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80539	1790184202594	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82556	1790248346426	1	46	46	192.168.1.100	INFO	3	Device owner: true
 79912	1790168477288	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-79923	1790168481677	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=I-lRJXzwhhwp8LvtWBjVFDSPQOoSdfo3
+79923	1790168481677	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=I-lRJXzwhhwp8LvtWBjVFDSPQOoSdfo3
 79924	1790168481758	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79925	1790168482281	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 79926	1790168482299	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -16411,15 +16411,15 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 79939	1790168651136	1	46	46	192.168.1.100	INFO	3	Device owner: true
 79943	1790168660386	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79944	1790168660506	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79945	1790168660514	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-79947	1790168663235	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=CEF5eD7Za39YtpEsvohlwjSf1h6FC_XA
+79945	1790168660514	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79947	1790168663235	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=CEF5eD7Za39YtpEsvohlwjSf1h6FC_XA
 79948	1790168663261	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79952	1790168731498	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79960	1790168995495	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79961	1790168995733	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 79962	1790168995741	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-79963	1790168995746	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-79965	1790168998074	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=cI4rwhasUT8fFHM9J6x6C0SwuVAgx4vF
+79963	1790168995746	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+79965	1790168998074	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=cI4rwhasUT8fFHM9J6x6C0SwuVAgx4vF
 79966	1790168998130	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 79975	1790169202496	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 79979	1790169334501	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -16436,7 +16436,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 80015	1790170107613	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 80016	1790170145152	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 80040	1790170998886	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-80041	1790171000763	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=lmxYCy-0JPzLthf94hz-BNniNM0__SKR
+80041	1790171000763	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=lmxYCy-0JPzLthf94hz-BNniNM0__SKR
 80043	1790171001081	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 752x1280: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 80044	1790171001091	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
 80051	1790171007371	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
@@ -17703,9 +17703,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82504	1790247990495	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82505	1790247990652	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82506	1790247990662	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82507	1790247990668	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82507	1790247990668	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82508	1790247990860	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82509	1790247993699	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=r91hI7snawjSKUJsdK8EF6BQO3KZM_ah
+82509	1790247993699	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=r91hI7snawjSKUJsdK8EF6BQO3KZM_ah
 82510	1790247993731	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82511	1790247994418	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82512	1790247994430	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17713,9 +17713,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82514	1790248014541	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393462, lon=-48.9137572
 82515	1790248035270	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82516	1790248035293	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82517	1790248035298	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82517	1790248035298	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82518	1790248035399	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82519	1790248037749	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=bbx3HHEqrMI7AIAUnJUzf5dfNHEHe_Os
+82519	1790248037749	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=bbx3HHEqrMI7AIAUnJUzf5dfNHEHe_Os
 82520	1790248037805	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82521	1790248038212	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82522	1790248038229	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17723,17 +17723,17 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82524	1790248074541	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393462, lon=-48.9137572
 82525	1790248105491	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82526	1790248146427	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-82527	1790248146458	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82528	1790248146535	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82527	1790248146458	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82528	1790248146535	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82529	1790248164595	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393462, lon=-48.9137572
 82530	1790248206540	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82531	1790248206714	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82532	1790248206725	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 82667	1790251092111	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
-82533	1790248206731	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82533	1790248206731	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82534	1790248206815	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 82535	1790248208470	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
-82536	1790248209175	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=x5HnIcQvDQtggMQrtCSx36YiFiY2WC01
+82536	1790248209175	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=x5HnIcQvDQtggMQrtCSx36YiFiY2WC01
 82537	1790248209226	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82538	1790248209711	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82539	1790248209716	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17741,9 +17741,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82541	1790248224597	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393462, lon=-48.9137572
 82542	1790248231870	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82543	1790248231882	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82544	1790248231888	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82544	1790248231888	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82545	1790248232001	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82546	1790248235929	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=q-jYgg3jg6pD_SnzDSkuNU60hoihLgLn
+82546	1790248235929	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=q-jYgg3jg6pD_SnzDSkuNU60hoihLgLn
 82547	1790248235970	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82548	1790248236304	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82549	1790248236308	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17754,7 +17754,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82554	1790248345947	1	46	46	192.168.1.100	DEBUG	4	Update configuration by MainActivity
 82555	1790248346389	1	46	46	192.168.1.100	INFO	3	Configuration updated
 82576	1790248495267	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82577	1790248497602	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=gx_6Cmx2oMVc7-N9AEqiN8F2ihyosSnY
+82577	1790248497602	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=gx_6Cmx2oMVc7-N9AEqiN8F2ihyosSnY
 82578	1790248497658	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82579	1790248498018	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82580	1790248498025	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17796,9 +17796,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82559	1790248350944	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82560	1790248367539	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82561	1790248367557	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82562	1790248367572	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82562	1790248367572	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82563	1790248367660	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82564	1790248369265	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=J7JmmGZTLr6sNYxxVmoWC3517eDywmEW
+82564	1790248369265	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=J7JmmGZTLr6sNYxxVmoWC3517eDywmEW
 82565	1790248369298	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82566	1790248369619	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82567	1790248369624	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17809,7 +17809,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82572	1790248494607	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393462, lon=-48.9137572
 82573	1790248495140	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82574	1790248495155	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82575	1790248495163	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82575	1790248495163	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82605	1790249161862	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82606	1790249214593	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392954, lon=-48.9138064
 82611	1790249361791	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -17836,7 +17836,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82660	1790251015634	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82663	1790251090463	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82664	1790251090472	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82665	1790251090477	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82665	1790251090477	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82668	1790251092482	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82669	1790251092495	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 82670	1790251095471	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -17873,7 +17873,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82647	1790250594739	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393363, lon=-48.9137582
 82654	1790250816877	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82662	1790251090563	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82666	1790251092023	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=n14HqqypYxch4kgl1ThApvSm6uE0Eqm-
+82666	1790251092023	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=n14HqqypYxch4kgl1ThApvSm6uE0Eqm-
 82671	1790251104809	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393363, lon=-48.9137582
 82678	1790251361797	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82679	1790251376463	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392955, lon=-48.9137661
@@ -17898,8 +17898,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82703	1790251927012	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82710	1790252144833	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82711	1790252144843	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82712	1790252144849	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-82714	1790252146776	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=9BAxtACsZkbUCsLmgxbtN3B3lFdsYAIS
+82712	1790252144849	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82714	1790252146776	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=9BAxtACsZkbUCsLmgxbtN3B3lFdsYAIS
 82715	1790252146811	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82723	1790252206315	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
 82728	1790252347793	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -17910,8 +17910,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82677	1790251314823	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393363, lon=-48.9137582
 82695	1790251922000	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82696	1790251922015	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82697	1790251922026	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-82699	1790251924347	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=6mfLLguO933BWkYZvsUijxoDSNr2LPA9
+82697	1790251922026	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82699	1790251924347	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=6mfLLguO933BWkYZvsUijxoDSNr2LPA9
 82701	1790251924794	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82702	1790251924799	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 82708	1790252115188	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392955, lon=-48.9137661
@@ -17969,9 +17969,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82773	1790253932793	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82774	1790253942139	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82775	1790253942151	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82776	1790253942158	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82776	1790253942158	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82777	1790253942391	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82778	1790253944948	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=-Crz_x3i515uzMrvmFHb-CTgqySXbtF-
+82778	1790253944948	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=-Crz_x3i515uzMrvmFHb-CTgqySXbtF-
 82779	1790253944980	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82780	1790253945415	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82781	1790253945430	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -17981,12 +17981,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82785	1790254028450	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
 82786	1790254041604	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82787	1790254041612	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82788	1790254041617	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82788	1790254041617	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82803	1790254238107	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82814	1790254448447	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
 82828	1790254941698	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
 82789	1790254041716	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82790	1790254043209	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=6e1oXg4XzkxzfJvt3sbLoLfE7llCrKxK
+82790	1790254043209	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=6e1oXg4XzkxzfJvt3sbLoLfE7llCrKxK
 82791	1790254043244	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82794	1790254046610	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82804	1790254238527	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
@@ -17996,12 +17996,12 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82793	1790254043568	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 82799	1790254233095	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82800	1790254233109	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82801	1790254233121	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82801	1790254233121	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82813	1790254435843	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82820	1790254658470	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
 82795	1790254088453	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
 82798	1790254181826	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-82805	1790254242125	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=x5fxH1FMjDih7uPyCDz5F9_e3YCYHgk0
+82805	1790254242125	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=x5fxH1FMjDih7uPyCDz5F9_e3YCYHgk0
 82806	1790254242160	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82810	1790254303795	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82817	1790254568794	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18009,8 +18009,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82827	1790254900842	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82830	1790255003542	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82831	1790255003559	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82832	1790255003568	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-82834	1790255005527	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=BgPajGDQrW18YGXAINlEFBHdzvJXi2gL
+82832	1790255003568	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82834	1790255005527	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=BgPajGDQrW18YGXAINlEFBHdzvJXi2gL
 82835	1790255005580	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82796	1790254115795	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82797	1790254178525	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393586, lon=-48.9137525
@@ -18034,9 +18034,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82838	1790255008557	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82839	1790255017139	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82840	1790255017151	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82841	1790255017155	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82841	1790255017155	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82842	1790255017245	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82843	1790255018959	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=67ETgSdZpCr9CjOnqaPYwPUt78rGyw61
+82843	1790255018959	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=67ETgSdZpCr9CjOnqaPYwPUt78rGyw61
 82844	1790255019017	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82845	1790255019372	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82846	1790255019380	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
@@ -18046,32 +18046,32 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82850	1790255100151	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82851	1790255153796	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82852	1790255160186	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketException: Connection reset
-82853	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82854	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82853	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82854	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82855	1790255191898	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82856	1790255220295	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-82857	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82858	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82857	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82858	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82859	1790255252005	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82860	1790255280375	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82861	1790255312110	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82862	1790255160186	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketException: Connection reset
-82863	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82864	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82863	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82864	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82865	1790255191898	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82866	1790255220295	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-82867	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82868	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82867	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82868	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82869	1790255252005	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82870	1790255280375	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82871	1790255312110	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82872	1790255160186	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.net.SocketException: Connection reset
-82873	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82874	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82873	1790255160211	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82874	1790255160290	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82875	1790255191898	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82880	1790255220295	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-82881	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82882	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82881	1790255220339	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82882	1790255220363	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82883	1790255252005	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82884	1790255280375	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82885	1790255312110	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
@@ -18115,9 +18115,9 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82897	1790255468054	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82898	1790255493091	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82899	1790255493105	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82900	1790255493114	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82900	1790255493114	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82901	1790255493243	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82902	1790255494697	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=RmZg12po9lgb_r2cRwtwuPlSSb4MiwV1
+82902	1790255494697	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=RmZg12po9lgb_r2cRwtwuPlSSb4MiwV1
 82903	1790255494755	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82962	1790256806085	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82963	1790256872172	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
@@ -18137,7 +18137,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83005	1790258265346	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83008	1790258397341	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83013	1790258552407	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393494, lon=-48.9137609
-83020	1790258606542	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Fzn0fdKj4LqGVa4RZ8fvFSoL2aRxdQip
+83020	1790258606542	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Fzn0fdKj4LqGVa4RZ8fvFSoL2aRxdQip
 83021	1790258606619	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83036	1790259008264	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83037	1790259032306	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392786, lon=-48.9137783
@@ -18171,14 +18171,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82906	1790255522189	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82907	1790255539938	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82908	1790255539958	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82909	1790255539974	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82909	1790255539974	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82910	1790255540062	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-82911	1790255542314	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=_0lU_4h1CcflZ7ObRQ-csBi4pn5M_jRO
+82911	1790255542314	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=_0lU_4h1CcflZ7ObRQ-csBi4pn5M_jRO
 82912	1790255542374	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 82942	1790256311893	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-82943	1790256311945	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82944	1790256311968	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82945	1790256327531	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /192.168.1.65:8080
+82943	1790256311945	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82944	1790256311968	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82945	1790256327531	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /172.16.24.70:8080
 82946	1790256362314	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
 82947	1790256371978	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82948	1790256452146	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
@@ -18221,8 +18221,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83112	1790261402484	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
 83113	1790261450331	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83114	1790261492462	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
-86345	1790358583845	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-86346	1790358583865	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+86345	1790358583845	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+86346	1790358583865	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82879	1790255542675	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 82913	1790255542680	1	46	87	192.168.1.100	INFO	3	Transmitindo 1280x752 com toque
 82914	1790255544959	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18244,14 +18244,14 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82930	1790255941840	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82931	1790256008302	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82952	1790256572353	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
-82953	1790256581555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82954	1790256581577	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82953	1790256581555	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82954	1790256581577	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82955	1790256641587	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82956	1790256662138	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
 82957	1790256707101	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82958	1790256722240	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
-82959	1790256746050	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82960	1790256746074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82959	1790256746050	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82960	1790256746074	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82961	1790256782345	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
 82970	1790257082168	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
 82979	1790257401283	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18261,7 +18261,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83012	1790258533433	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83015	1790258602775	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83016	1790258602788	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83017	1790258602796	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83017	1790258602796	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 83034	1790258938324	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83040	1790259140236	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83042	1790259206234	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18291,10 +18291,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86358	1790358988857	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 86359	1790358988859	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 86360	1790358988865	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
-86361	1790358988867	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86361	1790358988867	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86362	1790358988951	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86363	1790358988969	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86364	1790358988975	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86364	1790358988975	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86389	1790359255547	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
 86392	1790359360485	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86393	1790359375562	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
@@ -18307,13 +18307,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86366	1790358990266	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
 86367	1790358993875	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86368	1790359046039	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
-86369	1790359058615	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=0OyLCCKlSLmNLIuXEGpGdUNi7_oKiKb0
+86369	1790359058615	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=0OyLCCKlSLmNLIuXEGpGdUNi7_oKiKb0
 86370	1790359058670	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86371	1790359058831	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 752x1280: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 86372	1790359058839	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
 86373	1790359059487	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86375	1790359072397	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86378	1790359072483	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86378	1790359072483	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86384	1790359077477	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86385	1790359106046	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
 86386	1790359143560	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18325,8 +18325,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86376	1790359072467	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86377	1790359072476	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 86387	1790359166043	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
-83120	1790261657499	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-83121	1790261657519	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83120	1790261657499	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+83121	1790261657519	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83122	1790261702701	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
 83123	1790261717526	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83124	1790261762807	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
@@ -18344,8 +18344,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86402	1790359690585	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83130	1790261972860	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
 83131	1790261982618	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-83132	1790261994220	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-83133	1790261994242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83132	1790261994220	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+83133	1790261994242	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83134	1790262032967	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393519, lon=-48.9137433
 83135	1790262054254	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83136	1790262120654	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18356,7 +18356,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83156	1790262780629	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83157	1790262832234	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393203, lon=-48.9137725
 83166	1790263006054	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
-86380	1790359075133	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=XyUadk9p9MXMbO5cNTFvYv--OJzIOgRO
+86380	1790359075133	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=XyUadk9p9MXMbO5cNTFvYv--OJzIOgRO
 86381	1790359075184	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86382	1790359075468	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86383	1790359075473	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -18392,8 +18392,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83159	1790262912727	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83161	1790262978775	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86407	1790359840004	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-86408	1790359840019	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-86409	1790359840059	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+86408	1790359840019	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+86409	1790359840059	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 86410	1790359885677	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739271, lon=-48.9137401
 86411	1790359900066	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86412	1790359992025	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393265, lon=-48.9137455
@@ -18404,8 +18404,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86449	1790360243982	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86450	1790360244513	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86451	1790360244528	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86452	1790360244532	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-86454	1790360247459	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=RIvRm13k7RGacCdX27jSbcEL8WQ1rSNX
+86452	1790360244532	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86454	1790360247459	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=RIvRm13k7RGacCdX27jSbcEL8WQ1rSNX
 86456	1790360247800	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86457	1790360247809	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 86459	1790360265044	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393265, lon=-48.9137455
@@ -18418,10 +18418,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86419	1790360210612	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 86420	1790360210613	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 86421	1790360210620	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
-86422	1790360210622	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86422	1790360210622	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86423	1790360210717	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86424	1790360210727	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86425	1790360210733	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86425	1790360210733	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86426	1790360210764	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86460	1790360315120	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86463	1790360363986	1	46	46	192.168.1.100	INFO	3	Configuration updated
@@ -18432,7 +18432,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83172	1790263192147	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393203, lon=-48.9137725
 83174	1790263252250	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393203, lon=-48.9137725
 86427	1790360211917	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
-86428	1790360212702	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=ibbgi89JzuOAgTG6hZcZOZuGCwYsbGjK
+86428	1790360212702	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=ibbgi89JzuOAgTG6hZcZOZuGCwYsbGjK
 86429	1790360212732	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86430	1790360212872	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 752x1280: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 86431	1790360212879	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
@@ -18441,18 +18441,18 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86458	1790360249527	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86464	1790360364201	1	46	46	192.168.1.100	INFO	3	Device owner: true
 86471	1790360381086	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
-83175	1790263264102	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-83176	1790263264128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83175	1790263264102	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+83176	1790263264128	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83177	1790263324138	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83178	1790263342044	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393203, lon=-48.9137725
 83179	1790263389610	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83180	1790263448430	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 83181	1790263455558	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-83182	1790263475356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-83183	1790263475383	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83182	1790263475356	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+83183	1790263475383	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83184	1790263535394	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-83195	1790263757531	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-83196	1790263757552	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83195	1790263757531	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+83196	1790263757552	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83197	1790263762153	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 83198	1790263817562	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83199	1790263822260	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
@@ -18498,30 +18498,30 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86435	1790360218737	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStop
 86436	1790360218741	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 86437	1790360218742	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
-86438	1790360218745	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86438	1790360218745	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86439	1790360218789	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 83185	1790263552150	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
-83186	1790263557772	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-83187	1790263557793	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83186	1790263557772	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+83187	1790263557793	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83188	1790263612254	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 83189	1790263617805	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-83190	1790263629045	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : unexpected end of stream on http://192.168.1.65:8080/...
-83191	1790263629071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83190	1790263629045	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : unexpected end of stream on http://172.16.24.70:8080/...
+83191	1790263629071	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83192	1790263672358	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 83193	1790263689079	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83194	1790263755185	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83216	1790264360581	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83221	1790264512376	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 86440	1790360218794	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86441	1790360218797	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86441	1790360218797	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86442	1790360218815	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86447	1790360223749	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86462	1790360363246	1	46	46	192.168.1.100	DEBUG	4	Forcing configuration update
 86465	1790360364477	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
 86482	1790360479293	1	46	87	192.168.1.100	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
 83205	1790264032201	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
-83206	1790264036616	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-83207	1790264036639	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+83206	1790264036616	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+83207	1790264036639	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 83208	1790264092306	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
 83209	1790264096650	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83210	1790264162332	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18562,7 +18562,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83393	1790269574345	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83394	1790269598660	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739163, lon=-48.9139209
 83402	1790269904385	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86443	1790360220708	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=t8WfDFm4ewGACeFNrGxOEFq4YnplyfWs
+86443	1790360220708	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=t8WfDFm4ewGACeFNrGxOEFq4YnplyfWs
 86444	1790360220745	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86445	1790360220870	1	46	87	192.168.1.100	ERROR	1	Encoder indisponivel em 752x1280: java.lang.SecurityException: Cannot create VirtualDisplay with non-current MediaProjection
 86446	1790360220878	1	46	87	192.168.1.100	ERROR	1	Sessao falhou: nenhum encoder H.264 utilizavel
@@ -18572,8 +18572,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86467	1790360380610	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86468	1790360380996	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86469	1790360381005	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86470	1790360381010	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-86472	1790360382891	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=lynxYTE1QbeFeBbuY4FkOueXTAkvn7Kp
+86470	1790360381010	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86472	1790360382891	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=lynxYTE1QbeFeBbuY4FkOueXTAkvn7Kp
 86473	1790360382918	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83212	1790264228586	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83213	1790264242262	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
@@ -18581,7 +18581,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83222	1790264558624	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83223	1790264572877	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83224	1790264572904	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83225	1790264572931	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83225	1790264572931	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 83235	1790264649075	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393467, lon=-48.9137571
 83244	1790264754364	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 83245	1790264754370	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -18624,13 +18624,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83414	1790270206247	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
 86479	1790360447648	1	46	87	192.168.1.100	WARNING	2	A tela apagou durante a sessao apesar da janela e do wake lock; reacendendo
 83217	1790264392165	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393327, lon=-48.9137456
-83228	1790264575711	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=sb3K-9hf_ca55zl62cV5RSCHSwXN7PFU
+83228	1790264575711	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=sb3K-9hf_ca55zl62cV5RSCHSwXN7PFU
 83229	1790264575810	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83236	1790264709357	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83238	1790264751694	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83239	1790264751700	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83240	1790264751706	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-83242	1790264753999	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=hnpzXtFaYI8i25O_cla2nz1SQ2P9oEY7
+83240	1790264751706	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83242	1790264753999	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=hnpzXtFaYI8i25O_cla2nz1SQ2P9oEY7
 83243	1790264754033	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83252	1790264954404	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83255	1790265082061	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392658, lon=-48.9137254
@@ -18671,13 +18671,13 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83406	1790270036378	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83415	1790270228726	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392344, lon=-48.9137816
 86483	1790360482034	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-86484	1790360482053	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-86485	1790360482092	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+86484	1790360482053	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+86485	1790360482092	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 86486	1790360625043	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393265, lon=-48.9137455
 86487	1790360641535	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86488	1790360666702	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86489	1790360666712	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86490	1790360666718	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86490	1790360666718	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86491	1790360666810	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86492	1790360668364	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
 86502	1790360806054	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393265, lon=-48.9137455
@@ -18725,7 +18725,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83412	1790270205625	1	46	46	192.168.1.100	INFO	3	Configuration updated
 83413	1790270205649	1	46	46	192.168.1.100	INFO	3	Device owner: true
 83416	1790270234312	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86493	1790360669590	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=UOVZaBgIrMaqYPRlAguzNa5KmnT5WPJc
+86493	1790360669590	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=UOVZaBgIrMaqYPRlAguzNa5KmnT5WPJc
 86494	1790360669644	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86495	1790360669952	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86496	1790360669964	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -18734,8 +18734,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86499	1790360737240	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86514	1790360907347	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86515	1790360907357	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86516	1790360907364	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-86518	1790360908980	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=hzj9fieoUGS5JuUfc9sO9rID2XL5XRlo
+86516	1790360907364	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86518	1790360908980	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=hzj9fieoUGS5JuUfc9sO9rID2XL5XRlo
 86519	1790360909020	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86522	1790360912356	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86523	1790360955553	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393265, lon=-48.9137455
@@ -18751,7 +18751,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83446	1790271049651	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83447	1790271050067	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83448	1790271050071	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83449	1790271050075	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83449	1790271050075	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 83454	1790271053304	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 83455	1790271053312	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 83464	1790271081086	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -18760,7 +18760,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83470	1790271128709	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83471	1790271128893	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83472	1790271128926	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83473	1790271128934	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83473	1790271128934	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 83474	1790271129132	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 83475	1790271130673	1	46	46	192.168.1.100	VERBOSE	5	Update flow completed
 83476	1790271130683	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393535, lon=-48.913743
@@ -18817,7 +18817,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83453	1790271052664	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83457	1790271068922	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393535, lon=-48.913743
 83462	1790271077053	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
-83477	1790271131308	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=mKZMU-UGHh1gagxTdqQANiF7Oa0DxRXR
+83477	1790271131308	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=mKZMU-UGHh1gagxTdqQANiF7Oa0DxRXR
 83478	1790271131407	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83479	1790271131970	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 83480	1790271131976	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -18879,7 +18879,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83434	1790270842746	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393535, lon=-48.913743
 83438	1790270962566	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393535, lon=-48.913743
 83444	1790271045616	1	46	46	192.168.1.100	INFO	3	Skip download due to previous install failure: com.hmdm.launcher
-83452	1790271052579	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=KAY5U1c22d0DG8XHgOMFdzlKakohZfS0
+83452	1790271052579	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=KAY5U1c22d0DG8XHgOMFdzlKakohZfS0
 83456	1790271055071	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 83460	1790271076842	1	46	46	192.168.1.100	INFO	3	Configuration updated
 83461	1790271076864	1	46	46	192.168.1.100	INFO	3	Device owner: true
@@ -18887,8 +18887,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 83484	1790271155299	1	46	46	192.168.1.100	DEBUG	4	Network type changed: WIFI
 83494	1790271248426	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 83495	1790271248439	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-83496	1790271248452	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-83498	1790271250327	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=uaxY3x-VMbEbzW_SAwvWbWEQvtaVBbmQ
+83496	1790271248452	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+83498	1790271250327	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=uaxY3x-VMbEbzW_SAwvWbWEQvtaVBbmQ
 83499	1790271250367	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 83500	1790271250683	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 83501	1790271250687	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -19749,7 +19749,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86566	1790362430241	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86577	1790362785683	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393618, lon=-48.9137465
 86580	1790362892274	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86586	1790362941661	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=A6br-ELijcCDcIvwzROpWXBTFxYfP1vJ
+86586	1790362941661	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=A6br-ELijcCDcIvwzROpWXBTFxYfP1vJ
 86588	1790362942020	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86589	1790362942032	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 86592	1790363009216	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -19779,8 +19779,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 84394	1790300593271	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739204, lon=-48.9138264
 84414	1790301283492	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.739204, lon=-48.9138264
 84416	1790301351572	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86507	1790360896504	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
-86509	1790360898207	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=NAGL8Tj0Kh4CAGbnnbXCFVWiKTOtt3QO
+86507	1790360896504	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86509	1790360898207	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=NAGL8Tj0Kh4CAGbnnbXCFVWiKTOtt3QO
 86511	1790360898516	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86512	1790360898525	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 86520	1790360909333	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
@@ -19824,7 +19824,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86576	1790362760281	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86582	1790362938987	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86583	1790362938998	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-86584	1790362939006	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86584	1790362939006	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 84422	1790301549617	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 84423	1790301583376	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392005, lon=-48.9138459
 84432	1790301879657	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -20784,7 +20784,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 85410	1790334021444	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 85421	1790334356211	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 85422	1790334356222	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-85423	1790334356230	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+85423	1790334356230	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 85432	1790334428168	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393613, lon=-48.9137526
 85434	1790334479326	1	46	87	192.168.1.100	INFO	3	Mensagem exibida no aparelho (10s)
 85454	1790334634014	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -20825,7 +20825,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 85395	1790333505217	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392738, lon=-48.9137105
 85409	1790333985355	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392738, lon=-48.9137105
 85414	1790334153441	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-85426	1790334359722	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=pQWGtqp8StL2bEjtbXZk_DOoKl0c58Qg
+85426	1790334359722	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=pQWGtqp8StL2bEjtbXZk_DOoKl0c58Qg
 85427	1790334359794	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 85428	1790334360401	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 85429	1790334360406	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -20955,10 +20955,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 85403	1790333775300	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392738, lon=-48.9137105
 85417	1790334255487	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392738, lon=-48.9137105
 86597	1790363192942	1	46	87	192.168.1.100	ERROR	1	Uplink falhou: java.io.EOFException
-86598	1790363192959	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-86599	1790363193012	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+86598	1790363192959	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+86599	1790363193012	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 86600	1790363205732	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393618, lon=-48.9137465
-86601	1790363222022	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /192.168.1.65:8080
+86601	1790363222022	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /172.16.24.70:8080
 86602	1790363253021	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86603	1790363265831	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393618, lon=-48.9137465
 86604	1790363319397	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -21118,7 +21118,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 85776	1790339954897	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393449, lon=-48.9137472
 85781	1790340117506	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 85782	1790340164646	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393449, lon=-48.9137472
-85793	1790340358747	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=Vzb_1RDUOc4TwzaomxjR6UuBZ5QN2Xg3
+85793	1790340358747	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=Vzb_1RDUOc4TwzaomxjR6UuBZ5QN2Xg3
 85794	1790340358793	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 85799	1790340379521	1	46	46	192.168.1.100	INFO	3	Got Push Message, type textMessage
 85805	1790340516458	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -21338,7 +21338,7 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 85787	1790340315651	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 85788	1790340355604	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 85789	1790340355615	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-85790	1790340355622	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+85790	1790340355622	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 85796	1790340359624	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 85797	1790340359629	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
 85803	1790340450407	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -21782,10 +21782,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86288	1790356989623	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86289	1790357035213	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392364, lon=-48.9137392
 86290	1790357055574	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86303	1790357471979	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-86309	1790357472011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+86303	1790357471979	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+86309	1790357472011	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 86317	1790357479838	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392364, lon=-48.9137392
-86318	1790357508559	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /192.168.1.65:8080
+86318	1790357508559	1	46	87	192.168.1.100	WARNING	2	Nao foi possivel informar o endereco do aparelho: java.net.ConnectException: Failed to connect to /172.16.24.70:8080
 86319	1790357532019	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 86320	1790357576810	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392664, lon=-48.9137173
 86321	1790357600663	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
@@ -21793,11 +21793,11 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 86323	1790357645941	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 86324	1790357645953	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
 86343	1790358563035	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392664, lon=-48.9137173
-86304	1790357645960	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+86304	1790357645960	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 86307	1790357646096	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 86308	1790357647258	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
 86310	1790357650952	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
-86311	1790357652343	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=pt3pLMrz4D5rAt_1p4Nr_JN15iPBtjAH
+86311	1790357652343	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=pt3pLMrz4D5rAt_1p4Nr_JN15iPBtjAH
 86312	1790357652414	1	46	87	192.168.1.100	INFO	3	Relay aceitou a conexao; iniciando captura
 86313	1790357653026	1	46	87	192.168.1.100	INFO	3	Tela mantida acesa: janela=sim wakelock=sim
 86314	1790357653031	1	46	87	192.168.1.100	INFO	3	Transmitindo 752x1280 com toque
@@ -21821,10 +21821,10 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82888	1790255462181	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82889	1790255463046	1	46	46	192.168.1.100	INFO	3	Got Push Message, type remoteScreenStart
 82890	1790255463056	1	46	87	192.168.1.100	INFO	3	Chamado de suporte recebido do launcher
-82891	1790255463062	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
+82891	1790255463062	1	46	87	192.168.1.100	INFO	3	Iniciando sessao; relay=ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY consentimento_em_cache=false
 82892	1790255463177	1	46	87	192.168.1.100	INFO	3	Pedindo consentimento de captura ao usuario
 82893	1790255464878	1	46	87	192.168.1.100	INFO	3	Bloqueio de tela dispensado para a sessao de suporte
-82894	1790255465428	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY?token=OZISHq5lNxclJHAksEfW18D-Qjs8Zm9E
+82894	1790255465428	1	46	87	192.168.1.100	INFO	3	Discando o relay: ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY?token=OZISHq5lNxclJHAksEfW18D-Qjs8Zm9E
 82932	1790256031888	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
 82933	1790256074362	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82934	1790256091986	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7392834, lon=-48.9137905
@@ -21832,8 +21832,8 @@ COPY public.plugin_devicelog_log (id, createtime, customerid, deviceid, applicat
 82936	1790256156391	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82937	1790256224586	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82938	1790256242105	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
-82939	1790256251860	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
-82940	1790256251882	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://192.168.1.65:8080 : Failed to connect to /192.168.1.65:8080
+82939	1790256251860	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
+82940	1790256251882	1	46	46	192.168.1.100	WARNING	2	Failed to query push notifications from http://172.16.24.70:8080 : Failed to connect to /172.16.24.70:8080
 82941	1790256302210	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393482, lon=-48.9137498
 82975	1790257269287	1	46	46	192.168.1.100	VERBOSE	5	Push long polling inquiry
 82982	1790257502316	1	46	46	192.168.1.100	VERBOSE	5	Network location update: lat=-20.7393494, lon=-48.9137609
@@ -21948,11 +21948,11 @@ COPY public.plugin_webfilter_delivery (deviceid, customerid, configurationid, en
 --
 
 COPY public.plugin_webfilter_events (id, customerid, deviceid, configurationid, host, url, category, source, createdat, clientip, sourcekey) FROM stdin;
-4	1	\N	\N	facebook.com	\N	\N	dns	1790369634000	192.168.1.65	2026-09-25_ALL.log:366
-5	1	\N	\N	www.facebook.com	\N	\N	dns	1790369634000	192.168.1.65	2026-09-25_ALL.log:504
-6	1	\N	\N	facebook.com	\N	\N	dns	1790359947000	192.168.1.65	2026-09-25_ALL.log:5298
-7	1	\N	\N	facebook.com	\N	\N	dns	1790360136000	192.168.1.65	2026-09-25_ALL.log:6425
-8	1	\N	\N	facebook.com	\N	\N	dns	1790360136000	192.168.1.65	2026-09-25_ALL.log:6563
+4	1	\N	\N	facebook.com	\N	\N	dns	1790369634000	172.16.24.70	2026-09-25_ALL.log:366
+5	1	\N	\N	www.facebook.com	\N	\N	dns	1790369634000	172.16.24.70	2026-09-25_ALL.log:504
+6	1	\N	\N	facebook.com	\N	\N	dns	1790359947000	172.16.24.70	2026-09-25_ALL.log:5298
+7	1	\N	\N	facebook.com	\N	\N	dns	1790360136000	172.16.24.70	2026-09-25_ALL.log:6425
+8	1	\N	\N	facebook.com	\N	\N	dns	1790360136000	172.16.24.70	2026-09-25_ALL.log:6563
 \.
 
 
@@ -22096,11 +22096,11 @@ COPY public.pluginsdisabled (pluginid, customerid) FROM stdin;
 --
 
 COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
-4436	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"CekupCbFgq9z2q20t8X3YJukZa9w-7W-","maxWidth":1280}
-4440	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"lehUdwLooULfRWGVVH3symG_fbM_ukdq","maxWidth":1280}
-4441	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"VGj7tiBsS8tKyynJ-C-IjosMxLHgjWwQ","maxWidth":1280}
-4442	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"Caa8NF3LUpcmNBH0eo78Fz1sF10NR8pT","maxWidth":1280}
-4443	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"OJIcCG0iDc0D69GcN5NLEcjvsbH6fO24","maxWidth":1280}
+4436	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"CekupCbFgq9z2q20t8X3YJukZa9w-7W-","maxWidth":1280}
+4440	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"lehUdwLooULfRWGVVH3symG_fbM_ukdq","maxWidth":1280}
+4441	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"VGj7tiBsS8tKyynJ-C-IjosMxLHgjWwQ","maxWidth":1280}
+4442	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"Caa8NF3LUpcmNBH0eo78Fz1sF10NR8pT","maxWidth":1280}
+4443	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"OJIcCG0iDc0D69GcN5NLEcjvsbH6fO24","maxWidth":1280}
 4444	remoteScreenStop	46	\N
 4354	configUpdated	46	\N
 4355	protectionOff	46	\N
@@ -22108,66 +22108,66 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 4357	permissiveMode	46	\N
 4358	protectionOff	46	\N
 4359	configUpdated	46	\N
-4448	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"cI4rwhasUT8fFHM9J6x6C0SwuVAgx4vF","maxWidth":1280}
+4448	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"cI4rwhasUT8fFHM9J6x6C0SwuVAgx4vF","maxWidth":1280}
 4363	configUpdated	46	\N
-4364	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"jL9yg44ckEgqoq1eaECLtc5wa2Z0lUoP","maxWidth":800}
+4364	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"jL9yg44ckEgqoq1eaECLtc5wa2Z0lUoP","maxWidth":800}
 4365	protectionOff	46	\N
 4366	exitKiosk	46	\N
 4370	configUpdated	46	\N
 4371	configUpdated	46	\N
 4372	adminPanel	46	\N
-4373	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"WMXmUfP25I7m0PvstHwMG5Nf6EoMLHO6","maxWidth":800}
+4373	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"WMXmUfP25I7m0PvstHwMG5Nf6EoMLHO6","maxWidth":800}
 4374	textMessage	46	{"duration":10,"text":"CLaude lixo"}
 4375	textMessage	46	{"duration":10,"text":"CLaude lIxo"}
 4376	exitKiosk	46	\N
-4377	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"py7WFuvwIsCrU_Y0PqcNdcwVrJ-sm1uz","maxWidth":800}
-4378	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"yMVsABw1G0R7gGS8nIU1ubuR5G6EqwIO","maxWidth":800}
-4379	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"wIOj7gkcSEPtZe1B0s7G--M68eGAtWSX","maxWidth":800}
-4380	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"8Pmsw1__eCB5PJEqG7Cue3ZpGasMjHo5","maxWidth":800}
-4381	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"hNA0PONRhUEkItNCJrQ2B7bv4wGJw1bc","maxWidth":800}
-4382	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"5IXhtzS7D0Ij8k5qlno64gsdEDm2ZpZ0","maxWidth":800}
+4377	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"py7WFuvwIsCrU_Y0PqcNdcwVrJ-sm1uz","maxWidth":800}
+4378	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"yMVsABw1G0R7gGS8nIU1ubuR5G6EqwIO","maxWidth":800}
+4379	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"wIOj7gkcSEPtZe1B0s7G--M68eGAtWSX","maxWidth":800}
+4380	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"8Pmsw1__eCB5PJEqG7Cue3ZpGasMjHo5","maxWidth":800}
+4381	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"hNA0PONRhUEkItNCJrQ2B7bv4wGJw1bc","maxWidth":800}
+4382	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"5IXhtzS7D0Ij8k5qlno64gsdEDm2ZpZ0","maxWidth":800}
 4383	remoteScreenStop	46	\N
-4384	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"EwOSSjWRWtTs1aExXHPwRukLpYWey4rb","maxWidth":800}
+4384	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"EwOSSjWRWtTs1aExXHPwRukLpYWey4rb","maxWidth":800}
 4385	remoteScreenStop	46	\N
-4386	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"oFlxZHTr1q5DO8Pe9nlpFljheDqgTbOJ","maxWidth":800}
-4387	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"NhTmHbjKA37NinMJAGFDKIpmTbE6uPfY","maxWidth":800}
-4388	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"Lqr9eq2KqHO1N4uGGQH1ecbpLUgwJeHF","maxWidth":800}
-4389	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"yYk6Ka2FI_eFWHIwaixgX9KToYiXlh_8","maxWidth":800}
+4386	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"oFlxZHTr1q5DO8Pe9nlpFljheDqgTbOJ","maxWidth":800}
+4387	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"NhTmHbjKA37NinMJAGFDKIpmTbE6uPfY","maxWidth":800}
+4388	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"Lqr9eq2KqHO1N4uGGQH1ecbpLUgwJeHF","maxWidth":800}
+4389	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"yYk6Ka2FI_eFWHIwaixgX9KToYiXlh_8","maxWidth":800}
 4390	remoteScreenStop	46	\N
-4391	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"U0PCNDG3mNY3EdDSQNkS14pGkAPgq3v8","maxWidth":800}
-4392	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"KSuLewyDedPHBll6u6nnadhXHz5fw4-8","maxWidth":800}
-4393	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"YLeqcVn-tbHM0FCYUofM7kVmuqVvb7HN","maxWidth":800}
-4394	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"fiCWpnzAq_yRFrgeS35h9LsNi6I8BlA7","maxWidth":800}
+4391	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"U0PCNDG3mNY3EdDSQNkS14pGkAPgq3v8","maxWidth":800}
+4392	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"KSuLewyDedPHBll6u6nnadhXHz5fw4-8","maxWidth":800}
+4393	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"YLeqcVn-tbHM0FCYUofM7kVmuqVvb7HN","maxWidth":800}
+4394	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"fiCWpnzAq_yRFrgeS35h9LsNi6I8BlA7","maxWidth":800}
 4395	remoteScreenStop	46	\N
-4396	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"koSlMVyrMEW9hcEflUFTu9IszcX5rXhv","maxWidth":800}
+4396	remoteScreenStart	46	{"format":"h264","fps":15,"bitrate":2000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"koSlMVyrMEW9hcEflUFTu9IszcX5rXhv","maxWidth":800}
 4403	configUpdated	46	\N
 4410	configUpdated	46	\N
 4414	configUpdated	46	\N
 4418	configUpdated	46	\N
 4425	configUpdated	46	\N
-4426	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"r4Qqp-jKJbuOdor5CyPx73mU8ZLif4PO","maxWidth":1280}
+4426	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"r4Qqp-jKJbuOdor5CyPx73mU8ZLif4PO","maxWidth":1280}
 4427	remoteScreenStop	46	\N
-4428	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"uTCG9ma-pNvh5sIS1iGya7sR3gH7CyHm","maxWidth":1280}
-4435	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"iR-o4KElm2zU_7KwstM_1weX1_902BXa","maxWidth":1280}
-4449	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"lmxYCy-0JPzLthf94hz-BNniNM0__SKR","maxWidth":1280}
-4450	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"_rKTU1cy_HCssRCVccmCdiFqzhg3xWIJ","maxWidth":1280}
-4451	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"3zgA3KPrAw4AxxAadUqN4ca9wxdQXt1K","maxWidth":1280}
-4452	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"r91hI7snawjSKUJsdK8EF6BQO3KZM_ah","maxWidth":1280}
-4453	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"x5HnIcQvDQtggMQrtCSx36YiFiY2WC01","maxWidth":1280}
-4461	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"KAY5U1c22d0DG8XHgOMFdzlKakohZfS0","maxWidth":1280}
-4486	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"0OyLCCKlSLmNLIuXEGpGdUNi7_oKiKb0","maxWidth":1280}
+4428	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"uTCG9ma-pNvh5sIS1iGya7sR3gH7CyHm","maxWidth":1280}
+4435	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"iR-o4KElm2zU_7KwstM_1weX1_902BXa","maxWidth":1280}
+4449	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"lmxYCy-0JPzLthf94hz-BNniNM0__SKR","maxWidth":1280}
+4450	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"_rKTU1cy_HCssRCVccmCdiFqzhg3xWIJ","maxWidth":1280}
+4451	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"3zgA3KPrAw4AxxAadUqN4ca9wxdQXt1K","maxWidth":1280}
+4452	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"r91hI7snawjSKUJsdK8EF6BQO3KZM_ah","maxWidth":1280}
+4453	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"x5HnIcQvDQtggMQrtCSx36YiFiY2WC01","maxWidth":1280}
+4461	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"KAY5U1c22d0DG8XHgOMFdzlKakohZfS0","maxWidth":1280}
+4486	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"0OyLCCKlSLmNLIuXEGpGdUNi7_oKiKb0","maxWidth":1280}
 4487	remoteScreenStop	46	\N
-4488	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"SFN-BDFwIbl6FHy53v7ts7crzxp51onW","maxWidth":1280}
-4489	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"XyUadk9p9MXMbO5cNTFvYv--OJzIOgRO","maxWidth":1280}
-4490	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"ibbgi89JzuOAgTG6hZcZOZuGCwYsbGjK","maxWidth":1280}
+4488	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"SFN-BDFwIbl6FHy53v7ts7crzxp51onW","maxWidth":1280}
+4489	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"XyUadk9p9MXMbO5cNTFvYv--OJzIOgRO","maxWidth":1280}
+4490	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"ibbgi89JzuOAgTG6hZcZOZuGCwYsbGjK","maxWidth":1280}
 4491	remoteScreenStop	46	\N
-4492	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"kAFYFLJ49hrnOGOM4Mn1jsVl0wwwHnvd","maxWidth":1280}
+4492	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"kAFYFLJ49hrnOGOM4Mn1jsVl0wwwHnvd","maxWidth":1280}
 4493	remoteScreenStop	46	\N
-4494	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"t8WfDFm4ewGACeFNrGxOEFq4YnplyfWs","maxWidth":1280}
+4494	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"t8WfDFm4ewGACeFNrGxOEFq4YnplyfWs","maxWidth":1280}
 4495	remoteScreenStop	46	\N
-4496	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"oIoSRPg3KCH47Y78CSGDAR9wNhsmkjVP","maxWidth":1280}
-4497	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"RIvRm13k7RGacCdX27jSbcEL8WQ1rSNX","maxWidth":1280}
-4498	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://192.168.1.65:8080/ws/remote/agent/R9XT200AMYY","token":"lynxYTE1QbeFeBbuY4FkOueXTAkvn7Kp","maxWidth":1280}
+4496	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"oIoSRPg3KCH47Y78CSGDAR9wNhsmkjVP","maxWidth":1280}
+4497	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"RIvRm13k7RGacCdX27jSbcEL8WQ1rSNX","maxWidth":1280}
+4498	remoteScreenStart	46	{"format":"h264","fps":20,"bitrate":6000000,"url":"ws://172.16.24.70:8080/ws/remote/agent/R9XT200AMYY","token":"lynxYTE1QbeFeBbuY4FkOueXTAkvn7Kp","maxWidth":1280}
 4499	configUpdated	48	\N
 4500	configUpdated	49	\N
 4501	configUpdated	47	\N
@@ -22179,7 +22179,7 @@ COPY public.pushmessages (id, messagetype, deviceid, payload) FROM stdin;
 --
 
 COPY public.settings (id, backgroundcolor, textcolor, backgroundimageurl, iconsize, desktopheader, customerid, usedefaultlanguage, language, createnewdevices, newdevicegroupid, newdeviceconfigurationid, phonenumberformat, custompropertyname1, custompropertyname2, custompropertyname3, custommultiline1, custommultiline2, custommultiline3, customsend1, customsend2, customsend3, desktopheadertemplate, senddescription, passwordreset, passwordlength, passwordstrength, twofactor, idlelogout, webprimarycolor, websidebarcolor, webtextcolor, weblogourl) FROM stdin;
-1	#1c40e3	#fcfcfc	http://192.168.1.75:8080/files/BG_Tablet.png	LARGE	DEVICE_ID	1	t	\N	t	1	11	+9 (999) 999-99-99	\N	\N	\N	f	f	f	f	f	f	\N	f	f	0	0	f	\N	#2a9bd9	#ffffff		http://192.168.1.65:8080/files/favicon.png
+1	#1c40e3	#fcfcfc	http://192.168.1.75:8080/files/BG_Tablet.png	LARGE	DEVICE_ID	1	t	\N	t	1	11	+9 (999) 999-99-99	\N	\N	\N	f	f	f	f	f	f	\N	f	f	0	0	f	\N	#2a9bd9	#ffffff		http://172.16.24.70:8080/files/favicon.png
 \.
 
 

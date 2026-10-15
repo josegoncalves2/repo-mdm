@@ -4,8 +4,8 @@ Mantido **somente** pelo FISCAL. Histórico completo em `ledger.md` (encadeado, 
 
 ## Identidade
 
-- Alvo: DEV `http://localhost:8080` = `192.168.1.65:8080`, host `pmohw`, projeto Compose `hwmdm`
-- Produção `192.168.1.75` / `mdm.olimpia.sp.gov.br`: **fora de alcance**
+- Alvo: DEV `http://localhost:8080` = `<DEVICE_BIND_ADDR>:8080`, host `pmohw`, projeto Compose `hwmdm`
+- Produção `<IP>` / `mdm.olimpia.sp.gov.br`: **fora de alcance**
 - Evidências: `/opt/projetos/hwmdm/evidencias/corrigir-permissoes-e-console/`
 - Tablet de DEV: **nenhum informado**, o que bloqueia 0.2 e 4.1–4.4
 - Execução: **não iniciada** (aguarda `/fiscal-permissoes` pelo responsável)
@@ -32,4 +32,4 @@ Mantido **somente** pelo FISCAL. Histórico completo em `ledger.md` (encadeado, 
 
 ## Aguardando o humano
 
-- Tablet físico matriculado no DEV (192.168.1.65) para 0.2 e 4.x.
+- Tablet físico matriculado no DEV (<DEVICE_BIND_ADDR>) para 0.2 e 4.x.

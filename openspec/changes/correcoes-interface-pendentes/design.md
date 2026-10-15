@@ -2,7 +2,7 @@
 
 ## Context
 
-O painel HWMDM DEV (192.168.1.65:8080) roda em Tomcat dentro de Docker.
+O painel HWMDM DEV (<DEVICE_BIND_ADDR>:8080) roda em Tomcat dentro de Docker.
 Alterações de frontend (HTML/CSS/JS/i18n) são editadas no volume
 `volumes/webapps/ROOT/` e copiadas para o container, sem rebuild de WAR.
 

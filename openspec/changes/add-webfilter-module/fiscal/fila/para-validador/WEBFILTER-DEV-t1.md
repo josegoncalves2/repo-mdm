@@ -1,7 +1,7 @@
 # Pedido de validação — Web Filter no DEV — tentativa 1
 
 - Change: `openspec/changes/add-webfilter-module` (proposal.md, design.md, specs/**, tasks.md)
-- Ambiente: DEV `http://localhost:8080` (192.168.1.65). Produção: PROIBIDA (o hook `.claude/hooks/bloquear-producao.sh` recusa).
+- Ambiente: DEV `http://localhost:8080` (<DEVICE_BIND_ADDR>). Produção: PROIBIDA (o hook `.claude/hooks/bloquear-producao.sh` recusa).
 - Executor desta tentativa: sessão principal do Claude Code, que não valida a si mesma.
 - Código entregue (leia do disco, não confie em relatório):
   - `server-source/plugins/webfilter/**` (plugin: banco, API, hook do sync, gerador do resolvedor, tela)

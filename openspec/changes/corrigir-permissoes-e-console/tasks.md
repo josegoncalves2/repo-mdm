@@ -9,7 +9,7 @@ Cada item é uma tarefa que o FISCAL conduz por Ordem de Serviço (OS), com sub-
 - **Prova = uso real**: pessoa (ou sub-agente agindo como pessoa) usando o console pelo navegador ou o tablet físico, com vídeo, capturas numeradas e diário da jornada. `curl`, status HTTP, log, consulta ao banco e "compilou" são no máximo complemento.
 - **Nada desaparece**: toda tarefa roda a comparação contra o inventário da linha de base (J00). Item do inventário ausente = `REPROVADA`.
 - **Escopo fechado**: arquivo alterado fora do escopo da OS = `REPROVADA`. Nenhum executor edita `openspec/**`.
-- **Somente DEV** (`localhost:8080` = `192.168.1.65:8080`). Qualquer ação no 192.168.1.75 ou em `mdm.olimpia.sp.gov.br` = tarefa `BLOQUEADA` e escalonamento.
+- **Somente DEV** (`localhost:8080` = `<DEVICE_BIND_ADDR>:8080`). Qualquer ação no <IP> ou em `mdm.olimpia.sp.gov.br` = tarefa `BLOQUEADA` e escalonamento.
 - Caminhos relativos a `repo-mdm/`. As jornadas estão em `execucao/03-jornadas.md`.
 
 ## 0. Linha de base (antes de qualquer alteração)

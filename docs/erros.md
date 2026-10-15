@@ -53,7 +53,7 @@
 
 ### ACESSOS
 
-[ ] ip: 192.168.1.65:8080
+[ ] ip: <DEVICE_BIND_ADDR>:8080
 [ ] dns: mdm.pmeto.local
 [ ] user ssh: sahw
 [ ] pass ssh: pmotiadm
@@ -106,19 +106,19 @@ sahw@pmohw:/opt/projetos/hwmdm$ ip a
 2: ens18: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether bc:24:11:f0:c2:aa brd ff:ff:ff:ff:ff:ff
     altname enp0s18
-    inet 192.168.1.65/24 brd 192.168.1.255 scope global ens18
+    inet <DEVICE_BIND_ADDR>/24 brd <IP> scope global ens18
        valid_lft forever preferred_lft forever
     inet6 fe80::be24:11ff:fef0:c2aa/64 scope link 
        valid_lft forever preferred_lft forever
 3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500qdisc noqueue state DOWN group default 
     link/ether a2:c9:17:6b:53:37 brd ff:ff:ff:ff:ff:ff
-    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+    inet <IP>/16 brd <IP> scope global docker0
        valid_lft forever preferred_lft forever
     inet6 fe80::a0c9:17ff:fe6b:5337/64 scope link 
        valid_lft forever preferred_lft forever
 21: br-62e76007a1b3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
     link/ether f2:52:0c:3f:d4:48 brd ff:ff:ff:ff:ff:ff
-    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-62e76007a1b3
+    inet <IP>/16 brd <IP> scope global br-62e76007a1b3
        valid_lft forever preferred_lft forever
     inet6 fe80::f052:cff:fe3f:d448/64scope link 
        valid_lft forever preferred_lft forever

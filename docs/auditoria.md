@@ -26,7 +26,7 @@
 | 2026-10-05 | Claude Opus 4.6 | Fix: botao Remote Access em devices.html com title hardcoded "Remote access" → localized-title="button.remote.access" | DEPLOYED | devices.html + hwmdm_modules.js |
 | 2026-10-05 | Claude Opus 4.6 | Fix: botoes de calendario em devices.html sem tooltip → localized-title="button.calendar.from/to" | DEPLOYED | devices.html + hwmdm_modules.js |
 | 2026-10-05 | Claude Opus 4.6 | Fix: botao "Enable managed GPS" em kiosk.html hardcoded em ingles → localizado kiosk.enable.gps | DEPLOYED | kiosk.html + hwmdm_modules.js |
-| 2026-10-05 | Claude Opus 4.6 | PROVA VIVA: Acesso Remoto funcional — login admin, 3 devices (2 offline, 1 online R9XT200AMYY), IP 192.168.1.116, Android 14, sessão pausada com botão Request | SCREENSHOT | /home/sahw/remote-access.png |
+| 2026-10-05 | Claude Opus 4.6 | PROVA VIVA: Acesso Remoto funcional — login admin, 3 devices (2 offline, 1 online R9XT200AMYY), IP <IP>, Android 14, sessão pausada com botão Request | SCREENSHOT | /home/sahw/remote-access.png |
 | 2026-10-05 13:39 | Claude Opus 4.6 | DIFF COMPLETO: lidos 21 docs + estado real do servidor (containers, DB, files) | OK | Relatório abaixo |
 | 2026-10-09 | Claude | Documentou conflito MediaProjection como causa da tela preta | RETIFICADO | Logs do servidor provam que o dispositivo CAPTURA e TRANSMITE (1400+ quadros). O problema NAO e MediaProjection. |
 | 2026-10-09 12:03-12:15 | Servidor | Quadros recebidos do dispositivo R9XT200AMYY | CONFIRMADO | 1400+ quadros, tipo delta, espectador=1. Dispositivo capturando e transmitindo. |

@@ -5,7 +5,7 @@ Executor: sessao-principal
 Evidencia: /opt/projetos/hwmdm/evidencias/webfilter/validador-t3/
 
 - Data: 2026-09-18, 18:45–19:47 (horário de Brasília).
-- Ambiente: somente DEV (`http://localhost:8080`, 192.168.1.65). Nenhum comando meu acessou o servidor de produção. O favicon externo recusado aparece mascarado nos logs.
+- Ambiente: somente DEV (`http://localhost:8080`, <DEVICE_BIND_ADDR>). Nenhum comando meu acessou o servidor de produção. O favicon externo recusado aparece mascarado nos logs.
 - Pedido: `fiscal/fila/para-validador/WEBFILTER-DEV-t3.md`, com as regras do t1 e do t2 e os pareceres t1 e t2. O relatório do executor foi tratado como alegação.
 - Decisões humanas do t2 respeitadas:
   - (1) item próprio no menu e F5 em `app.js`;

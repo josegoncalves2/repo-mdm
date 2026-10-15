@@ -14,9 +14,9 @@ Este manual define **como** as tarefas de `../tasks.md` são executadas e aprova
 
 | Item | Valor |
 |---|---|
-| Alvo único | **DEV** — `http://localhost:8080` = `http://192.168.1.65:8080`, host `pmohw` |
+| Alvo único | **DEV** — `http://localhost:8080` = `http://<DEVICE_BIND_ADDR>:8080`, host `pmohw` |
 | Stack | `repo-mdm/source/docker-compose.yaml`, projeto Compose `hwmdm` (já online, não reprovisionar) |
-| Proibido | produção `192.168.1.75`, `mdm.olimpia.sp.gov.br`, e os 4 tablets matriculados nela (R9XT200AMYY, R9XT106Y5RP, R9XT108EM8T, R9XT106VP1E) |
+| Proibido | produção `<IP>`, `mdm.olimpia.sp.gov.br`, e os 4 tablets matriculados nela (R9XT200AMYY, R9XT106Y5RP, R9XT108EM8T, R9XT106VP1E) |
 | Evidências | `/opt/projetos/hwmdm/evidencias/corrigir-permissoes-e-console/<tarefa>/t<n>/` (fora do repositório) |
 | Ferramentas de navegador | `/opt/projetos/hwmdm/ferramentas/` (fora do repositório) |
 

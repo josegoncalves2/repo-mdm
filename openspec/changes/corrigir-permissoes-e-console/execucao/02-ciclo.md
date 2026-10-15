@@ -63,7 +63,7 @@ Veredito: `ACEITA` somente se V1–V6 passarem todos, sem ressalva. Caso contrá
 - Change: corrigir-permissoes-e-console
 - Tarefa: <id> — <texto literal da tarefa em tasks.md>
 - PRD cobertos: <PRD-nn literais do proposal.md>
-- Ambiente: DEV http://localhost:8080 (192.168.1.65). Produção 192.168.1.75 PROIBIDA.
+- Ambiente: DEV http://localhost:8080 (<DEVICE_BIND_ADDR>). Produção <IP> PROIBIDA.
 - Pasta de evidência: /opt/projetos/hwmdm/evidencias/corrigir-permissoes-e-console/<id>/t<n>/
 
 ## Problema relatado (literal)
@@ -146,7 +146,7 @@ Assinado por: <nome>
 Data: <AAAA-MM-DD HH:MM>
 Tentativa: t<n>
 Manifesto sha256: <sha256 do arquivo MANIFESTO.sha256 — `sha256sum` dele>
-Declaro que assisti à evidência principal, que ela foi gravada no DEV (192.168.1.65) e que o resultado é o que pedi.
+Declaro que assisti à evidência principal, que ela foi gravada no DEV (<DEVICE_BIND_ADDR>) e que o resultado é o que pedi.
 ```
 
 ### M6 — Devolução

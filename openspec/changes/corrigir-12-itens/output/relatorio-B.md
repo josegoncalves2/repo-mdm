@@ -111,7 +111,7 @@
   Se houver um erro de tipo, import faltando ou assinatura incompatível que a leitura manual não
   pegou, só aparece numa compilação real.
 - **Não publiquei nada.** Os arquivos webapp editados não foram copiados para dentro do
-  container em `192.168.1.65:8080`; a versão publicada ainda é a anterior a esta mudança.
+  container em `<DEVICE_BIND_ADDR>:8080`; a versão publicada ainda é a anterior a esta mudança.
 - **Não testei o mecanismo de push pendente fim-a-fim** (device realmente offline, esperar,
   sincronizar, ver a sessão subir sozinha). A análise de que `NotificationDAO`/
   `PushSenderPolling`/`LongPollingServlet` já entregam o push pendente automaticamente é leitura
@@ -130,7 +130,7 @@
 - **Compilar e publicar.** Esta mudança toca 3 arquivos `.java` do módulo `server` — precisa de
   `mvn` (ou o `build.py`/similar do repositório) rodando por um humano, e depois copiar o WAR (ou
   os arquivos `.js`/`.html` do console, se o humano preferir empacotar só o console) para o
-  container em `192.168.1.65:8080`. Nenhum desses passos foi executado por mim.
+  container em `<DEVICE_BIND_ADDR>:8080`. Nenhum desses passos foi executado por mim.
 - **Bancada humana** (obrigatória para os dois itens, exige olhar a tela de verdade):
   - **Item 4 (F5/troca de aba):** com o WAR publicado, abrir Acesso Remoto, conectar a um
     aparelho online, apertar F5 (ou navegar para outro item do menu e voltar) e confirmar que a

@@ -199,10 +199,11 @@ public class RemoteAgentService extends Service {
                 return;
             }
 
-            MdmLink.Config current = config;
-            if (current == null) {
-                current = MdmLink.query(this);
+            MdmLink.Config current = MdmLink.query(this);
+            if (current != null) {
                 config = current;
+            } else {
+                current = config;
             }
 
             // A URL do relay pode vir pronta no payload; quando nao vem, montamos a partir
@@ -385,10 +386,11 @@ public class RemoteAgentService extends Service {
                     Thread.currentThread().interrupt();
                     return;
                 }
-                MdmLink.Config current = config;
-                if (current == null) {
-                    current = MdmLink.query(this);
+                MdmLink.Config current = MdmLink.query(this);
+                if (current != null) {
                     config = current;
+                } else {
+                    current = config;
                 }
                 NetworkReporter.report(this, current);
                 reportPermissionState();

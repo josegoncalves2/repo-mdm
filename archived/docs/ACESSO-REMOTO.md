@@ -124,11 +124,11 @@ por eles, o que tambem evita qualquer discussao de Play Protect.
 
 Sobre o item 1: **o dominio ja existe e ja atende em HTTPS** — `mdm.olimpia.sp.gov.br`
 responde 200. E `191.5.114.162` nao e' de terceiros: e' o proprio IP publico desta rede
-(confirmado com `curl https://api.ipify.org` a partir de `192.168.1.75`). O que falta e'
+(confirmado com `curl https://api.ipify.org` a partir de `<IP>`). O que falta e'
 apenas decidir o hostname que o aPuppet vai usar e onde termina o TLS dele.
 
 Nenhum host desta LAN escuta na 443 (varredura em `ip neigh` deu vazio), entao a
-terminacao TLS acontece antes da rede — no proprio roteador (`192.168.1.254`) ou no
+terminacao TLS acontece antes da rede — no proprio roteador (`<IP>`) ou no
 provedor. Quem mexer no nginx precisa chegar ate la.
 
 ### Pendencia conhecida no proxy

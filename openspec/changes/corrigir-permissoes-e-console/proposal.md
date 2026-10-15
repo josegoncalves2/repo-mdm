@@ -6,7 +6,7 @@ Nada disso foi testado de verdade antes de ser declarado pronto. Esta mudança c
 
 ## PRD IDs (texto do responsável, 2026-09-18)
 
-- **PRD-01:** a stack de desenvolvimento já existe e está online em `localhost:8080` (servidor DEV 192.168.1.65).
+- **PRD-01:** a stack de desenvolvimento já existe e está online em `localhost:8080` (servidor DEV <DEVICE_BIND_ADDR>).
 - **PRD-02:** garantir e manter todas as características e funcionalidades presentes.
 - **PRD-03:** viabilizar a segregação de permissões entre os grupos.
 - **PRD-04:** garantir que nada desapareça durante os ajustes.
@@ -37,7 +37,7 @@ Nada disso foi testado de verdade antes de ser declarado pronto. Esta mudança c
 
 ## Não faz parte
 
-- Qualquer ação no servidor de produção 192.168.1.75 / `mdm.olimpia.sp.gov.br`, nem nos tablets matriculados nele.
+- Qualquer ação no servidor de produção <IP> / `mdm.olimpia.sp.gov.br`, nem nos tablets matriculados nele.
 - Remover, esconder ou renomear telas, menus, botões, abas ou funções não citados acima.
 - Testes automatizados (unitários, integração, suítes de regressão) no repositório.
 - Refatorações, trocas de biblioteca ou "melhorias" não pedidas.
@@ -46,4 +46,4 @@ Nada disso foi testado de verdade antes de ser declarado pronto. Esta mudança c
 
 - Console web (`server-source/server/src/main/webapp/**`), servidor Java (recursos REST e verificação de permissão), banco (Liquibase para permissões novas ou renomeadas, sem apagar linhas).
 - APKs do launcher/agente e do suporte remoto (`android-source/**`), publicados **somente no DEV**.
-- Ambiente: somente DEV `localhost:8080` / `192.168.1.65:8080`.
+- Ambiente: somente DEV `localhost:8080` / `<DEVICE_BIND_ADDR>:8080`.

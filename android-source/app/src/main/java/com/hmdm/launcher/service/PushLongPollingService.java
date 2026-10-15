@@ -53,6 +53,8 @@ public class PushLongPollingService extends Service {
     private static final int NOTIFICATION_ID = 113;
     private ServerService serverService;
     private ServerService secondaryServerService;
+    private String serverServiceUrl;
+    private String secondaryServerServiceUrl;
 
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
@@ -99,12 +101,6 @@ public class PushLongPollingService extends Service {
     private Runnable pollingRunnable = () -> {
         Context context = PushLongPollingService.this;
         SettingsHelper settingsHelper = SettingsHelper.getInstance(context);
-        if (serverService == null) {
-            serverService = ServerServiceKeeper.createServerService(settingsHelper.getBaseUrl(), Const.LONG_POLLING_READ_TIMEOUT);
-        }
-        if (secondaryServerService == null) {
-            secondaryServerService = ServerServiceKeeper.createServerService(settingsHelper.getSecondaryBaseUrl(), Const.LONG_POLLING_READ_TIMEOUT);
-        }
 
         // Calculate request signature
         String encodedDeviceId = settingsHelper.getDeviceId();
@@ -122,6 +118,18 @@ public class PushLongPollingService extends Service {
         threadActive = true;
         while (enabled) {
             Response<PushResponse> response = null;
+
+            // Rebuild on URL change: a cached client keeps polling the old server after a migration.
+            String baseUrl = settingsHelper.getBaseUrl();
+            if (serverService == null || !baseUrl.equals(serverServiceUrl)) {
+                serverService = ServerServiceKeeper.createServerService(baseUrl, Const.LONG_POLLING_READ_TIMEOUT);
+                serverServiceUrl = baseUrl;
+            }
+            String secondaryBaseUrl = settingsHelper.getSecondaryBaseUrl();
+            if (secondaryServerService == null || !secondaryBaseUrl.equals(secondaryServerServiceUrl)) {
+                secondaryServerService = ServerServiceKeeper.createServerService(secondaryBaseUrl, Const.LONG_POLLING_READ_TIMEOUT);
+                secondaryServerServiceUrl = secondaryBaseUrl;
+            }
 
             RemoteLogger.log(context, Const.LOG_VERBOSE, "Push long polling inquiry");
             try {

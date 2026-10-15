@@ -322,8 +322,8 @@ Um agente desconhecido restaurou o commit de 02/10 sobre o disco, sobrescrevendo
 
 ## Contexto
 - Stack online: 4 containers (hwmdm-mdm, hwmdm-postgres, hwmdm-webfilter, hwmdm-admin) — todos UP
-- DEV: 192.168.1.65:8080 (admin/admin)
-- PROD: 192.168.1.75 — NUNCA TOCAR
+- DEV: <DEVICE_BIND_ADDR>:8080 (admin/admin)
+- PROD: <IP> — NUNCA TOCAR
 - 3 devices cadastrados: R9XT200AMYY, R9XT106VP1E, R9XT108EM8T (todos SM-T225)
 
 ## Documentos lidos nesta sessao (TODOS, por completo)
@@ -555,5 +555,5 @@ O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos com
 ### Problemas mapeados, não corrigidos (aguardam decisão)
 
 - index.html referencia `lib/jsencrypt/bin/jsencrypt.min.js` e `lib/angular-intro.js/build/angular-intro.min.js`, que não existem (já em 02/10).
-- `/rest/public/info` recebe 404 a cada poucos segundos vindo do próprio host 192.168.1.65; origem não identificada.
+- `/rest/public/info` recebe 404 a cada poucos segundos vindo do próprio host <DEVICE_BIND_ADDR>; origem não identificada.
 - Tablet R9XT106Y5RP sem polling desde 12:00 de 07/10.

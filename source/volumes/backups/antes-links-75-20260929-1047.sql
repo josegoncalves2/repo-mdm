@@ -234,8 +234,8 @@ COPY public.applicationversions (id, applicationid, version, url, apkhash, split
 10111	87	1.12	http://192.168.1.75:8080/files/hwmdm-remote-1.12.apk	tAJysfJ3DYSdwP2OrEa9Yd6RTiGvpO4xjbqhYC+P+MI	f	\N	\N	13
 10112	87	1.13	http://192.168.1.75:8080/files/hwmdm-remote-1.13.apk	FpgS+aeKQgdGDyXTUflEr76YyvJvKsEhcA/cdVp5Mug	f	\N	\N	14
 10113	87	1.14	http://192.168.1.75:8080/files/hwmdm-remote-1.14.apk	IgxFToQDmDGSzv8CQJG7tGLFuyu5y9Ds4gsiQ3+kfeI	f	\N	\N	15
-10116	87	1.22	http://192.168.1.65:8080/files/hwmdm-remote-1.22.apk	yWTmXkwDJQoWvLB/WmmWxmV2JdsFI7p3zEzMA24/cgg=	f	\N	\N	23
-10117	87	1.27	http://192.168.1.65:8080/files/hwmdm-remote-1.27.apk	Breenlk7DnxKbygEiaF5nqKPjs78sPFFt0IOHK4l4z8=	f	\N	\N	27
+10116	87	1.22	http://172.16.24.70:8080/files/hwmdm-remote-1.22.apk	yWTmXkwDJQoWvLB/WmmWxmV2JdsFI7p3zEzMA24/cgg=	f	\N	\N	23
+10117	87	1.27	http://172.16.24.70:8080/files/hwmdm-remote-1.27.apk	Breenlk7DnxKbygEiaF5nqKPjs78sPFFt0IOHK4l4z8=	f	\N	\N	27
 \.
 
 

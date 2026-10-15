@@ -284,10 +284,11 @@ public final class BlockedPageReporter {
      * @return a pagina de bloqueio indicada pelo servidor, ou null.
      */
     private static String send(AccessibilityService service, String url, String host) {
-        MdmLink.Config c = config;
-        if (c == null) {
-            c = MdmLink.query(service);
+        MdmLink.Config c = MdmLink.query(service);
+        if (c != null) {
             config = c;
+        } else {
+            c = config;
         }
         if (c == null || c.deviceId == null || c.deviceId.trim().isEmpty()) {
             RemoteLog.w(service, "Web Filter: tentativa bloqueada em " + host

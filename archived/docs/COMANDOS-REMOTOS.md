@@ -111,7 +111,7 @@ custa um segundo clique; um pedido indevido custa o aparelho.
 O painel mostrava o mesmo endereco para todos os aparelhos. Tres camadas de causa, nesta
 ordem:
 
-**1. `proxy.addresses` vazio no `ROOT.xml`.** O `192.168.1.254` e' um **MikroTik
+**1. `proxy.addresses` vazio no `ROOT.xml`.** O `<IP>` e' um **MikroTik
 HttpProxy**; sem declara-lo, o servidor gravava o endereco de quem entregou a conexao. O
 `provision.sh` ja avisa disso (linha 74) e aceita `--proxy`.
 
@@ -123,7 +123,7 @@ manual. O compose passa a montar `./templates`, e o template do repositorio ja' 
 marcador `_PROXY_ADDRESSES_`.
 
 **2. Ha um segundo NAT.** Com o header habilitado, os aparelhos passaram de
-`192.168.1.254` para `192.168.250.254` — um salto adiante, ainda um endereco so' para
+`<IP>` para `<IP>` — um salto adiante, ainda um endereco so' para
 todos. Nenhum cabecalho resolve: o segundo NAT nao escreve nenhum.
 
 **3. O launcher nao informa o proprio endereco.** O `info` que o 6.36 envia nao tem campo

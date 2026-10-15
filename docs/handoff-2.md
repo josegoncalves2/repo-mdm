@@ -65,7 +65,7 @@ Backup do banco antes de configurar o fluxo comprovado no perfil 57:
 O histórico registra enrollment real em 30/09 com launcher 1.2 seguido de
 atualização e início da 1.3. Nesta continuação não foi possível repetir o
 enrollment físico: ADB não lista aparelhos e o tablet histórico em
-`192.168.1.102` está sem resposta de rede.
+`<IP>` está sem resposta de rede.
 
 ## Pendências
 
@@ -79,7 +79,7 @@ enrollment físico: ADB não lista aparelhos e o tablet histórico em
   `hmdm-1.2-olimpia.apk`, checksum URL-safe e padding corretos. O 1.3 será
   instalado após a primeira sincronização. Perfis 56 e 60 não foram alterados.
 - Falta repetir enrollment e confirmar sincronização nesta execução. ADB não
-  lista dispositivos; `192.168.1.102` não responde na rede.
+  lista dispositivos; `<IP>` não responde na rede.
 - A revisão de hashes de todas as versões não foi feita; a correção cobre o
   artefato exato ao gerar cada QR.
 
@@ -96,7 +96,7 @@ registrado.
    início do launcher 1.3. Também registra o hash 1.3 salvo sem `=` e a correção
    manual desse valor.
 2. **Diagnóstico do serviço.** Verifiquei containers, portas e HTTP. PostgreSQL
-   e MDM estavam parados; não havia serviço em `192.168.1.65:8080`. O `adb` não
+   e MDM estavam parados; não havia serviço em `<DEVICE_BIND_ADDR>:8080`. O `adb` não
    estava no PATH, mas foi encontrado em `.android-sdk/platform-tools/adb`.
    `adb devices -l` e `adb mdns services` não listaram aparelhos.
 3. **Backups antes de ativar a instância.** Iniciei o container PostgreSQL e
@@ -150,7 +150,7 @@ registrado.
     gerenciada do perfil segue em 1.3, `action=install`, `remove=false`.
 11. **Tentativa de validação física.** Reconsultei ADB e mDNS; ambos sem devices.
     Consultei vizinhança de rede e fiz ping ao endereço histórico
-    `192.168.1.102`; não houve resposta. Não enviei comandos de instalação,
+    `<IP>`; não houve resposta. Não enviei comandos de instalação,
     reboot ou alteração ao aparelho.
 12. **Checagem final.** Confirmei HTTP 200 no MDM, perfil 57 com bootstrap 1.2,
     launcher gerenciado 1.3 e zero devices associados. `git diff --check` passou

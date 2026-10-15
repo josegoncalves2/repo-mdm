@@ -25,4 +25,4 @@ As telas de Mensagens, Arquivos, GPS, Acesso remoto, Relatórios e Informação 
 
 - Templates, controllers, estilos e traduções do painel AngularJS e do plugin deviceinfo.
 - Cópia implantada em `source/volumes/webapps/ROOT/`, fontes web em `server-source/server/src/main/webapp/` e `server-source/plugins/deviceinfo/src/main/webapp/`.
-- Apenas o ambiente DEV em `192.168.1.65:8080`; sem alterações na produção, no backend/API ou no escopo funcional dos módulos.
+- Apenas o ambiente DEV em `<DEVICE_BIND_ADDR>:8080`; sem alterações na produção, no backend/API ou no escopo funcional dos módulos.

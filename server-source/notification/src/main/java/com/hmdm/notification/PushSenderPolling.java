@@ -27,7 +27,11 @@ public class PushSenderPolling implements PushSender {
 
     @Override
     public int send(PushMessage message) {
-        DeviceEntry deviceEntry = deviceIdMap.get(message.getDeviceId());
+        DeviceEntry deviceEntry;
+        synchronized (this) {
+            // Claimed: an inquiry answers once, so a concurrent message goes to the queue for the next one.
+            deviceEntry = deviceIdMap.remove(message.getDeviceId());
+        }
         if (deviceEntry == null) {
             // Device is offline,
             return notificationDAO.send(message);
@@ -44,7 +48,10 @@ public class PushSenderPolling implements PushSender {
     }
 
     public void sendPending(int deviceId, List<PushMessage> messages) {
-        DeviceEntry deviceEntry = deviceIdMap.get(deviceId);
+        DeviceEntry deviceEntry;
+        synchronized (this) {
+            deviceEntry = deviceIdMap.remove(deviceId);
+        }
         if (deviceEntry == null) {
             // We shouldn't be here as this method is called from LongPollingServlet when a device is online
             return;
@@ -59,7 +66,10 @@ public class PushSenderPolling implements PushSender {
     }
 
     public List<PushMessage> getPendingMessages(AsyncContext asyncContext) {
-        DeviceEntry deviceEntry = deviceContextMap.get(asyncContext);
+        DeviceEntry deviceEntry;
+        synchronized (this) {
+            deviceEntry = deviceContextMap.get(asyncContext);
+        }
         List<PushMessage> result = new LinkedList<>();
         if (deviceEntry != null) {
             synchronized (deviceEntry.messages) {
@@ -70,17 +80,17 @@ public class PushSenderPolling implements PushSender {
         return result;
     }
 
-    public void register(Integer deviceId, AsyncContext asyncContext) {
+    public synchronized void register(Integer deviceId, AsyncContext asyncContext) {
         DeviceEntry deviceEntry = new DeviceEntry(deviceId, asyncContext);
         deviceIdMap.put(deviceId, deviceEntry);
         deviceContextMap.put(asyncContext, deviceEntry);
     }
 
-    public void unregister(AsyncContext asyncContext) {
-        DeviceEntry deviceEntry = deviceContextMap.get(asyncContext);
+    public synchronized void unregister(AsyncContext asyncContext) {
+        DeviceEntry deviceEntry = deviceContextMap.remove(asyncContext);
         if (deviceEntry != null) {
-            deviceIdMap.remove(deviceEntry.deviceId);
-            deviceContextMap.remove(asyncContext);
+            // A late completion of an older inquiry must not drop the device's current inquiry.
+            deviceIdMap.remove(deviceEntry.deviceId, deviceEntry);
         }
     }
 

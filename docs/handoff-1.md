@@ -161,7 +161,7 @@ Como as variantes recompiladas `1.9` e `1.10` continuaram sendo bloqueadas pelo 
 
 - Versao ativa: `6.36`
 - ID: `10045`
-- URL: `http://192.168.1.65:8080/files/hmdm-6.36-os.apk`
+- URL: `http://<DEVICE_BIND_ADDR>:8080/files/hmdm-6.36-os.apk`
 - Backup: `source/volumes/backups/pre-modelo-kiosk-final-636-20261001.dump`
 
 As variantes `1.9` e `1.10` permanecem publicadas no diretorio de arquivos, mas nao sao usadas pelo perfil. O trabalho de incorporar os recursos da 1.3 sem disparar o bloqueio exige o artefato original aceito como base binaria ou autorizacao para trocar a politica/reputacao do Play Protect no dispositivo; nao e seguro continuar alterando o APK sem esse controle.

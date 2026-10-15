@@ -26,8 +26,8 @@ webfilter, GPS, chat, logs, permissoes RBAC.
 
 | Ambiente | IP | Acesso web | Regra |
 |---|---|---|---|
-| DEV | 192.168.1.65:8080 | admin / admin | Trabalhar aqui |
-| PROD | 192.168.1.75 | mdm.olimpia.sp.gov.br | NUNCA TOCAR |
+| DEV | <DEVICE_BIND_ADDR>:8080 | admin / admin | Trabalhar aqui |
+| PROD | <IP> | mdm.olimpia.sp.gov.br | NUNCA TOCAR |
 
 ---
 
@@ -250,8 +250,8 @@ O `repo-mdm/` mistura:
 5. **NAO versionar toolchain** (SDK, JDK, Maven)
 6. **NAO criar scripts** — so o software do produto
 7. **NAO usar sub-agentes Claude** — so DeepSeek/OpenRouter
-8. **NAO tocar PROD** (192.168.1.75)
-9. **Testar TUDO no DEV** (192.168.1.65:8080, admin/admin)
+8. **NAO tocar PROD** (<IP>)
+9. **Testar TUDO no DEV** (<DEVICE_BIND_ADDR>:8080, admin/admin)
 10. **Um agente deploya por vez** — coordenar pelo `.trava/`
 11. **Ler o handoff antes de comecar** — nao repetir trabalho
 

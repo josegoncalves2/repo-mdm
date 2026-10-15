@@ -2136,7 +2136,7 @@ detalhes      (dados da alteração)
   "audit_event": "POLICY_UPDATED",
   "timestamp": "2026-09-09T14:20:00Z",
   "user_id": "admin@empresa.com",
-  "user_ip": "192.168.1.100",
+  "user_ip": "<IP>",
   "user_agent": "Chrome/117",
   "policy_id": "corporate-strict",
   "old_version": 7,

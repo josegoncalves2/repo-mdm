@@ -5,7 +5,7 @@ Executor: sessao-principal
 Evidencia: /opt/projetos/hwmdm/evidencias/webfilter/validador-t1/
 
 - Data: 2026-09-18, 17:15–17:55 (horário de Brasília)
-- Ambiente: somente DEV (`http://localhost:8080`, 192.168.1.65). O servidor de produção não foi acessado.
+- Ambiente: somente DEV (`http://localhost:8080`, <DEVICE_BIND_ADDR>). O servidor de produção não foi acessado.
 - Pedido: `fiscal/fila/para-validador/WEBFILTER-DEV-t1.md`. O relatório e as capturas do executor foram tratados como alegação e não serviram de prova.
 - Método: navegador Chromium (Playwright) dirigido só por gestos de pessoa: login pela tela, cliques, digitação, F5 (`page.reload`) e botão voltar do navegador. Também foram usadas a sonda DoT do pedido (`dns/consulta_dot.py`) e o sync simulado com `X-Request-Signature`, conferindo `X-Response-Signature` pela regra do launcher. O banco foi consultado somente para leitura. Os roteiros descartáveis estão em `validador-t1/roteiros/`. Nenhum arquivo do repositório foi alterado além deste parecer.
 - Estado encontrado: `00-estado-inicial-db.txt`. Estado deixado: `Z-estado-final-db.txt` e `Z-dns-apos-restaurar.txt`. As políticas, as categorias, as listas, a categorização e o domínio DNS voltaram ao que eram, pela tela.

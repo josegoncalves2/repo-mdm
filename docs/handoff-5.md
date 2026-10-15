@@ -29,7 +29,7 @@
 ## ESTE HANDOFF - handoff-5.md
 
 #### ip e acesso
-ip: 192.168.1.65:8080
+ip: <DEVICE_BIND_ADDR>:8080
 
 user ssh: sahw
 pass ssh: pmotiadm
@@ -75,7 +75,7 @@ pass web: admin ou admin123
 
 - o menu da barra lateral esquerda move-se sempre que é clicado, nao fica fixo, dificulta muito se a tela nao está maximizada, precisa suavizar isso, assim como quando atualiza a pagina ele volta selecionado outra sessao do menu e não a atual.
 
-- Menu Server nao segue o padrao do layout do resto da interface web - corrigir. http://192.168.1.65:8080/#/server
+- Menu Server nao segue o padrao do layout do resto da interface web - corrigir. http://<DEVICE_BIND_ADDR>:8080/#/server
 
 - garanta e persista todas alterações (nota: eu exclui o entrypoint porque ele rebuildava e destruia tudo. `/opt/projetos/hwmdm/repo-mdm/source/docker-entrypoint.sh.bak-20261002-095114`)
 
