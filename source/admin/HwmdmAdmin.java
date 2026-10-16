@@ -17,6 +17,7 @@ public class HwmdmAdmin {
     static final String ROOT = System.getenv("HWMDM_ROOT");
     static final String STACK_DIR = ROOT + "/source";
     static final String ENV_FILE = STACK_DIR + "/.env";
+    static final String THEME_SEED_FILE = STACK_DIR + "/sql/hwmdm_theme_seed.sql";
     static final String PROJECT = env("COMPOSE_PROJECT_NAME");
     static final String SELF_SERVICE = "admin";
     static final int PORT = Integer.parseInt(env("ADMIN_PORT"));
@@ -232,6 +233,15 @@ public class HwmdmAdmin {
         try (var c = db(); var st = c.createStatement()) {
             st.execute("CREATE TABLE IF NOT EXISTS hwmdm_system_settings (" +
                 "key VARCHAR(100) PRIMARY KEY, value TEXT, updated TIMESTAMP DEFAULT now())");
+            // Chaves do tema: o seed so cria as que faltam (ON CONFLICT DO NOTHING).
+            Path seed = Path.of(THEME_SEED_FILE);
+            if (Files.exists(seed)) {
+                try {
+                    st.execute(Files.readString(seed));
+                } catch (IOException e) {
+                    System.out.println("seed do tema ilegivel: " + e);
+                }
+            }
         }
     }
 

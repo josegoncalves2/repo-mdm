@@ -77,7 +77,8 @@ angular.module('headwind-kiosk')
         var save = function (values) {
             var base = adminBase();
             var body = Object.keys(values).map(function (key) {
-                return encodeURIComponent(key) + '=' + encodeURIComponent(values[key]);
+                var value = values[key] === undefined || values[key] === null ? '' : values[key];
+                return encodeURIComponent(key) + '=' + encodeURIComponent(value);
             }).join('&');
             return $window.fetch(base + '/theme', {
                 method: 'POST',

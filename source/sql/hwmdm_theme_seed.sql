@@ -1,0 +1,31 @@
+-- Chaves do tema do painel (Aparencia). Aplicado pelo hwmdm-admin na inicializacao.
+-- So cria o que falta: valores ja editados no banco nao sao sobrescritos.
+INSERT INTO hwmdm_system_settings(key, value) VALUES
+ ('theme.app-name', 'MDM - Prefeitura Municipal da Estância Turística de Olímpia'),
+ ('theme.color-bg', '#f4f5f7'),
+ ('theme.color-border', '#d9dde3'),
+ ('theme.color-border-input', '#cbd1d9'),
+ ('theme.color-border-subtle', '#eceef1'),
+ ('theme.color-danger', '#b42318'),
+ ('theme.color-danger-bg', '#fef3f2'),
+ ('theme.color-danger-border', '#fda29b'),
+ ('theme.color-info', '#2f80ed'),
+ ('theme.color-info-bg', '#eef6ff'),
+ ('theme.color-muted', '#6b7280'),
+ ('theme.color-muted-soft', '#9ca3af'),
+ ('theme.color-on-accent', '#ffffff'),
+ ('theme.color-overlay', '#11182773'),
+ ('theme.color-shadow', '#11182726'),
+ ('theme.color-sidebar-text', '#1f2937'),
+ ('theme.color-success', '#1f8a70'),
+ ('theme.color-success-bg', '#e6f5f0'),
+ ('theme.color-surface', '#ffffff'),
+ ('theme.color-surface-hover', '#f3f4f6'),
+ ('theme.color-surface-subtle', '#f9fafb'),
+ ('theme.color-text', '#1f2937'),
+ ('theme.color-text-strong', '#111827'),
+ ('theme.color-warn', '#8a5a00'),
+ ('theme.color-warn-bg', '#fef7e0'),
+ ('theme.vendor-link', ''),
+ ('theme.vendor-name', 'SINID')
+ON CONFLICT (key) DO NOTHING;
