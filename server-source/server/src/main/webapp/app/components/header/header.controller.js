@@ -27,7 +27,6 @@ angular.module( 'headwind-kiosk' )
     var loadWebBranding = function () {
         settingsService.getSettings(function (response) {
             if (response.status === 'OK' && response.data) {
-                themeService.applyBrandColors(response.data);
                 // Logos stored before the path became relative still carry the host they were
                 // uploaded from; serve any /files/ logo from the origin the console is on now.
                 var logo = response.data.webLogoUrl;

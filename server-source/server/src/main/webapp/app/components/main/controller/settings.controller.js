@@ -2,7 +2,7 @@
 angular.module('headwind-kiosk')
     .controller('SettingsTabController', function ($scope, $rootScope, $timeout, $uibModal, $window, hintService, settingsService,
                                                    localization, authService, userService, confirmModal, Idle,
-                                                   groupService, configurationService, twoFactorAuthService, themeService) {
+                                                   groupService, configurationService, twoFactorAuthService) {
         $scope.settings = {};
         $scope.userRoleSettings = {};
         $scope.loading = false;
@@ -395,7 +395,6 @@ angular.module('headwind-kiosk')
             normalizeDesignSettings($scope.settings);
             settingsService.updateDefaultDesignSettings($scope.settings, function (response) {
                 if (response.status === 'OK') {
-                    themeService.applyBrandColors($scope.settings);
                     $scope.successMessage = localization.localize('success.settings.design.saved');
                     $timeout(function () {
                         $scope.successMessage = '';
