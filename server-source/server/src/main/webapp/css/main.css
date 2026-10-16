@@ -3191,7 +3191,6 @@ h4.collapse-control {
 /* Dark values are picked so every pairing the panel actually renders clears
    WCAG AA (4.5:1): body text and headings on --hwmdm-surface, muted text on
    --hwmdm-surface-subtle, and the accent on --hwmdm-nav-active-bg. */
-[data-theme="dark"] {
     /* Native widgets the stylesheet cannot reach - checkbox and radio glyphs,
        the select dropdown popup, scrollbars - follow this instead. */
     color-scheme: dark;
@@ -3238,32 +3237,21 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-[data-theme="dark"] a {
     color: var(--hwmdm-link);
 }
 
 /* The page itself keeps --hwmdm-bg so the cards sitting on it (which use
    --hwmdm-surface) still read as raised. Painting the whole main area with the
    card colour flattened every screen into a single slab. */
-[data-theme="dark"] .panel,
-[data-theme="dark"] .well,
-[data-theme="dark"] .modal-content,
-[data-theme="dark"] .header .dropdown-menu,
-[data-theme="dark"] .dropdown-menu {
     background: var(--hwmdm-surface);
     color: var(--hwmdm-text);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .modal-header,
-[data-theme="dark"] .modal-footer,
-[data-theme="dark"] .panel-heading,
-[data-theme="dark"] .panel-footer {
     background: var(--hwmdm-surface-subtle);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .close {
     color: var(--hwmdm-text);
     opacity: 0.8;
     text-shadow: none;
@@ -3272,163 +3260,114 @@ body {
 /* Bootstrap's own light-mode helpers, which several legacy screens still use.
    Their defaults are mid-tone inks picked against white (.text-danger is
    #a94442, 2.8:1 on the dark canvas), so each one needs a lighter counterpart. */
-[data-theme="dark"] .text-muted,
-[data-theme="dark"] .help-block {
     color: var(--hwmdm-muted);
 }
 
-[data-theme="dark"] .text-danger,
-[data-theme="dark"] a.text-danger:hover {
     color: var(--hwmdm-critical-text);
 }
 
-[data-theme="dark"] .text-warning,
-[data-theme="dark"] a.text-warning:hover {
     color: var(--hwmdm-warn-text);
 }
 
-[data-theme="dark"] .text-success,
-[data-theme="dark"] a.text-success:hover {
     color: #7fd9a2;
 }
 
-[data-theme="dark"] .text-info,
-[data-theme="dark"] a.text-info:hover {
     color: #7fc9de;
 }
 
-[data-theme="dark"] .error,
-[data-theme="dark"] .field-warning {
     color: var(--hwmdm-critical-text);
 }
 
-[data-theme="dark"] .success-font {
     color: #7fd9a2;
 }
 
-[data-theme="dark"] .nav-tabs {
     border-bottom-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .nav-tabs > li > a {
     color: var(--hwmdm-muted);
 }
 
-[data-theme="dark"] .nav-tabs > li > a:hover,
-[data-theme="dark"] .nav-tabs > li > a:focus {
     background: var(--hwmdm-surface-subtle);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .nav-tabs > li.active > a,
-[data-theme="dark"] .nav-tabs > li.active > a:hover,
-[data-theme="dark"] .nav-tabs > li.active > a:focus {
     background: var(--hwmdm-surface);
     border-color: var(--hwmdm-border);
     border-bottom-color: transparent;
     color: var(--hwmdm-text);
 }
 
-[data-theme="dark"] .dropdown-menu > li > a {
     color: var(--hwmdm-text);
 }
 
-[data-theme="dark"] .dropdown-menu > li > a:hover,
-[data-theme="dark"] .dropdown-menu > li > a:focus {
     background: var(--hwmdm-bg);
 }
 
-[data-theme="dark"] .table {
     color: var(--hwmdm-text);
 }
 
-[data-theme="dark"] .table > thead > tr > th,
-[data-theme="dark"] .table > tbody > tr > td,
-[data-theme="dark"] .table > tbody > tr > th {
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .form-control,
-[data-theme="dark"] .form-control:focus,
-[data-theme="dark"] select.form-control,
-[data-theme="dark"] textarea {
     background: var(--hwmdm-input-bg);
     color: var(--hwmdm-input-text);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] select.form-control option {
     background: var(--hwmdm-input-bg);
     color: var(--hwmdm-input-text);
 }
 
-[data-theme="dark"] .form-control[disabled],
-[data-theme="dark"] .form-control[readonly],
-[data-theme="dark"] fieldset[disabled] .form-control {
     background: var(--hwmdm-surface-subtle);
     color: var(--hwmdm-muted);
 }
 
-[data-theme="dark"] .form-control::placeholder {
     color: var(--hwmdm-muted-soft);
 }
 
-[data-theme="dark"] .btn-default {
     background: var(--hwmdm-btn-default-bg);
     color: var(--hwmdm-text);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
     background: var(--hwmdm-surface-subtle);
 }
 
-[data-theme="dark"] .input-group-addon {
     background: var(--hwmdm-surface-subtle);
     color: var(--hwmdm-muted);
     border-color: var(--hwmdm-border);
 }
 
-[data-theme="dark"] hr,
-[data-theme="dark"] legend {
     border-color: var(--hwmdm-border);
     color: var(--hwmdm-text);
 }
 
-[data-theme="dark"] .pagination > li > a,
-[data-theme="dark"] .pagination > li > span {
     background: var(--hwmdm-surface);
     border-color: var(--hwmdm-border);
     color: var(--hwmdm-link);
 }
 
-[data-theme="dark"] .pagination > .disabled > a,
-[data-theme="dark"] .pagination > .disabled > span {
     background: var(--hwmdm-surface-subtle);
     color: var(--hwmdm-muted-soft);
 }
 
 /* Bootstrap's alerts ship pastel backgrounds with near-black text; unchanged
    they are the only blocks of glare left on a dark screen. */
-[data-theme="dark"] .alert-info {
     background: #16303a;
     border-color: #275a68;
     color: #a6dcea;
 }
 
-[data-theme="dark"] .alert-success {
     background: #16301f;
     border-color: #2c5c3c;
     color: #9fd9b1;
 }
 
-[data-theme="dark"] .alert-warning {
     background: var(--hwmdm-warn-bg);
     border-color: #6b5320;
     color: var(--hwmdm-warn-text);
 }
 
-[data-theme="dark"] .alert-danger {
     background: var(--hwmdm-critical-bg);
     border-color: #6b3131;
     color: var(--hwmdm-critical-text);

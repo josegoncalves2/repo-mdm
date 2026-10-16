@@ -3,7 +3,6 @@
    Carregado por ULTIMO (depois de bootstrap.css, main.css, hwmdm-modules.css,
    hwmdm-version.css) para poder sobrescrever os dois primeiros sem !important
    na maioria dos casos. Reaproveita os tokens --hwmdm-* definidos em
-   css/main.css (:root e [data-theme="dark"]) -- nao redeclara os valores,
    so os consome, para nao brigar com theme.service.js (que grava
    --hwmdm-accent e outras variaveis inline em <html> quando o admin
    configura uma cor de marca).
@@ -175,7 +174,6 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     --hwmdm-focus-ring: 0 0 0 3px color-mix(in srgb, var(--hwmdm-accent) 30%, transparent);
 }
 
-[data-theme="dark"] {
     --hwmdm-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
     --hwmdm-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
     --hwmdm-shadow-md: 0 6px 18px rgba(0, 0, 0, 0.40);
@@ -451,8 +449,6 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     border-color: #17b26a;
     color: #fff;
 }
-[data-theme="dark"] .btn-success { background: #16301f; border-color: #2c5c3c; color: #7fd9a2; }
-[data-theme="dark"] .btn-success:hover, [data-theme="dark"] .btn-success:focus { background: #1f7a45; border-color: #1f7a45; color: #fff; }
 
 .btn-warning {
     background: var(--hwmdm-warn-bg);
@@ -671,7 +667,6 @@ input[type="radio"] {
 .label-warning  { background: var(--hwmdm-warn-bg); color: var(--hwmdm-warn-text); }
 .label-danger   { background: var(--hwmdm-critical-bg); color: var(--hwmdm-critical-text); }
 .label-info     { background: var(--hwmdm-accent-soft-bg); color: var(--hwmdm-accent); }
-[data-theme="dark"] .label-success { background: #16301f; color: #7fd9a2; }
 
 
 /* --------------------------------------------------------------------------
@@ -1156,8 +1151,6 @@ button:focus-visible,
 .hwmdm-main .devices-table > tbody > tr:hover > td.deviceActions {
     background: var(--hwmdm-surface-hover);
 }
-[data-theme="dark"] .hwmdm-main .devices-table > thead > tr > th.actions-column,
-[data-theme="dark"] .hwmdm-main .devices-table > tbody > tr > td.deviceActions {
     box-shadow: inset 1px 0 0 var(--hwmdm-border), -8px 0 10px -8px rgba(0, 0, 0, .6);
 }
 

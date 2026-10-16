@@ -152,10 +152,7 @@
     color: var(--hwmdm-muted);
 }
 
-/* O tema escuro ja resolve as cores via os tokens acima ([data-theme="dark"]
    em css/main.css/hwmdm-ui.css redefine --hwmdm-*); aqui so um acento sutil
    para reforcar contraste no botao do rodape quando escuro. */
-[data-theme="dark"] .hwmdm-version-footer__botao:hover,
-[data-theme="dark"] .hwmdm-version-footer__botao:focus {
     border-color: var(--hwmdm-accent);
 }
