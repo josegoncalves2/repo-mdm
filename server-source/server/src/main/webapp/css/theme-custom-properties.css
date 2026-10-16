@@ -1,8 +1,8 @@
 /* Headwind MDM Admin Console - Custom Theme Properties */
 
 :root {
-    /* Default colors */
-    --hwmdm-accent: #0EA5B7;
+    /* Default colors - ONLY GREEN, NO TEAL/DARK */
+    --hwmdm-accent: #22c55e;
     --hwmdm-sidebar-bg: #f5f5f5;
     --hwmdm-text: #333333;
     --hwmdm-text-light: #666666;
@@ -11,9 +11,9 @@
     --hwmdm-surface-bg: #ffffff;
     --hwmdm-surface-hover: #f9f9f9;
 
-    /* Accent shades */
-    --hwmdm-accent-dark: #0B8190;
-    --hwmdm-accent-light: #1fc9db;
+    /* Accent shades - GREEN ONLY */
+    --hwmdm-accent-dark: #16a34a;
+    --hwmdm-accent-light: #4ade80;
 }
 
 /* Apply custom properties to main elements */
@@ -359,21 +359,4 @@
 
 .hwmdm-main .table-responsive::-webkit-scrollbar-thumb:hover {
     background: var(--hwmdm-accent-dark);
-}
-
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --hwmdm-sidebar-bg: #2d3748;
-        --hwmdm-text: #e2e8f0;
-        --hwmdm-text-light: #cbd5e0;
-        --hwmdm-text-lighter: #a0aec0;
-        --hwmdm-border: #4a5568;
-        --hwmdm-surface-bg: #1a202c;
-        --hwmdm-surface-hover: #2d3748;
-    }
-
-    .hwmdm-sidebar {
-        background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
-    }
 }
