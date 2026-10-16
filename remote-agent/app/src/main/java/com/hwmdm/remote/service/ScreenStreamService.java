@@ -134,8 +134,10 @@ public class ScreenStreamService extends Service {
         intent.setAction(ACTION_STOP);
         try {
             context.startService(intent);
-        } catch (Throwable ignored) {
-            // Servico ja parado.
+        } catch (Throwable t) {
+            // Em Android O+ com app em background o startService pode ser recusado.
+            // O servico, se estiver rodando, cai sozinho pelo timeout de reconexao.
+            Log.w(TAG, "Nao foi possivel sinalizar parada ao servico: " + t);
         }
     }
 
@@ -172,6 +174,10 @@ public class ScreenStreamService extends Service {
      * NullPointerException, que no log aparecia como "nenhum encoder utilizavel".
      *
      * Cada etapa assincrona confere a propria geracao antes de agir.
+     *
+     * A geracao e' incrementada ANTES do cleanup(): se o incremento vier depois, existe
+     * uma janela em que um onOpen/onMessage do socket antigo ainda ve session == generation
+     * e tenta postar no handler ja anulado pelo cleanup.
      */
     private volatile int generation;
 
@@ -189,6 +195,12 @@ public class ScreenStreamService extends Service {
 
         startForegroundCompat();
 
+        // A geracao sobe ANTES de derrubar a sessao anterior. Sem isso, um callback do
+        // socket velho que ja estivesse em voo enxergaria session == generation e cairia
+        // em handler.post() com handler == null, que e' justamente o NPE que o contador
+        // existe para evitar.
+        final int session = ++generation;
+
         // Sessao anterior sai ANTES de a nova entrar.
         //
         // Cada clique em "Conectar" no painel manda um chamado novo, e o servico e' um so'.
@@ -197,13 +209,13 @@ public class ScreenStreamService extends Service {
         // de encoders de hardware e' finito, bastavam duas ou tres tentativas para o
         // proximo configure() falhar com "nenhum encoder utilizavel" -- que foi exatamente
         // o que apareceu no log do aparelho, alternando com sessoes que funcionavam.
-        if (streaming || encoder != null || projection != null || socket != null) {
+        if (streaming || encoder != null || projection != null
+                || socket != null || virtualDisplay != null) {
             RemoteLog.i(this, "Encerrando a sessao anterior antes de abrir a nova");
             cleanup();
         }
         stopping = false;
         streaming = false;
-        final int session = ++generation;
 
         if (intent == null) {
             // Reinicio pelo sistema sem extras nao consegue retomar sessao: o token e' de
@@ -262,8 +274,14 @@ public class ScreenStreamService extends Service {
                     webSocket.close(1000, "sessao substituida");
                     return;
                 }
+                final Handler h = handler;
+                if (h == null) {
+                    // Servico encerrando entre a checagem de geracao e o despacho.
+                    webSocket.close(1000, "servico encerrando");
+                    return;
+                }
                 RemoteLog.i(ScreenStreamService.this, "Relay aceitou a conexao; iniciando captura");
-                handler.post(() -> {
+                h.post(() -> {
                     if (session != generation || stopping) { return; }
                     reconnectAttempt = 0;
                     reconnectScheduled = false;
@@ -386,7 +404,10 @@ public class ScreenStreamService extends Service {
                     ok = input.key(json.optString("name", ""));
                     break;
                 default:
+                    // Sem isto o painel nao recebe retorno e o tecnico fica clicando numa
+                    // imagem que nao responde sem saber por que.
                     Log.w(TAG, "Comando desconhecido: " + type);
+                    reportInput(type, false, "unknown_command");
                     return;
             }
             // "text" e "key" agora podem falhar por um motivo distinguivel ("nenhum campo
@@ -397,6 +418,7 @@ public class ScreenStreamService extends Service {
             reportInput(type, ok, ok ? null : (reason != null ? reason : "rejected"));
         } catch (Throwable t) {
             Log.w(TAG, "Comando ilegivel", t);
+            reportInput("parse", false, "malformed");
         }
     }
 
@@ -560,7 +582,15 @@ public class ScreenStreamService extends Service {
                 @Override
                 public void onError(MediaCodec codec, MediaCodec.CodecException e) {
                     Log.w(TAG, "Encoder falhou: " + e.getMessage());
-                    shutdown("encoder de video falhou no aparelho");
+                    // Despacha a parada para o handler, em vez de chamar cleanup() do
+                    // proprio callback do encoder: parar e soltar o MediaCodec de dentro
+                    // do onError arrisca deadlock com o proprio thread do codec.
+                    Handler h = handler;
+                    if (h != null) {
+                        h.post(() -> shutdown("encoder de video falhou no aparelho"));
+                    } else {
+                        shutdown("encoder de video falhou no aparelho");
+                    }
                 }
 
                 @Override
@@ -675,23 +705,6 @@ public class ScreenStreamService extends Service {
         stopSelf();
     }
 
-    /**
-     * <p>Mantem a tela acesa enquanto durar a sessao, e acende se estiver apagada.</p>
-     *
-     * <p>Sem isto o atendimento morre sozinho: o aparelho atinge o tempo de suspensao, a
-     * tela apaga, e o que o tecnico ve congela num quadro preto -- sem erro nenhum, porque
-     * do ponto de vista do encoder nao ha falha, so' deixou de existir conteudo mudando.</p>
-     *
-     * <p>{@code SCREEN_BRIGHT_WAKE_LOCK} esta' obsoleto desde o Android 4.2, e mesmo assim
-     * e' o certo aqui: a alternativa recomendada, {@code FLAG_KEEP_SCREEN_ON}, exige uma
-     * janela, e este servico nao tem nenhuma -- criar uma janela invisivel so' para segurar
-     * a tela dependeria da permissao de sobreposicao e acrescentaria uma superficie que
-     * nada desenha.</p>
-     *
-     * <p>O tempo limite nao e' zelo excessivo: e' o que impede que uma sessao interrompida
-     * de mau jeito -- rede caindo no meio, processo morto pelo sistema -- deixe a tela de
-     * um tablet acesa ate a bateria acabar.</p>
-     */
     /**
      * <p>Segura a tela por uma janela invisivel com {@code FLAG_KEEP_SCREEN_ON}.</p>
      *
