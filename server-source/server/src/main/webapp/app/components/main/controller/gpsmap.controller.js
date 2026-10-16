@@ -396,7 +396,7 @@ angular.module('headwind-kiosk')
             removePlaybackMarker();
 
             var coords = $scope.historyPoints.map(function (p) { return [p.lat, p.lon]; });
-            mapInstance.addPolyline('history-track', coords, { color: '#0ea5b7', weight: 3, opacity: 0.8 });
+            mapInstance.addPolyline('history-track', coords, { color: '#22c55e', weight: 3, opacity: 0.8 });
 
             var first = $scope.historyPoints[0];
             var last = $scope.historyPoints[$scope.historyPoints.length - 1];
@@ -466,7 +466,7 @@ angular.module('headwind-kiosk')
             if (pt.accuracy && leafletMap) {
                 if (accuracyCircle) leafletMap.removeLayer(accuracyCircle);
                 accuracyCircle = L.circle([pt.lat, pt.lon], {
-                    radius: pt.accuracy, color: '#0ea5b7', fillOpacity: 0.1, weight: 1
+                    radius: pt.accuracy, color: '#22c55e', fillOpacity: 0.1, weight: 1
                 }).addTo(leafletMap);
             } else if (accuracyCircle && leafletMap) {
                 leafletMap.removeLayer(accuracyCircle);

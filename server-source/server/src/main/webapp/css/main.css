@@ -104,7 +104,7 @@ body {
 
 .header {
     height: 50px;
-    background-color: #0EA5B7;
+    background-color: #22c55e;
 }
 
 .navbar-nav .expiry-warning {
@@ -210,7 +210,7 @@ body {
 }
 
 .btn-promo {
-    background-color: #0EA5B7;
+    background-color: #22c55e;
 }
 
 .btn-promo:hover {
@@ -3152,8 +3152,8 @@ h4.collapse-control {
    localStorage, per-browser - doesn't need a server round trip).
    ========================================================================== */
 :root {
-    --hwmdm-accent: #0EA5B7;
-    --hwmdm-accent-hover: #0EA5B7;
+    --hwmdm-accent: #22c55e;
+    --hwmdm-accent-hover: #22c55e;
     --hwmdm-accent-soft-bg: rgba(14, 165, 183, 0.08);
     --hwmdm-bg: #f3f6f8;
     --hwmdm-text: #17202a;
@@ -3175,7 +3175,7 @@ h4.collapse-control {
     --hwmdm-topbar-meta-text: #e7f8f5;
     --hwmdm-input-bg: #ffffff;
     --hwmdm-input-text: #17202a;
-    --hwmdm-link: #0EA5B7;
+    --hwmdm-link: #22c55e;
     --hwmdm-danger: #c2410c;
     --hwmdm-danger-bg: #fff7ed;
     --hwmdm-danger-border: #fdba74;
@@ -4073,7 +4073,7 @@ body {
 
 .remote-device-item-active {
     background: rgba(14, 165, 183, 0.08);
-    border-left-color: #0ea5b7;
+    border-left-color: #22c55e;
 }
 
 .chat-device-option {
@@ -5101,7 +5101,7 @@ body {
 }
 
 :focus-visible {
-    outline: 2px solid var(--hwmdm-accent, #0ea5b7);
+    outline: 2px solid var(--hwmdm-accent, #22c55e);
     outline-offset: 2px;
 }
 
