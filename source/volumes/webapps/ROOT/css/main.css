@@ -8150,7 +8150,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 }
 
 .btn .glyphicon,
-.btn .hw-icon { width: 15px; height: 15px; }
+.btn .hw-icon { width: 15px; height: 15px; top: 0; flex: 0 0 auto; }
 
 .btn-lg { min-height: 42px; height: auto; padding: 9px 18px; font-size: 15px; border-radius: var(--hwmdm-radius-md); }
 
@@ -8166,7 +8166,7 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
     color: var(--hwmdm-text-strong);
 }
 
-.btn-default:hover, .btn-default:focus {
+.btn-default:hover, .btn-default:focus-visible {
     background: var(--hwmdm-accent-soft-bg);
     border-color: var(--hwmdm-accent);
     color: var(--hwmdm-accent);
@@ -8180,13 +8180,13 @@ label { font-weight: 600; color: var(--hwmdm-text-strong); }
 .btn-primary {
     background: var(--hwmdm-accent);
     border-color: var(--hwmdm-accent);
-    color: var(--hwmdm-surface);
+    color: var(--hwmdm-on-accent);
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover, .btn-primary:focus-visible {
     background: var(--hwmdm-accent-hover);
     border-color: var(--hwmdm-accent-hover);
-    color: var(--hwmdm-surface);
+    color: var(--hwmdm-on-accent);
 }
 
 .btn-danger {
@@ -9404,3 +9404,37 @@ body.hwmdm-nav-collapsed .hwmdm-main { grid-column: 1; }
     .mdm-extras-tabela tr { border-bottom: 1px solid var(--hwmdm-border-subtle); padding: 6px 0; }
     .mdm-extras-acao { text-align: left; }
 }
+
+/* --------------------------------------------------------------------------
+   Controles compactos (barras de mapa/historico e afins)
+   -------------------------------------------------------------------------- */
+
+/* Foco por clique nao deve parecer hover; o anel de foco fica para o teclado. */
+.btn:focus:not(:focus-visible) {
+    outline: 0;
+    box-shadow: none;
+}
+
+.glyphicon {
+    top: 0;
+}
+
+.hwmdm-control-bar select.input-sm,
+.hwmdm-control-group select.form-control {
+    width: auto !important;
+    min-width: 72px;
+    height: 30px;
+    padding: 4px 24px 4px 8px;
+}
+
+.hwmdm-control-group {
+    flex-wrap: wrap;
+}
+
+.gps-map-layer-actions,
+.gps-map-selection-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
