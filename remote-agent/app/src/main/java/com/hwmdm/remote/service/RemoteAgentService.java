@@ -101,6 +101,11 @@ public class RemoteAgentService extends Service {
      * transforma cliques ansiosos em uma unica sessao, em vez de varias meio-abertas.
      */
     private volatile long lastRequestAt;
+    // Token do ultimo chamado aceito: o launcher pode entregar o mesmo push mais de uma
+    // vez, e cada reentrega abria sessao nova e pedia consentimento de novo -- no Android 14
+    // isso invalida a MediaProjection ja concedida ("non-current MediaProjection").
+    private static String lastToken;
+    private static final Object START_LOCK = new Object();
     private static final long REQUEST_DEBOUNCE_MS = 15_000L;
 
     public static void start(Context context) {
@@ -197,6 +202,13 @@ public class RemoteAgentService extends Service {
             if (token == null || token.trim().isEmpty()) {
                 RemoteLog.w(this, "Chamado recusado: push sem token de sessao");
                 return;
+            }
+            synchronized (START_LOCK) {
+                if (token.equals(lastToken)) {
+                    RemoteLog.i(this, "Chamado repetido ignorado: sessao ja iniciada com este token");
+                    return;
+                }
+                lastToken = token;
             }
 
             MdmLink.Config current = MdmLink.query(this);
