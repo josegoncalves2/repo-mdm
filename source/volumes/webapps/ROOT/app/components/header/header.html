@@ -6,16 +6,11 @@
     </button>
     <div class="hwmdm-topbar-brand" ng-click="mainPanel()">
         <img ng-if="webLogoUrl" ng-src="{{webLogoUrl}}" class="hwmdm-brand-logo" alt=""
-             onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';"/>
-        <span class="hwmdm-brand-mark" ng-style="webLogoUrl && {'display':'none'}">HW</span>
+             onerror="this.style.display='none';"/>
         <span class="hwmdm-brand-text">{{appName}}</span>
     </div>
 
     <div class="hwmdm-topbar-meta">
-        <button type="button" class="hwmdm-theme-toggle" ng-click="toggleTheme()"
-                title="Switch light/dark theme">
-            <span class="glyphicon glyphicon-adjust"></span>
-        </button>
         <span class="hwmdm-env-chip">{{portalHost}}</span>
         <span ng-if="expiryWarning" id="headerExpiryWarning" class="expiry-warning" localized-change-tracking>account.expired.short</span>
         <span id="headerDateTime" class="hide-on-small-screen">{{dateTime}}</span>

@@ -1,11 +1,7 @@
 <!-- Localization completed -->
 <div class="login-page" ng-if="!isIE">
     <div class="login">
-        <div class="login-logo" ng-if="rebranding"><img src="images/logo.png"><span class="logo">Headwind MDM</span></div>
-        <div class="login-brand" ng-if="!rebranding">
-            <span class="login-brand-mark">HW</span>
-            <span class="login-brand-title">Headwind MDM</span>
-        </div>
+        <div class="login-logo" ng-if="rebranding"><img ng-if="rebranding.logoUrl" ng-src="{{rebranding.logoUrl}}" alt=""><span class="logo">{{rebranding.appName}}</span></div>
 
         <div class='panel panel-default' ng-class='{"panel-danger": errorMessage, "panel-success": successMessage}'>
             <div class='panel-heading' ng-if='errorMessage'>{{errorMessage}}</div>
@@ -38,7 +34,7 @@
         </div>
 
         <div class="login-footer" ng-if="rebranding">
-            <span>Headwind MDM - Headwind MDM</span>. (c) {{rebranding.year}}
+            <span>{{rebranding.vendorName}}</span> (c) {{rebranding.year}}
         </div>
     </div>
 </div>

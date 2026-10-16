@@ -1,33 +1,24 @@
 // Localization completed
+// Nome, fornecedor e logo do painel vem do banco (Aparencia), pelo themeService.
 angular.module('headwind-kiosk')
-    .factory('rebranding', function ($cookies, localization, serverRebrandingService) {
-
-        var defaultValue = {
-            appName: 'Headwind MDM',
-            vendorName: 'Headwind MDM',
-            vendorLink: '',
-            signupLink: '',
-            termsLink: ''
-        };
-
-        var fixEmptyValue = function(value) {
-            if (value.appName === "") {
-                // Empty strings are replaced by default values
-                value.appName = localization.localize('app.name');
-            }
-            if (value.vendorName === "") {
-                value.vendorName = localization.localize('app.vendor.name');
-            }
-            if (value.vendorLink === "") {
-                value.vendorLink = localization.localize('app.vendor.link');
-            }
-            return value;
+    .factory('rebranding', function ($cookies, themeService) {
+        var fromTheme = function (theme) {
+            return {
+                appName: theme['theme.app-name'] || '',
+                vendorName: theme['theme.vendor-name'] || '',
+                vendorLink: theme['theme.vendor-link'] || '',
+                logoUrl: theme.webLogoUrl || '',
+                signupLink: '',
+                termsLink: ''
+            };
         };
 
         return {
             query: function(callback) {
                 $cookies.remove('rebranding');
-                callback(defaultValue);
+                themeService.ready().then(function (theme) {
+                    callback(fromTheme(theme));
+                });
             }
         }
     })

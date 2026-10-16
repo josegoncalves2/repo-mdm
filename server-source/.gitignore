@@ -1,7 +1,0 @@
-# Vazio de proposito.
-# A politica de versionamento deste repositorio e' UNICA e vive em /.gitignore
-# na raiz: versiona-se tudo de producao, sem excecao.
-#
-# Este arquivo veio do upstream do Headwind MDM e excluia target/, node_modules,
-# bower_components, server/src/main/webapp/lib/, logs, Dockerfile, context.xml,
-# docker-compose.yml e build.properties. Tudo isso agora e' versionado.

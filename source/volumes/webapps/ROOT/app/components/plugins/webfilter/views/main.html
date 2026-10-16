@@ -35,9 +35,8 @@
         .wf-lists textarea { width: 100%; min-height: 120px; font-family: monospace; }
         .wf-field-error { color: var(--hwmdm-danger); font-size: 12px; margin-top: 4px; font-weight: 600; }
         .wf-badge { display: inline-block; border-radius: 10px; padding: 2px 9px; font-size: 12px; font-weight: 700; border: 1px solid; }
-        .wf-badge-on { color: #14532d; background: #dcfce7; border-color: #86efac; }
+        .wf-badge-on { color: var(--hwmdm-success); background: var(--hwmdm-success-bg); border-color: var(--hwmdm-success); }
         .wf-badge-off { color: var(--hwmdm-text-strong); background: transparent; border-color: var(--hwmdm-border); }
-        [data-theme="dark"] .wf-badge-on { color: #bbf7d0; background: #14532d; border-color: #22c55e; }
         .wf-cat { align-items: flex-start; }
         .wf-cat-text { display: flex; flex-direction: column; gap: 2px; }
         .wf-cat-desc { font-weight: 400; font-size: 12px; color: var(--hwmdm-muted); }
@@ -56,15 +55,15 @@
         .wf-form-field { min-width: 0; }
         .wf-form-field textarea { min-height: 92px; resize: vertical; }
         .wf-form-field .wf-code-area { min-height: 150px; font-family: monospace; font-size: 12px; }
-        .wf-block-preview { border: 1px solid var(--hwmdm-border); border-radius: 8px; overflow: hidden; background: #f3f7fb; }
+        .wf-block-preview { border: 1px solid var(--hwmdm-border); border-radius: 8px; overflow: hidden; background: var(--hwmdm-surface-subtle); }
         .wf-block-preview-body { min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 24px; }
         @media (max-width: 900px) { .wf-block-layout { grid-template-columns: 1fr; } }
-        .wf-block-card { width: 100%; max-width: 340px; border: 1px solid #d7e2ee; border-radius: 8px; background: #fff; padding: 22px; box-shadow: 0 10px 24px rgba(15, 23, 42, .12); }
+        .wf-block-card { width: 100%; max-width: 340px; border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface); padding: 22px; box-shadow: 0 10px 24px var(--hwmdm-shadow); }
         .wf-block-logo { max-width: 150px; max-height: 56px; object-fit: contain; margin-bottom: 16px; }
-        .wf-block-pill { display: inline-block; border-radius: 999px; background: #e8f4fb; color: #16658a; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
-        .wf-block-title { margin: 12px 0 8px; font-size: 22px; line-height: 1.2; font-weight: 700; color: #102a43; }
-        .wf-block-message { color: #334e68; line-height: 1.45; margin-bottom: 14px; overflow-wrap: anywhere; }
-        .wf-block-note { border-top: 1px solid #e4edf5; color: #5f6b7a; font-size: 12px; line-height: 1.4; padding-top: 12px; overflow-wrap: anywhere; }
+        .wf-block-pill { display: inline-block; border-radius: 999px; background: var(--hwmdm-border-subtle); color: var(--hwmdm-info); padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .wf-block-title { margin: 12px 0 8px; font-size: 22px; line-height: 1.2; font-weight: 700; color: var(--hwmdm-info); }
+        .wf-block-message { color: var(--hwmdm-info); line-height: 1.45; margin-bottom: 14px; overflow-wrap: anywhere; }
+        .wf-block-note { border-top: 1px solid var(--hwmdm-border-subtle); color: var(--hwmdm-muted); font-size: 12px; line-height: 1.4; padding-top: 12px; overflow-wrap: anywhere; }
         .wf-block-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
         .wf-block-device-note { margin-top: 10px; padding: 10px 12px; border: 1px solid var(--hwmdm-border); border-radius: 8px; background: var(--hwmdm-surface-subtle); }
         @media (max-width: 900px) {
@@ -503,8 +502,7 @@
                 .wf-src-off .form-control { opacity: .55; }
                 .wf-src-bad .form-control { border-color: var(--hwmdm-danger); }
                 .wf-src-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-                .wf-src-ok { color: #15803d; font-size: 12px; font-weight: 600; }
-                [data-theme="dark"] .wf-src-ok { color: #86efac; }
+                .wf-src-ok { color: var(--hwmdm-success); font-size: 12px; font-weight: 600; }
                 .wf-src-err { color: var(--hwmdm-danger); font-size: 12px; font-weight: 600; }
             </style>
             <h5><strong>Listas de DNS</strong></h5>

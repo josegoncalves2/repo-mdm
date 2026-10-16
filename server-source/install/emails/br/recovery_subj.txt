@@ -1,1 +1,0 @@
-${appName} instruções de recuperação de senha

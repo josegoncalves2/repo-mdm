@@ -1,6 +1,6 @@
 // Localization completed
 angular.module('headwind-kiosk')
-    .controller('SummaryTabController', function ($scope, $state, $timeout, localization, summaryService, externalLibLoader, HWMDMMap) {
+    .controller('SummaryTabController', function ($scope, $state, $timeout, localization, summaryService, externalLibLoader, HWMDMMap, themeService) {
         var mapInstance = null;
         var tileServerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
@@ -18,25 +18,25 @@ angular.module('headwind-kiosk')
             localization.localize('summary.devices.enrolled.earlier'),
             localization.localize('summary.devices.enrolled.monthly')
         ];
-        $scope.enrollmentColors = ['#A3A3A3', '#2F80ED'];
+        $scope.enrollmentColors = [themeService.color('muted-soft'), themeService.color('info')];
 
         $scope.statusLabels = [
             localization.localize('summary.devices.offline'),
             localization.localize('summary.devices.idle'),
             localization.localize('summary.devices.active')
         ];
-        $scope.statusColors = ['#D64545', '#D98634', '#1F8A70'];
+        $scope.statusColors = [themeService.color('danger'), themeService.color('warn'), themeService.color('success')];
 
         $scope.installLabels = [
             localization.localize('summary.devices.installation.failed'),
             localization.localize('summary.devices.version.mismatch'),
             localization.localize('summary.devices.installation.completed')
         ];
-        $scope.installColors = ['#D64545', '#D98634', '#1F8A70'];
+        $scope.installColors = [themeService.color('danger'), themeService.color('warn'), themeService.color('success')];
 
         $scope.monthlyEnrollColors = [];
         for (var i = 0; i < 12; i++) {
-            $scope.monthlyEnrollColors.push('#2F80ED');
+            $scope.monthlyEnrollColors.push(themeService.color('info'));
         }
 
         $scope.statusByConfigSeries = [

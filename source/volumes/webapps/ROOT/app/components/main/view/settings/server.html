@@ -8,21 +8,21 @@
     </div>
 
     <div ng-if="!serverAdminUrl" class="hw-server-status">
-        <span class="glyphicon glyphicon-exclamation-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+        <span class="glyphicon glyphicon-exclamation-sign" style="font-size:40px;color:var(--hwmdm-accent)"></span>
         <h4 style="margin:14px 0 6px">Módulo Servidor não configurado</h4>
-        <p style="color:var(--hwmdm-text-muted,#64748b)">A variável adminPort não está definida em HWMDM_RUNTIME.</p>
+        <p style="color:var(--hwmdm-muted)">A variável adminPort não está definida em HWMDM_RUNTIME.</p>
     </div>
 
     <div ng-if="serverAdminUrl" style="width:100%;position:relative">
         <div ng-if="frameState === 'loading'" class="hw-server-status">
             <span class="glyphicon glyphicon-refresh hw-spin" style="font-size:32px;opacity:.5"></span>
-            <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)">Conectando ao módulo Servidor…</p>
+            <p style="margin:12px 0 0;color:var(--hwmdm-muted)">Conectando ao módulo Servidor…</p>
         </div>
 
         <div ng-if="frameState === 'error'" class="hw-server-status">
-            <span class="glyphicon glyphicon-warning-sign" style="font-size:40px;color:var(--hwmdm-accent,#0d9488)"></span>
+            <span class="glyphicon glyphicon-warning-sign" style="font-size:40px;color:var(--hwmdm-accent)"></span>
             <h4 style="margin:14px 0 6px;font-size:16px">Módulo temporariamente indisponível</h4>
-            <p style="color:var(--hwmdm-text-muted,#64748b);max-width:420px;margin:0 auto 16px">
+            <p style="color:var(--hwmdm-muted);max-width:420px;margin:0 auto 16px">
                 O serviço de gestão do servidor está reiniciando ou fora do ar.
             </p>
             <button type="button" class="btn btn-default" ng-click="retry()" style="border-radius:8px;padding:8px 20px">
@@ -46,8 +46,8 @@
     justify-content: center;
     text-align: center;
     min-height: 400px;
-    background: var(--hwmdm-surface, #fff);
-    border: 1px solid var(--hwmdm-border, #d9e2ec);
+    background: var(--hwmdm-surface);
+    border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
     padding: 40px 24px;
 }

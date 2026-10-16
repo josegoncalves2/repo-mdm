@@ -160,7 +160,7 @@
                 <!-- Estado vazio: nenhum perfil selecionado -->
                 <div ng-if="!splitPanel" class="config-split-empty">
                     <span class="glyphicon glyphicon-hand-left" style="font-size:36px;opacity:.3"></span>
-                    <p style="margin:12px 0 0;color:var(--hwmdm-text-muted,#64748b)" localized>configurations.split.empty</p>
+                    <p style="margin:12px 0 0;color:var(--hwmdm-muted)" localized>configurations.split.empty</p>
                 </div>
 
                 <!-- Painel QR Code -->
@@ -172,13 +172,13 @@
                         </button>
                     </div>
 
-                    <div style="text-align:center;padding:16px 0;border-bottom:1px solid var(--hwmdm-border,#e5e7eb);margin-bottom:16px" ng-if="splitPanel.showQR">
-                        <div style="background:#fff;border:1px solid var(--hwmdm-border-light,#d9e2ec);border-radius:8px;padding:16px;display:inline-block">
-                            <img ng-src="{{splitPanel.qrCodeUrl}}" width="{{splitPanel.size}}" height="{{splitPanel.size}}"
+                    <div style="text-align:center;padding:16px 0;border-bottom:1px solid var(--hwmdm-border);margin-bottom:16px" ng-if="splitPanel.showQR">
+                        <div style="background:var(--hwmdm-surface);border:1px solid var(--hwmdm-border-subtle);border-radius:8px;padding:0;display:inline-block;overflow:hidden;width:{{splitPanel.size + 32}}px;height:{{splitPanel.size + 32}}px">
+                            <img ng-src="{{splitPanel.qrCodeUrl}}"
                                  localized-alt="form.qr.code.image.alt"
-                                 style="display:block;border-radius:4px;max-width:100%;height:auto"/>
+                                 style="display:block;width:{{splitPanel.size + 64}}px;height:{{splitPanel.size + 64}}px;max-width:none;margin:-16px"/>
                         </div>
-                        <p style="margin:10px 0 0;color:var(--hwmdm-muted,#64748b);font-size:13px" localized>form.qr.scan.instruction</p>
+                        <p style="margin:10px 0 0;color:var(--hwmdm-muted);font-size:13px" localized>form.qr.scan.instruction</p>
                     </div>
 
                     <div class="form-group">
@@ -234,7 +234,7 @@
                         <textarea class="form-control" style="height:80px;font-family:monospace;font-size:11px" readonly>{{splitPanel.jsonData}}</textarea>
                     </div>
 
-                    <div ng-if="splitPanel.showHelp" style="margin-top:10px;padding:10px;background:var(--hwmdm-surface-hover,#f8f9fa);border-radius:4px;font-size:13px">
+                    <div ng-if="splitPanel.showHelp" style="margin-top:10px;padding:10px;background:var(--hwmdm-surface-hover);border-radius:4px;font-size:13px">
                         <p localized>qrcode.help.line1</p>
                         <ol style="margin:6px 0;padding-left:18px;line-height:1.7">
                             <li localized>qrcode.help.line2</li>
@@ -268,8 +268,8 @@
 .config-split-right-inner {
     position: sticky;
     top: 16px;
-    background: var(--hwmdm-surface, #fff);
-    border: 1px solid var(--hwmdm-border, #d9e2ec);
+    background: var(--hwmdm-surface);
+    border: 1px solid var(--hwmdm-border);
     border-radius: 8px;
     padding: 20px;
     min-height: 300px;

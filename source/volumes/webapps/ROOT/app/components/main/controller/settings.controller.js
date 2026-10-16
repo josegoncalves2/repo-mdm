@@ -180,6 +180,21 @@ angular.module('headwind-kiosk')
             clearMessages();
             $scope.loading = true;
 
+            // Chaves theme.* vindas do banco: os campos da tela saem delas, sem lista no codigo.
+            $scope.colorPrefix = themeService.colorPrefix;
+            themeService.ready().then(function (theme) {
+                $scope.themeValues = {};
+                $scope.themeColorNames = [];
+                Object.keys(theme).forEach(function (key) {
+                    if (key.indexOf('theme.') === 0) {
+                        $scope.themeValues[key] = theme[key];
+                    }
+                    if (key.indexOf(themeService.colorPrefix) === 0) {
+                        $scope.themeColorNames.push(key.substring(themeService.colorPrefix.length));
+                    }
+                });
+            });
+
             settingsService.getSettings(function (response) {
                 if (response.status === 'OK' && response.data) {
                     $scope.settings = response.data;
@@ -396,6 +411,7 @@ angular.module('headwind-kiosk')
             settingsService.updateDefaultDesignSettings($scope.settings, function (response) {
                 if (response.status === 'OK') {
                     themeService.applyBrandColors($scope.settings);
+                    themeService.save($scope.themeValues);
                     $scope.successMessage = localization.localize('success.settings.design.saved');
                     $timeout(function () {
                         $scope.successMessage = '';

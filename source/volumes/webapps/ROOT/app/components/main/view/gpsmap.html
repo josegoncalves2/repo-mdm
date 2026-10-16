@@ -174,12 +174,12 @@
             </div>
 
             <div class="hwmdm-chip-bar" ng-if="historyMode && historyStops.length">
-                <div class="hwmdm-chip-bar-title" style="color:var(--hwmdm-danger,#e74c3c)">
+                <div class="hwmdm-chip-bar-title" style="color:var(--hwmdm-danger)">
                     <span class="glyphicon glyphicon-map-marker"></span> {{historyStops.length}} paradas
                 </div>
                 <div class="hwmdm-chip-list">
                     <a href="" class="hwmdm-chip" ng-repeat="stop in historyStops" ng-click="goToStop(stop)">
-                        <strong style="color:var(--hwmdm-danger,#e74c3c)">#{{$index + 1}}</strong>
+                        <strong style="color:var(--hwmdm-danger)">#{{$index + 1}}</strong>
                         <span>{{stop.arrivalTime}}</span>
                         <span style="color:var(--hwmdm-muted)">({{stop.durationText}})</span>
                     </a>

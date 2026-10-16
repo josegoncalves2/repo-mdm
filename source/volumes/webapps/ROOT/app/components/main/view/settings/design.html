@@ -88,9 +88,9 @@
 
                     <div class="hwmdm-brand-preview-box">
                         <div class="hwmdm-brand-preview-topbar"
-                             ng-style="{'background-color': settings.webPrimaryColor || '#0d9e91', 'color': settings.webTextColor || '#fff'}">
+                             ng-style="{'background-color': settings.webPrimaryColor, 'color': settings.webTextColor}">
                             <div class="hwmdm-brand-preview-sidebar-slice"
-                                 ng-style="{'background-color': settings.webSidebarColor || '#1a2332'}">
+                                 ng-style="{'background-color': settings.webSidebarColor}">
                                 <div class="hwmdm-brand-preview-sidebar-item"></div>
                                 <div class="hwmdm-brand-preview-sidebar-item active"></div>
                                 <div class="hwmdm-brand-preview-sidebar-item"></div>
@@ -98,8 +98,7 @@
                             <div class="hwmdm-brand-preview-header">
                                 <img ng-if="settings.webLogoUrl" ng-src="{{settings.webLogoUrl}}"
                                      class="hwmdm-brand-logo" alt="" style="height:28px;margin-right:8px"/>
-                                <span ng-if="!settings.webLogoUrl" class="hwmdm-brand-mark" style="margin-right:8px">HW</span>
-                                <strong>Headwind MDM</strong>
+                                <strong>{{themeValues['theme.app-name']}}</strong>
                             </div>
                         </div>
                         <div class="hwmdm-brand-preview-body">
@@ -107,6 +106,49 @@
                                 <div class="hwmdm-brand-preview-card"></div>
                                 <div class="hwmdm-brand-preview-card"></div>
                                 <div class="hwmdm-brand-preview-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="hwmdm-form-section">
+                    <div class="hwmdm-form-section-head">
+                        <h4 localized>settings.design.identity.title</h4>
+                        <p localized>settings.design.identity.subtitle</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="themeAppName" localized>settings.design.app.name</label>
+                        <div class="col-sm-8">
+                            <input id="themeAppName" type="text" class="form-control" ng-model="themeValues['theme.app-name']">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="themeVendorName" localized>settings.design.vendor.name</label>
+                        <div class="col-sm-8">
+                            <input id="themeVendorName" type="text" class="form-control" ng-model="themeValues['theme.vendor-name']">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="themeVendorLink" localized>settings.design.vendor.link</label>
+                        <div class="col-sm-8">
+                            <input id="themeVendorLink" type="url" class="form-control" ng-model="themeValues['theme.vendor-link']">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="hwmdm-form-section hwmdm-theme-colors">
+                    <div class="hwmdm-form-section-head">
+                        <h4 localized>settings.design.colors.title</h4>
+                        <p localized>settings.design.colors.subtitle</p>
+                    </div>
+                    <div class="form-group" ng-repeat="name in themeColorNames">
+                        <label class="col-sm-6 control-label" for="theme-color-{{name}}">{{('settings.design.color.' + name) | localize}}</label>
+                        <div class="col-sm-6">
+                            <div class="hwmdm-color-field">
+                                <span class="hwmdm-color-swatch" ng-style="{'background-color': themeValues[colorPrefix + name]}"></span>
+                                <input id="theme-color-{{name}}" type="text" class="form-control"
+                                       ng-model="themeValues[colorPrefix + name]"
+                                       ng-pattern="/^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/">
                             </div>
                         </div>
                     </div>

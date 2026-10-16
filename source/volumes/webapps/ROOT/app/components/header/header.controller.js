@@ -6,11 +6,6 @@ angular.module( 'headwind-kiosk' )
     $scope.isControlPanel = false;
     $scope.authService = authService;
     $scope.showExitReportMode = false;
-    $scope.themeService = themeService;
-
-    $scope.toggleTheme = function () {
-        themeService.toggle();
-    };
 
     var body = angular.element($window.document.body);
     try {

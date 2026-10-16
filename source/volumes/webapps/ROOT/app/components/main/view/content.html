@@ -17,7 +17,7 @@
         <aside class="hwmdm-sidebar" id="hwmdm-sidebar">
             <div class="hwmdm-sidebar-brand">
                 <span localized-change-tracking>nav.brand.control.panel</span>
-                <strong>Headwind MDM</strong>
+                <strong>{{appName}}</strong>
                 <button type="button" class="hwmdm-nav-close" ng-click="closeNav()" aria-label="Close menu">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
@@ -31,7 +31,7 @@
                 dos modulos/plugins nao chegou do servidor, mostra um esqueleto no lugar do
                 <nav> em vez de desenhar o menu aos pedacos.
             -->
-            <nav class="hwmdm-nav" aria-label="Headwind MDM modules" ng-if="navReady">
+            <nav class="hwmdm-nav" aria-label="{{appName}}" ng-if="navReady">
                 <div class="hwmdm-nav-section" ng-repeat="section in navSections">
                     <div class="hwmdm-nav-heading">{{section.labelKey | localize}}</div>
                     <button type="button" class="hwmdm-nav-link"
@@ -91,31 +91,31 @@
                     <span ng-if="moduleMaintenanceInfo(activeTab).reason">— {{moduleMaintenanceInfo(activeTab).reason}}</span>
                 </div>
 
-                <ng-include src="'app/components/main/view/summary.html?v=hux202610071400'" ng-if="activeTab === 'SUMMARY' && !isModuleBlocked('SUMMARY')"></ng-include>
-                <ng-include src="'app/components/main/view/devices.html?v=hux202610071400'" ng-if="activeTab === 'DEVICES' && !isModuleBlocked('DEVICES')"></ng-include>
-                <ng-include src="'app/components/main/view/kiosk.html?v=hux202610071400'" ng-if="activeTab === 'KIOSK' && !isModuleBlocked('KIOSK')"></ng-include>
-                <ng-include src="'app/components/main/view/remote.html?v=hux202610071400'" ng-if="activeTab === 'REMOTE' && !isModuleBlocked('REMOTE')"></ng-include>
-                <ng-include src="'app/components/main/view/gpsmap.html?v=hux202610071400'" ng-if="activeTab === 'GPSMAP' && !isModuleBlocked('GPSMAP')"></ng-include>
-                <ng-include src="'app/components/main/view/chat.html?v=hux202610071400'" ng-if="activeTab === 'CHAT' && !isModuleBlocked('CHAT')"></ng-include>
-                <ng-include src="'app/components/main/view/reports.html?v=hux202610071400'" ng-if="activeTab === 'REPORTS' && !isModuleBlocked('REPORTS')"></ng-include>
-                <ng-include src="'app/components/main/view/governance.html?v=hux202610071400'" ng-if="activeTab === 'GOVERNANCE' && !isModuleBlocked('GOVERNANCE')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/design.html?v=hux202610071400'" ng-if="activeTab === 'DESIGN' && !isModuleBlocked('DESIGN')"></ng-include>
-                <ng-include src="'app/components/main/view/applications.html?v=hux202610071400'" ng-if="activeTab === 'APPS' && !isModuleBlocked('APPS')"></ng-include>
-                <ng-include src="'app/components/main/view/configurations.html?v=hux202610071400'" ng-if="activeTab === 'CONFS' && !isModuleBlocked('CONFS')"></ng-include>
-                <ng-include src="'app/components/main/view/files.html?v=hux202610071400'" ng-if="activeTab === 'FILES' && !isModuleBlocked('FILES')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/common.html?v=h25640e777d'" ng-if="activeTab === 'COMMON' && !isModuleBlocked('COMMON')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/users.html?v=hux202610071400'" ng-if="activeTab === 'USERS' && !isModuleBlocked('USERS')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/roles.html?v=hux202610071400'" ng-if="activeTab === 'ROLES' && !isModuleBlocked('ROLES')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/groups.html?v=hux202610071400'" ng-if="activeTab === 'GROUPS' && !isModuleBlocked('GROUPS')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/icons.html?v=hux202610071400'" ng-if="activeTab === 'ICONS' && !isModuleBlocked('ICONS')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/general.html?v=h7216092962'" ng-if="activeTab === 'GENERAL' && !isModuleBlocked('GENERAL')"></ng-include>
-                <ng-include src="'app/components/main/view/settings/extensionsHub.html?v=h74862c09dd'" ng-if="activeTab === 'EXTENSIONS'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/server.html?v=hux202610071400'" ng-if="activeTab === 'SERVER'"></ng-include>
-                <ng-include src="'app/components/main/view/settings/integrations.html?v=h303483d897'" ng-if="activeTab === 'INTEGRATIONS'"></ng-include>
-                <ng-include src="'app/components/main/view/profile.html?v=hux202610071400'" ng-if="activeTab === 'PROFILE'"></ng-include>
+                <ng-include src="'app/components/main/view/summary.html?v=hux202610161630'" ng-if="activeTab === 'SUMMARY' && !isModuleBlocked('SUMMARY')"></ng-include>
+                <ng-include src="'app/components/main/view/devices.html?v=hux202610161630'" ng-if="activeTab === 'DEVICES' && !isModuleBlocked('DEVICES')"></ng-include>
+                <ng-include src="'app/components/main/view/kiosk.html?v=hux202610161630'" ng-if="activeTab === 'KIOSK' && !isModuleBlocked('KIOSK')"></ng-include>
+                <ng-include src="'app/components/main/view/remote.html?v=hux202610161630'" ng-if="activeTab === 'REMOTE' && !isModuleBlocked('REMOTE')"></ng-include>
+                <ng-include src="'app/components/main/view/gpsmap.html?v=hux202610161630'" ng-if="activeTab === 'GPSMAP' && !isModuleBlocked('GPSMAP')"></ng-include>
+                <ng-include src="'app/components/main/view/chat.html?v=hux202610161630'" ng-if="activeTab === 'CHAT' && !isModuleBlocked('CHAT')"></ng-include>
+                <ng-include src="'app/components/main/view/reports.html?v=hux202610161630'" ng-if="activeTab === 'REPORTS' && !isModuleBlocked('REPORTS')"></ng-include>
+                <ng-include src="'app/components/main/view/governance.html?v=hux202610161630'" ng-if="activeTab === 'GOVERNANCE' && !isModuleBlocked('GOVERNANCE')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/design.html?v=hux202610161630'" ng-if="activeTab === 'DESIGN' && !isModuleBlocked('DESIGN')"></ng-include>
+                <ng-include src="'app/components/main/view/applications.html?v=hux202610161630'" ng-if="activeTab === 'APPS' && !isModuleBlocked('APPS')"></ng-include>
+                <ng-include src="'app/components/main/view/configurations.html?v=hux202610161630'" ng-if="activeTab === 'CONFS' && !isModuleBlocked('CONFS')"></ng-include>
+                <ng-include src="'app/components/main/view/files.html?v=hux202610161630'" ng-if="activeTab === 'FILES' && !isModuleBlocked('FILES')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/common.html?v=hux202610161630'" ng-if="activeTab === 'COMMON' && !isModuleBlocked('COMMON')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/users.html?v=hux202610161630'" ng-if="activeTab === 'USERS' && !isModuleBlocked('USERS')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/roles.html?v=hux202610161630'" ng-if="activeTab === 'ROLES' && !isModuleBlocked('ROLES')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/groups.html?v=hux202610161630'" ng-if="activeTab === 'GROUPS' && !isModuleBlocked('GROUPS')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/icons.html?v=hux202610161630'" ng-if="activeTab === 'ICONS' && !isModuleBlocked('ICONS')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/general.html?v=hux202610161630'" ng-if="activeTab === 'GENERAL' && !isModuleBlocked('GENERAL')"></ng-include>
+                <ng-include src="'app/components/main/view/settings/extensionsHub.html?v=hux202610161630'" ng-if="activeTab === 'EXTENSIONS'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/server.html?v=hux202610161630'" ng-if="activeTab === 'SERVER'"></ng-include>
+                <ng-include src="'app/components/main/view/settings/integrations.html?v=hux202610161630'" ng-if="activeTab === 'INTEGRATIONS'"></ng-include>
+                <ng-include src="'app/components/main/view/profile.html?v=hux202610161630'" ng-if="activeTab === 'PROFILE'"></ng-include>
 
                 <div ng-if="activeTab === 'CONFEDIT'" ng-controller="ConfigurationEditorController">
-                    <ng-include src="'app/components/main/view/configuration.html?v=hux202610091600'"></ng-include>
+                    <ng-include src="'app/components/main/view/configuration.html?v=hux202610161630'"></ng-include>
                 </div>
 
                 <div ng-repeat="plugin in functionsPlugins">

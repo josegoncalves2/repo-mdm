@@ -1,7 +1,7 @@
 // Localization completed
 angular.module('headwind-kiosk')
     .controller('GpsMapTabController', function ($scope, $timeout, $window, $http, $filter, localization, summaryService, groupService,
-                                                 externalLibLoader, HWMDMMap, alertService, deviceFocusService) {
+                                                 externalLibLoader, HWMDMMap, alertService, deviceFocusService, themeService) {
         var mapInstance = null;
         var leafletMap = null;
         var tileLayers = {};
@@ -142,7 +142,7 @@ angular.module('headwind-kiosk')
             var model = escapeHtml(device.model || '');
             var ts = device.locationTs ? new Date(device.locationTs).toLocaleString() : '-';
             var statusLabel = device.isOnline ? localization.localize('gpsmap.status.online') : localization.localize('gpsmap.status.offline');
-            var statusColor = device.isOnline ? '#1f8a70' : '#d64545';
+            var statusColor = themeService.color(device.isOnline ? 'success' : 'danger');
             var battery = device.batteryLevel != null ? '<br><span>&#9889; ' + device.batteryLevel + '%</span>' : '';
             return '<div class="summary-map-popup"><strong>' + title + '</strong> <span style="color:' + statusColor + ';font-size:11px">' + escapeHtml(statusLabel) + '</span><br>' +
                 '<span>' + model + '</span><br>' +
@@ -396,7 +396,7 @@ angular.module('headwind-kiosk')
             removePlaybackMarker();
 
             var coords = $scope.historyPoints.map(function (p) { return [p.lat, p.lon]; });
-            mapInstance.addPolyline('history-track', coords, { color: '#0ea5b7', weight: 3, opacity: 0.8 });
+            mapInstance.addPolyline('history-track', coords, { color: themeService.color('accent'), weight: 3, opacity: 0.8 });
 
             var first = $scope.historyPoints[0];
             var last = $scope.historyPoints[$scope.historyPoints.length - 1];
@@ -409,7 +409,7 @@ angular.module('headwind-kiosk')
             $scope.historyStops.forEach(function (stop, idx) {
                 if (leafletMap) {
                     var m = L.circleMarker([stop.lat, stop.lon], {
-                        radius: 8, color: '#e74c3c', fillColor: '#e74c3c', fillOpacity: 0.6, weight: 2
+                        radius: 8, color: themeService.color('danger'), fillColor: themeService.color('danger'), fillOpacity: 0.6, weight: 2
                     }).addTo(leafletMap);
                     m.bindPopup('<strong>Parada #' + (idx + 1) + '</strong><br>' +
                         stop.arrivalTime + ' - ' + stop.departureTime + '<br>' + stop.durationText);
@@ -466,7 +466,7 @@ angular.module('headwind-kiosk')
             if (pt.accuracy && leafletMap) {
                 if (accuracyCircle) leafletMap.removeLayer(accuracyCircle);
                 accuracyCircle = L.circle([pt.lat, pt.lon], {
-                    radius: pt.accuracy, color: '#0ea5b7', fillOpacity: 0.1, weight: 1
+                    radius: pt.accuracy, color: themeService.color('accent'), fillOpacity: 0.1, weight: 1
                 }).addTo(leafletMap);
             } else if (accuracyCircle && leafletMap) {
                 leafletMap.removeLayer(accuracyCircle);

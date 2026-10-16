@@ -115,12 +115,12 @@ angular.module('headwind-kiosk',
         $stateProvider
             .state('qr', {
                 url: '/qr/{qrCode}/{deviceId}',
-                templateUrl: 'app/components/main/view/qr.html?v=hux202610071400',
+                templateUrl: 'app/components/main/view/qr.html?v=hux202610161630',
                 controller: 'QRController'
             })
             .state('summary', {
                 url: '/summary',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.summary" | localize}}'
@@ -129,7 +129,7 @@ angular.module('headwind-kiosk',
             })
             .state('main', {
                 url: '/',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.devices" | localize}}'
@@ -138,7 +138,7 @@ angular.module('headwind-kiosk',
             })
             .state('remote', {
                 url: '/remote',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.remote" | localize}}' //label to show in breadcrumbs
@@ -150,7 +150,7 @@ angular.module('headwind-kiosk',
             })
             .state('kiosk', {
                 url: '/kiosk',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Kiosk'
@@ -162,7 +162,7 @@ angular.module('headwind-kiosk',
             })
             .state('gpsMap', {
                 url: '/gpsMap',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.gpsmap" | localize}}' //label to show in breadcrumbs
@@ -174,7 +174,7 @@ angular.module('headwind-kiosk',
             })
             .state('chat', {
                 url: '/chat',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.chat" | localize}}' //label to show in breadcrumbs
@@ -192,7 +192,7 @@ angular.module('headwind-kiosk',
             // entry gives each screen its own history entry.
             .state('reports', {
                 url: '/reports',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Reports'
@@ -203,7 +203,7 @@ angular.module('headwind-kiosk',
             })
             .state('governance', {
                 url: '/governance',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Backup & restore'
@@ -214,14 +214,14 @@ angular.module('headwind-kiosk',
             })
             .state('server', {
                 url: '/server',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"nav.server" | localize}}'},
                 resolve: {openTab: function () { return 'SERVER'; }}
             })
             .state('generalSettings', {
                 url: '/generalSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Server defaults'
@@ -232,7 +232,7 @@ angular.module('headwind-kiosk',
             })
             .state('extensions', {
                 url: '/extensions',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: 'Plugins'
@@ -243,7 +243,7 @@ angular.module('headwind-kiosk',
             })
             .state('integrations', {
                 url: '/integrations',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"nav.integrations" | localize}}'},
                 resolve: {openTab: function () { return 'INTEGRATIONS'; }}
@@ -251,49 +251,49 @@ angular.module('headwind-kiosk',
             // Telas de plugin abertas pelo menu (PLUGIN_STATES em tabs.controller.js): URL propria, para F5 e Voltar
             .state('webfilterModule', {
                 url: '/webfilter?wfTab',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.webfilter.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-webfilter'; }}
             })
             .state('devicelogModule', {
                 url: '/logs',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.devicelog.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-devicelog'; }}
             })
             .state('auditModule', {
                 url: '/acessos',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.audit.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-audit'; }}
             })
             .state('pushModule', {
                 url: '/push',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.push.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-push'; }}
             })
             .state('deviceinfoModule', {
                 url: '/informacao-detalhada',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.deviceinfo.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-deviceinfo'; }}
             })
             .state('messagingSettingsModule', {
                 url: '/mensagens-config',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {label: '{{"plugin.messaging.localization.key.name" | localize}}'},
                 resolve: {openTab: function () { return 'plugin-settings-messaging'; }}
             })
             .state('applications', {
                 url: '/applications',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.applications" | localize}}' //label to show in breadcrumbs
@@ -304,7 +304,7 @@ angular.module('headwind-kiosk',
             })
             .state('appVersionsEditor', {
                 url: '/application/{id}/versions',
-                templateUrl: 'app/components/main/view/applicationVersions.html?v=h7b4cd95319',
+                templateUrl: 'app/components/main/view/applicationVersions.html?v=hux202610161630',
                 controller: 'ApplicationVersionEditor',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.application.versions" | localize}}', //label to show in breadcrumbs
@@ -314,7 +314,7 @@ angular.module('headwind-kiosk',
             })
             .state('configurations', {
                 url: '/configurations',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.configurations" | localize}}' //label to show in breadcrumbs
@@ -325,7 +325,7 @@ angular.module('headwind-kiosk',
             })
             .state('files', {
                 url: '/files',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.files" | localize}}' //label to show in breadcrumbs
@@ -336,7 +336,7 @@ angular.module('headwind-kiosk',
             })
             .state('designSettings', {
                 url: '/designSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.default.design" | localize}}' //label to show in breadcrumbs
@@ -347,7 +347,7 @@ angular.module('headwind-kiosk',
             })
             .state('commonSettings', {
                 url: '/commonSettings',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.common.settings" | localize}}' //label to show in breadcrumbs
@@ -367,7 +367,7 @@ angular.module('headwind-kiosk',
             })
             .state('users', {
                 url: '/users',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.users" | localize}}' //label to show in breadcrumbs
@@ -378,7 +378,7 @@ angular.module('headwind-kiosk',
             })
             .state('roles', {
                 url: '/roles',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.roles" | localize}}' //label to show in breadcrumbs
@@ -389,7 +389,7 @@ angular.module('headwind-kiosk',
             })
             .state('groups', {
                 url: '/groups',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.groups" | localize}}' //label to show in breadcrumbs
@@ -400,7 +400,7 @@ angular.module('headwind-kiosk',
             })
             .state('icons', {
                 url: '/icons',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"tab.icons" | localize}}' //label to show in breadcrumbs
@@ -432,7 +432,7 @@ angular.module('headwind-kiosk',
                 params: {
                     from: null
                 },
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController',
                 ncyBreadcrumb: {
                     label: '{{"breadcrumb.config.details" | localize}}',
@@ -444,12 +444,12 @@ angular.module('headwind-kiosk',
             })
             .state('login', {
                 url: '/login',
-                templateUrl: 'app/components/main/view/login.html?v=h32e5930c2a',
+                templateUrl: 'app/components/main/view/login.html?v=hux202610161630',
                 controller: 'LoginController'
             })
             .state('profile', {
                 url: '/profile',
-                templateUrl: 'app/components/main/view/content.html?v=hux202610091600',
+                templateUrl: 'app/components/main/view/content.html?v=hux202610161630',
                 controller: 'ShellController'
             })
             .state('updates', {
@@ -460,32 +460,32 @@ angular.module('headwind-kiosk',
             })
             .state('control-panel', {
                 url: '/control-panel',
-                templateUrl: 'app/components/control-panel/view/panel.html?v=h30e59aa872',
+                templateUrl: 'app/components/control-panel/view/panel.html?v=hux202610161630',
                 controller: 'ControlPanelController'
             })
             .state('passwordReset', {
                 url: '/passwordReset/{token}',
-                templateUrl: 'app/components/main/view/passwordReset.html?v=h44419da27e',
+                templateUrl: 'app/components/main/view/passwordReset.html?v=hux202610161630',
                 controller: 'PasswordResetController'
             })
             .state('passwordRecovery', {
                 url: '/passwordRecovery',
-                templateUrl: 'app/components/main/view/passwordRecovery.html?v=h12658dc04f',
+                templateUrl: 'app/components/main/view/passwordRecovery.html?v=hux202610161630',
                 controller: 'PasswordRecoveryController'
             })
             .state('twoFactorAuth', {
                 url: '/twofactor',
-                templateUrl: 'app/components/main/view/twoFactorAuth.html?v=h67065d9895',
+                templateUrl: 'app/components/main/view/twoFactorAuth.html?v=hux202610161630',
                 controller: 'TwoFactorAuthController'
             })
             .state('signup', {
                 url: '/signup',
-                templateUrl: 'app/components/main/view/signup.html?v=hefb40716dc',
+                templateUrl: 'app/components/main/view/signup.html?v=hux202610161630',
                 controller: 'SignupController'
             })
             .state('signupComplete', {
                 url: '/signupComplete/{token}',
-                templateUrl: 'app/components/main/view/signupComplete.html?v=hdd7c42bf6b',
+                templateUrl: 'app/components/main/view/signupComplete.html?v=hux202610161630',
                 controller: 'SignupCompleteController'
             })
     })
@@ -652,7 +652,7 @@ angular.module('headwind-kiosk',
         }
     })
     .run(function ($rootScope, $state, $stateParams, authService, pluginService, $ocLazyLoad, localization, hintService,
-                   $window, $transitions, rebranding, Idle) {
+                   $window, $transitions, rebranding, Idle, themeService) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
@@ -689,7 +689,6 @@ angular.module('headwind-kiosk',
             }
         });
 
-        $window.document.title = localization.localize('app.title').replace('${appName}', "MDM");
         rebranding.query(function(value) {
             $window.document.title = localization.localize('app.title').replace('${appName}', value.appName);
         });
@@ -699,7 +698,6 @@ angular.module('headwind-kiosk',
         });
 
         $rootScope.$on('aero_LOCALE_CHANGED', function () {
-            $window.document.title = localization.localize('app.title').replace('${appName}', "MDM");
             rebranding.query(function(value) {
                 $window.document.title = localization.localize('app.title').replace('${appName}', value.appName);
             });

@@ -599,6 +599,86 @@ public class HwmdmAdmin {
             "backup");
     }
 
+    // ================================================================ tema (Aparencia)
+    // Todo valor visual do painel vive em hwmdm_system_settings sob o prefixo "theme.";
+    // aqui so existe o NOME de cada chave. Logo e cores principais continuam na tabela
+    // settings do MDM e sao repassados junto, para o login ja sair com a marca.
+
+    static final String THEME_PREFIX = "theme.";
+    static final Pattern THEME_KEY = Pattern.compile("^theme\\.[a-z0-9-]{1,60}$");
+    static final Pattern THEME_COLOR = Pattern.compile("^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$");
+
+    static String json(String v) {
+        if (v == null) return "null";
+        var sb = new StringBuilder("\"");
+        for (char c : v.toCharArray()) {
+            switch (c) {
+                case '"' -> sb.append("\\\"");
+                case '\\' -> sb.append("\\\\");
+                case '\n' -> sb.append("\\n");
+                default -> { if (c < 0x20) sb.append(String.format("\\u%04x", (int) c)); else sb.append(c); }
+            }
+        }
+        return sb.append("\"").toString();
+    }
+
+    static String themeJson() throws SQLException {
+        var out = new LinkedHashMap<String, String>();
+        try (var c = db(); var st = c.createStatement()) {
+            try (var rs = st.executeQuery("SELECT webprimarycolor, websidebarcolor, webtextcolor, weblogourl FROM settings LIMIT 1")) {
+                if (rs.next()) {
+                    out.put("webPrimaryColor", rs.getString(1));
+                    out.put("webSidebarColor", rs.getString(2));
+                    out.put("webTextColor", rs.getString(3));
+                    out.put("webLogoUrl", rs.getString(4));
+                }
+            }
+            try (var rs = st.executeQuery("SELECT key, value FROM hwmdm_system_settings WHERE key LIKE '" + THEME_PREFIX + "%' ORDER BY key")) {
+                while (rs.next()) out.put(rs.getString(1), rs.getString(2));
+            }
+        }
+        var sb = new StringBuilder("{");
+        for (var e : out.entrySet()) {
+            if (sb.length() > 1) sb.append(",");
+            sb.append(json(e.getKey())).append(":").append(json(e.getValue()));
+        }
+        return sb.append("}").toString();
+    }
+
+    // O painel roda no mesmo host, outra porta: libera so a origem desse mesmo host.
+    static Map<String, String> corsHeaders(HttpExchange ex) {
+        String origin = ex.getRequestHeaders().getFirst("Origin");
+        String host = ex.getRequestHeaders().getFirst("Host");
+        if (origin == null || host == null) return null;
+        try {
+            String originHost = new URI(origin).getHost();
+            String reqHost = host.replaceAll(":\\d+$", "");
+            if (originHost != null && originHost.equalsIgnoreCase(reqHost)) {
+                return Map.of("Access-Control-Allow-Origin", origin,
+                              "Access-Control-Allow-Credentials", "true",
+                              "Vary", "Origin");
+            }
+        } catch (URISyntaxException ignored) {}
+        return null;
+    }
+
+    static void saveTheme(Map<String, String> form) throws SQLException {
+        try (var c = db(); var up = c.prepareStatement(
+                "INSERT INTO hwmdm_system_settings(key, value, updated) VALUES (?, ?, now()) " +
+                "ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated = now()")) {
+            for (var e : form.entrySet()) {
+                if (!THEME_KEY.matcher(e.getKey()).matches()) continue;
+                String v = e.getValue().trim();
+                if (e.getKey().endsWith("-color") || e.getKey().startsWith(THEME_PREFIX + "color-")) {
+                    if (!THEME_COLOR.matcher(v).matches()) continue;
+                }
+                up.setString(1, e.getKey());
+                up.setString(2, v);
+                up.executeUpdate();
+            }
+        }
+    }
+
     // ================================================================ routing
 
     static void handleGet(HttpExchange ex) throws IOException {
@@ -606,6 +686,11 @@ public class HwmdmAdmin {
         if (path.isEmpty()) path = "/";
 
         if ("/health".equals(path)) { respond(ex, 200, "ok", "text/plain", null); return; }
+        if ("/theme.json".equals(path)) {
+            try { respond(ex, 200, themeJson(), "application/json; charset=utf-8", corsHeaders(ex)); }
+            catch (SQLException e) { respond(ex, 503, "{}", "application/json", corsHeaders(ex)); }
+            return;
+        }
         if ("/login".equals(path)) { respond(ex, 200, loginPage("")); return; }
 
         Session s = getSession(ex);
@@ -661,6 +746,16 @@ public class HwmdmAdmin {
             String sid = randomUrlSafe(32);
             SESSIONS.put(sid, new Session(login, System.currentTimeMillis() / 1000 + SESSION_TTL, randomHex(16)));
             redirect(ex, "/config", Map.of("Set-Cookie", "hwmdm_admin=" + sid + "; HttpOnly; SameSite=Lax; Path=/"));
+            return;
+        }
+
+        if ("/theme".equals(path)) {
+            var cors = corsHeaders(ex);
+            String login = mdmSessionUser(getCookie(ex, "JSESSIONID"));
+            if (login == null) { respond(ex, 401, "{\"status\":\"ERROR\"}", "application/json", cors); return; }
+            try { saveTheme(form); }
+            catch (SQLException e) { respond(ex, 503, "{\"status\":\"ERROR\"}", "application/json", cors); return; }
+            respond(ex, 200, "{\"status\":\"OK\"}", "application/json", cors);
             return;
         }
 
