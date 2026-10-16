@@ -58,12 +58,9 @@ angular.module('headwind-kiosk')
             $rootScope.$broadcast('HWMDM_THEME_APPLIED', current);
         };
 
+        // Lido da mesma origem do painel: funciona pelo endereco interno e pelo externo.
         var load = function () {
-            var base = adminBase();
-            if (!base) {
-                return;
-            }
-            $window.fetch(base + '/theme.json', {credentials: 'include'})
+            $window.fetch('theme.json?t=' + Date.now(), {cache: 'no-store'})
                 .then(function (response) { return response.json(); })
                 .then(function (data) { $rootScope.$applyAsync(function () { apply(data); }); });
         };

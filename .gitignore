@@ -56,3 +56,4 @@ webfilter-agent/**/build/
 **/__pycache__/
 # Copias de webapp/deploy dentro dos backups; os dumps de banco (.sql/.dump) continuam versionados.
 source/volumes/backups/*/
+source/volumes/webapps/ROOT/theme.json

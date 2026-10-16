@@ -18,6 +18,9 @@ public class HwmdmAdmin {
     static final String STACK_DIR = ROOT + "/source";
     static final String ENV_FILE = STACK_DIR + "/.env";
     static final String THEME_SEED_FILE = STACK_DIR + "/sql/hwmdm_theme_seed.sql";
+    // Copia estatica do tema servida pelo proprio painel (mesma origem), para funcionar
+    // tambem pelo endereco externo, onde so' a porta do painel passa pelo proxy.
+    static final String THEME_STATIC_FILE = STACK_DIR + "/volumes/webapps/ROOT/theme.json";
     static final String PROJECT = env("COMPOSE_PROJECT_NAME");
     static final String SELF_SERVICE = "admin";
     static final int PORT = Integer.parseInt(env("ADMIN_PORT"));
@@ -672,6 +675,17 @@ public class HwmdmAdmin {
         return null;
     }
 
+    static void writeThemeFile() {
+        try {
+            Path target = Path.of(THEME_STATIC_FILE);
+            Path tmp = Path.of(THEME_STATIC_FILE + ".tmp");
+            Files.writeString(tmp, themeJson());
+            Files.move(tmp, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+        } catch (Exception e) {
+            System.out.println("tema estatico nao gravado: " + e);
+        }
+    }
+
     static void saveTheme(Map<String, String> form) throws SQLException {
         try (var c = db(); var up = c.prepareStatement(
                 "INSERT INTO hwmdm_system_settings(key, value, updated) VALUES (?, ?, now()) " +
@@ -697,7 +711,7 @@ public class HwmdmAdmin {
 
         if ("/health".equals(path)) { respond(ex, 200, "ok", "text/plain", null); return; }
         if ("/theme.json".equals(path)) {
-            try { respond(ex, 200, themeJson(), "application/json; charset=utf-8", corsHeaders(ex)); }
+            try { writeThemeFile(); respond(ex, 200, themeJson(), "application/json; charset=utf-8", corsHeaders(ex)); }
             catch (SQLException e) { respond(ex, 503, "{}", "application/json", corsHeaders(ex)); }
             return;
         }
@@ -763,7 +777,7 @@ public class HwmdmAdmin {
             var cors = corsHeaders(ex);
             String login = mdmSessionUser(getCookie(ex, "JSESSIONID"));
             if (login == null) { respond(ex, 401, "{\"status\":\"ERROR\"}", "application/json", cors); return; }
-            try { saveTheme(form); }
+            try { saveTheme(form); writeThemeFile(); }
             catch (SQLException e) { respond(ex, 503, "{\"status\":\"ERROR\"}", "application/json", cors); return; }
             respond(ex, 200, "{\"status\":\"OK\"}", "application/json", cors);
             return;
@@ -856,7 +870,7 @@ public class HwmdmAdmin {
     public static void main(String[] args) throws Exception {
         Class.forName("org.postgresql.Driver");
         for (int attempt = 0; attempt < 60; attempt++) {
-            try { ensureSchema(); syncSettings(readEnv()); break; }
+            try { ensureSchema(); syncSettings(readEnv()); writeThemeFile(); break; }
             catch (Exception e) {
                 System.out.println("banco ainda indisponivel: " + e);
                 Thread.sleep(5000);
