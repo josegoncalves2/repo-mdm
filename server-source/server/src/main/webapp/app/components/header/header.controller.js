@@ -2,15 +2,11 @@
 angular.module( 'headwind-kiosk' )
 .controller( 'HeaderController', function( $scope, $rootScope, $state, $uibModal, $timeout, $interval, $filter, $window,
                                            authService, localization, hintService, rebranding, alertService, Idle,
-                                           themeService, settingsService ) {
+                                           settingsService ) {
     $scope.isControlPanel = false;
     $scope.authService = authService;
     $scope.showExitReportMode = false;
-    $scope.themeService = themeService;
 
-    $scope.toggleTheme = function () {
-        themeService.toggle();
-    };
 
     var body = angular.element($window.document.body);
     try {

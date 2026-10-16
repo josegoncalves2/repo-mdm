@@ -21,7 +21,7 @@ angular.module('headwind-kiosk')
             }
         };
 
-        var currentMode = getStoredMode() === 'dark' ? 'dark' : 'light';
+        var currentMode = 'light'; // Forced to light mode only
         var lastBrandSettings = null;
 
         // Chart.js paints straight onto a canvas, so no stylesheet can reach its
@@ -42,12 +42,8 @@ angular.module('headwind-kiosk')
             }
         };
 
-        var applyMode = function (mode) {
-            root.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
-            applyChartDefaults(mode);
-        };
-
-        applyMode(currentMode);
+        // Theme switching completely disabled - only light mode allowed
+        root.removeAttribute('data-theme');
 
         var expandHex = function (hex) {
             if (hex.length === 4) {
@@ -113,14 +109,7 @@ angular.module('headwind-kiosk')
                 return currentMode;
             },
             isDark: function () {
-                return currentMode === 'dark';
-            },
-            toggle: function () {
-                currentMode = currentMode === 'dark' ? 'light' : 'dark';
-                applyMode(currentMode);
-                setStoredMode(currentMode);
-                applyBrandColors();
-                return currentMode;
+                return false;
             },
             applyBrandColors: applyBrandColors
         };

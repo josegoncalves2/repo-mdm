@@ -12,10 +12,6 @@
     </div>
 
     <div class="hwmdm-topbar-meta">
-        <button type="button" class="hwmdm-theme-toggle" ng-click="toggleTheme()"
-                title="Switch light/dark theme">
-            <span class="glyphicon glyphicon-adjust"></span>
-        </button>
         <span class="hwmdm-env-chip">{{portalHost}}</span>
         <span ng-if="expiryWarning" id="headerExpiryWarning" class="expiry-warning" localized-change-tracking>account.expired.short</span>
         <span id="headerDateTime" class="hide-on-small-screen">{{dateTime}}</span>
