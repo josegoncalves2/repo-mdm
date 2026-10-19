@@ -15,7 +15,7 @@
     <div class="remote-layout hwmdm-split-layout">
         <section class="remote-device-panel hwmdm-section-card">
             <div class="gps-device-search">
-                <input type="text" class="form-control" ng-model="searchValue"
+                <input type="text" name="remoteDeviceSearch" id="remote-device-search" class="form-control" ng-model="searchValue"
                        localized-placeholder="remote.search.device" />
             </div>
 
@@ -86,7 +86,7 @@
                                         ng-mouseup="onScreenUp($event)"
                                         ng-keydown="onScreenKey($event)"></canvas>
 
-                                <textarea id="remote-keyboard-capture"
+                                <textarea id="remote-keyboard-capture" name="remoteKeyboardCapture"
                                           class="remote-keyboard-capture"
                                           ng-if="remote.streaming"
                                           ng-keydown="onKeyboardCaptureKey($event)"
@@ -196,7 +196,7 @@
                             </div>
 
                             <div class="remote-input-typing">
-                                <input type="text" class="form-control" ng-model="remote.typing"
+                                <input type="text" name="remoteTyping" id="remote-typing" class="form-control" ng-model="remote.typing"
                                        ng-disabled="!remote.streaming"
                                        ng-keypress="$event.which === 13 && sendRemoteText()"
                                        localized-placeholder="remote.type.placeholder"/>
@@ -249,11 +249,11 @@
                                         <span class="remote-ip-note" ng-if="!field.required" localized>remote.form.optional</span>
                                     </label>
                                     <input ng-if="field.type === 'checkbox'" type="checkbox"
-                                           id="remote-field-{{field.name}}"
+                                           id="remote-field-{{field.name}}" name="{{field.name}}"
                                            ng-model="pendingParams[field.name]"/>
                                     <input ng-if="field.type !== 'checkbox'"
                                            type="{{field.type === 'number' ? 'number' : 'text'}}"
-                                           id="remote-field-{{field.name}}"
+                                           id="remote-field-{{field.name}}" name="{{field.name}}"
                                            class="form-control"
                                            placeholder="{{field.placeholder}}"
                                            ng-model="pendingParams[field.name]"/>
@@ -273,7 +273,7 @@
                                     <h4 localized>remote.quick.message</h4>
                                 </div>
                                 <div class="remote-message-row">
-                                    <input type="text" class="form-control" ng-model="supportMessage"
+                                    <input type="text" name="supportMessage" id="remote-support-message" class="form-control" ng-model="supportMessage"
                                            localized-placeholder="remote.quick.message.placeholder"
                                            ng-disabled="!selectedDevice.online" />
                                     <button class="btn btn-primary" ng-click="sendRemoteMessage(selectedDevice, supportMessage)"

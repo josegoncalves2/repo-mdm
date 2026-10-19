@@ -549,6 +549,10 @@ public class ScreenStreamService extends Service {
             format.setInteger(MediaFormat.KEY_BIT_RATE, bitrate);
             format.setInteger(MediaFormat.KEY_FRAME_RATE, fps);
             format.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, KEYFRAME_INTERVAL_SEC);
+            // Tela parada nao gera quadros: o VirtualDisplay so' entrega quando algo muda, e o
+            // painel ficava preto com 0 fps ate' alguem tocar no aparelho. Repetir o ultimo
+            // quadro mantem o fluxo vivo e o decoder do navegador com o que desenhar.
+            format.setLong(MediaFormat.KEY_REPEAT_PREVIOUS_FRAME_AFTER, 1_000_000L / Math.max(1, fps));
 
             encoder = MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_VIDEO_AVC);
             encoder.setCallback(new MediaCodec.Callback() {

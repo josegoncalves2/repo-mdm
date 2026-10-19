@@ -45,13 +45,13 @@
 
             <div class="hwmdm-filter-bar" ng-if="showFilters">
                 <label class="hwmdm-filter-check">
-                    <input type="checkbox" ng-model="filters.onlineOnly" ng-change="applyFilters()"> Apenas online
+                    <input type="checkbox" ng-model="filters.onlineOnly" name="online_only" ng-change="applyFilters()"> Apenas online
                 </label>
                 <label class="hwmdm-filter-check">
-                    <input type="checkbox" ng-model="filters.lowBattery" ng-change="applyFilters()"> Bateria &lt; 20%
+                    <input type="checkbox" ng-model="filters.lowBattery" name="low_battery" ng-change="applyFilters()"> Bateria &lt; 20%
                 </label>
                 <label class="hwmdm-filter-check">
-                    <input type="checkbox" ng-model="filters.moving" ng-change="applyFilters()"> Em movimento
+                    <input type="checkbox" ng-model="filters.moving" name="moving" ng-change="applyFilters()"> Em movimento
                 </label>
             </div>
             <a href="" class="hwmdm-filter-toggle" ng-click="showFilters = !showFilters">

@@ -136,35 +136,35 @@
         <p class="help-block" localized>kiosk.lockdown.help</p>
         <div class="kiosk-switch-grid">
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskMode">
+                <input type="checkbox" ng-model="configuration.kioskMode" name="kiosk_mode">
                 <span localized>kiosk.sw.enabled</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskHome">
+                <input type="checkbox" ng-model="configuration.kioskHome" name="kiosk_home">
                 <span localized>kiosk.sw.home</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskRecents">
+                <input type="checkbox" ng-model="configuration.kioskRecents" name="kiosk_recents">
                 <span localized>kiosk.sw.recents</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskNotifications">
+                <input type="checkbox" ng-model="configuration.kioskNotifications" name="kiosk_notifications">
                 <span localized>kiosk.sw.notifications</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskExit">
+                <input type="checkbox" ng-model="configuration.kioskExit" name="kiosk_exit">
                 <span localized>kiosk.sw.exit</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskLockButtons">
+                <input type="checkbox" ng-model="configuration.kioskLockButtons" name="kiosk_lock_buttons">
                 <span localized>kiosk.sw.buttons</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.kioskScreenOn">
+                <input type="checkbox" ng-model="configuration.kioskScreenOn" name="kiosk_screen_on">
                 <span localized>kiosk.sw.screenon</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.lockSafeSettings">
+                <input type="checkbox" ng-model="configuration.lockSafeSettings" name="lock_safe_settings">
                 <span localized>kiosk.sw.safesettings</span>
             </label>
         </div>
@@ -280,11 +280,11 @@
         </div>
         <div class="kiosk-switch-grid">
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.gps">
+                <input type="checkbox" ng-model="configuration.gps" name="kiosk_gps">
                 <span localized>kiosk.sw.gps</span>
             </label>
             <label class="kiosk-switch">
-                <input type="checkbox" ng-model="configuration.disableLocation">
+                <input type="checkbox" ng-model="configuration.disableLocation" name="disable_location">
                 <span localized>kiosk.sw.disable.location</span>
             </label>
             <label class="kiosk-switch">

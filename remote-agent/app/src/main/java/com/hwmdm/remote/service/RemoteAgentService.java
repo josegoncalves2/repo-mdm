@@ -107,6 +107,7 @@ public class RemoteAgentService extends Service {
     private static String lastToken;
     private static final Object START_LOCK = new Object();
     private static final long REQUEST_DEBOUNCE_MS = 15_000L;
+    private static final long CALL_MAX_AGE_MS = 120_000L;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, RemoteAgentService.class);
@@ -201,6 +202,15 @@ public class RemoteAgentService extends Service {
             String token = json.optString("token", null);
             if (token == null || token.trim().isEmpty()) {
                 RemoteLog.w(this, "Chamado recusado: push sem token de sessao");
+                return;
+            }
+            // Com push por polling o launcher pode entregar chamados com minutos de atraso.
+            // Passado o prazo do relay (PENDING_TIMEOUT_MS no servidor) o token ja' morreu, e
+            // abrir o consentimento so' derrubaria o pedido valido que vem logo atras.
+            long issuedAt = json.optLong("issuedAt", 0L);
+            if (issuedAt > 0 && now - issuedAt > CALL_MAX_AGE_MS) {
+                RemoteLog.i(this, "Chamado vencido ignorado: emitido ha "
+                        + ((now - issuedAt) / 1000) + "s");
                 return;
             }
             synchronized (START_LOCK) {

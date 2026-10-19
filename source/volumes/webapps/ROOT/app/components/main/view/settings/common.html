@@ -34,7 +34,7 @@
         </div>
         <div class="dtv-toggle-grid">
             <label class="dtv-toggle" ng-repeat="col in group.columns" ng-if="!col.customProperty || settings[col.customProperty]">
-                <input type="checkbox" ng-model="userRoleSettings[col.model]" ng-disabled="loading"/>
+                <input type="checkbox" name="user_role_{{col.model}}" ng-model="userRoleSettings[col.model]" ng-disabled="loading"/>
                 <span class="dtv-toggle-track"><span class="dtv-toggle-thumb"></span></span>
                 <span class="dtv-toggle-label">{{columnLabel(col)}}</span>
             </label>
