@@ -27,7 +27,7 @@
                     <span localized>files.view.list</span>
                 </button>
             </div>
-            <input type='text'
+            <input type='text' name='configs_searchObj_searchValue'
                    ng-enter='search()'
                    ng-model='searchObj.searchValue'
                    ng-change="search()"
@@ -183,7 +183,7 @@
 
                     <div class="form-group">
                         <label localized>form.qr.device.number</label>
-                        <input type="text" maxlength="100"
+                        <input type="text" maxlength="100" name="configs_splitPanel_deviceIdNew"
                                ng-enter="splitPanel.renew()"
                                ng-change="splitPanel.renew()"
                                ng-model="splitPanel.formData.deviceIdNew"

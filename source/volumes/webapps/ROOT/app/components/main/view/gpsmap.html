@@ -29,7 +29,7 @@
         <!-- Lista lateral com detalhes integrados no item selecionado -->
         <div class="remote-device-panel">
             <div class="gps-device-search">
-                <input type="text" class="form-control" ng-model="deviceSearch"
+                <input type="text" name="gps_device_search" class="form-control" ng-model="deviceSearch"
                        placeholder="{{'gpsmap.search.device' | localize}}" />
             </div>
 
@@ -126,7 +126,7 @@
 
             <div class="hwmdm-timeline-bar" ng-if="historyMode && historyPoints.length > 1">
                 <span class="hwmdm-timeline-time">{{playback.currentTime}}</span>
-                <input type="range" min="0" max="{{historyPoints.length - 1}}"
+                <input type="range" min="0" max="{{historyPoints.length - 1}}" name="gpsmap_playback_index"
                        ng-model="playback.index" ng-change="seekPlayback()">
                 <span class="hwmdm-timeline-time">{{playback.endTime}}</span>
             </div>

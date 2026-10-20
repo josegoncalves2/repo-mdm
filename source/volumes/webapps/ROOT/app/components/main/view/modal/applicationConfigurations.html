@@ -74,7 +74,7 @@
 
                         <div ng-repeat='configuration in configurations | orderBy: "name"' class="form-group">
                             <div class="col-sm-1">
-                                <input type="checkbox" style="margin-top: 12px" ng-model="configuration.selected"
+                                <input type="checkbox" name="app_config_selected_{{configuration.configurationId}}" style="margin-top: 12px" ng-model="configuration.selected"
                                        ng-change="selectionChanged(configuration)">
                             </div>
                             <div class="col-sm-5">

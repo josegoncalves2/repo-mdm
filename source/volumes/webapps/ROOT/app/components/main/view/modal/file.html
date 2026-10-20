@@ -39,7 +39,7 @@
         <div class='form-group' ng-if="!file.external">
             <label class='col-sm-4 control-label' localized>form.file.name</label>
             <div class='col-sm-8'>
-                <input type='text'
+                <input type='text' name='file_filePath'
                        ng-model='file.filePath'
                            class='form-control'>
             </div>
@@ -48,7 +48,7 @@
         <div class='form-group' ng-if="file.external">
             <label class='col-sm-4 control-label' localized>form.file.external.url</label>
             <div class='col-sm-8'>
-                <input type='text'
+                <input type='text' name='file_externalUrl'
                        ng-model='file.externalUrl'
                        class='form-control'
                        localized-placeholder='form.file.external.url.placeholder'>
@@ -58,7 +58,7 @@
         <div class='form-group'>
             <label class='col-sm-4 control-label' localized>form.file.device.path</label>
             <div class='col-sm-8'>
-                <input type='text'
+                <input type='text' name='file_devicePath'
                        ng-model='file.devicePath'
                        class='form-control'
                        localized-placeholder='form.file.device.path.placeholder'>

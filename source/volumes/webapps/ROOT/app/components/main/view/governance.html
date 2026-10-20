@@ -23,7 +23,7 @@
 
             <label class="btn btn-default gov-file-btn">
                 <span class="glyphicon glyphicon-upload"></span> Choose file to import
-                <input type="file" accept="application/json" onchange="angular.element(this).scope().onImportFileSelected(this.files); angular.element(this).scope().$apply();" style="display:none"/>
+                <input type="file" name="import_config" accept="application/json" onchange="angular.element(this).scope().onImportFileSelected(this.files); angular.element(this).scope().$apply();" style="display:none"/>
             </label>
         </div>
 
@@ -64,7 +64,7 @@
             <p class="help-block">Configurações são importadas por atualização e inclusão, preservando outros cadastros. Dados e backup completo restauram o banco inteiro. Toda restauração cria antes uma cópia de segurança completa.</p>
             <label class="btn btn-default" title="Importa um arquivo ZIP de backup HWMDM para revisão antes de restaurar.">
                 Importar backup
-                <input type="file" accept=".zip" style="display:none" onchange="angular.element(this).scope().$applyAsync(function(){angular.element(this).scope().uploadBackup(this.files);}.bind(this))">
+                <input type="file" name="import_backup" accept=".zip" style="display:none" onchange="angular.element(this).scope().$applyAsync(function(){angular.element(this).scope().uploadBackup(this.files);}.bind(this))">
             </label>
         </div>
         <p class="ext-hub-section-hint">
@@ -130,7 +130,7 @@
                 with the contents of this backup. A safety snapshot of what's live right now will be taken
                 automatically first. Type the backup name below to confirm.
             </p>
-            <input type="text" class="form-control" ng-model="restoreState.confirmText"
+            <input type="text" name="restore_confirm" class="form-control" ng-model="restoreState.confirmText"
                    placeholder="{{restoreTarget.name}}"/>
             <div class="dtv-save-bar">
                 <button type="button" class="btn btn-default" ng-click="cancelRestore()">Cancel</button>
@@ -144,7 +144,7 @@
         <h4 class="ext-hub-section-title">Backup automático</h4>
         <label><input type="checkbox" ng-model="backupSchedule.enabled" name="backup_enabled"> Ativar agendamento</label>
         <div class="kiosk-form-grid">
-            <label>Conteúdo <select class="form-control" ng-model="backupSchedule.scope"><option value="full">Completo</option><option value="configuration">Configurações</option><option value="data">Todos os dados</option></select></label>
+            <label>Conteúdo <select class="form-control" name="governance_backupSchedule_scope" ng-model="backupSchedule.scope"><option value="full">Completo</option><option value="configuration">Configurações</option><option value="data">Todos os dados</option></select></label>
             <label>Horário (HH:mm) <input class="form-control" ng-model="backupSchedule.time" name="backup_time" placeholder="02:00" pattern="[0-2][0-9]:[0-5][0-9]"></label>
             <label>Fuso horário <input class="form-control" ng-model="backupSchedule.timezone" name="backup_timezone" placeholder="America/Sao_Paulo"></label>
         </div>

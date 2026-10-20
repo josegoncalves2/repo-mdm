@@ -532,7 +532,7 @@
                                     <div class="row">
                                         <div class="col-sm-2" localized>form.configuration.apps.search.label</div>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control"
+                                            <input type="text" name="config_paging_filterText" class="form-control"
                                                    localized-placeholder="search.placeholder.application"
                                                    ng-model="paging.filterText"/>
                                         </div>
@@ -602,7 +602,7 @@
                                                     <span ng-if="!isKioskApplicationRow(application)">-</span>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" style="width: 80px" ng-if="application.action == 1 && application.showIcon == 1"
+                                                    <input class="form-control" style="width: 80px" name="config_app_screenOrder" ng-if="application.action == 1 && application.showIcon == 1"
                                                            ng-model="application.screenOrder" type="number">
                                                 </td>
                                                 <td>
@@ -979,7 +979,7 @@
                                                    typeahead-no-results="noResults">
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control"
+                                            <input type="text" name="config_settingsPaging_appSettingsFilterText" class="form-control"
                                                    ng-change="appSettingsFilterChanged()"
                                                    localized-placeholder="search.placeholder.application.setting"
                                                    ng-model="settingsPaging.appSettingsFilterText"/>
@@ -1084,7 +1084,7 @@
                                     <div class="row">
                                         <div class="col-sm-1" localized>form.configuration.files.search.label</div>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"
+                                            <input type="text" name="config_filesPaging_filesFilterText" class="form-control"
                                                    ng-change="filesFilterChanged()"
                                                    localized-placeholder="search.placeholder.file"
                                                    ng-model="filesPaging.filesFilterText"/>
@@ -1115,7 +1115,7 @@
                                         <td>{{file.description}}</td>
                                         <td>{{file.path}}</td>
                                         <td>{{file.replaceVariables ? '✓' : ''}}</td>
-                                        <td style="text-align: center; padding-top: 11px"><input type="checkbox" ng-model="file.remove"
+                                        <td style="text-align: center; padding-top: 11px"><input type="checkbox" name="file_remove_{{file.url}}" ng-model="file.remove"
                                                                               localized-title="table.heading.file.remove.hint"></td>
                                         <td class="text-right" style="padding-right: 16px">
                                             <div>

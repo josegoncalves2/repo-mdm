@@ -26,7 +26,7 @@
         <div class="form-group" ng-if="task.scope == 'device'">
             <label class='col-sm-4 control-label' localized>plugin.push.label.device</label>
             <div class="col-sm-8">
-                <input type="text"
+                <input type="text" name="scheduleModal_task_deviceNumber"
                        ng-model="task.deviceNumber"
                        localized-placeholder="search.placeholder.device"
                        autocomplete="off"
@@ -88,7 +88,7 @@
         <div class='form-group' ng-if="task.messageType == '(custom)'">
             <label class='col-sm-4 control-label' localized>plugin.push.label.enter.type</label>
             <div class='col-sm-8'>
-                <input ng-model='task.customMessageType' class='form-control'/>
+                <input ng-model='task.customMessageType' name="custom_message_type" class='form-control'/>
             </div>
         </div>
 
@@ -109,19 +109,19 @@
         <div class='form-group'>
             <div class="col-sm-12 field-hint" localized>plugin.push.schedule.hint</div>
             <div class='col-sm-2'>
-                <input ng-model='task.min' localized-placeholder="table.heading.plugin.push.min" class='form-control'/>
+                <input ng-model='task.min' name="task_min" localized-placeholder="table.heading.plugin.push.min" class='form-control'/>
             </div>
             <div class='col-sm-2'>
-                <input ng-model='task.hour' localized-placeholder="table.heading.plugin.push.hour" class='form-control'/>
+                <input ng-model='task.hour' name="task_hour" localized-placeholder="table.heading.plugin.push.hour" class='form-control'/>
             </div>
             <div class='col-sm-2'>
-                <input ng-model='task.day' localized-placeholder="table.heading.plugin.push.day" class='form-control'/>
+                <input ng-model='task.day' name="task_day" localized-placeholder="table.heading.plugin.push.day" class='form-control'/>
             </div>
             <div class='col-sm-2'>
-                <input ng-model='task.weekday' localized-placeholder="table.heading.plugin.push.weekday" class='form-control'/>
+                <input ng-model='task.weekday' name="task_weekday" localized-placeholder="table.heading.plugin.push.weekday" class='form-control'/>
             </div>
             <div class='col-sm-2'>
-                <input ng-model='task.month' localized-placeholder="table.heading.plugin.push.month" class='form-control'/>
+                <input ng-model='task.month' name="task_month" localized-placeholder="table.heading.plugin.push.month" class='form-control'/>
             </div>
         </div>
 

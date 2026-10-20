@@ -43,7 +43,7 @@
                       ng-class="device.online ? 'hwmdm-status-dot--online' : 'hwmdm-status-dot--offline'"></span>
                 <div class="remote-device-main">
                     <span class="remote-device-number">{{device.number}}</span>
-                    <span class="remote-device-model">{{device.model || '—'}}</span>
+                    <span class="remote-device-model">{{device.model || (device.info && device.info.model) || '—'}}</span>
                     <!-- Detalhes expandidos no item selecionado -->
                     <div class="remote-device-expanded" ng-if="selectedDevice && selectedDevice.id === device.id">
                         <span>Android {{device.androidVersion || '-'}}</span>

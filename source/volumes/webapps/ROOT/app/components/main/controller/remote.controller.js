@@ -386,6 +386,8 @@ angular.module('headwind-kiosk')
                     // re-derive it from a hardcoded 15-minute window, which disagreed with the
                     // server whenever a profile changed its keepalive.
                     $scope.devices = response.data.devices.items;
+                    $scope.onlineCount = $scope.devices.filter(function (d) { return d.online; }).length;
+                    $scope.offlineCount = $scope.devices.length - $scope.onlineCount;
                     if (keepSelection && $scope.selectedDevice) {
                         var selected = $scope.devices.find(function (device) {
                             return device.id === $scope.selectedDevice.id;

@@ -14,7 +14,7 @@
 
         <div class='form-group'>
             <div class="col-sm-3">
-                <input type="text"
+                <input type="text" name="devicelog_paging_deviceFilter"
                        ng-model="paging.deviceFilter"
                        ng-enter='search()'
                        localized-placeholder="search.placeholder.device"
@@ -28,7 +28,7 @@
                        typeahead-no-results="noResults">
             </div>
             <div class="col-sm-3">
-                <input type="text"
+                <input type="text" name="devicelog_paging_applicationFilter"
                        ng-model="paging.applicationFilter"
                        ng-enter='search()'
                        localized-placeholder="search.placeholder.application"
@@ -41,7 +41,7 @@
                        typeahead-no-results="noResults">
             </div>
             <div class="col-sm-6">
-                <input type="text"
+                <input type="text" name="devicelog_paging_messageFilter"
                        ng-model="paging.messageFilter"
                        ng-enter='search()'
                        localized-placeholder="search.placeholder.message"
@@ -55,7 +55,7 @@
         <div class="form-group">
             <div class='col-sm-3'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{dateFormat}}' localized-placeholder="search.placeholder.from"
+                    <input class='form-control' datepicker-popup='{{dateFormat}}' name='devicelog_paging_dateFrom' localized-placeholder="search.placeholder.from"
                            ng-model='paging.dateFrom' is-open='openDatePickers.dateFrom' show-button-bar='false'
                            datepicker-options='datePickerOptions'/>
                 </div>
@@ -67,7 +67,7 @@
             </div>
             <div class='col-sm-3'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{dateFormat}}' localized-placeholder="search.placeholder.to"
+                    <input class='form-control' datepicker-popup='{{dateFormat}}' name='devicelog_paging_dateTo' localized-placeholder="search.placeholder.to"
                            ng-model='paging.dateTo' is-open='openDatePickers.dateTo' show-button-bar='false'
                            datepicker-options='datePickerOptions'/>
                 </div>

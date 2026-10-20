@@ -7,7 +7,7 @@
         <div class='form-group'>
             <label class='col-sm-3 control-label' localized>form.role.name</label>
             <div class='col-sm-9'>
-                <input ng-model='role.name' required type='text' class='form-control'
+                <input ng-model='role.name' required type='text' name='role_role_name' class='form-control'
                        localized-placeholder='form.role.name.placeholder'>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class='role-perms-bar'>
                 <strong localized>form.role.permissions</strong>
                 <span class='role-perms-count'>{{totalSelected()}} / {{totalVisible()}} <span localized>rolegrp.selected</span></span>
-                <input type='search' class='form-control input-sm' ng-model='filter.text'
+                <input type='search' name='role_filter_text' class='form-control input-sm' ng-model='filter.text'
                        localized-placeholder='rolegrp.search' data-testid='role-perm-search'>
                 <button type='button' class='btn btn-default btn-sm' ng-click='setAll(true)' localized>rolegrp.all</button>
                 <button type='button' class='btn btn-default btn-sm' ng-click='setAll(false)' localized>rolegrp.none</button>
@@ -32,7 +32,7 @@
                         </button>
                     </legend>
                     <label class='role-perm' ng-repeat='i in g.items | filter:matches' title='{{i.name}}'>
-                        <input type='checkbox' ng-model='selected[i.id]' data-testid='role-perm-{{i.name}}'>
+                        <input type='checkbox' name='role_perm_{{i.id}}' ng-model='selected[i.id]' data-testid='role-perm-{{i.name}}'>
                         <span><b>{{i.label}}</b><small ng-if='i.desc'>{{i.desc}}</small></span>
                     </label>
                 </fieldset>

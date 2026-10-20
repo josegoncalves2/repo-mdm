@@ -7,7 +7,7 @@
 
             <div ng-controller='CustomersTabController'>
                 <div class='form-group'>
-                    <input type='text'
+                    <input type='text' name='panel_paging_searchValue'
                            ng-enter='newSearch()'
                            ng-model='paging.searchValue'
                            ng-change="newSearch()"
@@ -153,7 +153,7 @@
 
             <div ng-controller='ControlPanelApplicationsTabController'>
                 <div class='form-group'>
-                    <input type='text'
+                    <input type='text' name='panel_search_searchValue'
                            ng-model='search.searchValue'
                            ng-enter='search()'
                            ng-change='search()'

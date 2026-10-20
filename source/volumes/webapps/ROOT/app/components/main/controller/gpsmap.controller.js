@@ -83,7 +83,13 @@ angular.module('headwind-kiosk')
 
         var enrichDevice = function (device) {
             var now = Date.now();
-            device.isOnline = device.locationTs && (now - device.locationTs) < ONLINE_THRESHOLD_MS;
+            // Online e' contato com o servidor, como no resto do painel: statusCode vem do
+            // servidor (DEVICE_ONLINE_SECONDS), o mesmo da lista de dispositivos. Usar a hora do
+            // ultimo GPS marcava offline um aparelho conectado que so' nao atualizou a posicao.
+            var contactTs = device.lastUpdate || device.locationTs;
+            device.isOnline = device.statusCode
+                ? device.statusCode === 'green'
+                : !!contactTs && (now - contactTs) < ONLINE_THRESHOLD_MS;
             var info = device.info || {};
             device.batteryLevel = info.batteryLevel != null ? info.batteryLevel : null;
             device.networkType = info.wifi ? 'Wi-Fi' : (info.mobile ? info.networkType || '4G' : null);
@@ -255,6 +261,8 @@ angular.module('headwind-kiosk')
                 if (response.status === 'OK') {
                     $scope.devices = response.data || [];
                     $scope.devices.forEach(enrichDevice);
+                    // Mesma ordem das outras listas (Acesso remoto, Mensagens): pelo numero.
+                    $scope.devices.sort(function (a, b) { return String(a.number || '').localeCompare(String(b.number || '')); });
                     updateCounts();
                     $scope.lastUpdated = new Date();
                     ensureMap(userRequested ? 'force' : 'none');
@@ -409,7 +417,7 @@ angular.module('headwind-kiosk')
             $scope.historyStops.forEach(function (stop, idx) {
                 if (leafletMap) {
                     var m = L.circleMarker([stop.lat, stop.lon], {
-                        radius: 8, color: themeService.color('danger'), fillColor: themeService.color('danger'), fillOpacity: 0.6, weight: 2
+                        radius: 8, color: '#e74c3c', fillColor: '#e74c3c', fillOpacity: 0.6, weight: 2
                     }).addTo(leafletMap);
                     m.bindPopup('<strong>Parada #' + (idx + 1) + '</strong><br>' +
                         stop.arrivalTime + ' - ' + stop.departureTime + '<br>' + stop.durationText);
@@ -466,7 +474,7 @@ angular.module('headwind-kiosk')
             if (pt.accuracy && leafletMap) {
                 if (accuracyCircle) leafletMap.removeLayer(accuracyCircle);
                 accuracyCircle = L.circle([pt.lat, pt.lon], {
-                    radius: pt.accuracy, color: themeService.color('accent'), fillOpacity: 0.1, weight: 1
+                    radius: pt.accuracy, color: '#0ea5b7', fillOpacity: 0.1, weight: 1
                 }).addTo(leafletMap);
             } else if (accuracyCircle && leafletMap) {
                 leafletMap.removeLayer(accuracyCircle);

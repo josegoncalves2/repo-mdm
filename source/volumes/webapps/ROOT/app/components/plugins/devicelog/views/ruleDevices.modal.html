@@ -8,14 +8,14 @@
         <div class='form-group'>
             <label class='col-sm-3 control-label' localized>plugin.devicelog.settings.label.rule</label>
             <div class='col-sm-9'>
-                <input ng-model='rule.name' type='text' class='form-control' disabled/>
+                <input ng-model='rule.name' type='text' name="rule_name" class='form-control' disabled/>
             </div>
         </div>
 
         <div class="form-group">
             <label class='col-sm-3 control-label'>&nbsp;</label>
             <div class="col-sm-6">
-                <input type="text"
+                <input type="text" name="ruleDevicesModal_newDevice"
                        ng-model="newDevice"
                        localized-placeholder="plugin.devicelog.settings.form.rule.device.placeholder"
                        autocomplete="off"

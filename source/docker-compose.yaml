@@ -105,7 +105,6 @@ services:
       - ${DEVICE_BIND_ADDR}:${MDM_PUSH_PORT}:${MDM_INTERNAL_PUSH_PORT}
     volumes:
       - ./docker-entrypoint.sh:/docker-entrypoint.sh:ro
-      - ../server-source/server/src/main/webapp:/opt/custom-webapp:ro
       - ./tomcat_conf/server.xml:/usr/local/tomcat/conf/server.xml:ro
       - ./tomcat_conf/logging.properties:/usr/local/tomcat/conf/logging.properties:ro
       # Os templates do repositorio, e nao os que vieram dentro da imagem. Com

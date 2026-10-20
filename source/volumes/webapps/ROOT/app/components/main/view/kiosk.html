@@ -297,7 +297,7 @@
         <div class="kiosk-form-grid">
             <label>
                 <span localized>kiosk.gps.mode</span>
-                <select class="form-control" ng-model="configuration.requestUpdates">
+                <select class="form-control" name="kiosk_configuration_requestUpdates" ng-model="configuration.requestUpdates">
                     <option value="DONOTTRACK">{{'kiosk.gps.donottrack' | localize}}</option>
                     <option value="GPS">GPS</option>
                     <option value="NETWORK">{{'kiosk.gps.network' | localize}}</option>
@@ -306,7 +306,7 @@
             </label>
             <label>
                 <span localized>kiosk.gps.permissions</span>
-                <select class="form-control" ng-model="configuration.appPermissions">
+                <select class="form-control" name="kiosk_configuration_appPermissions" ng-model="configuration.appPermissions">
                     <option value="GRANTALL">{{'kiosk.perm.grantall' | localize}}</option>
                     <option value="ASK">{{'kiosk.perm.ask' | localize}}</option>
                     <option value="DENYLOCATION">{{'kiosk.perm.denylocation' | localize}}</option>

@@ -22,7 +22,7 @@
     <div class="hwmdm-split-layout" ng-if="canViewChat">
         <div class="remote-device-panel">
             <div class="gps-device-search">
-                <input type="text" class="form-control" ng-model="deviceSearch"
+                <input type="text" name="chat_device_search" class="form-control" ng-model="deviceSearch"
                        placeholder="{{'search.placeholder.device' | localize}}" />
             </div>
             <div class="gps-device-stats">
@@ -46,7 +46,8 @@
                <span class="hwmdm-status-dot"
                      ng-class="device.online ? 'hwmdm-status-dot--online' : 'hwmdm-status-dot--offline'"></span>
                <div class="remote-device-main">
-                   <span class="remote-device-number">{{deviceLabel(device)}}</span>
+                   <span class="remote-device-number">{{device.number}}</span>
+                   <span class="remote-device-model">{{device.model || (device.info && device.info.model) || '—'}}</span>
                </div>
                 <div class="gps-device-meta">
                     <span class="gps-device-time">{{device.lastUpdate | date:'HH:mm'}}</span>

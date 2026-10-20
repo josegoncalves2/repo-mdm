@@ -100,7 +100,7 @@
             </div>
             <div class='col-sm-2  margin-bottom'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}' name='devices_dateFrom'
                            localized-placeholder="search.placeholder.from"
                            ng-enter='initSearch()'
                            ng-model='additionalParams.dateFrom' is-open='openDatePickers.dateFrom' show-button-bar='false'
@@ -115,7 +115,7 @@
             </div>
             <div class='col-sm-2  margin-bottom'>
                 <div class='min-padding date-picker date-picker-input'>
-                    <input class='form-control' datepicker-popup='{{datePickerFormat}}'
+                    <input class='form-control' datepicker-popup='{{datePickerFormat}}' name='devices_dateTo'
                            localized-placeholder="search.placeholder.to"
                            ng-enter='initSearch()'
                            ng-model='additionalParams.dateTo' is-open='openDatePickers.dateTo' show-button-bar='false'
@@ -143,7 +143,7 @@
             </div>
 
             <div class="col-sm-3  text-right margin-bottom">
-                <input type='text'
+                <input type='text' name='devices_launcherVersion'
                        ng-enter='initSearch()'
                        ng-model='additionalParams.launcherVersion'
                        localized-placeholder='search.placeholder.launcher.version'
@@ -177,7 +177,7 @@
                 </select>
             </div>
             <div class='col-sm-1  margin-bottom' ng-if='additionalParams.onlineTimeSelect == 1'>
-                <input type='number'
+                <input type='number' name='devices_onlineTimeEnter'
                        ng-enter='initSearch()'
                        ng-model='additionalParams.onlineTimeEnter'
                        localized-placeholder='form.devices.selection.number'
@@ -207,7 +207,7 @@
             </div>
 
             <div class='col-sm-3  margin-bottom'>
-                <input type='text'
+                <input type='text' name='devices_androidVersion'
                        ng-enter='initSearch()'
                        ng-model='additionalParams.androidVersion'
                        localized-placeholder='form.settings.common.android.version'
@@ -223,7 +223,7 @@
     -->
     <div class="form-group">
         <div class="devices-search-row">
-            <input type='text'
+            <input type='text' name='devices_searchParams_searchValue'
                    ng-model='searchParams.searchValue'
                    ng-enter='initSearch()'
                    localized-placeholder='search.placeholder.device'
@@ -284,7 +284,7 @@
                     next-text='{{pagingText.next}} &rsaquo;' last-text='{{pagingText.last}} &raquo;'></uib-pagination>
             <label class="devices-page-size">
                 <span localized>devices.paging.size</span>
-                <select class="form-control input-sm" ng-model="paging.pageSize" ng-change="changePageSize()"
+                <select class="form-control input-sm" name="devices_paging_pageSize" ng-model="paging.pageSize" ng-change="changePageSize()"
                         ng-options="size for size in pageSizeOptions"></select>
             </label>
         </div>
@@ -367,7 +367,7 @@
             <th ng-if="hasPermission('edit_devices')">
                 <input ng-model='selection.all'
                        ng-change='selectAll()'
-                       type='checkbox'
+                       type='checkbox' name='devices_selection_all'
                        class='pointer'/>
             </th>
             <th ng-if="settings.columnDisplayedDeviceStatus" ng-click="sortData('STATUS')" class="pointer devices-th-dot">
@@ -504,7 +504,7 @@
         <tr ng-repeat='device in devices' class="{{device.class}}" ng-class="{'device-row-stale': isDeviceStale(device)}">
             <td ng-if="hasPermission('edit_devices')">
                 <input ng-model='device.selected'
-                       type='checkbox'
+                       type='checkbox' name='devices_device_selected'
                        class='pointer'>
             </td>
             <td ng-if="settings.columnDisplayedDeviceStatus">

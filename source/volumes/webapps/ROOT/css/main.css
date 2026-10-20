@@ -4653,7 +4653,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--hwmdm-muted-soft);
 }
 .hwmdm-status-dot--online,
-.remote-status-online { background: var(--hwmdm-accent); }
+.remote-status-online { background: var(--hwmdm-success); }
 .hwmdm-status-dot--offline,
 .remote-status-offline { background: var(--hwmdm-danger); }
 .hwmdm-status-dot--idle { background: var(--hwmdm-warn); }

@@ -11,7 +11,7 @@
         <div class='form-group'>
             <label class='col-sm-4 control-label' localized>form.application.version</label>
             <div class='col-sm-8'>
-                <input ng-model='application.version' type='text' class='form-control' ng-if="!fileSelected">
+                <input name='app_version' ng-model='application.version' type='text' class='form-control' ng-if="!fileSelected">
                 <input disabled type='text' class='form-control' id="applicationVersion2"
                        ng-model='appdesc.version' ng-if="fileSelected"/>
             </div>
