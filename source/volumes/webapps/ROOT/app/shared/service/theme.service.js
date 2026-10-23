@@ -34,32 +34,19 @@ angular.module('headwind-kiosk')
             }
             angular.extend(current, values);
 
-            // If dark mode is active, override colors with dark theme values
-            if (currentMode === 'dark') {
-                root.style.setProperty('--hwmdm-bg', '#1a1d23');
-                root.style.setProperty('--hwmdm-surface', '#252a33');
-                root.style.setProperty('--hwmdm-surface-hover', '#2f3441');
-                root.style.setProperty('--hwmdm-surface-subtle', '#32394a');
-                root.style.setProperty('--hwmdm-border', '#444c5c');
-                root.style.setProperty('--hwmdm-border-subtle', '#3a4250');
-                root.style.setProperty('--hwmdm-border-input', '#4a525f');
-                root.style.setProperty('--hwmdm-text', '#e0e3e8');
-                root.style.setProperty('--hwmdm-text-strong', '#f5f6f8');
-                root.style.setProperty('--hwmdm-muted', '#9099a6');
-                root.style.setProperty('--hwmdm-muted-soft', '#707a88');
-                root.style.setProperty('--hwmdm-shadow', 'rgba(0, 0, 0, 0.3)');
-                root.style.setProperty('--hwmdm-overlay', 'rgba(0, 0, 0, 0.4)');
-                root.style.setProperty('--hwmdm-danger-bg', '#3c1f1a');
-                root.style.setProperty('--hwmdm-success-bg', '#1a3a31');
-                root.style.setProperty('--hwmdm-info-bg', '#1a2d4a');
-                root.style.setProperty('--hwmdm-warn-bg', '#3a3015');
-            } else {
-                Object.keys(current).forEach(function (key) {
-                    if (key.indexOf(COLOR_PREFIX) === 0) {
-                        setVar(key.substring(COLOR_PREFIX.length), current[key]);
+            // A paleta clara vem do banco e e' gravada inline; no escuro ela sai do inline
+            // para o bloco [data-theme="dark"] do main.css valer.
+            var dark = currentMode === 'dark';
+            Object.keys(current).forEach(function (key) {
+                if (key.indexOf(COLOR_PREFIX) === 0) {
+                    var name = key.substring(COLOR_PREFIX.length);
+                    if (dark) {
+                        root.style.removeProperty('--hwmdm-' + name);
+                    } else {
+                        setVar(name, current[key]);
                     }
-                });
-            }
+                }
+            });
 
             var accent = current.webPrimaryColor;
             if (accent && HEX_COLOR.test(accent)) {
@@ -68,9 +55,15 @@ angular.module('headwind-kiosk')
                 root.style.setProperty('--hwmdm-nav-active-bg', 'color-mix(in srgb, ' + accent + ' 16%, transparent)');
                 root.style.setProperty('--hwmdm-accent-soft-bg', 'color-mix(in srgb, ' + accent + ' 8%, transparent)');
             }
-            setVar('sidebar-bg', current.webSidebarColor);
-            setVar('sidebar-text', current.webTextColor);
-            setVar('text', current.webTextColor);
+            if (dark) {
+                ['sidebar-bg', 'sidebar-text', 'text'].forEach(function (name) {
+                    root.style.removeProperty('--hwmdm-' + name);
+                });
+            } else {
+                setVar('sidebar-bg', current.webSidebarColor);
+                setVar('sidebar-text', current.webTextColor);
+                setVar('text', current.webTextColor);
+            }
 
             // So mostra o painel quando o tema completo (theme.*) ja chegou do banco.
             if (current['theme.app-name'] !== undefined) {

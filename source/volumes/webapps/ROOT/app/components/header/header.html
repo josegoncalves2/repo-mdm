@@ -17,9 +17,9 @@
 
         <button type="button" class="hwmdm-theme-toggle" ng-click="toggleTheme()"
                 title="{{'header.theme.toggle' | localize}}"
-                aria-label="Alternar tema">
-            <span ng-if="currentThemeMode === 'light'" class="glyphicon glyphicon-moon"></span>
-            <span ng-if="currentThemeMode === 'dark'" class="glyphicon glyphicon-sun"></span>
+                aria-label="{{'header.theme.toggle' | localize}}"
+                aria-pressed="{{currentThemeMode === 'dark'}}">
+            <span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
         </button>
 
         <div class="dropdown margin-right" uib-dropdown>

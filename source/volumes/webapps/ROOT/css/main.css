@@ -9480,5 +9480,7 @@ body.hwmdm-nav-collapsed .hwmdm-main { grid-column: 1; }
     --hwmdm-success-bg: #1a3a31;
     --hwmdm-info-bg: #1a2d4a;
     --hwmdm-warn-bg: #3a3015;
+    --hwmdm-sidebar-bg: var(--hwmdm-surface);
+    --hwmdm-sidebar-text: var(--hwmdm-text);
 }
 
