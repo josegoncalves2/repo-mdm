@@ -129,6 +129,7 @@ document.localization ['en_US'] = {
     'signup.token.invalid.description': 'Please retry signing up to create a new account!',
 
     'header.label.username': 'Username',
+    'header.theme.toggle': 'Toggle dark/light mode',
 
     'summary.devices.status': 'Device status',
     'summary.devices.active': 'Active',
@@ -1273,6 +1274,16 @@ document.localization ['en_US'] = {
     'devices.paging.previous': 'Previous',
     'devices.paging.next': 'Next',
     'devices.paging.last': 'Last',
+
+    'kiosk.restriction.no_factory_reset': 'Prevent factory reset',
+    'kiosk.restriction.no_safe_boot': 'Prevent safe boot',
+    'kiosk.restriction.no_add_user': 'Prevent add user',
+    'kiosk.restriction.no_modify_accounts': 'Prevent modify accounts',
+    'kiosk.restriction.no_control_apps': 'Prevent control apps',
+    'kiosk.restriction.no_config_wifi': 'Prevent configure Wi-Fi',
+    'kiosk.restriction.no_config_vpn': 'Prevent configure VPN',
+    'kiosk.restriction.no_usb_file_transfer': 'Prevent USB file transfer',
+    'kiosk.restriction.no_debugging_features': 'Prevent debugging features',
 
     'yes': 'yes',
     'no': 'no'

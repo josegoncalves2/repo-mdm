@@ -173,7 +173,7 @@
                 <input type="checkbox"
                        ng-checked="hasRestriction(restriction)"
                        ng-click="setRestriction(restriction, !hasRestriction(restriction))">
-                <span>{{restriction}}</span>
+                <span localized>{{('kiosk.restriction.' + restriction) | localize}}</span>
             </label>
         </div>
     </section>

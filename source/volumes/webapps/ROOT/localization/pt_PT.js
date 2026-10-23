@@ -128,6 +128,7 @@ document.localization ['pt_PT'] = {
     'signup.token.invalid.description': 'Por favor, tente se inscrever novamente para criar uma nova conta!',
 
     'header.label.username': 'Usuário',
+    'header.theme.toggle': 'Alternar entre modo escuro e claro',
 
     'summary.devices.status': 'Status do dispositivo',
     'summary.devices.active': 'Ativo',
@@ -1305,6 +1306,16 @@ document.localization ['pt_PT'] = {
     'remote.keyboard.active': 'Teclado físico: ATIVO',
     'remote.keyboard.activate': 'Teclado físico: ativar',
     'remote.keyboard.hint': 'Teclado físico: com a borda verde na tela do aparelho, o que você digita vai direto para o campo em foco no dispositivo (Backspace, Enter, Tab, setas; Esc = Voltar; Ctrl+V cola). Clique fora da tela para usar o teclado na página; clique na tela para voltar a enviar.',
+
+    'kiosk.restriction.no_factory_reset': 'Impedir redefinição de fábrica',
+    'kiosk.restriction.no_safe_boot': 'Impedir inicialização segura',
+    'kiosk.restriction.no_add_user': 'Impedir adicionar usuário',
+    'kiosk.restriction.no_modify_accounts': 'Impedir modificar contas',
+    'kiosk.restriction.no_control_apps': 'Impedir controle de aplicativos',
+    'kiosk.restriction.no_config_wifi': 'Impedir configurar Wi-Fi',
+    'kiosk.restriction.no_config_vpn': 'Impedir configurar VPN',
+    'kiosk.restriction.no_usb_file_transfer': 'Impedir transferência USB',
+    'kiosk.restriction.no_debugging_features': 'Impedir recursos de depuração',
 
     'yes': 'sim',
     'no': 'não'
