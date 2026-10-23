@@ -1,0 +1,2 @@
+# Para abortar o loop, crie um arquivo com o texto "ABORT" no diretório .claude/loop/
+# Este é o único modo de parada manual do sistema.

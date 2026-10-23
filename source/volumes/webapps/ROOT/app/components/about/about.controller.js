@@ -8,11 +8,6 @@ angular.module('headwind-kiosk')
         });
         $scope.line3Text = localization.localize('about.line.3').replace('${versionNumber}', APP_VERSION);
 
-        // Bloco de versao da PLATAFORMA HWMDM (pacote de trabalho "versao"),
-        // adicional as linhas acima -- que continuam mostrando a versao do
-        // nucleo Headwind MDM de base (APP_VERSION, 5.39.2) como sempre
-        // mostraram. Reaproveita o mesmo build-info.json que o rodape do
-        // menu lateral le, sem cache (o build muda a cada publicacao no DEV).
         $scope.hwmdmInfo = null;
         $http.get('build-info.json?_=' + new Date().getTime(), { cache: false })
             .then(function (resposta) {

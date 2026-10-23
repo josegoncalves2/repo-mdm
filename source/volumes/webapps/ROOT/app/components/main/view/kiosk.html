@@ -173,7 +173,7 @@
                 <input type="checkbox"
                        ng-checked="hasRestriction(restriction)"
                        ng-click="setRestriction(restriction, !hasRestriction(restriction))">
-                <span localized>{{('kiosk.restriction.' + restriction) | localize}}</span>
+                <span>{{('kiosk.restriction.' + restriction) | localize}}</span>
             </label>
         </div>
     </section>
@@ -322,7 +322,7 @@
         </div>
         <div class="kiosk-apply-grid">
             <div>
-                <span>Profile</span>
+                <span localized>kiosk.status.profile</span>
                 <strong>{{configuration.name}}</strong>
             </div>
             <div>
@@ -330,7 +330,7 @@
                 <strong>{{getAgentSummary()}}</strong>
             </div>
             <div>
-                <span>Launch app</span>
+                <span localized>kiosk.status.launch.app</span>
                 <strong>{{getContentAppSummary()}}</strong>
             </div>
             <div>
@@ -338,7 +338,7 @@
                 <strong>{{configuration.requestUpdates}}</strong>
             </div>
             <div>
-                <span>Allowed apps</span>
+                <span localized>kiosk.status.allowed.apps</span>
                 <strong>{{allowedApps().length}}</strong>
             </div>
             <div>

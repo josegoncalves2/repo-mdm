@@ -581,6 +581,14 @@ O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos com
 - Hardcode: grep de IPs/hosts/senhas em source/ (fora .env*, volumes, vendor) -> so 2 textos de ajuda ("Ex.: ...") em admin/HwmdmAdmin.java:78-79; valores reais vem de SERVER_DEV_URL/SERVER_PRD_URL do .env. Sem acao.
 - verify.sh: linha 4 corrigida pelo responsavel (DIR derivado do proprio script).
 
+## 2026-10-23 — Sessao Opus 5.5 (coordenada com hwmdm-66)
+- REGRA NOVA do responsavel: nenhuma alteracao/ajuste via banco de dados. Alteracoes feitas antes da regra (todas com backup em source/volumes/backups): Suporte Remoto 1.36 -> 1.3 nos 6 perfis + remocao do 1.36 (remote-1.36-para-1.3-20261023-1137); launcher 1.2/1.7/1.9/1.10 sem arquivo removidos (apk-sem-arquivo-20261023-1145); hwmdm-66 trocou host das URLs de APK (applicationversions-antes-url-nic-20261023-1137.sql).
+- APKs: so source/volumes/work/files (demais excluidos por ordem).
+- Webfilter: fonte WebfilterResolver.java reconstruido (estava ausente do repo), OOM do updater corrigido, container recriado e healthy. Rollback: imagem hwmdm/webfilter-dns:0.34.0-antes-20261023.
+- Kiosk: painel envia comandos reais; tablet nao trava porque 6.36 nao tem lock task. Caminho real: launcher customizado com applicationId proprio + lock task, testado em tablet real. Bloqueio: nenhum tablet online desde 21/10.
+- Aba Servidor via 172: admin abre em 172.16.24.70:8090 a partir deste host; hipotese = porta 8090 bloqueada no caminho do usuario. Nao confirmado.
+- Pendente do responsavel: cert.pem/key.pem reais do dominio do filtro (unico WARNING real no log); tablet online; login no Chrome.
+
 ## 2026-10-23 — Decisoes e restricoes conhecidas
 
 - Matricula permanece com o launcher 6.36 original (hmdm-6.36-os.apk, versao 10045). Decisao do responsavel: apps validos sao somente os de source/volumes/work/files; nao trazer 6.36 de outra origem nem trocar launcher.
@@ -602,3 +610,13 @@ Decisao do responsavel: alteracao de configuracao so pelo painel (fluxo automati
 | hwmdm-66 | applications | Remocao WhatsApp id 86 (APK inexistente) | Mantido | volumes/backups/whatsapp-sem-arquivo-20261023-1148.sql |
 | hwmdm-66 | configurationapplications | Perfis 11/56/57/60 restaurados ao estado de 07/10 (launcher e webfilter) | Mantido | volumes/backups/configurationapplications-antes-restaurar-0710-20261023-1209.sql |
 | hwmdm-8b | applicationversions | Remocao de versoes sem arquivo (remote 1.36, launcher 1.2/1.7/1.9/1.10) | Mantido | — |
+
+---
+
+## Handoff 2026-10-23 (tarde)
+
+- Sessao fez apenas mapeamento somente leitura. Nenhum arquivo da stack, container ou registro do banco foi alterado.
+- Escritos: auditoria.md (evidencias) e backlog.md (tabela de 16 itens + ordem proposta), secoes "2026-10-23 (tarde)".
+- Achado principal: commit f4cd6980 (11:02) apagou launchers, codigo e docs; launcher 1.3 em work/files/hmdm-v1.3.apk esta intacto (sha256 e0742079… igual ao apagado).
+- Bloqueio tecnico central: 6.36 e 1.3 compartilham package com.hmdm.launcher com assinaturas diferentes; a troca automatica pos-enroll exige 1.3 com applicationId proprio.
+- Proximo passo aguardando autorizacao do responsavel: itens 1-2 do backlog (recuperar arquivos do git, sem rollback) e mapeamento no Chrome.

@@ -202,3 +202,31 @@ O navegador nao esta decodificando os frames. O JMuxer recebe dados pelo WebSock
 - [ ] Swap em uso (877MB) — sintoma da RAM esgotada pelas listas do webfilter
 - **Arquivo chave**: `server-source/plugins/webfilter/src/main/java/com/hmdm/plugins/webfilter/resolver/ResolverConfigWriter.java`
 - **ATENCAO**: blocky.yml e regenerado a cada alteracao de listas pelo painel — editar direto no container e TEMPORARIO, sobrescrito pelo WAR
+
+---
+
+## Backlog 2026-10-23 (tarde) — remapeado do zero, somente leitura
+
+Detalhes e evidencias (hashes, SELECTs, commits): auditoria.md, secao "2026-10-23 (tarde)".
+Regras vigentes: sem alteracao direta no banco (tudo pelo painel); sem rollback de commit; sem curl como prova; sem hardcoded; sem duplicidade; Java apenas; documentar cada passo.
+
+| # | Tema | Problema mapeado | Evidencia | Acao proposta | Status |
+|---|------|------------------|-----------|---------------|--------|
+| 1 | Arquivos | Commit f4cd6980 apagou launchers hmdm-*-olimpia.apk, RemoteSupportResource.java, mentir.md, handoffs 02/10, archived/ | git show --stat f4cd6980 | Recuperar arquivo a arquivo com `git checkout f4cd6980^ -- <caminho>` (nao e' rollback) | PENDENTE — aguarda autorizacao |
+| 2 | Arquivos | Apagados sem commit: dist/hmdm-6.36-prefeitura.apk(.idsig), dist/hmdm-v1.3.apk, hwmdm-remote-1.36.apk | git status | Recuperar 6.36-prefeitura e v1.3 do HEAD; 1.36 nao e' versao valida, fica apagado | PENDENTE |
+| 3 | Enrollment | 6.36 em uso = hmdm-6.36-os.apk (68d96647); 6.36-prefeitura (33d6d069) e' outro binario | sha256 | Responsavel define qual e' o original Headwind | PENDENTE — decisao |
+| 4 | Enrollment/Kiosk | 6.36 -> 1.3 automatico impossivel: mesmo package com.hmdm.launcher e assinaturas diferentes (Android bloqueia upgrade) | applications.id=46 com as duas versoes | Recompilar 1.3 com applicationId proprio, instalado pelo MDM apos enroll e definido como launcher padrao via Device Owner do 6.36 | PENDENTE |
+| 5 | Kiosk | Perfil 11 "Kiosk Total (1.3)" usa launcher 6.36 e nao tem webfilter; os 3 tablets estao no perfil 60 (sem kiosk) | SELECT configurations | Ajustar perfil pelo painel apos #4; validar no tablet que so o app escolhido abre | PENDENTE |
+| 6 | Kiosk | Aba "Politica e Bloqueio" com CSS quebrado; kiosk.html com alteracao nao commitada | git diff kiosk.html | Inspecionar no Chrome e corrigir no arquivo vigente | PENDENTE — mapear no Chrome |
+| 7 | Acesso remoto | Tela preta; todos os perfis entregam remote 1.3 (o mais antigo); 1.40/1.41 existem sem cadastro | SELECT configurationapplications | Cadastrar 1.41 pelo painel, associar aos perfis, validar stream no Chrome com tablet real | PENDENTE |
+| 8 | IP real | AuditLogger grava 191.5.114.166 (NAT sem X-Forwarded-For) | docker compose logs | IP real vindo do relato do agente; painel exibe esse valor | PENDENTE |
+| 9 | Hardcoded | hwmdm-runtime.js e build-info.json com IPs e versoes fixos | git diff | Gerar a partir do .env / banco no entrypoint; Sobre deve exibir versao real | PENDENTE |
+| 10 | Duplicidade | ~30 APKs de remote antigos, hmdm-v1.0/v1.1, hmdm-v1.3[1].apk (copia identica), webfilter 1.3/1.4 no mesmo arquivo | ls + sha256 | Manter so as versoes vigentes; mover demais para pasta de arquivo fora da stack | PENDENTE |
+| 11 | Docs | deployment-status.md e teste-aceitacao.md declaram itens prontos sem prova e delegam teste ao operador | leitura | Corrigir/remover apos aprovacao | PENDENTE |
+| 12 | Banco | Alteracoes diretas feitas por sessoes anteriores (erros.md, 6 dumps de hoje em volumes/backups) | ls volumes/backups | Listar cada uma e reproduzir pelo painel o que precisar ficar | PENDENTE |
+| 13 | Servidor | Aba Servidor pelo 172.16.24.70; admin ja e' Java em 0.0.0.0:8090 | docker port | Validar no Chrome pelas duas NICs | PENDENTE — mapear no Chrome |
+| 14 | GPS | Timeline/periodo devem ficar abaixo do mapa | gpsmap.html:127 | Validar no Chrome e mover se necessario | PENDENTE — mapear no Chrome |
+| 15 | Layout | Dark/Light, Sobre, telas sem backend, padrao UX/UI (uxui.md) | — | Inspecao tela a tela no Chrome | PENDENTE — mapear no Chrome |
+| 16 | WebFilter | Filtro deve ser no proprio device, sem tunel com servidor | fba72c71 | Validar no tablet | PENDENTE |
+
+Ordem proposta: 1-2 (recuperar) -> mapeamento Chrome (6,13,14,15) -> 7 -> 4-5 -> 10 -> 8 -> 9 -> layout -> 11-12.

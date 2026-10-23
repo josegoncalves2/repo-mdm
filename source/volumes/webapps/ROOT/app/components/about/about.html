@@ -23,20 +23,15 @@
             </div>
         </div>
 
-        <!-- Bloco de versao da plataforma HWMDM (pacote de trabalho "versao"),
-             alem das linhas acima (que ja mostram a versao do nucleo Headwind
-             MDM de base). Dados vindos de build-info.json, mesma fonte do
-             rodape do menu lateral. -->
         <div class="hwmdm-version-about margin-top-40" ng-if="hwmdmInfo">
             <hr>
             <div class="text-center">
                 <h4>HWMDM {{hwmdmInfo.versao}}</h4>
                 <div class="hwmdm-version-about__linha">
-                    build {{hwmdmInfo.build}} &middot; compila&ccedil;&atilde;o {{hwmdmInfo.compilacao}}
-                    &middot; commit {{hwmdmInfo.commit}}<span ng-if="hwmdmInfo.sujo"> (sujo)</span>
+                    {{hwmdmInfo.ref}} &middot; commit {{hwmdmInfo.commit}} &middot; {{hwmdmInfo.data_commit_utc}}
                 </div>
-                <div class="hwmdm-version-about__linha" title="{{hwmdmInfo.semver_completo}}">
-                    {{hwmdmInfo.data_build_utc}}
+                <div class="hwmdm-version-about__linha" ng-repeat="(pkg, a) in hwmdmInfo.agentes">
+                    {{a.nome}} {{a.versao}}
                 </div>
             </div>
         </div>

@@ -690,3 +690,10 @@ kiosk real, aba Politica e Bloqueio (CSS), acesso remoto tela preta, timeline do
 - **Correção**: `installedApps()` passa a enviar exatamente as entradas com `action != 0`, como `configurations.controller.js` (editor do Headwind). `appScore` removido (sem uso). Cache do script atualizado em index.html (`?v=hux202610231420`).
 - **IP do aparelho**: perfil 60 está com Suporte Remoto 1.3 (10102) desde 11:37 (outra sessão); 1.3 não envia `/rest/plugins/deviceip`. A versão 1.35 (10127, latestversion) envia.
 - **Concorrência**: PUTs em 14:29:02 e 14:30:02 no perfil 60 NÃO são desta sessão (WebFilter agora 10138 / 1.2; entradas duplicadas de 87 e 88). Restauração (WebFilter 1.4, Suporte Remoto 1.35) suspensa até haver uma única sessão alterando o perfil.
+
+### 2026-10-23 14:45 — WebFilter: causa raiz e correcao pela arquitetura existente
+- Nem a 1.2 filtrava sozinha: o servico de acessibilidade so detectava a pagina nativa de bloqueio do Chrome. Quem bloqueia e' a politica gerenciada do Chrome `URLBlocklist`.
+- O plugin em producao (WEB-INF/lib/webfilter-0.1.0.jar, WebFilterSyncResponseHook) tem dois caminhos: com `com.hwmdm.webfilter` no perfil -> envia `webfilterBrowserPolicies` ao companion (exige delegacao que o 6.36 nao da); SEM o companion -> envia `managedConfig` (URLBlocklist/URLAllowlist) como configuracao de aplicativo do Chrome, aplicada pelo proprio 6.36 original via setApplicationRestrictions (string `managedConfig` confirmada no classes.dex do hmdm-6.36-os.apk).
+- Correcao (pelo painel, sem banco, sem codigo): retirar "HWMDM Web Filter" do perfil 60. Filtro passa a ser do proprio aparelho (Chrome gerenciado), sem tunel com o servidor. Politica do perfil 60 ativa com 13 categorias.
+- Recuperados do git (sem rollback): dist/hmdm-6.36-prefeitura.apk(.idsig) do HEAD; docs/mentir.md e HANDOFF-CONSOLIDADO/DEFINITIVO-20261002.md de f4cd6980^.
+- Chrome (extensao): pagina pelo 172.16.24.70 responde 200 no servidor, mas a aba ficou presa em 192.168.250.249 e a extensao parou de responder. Execucao pelo painel aguardando Chrome.
