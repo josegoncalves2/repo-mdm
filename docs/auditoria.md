@@ -124,6 +124,10 @@
 
 | 2026-10-23 12:45 | Claude Opus 5.5 | REVERTIDO: userroles.superadmin do papel Admin (id 2) voltou a false. O 500 'get all applications' vem do Painel Master (panel.controller.js -> applications/admin/search, exige isSuperAdmin), nao do Quiosque. A elevacao era indevida | REVERTIDO | Bytecode ApplicationDAO.getAllAdminApplications confirmado |
 | 2026-10-23 12:50 | Claude Opus 5.5 | Diagnostico Quiosque: os 3 tablets estao no perfil 60 (kioskmode=false), offline desde 21/10 e 13/10; perfil 11 (kiosk) tem mainappid=10045 (6.36) e nenhum aparelho; launcher 6.36 OSS nao tem lock task | BLOQUEADO | Sem aparelho online nao ha teste real possivel |
+| 2026-10-23 12:45 | Claude Opus 5.5 | Log WARNING SecureRandom SHA1PRNG: CATALINA_OPTS=${MDM_CATALINA_OPTS} no hmdm (docker-compose.yaml) + MDM_CATALINA_OPTS=-Djava.security.egd=file:/dev/./urandom em .env/.env.example | DEPLOYED | Ativo apos recreate das 12:43 (docker exec: CATALINA_OPTS presente) |
+| 2026-10-23 12:49 | Claude Opus 5.5 | WebFilter sem tunel com servidor: plugin envia webfilterDnsHost (WebFilterService.dnsHost -> plugin_webfilter_settings.dnsdomain) e o launcher 1.3 fixa Private DNS nele. dnsdomain 'mdm.pmeto.local' -> '' | DEPLOYED | Filtro fica so no aparelho (com.hwmdm.webfilter, BrowserPolicySync -> setApplicationRestrictions). Backup: volumes/backups/plugin_webfilter_settings-antes-dns-device-20261023-1149.sql |
+| 2026-10-23 12:50 | hwmdm-66 (registro) | build-info.json gerado no boot pelo docker-entrypoint.sh (HWMDM_VERSION, commit do .git, componentes, agentes do banco); applicationversions.url 40 linhas -> 172.16.24.70:8080; app WhatsApp sem arquivo removido; inventario: nenhum APK fora de work/files | DEPLOYED | Backups em volumes/backups/ (applicationversions-antes-url-nic-20261023-1137.sql, whatsapp-sem-arquivo-20261023-1148.sql) |
+| 2026-10-23 12:50 | Claude Opus 5.5 | Assinaturas: 6.36 original cert 0957...9757; 1.3 cert 4437...D510 (Prefeitura). Android recusa upgrade 6.36->1.3 (mesmo pacote com.hmdm.launcher) | BLOQUEADO | Fluxo 6.36->1.3 automatico impossivel sem a chave Headwind |
 ---
 
 ## DIFF: DOCS vs. ESTADO REAL DO SERVIDOR (2026-10-05 13:39)
@@ -566,3 +570,13 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
 |---|---|---|
 | .env.anterior (versao paralela) | RESOLVIDO | movido para archived/env/ |
 | Hardcode de IP/host em source/ | OK | so texto de ajuda; valores via .env |
+
+## 2026-10-23 — Sessao Opus 5.5 (coordenada com sessao hwmdm-66)
+| Hora | Acao | Status | Evidencia |
+|---|---|---|---|
+| tarde | build-info.json ("Sobre" HWMDM 1.0.0): arquivo estatico de 24/09 (sujo, agente remoto 1.20). Versoes reais levantadas no banco (launcher 6.36, remote 1.36, webfilter 1.4) e no WAR (nucleo 5.39.2) | REPASSADO | Correcao feita pela sessao hwmdm-66 (dona do item), sem edicao paralela |
+| tarde | kiosk.html aba Politica e Bloqueio: removido `localized` sobre texto ja traduzido por `| localize` (traducao dupla nas 9 restricoes); aba Aplicar: "Profile", "Launch app", "Allowed apps" fixos em ingles trocados pelas chaves existentes kiosk.status.profile / kiosk.status.launch.app / kiosk.status.allowed.apps | APLICADO, NAO VALIDADO | Validacao visual no Chrome pendente (MDM sendo recriado pela hwmdm-66; login exige o responsavel). Rejeitado pelo responsavel ate validacao |
+| tarde | Aba Servidor via 172.16.24.70: admin escuta 0.0.0.0:8090 (nao e bind). Causa ainda nao identificada | EM ANALISE | Requer sessao logada no Chrome |
+| 11:37-11:38 | Ordem do responsavel ("1.3 funciona, 1.36 nao existe"): Suporte Remoto (com.hwmdm.remote) 1.36 retirado. 6 perfis (configurationapplications) e applications.latestversion do app 87 apontados para 10102 (Suporte Remoto 1.3). Linhas applicationversions 10130 e uploadedfiles 17 removidas; hwmdm-remote-1.36.apk movido (nao apagado) | APLICADO | Backup CSV + APK em source/volumes/backups/remote-1.36-para-1.3-20261023-1137. Coordenado com sessao hwmdm-66 (alterou applicationversions.url antes). Atencao: tablets com 1.36 instalado (versionCode 36) nao aceitam downgrade automatico para 1.3 (versionCode 4); exige desinstalar o app no aparelho |
+| 11:45 | Ordem do responsavel: APKs validos = source/volumes/work/files; demais excluidos. Removidos: dist/hmdm-v1.3.apk (copia), dist/hwmdm-remote-1.36.apk, android-source/.../app-opensource-release.apk, remote-agent/.../app-release.apk (saidas de build) e o 1.36 do backup. Fora de work/files restam 0 APKs | APLICADO | find *.apk fora de work/files = 0 |
+| 11:45 | applicationversions sem arquivo em work/files e sem uso: launcher 1.2 (10128), 1.7 (10133), 1.9 (10134), 1.10 (10135) removidas. Launcher agora so 6.36 e 1.3. WhatsApp 10092 (sem arquivo) mantido: e latestversion do app, remocao exige excluir o app | APLICADO | Backup source/volumes/backups/apk-sem-arquivo-20261023-1145 |

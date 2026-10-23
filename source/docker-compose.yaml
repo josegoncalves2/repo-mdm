@@ -126,10 +126,14 @@ services:
       # Sem isto um clone novo morre com "HMDM_URL nao configurado e nenhum WAR
       # encontrado", porque quem copiava dist/hmdm.war para ca era o provision.sh.
       - ${MDM_WAR_FILE}:${MDM_WAR_CACHE_FILE}:ro
+      # So leitura: o entrypoint tira dali o commit exibido no rodape/Sobre.
+      - ${HWMDM_GIT_DIR}:${HWMDM_GIT_MOUNT}:ro
     environment:
       <<: *webfilter-env
       # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga adiantado.
       TZ: ${TZ}
+      # Sem fonte de entropia nao-bloqueante o Tomcat espera SecureRandom (WARNING SHA1PRNG).
+      CATALINA_OPTS: ${MDM_CATALINA_OPTS}
       # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
       # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
       # dono root:root (o processo roda como root dentro do container, sem userns-remap).
@@ -163,6 +167,10 @@ services:
       POSTGRES_INTERNAL_PORT: ${POSTGRES_INTERNAL_PORT}
       MQTT_SERVER_URI: ${MQTT_SERVER_URI}
       AUTO_UPDATE_WEBAPP: ${AUTO_UPDATE_WEBAPP}
+      HWMDM_VERSION: ${HWMDM_VERSION}
+      HWMDM_GIT_MOUNT: ${HWMDM_GIT_MOUNT}
+      HWMDM_AGENT_PKGS: ${HWMDM_AGENT_PKGS}
+      WEBFILTER_IMAGE: ${WEBFILTER_IMAGE}
 
   # Resolvedor DNS do Web Filter. O MDM so escreve em volumes/work/plugins/webfilter/dns;
   # este container le dali e devolve o log de consultas em .../queries.
