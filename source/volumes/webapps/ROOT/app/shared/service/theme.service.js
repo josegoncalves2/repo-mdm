@@ -8,8 +8,10 @@ angular.module('headwind-kiosk')
     .factory('themeService', function ($window, $document, $rootScope, $q) {
         var HEX_COLOR = /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
         var COLOR_PREFIX = 'theme.color-';
+        var THEME_MODE_KEY = 'hwmdm.theme.mode';
         var root = $document[0].documentElement;
         var current = {};
+        var currentMode = 'light'; // 'light' ou 'dark'
         var loaded = $q.defer();
 
         var adminBase = function () {
@@ -32,11 +34,32 @@ angular.module('headwind-kiosk')
             }
             angular.extend(current, values);
 
-            Object.keys(current).forEach(function (key) {
-                if (key.indexOf(COLOR_PREFIX) === 0) {
-                    setVar(key.substring(COLOR_PREFIX.length), current[key]);
-                }
-            });
+            // If dark mode is active, override colors with dark theme values
+            if (currentMode === 'dark') {
+                root.style.setProperty('--hwmdm-bg', '#1a1d23');
+                root.style.setProperty('--hwmdm-surface', '#252a33');
+                root.style.setProperty('--hwmdm-surface-hover', '#2f3441');
+                root.style.setProperty('--hwmdm-surface-subtle', '#32394a');
+                root.style.setProperty('--hwmdm-border', '#444c5c');
+                root.style.setProperty('--hwmdm-border-subtle', '#3a4250');
+                root.style.setProperty('--hwmdm-border-input', '#4a525f');
+                root.style.setProperty('--hwmdm-text', '#e0e3e8');
+                root.style.setProperty('--hwmdm-text-strong', '#f5f6f8');
+                root.style.setProperty('--hwmdm-muted', '#9099a6');
+                root.style.setProperty('--hwmdm-muted-soft', '#707a88');
+                root.style.setProperty('--hwmdm-shadow', 'rgba(0, 0, 0, 0.3)');
+                root.style.setProperty('--hwmdm-overlay', 'rgba(0, 0, 0, 0.4)');
+                root.style.setProperty('--hwmdm-danger-bg', '#3c1f1a');
+                root.style.setProperty('--hwmdm-success-bg', '#1a3a31');
+                root.style.setProperty('--hwmdm-info-bg', '#1a2d4a');
+                root.style.setProperty('--hwmdm-warn-bg', '#3a3015');
+            } else {
+                Object.keys(current).forEach(function (key) {
+                    if (key.indexOf(COLOR_PREFIX) === 0) {
+                        setVar(key.substring(COLOR_PREFIX.length), current[key]);
+                    }
+                });
+            }
 
             var accent = current.webPrimaryColor;
             if (accent && HEX_COLOR.test(accent)) {
@@ -87,7 +110,41 @@ angular.module('headwind-kiosk')
             });
         };
 
+        var loadThemeMode = function () {
+            try {
+                var saved = $window.localStorage.getItem(THEME_MODE_KEY);
+                currentMode = (saved === 'dark') ? 'dark' : 'light';
+            } catch (e) {
+                currentMode = 'light';
+            }
+            applyThemeMode();
+        };
+
+        var applyThemeMode = function () {
+            if (currentMode === 'dark') {
+                root.setAttribute('data-theme', 'dark');
+            } else {
+                root.removeAttribute('data-theme');
+            }
+            $rootScope.$broadcast('HWMDM_THEME_MODE_CHANGED', currentMode);
+        };
+
+        var toggleThemeMode = function () {
+            currentMode = (currentMode === 'dark') ? 'light' : 'dark';
+            try {
+                $window.localStorage.setItem(THEME_MODE_KEY, currentMode);
+            } catch (e) {}
+            applyThemeMode();
+            apply(current);
+            return currentMode;
+        };
+
+        var getThemeMode = function () {
+            return currentMode;
+        };
+
         load();
+        loadThemeMode();
 
         return {
             applyBrandColors: apply,
@@ -96,6 +153,15 @@ angular.module('headwind-kiosk')
             colorPrefix: COLOR_PREFIX,
             ready: function () { return loaded.promise; },
             reload: load,
-            save: save
+            save: save,
+            toggleMode: toggleThemeMode,
+            getMode: getThemeMode,
+            setMode: function (mode) {
+                currentMode = (mode === 'dark') ? 'dark' : 'light';
+                try {
+                    $window.localStorage.setItem(THEME_MODE_KEY, currentMode);
+                } catch (e) {}
+                applyThemeMode();
+            }
         };
     });
