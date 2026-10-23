@@ -625,3 +625,9 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
 - **Causa**: perfil 60 `modelo-default-v2` (3 aparelhos) contém `no_install_apps`, `no_install_unknown_sources`, `no_install_unknown_sources_globally`. `DISALLOW_INSTALL_APPS` bloqueia também o Device Owner (doc. Android DevicePolicyManager), impedindo o MDM de instalar 1.3/Suporte Remoto/WebFilter. Os perfis 56, 57 e 11 não têm essas três.
 - **Correção**: remover as três restrições do perfil 60 **pelo painel** (Configurações → modelo-default-v2 → Restrições), nunca pelo banco. Leitura feita só com SELECT.
 - **Status**: aguardando Chrome conectado ou ação do responsável no painel.
+
+## 2026-10-23 14:05 — MDM 6.36 com permissão total de instalação (ordem do responsável)
+
+- **Ação (pelo painel, aba Quiosque, perfil 60 `modelo-default-v2`)**: removidas `no_install_apps`, `no_install_unknown_sources`, `no_install_unknown_sources_globally` → Salvar perfil ("Kiosk profile saved and queued for devices") → Enviar configuração ao aparelho online. Sem alteração direta no banco.
+- **Verificação**: SELECT `restrictions ~ 'no_install'` = false; R9XT106Y5RP sincronizou `/rest/public/sync/configuration` às 14:05:50 (HTTP 200). R9XT106VP1E e R9XT200AMYY offline — recebem na próxima conexão.
+- Mantidas as demais restrições do perfil (inclusive `no_uninstall_apps` para o usuário final).
