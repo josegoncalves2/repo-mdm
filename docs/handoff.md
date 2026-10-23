@@ -580,3 +580,11 @@ O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos com
 - source/.env.anterior (copia antiga do .env: DEVICE_BIND_ADDR 172.14.0.70, healthcheck 10s) movido para archived/env/env.anterior-20261022 (chmod 600). Nao apagado. source/ ficou so com .env e .env.example.
 - Hardcode: grep de IPs/hosts/senhas em source/ (fora .env*, volumes, vendor) -> so 2 textos de ajuda ("Ex.: ...") em admin/HwmdmAdmin.java:78-79; valores reais vem de SERVER_DEV_URL/SERVER_PRD_URL do .env. Sem acao.
 - verify.sh: linha 4 corrigida pelo responsavel (DIR derivado do proprio script).
+
+## 2026-10-23 — Decisoes e restricoes conhecidas
+
+- Matricula permanece com o launcher 6.36 original (hmdm-6.36-os.apk, versao 10045). Decisao do responsavel: apps validos sao somente os de source/volumes/work/files; nao trazer 6.36 de outra origem nem trocar launcher.
+- Restricao: 6.36 original (cert SHA256 0957...9757) e 1.3 (cert 4437...D510, Prefeitura) tem chaves diferentes no mesmo pacote com.hmdm.launcher. O Android nao instala o 1.3 por cima do 6.36; o quiosque single-app do 1.3 (KioskPolicy) nao chega aos tablets matriculados com o 6.36.
+- WebFilter: filtro somente no aparelho (com.hwmdm.webfilter, politicas nativas do navegador). plugin_webfilter_settings.dnsdomain vazio: o servidor nao envia mais webfilterDnsHost (sem Private DNS apontando para o servidor).
+- Logs: WARNING SecureRandom resolvido com MDM_CATALINA_OPTS (-Djava.security.egd=file:/dev/./urandom).
+- Tablets R9XT106VP1E, R9XT200AMYY, R9XT106Y5RP offline desde 21/10 e 13/10: acesso remoto e quiosque sem teste em aparelho real.
