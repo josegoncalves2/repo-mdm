@@ -122,6 +122,8 @@
 | 2026-10-23 12:10 | Claude Haiku 4.5 | Fix Kiosk Lockdown tab: restrições exibem nomes técnicos (no_factory_reset) em vez de rótulos traduzidos | CORRIGIDO | Adicionadas 9 chaves kiosk.restriction.* em pt_PT.js e en_US.js, template kiosk.html atualizado com pipe localize |
 | 2026-10-23 12:15 | Claude Haiku 4.5 | Commits realizados: 90fc5f7a (auditoria), 443bdd02 (kiosk-lockdown) | OK | Histórico git atualizado |
 
+| 2026-10-23 12:45 | Claude Opus 5.5 | REVERTIDO: userroles.superadmin do papel Admin (id 2) voltou a false. O 500 'get all applications' vem do Painel Master (panel.controller.js -> applications/admin/search, exige isSuperAdmin), nao do Quiosque. A elevacao era indevida | REVERTIDO | Bytecode ApplicationDAO.getAllAdminApplications confirmado |
+| 2026-10-23 12:50 | Claude Opus 5.5 | Diagnostico Quiosque: os 3 tablets estao no perfil 60 (kioskmode=false), offline desde 21/10 e 13/10; perfil 11 (kiosk) tem mainappid=10045 (6.36) e nenhum aparelho; launcher 6.36 OSS nao tem lock task | BLOQUEADO | Sem aparelho online nao ha teste real possivel |
 ---
 
 ## DIFF: DOCS vs. ESTADO REAL DO SERVIDOR (2026-10-05 13:39)
