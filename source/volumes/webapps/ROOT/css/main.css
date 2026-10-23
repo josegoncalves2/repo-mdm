@@ -3319,6 +3319,26 @@ html:not(.hwmdm-branded) .hwmdm-workspace {
     font-size: 12px;
 }
 
+.hwmdm-theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--hwmdm-on-accent);
+    cursor: pointer;
+    padding: 0;
+}
+
+.hwmdm-theme-toggle:hover,
+.hwmdm-theme-toggle:focus {
+    background: color-mix(in srgb, var(--hwmdm-on-accent) 16%, transparent);
+    outline: 0;
+}
+
 .hwmdm-user-button {
     display: inline-flex;
     align-items: center;
@@ -9436,5 +9456,29 @@ body.hwmdm-nav-collapsed .hwmdm-main { grid-column: 1; }
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+/* Dark Mode Theme
+   Redefines the --hwmdm-* CSS variables for dark mode.
+   Activated when [data-theme="dark"] is set on the html element.
+   Use theme.service.js to toggle and persist the preference. */
+[data-theme="dark"] {
+    --hwmdm-bg: #1a1d23;
+    --hwmdm-surface: #252a33;
+    --hwmdm-surface-hover: #2f3441;
+    --hwmdm-surface-subtle: #32394a;
+    --hwmdm-border: #444c5c;
+    --hwmdm-border-subtle: #3a4250;
+    --hwmdm-border-input: #4a525f;
+    --hwmdm-text: #e0e3e8;
+    --hwmdm-text-strong: #f5f6f8;
+    --hwmdm-muted: #9099a6;
+    --hwmdm-muted-soft: #707a88;
+    --hwmdm-shadow: rgba(0, 0, 0, 0.3);
+    --hwmdm-overlay: rgba(0, 0, 0, 0.4);
+    --hwmdm-danger-bg: #3c1f1a;
+    --hwmdm-success-bg: #1a3a31;
+    --hwmdm-info-bg: #1a2d4a;
+    --hwmdm-warn-bg: #3a3015;
 }
 

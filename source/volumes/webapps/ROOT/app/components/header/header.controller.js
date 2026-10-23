@@ -115,6 +115,17 @@ angular.module( 'headwind-kiosk' )
     $scope.isSuperAdmin = function() {
         return authService.isSuperAdmin();
     };
+
+    $scope.currentThemeMode = themeService.getMode();
+    $scope.toggleTheme = function () {
+        themeService.toggleMode();
+        $scope.currentThemeMode = themeService.getMode();
+    };
+
+    $rootScope.$on('HWMDM_THEME_MODE_CHANGED', function (event, mode) {
+        $scope.currentThemeMode = mode;
+    });
+
     // updatesAllowed() and the "Updates" menu entry were removed along with the Updates
     // screen: its template and controller are gone and the /updates route only redirects.
 

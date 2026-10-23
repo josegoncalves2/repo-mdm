@@ -4,19 +4,24 @@
 
 # ---------------------------------------------------------------- hwmdm-webfilter
 # Resolvedor DNS-over-TLS do Web Filter: Blocky fixado por versao e sha256, supervisionado
-# por webfilter/resolver.py (so biblioteca padrao do Python).
-FROM python:3.12-slim AS webfilter
+# por webfilter/WebfilterResolver.java (so biblioteca padrao do Java).
+FROM eclipse-temurin:21-jdk-alpine AS webfilter-build
+COPY webfilter/WebfilterResolver.java /build/WebfilterResolver.java
+WORKDIR /build
+RUN javac WebfilterResolver.java
 
+FROM eclipse-temurin:21-jre-alpine AS webfilter
+RUN apk add --no-cache tzdata
 # Blocky versionado em vendor/ (conferido por vendor/SHA256SUMS): o build nao baixa nada.
 COPY vendor/blocky-v0.34.0-linux-x86_64 /usr/local/bin/blocky
 # Listas de categorias versionadas: sementes para o primeiro boot; a internet so atualiza depois.
 COPY vendor/webfilter-lists/ /app/seed-lists/
 RUN mkdir -p /app/dns /app/lists /app/state /app/certs /app/queries
 
-COPY webfilter/resolver.py /app/resolver.py
+COPY --from=webfilter-build /build/*.class /app/
 WORKDIR /app
 EXPOSE 853/tcp
-ENTRYPOINT ["python3", "-u", "/app/resolver.py"]
+ENTRYPOINT ["java", "-cp", "/app", "WebfilterResolver"]
 
 # ---------------------------------------------------------------- hwmdm-admin
 # Gestao do servidor pela web (configuracao, containers, aplicar mudancas). Fica fora do

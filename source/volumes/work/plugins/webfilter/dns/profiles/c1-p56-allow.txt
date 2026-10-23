@@ -1,1 +1,1 @@
-*.mdm.olimpia.sp.gov.br
+*.mdm.pmeto.local

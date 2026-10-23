@@ -66,12 +66,12 @@ angular.module('headwind-kiosk')
                     $scope.devices = response.data.devices.items || [];
                 } else {
                     $scope.devices = [];
-                    $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
+                    $scope.deviceLoadError = localization.localize('chat.error.load.devices.failed');
                 }
             }, function () {
                 $scope.loadingDevices = false;
                 $scope.devices = [];
-                $scope.deviceLoadError = localization.localize('chat.error.devices.load.failed');
+                $scope.deviceLoadError = localization.localize('chat.error.load.devices.failed');
             });
         };
 

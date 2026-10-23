@@ -557,3 +557,26 @@ O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos com
 - index.html referencia `lib/jsencrypt/bin/jsencrypt.min.js` e `lib/angular-intro.js/build/angular-intro.min.js`, que não existem (já em 02/10).
 - `/rest/public/info` recebe 404 a cada poucos segundos vindo do próprio host <DEVICE_BIND_ADDR>; origem não identificada.
 - Tablet R9XT106Y5RP sem polling desde 12:00 de 07/10.
+
+## 2026-10-22 — Estado
+- Webfilter: Java (WebfilterResolver), sem Python, healthy. Pendente: cert.pem e key.pem reais em source/webfilter/certs.
+- Acesso remoto: endpoints WS registrados no servidor. Bloqueio: nenhum aparelho online desde 21/10 11:50.
+- Kiosk: configuracao 11 pronta, aparelhos ainda na 60. Validar com aparelho real.
+- Mapa: a barra de historico ja fica abaixo do mapa no codigo servido.
+
+## 2026-10-22 16:10 — Reavaliacao do cenario (sem alteracao de codigo/banco)
+- Containers: hwmdm-mdm, hwmdm-postgres, hwmdm-admin, hwmdm-webfilter (4, sem duplicados). Nenhum curl usado.
+- Grep de logs exigido: 2 ocorrencias. (1) Tomcat WARNING SHA1PRNG SecureRandom lento no boot (cosmetico, JVM). (2) WebfilterResolver: certificado DoT ausente em source/webfilter/certs (vazio) -> exige cert.pem/key.pem reais do dominio; nao sera inventado.
+- Python: nenhum na stack. Unico .py = script de guarda da ferramenta Claude (diretorio .claude), fora da stack.
+- Dispositivos (DB): 68, 69, 71 todos na config 60 (kioskmode=f, mainappid 10045 = launcher 6.36). Ultimo sync: 68=13/10, 69=13/10, 71=21/10 11:50. Nenhum online -> kiosk, acesso remoto e webfilter NAO sao validaveis agora.
+- Kiosk: config 11 (10045/6.36, kiosk=t) e 57 (10129/1.3, kiosk=t) existem. 6.36 nao implementa lock task; 1.3 implementa mas nao enrola (assinatura). Fluxo acordado (enroll 6.36 -> MDM instala 1.3) depende de Device Owner/assinatura: requer teste em aparelho real.
+
+## 2026-10-22 16:25 — Healthcheck do webfilter e causa das falhas do verify
+- WEBFILTER_HEALTHCHECK_TIMEOUT 10s -> 30s (.env e .env.example). Causa: o healthcheck sobe uma JVM (java ... --health) e estourava 10s no boot com o Blocky carregando listas. Container hwmdm-webfilter recriado (mesmo nome, sem duplicado).
+- verify.sh falha 7x por caminho: DIR vem de CLAUDE_PROJECT_DIR=/opt/projetos/hwmdm e procura source/.env ali; o real e repo-mdm/source/.env. Checagens equivalentes no caminho correto: 4 servicos running, sem orfaos, schema 3/3, Tomcat iniciou sem erro. Nao foi criado link/dir paralelo. Correcao depende do dono do script (CLAUDE_PROJECT_DIR=/opt/projetos/hwmdm/repo-mdm).
+- Chrome: extensao nao conectada a esta sessao; painel nao operado.
+
+## 2026-10-22 — Limpeza de duplicidade
+- source/.env.anterior (copia antiga do .env: DEVICE_BIND_ADDR 172.14.0.70, healthcheck 10s) movido para archived/env/env.anterior-20261022 (chmod 600). Nao apagado. source/ ficou so com .env e .env.example.
+- Hardcode: grep de IPs/hosts/senhas em source/ (fora .env*, volumes, vendor) -> so 2 textos de ajuda ("Ex.: ...") em admin/HwmdmAdmin.java:78-79; valores reais vem de SERVER_DEV_URL/SERVER_PRD_URL do .env. Sem acao.
+- verify.sh: linha 4 corrigida pelo responsavel (DIR derivado do proprio script).

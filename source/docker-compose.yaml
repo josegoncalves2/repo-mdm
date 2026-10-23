@@ -174,7 +174,7 @@ services:
     image: ${WEBFILTER_IMAGE}
     container_name: ${WEBFILTER_CONTAINER_NAME}
     restart: ${RESTART_POLICY}
-    # Rede do host: DNS e DoT escutam so no loopback e em WEBFILTER_BIND_ADDRS (o resolver.py
+    # Rede do host: DNS e DoT escutam so no loopback e em WEBFILTER_BIND_ADDRS (o WebfilterResolver
     # aplica ao subir) -- 0.0.0.0 colide com o stub do systemd-resolved e exporia todas as NICs.
     network_mode: host
     volumes:
@@ -186,8 +186,9 @@ services:
     environment:
       <<: *webfilter-env
       TZ: ${TZ}
+      JAVA_TOOL_OPTIONS: ${WEBFILTER_JAVA_OPTS}
     healthcheck:
-      test: ["CMD", "python3", "-c", "import sys; sys.path.insert(0, '${WEBFILTER_APP_DIR}'); import resolver; sys.exit(0 if resolver.dns_ok() else 1)"]
+      test: ["CMD", "java", "-cp", "${WEBFILTER_APP_DIR}", "WebfilterResolver", "--health"]
       interval: ${WEBFILTER_HEALTHCHECK_INTERVAL}
       timeout: ${WEBFILTER_HEALTHCHECK_TIMEOUT}
       retries: ${WEBFILTER_HEALTHCHECK_RETRIES}
@@ -210,7 +211,7 @@ services:
       postgresql:
         condition: service_healthy
     ports:
-      - ${MGMT_BIND_ADDR}:${ADMIN_PORT}:${ADMIN_PORT}
+      - ${ADMIN_BIND_ADDR}:${ADMIN_PORT}:${ADMIN_PORT}
     volumes:
       - ${DOCKER_SOCKET}:${DOCKER_SOCKET}
       - ${HWMDM_ROOT:?defina HWMDM_ROOT no source/.env}:${HWMDM_ROOT}

@@ -15,6 +15,13 @@
         <span ng-if="expiryWarning" id="headerExpiryWarning" class="expiry-warning" localized-change-tracking>account.expired.short</span>
         <span id="headerDateTime" class="hide-on-small-screen">{{dateTime}}</span>
 
+        <button type="button" class="hwmdm-theme-toggle" ng-click="toggleTheme()"
+                title="{{'header.theme.toggle' | localize}}"
+                aria-label="Alternar tema">
+            <span ng-if="currentThemeMode === 'light'" class="glyphicon glyphicon-moon"></span>
+            <span ng-if="currentThemeMode === 'dark'" class="glyphicon glyphicon-sun"></span>
+        </button>
+
         <div class="dropdown margin-right" uib-dropdown>
             <button type="button" class="hwmdm-user-button dropdown-toggle" uib-dropdown-toggle aria-expanded="false">
                 <span class="glyphicon glyphicon-user"></span>

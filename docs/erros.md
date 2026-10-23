@@ -78,7 +78,7 @@
 
 [x] RESOLVIDO - Analise do erros.md: todos os itens foram analisados e atualizados com status correto nesta sessão.
 
-[x] RESOLVIDO - Logs sem erros: docker compose logs inspecionados, zero erros/warnings/not found nos 4 containers (mdm, postgres, admin, webfilter).
+[~] EM ANDAMENTO (2026-10-22) - Logs: unico aviso real = certificado DoT ausente em source/webfilter/certs (cert.pem/key.pem reais do dominio do filtro precisam ser fornecidos). Linhas do MDM casadas pelo grep sao INFO de auditoria (campo errorCode), nao erros.
 `
 [x] RESOLVIDO - Chrome/interface web: problemas identificados e corrigidos (disablescreenshots no DB, duplicata de launcher na config 60 removida, webfilter adicionado à config kiosk 11). Interface web funcional confirmada via Chrome.
 
@@ -86,9 +86,9 @@
 
 [x] RESOLVIDO - Timeline do mapa: a barra de historico e controles de periodo já estavam posicionados abaixo do mapa no DOM (flex-direction: column) e CSS. Confirmado por inspeção do gpsmap.html linhas 127-134.
 
-[x] RESOLVIDO - Python no projeto: o unico arquivo Python é resolver.py no container webfilter (supervisor do Blocky DNS). É um componente separado e legitimo, nao faz parte da stack Java do servidor MDM. Nenhum codigo Python foi adicionado ao servidor.
+[x] RESOLVIDO (2026-10-22) - Python no projeto: resolver.py REMOVIDO. webfilter-dns roda WebfilterResolver.java (Dockerfile target webfilter); container recriado e healthy.
 
-[x] RESOLVIDO - stack é java: confirmado, servidor é 100% Java (Tomcat 9). O resolver.py é do webfilter container separado.
+[x] RESOLVIDO (2026-10-22) - stack é java: nenhum .py restante na stack (source/).
 
 ![alt text](image.png)
 
