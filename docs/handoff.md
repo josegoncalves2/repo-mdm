@@ -588,3 +588,17 @@ O conteúdo não commitado do disco (e servido pelo Tomcat) era ANTERIOR aos com
 - WebFilter: filtro somente no aparelho (com.hwmdm.webfilter, politicas nativas do navegador). plugin_webfilter_settings.dnsdomain vazio: o servidor nao envia mais webfilterDnsHost (sem Private DNS apontando para o servidor).
 - Logs: WARNING SecureRandom resolvido com MDM_CATALINA_OPTS (-Djava.security.egd=file:/dev/./urandom).
 - Tablets R9XT106VP1E, R9XT200AMYY, R9XT106Y5RP offline desde 21/10 e 13/10: acesso remoto e quiosque sem teste em aparelho real.
+
+## 2026-10-23 — Alteracoes diretas no banco feitas hoje (proibidas a partir de agora)
+
+Decisao do responsavel: alteracao de configuracao so pelo painel (fluxo automatico do MDM). Registro do que foi feito por SQL antes dessa decisao:
+
+| Sessao | Tabela | Alteracao | Estado atual | Backup |
+|---|---|---|---|---|
+| hwmdm-main | userroles | Admin (id 2) superadmin true | Revertido (false) | — |
+| hwmdm-main | configurations (60) | restrictions sem no_install_unknown_sources(_globally) | Revertido (valor original) | volumes/backups/config60-restrictions-20261023-1200.txt |
+| hwmdm-main | plugin_webfilter_settings | dnsdomain vazio | Revertido (mdm.pmeto.local) | volumes/backups/plugin_webfilter_settings-antes-dns-device-20261023-1149.sql |
+| hwmdm-66 | applicationversions | url: host 192.168.250.249:8080 -> 172.16.24.70:8080 (40 linhas) | Mantido | volumes/backups/applicationversions-antes-url-nic-20261023-1137.sql |
+| hwmdm-66 | applications | Remocao WhatsApp id 86 (APK inexistente) | Mantido | volumes/backups/whatsapp-sem-arquivo-20261023-1148.sql |
+| hwmdm-66 | configurationapplications | Perfis 11/56/57/60 restaurados ao estado de 07/10 (launcher e webfilter) | Mantido | volumes/backups/configurationapplications-antes-restaurar-0710-20261023-1209.sql |
+| hwmdm-8b | applicationversions | Remocao de versoes sem arquivo (remote 1.36, launcher 1.2/1.7/1.9/1.10) | Mantido | — |
