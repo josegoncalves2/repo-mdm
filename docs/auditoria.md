@@ -114,6 +114,8 @@
 | 2026-10-23 11:55 | Claude Haiku 4.5 | Server tab acesso via 172.16.24.70:8080/#/server — MESMA página carrega sem erro, contéudo idêntico ao 192.168 | VERIFICADO | Problema reportado NÃO existe, ambos IPs acessam |
 | 2026-10-23 12:00 | Claude Haiku 4.5 | build-info.json verificado: versao="1.0.0" (VARIÁVEL, não hardcoded), carregado dinamicamente por about.controller.js via $http.get('build-info.json') | VERIFICADO | Não é hardcoding real, é valor dinâmico correto |
 | 2026-10-23 12:05 | Claude Haiku 4.5 | Docker logs análise: QRCode error ausente em logs recentes, SQL "remote_file" não referenciado no código, WebFilter OOM de 24h atrás | INVESTIGADO | Erros históricos, estado atual estável |
+| 2026-10-23 12:10 | Claude Haiku 4.5 | Fix Kiosk Lockdown tab: restrições exibem nomes técnicos (no_factory_reset) em vez de rótulos traduzidos | CORRIGIDO | Adicionadas 9 chaves kiosk.restriction.* em pt_PT.js e en_US.js, template kiosk.html atualizado com pipe localize |
+| 2026-10-23 12:15 | Claude Haiku 4.5 | Commits realizados: 90fc5f7a (auditoria), 443bdd02 (kiosk-lockdown) | OK | Histórico git atualizado |
 
 ---
 
