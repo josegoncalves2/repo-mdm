@@ -129,6 +129,8 @@
 | 2026-10-23 12:50 | hwmdm-66 (registro) | build-info.json gerado no boot pelo docker-entrypoint.sh (HWMDM_VERSION, commit do .git, componentes, agentes do banco); applicationversions.url 40 linhas -> 172.16.24.70:8080; app WhatsApp sem arquivo removido; inventario: nenhum APK fora de work/files | DEPLOYED | Backups em volumes/backups/ (applicationversions-antes-url-nic-20261023-1137.sql, whatsapp-sem-arquivo-20261023-1148.sql) |
 | 2026-10-23 12:50 | Claude Opus 5.5 | Assinaturas: 6.36 original cert 0957...9757; 1.3 cert 4437...D510 (Prefeitura). Android recusa upgrade 6.36->1.3 (mesmo pacote com.hmdm.launcher) | BLOQUEADO | Fluxo 6.36->1.3 automatico impossivel sem a chave Headwind |
 | 2026-10-23 14:05 | Claude Opus 5.5 | Perfil 60: removidas no_uninstall_apps, no_network_reset, no_config_date_time, no_config_locale via API do painel (PUT /rest/private/configurations, mesmo fluxo do Salvar); no_install_* ja estavam fora. Restricoes = conjunto de 07/10 | DEPLOYED | Tablet R9XT106Y5RP recebeu (Update flow completed 14:05:58). Pendente: webfilter 1.0 no perfil x 1.4 instalado -> 'Ignoring downgrade request' |
+| 2026-10-23 14:30 | Claude Opus 5.5 | Perfil 60 via API do painel: WebFilter 1.4 removido (Silently uninstall 14:29) e 1.2 instalado (installed successfully 14:30:20) no R9XT106Y5RP. 1.2 bloqueia por overlay no navegador, sem DELEGATION_APP_RESTRICTIONS | DEPLOYED | Bloqueio de site ainda nao conferido no aparelho |
+| 2026-10-23 14:30 | Claude Opus 5.5 | Tentativa Suporte Remoto 1.35 (envio do IP real, existe desde 1.5): APK foi apagado de work/files -> 404; perfil voltou ao 1.3 | BLOQUEADO | Unico Suporte Remoto em work/files e' o 1.3, sem NetworkReporter: IP real nao pode ser reportado |
 ---
 
 ## DIFF: DOCS vs. ESTADO REAL DO SERVIDOR (2026-10-05 13:39)
@@ -632,3 +634,47 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
 - **Ação (pelo painel, aba Quiosque, perfil 60 `modelo-default-v2`)**: removidas `no_install_apps`, `no_install_unknown_sources`, `no_install_unknown_sources_globally` → Salvar perfil ("Kiosk profile saved and queued for devices") → Enviar configuração ao aparelho online. Sem alteração direta no banco.
 - **Verificação**: SELECT `restrictions ~ 'no_install'` = false; R9XT106Y5RP sincronizou `/rest/public/sync/configuration` às 14:05:50 (HTTP 200). R9XT106VP1E e R9XT200AMYY offline — recebem na próxima conexão.
 - Mantidas as demais restrições do perfil (inclusive `no_uninstall_apps` para o usuário final).
+| 14:00 | "Acao nao permitida" ao liberar instalacao do MDM Agent 6.36 (print do acesso remoto). Causa: perfil 60 modelo-default-v2 recebeu, apos 07/10, no_install_apps, no_uninstall_apps, no_install_unknown_sources, no_install_unknown_sources_globally, no_network_reset, no_config_date_time, no_config_locale. Backup estavel-20261007-1400.sql (perfil 60) NAO tinha nenhuma delas | CAUSA RAIZ | Correcao = voltar as restricoes de 07/10 pelo painel (banco proibido). Pendente: sessao logada no Chrome. Acesso remoto confirmado funcionando (print 13:47: ao vivo 752x1280, controle ativo) |
+
+---
+
+## 2026-10-23 (tarde) — Mapeamento somente-leitura (nenhuma alteracao feita)
+
+Comandos executados: git log/status/diff/show, docker ps/port/inspect/logs, SELECT no banco. Nenhum arquivo, container ou registro alterado.
+Observacao: o unico `ERROR: syntax error at or near "\"` do hwmdm-postgres desta tarde foi um SELECT mal escapado desta sessao (somente leitura, sem efeito).
+
+### Causa da destruicao de hoje
+- Commit `f4cd6980` (11:02, "Claude Haiku 4.5") apagou: `dist/hmdm-1.3-olimpia.apk`, `work/files/hmdm-{1.2,1.3,1.7,1.9,1.10,1.11}-olimpia.apk`, `work/RemoteSupportResource.java`, `docs/mentir.md`, `docs/HANDOFF-CONSOLIDADO/DEFINITIVO-20261002.md`, `docs/handoff-1..5.md`, `archived/*`, `.env.anterior`; e registra `UPDATE userroles SET superadmin=true` (alteracao direta no banco — proibida). userroles.id=2 hoje esta superadmin=false (revertido em a4776a02).
+- Pendente nao commitado: removidos `dist/hmdm-6.36-prefeitura.apk(.idsig)`, `dist/hmdm-v1.3.apk`, `dist/hwmdm-remote-1.36.apk`, `work/files/hwmdm-remote-1.36.apk`; modificados `.env`, kiosk.html, about.*, hwmdmVersion.directive.js, build-info.json, hwmdm-runtime.js.
+- Backups SQL de hoje em volumes/backups (6) evidenciam alteracoes diretas no banco por sessoes anteriores; `erros.md` declara "RESOLVIDO" acesso remoto via `UPDATE configurations SET disablescreenshots=false` (proibido).
+
+### APKs (sha256)
+- Launcher 1.3 custom: `work/files/hmdm-v1.3.apk` == apagado `hmdm-1.3-olimpia.apk` == `dist/hmdm-v1.3.apk` (HEAD) = e0742079… — INTACTO. `hmdm-v1.3[1].apk` e' copia identica (duplicata).
+- 6.36: banco usa `hmdm-6.36-os.apk` (68d96647…); `dist/hmdm-6.36-prefeitura.apk` (33d6d069…, apagado, recuperavel do HEAD) e' outro binario — definir qual e' o original.
+- Remote: banco publica 1.3..1.35; arquivos 1.40/1.41 existem sem registro; perfis 1, 2, 11, 56, 57, 60 entregam remote **1.3** (o mais antigo). 1.36 nao existe como versao valida (confirmado pelo responsavel).
+- Webfilter: 1.3 e 1.4 apontam para o mesmo `app-release.apk`.
+
+### Perfis
+- 11 "Kiosk Total (1.3)": kioskmode=t mas mainapp=6.36 (10045) — nome contradiz conteudo; sem webfilter.
+- 56/57: launcher 1.3 (nao faz enroll por assinatura). 60 (todos os 3 devices): 6.36 + remote 1.3 + webfilter 1.0; kiosk=f.
+- Nao existe perfil que faca enroll com 6.36 e depois entregue 1.3: impossivel no mesmo package com assinatura diferente (Android bloqueia upgrade cross-signature).
+
+### IP do dispositivo
+- AuditLogger registra ipAddress=191.5.114.166 (proxy/NAT) apesar de PROXY_ADDRESSES no container: o NAT nao injeta X-Forwarded-For, logo o servidor nunca ve o IP real; o IP real so pode vir do relato do proprio agente.
+
+### Servidor (admin)
+- hwmdm-admin ja e' Java (source/admin/HwmdmAdmin.java), porta 0.0.0.0:8090; iframe monta `hostname:adminPort`. Falta validar no Chrome pelo 172.16.24.70.
+- Python restante: so `.claude/hooks/verificar_afirmacao.py` (fora da stack).
+
+### Pendente de verificacao no Chrome / tablet (proxima etapa do mapeamento)
+kiosk real, aba Politica e Bloqueio (CSS), acesso remoto tela preta, timeline do mapa (DOM ainda com barra antes do mapa?), Sobre exibindo versao, dark/light, telas placeholder sem backend.
+
+### 2026-10-23 14:20 — Diagnostico (somente leitura): IP nao reportado e WebFilter sem filtrar
+- **IP**: o IP do proprio aparelho e' enviado pelo Suporte Remoto (remote-agent/.../mdm/NetworkReporter.java, desde 07474f02 de 10/08). As 11:37 uma sessao Claude Opus 5.5 forcou todos os perfis para Suporte Remoto **1.3** (o mais antigo) ao retirar o 1.36. Tablet R9XT106Y5RP roda remote 1.3 => sem relato de IP; devices.publicip mostra so o IP visto pelo servidor (191.5.114.166, 192.168.250.101, 192.168.1.123). Causa: aquela alteracao.
+- **WebFilter**: queries de hoje = 1471 de 127.0.0.1 e 3 de 172.16.24.70 (o proprio servidor); **zero consultas de tablet**. O servidor bloqueia corretamente, o aparelho nao. Agente com.hwmdm.webfilter 1.4 (BrowserPolicySync) so aplica politica com DELEGATION_APP_RESTRICTIONS concedida pelo launcher; o 6.36 original nao concede (MainActivity exibe "Aguardando MDM 6.36"). Alem disso, as 11:49 a mesma sessao zerou plugin_webfilter_settings.dnsdomain (Private DNS) — hoje esta de volta a 'mdm.pmeto.local' (restaurado por outra sessao).
+- **Sessoes concorrentes**: ha outra sessao de agente operando o mesmo servidor ao mesmo tempo (transcricao colada pelo responsavel as 14:17). Duas sessoes alterando perfil/banco em paralelo explicam reversoes cruzadas. Esta sessao nao alterou nada.
+
+### 2026-10-23 14:30 — WebFilter: versao que filtrava sozinha (somente leitura)
+- 1.2 (versionCode 3, commit 6a3c2fdb de 07/10, periodo em producao): filtra no proprio aparelho via `WebFilterAccessibilityService` + `BlockOverlay` + `BlockedPageReporter`. Nao depende do launcher. APK presente: source/volumes/work/files/hwmdm-webfilter-1.2.apk.
+- 1.4 (versionCode 5, commit b1cfdb4b de 13/10): esses tres arquivos e o `webfilter_accessibility_config.xml` foram REMOVIDOS; sobrou so BrowserPolicySync, que exige DELEGATION_APP_RESTRICTIONS do launcher — o 6.36 original nao concede. Por isso nao filtra.
+- Tablets tem 1.4 instalado: o Android nao aceita downgrade automatico 1.4 -> 1.2. Caminhos: (a) restaurar o servico de acessibilidade no codigo atual e publicar como 1.5 (fix-forward, sem rollback); (b) desinstalar 1.4 no aparelho e publicar 1.2.
