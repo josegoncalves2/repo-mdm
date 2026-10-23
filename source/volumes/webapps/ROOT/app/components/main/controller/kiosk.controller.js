@@ -86,35 +86,12 @@ angular.module('headwind-kiosk')
             return isInfrastructureIp(ip) ? null : ip;
         };
 
-        var appScore = function (app) {
-            var score = 0;
-            if ($scope.configuration && appVersionId(app) === $scope.configuration.mainAppId) {
-                score += 100;
-            }
-            if ($scope.configuration && appVersionId(app) === $scope.configuration.contentAppId) {
-                score += 50;
-            }
-            if (app.useKiosk) {
-                score += 10;
-            }
-            if (app.actionChanged) {
-                score += 5;
-            }
-            return score;
-        };
-
+        // Mesma regra do editor de configuracao do Headwind (configurations.controller.js):
+        // envia cada entrada com action != 0 como veio do servidor. Escolher "uma por app"
+        // aqui trocava a versao configurada (WebFilter 1.4 -> 1.0 no perfil 60).
         var installedApps = function () {
-            var byApplication = {};
-            ($scope.applications || []).filter(function (app) {
+            return ($scope.applications || []).filter(function (app) {
                 return app.action != 0;
-            }).forEach(function (app) {
-                var key = app.id || app.pkg;
-                if (!byApplication[key] || appScore(app) > appScore(byApplication[key])) {
-                    byApplication[key] = app;
-                }
-            });
-            return Object.keys(byApplication).map(function (key) {
-                return byApplication[key];
             });
         };
 
