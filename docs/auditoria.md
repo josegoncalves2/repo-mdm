@@ -603,3 +603,18 @@ Leitura integral de todos os 21 arquivos em `/opt/projetos/hwmdm/repo-mdm/docs/`
   - `WARNING certificado DoT ausente`: exige cert.pem/key.pem reais do domínio; não gerado para não criar artefato falso.
   - ActiveMQ `Temporary Store limit` (WARN informativo do broker embutido no WAR).
 - **Bloqueio**: extensão Claude in Chrome não conectada — validação visual pendente.
+
+## 2026-10-23 14:05 — Kiosk: o que cada APK de launcher realmente contém (inspeção dos classes.dex)
+
+| APK (work/files) | startLockTask | setLockTaskPackages | setLockTaskFeatures | PackageInstaller |
+|---|---|---|---|---|
+| hmdm-6.36-os.apk | 0 | 0 | 0 | sim |
+| hmdm-v1.3.apk | 1 | 1 | 1 | sim |
+
+- **Fato**: o 6.36 open source não tem lock task. No "kiosk" ele só se define como tela inicial e reabre o app principal — é o "apenas refresh" relatado. Nenhuma configuração de painel muda isso.
+- **Fato do Android**: lock task real (sem saída pelo usuário) só é liberado por `setLockTaskPackages`, que só o Device Owner chama. O Device Owner é definido no enrollment e só ele pode transferi-lo (`transferOwnership`); o 6.36 não faz isso.
+- **Consequência**: um 1.3 recompilado com outro `applicationId`, instalado pelo 6.36, NÃO teria kiosk real (sem DO vira só "fixar tela", que o usuário desfaz). A opção (a) proposta antes não entrega o requisito.
+- **Único caminho real para kiosk**: o launcher 1.3 (assinado com hwmdm-release.jks) ser o Device Owner, ou seja, enrollment por QR direto com o 1.3 em aparelho restaurado de fábrica, com o checksum do certificado próprio (já correto em applicationversions 10129, conforme 13:10). Não depende da assinatura da Headwind.
+- **Divergência de fonte**: android-source/app/build.gradle = versionName 1.11 (versionCode 15401), não 1.3.
+- **Duplicata**: `hmdm-v1.3[1].apk` é idêntico byte a byte a `hmdm-v1.3.apk` (md5 03200b8e...). Não removido: aguarda o responsável.
+- **Chrome**: extensão continua desconectada (14:05).
