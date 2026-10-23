@@ -132,8 +132,8 @@ services:
       <<: *webfilter-env
       # Fuso local: sem isto o Tomcat/JVM roda em UTC e loga adiantado.
       TZ: ${TZ}
-      # Sem fonte de entropia nao-bloqueante o Tomcat espera SecureRandom (WARNING SHA1PRNG).
-      CATALINA_OPTS: ${MDM_CATALINA_OPTS}
+      # Algoritmo dos IDs de sessao do Tomcat (Manager no ROOT.xml); nao-bloqueante evita o WARNING SHA1PRNG.
+      MDM_SESSION_RANDOM_ALGORITHM: ${MDM_SESSION_RANDOM_ALGORITHM}
       # catalina.sh usa 0027 por padrao quando UMASK nao esta definido -- isso faz todo
       # arquivo que o Tomcat cria (logo, cor de fundo, apk, qualquer upload) nascer 640,
       # dono root:root (o processo roda como root dentro do container, sem userns-remap).

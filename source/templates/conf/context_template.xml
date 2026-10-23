@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+    <!-- Tomcat usa SHA1PRNG por padrao para os IDs de sessao e espera entropia (WARNING no boot). -->
+    <Manager pathname="" secureRandomAlgorithm="_SESSION_RANDOM_ALGORITHM_"/>
+
     <!-- database configurations -->
     <Parameter name="JDBC.driver"   value="org.postgresql.Driver"/>
     <Parameter name="JDBC.url"      value="jdbc:postgresql://_SQL_HOST_:_SQL_PORT_/_SQL_BASE_"/>
